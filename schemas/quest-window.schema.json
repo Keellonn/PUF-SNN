@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/puf-snn/quest-window-v0.2.schema.json",
+  "title": "Quest-style head-motion window v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "window_id",
+    "source_trial_id",
+    "device_id",
+    "session_id",
+    "trial_id",
+    "split",
+    "sequence_number",
+    "label",
+    "coordinate_frame",
+    "target_sample_rate_hz",
+    "window_start_ns",
+    "window_end_ns",
+    "samples"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "window_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_trial_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "device_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trial_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split": {
+      "enum": [
+        "train",
+        "validation",
+        "test"
+      ]
+    },
+    "sequence_number": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "label": {
+      "enum": [
+        "nod",
+        "shake",
+        "look_left_return",
+        "look_right_return",
+        "still"
+      ]
+    },
+    "coordinate_frame": {
+      "const": "unity_device_origin"
+    },
+    "target_sample_rate_hz": {
+      "const": 60
+    },
+    "window_start_ns": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "window_end_ns": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "samples": {
+      "type": "array",
+      "minItems": 120,
+      "maxItems": 120,
+      "items": {
+        "$ref": "#/$defs/sample"
+      }
+    }
+  },
+  "$defs": {
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sample_index",
+        "capture_time_ns",
+        "position_m",
+        "orientation_xyzw",
+        "tracking_valid"
+      ],
+      "properties": {
+        "sample_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 119
+        },
+        "capture_time_ns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "position_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        },
+        "orientation_xyzw": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number",
+            "minimum": -1.000001,
+            "maximum": 1.000001
+          }
+        },
+        "tracking_valid": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

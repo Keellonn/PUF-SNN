@@ -1,0 +1,79 @@
+{
+  "project": {
+    "name": "PUF-SNN",
+    "specification_version": "0.2",
+    "random_seed": 7
+  },
+  "task": {
+    "labels": [
+      "nod",
+      "shake",
+      "look_left_return",
+      "look_right_return",
+      "still"
+    ],
+    "prompt_seconds": 1.0,
+    "action_seconds": 2.0,
+    "rest_seconds": 1.0
+  },
+  "capture": {
+    "source": "synthetic",
+    "target_sample_rate_hz": 60,
+    "samples_per_window": 120,
+    "windowing": "fixed_nonoverlapping",
+    "coordinate_frame": "unity_device_origin",
+    "maximum_timestamp_gap_ms": 50.0,
+    "minimum_tracking_valid_fraction": 0.95
+  },
+  "synthetic_data": {
+    "device_profiles": 6,
+    "sessions_per_device": 3,
+    "trials_per_class_per_session": 20,
+    "output_path": "data/generated/synthetic-windows-v0.2.jsonl"
+  },
+  "splits": {
+    "primary_claim": "cross_session",
+    "train_session_index": 1,
+    "validation_session_index": 2,
+    "test_session_index": 3,
+    "group_key": "source_trial_id"
+  },
+  "models": {
+    "input_channels": 8,
+    "time_steps": 120,
+    "conventional_baselines": [
+      "logistic_regression",
+      "random_forest"
+    ],
+    "lightgbm_status": "deferred_until_initial_baselines_work",
+    "snn": {
+      "encoding": "direct_continuous",
+      "hidden_lif_neurons": 64,
+      "beta": 0.9,
+      "output_classes": 5,
+      "learning_rate": 0.001,
+      "batch_size": 32,
+      "maximum_epochs": 50,
+      "early_stopping_patience": 8,
+      "random_seeds": [7, 17, 27]
+    },
+    "anomaly": {
+      "design": "separate_supervised_binary_detector",
+      "initial_models": [
+        "logistic_regression",
+        "random_forest"
+      ],
+      "validation_false_positive_target": 0.05
+    }
+  },
+  "success_criteria": {
+    "tier1_observed_rejection_rate": 1.0,
+    "tier1_cases_per_attack": 1000,
+    "maximum_valid_window_false_reject_rate": 0.005,
+    "maximum_authentication_macro_f1_loss_points": 1.0,
+    "maximum_snn_baseline_gap_points": 5.0,
+    "authentication_p95_ms": 1.0,
+    "post_window_decision_p95_ms": 20.0,
+    "maximum_relative_authentication_overhead": 0.10
+  }
+}

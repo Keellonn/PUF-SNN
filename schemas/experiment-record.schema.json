@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/puf-snn/experiment-record-v0.2.schema.json",
+  "title": "PUF-SNN experiment record v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_version",
+    "run_id",
+    "code_commit",
+    "config_version",
+    "window_schema_version",
+    "window_id",
+    "source_trial_id",
+    "ground_truth_label",
+    "condition",
+    "authentication",
+    "inference",
+    "latency_ms"
+  ],
+  "properties": {
+    "record_version": {
+      "const": "0.2"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{7,40}$"
+    },
+    "config_version": {
+      "const": "0.2"
+    },
+    "window_schema_version": {
+      "const": "0.2"
+    },
+    "window_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_trial_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ground_truth_label": {
+      "enum": [
+        "nod",
+        "shake",
+        "look_left_return",
+        "look_right_return",
+        "still"
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system_condition",
+        "model_name",
+        "attack_type",
+        "attack_injection_stage",
+        "attack_parameters",
+        "is_anomaly",
+        "random_seed"
+      ],
+      "properties": {
+        "system_condition": {
+          "enum": [
+            "conventional_no_auth",
+            "snn_no_auth",
+            "authenticated_conventional",
+            "authenticated_snn"
+          ]
+        },
+        "model_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "logistic_regression",
+            "random_forest",
+            "lightgbm",
+            "snn",
+            null
+          ]
+        },
+        "attack_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attack_injection_stage": {
+          "enum": [
+            "none",
+            "before_tag",
+            "after_tag",
+            "session"
+          ]
+        },
+        "attack_parameters": {
+          "type": "object"
+        },
+        "is_anomaly": {
+          "type": "boolean"
+        },
+        "random_seed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result",
+        "reason",
+        "reason_detail"
+      ],
+      "properties": {
+        "result": {
+          "enum": [
+            "accept",
+            "reject",
+            "not_applied"
+          ]
+        },
+        "reason": {
+          "enum": [
+            "accepted",
+            "not_applied",
+            "malformed_message",
+            "invalid_tag",
+            "duplicate_sequence",
+            "stale_sequence",
+            "reordered_sequence",
+            "future_sequence_gap",
+            "expired_session",
+            "unknown_session",
+            "unknown_device",
+            "failed_key_reconstruction",
+            "data_quality_failure",
+            "other"
+          ]
+        },
+        "reason_detail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motion_prediction",
+        "anomaly_score",
+        "anomaly_prediction"
+      ],
+      "properties": {
+        "motion_prediction": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "nod",
+            "shake",
+            "look_left_return",
+            "look_right_return",
+            "still",
+            null
+          ]
+        },
+        "anomaly_score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "anomaly_prediction": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "normal",
+            "suspicious",
+            null
+          ]
+        }
+      }
+    },
+    "latency_ms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authentication",
+        "preprocessing",
+        "inference",
+        "audit",
+        "post_window_total"
+      ],
+      "properties": {
+        "authentication": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        },
+        "preprocessing": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        },
+        "inference": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        },
+        "audit": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        },
+        "post_window_total": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}

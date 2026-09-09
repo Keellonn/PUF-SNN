@@ -1,0 +1,1 @@
+# this makes the generator and validator easy to import elsewhere
