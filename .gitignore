@@ -122,3 +122,12 @@ Thumbs.db
 # general log files
 
 *.log
+
+# additional local development files
+.vscode/
+
+# temporary PUF simulator runtimes
+.experiment-*/
+
+# created PUF simulation runs
+sim_results/

@@ -1,0 +1,2 @@
+# Python >= 3.10, Simulation and metrics use the standard library.
+matplotlib==3.10.6

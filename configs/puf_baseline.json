@@ -1,0 +1,19 @@
+{
+  "number_of_devices": 10,
+  "number_of_oscillators": 128,
+  "pairing_scheme": "adjacent",
+  "nominal_frequency": 100.0,
+  "manufacturing_std": 1.0,
+  "aging_std": 0.0,
+  "repeated_reads": 100,
+  "random_seed": 4321,
+  "reference_conditions": {
+    "environmental_offset": 0.0,
+    "measurement_noise_std": 0.0
+  },
+  "read_conditions": {
+    "environmental_offset": 0.0,
+    "measurement_noise_std": 0.1
+  },
+  "noise_sweep": [0.0, 0.05, 0.1, 0.25, 0.5, 1.0]
+}
