@@ -23,8 +23,8 @@ from puf_snn.data.validation import validate_dataset
 
 def records_and_schema() -> tuple[list[dict], dict]:
     # this loads a tiny dataset and the real schema for leakage tests
-    config_path = ROOT / "configs" / "pilot-v0.2.json"
-    schema_path = ROOT / "schemas" / "quest-window-v0.2.schema.json"
+    config_path = ROOT / "configs" / "pilot.json"
+    schema_path = ROOT / "schemas" / "quest-window.schema.json"
 
     with config_path.open("r", encoding="utf-8") as handle:
         config = json.load(handle)

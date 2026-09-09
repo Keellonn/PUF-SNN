@@ -1,4 +1,5 @@
 # unity cache and temporary folders
+
 .utmp/
 [Ll]ibrary/
 [Tt]emp/
@@ -9,6 +10,7 @@
 [Rr]ecordings/
 
 # unity builds
+
 [Bb]uild/
 [Bb]uilds/
 *.apk
@@ -18,6 +20,7 @@
 *.unitypackage.meta
 
 # unity and editor generated files
+
 ExportedObj/
 .consulo/
 .vs/
@@ -49,16 +52,18 @@ sysinfo.txt
 mono_crash.*
 crashlytics-build.properties
 
-# blender backup files imported by unity
+# blender backup files
+
 *.blend1
 *.blend1.meta
 
 # generated unity plugins and test scenes
+
 **/[Aa]ssets/Plugins/Editor/JetBrains*
 **/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
-InitTestScene*.unity*
 
 # unity addressables
+
 ServerData/
 **/[Aa]ssets/StreamingAssets/aa*
 **/[Aa]ssets/AddressableAssetsData/link.xml*
@@ -66,10 +71,12 @@ ServerData/
 **/[Aa]ssets/AddressableAssetsData/*/*.bin*
 
 # unity visual scripting files
+
 **/[Aa]ssets/Unity.VisualScripting.Generated/
 **/[Aa]ssets/[Ss]ceneDependencyCache*
 
 # python environments and cache files
+
 .venv/
 venv/
 __pycache__/
@@ -81,12 +88,14 @@ __pycache__/
 htmlcov/
 
 # generated or restricted research data
+
 data/generated/
 data/raw/
 data/processed/
 data/private/
 
 # model and experiment outputs
+
 outputs/
 models/
 checkpoints/
@@ -94,9 +103,11 @@ checkpoints/
 *.pth
 
 # temporary project files
+
 tmp/
 
 # credentials and local secrets
+
 .env
 .env.*
 secrets/
@@ -104,10 +115,10 @@ secrets/
 *.pem
 
 # operating system files
+
 .DS_Store
 Thumbs.db
 
 # general log files
-*.log
 
-tmp/
+*.log

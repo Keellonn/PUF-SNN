@@ -25,7 +25,7 @@ from puf_snn.data.validation import validate_dataset
 
 def small_config() -> dict:
     # this keeps each test small while using the real project settings
-    config_path = ROOT / "configs" / "pilot-v0.2.json"
+    config_path = ROOT / "configs" / "pilot.json"
 
     with config_path.open("r", encoding="utf-8") as handle:
         config = json.load(handle)
@@ -43,7 +43,7 @@ def small_config() -> dict:
 
 def schema() -> dict:
     # this loads the same schema used by the command line validator
-    schema_path = ROOT / "schemas" / "quest-window-v0.2.schema.json"
+    schema_path = ROOT / "schemas" / "quest-window.schema.json"
 
     with schema_path.open("r", encoding="utf-8") as handle:
         return json.load(handle)

@@ -26,13 +26,13 @@ from puf_snn.data.validation import validate_jsonl
 
 def main() -> None:
     # this loads the same settings used by the generator
-    config_path = ROOT / "configs" / "pilot-v0.2.json"
+    config_path = ROOT / "configs" / "pilot.json"
 
     with config_path.open("r", encoding="utf-8") as handle:
         config = json.load(handle)
 
     data_path = ROOT / config["synthetic_data"]["output_path"]
-    schema_path = ROOT / "schemas" / "quest-window-v0.2.schema.json"
+    schema_path = ROOT / "schemas" / "quest-window.schema.json"
 
     # this checks the file before any model is allowed to use it
     records, errors = validate_jsonl(

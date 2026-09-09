@@ -4,9 +4,9 @@ it
 - finds the project
 - loads the pilot / experiment settings
 - generates the synthetic data / windows
-- saves the windows to a jsonl file\
+- saves the windows to a jsonl file
 
-outr decisions for hte experiment settings are
+our decisions for the experiment settings are
 - 5 motion labels
 - 60 Hz sampling
 - 120 samples per window
@@ -31,7 +31,7 @@ from puf_snn.data.generator import generate_records, write_jsonl
 
 def main() -> None:
     # this loads the shared settings so the run can be repeated later
-    config_path = ROOT / "configs" / "pilot-v0.2.json"
+    config_path = ROOT / "configs" / "pilot.json"
 
     with config_path.open("r", encoding="utf-8") as handle:
         config = json.load(handle)

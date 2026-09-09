@@ -325,21 +325,19 @@ Afterward, I'll record
 | Main split | Explain the limits of each split | Whether cross-session should be the main pilot claim |
 | FPGA work | Define the required software results first | Whether and when hardware work should begin |
 
-## Remaining Week 2 tasks
+### September 8, 2026 — Synthetic data testing
 
-### My tasks
+**Completed:** I ran the scripted head motion generator, standalone validator, and automated tests.
 
-- Copy the final files into the official repository.
-- Confirm the configuration and schemas are present.
-- Run `test_data.py`.
-- Run `test_splits.py`.
-- Generate the complete dataset.
-- Validate the complete dataset.
-- Add more failure tests if needed.
-- Record the real results.
-- Add the Git commit ID.
-- Complete the Quest setup checklist.
-- Give Will the final window format.
+**Artifact produced:** The generator created 1,800 synthetic windows using schema v0.2. I recorded the results in `results/week-2/keegan.md`.
+
+**Evidence:** The dataset contained 600 windows in each split and 360 windows for each motion class. All 5 automated tests passed. The tests checked valid data, repeatable generation, class balance, quaternion validation, session leakage, and source-trial leakage.
+
+**What I learned:** The current generator and validation pipeline work together correctly. The split tests also showed that the validator can catch the two main leakage mistakes included in the current test suite.
+
+**Current limitation:** These results only validate synthetic data and the rules currently implemented in the code. They do not prove that the data matches real Quest 3 motion or that it supports accurate classification.
+
+**Next step:** Review a few generated records, confirm the shared sensor window interface with Will, and prepare the same schema for the Quest logger.
 
 ### Shared tasks
 
