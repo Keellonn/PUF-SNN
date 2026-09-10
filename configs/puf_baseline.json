@@ -1,5 +1,5 @@
 {
-  "number_of_devices": 10,
+  "number_of_devices": 6,
   "number_of_oscillators": 128,
   "pairing_scheme": "adjacent",
   "nominal_frequency": 100.0,

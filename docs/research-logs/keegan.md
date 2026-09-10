@@ -397,6 +397,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Revised the slide wording and terminology.
 - Updated Responsibilities, and first month plan.
 - Checked that the slides and specification matched.
+- finished up all slides, onboarded will
 
 ## Saturday, September 5, 2026 - 0.75 hours
 
@@ -411,17 +412,18 @@ Hours below don't include pre employment work. Those were my test trial hours.
 
 ### 9:26 AM - 12:03 PM - 2.62 hours
 
-- Redesigned the repository for both work packages.
+- Redesigned the repository completely
 - Separated code, schemas, configurations, tests, documentation, and results.
 - Identified which files belong in Git and which are generated locally.
-- Simplified the documentation structure.
-- Updated the research log formatting, started on my research log
+- started on markdowns, did ones for data, overall project
+- Reviewed four additional papers on SNN motion classification, XR authentication, system latency, and adversarial robustness to help refine our literature matrix, model comparisons, threat model, and evaluation plan.
 
 ### 1:30 PM - 4:26 PM - 2.93 hours
 
+- Updated the research log formatting, started on my research log
 - Turned Dr. Garcia's feedback into specific technical changes.
-- Updated the literature-review structure.
-- Replaced the absolute research-gap statement.
+- Updated the literature review structure.
+- Replaced the research-gap statement.
 - Defined logistic regression and random forest as the first models.
 - Planned a fair comparison using the same data, splits, and seeds.
 - Drafted the first SNN settings.
@@ -429,3 +431,40 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Organized attacks into 3 tiers.
 - Drafted starting accuracy, security, and latency targets.
 - Separated the 2-second recording period from processing latency.
+- Put this information in our new Spec and my research log
+
+## Tuesday, September 8, 2026 - 3.73 hours
+
+### 3:50 PM - 4:39 PM - 0.82 hours
+
+- Created faculty decision memo
+- Did research to come to my decisions
+- Updated what questions we still have
+- Did quest logging markdown
+
+### 5:54 PM PM - 8:49 PM - 2.92 hours
+
+- Created generator.py & validation.py
+- Created markdown for xr snn
+- Created generate_data.py
+- Created validate_data.py
+- Created all schemas
+- Created test_data.py
+- Created test_splits.py
+- Tested all tests
+- Fixed file path and environment issues
+- Generated 1.8k syntehhetic head motion windows, checked data format, timestamps, tracking quality, train/test seperation
+- All 1.8k windows passed validation and all 5 automated tests passed
+- Updated week 2 results markdown
+
+## Wednesday, September 7, 2026 - 3.06 hours
+
+### 6:25 AM - 9:29 PM - 3.06 hours
+
+- Redid my portion slideshow, all slides are now actual slideshow ready
+- Added a custom theme that I made all slides match and did the flow chart for the project
+- Changed up information to update our metrics we decided on this week
+- Created speaker notes for each slide, with exactly what I wanted to say / include for presenting
+- Updated research log, add instructions to my results
+- Added week 2 slides, aka the stuff I did in the repo / my scripts and what they do
+- Practiced presenting each slide
