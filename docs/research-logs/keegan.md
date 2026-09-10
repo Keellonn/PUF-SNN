@@ -385,7 +385,15 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Organized and corrected the references.
 
 
-## Wednesday, September 2, 2026 - 2.92 hours
+## Wednesday, September 2, 2026 - 0.75 hours
+
+### 1:00 PM - 1:45 PM - 0.75 hours
+
+- Weekly meeting
+- Talked about Dr. Garcia & Sadman Italy trip, what to do the next week
+- Listened to Zeeshawns presentation about bit flipping & bypassing security features within LLMs
+
+## Thursday, September 3, 2026 - 2.92 hours
 
 ### 6:25 PM - 9:20 PM - 2.92 hours
 
