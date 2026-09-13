@@ -337,9 +337,8 @@ After stable reconstruction works, the next step will be session and window auth
 *Not an active employee for the first week.
 
 # Week 2 Hours
-
 # Tuesday September, 9
-## 11:07am - 4:34pm
+## 11:07am - 4:34pm (5.45 Hours)
 - Continued RO-PUF simulation development
 - Implemented device model:
     - Persistent manufacturuing variation
@@ -368,9 +367,26 @@ After stable reconstruction works, the next step will be session and window auth
 - Reviewed results and validated design
 - Tested reproducibility with the random seed generation
 # Wednesday September, 10
-**Hours to be added in from saved desktop notes
+## 4:28pm - 7:16pm (2.80 Hours)
+- Created PowerShell script, 'run_simulation.ps1' that runs a script to run simulation after setup.
+- Created step by step instructions on how to run the PUF simulator
+- Explained the overview of the simulator and how it works
+- Integrated my design into Keegan's created repository
+- Had to fix path/directory issues within the new shared repo
+- Tested the simulation in a different environment from start to finish to validate the design
+- Validated that the simulation reproduces the same results with the same configuration and seed.
+## 8:43pm - 9:59pm (1.27 Hours)
+- Worked on slideshow:
+    - Updated existing slides towards Dr. Garcia's feedback
+    - Narrowed scope of the project
+    - Updated deliverables to have more detail
+    - Showed a clear seperation in work between Keegan and I
 # Thursday September, 11
-## 4:12pm - 5:18pm
+## 12:02am - 12:36am (0.57 Hours)
+- Finalized slideshow, and prepared for presenting in meeting
+- Added speaker notes to ensure I hit the correct topics in the presentation
+- Added my week 2 progress into the slideshow
+## 4:12pm - 5:18pm (1.10 Hours)
 - Cleaned up literature landscape comparison matrix
 - Added information to literature-review markdown including:
     - Review method
@@ -381,3 +397,5 @@ After stable reconstruction works, the next step will be session and window auth
     - How to run the simulator
     - Results and Reproducibility section
 - Organized a few more files into the repository to maintain cleanliness and organization
+
+# Week 3 Hours
