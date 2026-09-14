@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/puf-snn/quest-window-v0.2.schema.json",
+  "$id": "https://example.org/puf-snn/quest-window.schema.json",
   "title": "Quest-style head-motion window v0.2",
   "type": "object",
   "additionalProperties": false,

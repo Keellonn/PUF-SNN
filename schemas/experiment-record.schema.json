@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/puf-snn/experiment-record-v0.2.schema.json",
+  "$id": "https://example.org/puf-snn/experiment-record.schema.json",
   "title": "PUF-SNN experiment record v0.2",
   "type": "object",
   "additionalProperties": false,

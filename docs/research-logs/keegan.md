@@ -385,15 +385,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Organized and corrected the references.
 
 
-## Wednesday, September 2, 2026 - 0.75 hours
-
-### 1:00 PM - 1:45 PM - 0.75 hours
-
-- Weekly meeting
-- Talked about Dr. Garcia & Sadman Italy trip, what to do the next week
-- Listened to Zeeshawns presentation about bit flipping & bypassing security features within LLMs
-
-## Thursday, September 3, 2026 - 2.92 hours
+## Wednesday, September 2, 2026 - 2.92 hours
 
 ### 6:25 PM - 9:20 PM - 2.92 hours
 
@@ -406,6 +398,14 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Updated Responsibilities, and first month plan.
 - Checked that the slides and specification matched.
 - finished up all slides, onboarded will
+
+## Thursday, September 3, 2026 - 0.75 hours
+
+### 1:00 PM - 1:45 PM - 0.75 hours
+
+- Weekly meeting
+- Talked about Dr. Garcia & Sadman Italy trip, what to do the next week
+- Listened to Zeeshawns presentation about bit flipping & bypassing security features within LLMs
 
 ## Saturday, September 5, 2026 - 0.75 hours
 
@@ -465,7 +465,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - All 1.8k windows passed validation and all 5 automated tests passed
 - Updated week 2 results markdown
 
-## Wednesday, September 7, 2026 - 3.06 hours
+## Wednesday, September 9, 2026 - 3.06 hours
 
 ### 6:25 AM - 9:29 PM - 3.06 hours
 
@@ -476,3 +476,25 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Updated research log, add instructions to my results
 - Added week 2 slides, aka the stuff I did in the repo / my scripts and what they do
 - Practiced presenting each slide
+
+## Thursday, September 10, 2026 - 1.28 hours
+
+### 12:55 PM - 2:12 PM - 1.28 hours
+
+- Weekly meeting
+- Listened to Neal presentation on his project with Zeeshawn
+- Listened to Amruth's research he did this week to help Sadman
+- Presented SNN + PUF week 1 & 2 progress with Will, answered questions
+- This presentation went over the amount of time it should've taken. I will make sure to improve on that next presentation
+
+### Monday, September 14, 2026 - 2.88 hours
+
+#### 9:02 pm - 11:55 pm - 2.88 hours
+
+- Added logistic regression and random forest classifiers using 840 relative position and quaternion features per window
+- Kept labels, IDs, timestamps, and other metadata out of the model input
+- Added five classifier processing tests covering features, metadata exclusion, quaternion continuity, split separation, and incomplete windows
+- Used the previously validated Week 2 synthetic dataset as the initial classifier input
+- Updated the dataset filename and fixed a Matplotlib plotting error
+- Both models correctly classified all 600 synthetic test windows, although this does not represent expected performance on real Quest data.
+- Logistic regression reached 0.5417 ms p95 latency. Changing random forest to one thread reduced its p95 from about 65 ms to 22.4288 ms, slightly above the 20 ms target.

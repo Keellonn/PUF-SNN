@@ -87,6 +87,11 @@ __pycache__/
 .coverage
 htmlcov/
 
+# generated python package information
+
+*.egg-info/
+dist/
+
 # generated or restricted research data
 
 data/generated/

@@ -1,0 +1,381 @@
+{
+    "experiment": "conventional head motion classification baselines",
+    "seed": 2026,
+    "git_commit": "975fb10651857955fc7e3b0414691fe5508d9b47",
+    "input": {
+        "path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
+        "sha256": "0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00",
+        "window_count": 1800
+    },
+    "features": {
+        "time_steps": 120,
+        "channels_per_time_step": 7,
+        "feature_count": 840,
+        "channels": [
+            "relative_position_x",
+            "relative_position_y",
+            "relative_position_z",
+            "relative_orientation_x",
+            "relative_orientation_y",
+            "relative_orientation_z",
+            "relative_orientation_w"
+        ],
+        "tracking_validity_use": "quality check only, not a classifier feature",
+        "timestamp_use": "ordering and validation only, not a classifier feature"
+    },
+    "splits": {
+        "train": {
+            "window_count": 600,
+            "label_counts": {
+                "nod": 120,
+                "shake": 120,
+                "look_left_return": 120,
+                "look_right_return": 120,
+                "still": 120
+            }
+        },
+        "validation": {
+            "window_count": 600,
+            "label_counts": {
+                "nod": 120,
+                "shake": 120,
+                "look_left_return": 120,
+                "look_right_return": 120,
+                "still": 120
+            }
+        },
+        "test": {
+            "window_count": 600,
+            "label_counts": {
+                "nod": 120,
+                "shake": 120,
+                "look_left_return": 120,
+                "look_right_return": 120,
+                "still": 120
+            }
+        }
+    },
+    "models": {
+        "logistic_regression": {
+            "training_latency_ms": 86.7211,
+            "validation": {
+                "sample_count": 600,
+                "accuracy": 1.0,
+                "macro_f1": 1.0,
+                "per_class": {
+                    "nod": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "shake": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_left_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_right_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "still": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    }
+                },
+                "confusion_matrix": [
+                    [
+                        120,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        120,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        120,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        120,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        0,
+                        120
+                    ]
+                ]
+            },
+            "test": {
+                "sample_count": 600,
+                "accuracy": 1.0,
+                "macro_f1": 1.0,
+                "per_class": {
+                    "nod": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "shake": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_left_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_right_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "still": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    }
+                },
+                "confusion_matrix": [
+                    [
+                        120,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        120,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        120,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        120,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        0,
+                        120
+                    ]
+                ]
+            },
+            "test_inference_latency_ms": {
+                "sample_count": 600,
+                "median_ms": 0.29235,
+                "p95_ms": 0.5417299999999998,
+                "mean_ms": 0.3485305
+            }
+        },
+        "random_forest": {
+            "training_latency_ms": 988.8101,
+            "validation": {
+                "sample_count": 600,
+                "accuracy": 1.0,
+                "macro_f1": 1.0,
+                "per_class": {
+                    "nod": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "shake": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_left_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_right_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "still": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    }
+                },
+                "confusion_matrix": [
+                    [
+                        120,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        120,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        120,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        120,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        0,
+                        120
+                    ]
+                ]
+            },
+            "test": {
+                "sample_count": 600,
+                "accuracy": 1.0,
+                "macro_f1": 1.0,
+                "per_class": {
+                    "nod": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "shake": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_left_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "look_right_return": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    },
+                    "still": {
+                        "precision": 1.0,
+                        "recall": 1.0,
+                        "f1": 1.0,
+                        "support": 120
+                    }
+                },
+                "confusion_matrix": [
+                    [
+                        120,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        120,
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        120,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        120,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0,
+                        0,
+                        120
+                    ]
+                ]
+            },
+            "test_inference_latency_ms": {
+                "sample_count": 600,
+                "median_ms": 14.38415,
+                "p95_ms": 22.42883,
+                "mean_ms": 15.646943833333335
+            }
+        }
+    },
+    "environment": {
+        "python": "3.13.14",
+        "operating_system": "Windows-11-10.0.26200-SP0",
+        "numpy": "2.5.3",
+        "scikit_learn": "1.9.1",
+        "matplotlib": "3.11.2"
+    }
+}

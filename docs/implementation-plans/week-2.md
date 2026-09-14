@@ -7,7 +7,7 @@
 
 | Owner | Work | Evidence in the repository |
 |---|---|---|
-| Both | Finalize the 5 labels, 2-second window, schema, attack boundaries, and cross-session split | `docs/spec.md`, `configs/pilot-v0.2.json`, and `schemas/` |
+| Both | Finalize the 5 labels, 2-second window, schema, attack boundaries, and cross-session split | `docs/spec.md`, `configs/pilot.json`, and `schemas/` |
 | Keegan | Create repeatable Quest-style head-motion data | Generator code and tests |
 | Keegan | Check the data format, timing, tracking, quaternions, IDs, sequences, and split leakage | Validator code, tests, and results summary |
 | Will | Build a configurable simulated noisy PUF | PUF code, configuration, and tests |
@@ -23,7 +23,7 @@ I will produce a synthetic data generator and validator.
 
 The generator will create data that follows:
 
-`schemas/quest-window-v0.2.schema.json`
+`schemas/quest-window.schema.json`
 
 It will create
 - 6 simulated devices

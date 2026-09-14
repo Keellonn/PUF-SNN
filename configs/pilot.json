@@ -29,7 +29,7 @@
     "device_profiles": 6,
     "sessions_per_device": 3,
     "trials_per_class_per_session": 20,
-    "output_path": "data/generated/synthetic-windows-v0.2.jsonl"
+    "output_path": "data/generated/synthetic-windows.jsonl"
   },
   "splits": {
     "primary_claim": "cross_session",
