@@ -498,3 +498,24 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Updated the dataset filename and fixed a Matplotlib plotting error
 - Both models correctly classified all 600 synthetic test windows, although this does not represent expected performance on real Quest data.
 - Logistic regression reached 0.5417 ms p95 latency. Changing random forest to one thread reduced its p95 from about 65 ms to 22.4288 ms, slightly above the 20 ms target.
+
+### Tuesday, September 14, 2026 - 2.67 hours
+
+#### 5:10 PM - 7:50 PM - 2. 67 hours
+
+- Talked to zeeshawn and  confirmed that five Quest headsets are currently available, not 6. One has been missing for months
+- Met with lab manager Tessa received permission from Tessa to take Quest 3 headset labeled number 2 home for project work
+- Created a new Windows user on the lab computer so my project files and accounts would be separate from those of other researchers.
+- Spent a large part of the session troubleshooting the new Windows account because it repeatedly loaded into a black screen. The computer had to be force restarted twice before the account became usable.
+- Created  Unity Hub account
+- Installed Unity 6.6 6000.6.0f1 with Android Build Support, the Android SDK and NDK tools, and OpenJDK.
+- Confirmed that Git was installed, it was with version 2.51.0.windows.1 Python was not installed, but it is not currently required because Python development is being completed on my personal laptop.
+- Created a Meta developer account and checked for a lab organization invitation. No invitation or organization membership was visible. Spoke with Zeeshawn and he said there wasn't one for his Quest 3 work either
+- Attempted to configure Meta Horizon software but encountered an unexpected download location error, then talked with Zeeshawn and he said I was supposed to skip it, so I didn't inquire further on that issue. When 
+- Cloned the shared PUF-SNN GitHub repository onto the lab computer using PowerShell, had to debug since some issues came up
+- Created the initial `QuestLogger` Unity project inside the repository.
+- Confirmed that Input System 1.20.0 was installed and identified that XR Plug in Management and OpenXR still need to be installed
+- After a lot of issues, located and ran Unity’s bundled ADB tool. ADB started correctly, but Headset 2 did not appear in the connected device list, so USB debugging and device recognition still need to be completed, I will be doing this tomorrow
+- Corrected the Unity project location to `src/quest-logger/QuestLogger` and reopened it from its new location in Unity Hub
+- Configured my Git author information locally for the repository
+- Committed but didn't push the initial Unity project, including its Assets, Packages, and ProjectSettings files. I thought I pushed it but forgot to verify, as soon as I'm in the lab tommorrow I will.
