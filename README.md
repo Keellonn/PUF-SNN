@@ -86,8 +86,6 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 python src/python/scripts/generate_data.py
 python src/python/scripts/validate_data.py
-python -m unittest tests.test_data tests.test_splits -v
-python src/python/scripts/analyze_synthetic_data.py
 python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model "YOUR LAPTOP MODEL"
 
 ## Repository 
