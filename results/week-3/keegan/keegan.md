@@ -20,10 +20,10 @@ For both models, each window is converted to relative position and relative quat
 
 | Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
 |---|---:|---:|---:|---:|---:|
-| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.29 ms | 0.5417 ms |
-| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.38 ms | 22.4288 ms |
+| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.2322 ms | 0.3896 ms |
+| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.1423 ms | 21.6515 ms |
 
-Logistic regression's inference-only p95 is below the provisional 20 ms post-window target. Random forest is slightly above the target at 22.4288 ms p95. Authentication, feature extraction, abnormality detection, and the other processing stages aren't included in these inference measurements.
+Logistic regression's inference-only p95 is below the provisional 20 ms post-window target. Random forest is slightly above the target at 21.6515 ms p95. Authentication, feature extraction, abnormality detection, and the other processing stages aren't included in these inference measurements.
 
 Both models correctly classified all 120 test windows from each of the five motion classes. The confusion matrices contain only diagonal values.
 
@@ -45,15 +45,16 @@ These results confirm that the feature and classification pipeline works on the 
 - logistic_regression-confusion-matrix.png
 - random_forest-confusion-matrix.png
 
-The recorded environment was Python 3.13.14 on Windows 11 with NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2. The machine model wasn't recorded and should be added in the next timing run.
+The recorded environment was an HP Pavilion Plus Laptop 16-ab1xxx running Windows 11 with an Intel64 Family 6 Model 170 processor. The software environment was CPython 3.13.14, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2.
 
 The timing code uses 20 warm-up predictions and then times 600 individual one-window predictions using `time.perf_counter_ns()`.
 
 Repository: https://github.com/Keellonn/PUF-SNN  
-Recorded code commit: `975fb10651857955fc7e3b0414691fe5508d9b47`  
+Recorded code commit: `4f540a7c9d32035a66d775bedd047756960242de`  
+Working tree clean before run: `True`  
 Recorded input SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
 
-## Recreate Keegan's synthetic data baseline
+## Recreate my conventional classification baseline
 
 From the repository root with the normal Windows virtual environment activated, do
 
@@ -61,4 +62,4 @@ python -m pip install -e .
 python src/python/scripts/generate_data.py
 python src/python/scripts/validate_data.py
 python -m unittest tests.test_baselines -v
-python src/python/scripts/train_baselines.py
+python src/python/scripts/train_baselines.py --machine-model "YOUR LAPTOP MODEL"

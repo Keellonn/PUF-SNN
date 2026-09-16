@@ -1,7 +1,14 @@
 {
     "experiment": "conventional head motion classification baselines",
     "seed": 2026,
-    "git_commit": "975fb10651857955fc7e3b0414691fe5508d9b47",
+    "git_commit": "4f540a7c9d32035a66d775bedd047756960242de",
+    "git_working_tree_clean_before_run": true,
+    "command_arguments": {
+        "input": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
+        "output": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\results\\week-3\\keegan",
+        "seed": 2026,
+        "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx"
+    },
     "input": {
         "path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
         "sha256": "0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00",
@@ -57,7 +64,7 @@
     },
     "models": {
         "logistic_regression": {
-            "training_latency_ms": 86.7211,
+            "training_latency_ms": 214.2656,
             "validation": {
                 "sample_count": 600,
                 "accuracy": 1.0,
@@ -207,14 +214,19 @@
                 ]
             },
             "test_inference_latency_ms": {
+                "unit": "milliseconds",
+                "timing_method": "time.perf_counter_ns",
+                "prediction_method": "one window per model.predict call",
+                "warmup_count": 20,
+                "timed_prediction_count": 600,
                 "sample_count": 600,
-                "median_ms": 0.29235,
-                "p95_ms": 0.5417299999999998,
-                "mean_ms": 0.3485305
+                "median_ms": 0.23215,
+                "p95_ms": 0.38963,
+                "mean_ms": 0.2642333333333334
             }
         },
         "random_forest": {
-            "training_latency_ms": 988.8101,
+            "training_latency_ms": 773.84,
             "validation": {
                 "sample_count": 600,
                 "accuracy": 1.0,
@@ -364,15 +376,24 @@
                 ]
             },
             "test_inference_latency_ms": {
+                "unit": "milliseconds",
+                "timing_method": "time.perf_counter_ns",
+                "prediction_method": "one window per model.predict call",
+                "warmup_count": 20,
+                "timed_prediction_count": 600,
                 "sample_count": 600,
-                "median_ms": 14.38415,
-                "p95_ms": 22.42883,
-                "mean_ms": 15.646943833333335
+                "median_ms": 14.14225,
+                "p95_ms": 21.651505,
+                "mean_ms": 15.643981333333334
             }
         }
     },
     "environment": {
+        "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+        "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+        "implementation_type": "Python scikit-learn software prototype",
         "python": "3.13.14",
+        "python_implementation": "CPython",
         "operating_system": "Windows-11-10.0.26200-SP0",
         "numpy": "2.5.3",
         "scikit_learn": "1.9.1",

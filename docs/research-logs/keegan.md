@@ -389,22 +389,24 @@ Session 1 was used for training, session 2 for validation, and session 3 for tes
 
 | Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
 |---|---:|---:|---:|---:|---:|
-| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.29 ms | 0.5417 ms |
-| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.38 ms | 22.4288 ms |
+| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.2322 ms | 0.3896 ms |
+| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.1423 ms | 21.6515 ms |
 
 Both models classified all 600 synthetic test windows correctly. These results show that the software pipeline works on the current generator, not that it will achieve perfect performance on real Quest data. The fixed class templates and lack of stable device/session motion effects can make the classification task artificially easy.
 
-The timing measurements cover model prediction only. Logistic regression is below the provisional 20 ms post-window target for this stage, but the complete pipeline hasn't met that target yet. Random forest is slightly above it.
+The timing measurements cover model prediction only. Logistic regression is below the provisional 20 ms post-window target for this stage, but the complete pipeline hasn't met that target yet. Random forest remains slightly above it at 21.6515 ms p95.
 
-Recorded baseline environment: Python 3.13.14 on Windows 11, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2. The machine model wasn't recorded.
+Recorded baseline environment: HP Pavilion Plus Laptop 16-ab1xxx, Windows 11, Intel64 Family 6 Model 170 processor, CPython 3.13.14, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2.
 
-Recorded source commit: `975fb10651857955fc7e3b0414691fe5508d9b47`  
+The timing run used 20 warm-up predictions and 600 individual one-window predictions per model measured with `time.perf_counter_ns()`. The working tree was clean before the result files were written.
+
+Recorded source commit: `4f540a7c9d32035a66d775bedd047756960242de`  
 Recorded dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
 
 ## Next modeling step
 
-1. Commit the generated Week 2 evidence, updated results, research log, and README command cleanup.
-2. Rerun the conventional baselines against the revised, validated dataset and record the machine model with the timing environment.
+1. Commit the regenerated conventional-baseline results, updated research log, and README reproduction commands.
+2. Continue the Quest logger implementation without collecting or retaining human-derived motion data.
 3. Confirm the shared authenticated-window interface with Will.
 4. Submit the Tier-2 abnormality design before implementing the detector.
 5. Begin the full SNN and Tier-2 implementation after the required Tier-1 integration path is stable.
@@ -592,3 +594,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Confirmed that the saved dataset matched fixed-seed regeneration and had zero prohibited identifier overlap
 - Generated the sample window, JSON and Markdown evidence reports, representative trajectory figure, and device/session comparison figure
 - Updated the README, Week 2 results, and research log with the commands, commit ID, dataset hash, evidence, interpretation, and limitations
+- Updated `train_baselines.py` to record the machine, software environment, timing method, warm-up count, prediction count, source commit, and working-tree status
+- Reran all five baseline-processing tests and both conventional classifiers from a clean commit; all tests passed and both models retained perfect classification scores
+- Recorded the updated latency results: 0.3896 ms p95 for logistic regression and 21.6515 ms p95 for random forest
+- Updated the Week 3 results and research log with the reproducible timing environment and provenance
