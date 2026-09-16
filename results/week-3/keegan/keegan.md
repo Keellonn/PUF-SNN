@@ -53,8 +53,6 @@ Repository: https://github.com/Keellonn/PUF-SNN
 Recorded code commit: `975fb10651857955fc7e3b0414691fe5508d9b47`  
 Recorded input SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
 
-The result file doesn't record whether the working tree was clean, so the recorded commit alone doesn't prove that it contains every file used in the run.
-
 ## Recreate Keegan's synthetic data baseline
 
 From the repository root with the normal Windows virtual environment activated, do

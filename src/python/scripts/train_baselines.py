@@ -6,6 +6,7 @@ it
 - keeps training, validation, and testing sessions separate
 - trains logistic regression and random forest models
 - measures accuracy, macro-f1, per-class results, and inference latency
+- records the timing method, machine environment, and git state
 - saves the results summary and confusion matrices in the week-3 results folder
 """
 
@@ -486,6 +487,11 @@ def measure_inference_latency(
     )
 
     return {
+        "unit": "milliseconds",
+        "timing_method": "time.perf_counter_ns",
+        "prediction_method": "one window per model.predict call",
+        "warmup_count": int(warmup_count),
+        "timed_prediction_count": int(len(latency_array)),
         "sample_count": int(len(latency_array)),
         "median_ms": float(
             np.median(latency_array)
@@ -650,6 +656,30 @@ def get_git_commit() -> str:
         return "unavailable"
 
 
+# record whether the repository was clean before writing results
+def get_git_working_tree_clean() -> bool | None:
+    try:
+        completed_process = subprocess.run(
+            [
+                "git",
+                "status",
+                "--porcelain",
+            ],
+            cwd=REPOSITORY_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        return not completed_process.stdout.strip()
+
+    except (
+        FileNotFoundError,
+        subprocess.CalledProcessError,
+    ):
+        return None
+
+
 # safely read an installed package version
 def get_package_version(
     package_name: str,
@@ -662,9 +692,15 @@ def get_package_version(
 
 
 # make the machine and package record
-def get_environment_information() -> dict:
+def get_environment_information(machine_model: str) -> dict:
     return {
+        "machine_model": machine_model,
+        "processor": platform.processor(),
+        "implementation_type": (
+            "Python scikit-learn software prototype"
+        ),
         "python": platform.python_version(),
+        "python_implementation": platform.python_implementation(),
         "operating_system": platform.platform(),
         "numpy": get_package_version("numpy"),
         "scikit_learn": get_package_version(
@@ -697,8 +733,8 @@ def write_summary(
         "",
         "## Results",
         "",
-        "| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Test p95 inference |",
-        "|---|---:|---:|---:|---:|",
+        "| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Test median inference | Test p95 inference |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
 
     for model_name, model_results in results["models"].items():
@@ -723,11 +759,16 @@ def write_summary(
             model_results["test_inference_latency_ms"]["p95_ms"]
         )
 
+        test_median = (
+            model_results["test_inference_latency_ms"]["median_ms"]
+        )
+
         lines.append(
             f"| {readable_name} "
             f"| {validation_macro_f1:.4f} "
             f"| {test_accuracy:.4f} "
             f"| {test_macro_f1:.4f} "
+            f"| {test_median:.4f} ms "
             f"| {test_p95:.4f} ms |"
         )
 
@@ -740,6 +781,24 @@ def write_summary(
             "Random forest is the nonlinear tree-based baseline.",
             "The models use the same data, features, and cross-session split.",
             "Later SNN results should be compared with these exact baseline results.",
+            "",
+            "## Timing environment",
+            "",
+            f"- Machine model: {results['environment']['machine_model']}",
+            f"- Processor: {results['environment']['processor']}",
+            f"- Operating system: {results['environment']['operating_system']}",
+            f"- Python: {results['environment']['python']} ({results['environment']['python_implementation']})",
+            f"- Implementation: {results['environment']['implementation_type']}",
+            "- Timing method: time.perf_counter_ns",
+            "- Warm-up predictions: 20 per model",
+            f"- Timed predictions: {results['models']['logistic_regression']['test_inference_latency_ms']['timed_prediction_count']} per model",
+            "- Timing unit: milliseconds",
+            "",
+            "## Provenance",
+            "",
+            f"- Git commit: {results['git_commit']}",
+            f"- Working tree clean before run: {results['git_working_tree_clean_before_run']}",
+            f"- Input SHA-256: {results['input']['sha256']}",
             "",
         ]
     )
@@ -755,8 +814,12 @@ def run_experiment(
     input_path: Path,
     output_directory: Path,
     seed: int,
+    machine_model: str,
 ) -> dict:
     np.random.seed(seed)
+
+    git_commit = get_git_commit()
+    git_working_tree_clean = get_git_working_tree_clean()
 
     records = load_records(
         input_path
@@ -868,7 +931,16 @@ def run_experiment(
             "conventional head motion classification baselines"
         ),
         "seed": seed,
-        "git_commit": get_git_commit(),
+        "git_commit": git_commit,
+        "git_working_tree_clean_before_run": (
+            git_working_tree_clean
+        ),
+        "command_arguments": {
+            "input": str(input_path),
+            "output": str(output_directory),
+            "seed": seed,
+            "machine_model": machine_model,
+        },
         "input": {
             "path": str(input_path),
             "sha256": calculate_file_hash(
@@ -903,7 +975,9 @@ def run_experiment(
             datasets
         ),
         "models": model_results,
-        "environment": get_environment_information(),
+        "environment": get_environment_information(
+            machine_model
+        ),
     }
 
     results_path = (
@@ -970,12 +1044,19 @@ def main() -> None:
         help="random seed used by the models",
     )
 
+    parser.add_argument(
+        "--machine-model",
+        required=True,
+        help="computer model used for the timing run",
+    )
+
     arguments = parser.parse_args()
 
     run_experiment(
         input_path=arguments.input,
         output_directory=arguments.output,
         seed=arguments.seed,
+        machine_model=arguments.machine_model,
     )
 
 

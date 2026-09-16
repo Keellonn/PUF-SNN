@@ -216,7 +216,7 @@ I've
 - Reorganized the repository
 - Updated the research plan and literature matrix
 
-The original synthetic-data run produced 1,800 windows, passed the standalone validator, and passed 5 automated tests. Those results are recorded below. After the Week 2 presentation, Dr. Garcia requested expanded evidence and documentation, so the revised checks still need a separate run before their results are reported.
+The original synthetic-data run produced 1,800 windows, passed the standalone validator, and passed 5 automated tests. After the Week 2 presentation, Dr. Garcia requested expanded evidence and documentation. I completed the expanded run on September 15: the saved dataset matched fixed-seed regeneration, all 21 expanded tests passed, and the analysis produced the requested tables, figures, sample window, environment record, and split-overlap evidence.
 
 ## Main Week 2 changes
 
@@ -281,35 +281,37 @@ A suspicious example is a clean window changed by one documented Tier-2 transfor
 The first detector will be supervised because the synthetic program gives us the correct label.
 The first models will be logistic regression and random forest. A separate SNN abnormality model comes later.
 
-## Expanded Week 2 tests and evidence to run
+## Expanded Week 2 evidence run
 
-From the official repository, I'll run these commands
+I ran these commands from the official repository
 
 python -m pip install -e .
 python src/python/scripts/generate_data.py
 python src/python/scripts/validate_data.py
-python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model "YOUR LAPTOP MODEL"
+python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model "HP Pavilion Plus Laptop 16-ab1xxx"
 
-Afterward, I'll record
-- Python version
-- Commands
-- Number of tests passed or failed
-- Number of generated windows
-- Class counts
-- Split counts
-- Validation errors
-- Problems and fixes
-- Git commit ID
-- My interpretation
+The run recorded
+- 1,800 windows and 216,000 samples
+- 600 windows in each split and 360 windows in each class
+- 20 windows per class in every device-session group
+- 0 missing saved sample slots, extra samples, invalid tracking flags, rejected windows, validation errors, and resampling events
+- 0 prohibited window, source-trial, trial, or complete-session ID overlaps
+- the expected overlap of the same 6 synthetic device/profile IDs across the cross-session splits
+- an exact match between the saved dataset and regeneration with seed 7
+- 21 passed tests, 0 failures, 0 errors, and 0 skipped tests in 10.381 seconds
+
+The analysis also produced a complete sample window, a human-readable evidence report, a machine-readable evidence record, representative class trajectories, and a device/session comparison.
 
 ## Current environment
 
 - Computer: Windows laptop
+- Machine model: HP Pavilion Plus Laptop 16-ab1xxx
 - Pilot configuration: `configs/pilot.json`
 - Window schema: `schemas/quest-window.schema.json`
 - Generator seed: 7
 - Planned model seeds: 7, 17, and 27
 - Original Week 2 Python version: 3.12.7 through an MSYS-based virtual environment
+- Expanded evidence Python version: 3.13.14 in the Windows virtual environment
 - Unity and OpenXR versions: waiting for lab confirmation
 
 ## Current blockers
@@ -337,6 +339,20 @@ Afterward, I'll record
 **Current limitation:** These results only validate synthetic data and the rules currently implemented in the code. They do not prove that the data matches real Quest 3 motion or that it supports accurate classification.
 
 **Next step:** Review a few generated records, confirm the shared sensor window interface with Will, and prepare the same schema for the Quest logger.
+
+### September 15, 2026 — Expanded Week 2 evidence
+
+**Completed:** I reran the generator and validator, then ran the expanded data and split test suite through `analyze_synthetic_data.py` using the machine model `HP Pavilion Plus Laptop 16-ab1xxx`.
+
+**Provenance:** The run used repository commit `3936cc60377368dead0bbfa692df113cb41c7798` with a clean working tree. The generated dataset SHA-256 was `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`.
+
+**Results:** The saved dataset exactly matched regeneration with seed 7. It contained 1,800 windows, 216,000 samples, 600 windows per split, and 360 windows per class. All 21 tests passed in 10.381 seconds with no failures, errors, or skipped tests. The analysis found no missing saved sample slots, extra samples, invalid tracking flags, rejected windows, dataset validation errors, or resampling events.
+
+**Split evidence:** Window IDs, source-trial IDs, trial IDs, and complete session IDs had zero overlap between every split pair. The same 6 synthetic device/profile IDs intentionally appeared in all three splits because the experiment is cross-session rather than cross-device. No human participant data was used.
+
+**Artifacts:** The analysis created `keegan-evidence.md`, `keegan-evidence.json`, `representative-trajectories.png`, `device-session-variability.png`, and `data/examples/sample-window.json`.
+
+**Interpretation:** The results provide inspectable evidence that the generator, schema, validator, and split checks work together at the recorded commit. The plots also show the current limitation: orientation templates overlap across device and session groups, and the small position differences come from trial noise instead of calibrated device or session effects. This does not establish physical realism or real Quest performance.
 
 ### Shared tasks
 
@@ -387,14 +403,11 @@ Recorded dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29
 
 ## Next modeling step
 
-1. Install the revised Week 2 configuration, schema, generator, validator, and tests.
-2. Commit those source changes and record the source commit ID.
-3. Rerun the expanded Week 2 evidence and inspect the generated tables and figures.
-4. Commit the generated evidence and updated results.
-5. Rerun the conventional baselines against the revised, validated dataset.
-6. Confirm the shared authenticated-window interface with Will.
-7. Submit the Tier-2 abnormality design before implementing the detector.
-8. Begin the full SNN and Tier-2 implementation after the required Tier-1 integration path is stable.
+1. Commit the generated Week 2 evidence, updated results, research log, and README command cleanup.
+2. Rerun the conventional baselines against the revised, validated dataset and record the machine model with the timing environment.
+3. Confirm the shared authenticated-window interface with Will.
+4. Submit the Tier-2 abnormality design before implementing the detector.
+5. Begin the full SNN and Tier-2 implementation after the required Tier-1 integration path is stable.
 
 ---
 
@@ -525,7 +538,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Presented SNN + PUF week 1 & 2 progress with Will, answered questions
 - This presentation went over the amount of time it should've taken. I will make sure to improve on that next presentation
 
-### Monday, September 14, 2026 - 2.88 hours
+### Sunday, September 13, 2026 - 2.88 hours
 
 #### 9:02 pm - 11:55 pm - 2.88 hours
 
@@ -537,7 +550,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Both models correctly classified all 600 synthetic test windows, although this does not represent expected performance on real Quest data.
 - Logistic regression reached 0.5417 ms p95 latency. Changing random forest to one thread reduced its p95 from about 65 ms to 22.4288 ms, slightly above the 20 ms target.
 
-### Tuesday, September 14, 2026 - 2.67 hours
+### Monday, September 14, 2026 - 2.67 hours
 
 #### 5:10 PM - 7:50 PM - 2. 67 hours
 
@@ -557,3 +570,25 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Corrected the Unity project location to `src/quest-logger/QuestLogger` and reopened it from its new location in Unity Hub
 - Configured my Git author information locally for the repository
 - Committed but didn't push the initial Unity project, including its Assets, Packages, and ProjectSettings files. I thought I pushed it but forgot to verify, as soon as I'm in the lab tommorrow I will.
+
+## Tuesday, September 15, 2026 - 4.98 hours
+
+### 5:10 PM - 7:03 PM - 1.88 hours
+
+- Returned to the lab computer and successfully pushed the initial Unity Quest Logger project after the previous push failed
+- Confirmed that the Unity Assets, Packages, and ProjectSettings files reached GitHub
+- Pulled the updated repository onto my personal laptop and verified the Unity project location
+- Reviewed Dr. Garcia’s complete feedback on the Week 2 synthetic-data work
+- Identified the missing configuration, schema, testing, provenance, figures, and results requirements
+- Planned the necessary changes while keeping the primary experiment labeled as cross-session rather than cross-device
+
+### 8:05 PM - 11:11 PM - 3.10 hours
+
+- Updated `pilot.json`, the Quest window schema, the synthetic generator, the validator, and the XR / SNN documentation
+- Clarified the motion-generation settings, data fields, units, valid ranges, tracking rules, and current device / session limitations
+- Expanded `test_data.py` and `test_splits.py` from 5 tests to 21 tests covering schema validity, sample ordering, quaternions, tracking thresholds, identifiers, and split leakage
+- Added `analyze_synthetic_data.py` to generate reproducible tables, figures, environment details, hashes, and test evidence
+- Regenerated and validated 1,800 synthetic windows and 216,000 samples - all 21 tests passed with no validation errors
+- Confirmed that the saved dataset matched fixed-seed regeneration and had zero prohibited identifier overlap
+- Generated the sample window, JSON and Markdown evidence reports, representative trajectory figure, and device/session comparison figure
+- Updated the README, Week 2 results, and research log with the commands, commit ID, dataset hash, evidence, interpretation, and limitations
