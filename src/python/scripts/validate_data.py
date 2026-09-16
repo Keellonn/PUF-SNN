@@ -5,7 +5,7 @@ it should verify the full 1,800 window dataset and print:
 - # of windows
 - # of devices
 - # of sessions
-- # of independent source trials
+- # of unique source-trial IDs
 - label counts
 - split counts
 - any errors found
@@ -40,6 +40,8 @@ def main() -> None:
         schema_path,
         maximum_gap_ms=float(config["capture"]["maximum_timestamp_gap_ms"]),
         minimum_tracking=float(config["capture"]["minimum_tracking_valid_fraction"]),
+        config=config,
+        quaternion_tolerance=float(config["capture"]["quaternion_norm_tolerance"]),
     )
 
     if errors:
@@ -81,7 +83,7 @@ def main() -> None:
     print(f"Splits: {dict(sorted(split_counts.items()))}")
     print(f"Devices: {len(device_ids)}")
     print(f"Sessions: {len(session_ids)}")
-    print(f"Independent source trials: {len(source_trial_ids)}")
+    print(f"Unique source-trial IDs: {len(source_trial_ids)}")
 
 
 if __name__ == "__main__":

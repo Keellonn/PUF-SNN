@@ -51,7 +51,7 @@ Each trial uses
 2. A 2 second recording period
 3. A 1 second rest period
 
-Each trial produces one independent model window. The class order will be randomized within each session.
+Each trial produces one uniquely identified model window. The 1,800 windows are not claimed to be statistically independent because windows share class definitions and device/session grouping assumptions.
 
 ## Quest logging and preprocessing
 
@@ -100,7 +100,7 @@ The scripted pilot will create
 - 3 sessions per device
 - 20 trials per class in each session
 - 5 classes
-- 1,800 independent clean windows
+- 1,800 synthetic windows across six device profiles and 18 device-session groups.
 
 The primary pilot split is cross session
 - Session 1: training
@@ -128,7 +128,10 @@ Quest data → 2 second window → authentication tag
                                          audit record
 
 The simulated PUF provides noisy, device-specific response bits. A reconstruction method recovers stable credential material, which is then used to derive a session key.
+
 For the pilot, each window will be protected with HMAC-SHA-256. Encryption is not required because the initial study focuses on integrity, device and session binding, freshness, and replay protection.
+
+HMAC verification alone does not detect a correctly tagged replay. Replay, duplicate, stale-window, and ordering decisions require verifier-side state for the active session and last accepted sequence number.
 
 The authentication tag covers
 - Protocol and schema version

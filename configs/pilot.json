@@ -23,13 +23,61 @@
     "windowing": "fixed_nonoverlapping",
     "coordinate_frame": "unity_device_origin",
     "maximum_timestamp_gap_ms": 50.0,
-    "minimum_tracking_valid_fraction": 0.95
+    "minimum_tracking_valid_fraction": 0.95,
+    "quaternion_norm_tolerance": 0.0001
   },
   "synthetic_data": {
     "device_profiles": 6,
     "sessions_per_device": 3,
     "trials_per_class_per_session": 20,
     "output_path": "data/generated/synthetic-windows.jsonl"
+  },
+  "synthetic_motion": {
+    "generation_method": "direct_fixed_grid",
+    "resampling_applied": false,
+    "position_noise_std_m": 0.0008,
+    "tracking_valid_probability": 1.0,
+    "trial_amplitude_scale_range": [1.0, 1.0],
+    "frequency_scale_range": [1.0, 1.0],
+    "phase_offset_range_rad": [0.0, 0.0],
+    "device_effects": {
+      "enabled": false,
+      "description": "device ids are grouping identifiers only in this generator"
+    },
+    "session_effects": {
+      "enabled": false,
+      "description": "sessions control grouping, split assignment, timestamps, and trial order; no stable session motion effect is modeled"
+    },
+    "session_spacing_seconds": 10000,
+    "round_decimal_places": 8,
+    "classes": {
+      "nod": {
+        "rotation_axis": "x",
+        "peak_rotation_deg": -22.0,
+        "cycles_per_window": 1.0,
+        "vertical_position_peak_m": 0.006
+      },
+      "shake": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": 20.0,
+        "cycles_per_window": 1.0,
+        "horizontal_position_peak_m": 0.004
+      },
+      "look_left_return": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": -32.0,
+        "trajectory": "half_sine_return"
+      },
+      "look_right_return": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": 32.0,
+        "trajectory": "half_sine_return"
+      },
+      "still": {
+        "rotation_axis": "y",
+        "orientation_random_walk_step_std_deg": 0.08
+      }
+    }
   },
   "splits": {
     "primary_claim": "cross_session",
@@ -45,6 +93,20 @@
       "logistic_regression",
       "random_forest"
     ],
+    "conventional_settings": {
+      "input_channels": 7,
+      "features_per_window": 840,
+      "random_seed": 2026,
+      "logistic_regression": {
+        "standardize_features": true,
+        "solver": "lbfgs",
+        "maximum_iterations": 5000
+      },
+      "random_forest": {
+        "trees": 300,
+        "processing_threads": 1
+      }
+    },
     "lightgbm_status": "deferred_until_initial_baselines_work",
     "snn": {
       "encoding": "direct_continuous",

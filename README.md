@@ -61,11 +61,11 @@ We won't collect human subject data until faculty confirms the correct instituti
 
 ## Repository
 
-- `docs/spec.md` contains the current project specification.
+- `docs/project-specification.md` contains the current project specification.
 - `docs/xr-snn-design.md` contains Keegan's Quest, data, model, and abnormality plan
 - `docs/puf-auth-design.md` contains Will's PUF and authentication plan
 - `docs/literature-review.md` contains the literature matrix and research gap
-- `docs/week2-implementation-plan.md` contains this week's tasks and owners
+- `docs/implementation-plans/week-2.md` contains week 2 tasks and owners
 - `docs/faculty-decision-memo.md` contains questions that require faculty approval
 - `docs/research-logs/` contains our individual research logs
 - `configs/pilot.json` contains the experiment settings
@@ -75,3 +75,21 @@ We won't collect human subject data until faculty confirms the correct instituti
 - `tests/` contains data and leakage tests
 - `data/` explains the data storage rules
 - `results/` contains small result summaries and approved figures
+
+## Recreate Keegan's synthetic-data baseline
+
+From the repository root
+
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e .
+python src/python/scripts/generate_data.py
+python src/python/scripts/validate_data.py
+python -m unittest tests.test_data tests.test_splits -v
+python src/python/scripts/analyze_synthetic_data.py
+python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model "YOUR LAPTOP MODEL"
+
+## Repository 
+
+Repository: https://github.com/Keellonn/PUF-SNN

@@ -1,8 +1,8 @@
 # Keegan Hoyne's Research Log
 
 **Owner:** Keegan Hoyne  
-**Current week:** Week 2  
-**Last updated:** September 8, 2026
+**Current week:** Week 3  
+**Last updated:** September 15, 2026
 
 ## Current research question
 
@@ -34,7 +34,7 @@ We share the window format, threat model, integration, research question, litera
 
 The project tests a software system that protects Quest 3 head-motion windows before they reach a classifier.
 
-A simulated noisy PUF helps create a device-bound session credential. The authentication layer checks the device, session, integrity, freshness, and order of each window.
+A simulated noisy PUF helps reconstruct credential material for session establishment. HMAC checks each protected window's integrity and knowledge of the session key. Separate verifier-side state checks session identifiers, freshness, duplicates, and sequence order.
 
 Accepted windows go to a motion classifier. A separate abnormality detector checks for unusual sensor patterns.
 
@@ -216,7 +216,7 @@ I've
 - Reorganized the repository
 - Updated the research plan and literature matrix
 
-I haven't recorded any test results yet. I'll run the code myself from the official repository before adding results.
+The original synthetic-data run produced 1,800 windows, passed the standalone validator, and passed 5 automated tests. Those results are recorded below. After the Week 2 presentation, Dr. Garcia requested expanded evidence and documentation, so the revised checks still need a separate run before their results are reported.
 
 ## Main Week 2 changes
 
@@ -236,7 +236,7 @@ I haven't recorded any test results yet. I'll run the code myself from the offic
 ## Current data choices
 
 The synthetic pilot uses
-- 6 simulated devices
+- 6 synthetic device groups
 - 3 sessions per device
 - 20 trials per class in each session
 - 5 motion classes
@@ -255,7 +255,7 @@ The 1,800 windows should be divided into
 - 600 testing windows
 - 360 windows for each motion class
 
-These are expected values. I'll replace them with actual results after running the code.
+These counts were observed in the original run. The windows aren't claimed to be statistically independent, and the device groups don't model stable physical-headset differences.
 
 ## Current validation rules
 
@@ -281,15 +281,14 @@ A suspicious example is a clean window changed by one documented Tier-2 transfor
 The first detector will be supervised because the synthetic program gives us the correct label.
 The first models will be logistic regression and random forest. A separate SNN abnormality model comes later.
 
-## Tests I need to run
+## Expanded Week 2 tests and evidence to run
 
 From the official repository, I'll run these commands
 
-python -m unittest discover -s tests -p "test_data.py" -v
-python -m unittest discover -s tests -p "test_splits.py" -v
+python -m pip install -e .
 python src/python/scripts/generate_data.py
 python src/python/scripts/validate_data.py
-python -m unittest discover -s tests -v
+python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model "YOUR LAPTOP MODEL"
 
 Afterward, I'll record
 - Python version
@@ -310,7 +309,7 @@ Afterward, I'll record
 - Window schema: `schemas/quest-window.schema.json`
 - Generator seed: 7
 - Planned model seeds: 7, 17, and 27
-- Python version: add after checking
+- Original Week 2 Python version: 3.12.7 through an MSYS-based virtual environment
 - Unity and OpenXR versions: waiting for lab confirmation
 
 ## Current blockers
@@ -347,16 +346,55 @@ Afterward, I'll record
 - Update both research logs.
 - Prepare the revised presentation.
 
+## Week 2 feedback received after the presentation
+
+Dr. Garcia said the project framing and separation of responsibilities were much stronger. She also said the weekly report needs inspectable, reproducible evidence rather than statements that an artifact or test exists.
+
+For my Week 2 synthetic-data work, the required additions are
+- repository URL and relevant source commit
+- exact recreation commands in the README
+- the complete generator configuration and seed
+- schema field descriptions, types, units, valid ranges, and a sample window
+- exact motion-generation settings and limitations
+- class counts by device and session
+- missing-data, tracking, rejection, fixed-grid/resampling, and quality counts
+- each test's purpose, expected result, and actual result
+- identifier lists and prohibited-overlap checks for every split
+- representative class trajectories and device/session variability figures
+- an explanation that device groups don't provide class information or model physical devices
+
+She also clarified that the primary split is cross-session, not cross-device or cross-person, and that personal-computer timing must include the machine and software context.
+
+## Week 3 conventional classifier update
+
+I implemented logistic regression and random forest using 840 relative-position and relative-quaternion features per window. Labels, identifiers, timestamps, tracking flags, and other metadata were excluded from the classifier input.
+
+Session 1 was used for training, session 2 for validation, and session 3 for testing. Five baseline-processing tests passed in the recorded run.
+
+| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
+|---|---:|---:|---:|---:|---:|
+| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.29 ms | 0.5417 ms |
+| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.38 ms | 22.4288 ms |
+
+Both models classified all 600 synthetic test windows correctly. These results show that the software pipeline works on the current generator, not that it will achieve perfect performance on real Quest data. The fixed class templates and lack of stable device/session motion effects can make the classification task artificially easy.
+
+The timing measurements cover model prediction only. Logistic regression is below the provisional 20 ms post-window target for this stage, but the complete pipeline hasn't met that target yet. Random forest is slightly above it.
+
+Recorded baseline environment: Python 3.13.14 on Windows 11, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2. The machine model wasn't recorded.
+
+Recorded source commit: `975fb10651857955fc7e3b0414691fe5508d9b47`  
+Recorded dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
+
 ## Next modeling step
 
-After the generator and validator work
-1. Build feature extraction.
-2. Fit normalization with training data only.
-3. Train logistic regression.
-4. Train random forest.
-5. Report macro-F1 and per-class results.
-6. Build the first SNN classifier.
-7. Build the separate abnormality detector.
+1. Install the revised Week 2 configuration, schema, generator, validator, and tests.
+2. Commit those source changes and record the source commit ID.
+3. Rerun the expanded Week 2 evidence and inspect the generated tables and figures.
+4. Commit the generated evidence and updated results.
+5. Rerun the conventional baselines against the revised, validated dataset.
+6. Confirm the shared authenticated-window interface with Will.
+7. Submit the Tier-2 abnormality design before implementing the detector.
+8. Begin the full SNN and Tier-2 implementation after the required Tier-1 integration path is stable.
 
 ---
 

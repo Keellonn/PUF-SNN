@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.org/puf-snn/quest-window.schema.json",
-  "title": "Quest-style head-motion window v0.2",
+  "title": "Quest-style head-motion window",
+  "description": "One nominal 2-second sensor window. All listed fields are required; extra fields are rejected. The schema checks structure and value ranges. Python validation also checks finite numbers, time order, quaternion norms, tracking coverage, and split leakage. This sensor record is not yet the shared authenticated-message envelope.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -22,66 +23,85 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "0.2"
+      "type": "string",
+      "const": "0.2",
+      "description": "Internal data-contract version. The filename stays quest-window.schema.json. This field identifies how a saved record should be interpreted."
     },
     "window_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Unique window identifier. Each clean synthetic source trial currently has one window ending in -window-000. No units."
     },
     "source_trial_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Identifier of the original trial. All future derived copies must stay in this trial's split. Unique ids do not prove statistical independence. No units."
     },
     "device_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Pseudonymous device group, such as sim-device-01. The current synthetic ids do not map to physical Quest headsets and do not prove device identity. No units."
     },
     "session_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Globally unique device-session group. The same numbered session on two devices has different full ids. A complete session belongs to one split. No units."
     },
     "trial_id": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "description": "Trial identifier within the experiment. For clean synthetic windows it equals source_trial_id. No units."
     },
     "split": {
+      "type": "string",
       "enum": [
         "train",
         "validation",
         "test"
-      ]
+      ],
+      "description": "Offline experiment assignment. pilot.json maps complete sessions to these three splits. This is ground-truth metadata and not a classifier feature."
     },
     "sequence_number": {
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "description": "Zero-based window counter within a session. The clean dataset requires consecutive values in file order. No units; not a substitute for future cryptographic verification."
     },
     "label": {
+      "type": "string",
       "enum": [
         "nod",
         "shake",
         "look_left_return",
         "look_right_return",
         "still"
-      ]
+      ],
+      "description": "Ground-truth motion class used for supervision and evaluation. Excluded from model input."
     },
     "coordinate_frame": {
-      "const": "unity_device_origin"
+      "type": "string",
+      "const": "unity_device_origin",
+      "description": "Unity device-origin convention: x right, y up, z forward. Stored pose is source pose; conventional features later subtract the first position and use orientation relative to the first quaternion."
     },
     "target_sample_rate_hz": {
-      "const": 60
+      "type": "integer",
+      "const": 60,
+      "description": "Target samples per second, in hertz. The synthetic generator directly constructs this grid; actual capture timestamps remain authoritative for timing checks."
     },
     "window_start_ns": {
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "description": "Inclusive start of the window in nanoseconds on an application or synthetic monotonic timeline. Not UTC, a hardware timestamp, or an authenticated clock."
     },
     "window_end_ns": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "Exclusive end of the nominal 2-second window in nanoseconds on the same timeline. Must exceed window_start_ns and every sample time. The legacy rounded synthetic interval makes the span 2,000,000,040 ns; the validator permits at most 120 ns of rounding difference."
     },
     "samples": {
       "type": "array",
       "minItems": 120,
       "maxItems": 120,
+      "description": "Exactly 120 ordered samples. Synthetic data is generated directly on this grid; raw Quest resampling remains future work. Timing, quaternion, and coverage rules are also checked in Python.",
       "items": {
         "$ref": "#/$defs/sample"
       }
@@ -102,16 +122,19 @@
         "sample_index": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 119
+          "maximum": 119,
+          "description": "Zero-based sample index. Python checks that the array contains exactly 0 through 119 in order. No units."
         },
         "capture_time_ns": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "description": "Sample time in nanoseconds on the window timeline. Must lie in [window_start_ns, window_end_ns), strictly increase, and have no adjacent gap above 50 ms under the pilot settings."
         },
         "position_m": {
           "type": "array",
           "minItems": 3,
           "maxItems": 3,
+          "description": "Position [x, y, z] in meters. Components must be finite. No calibrated anatomical or room-size bounds are claimed; NaN and infinity are rejected by Python validation.",
           "items": {
             "type": "number"
           }
@@ -120,6 +143,7 @@
           "type": "array",
           "minItems": 4,
           "maxItems": 4,
+          "description": "Dimensionless quaternion [x, y, z, w]. Python requires finite values, absolute norm error <= 0.0001, and a nonnegative dot product with the previous sample. Equivalent q and -q signs must be continuous.",
           "items": {
             "type": "number",
             "minimum": -1.000001,
@@ -127,7 +151,8 @@
           }
         },
         "tracking_valid": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether a usable tracked pose is reported. Always true in the current clean synthetic generator. Future logger meaning must be derived from successful position/rotation reads and tracking flags. At least 114 of 120 samples must be true under the 95% pilot rule. Raw Unity trackingState bits are not stored in this schema."
         }
       }
     }

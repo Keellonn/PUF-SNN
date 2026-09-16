@@ -11,18 +11,18 @@ This document describes my part of the project
 - Sensor abnormality detection
 - Model and latency evaluation
 
-The physical Quest logger hasn't been built yet. Until headset access is approved, I'm using a synthetic generator that follows the same planned data format.
+The physical Quest logger hasn't been built yet. The initial Unity project has been created, but OpenXR setup, headset recognition, logging, and deployment are not complete. Until the approved data-collection workflow is confirmed, I'm using a synthetic generator that follows the same planned data format.
 
 ## Quest setup
 
 If the lab doesn't require a different setup, our proposed tools are
-- Unity 6.0 LTS
+- Unity 6 LTS
 - OpenXR Plugin 1.16.1
 - Meta Quest OpenXR features
 - Android Build Support
 - ADB for installing and testing the app
 
-Before installing anything on a lab computer or headset, we need confirmation from faculty or the lab administrator.
+Software development can continue on a personal computer using the approved repository and no human-derived data. Quest data collection and retention must wait until the institutional path and lab workflow are confirmed.
 
 ## Head tracking
 
@@ -107,6 +107,8 @@ Possible later features include
 
 These aren't required for the first baseline.
 
+The implemented conventional baselines use 7 channels per time step: 3 relative-position values and 4 relative-quaternion values. They flatten 120 time steps into 840 features. Tracking validity and timestamps are used for validation but aren't classifier features. The planned 8-channel input above is for the later SNN.
+
 ## Dataset splits
 
 The first experiment measures cross-session performance
@@ -131,10 +133,12 @@ Cross participant testing requires approved human data.
 
 ## Conventional classifiers
 
-Models will be implemented in this order
-1. Logistic regression
-2. Random forest with 300 trees
+Models are being implemented in this order
+1. Logistic regression with standardized features
+2. Random forest with 300 trees and one processing thread
 3. LightGBM, if the first two are working
+
+The first two models use random seed 2026. Logistic regression uses the lbfgs solver and a maximum of 5,000 iterations. Scaling is fitted on training data only.
 
 Every model should use the same
 - Source trials
@@ -196,6 +200,16 @@ The detector will return
 
 The threshold will be selected with validation data. The starting goal is no more than 5% of clean windows being incorrectly called suspicious.
 
+### Preventing trivial transform detection
+
+- Source windows are assigned to train, validation, or test before transformations are created.
+- Every transformed copy stays in its source window's split.
+- Metadata identifying the transform is excluded from model inputs.
+- Transform severity is varied within each split instead of using one fixed artifact.
+- Final tests should include parameter values or combinations not used for training.
+- Clean and transformed windows use the same serialization and preprocessing path.
+- Results will be reported separately by transform type and severity.
+
 ## Tier 2 sensor changes
 
 | Condition | Starting levels |
@@ -226,3 +240,31 @@ For timing results, we'll report
 - Median
 - 95th percentile
 - Results from multiple random seeds when practical
+
+## Current synthetic motion generator
+
+The current generator uses random seed 7 and creates
+- 6 synthetic device groups
+- 3 sessions per device
+- 20 trials per class in each session
+- 5 motion classes
+- 1,800 windows
+- 120 samples per window
+- 216,000 total samples
+
+The generator directly creates a fixed 60 Hz grid. It doesn't perform resampling. Linear interpolation and quaternion SLERP are planned for irregular Quest logger data.
+
+Every class receives independent Gaussian position noise with a standard deviation of 0.0008 meters per axis and sample. All tracking-valid values are true in the clean synthetic data.
+
+The class patterns are
+- nod: one x-axis sinusoidal rotation cycle with a -22 degree coefficient and a 0.006 meter half-sine vertical movement
+- shake: one y-axis sinusoidal rotation cycle with a 20 degree coefficient and a 0.004 meter side-to-side position cycle
+- look_left_return: a y-axis half-sine turn reaching -32 degrees and returning
+- look_right_return: a y-axis half-sine turn reaching 32 degrees and returning
+- still: a y-axis random walk with zero-mean Gaussian steps and a 0.08 degree standard deviation per sample
+
+Trial amplitude scale and frequency scale are fixed at 1.0. Phase offset is fixed at 0.0 radians. Position and quaternion values are rounded to 8 decimal places.
+
+The generator doesn't apply stable device-specific or session-specific motion effects. Device IDs are balanced grouping identifiers. Session IDs control grouping, timestamps, trial order, and the cross-session split, but don't change the motion pattern.
+
+Because the same class templates are reused, classification may be artificially easy. This dataset doesn't model physical differences between Quest headsets, recording sessions, or participants. The split measures performance across synthetic session groups, not cross-device or cross-person generalization.
