@@ -763,7 +763,7 @@ The current limiations are:
 - Added a deep analysis of why I picked adjacent pairing and the other options I could have chosen.
 
 # Wednesday September, 16
-## 8:31pm - 11:59pm ()
+## 8:31pm - 11:59pm (3.47 Hours)
 - Corrected week 2 baseline dataset so that all 20 simulations used 6 devices
 - Recalculated layer 1 baseline stats under that corrected dataset
 - Established corrected mean raw BER of 3.207552%
@@ -774,13 +774,13 @@ The current limiations are:
 - Analyzed response-bit instability across 12,000 noisy PUF readings
 - Validated per-bit flip-rate calculations against the raw BER
 # Thursday September, 17
-## 12:00am - 1:12am()
+## 12:00am - 1:12am (1.20 Hours)
 - Identified the most and least stable response bit positions
 - Generated those response bit plots
 - Tested the sensitivity of the metrics when changing the manufacturing variation with noise fixed
 - Documented the limitations of the of the current PUF design
 - Created the layer 2 credential-reconstruction design memo
-## 1:51 - 
+## 1:51 - 4:32am (2.68 Hours)
 - Selected a 32 Bit pilot reconstructed credential target
 - Proposed a BCH(63,36,t=5) code offset
 - Justified the BCH candidate using the measured 64 Bit response length and BER
