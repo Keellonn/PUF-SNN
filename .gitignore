@@ -136,3 +136,6 @@ Thumbs.db
 
 # created PUF simulation runs
 sim_results/
+
+# temporary PUF simulation runs
+results/week-2/
