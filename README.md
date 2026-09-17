@@ -70,7 +70,7 @@ We won't collect human subject data until faculty confirms the correct instituti
 - `docs/research-logs/` contains our individual research logs
 - `configs/pilot.json` contains the experiment settings
 - `schemas/` contains the machine readable data formats
-- `src/quest-logger/` contains the future Unity logger
+- `src/quest-logger/` - contains the Unity Quest head-motion logger, automated tests, and setup documentation
 - `src/python/` contains the Python prototype
 - `tests/` contains data and leakage tests
 - `data/` explains the data storage rules

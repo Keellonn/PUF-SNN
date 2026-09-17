@@ -11,14 +11,14 @@ This document describes my part of the project
 - Sensor abnormality detection
 - Model and latency evaluation
 
-The physical Quest logger hasn't been built yet. The initial Unity project has been created, but OpenXR setup, headset recognition, logging, and deployment are not complete. Until the approved data-collection workflow is confirmed, I'm using a synthetic generator that follows the same planned data format.
+The initial Unity Quest logger software prototype has been implemented. OpenXR and Meta Quest support are configured, and all three EditMode tests pass. Physical headset detection, Android deployment, and approved real-data collection are not complete. Until the approved data-collection workflow is confirmed, I'm using a synthetic generator that follows the same data format.
 
 ## Quest setup
 
 If the lab doesn't require a different setup, our proposed tools are
-- Unity 6 LTS
-- OpenXR Plugin 1.16.1
-- Meta Quest OpenXR features
+- Unity 6.6 (6000.6.1f1)
+- OpenXR Plugin 1.18.0
+- Unity OpenXR: Meta 2.6.1
 - Android Build Support
 - ADB for installing and testing the app
 
@@ -26,10 +26,10 @@ Software development can continue on a personal computer using the approved repo
 
 ## Head tracking
 
-The Unity logger will find the headset with
+The Unity logger finds the headset with
 `UnityEngine.XR.InputDevices.GetDeviceAtXRNode(XRNode.Head)`
 
-It will collect
+It collects
 - CommonUsages.devicePosition
 - CommonUsages.deviceRotation
 - CommonUsages.isTracked
@@ -252,7 +252,7 @@ The current generator uses random seed 7 and creates
 - 120 samples per window
 - 216,000 total samples
 
-The generator directly creates a fixed 60 Hz grid. It doesn't perform resampling. Linear interpolation and quaternion SLERP are planned for irregular Quest logger data.
+The synthetic generator directly creates a fixed 60 Hz grid and doesn't perform resampling. The Quest logger separately implements linear position interpolation and quaternion SLERP for irregular captured poses.
 
 Every class receives independent Gaussian position noise with a standard deviation of 0.0008 meters per axis and sample. All tracking-valid values are true in the clean synthetic data.
 

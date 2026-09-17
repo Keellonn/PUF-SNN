@@ -68,7 +68,7 @@ Head tracking will come from Unity's XR input system
 
 The logger will store actual application capture times instead of assuming that every sample arrives exactly at 60 Hz.
 
-Position and orientation will be relative to the first valid pose in each trial. Position will use Unity device-origin coordinates in meters, where x is right, y is up, and z is forward.
+The logger stores source position and orientation in Unity device-origin coordinates, where x is right, y is up, and z is forward. Classifier preprocessing later calculates position and orientation relative to the first valid pose in each window.
 
 Quaternions will be normalized. If two consecutive quaternions have a negative dot product, the newer quaternion will be flipped to avoid a false jump between `q` and `-q`.
 

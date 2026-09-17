@@ -330,7 +330,7 @@ The analysis also produced a complete sample window, a human-readable evidence r
 
 **Completed:** I ran the scripted head motion generator, standalone validator, and automated tests.
 
-**Artifact produced:** The generator created 1,800 synthetic windows using schema v0.2. I recorded the results in `results/week-2/keegan.md`.
+**Artifact produced:** The generator created 1,800 synthetic windows using schema v0.2. I recorded the results in `results/week-2/keegan/keegan.md`.
 
 **Evidence:** The dataset contained 600 windows in each split and 360 windows for each motion class. All 5 automated tests passed. The tests checked valid data, repeatable generation, class balance, quaternion validation, session leakage, and source-trial leakage.
 
@@ -598,3 +598,24 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Reran all five baseline-processing tests and both conventional classifiers from a clean commit; all tests passed and both models retained perfect classification scores
 - Recorded the updated latency results: 0.3896 ms p95 for logistic regression and 21.6515 ms p95 for random forest
 - Updated the Week 3 results and research log with the reproducible timing environment and provenance
+
+## Wednesday, September 16, 2026 - 3.17 hours
+
+### 4:55 PM - 8:05 PM - 3.17 hours
+
+- Created the Unity Quest logger models, head-pose capture, window processor, JSONL writer, and trial controller scripts
+- Used `Application.onBeforeRender` to queue position, quaternion, tracking-valid, tracking-state, and monotonic timestamp values without writing files during capture
+- Added linear position interpolation and quaternion SLERP to create exactly 120 ordered samples for each 2 second window
+- Added rejection rules for timestamp gaps above 50 ms, insufficient capture coverage, and tracking validity below 95 percent
+- Added deterministic prompt, capture, and rest scheduling for the five head-motion classes
+- Added Unity assembly definitions and three EditMode tests for sample generation, timestamp-gap rejection, and tracking-quality rejection
+- Added `validate_quest_log.py` so future logger JSONL files can be checked with the existing schema and quality rules.
+- Updated the Quest logger documentation and reformatted the C# files to match the existing project style.
+- Installed Unity 6.6.1f1 with Android Build Support, OpenJDK, and the Android SDK and NDK tools.
+- Opened and upgraded the existing `QuestLogger` project on my personal laptop
+- Installed XR Plug-in Management, OpenXR, and Unity OpenXR support for Meta Quest
+- Activated the Meta Quest build profile and completed the required XR Project Validation fix
+- Confirmed that the Unity project compiled without Console errors
+- Ran the Quest logger EditMode tests successfully and saved the test results as Week 3 evidence
+- Kept human-derived recording disabled - no headset motion data was collected or retained
+- Finished week 3 new presentation, based on new week 3 results, as last week Will and I presented
