@@ -773,6 +773,7 @@ The current limiations are:
 - Analyzed response-bit bias across 120 enrollment responses
 - Analyzed response-bit instability across 12,000 noisy PUF readings
 - Validated per-bit flip-rate calculations against the raw BER
+
 # Thursday September, 17
 ## 12:00am - 1:12am (1.20 Hours)
 - Identified the most and least stable response bit positions
@@ -780,6 +781,7 @@ The current limiations are:
 - Tested the sensitivity of the metrics when changing the manufacturing variation with noise fixed
 - Documented the limitations of the of the current PUF design
 - Created the layer 2 credential-reconstruction design memo
+
 ## 1:51 - 4:32am (2.68 Hours)
 - Selected a 32 Bit pilot reconstructed credential target
 - Proposed a BCH(63,36,t=5) code offset
@@ -791,3 +793,28 @@ The current limiations are:
 - Defined what material will be stored
 - Explained how to transistion into layer 3, once reconstruction is finalized
 - Added my Week 3 work into Keegan and I's presentation
+
+# Friday September, 18
+## 2:00pm - 2:18pm ()
+- Senior Design PUF Consultation
+    - Met with a senior design student, Jayden Jones, who is working on FPGA-based PUF application
+    - Discussed my simulated PUF architecture
+        - Ring oscillators
+        - Adjacent Pairing
+        - Baseline configuration
+        - Weak PUF design
+    - Explained how to evaluate PUF effectiveness
+    - Explained in depth 6 metrics:
+        - Bit error rate
+        - Reliability
+        - Uniqueness
+        - Uniformity
+        - Response bit bias
+        - Per Bit stability
+    - The discussion was mainly focused on how to test and characterize PUF responses
+    - Topics brought up in discussion that were beyond my current design
+        - FPGA implementation of PUF (Out of scope)
+        - FPGA enrollment process (Out of scope)
+        - Authentication process and design (Not currently implemented)
+        - Strong PUF design (Out of scope)
+    - Jayden indicated that major gaps in his research were about statistics and effictiveness testing and that my testing model was very useful for his team's design
