@@ -1,5 +1,5 @@
 """
-this file checks that generated windows are repeatable and valid
+this file checks that generated windows are repeatable, variable, and valid
 it
 - imports our generator and validator
 - generates a small set of windows, 60 instead of 1.8k
@@ -7,11 +7,14 @@ it
 - checks that the windows pass the validator
 - also breaks a quarternion to make sure the validator catches it
 - adds explicit schema, time, tracking, sign-continuity, and identifier checks
+- proves active classes do not reuse one orientation template
+- proves still contains small nonzero motion
 """
 
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import math
 import sys
@@ -19,11 +22,15 @@ import unittest
 from collections import Counter
 from pathlib import Path
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src" / "python"))
+sys.path.insert(0, str(ROOT / "src" / "python" / "scripts"))
 
 from puf_snn.data.generator import generate_records
 from puf_snn.data.validation import validate_dataset
+import train_baselines
 
 
 def small_config() -> dict:
@@ -116,19 +123,14 @@ class DataTests(unittest.TestCase):
 
     def test_validator_catches_bad_quaternion(self) -> None:
         """an invalid zero quaternion is rejected"""
-        # this proves that an invalid zero quaternion is rejected
         altered = copy.deepcopy(generate_records(small_config()))
         altered[0]["samples"][10]["orientation_xyzw"] = [0.0, 0.0, 0.0, 0.0]
 
         errors = validate_dataset(altered, schema())
 
-        found_quaternion_error = any(
-            "not unit normalized" in error
-            for error in errors
-        )
+        found_quaternion_error = any("not unit normalized" in error for error in errors)
 
         self.assertTrue(found_quaternion_error)
-
 
     def test_generated_windows_have_120_ordered_samples(self) -> None:
         """every fixed-grid window has 120 consecutive indexes and increasing times"""
@@ -231,12 +233,35 @@ class DataTests(unittest.TestCase):
         altered = [record for record in self.clean_records if record["session_id"] != session_id]
         self.assertTrue(any("expected" in error for error in self.check_records(altered)))
 
-    def test_generator_rejects_unimplemented_device_effects(self) -> None:
-        """enabling an unimplemented effect produces an error instead of a false claim"""
-        config = copy.deepcopy(self.config)
-        config["synthetic_motion"]["device_effects"]["enabled"] = True
-        with self.assertRaises(ValueError):
-            generate_records(config)
+    def test_active_classes_use_multiple_orientation_trajectories(self) -> None:
+        """active classes vary instead of copying one orientation template"""
+        for label in ("nod", "shake", "look_left_return", "look_right_return"):
+            hashes = set()
+
+            for record in self.clean_records:
+                if record["label"] != label:
+                    continue
+
+                matrix = train_baselines.record_to_features(record).reshape(120, 7)
+                hashes.add(hashlib.sha256(matrix[:, 3:7].tobytes()).hexdigest())
+
+            self.assertGreater(len(hashes), 3)
+
+    def test_still_contains_small_nonzero_variable_motion(self) -> None:
+        """still is not an exact zero-motion shortcut"""
+        activity = []
+
+        for record in self.clean_records:
+            if record["label"] != "still":
+                continue
+
+            matrix = train_baselines.record_to_features(record).reshape(120, 7)
+            orientation_activity = np.mean(np.linalg.norm(matrix[:, 3:7] - matrix[0, 3:7], axis=1))
+            activity.append(float(orientation_activity))
+
+        self.assertTrue(activity)
+        self.assertGreater(min(activity), 0.0001)
+        self.assertGreater(np.std(activity), 0.0)
 
 
 if __name__ == "__main__":

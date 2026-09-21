@@ -1,8 +1,8 @@
 # Keegan Hoyne's Research Log
 
 **Owner:** Keegan Hoyne  
-**Current week:** Week 3  
-**Last updated:** September 15, 2026
+**Current week:** Week 4  
+**Last updated:** September 20, 2026
 
 ## Current research question
 
@@ -383,33 +383,38 @@ She also clarified that the primary split is cross-session, not cross-device or 
 
 ## Week 3 conventional classifier update
 
-I implemented logistic regression and random forest using 840 relative-position and relative-quaternion features per window. Labels, identifiers, timestamps, tracking flags, and other metadata were excluded from the classifier input.
+I implemented logistic regression and random forest using 840 relative-position and relative-quaternion features per window. Labels, identifiers, timestamps, tracking flags, and other metadata are excluded from the classifier input. Session 1 is training, session 2 is validation, and session 3 is testing.
 
-Session 1 was used for training, session 2 for validation, and session 3 for testing. Five baseline-processing tests passed in the recorded run.
+The first Week 3 run reported 1.0000 for both models. I did not treat that as a real performance claim. The baseline audit found 480 exact orientation trajectories shared between test and training windows; orientation-only and combined features therefore reached 1.0000 on the original fixed-template data. Position-only accuracy was lower at 0.6167 for logistic regression and 0.5967 for random forest.
 
-| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
-|---|---:|---:|---:|---:|---:|
-| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.2322 ms | 0.3896 ms |
-| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.1423 ms | 21.6515 ms |
+I corrected the generator by adding deterministic per-trial variation to position, orientation, timing, noise, drift, and still-motion behavior. The regenerated 1,800-window dataset still has 600 windows per split and 360 windows per class. The corrected diagnostic found zero exact test-to-training orientation matches, zero exact combined-feature matches, and zero near-duplicate orientation pairs under the 1e-6 tolerance. All 28 Python tests passed, the generated data passed validation, and the run used generator seed 7 with model seeds 7, 17, 27, 37, and 47.
 
-Both models classified all 600 synthetic test windows correctly. These results show that the software pipeline works on the current generator, not that it will achieve perfect performance on real Quest data. The fixed class templates and lack of stable device/session motion effects can make the classification task artificially easy.
+| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | p95 preprocessing + inference |
+|---|---:|---:|---:|---:|
+| Logistic regression | 0.8825 +/- 0.0000 | 0.9017 +/- 0.0000 | 0.9032 +/- 0.0000 | 0.9447 +/- 0.1519 ms |
+| Random forest | 0.8607 +/- 0.0024 | 0.8933 +/- 0.0033 | 0.8936 +/- 0.0033 | 14.1448 +/- 1.4158 ms |
 
-The timing measurements cover model prediction only. Logistic regression is below the provisional 20 ms post-window target for this stage, but the complete pipeline hasn't met that target yet. Random forest remains slightly above it at 21.6515 ms p95.
+The values are means +/- sample standard deviations across model seeds. The corrected ablations gave 0.3533/0.3250 position-only accuracy, 0.8733/0.9000 orientation-only accuracy, near-chance permuted-label accuracy, and 0.1900 safe-metadata-only accuracy for logistic regression/random forest. Identifier-only accuracy remained 1.0000 because synthetic identifiers contain class names; identifiers remain excluded from the real feature matrix.
+
+The timing measurements use 20 warm-up predictions, 600 individual one-window predictions, and `time.perf_counter_ns()`. Both measured preprocessing-plus-inference p95 values are below the provisional 20 ms classifier-stage target. They do not include authentication, abnormality detection, or the rest of the authenticated system.
+
+The Quest logger correction also completed: the Unity EditMode suite now has all 9 tests passing in 0.043 seconds. The tests cover queued artificial-stream processing, fixed-grid interpolation, quaternion normalization and sign continuity, zero-orientation rejection, timestamp-gap rejection, tracking thresholds including exactly 114 valid samples out of 120, and JSONL writer validation. No human-derived motion data was collected.
 
 Recorded baseline environment: HP Pavilion Plus Laptop 16-ab1xxx, Windows 11, Intel64 Family 6 Model 170 processor, CPython 3.13.14, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2.
 
-The timing run used 20 warm-up predictions and 600 individual one-window predictions per model measured with `time.perf_counter_ns()`. The working tree was clean before the result files were written.
-
-Recorded source commit: `4f540a7c9d32035a66d775bedd047756960242de`  
-Recorded dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
+Base commit reported by the corrected diagnostic: `2c11de84bf4e321e81ce34d88dd371a25e7d8cc6`  
+Corrected pilot configuration SHA-256: `7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846`  
+Corrected dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`  
+Original audited dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`  
+Working tree status during the corrected run: not clean because the fixes had not been committed yet
 
 ## Next modeling step
 
-1. Commit the regenerated conventional-baseline results, updated research log, and README reproduction commands.
-2. Continue the Quest logger implementation without collecting or retaining human-derived motion data.
-3. Confirm the shared authenticated-window interface with Will.
-4. Submit the Tier-2 abnormality design before implementing the detector.
-5. Begin the full SNN and Tier-2 implementation after the required Tier-1 integration path is stable.
+1. Commit the corrected generator, diagnostic results, logger tests, and documentation so the current evidence has a permanent commit.
+2. Agree with Will on the canonical versioned authenticated-window representation and protect the complete serialized message, including the required metadata.
+3. Implement and document the first five Tier-1 authentication attacks and their expected rejection reasons.
+4. Measure authentication latency and total post-window latency before starting the SNN baseline.
+5. Continue Quest logger work only without collecting or retaining human-derived motion data unless an approved later phase changes that scope.
 
 ---
 
@@ -619,3 +624,17 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Ran the Quest logger EditMode tests successfully and saved the test results as Week 3 evidence
 - Kept human-derived recording disabled - no headset motion data was collected or retained
 - Finished week 3 new presentation, based on new week 3 results, as last week Will and I presented
+
+## Sunday, September 20, 2026 - 3.22 hours
+
+### 6:52 PM - 10:05 PM - 3.22 hours
+
+- Reviewed the entirety of Dr. Garcia's feedback
+- Reviewed the Week 3 baseline results after the original perfect classifier scores were diagnosed as fixed-template leakage
+- Updated the synthetic generator and reran the data generation, validation, Python tests, and baseline diagnostics
+- Confirmed that all 28 Python tests passed, the regenerated 1,800-window dataset passed validation, and the corrected baseline results were about 0.90 test accuracy instead of 1.0000
+- Documented the original 480 exact training to test orientation matches and confirmed that the corrected data had zero exact orientation or combined-feature matches
+- Reviewed the updated classifier latency measurements, including preprocessing plus inference p95 values below the provisional 20 ms classifier-stage target
+- Fixed the Unity Quest logger test and writer issues, then confirmed that all 9 Unity EditMode tests passed.
+- Updated my Week 3 results documentation and research log with the corrected baseline results, diagnostic evidence, test totals, logger results, and current limitations
+- Updated the Week 3 slideshow content and speaker notes so the slides use the corrected metrics, explain the original leakage issue, replace the outdated 3-test result, and show the correct next Tier 1 integration work before beginning the SNN baseline

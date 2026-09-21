@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "PUF-SNN",
-    "specification_version": "0.3",
+    "specification_version": "0.2",
     "random_seed": 7
   },
   "task": {
@@ -33,48 +33,34 @@
     "output_path": "data/generated/synthetic-windows.jsonl"
   },
   "synthetic_motion": {
-    "generation_method": "variable_fixed_grid_v1",
-    "parameter_status": "provisional engineering assumptions; not calibrated human or Quest motion",
+    "generation_method": "direct_fixed_grid",
     "resampling_applied": false,
+    "position_noise_std_m": 0.0008,
     "tracking_valid_probability": 1.0,
-    "round_decimal_places": 8,
-    "session_spacing_seconds": 10000,
-    "trial_amplitude_scale_range": [0.25, 1.40],
-    "motion_duration_s_range": [0.80, 1.90],
-    "start_delay_s_range": [0.00, 0.55],
-    "phase_warp_range_rad": [-0.70, 0.70],
-    "peak_timing_fraction_range": [0.25, 0.75],
-    "secondary_axis_scale_range": [-0.65, 0.65],
-    "return_error_std_deg": 3.0,
-    "position_noise_std_m": 0.0030,
-    "position_drift_std_m": 0.006,
-    "position_sway_amplitude_m_range": [0.0010, 0.0060],
-    "orientation_noise_std_deg": 0.60,
-    "orientation_drift_std_deg": 3.00,
-    "orientation_sway_amplitude_deg_range": [0.50, 4.00],
-    "start_position_m_range": [-0.20, 0.20],
-    "start_orientation_deg_range": [-12.0, 12.0],
+    "trial_amplitude_scale_range": [1.0, 1.0],
+    "frequency_scale_range": [1.0, 1.0],
+    "phase_offset_range_rad": [0.0, 0.0],
     "device_effects": {
-      "enabled": true,
-      "amplitude_scale_std": 0.10,
-      "duration_scale_std": 0.08
+      "enabled": false,
+      "description": "device ids are grouping identifiers only in this generator"
     },
     "session_effects": {
-      "enabled": true,
-      "amplitude_scale_std": 0.12,
-      "duration_scale_std": 0.10
+      "enabled": false,
+      "description": "sessions control grouping, split assignment, timestamps, and trial order; no stable session motion effect is modeled"
     },
+    "session_spacing_seconds": 10000,
+    "round_decimal_places": 8,
     "classes": {
       "nod": {
         "rotation_axis": "x",
         "peak_rotation_deg": -22.0,
-        "cycles_per_action": 1.0,
+        "cycles_per_window": 1.0,
         "vertical_position_peak_m": 0.006
       },
       "shake": {
         "rotation_axis": "y",
         "peak_rotation_deg": 20.0,
-        "cycles_per_action": 1.0,
+        "cycles_per_window": 1.0,
         "horizontal_position_peak_m": 0.004
       },
       "look_left_return": {
@@ -89,8 +75,7 @@
       },
       "still": {
         "rotation_axis": "y",
-        "orientation_random_walk_step_std_deg": 0.20,
-        "position_random_walk_step_std_m": 0.00030
+        "orientation_random_walk_step_std_deg": 0.08
       }
     }
   },
@@ -112,7 +97,6 @@
       "input_channels": 7,
       "features_per_window": 840,
       "random_seed": 2026,
-      "random_seeds": [7, 17, 27, 37, 47],
       "logistic_regression": {
         "standardize_features": true,
         "solver": "lbfgs",
@@ -125,7 +109,6 @@
     },
     "lightgbm_status": "deferred_until_initial_baselines_work",
     "snn": {
-      "status": "blocked_until_baseline_diagnostics_and_tier1_path_are_stable",
       "encoding": "direct_continuous",
       "hidden_lif_neurons": 64,
       "beta": 0.9,

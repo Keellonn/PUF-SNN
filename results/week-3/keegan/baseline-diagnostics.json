@@ -1,0 +1,875 @@
+{
+  "experiment": "week 3 conventional-classification diagnostics",
+  "scope": "diagnostics and conventional baselines only; no SNN",
+  "input": {
+    "path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
+    "sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+    "window_count": 1800,
+    "split_counts": {
+      "train": 600,
+      "validation": 600,
+      "test": 600
+    },
+    "label_counts": {
+      "shake": 360,
+      "look_right_return": 360,
+      "nod": 360,
+      "look_left_return": 360,
+      "still": 360
+    }
+  },
+  "configuration": {
+    "path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\configs\\pilot.json",
+    "sha256": "7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846",
+    "generator_seed": 7,
+    "generation_method": "variable_fixed_grid_v1",
+    "model_seeds": [
+      7,
+      17,
+      27,
+      37,
+      47
+    ]
+  },
+  "feature_audit": {
+    "shape": [
+      "windows",
+      120,
+      7
+    ],
+    "flattened_features_per_window": 840,
+    "channels": [
+      {
+        "name": "relative_position_x",
+        "unit": "meters",
+        "source": "position_m[0] minus the first sample's position_m[0]"
+      },
+      {
+        "name": "relative_position_y",
+        "unit": "meters",
+        "source": "position_m[1] minus the first sample's position_m[1]"
+      },
+      {
+        "name": "relative_position_z",
+        "unit": "meters",
+        "source": "position_m[2] minus the first sample's position_m[2]"
+      },
+      {
+        "name": "relative_orientation_x",
+        "unit": "dimensionless quaternion component",
+        "source": "normalized, sign-continuous orientation relative to the first orientation"
+      },
+      {
+        "name": "relative_orientation_y",
+        "unit": "dimensionless quaternion component",
+        "source": "normalized, sign-continuous orientation relative to the first orientation"
+      },
+      {
+        "name": "relative_orientation_z",
+        "unit": "dimensionless quaternion component",
+        "source": "normalized, sign-continuous orientation relative to the first orientation"
+      },
+      {
+        "name": "relative_orientation_w",
+        "unit": "dimensionless quaternion component",
+        "source": "normalized, sign-continuous orientation relative to the first orientation"
+      }
+    ],
+    "included": [
+      "trial-relative position",
+      "trial-relative normalized quaternion orientation"
+    ],
+    "excluded": [
+      "label",
+      "trial_id",
+      "source_trial_id",
+      "window_id",
+      "session_id",
+      "device_id",
+      "class-name strings",
+      "file name",
+      "row order",
+      "generator seed",
+      "sequence_number",
+      "timestamps",
+      "tracking_valid",
+      "velocity",
+      "angular velocity",
+      "acceleration",
+      "imputation",
+      "dimensionality reduction",
+      "feature selection"
+    ],
+    "preprocessing": {
+      "all_models": "subtract first position; normalize quaternion signs; express orientation relative to first pose",
+      "logistic_regression": "StandardScaler is inside the sklearn Pipeline; model.fit is called on training only, then the unchanged fitted pipeline predicts validation/test",
+      "random_forest": "no scaling or imputation"
+    }
+  },
+  "ablation": {
+    "seed": 7,
+    "results": {
+      "position_only": {
+        "channels": [
+          "relative_position_x",
+          "relative_position_y",
+          "relative_position_z"
+        ],
+        "logistic_regression": {
+          "accuracy": 0.35333333333333333,
+          "macro_f1": 0.34596969458952437
+        },
+        "random_forest": {
+          "accuracy": 0.325,
+          "macro_f1": 0.3178646412027196
+        }
+      },
+      "orientation_only": {
+        "channels": [
+          "relative_orientation_x",
+          "relative_orientation_y",
+          "relative_orientation_z",
+          "relative_orientation_w"
+        ],
+        "logistic_regression": {
+          "accuracy": 0.8733333333333333,
+          "macro_f1": 0.8732185232630061
+        },
+        "random_forest": {
+          "accuracy": 0.9,
+          "macro_f1": 0.900455271238861
+        }
+      },
+      "position_plus_orientation": {
+        "channels": [
+          "relative_position_x",
+          "relative_position_y",
+          "relative_position_z",
+          "relative_orientation_x",
+          "relative_orientation_y",
+          "relative_orientation_z",
+          "relative_orientation_w"
+        ],
+        "logistic_regression": {
+          "accuracy": 0.9016666666666666,
+          "macro_f1": 0.9031584769838237
+        },
+        "random_forest": {
+          "accuracy": 0.895,
+          "macro_f1": 0.8952500355591392
+        }
+      }
+    }
+  },
+  "label_permutation": {
+    "chance_accuracy_for_balanced_five_class_task": 0.2,
+    "training_labels_permuted_only": true,
+    "runs": [
+      {
+        "seed": 7,
+        "models": {
+          "logistic_regression": {
+            "accuracy": 0.17833333333333334,
+            "macro_f1": 0.17801522150638827
+          },
+          "random_forest": {
+            "accuracy": 0.14833333333333334,
+            "macro_f1": 0.14799755795726424
+          }
+        }
+      },
+      {
+        "seed": 17,
+        "models": {
+          "logistic_regression": {
+            "accuracy": 0.245,
+            "macro_f1": 0.2444023331300847
+          },
+          "random_forest": {
+            "accuracy": 0.20666666666666667,
+            "macro_f1": 0.20758379240648592
+          }
+        }
+      },
+      {
+        "seed": 27,
+        "models": {
+          "logistic_regression": {
+            "accuracy": 0.17,
+            "macro_f1": 0.17001251657546726
+          },
+          "random_forest": {
+            "accuracy": 0.15833333333333333,
+            "macro_f1": 0.1588375334414624
+          }
+        }
+      },
+      {
+        "seed": 37,
+        "models": {
+          "logistic_regression": {
+            "accuracy": 0.17166666666666666,
+            "macro_f1": 0.17139437289876477
+          },
+          "random_forest": {
+            "accuracy": 0.205,
+            "macro_f1": 0.20683791671906473
+          }
+        }
+      },
+      {
+        "seed": 47,
+        "models": {
+          "logistic_regression": {
+            "accuracy": 0.19,
+            "macro_f1": 0.18754163137316834
+          },
+          "random_forest": {
+            "accuracy": 0.14,
+            "macro_f1": 0.141694731586033
+          }
+        }
+      }
+    ],
+    "summary": {
+      "logistic_regression": {
+        "accuracy": {
+          "mean": 0.191,
+          "standard_deviation": 0.031193838422925054,
+          "minimum": 0.17,
+          "maximum": 0.245
+        },
+        "macro_f1": {
+          "mean": 0.1902732150967747,
+          "standard_deviation": 0.031042664040291795,
+          "minimum": 0.17001251657546726,
+          "maximum": 0.2444023331300847
+        }
+      },
+      "random_forest": {
+        "accuracy": {
+          "mean": 0.17166666666666666,
+          "standard_deviation": 0.03186342382384193,
+          "minimum": 0.14,
+          "maximum": 0.20666666666666667
+        },
+        "macro_f1": {
+          "mean": 0.17259030642206205,
+          "standard_deviation": 0.032194415115648675,
+          "minimum": 0.141694731586033,
+          "maximum": 0.20758379240648592
+        }
+      }
+    }
+  },
+  "metadata_only": {
+    "seed": 7,
+    "safe_metadata": {
+      "fields": [
+        "device_id",
+        "session index",
+        "sequence_number",
+        "window_start_ns",
+        "window_end_ns"
+      ],
+      "result": {
+        "accuracy": 0.19,
+        "macro_f1": 0.11823026176416387
+      }
+    },
+    "label_bearing_identifiers": {
+      "fields": [
+        "trial_id",
+        "source_trial_id",
+        "window_id"
+      ],
+      "result": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      },
+      "interpretation": "These identifiers contain the class name by construction. This intentionally unsafe control demonstrates why they must remain excluded from model input."
+    }
+  },
+  "duplicates": {
+    "exact_hashes": {
+      "nod": {
+        "orientation": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        },
+        "combined": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        }
+      },
+      "shake": {
+        "orientation": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        },
+        "combined": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        }
+      },
+      "look_left_return": {
+        "orientation": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        },
+        "combined": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        }
+      },
+      "look_right_return": {
+        "orientation": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        },
+        "combined": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        }
+      },
+      "still": {
+        "orientation": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        },
+        "combined": {
+          "unique_train": 120,
+          "unique_validation": 120,
+          "unique_test": 120,
+          "test_windows_with_exact_train_match": 0
+        }
+      }
+    },
+    "near_duplicate_distance": {
+      "method": "Euclidean distance after StandardScaler fit only on training payload features; zero means an exact standardized payload match",
+      "nearest_training_window_any_label": {
+        "count": 600,
+        "minimum": 16.55930992096923,
+        "p05": 18.0005763620845,
+        "median": 22.392195462242157,
+        "mean": 23.779344548987353,
+        "p95": 33.49034659794582,
+        "maximum": 57.03471722019913
+      },
+      "nearest_training_window_same_label": {
+        "count": 600,
+        "minimum": 16.55930992096923,
+        "p05": 18.66115001099779,
+        "median": 23.30488429508644,
+        "mean": 24.32187689375617,
+        "p95": 33.49034659794582,
+        "maximum": 57.03471722019913
+      },
+      "test_windows_below_1e-6_same_label_distance": 0
+    }
+  },
+  "multiseed_baselines": {
+    "timing_scope": {
+      "input": "synthetic in-memory JSON records",
+      "unit_of_work": "one window per function/predict call",
+      "loading_excluded": true,
+      "training_excluded_from_inference_boundaries": true,
+      "authentication_excluded": true,
+      "anomaly_detection_excluded": true,
+      "logging_excluded": true,
+      "capture_window_excluded": true,
+      "preprocessing_boundary": "record_to_features only: relative position, quaternion normalization/sign continuity, relative orientation, flattening",
+      "inference_boundary": "model.predict on one already-preprocessed 840-feature window",
+      "combined_boundary": "record_to_features followed by model.predict for one window",
+      "warmup_count": 20,
+      "timed_window_count": 600,
+      "timer": "time.perf_counter_ns"
+    },
+    "preprocessing_only_latency": {
+      "unit": "milliseconds",
+      "count": 600,
+      "mean_ms": 0.5239111666666667,
+      "median_ms": 0.5221,
+      "p95_ms": 0.54013,
+      "maximum_ms": 0.6807,
+      "timer": "time.perf_counter_ns",
+      "warmup_count": 20
+    },
+    "runs": [
+      {
+        "seed": 7,
+        "models": {
+          "logistic_regression": {
+            "training_latency_ms": 68.2727,
+            "validation": {
+              "accuracy": 0.8816666666666667,
+              "macro_f1": 0.8825170459151923
+            },
+            "test": {
+              "accuracy": 0.9016666666666666,
+              "macro_f1": 0.9031584769838237
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.19824083333333334,
+              "median_ms": 0.19585,
+              "p95_ms": 0.214205,
+              "maximum_ms": 0.3064,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.854843,
+              "median_ms": 0.8201499999999999,
+              "p95_ms": 1.1255499999999998,
+              "maximum_ms": 8.0466,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          },
+          "random_forest": {
+            "training_latency_ms": 1542.1677,
+            "validation": {
+              "accuracy": 0.8616666666666667,
+              "macro_f1": 0.8615338930682517
+            },
+            "test": {
+              "accuracy": 0.895,
+              "macro_f1": 0.8952500355591392
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 11.900682666666667,
+              "median_ms": 12.0496,
+              "p95_ms": 12.479085,
+              "maximum_ms": 13.9764,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.461424833333334,
+              "median_ms": 12.61085,
+              "p95_ms": 13.07098,
+              "maximum_ms": 13.9799,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          }
+        }
+      },
+      {
+        "seed": 17,
+        "models": {
+          "logistic_regression": {
+            "training_latency_ms": 68.2793,
+            "validation": {
+              "accuracy": 0.8816666666666667,
+              "macro_f1": 0.8825170459151923
+            },
+            "test": {
+              "accuracy": 0.9016666666666666,
+              "macro_f1": 0.9031584769838237
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.19163533333333332,
+              "median_ms": 0.1879,
+              "p95_ms": 0.20682,
+              "maximum_ms": 0.7048,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.7520161666666667,
+              "median_ms": 0.74685,
+              "p95_ms": 0.78862,
+              "maximum_ms": 1.0021,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          },
+          "random_forest": {
+            "training_latency_ms": 1580.1082,
+            "validation": {
+              "accuracy": 0.86,
+              "macro_f1": 0.8600832514273702
+            },
+            "test": {
+              "accuracy": 0.8966666666666666,
+              "macro_f1": 0.8968126131190853
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.156433,
+              "median_ms": 12.15685,
+              "p95_ms": 12.58785,
+              "maximum_ms": 14.3251,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.3220355,
+              "median_ms": 12.47775,
+              "p95_ms": 12.94646,
+              "maximum_ms": 21.0293,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          }
+        }
+      },
+      {
+        "seed": 27,
+        "models": {
+          "logistic_regression": {
+            "training_latency_ms": 66.9937,
+            "validation": {
+              "accuracy": 0.8816666666666667,
+              "macro_f1": 0.8825170459151923
+            },
+            "test": {
+              "accuracy": 0.9016666666666666,
+              "macro_f1": 0.9031584769838237
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.1908075,
+              "median_ms": 0.1891,
+              "p95_ms": 0.204505,
+              "maximum_ms": 0.2422,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.7607478333333334,
+              "median_ms": 0.7541,
+              "p95_ms": 0.795305,
+              "maximum_ms": 1.5318,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          },
+          "random_forest": {
+            "training_latency_ms": 1567.984,
+            "validation": {
+              "accuracy": 0.8633333333333333,
+              "macro_f1": 0.8632363639120335
+            },
+            "test": {
+              "accuracy": 0.8883333333333333,
+              "macro_f1": 0.8888155374880995
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.218513333333334,
+              "median_ms": 12.14825,
+              "p95_ms": 13.32335,
+              "maximum_ms": 26.1661,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.409299833333334,
+              "median_ms": 12.14215,
+              "p95_ms": 14.309899999999999,
+              "maximum_ms": 22.9163,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          }
+        }
+      },
+      {
+        "seed": 37,
+        "models": {
+          "logistic_regression": {
+            "training_latency_ms": 69.001,
+            "validation": {
+              "accuracy": 0.8816666666666667,
+              "macro_f1": 0.8825170459151923
+            },
+            "test": {
+              "accuracy": 0.9016666666666666,
+              "macro_f1": 0.9031584769838237
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.20107233333333333,
+              "median_ms": 0.19435,
+              "p95_ms": 0.25665999999999994,
+              "maximum_ms": 0.4819,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.8014653333333333,
+              "median_ms": 0.7851,
+              "p95_ms": 0.9565499999999996,
+              "maximum_ms": 1.4196,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          },
+          "random_forest": {
+            "training_latency_ms": 1542.5442,
+            "validation": {
+              "accuracy": 0.8616666666666667,
+              "macro_f1": 0.8617721179840183
+            },
+            "test": {
+              "accuracy": 0.8916666666666667,
+              "macro_f1": 0.8917297970840838
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 11.623307,
+              "median_ms": 11.4908,
+              "p95_ms": 13.034544999999998,
+              "maximum_ms": 16.335,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.5681325,
+              "median_ms": 12.025,
+              "p95_ms": 16.459639999999997,
+              "maximum_ms": 20.7176,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          }
+        }
+      },
+      {
+        "seed": 47,
+        "models": {
+          "logistic_regression": {
+            "training_latency_ms": 68.1627,
+            "validation": {
+              "accuracy": 0.8816666666666667,
+              "macro_f1": 0.8825170459151923
+            },
+            "test": {
+              "accuracy": 0.9016666666666666,
+              "macro_f1": 0.9031584769838237
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.21278866666666665,
+              "median_ms": 0.1942,
+              "p95_ms": 0.3336,
+              "maximum_ms": 0.5293,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 0.816959,
+              "median_ms": 0.7769,
+              "p95_ms": 1.0575099999999997,
+              "maximum_ms": 1.3714,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          },
+          "random_forest": {
+            "training_latency_ms": 1520.8483,
+            "validation": {
+              "accuracy": 0.8566666666666667,
+              "macro_f1": 0.8568739811456979
+            },
+            "test": {
+              "accuracy": 0.895,
+              "macro_f1": 0.895485343574995
+            },
+            "inference_only_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 11.416047833333334,
+              "median_ms": 11.2868,
+              "p95_ms": 12.380105,
+              "maximum_ms": 17.1663,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            },
+            "preprocessing_plus_inference_latency": {
+              "unit": "milliseconds",
+              "count": 600,
+              "mean_ms": 12.1064365,
+              "median_ms": 11.83595,
+              "p95_ms": 13.936995,
+              "maximum_ms": 20.4575,
+              "timer": "time.perf_counter_ns",
+              "warmup_count": 20
+            }
+          }
+        }
+      }
+    ],
+    "summary": {
+      "logistic_regression": {
+        "validation_accuracy": {
+          "mean": 0.8816666666666666,
+          "standard_deviation": 1.2412670766236366e-16,
+          "minimum": 0.8816666666666667,
+          "maximum": 0.8816666666666667
+        },
+        "validation_macro_f1": {
+          "mean": 0.8825170459151923,
+          "standard_deviation": 0.0,
+          "minimum": 0.8825170459151923,
+          "maximum": 0.8825170459151923
+        },
+        "test_accuracy": {
+          "mean": 0.9016666666666666,
+          "standard_deviation": 0.0,
+          "minimum": 0.9016666666666666,
+          "maximum": 0.9016666666666666
+        },
+        "test_macro_f1": {
+          "mean": 0.9031584769838237,
+          "standard_deviation": 0.0,
+          "minimum": 0.9031584769838237,
+          "maximum": 0.9031584769838237
+        },
+        "inference_only_mean_ms_across_seeds": {
+          "mean": 0.19890893333333332,
+          "standard_deviation": 0.008892583055401967,
+          "minimum": 0.1908075,
+          "maximum": 0.21278866666666665
+        },
+        "inference_only_p95_ms_across_seeds": {
+          "mean": 0.24315799999999993,
+          "standard_deviation": 0.05480611332232929,
+          "minimum": 0.204505,
+          "maximum": 0.3336
+        },
+        "inference_only_maximum_ms_across_seeds": {
+          "mean": 0.45292000000000004,
+          "standard_deviation": 0.18438296287889508,
+          "minimum": 0.2422,
+          "maximum": 0.7048
+        },
+        "preprocessing_plus_inference_p95_ms_across_seeds": {
+          "mean": 0.9447069999999999,
+          "standard_deviation": 0.15186595510515175,
+          "minimum": 0.78862,
+          "maximum": 1.1255499999999998
+        }
+      },
+      "random_forest": {
+        "validation_accuracy": {
+          "mean": 0.8606666666666667,
+          "standard_deviation": 0.0025276251480171688,
+          "minimum": 0.8566666666666667,
+          "maximum": 0.8633333333333333
+        },
+        "validation_macro_f1": {
+          "mean": 0.8606999215074744,
+          "standard_deviation": 0.002413335635573214,
+          "minimum": 0.8568739811456979,
+          "maximum": 0.8632363639120335
+        },
+        "test_accuracy": {
+          "mean": 0.8933333333333333,
+          "standard_deviation": 0.003333333333333327,
+          "minimum": 0.8883333333333333,
+          "maximum": 0.8966666666666666
+        },
+        "test_macro_f1": {
+          "mean": 0.8936186653650806,
+          "standard_deviation": 0.0032781480781964556,
+          "minimum": 0.8888155374880995,
+          "maximum": 0.8968126131190853
+        },
+        "inference_only_mean_ms_across_seeds": {
+          "mean": 11.862996766666669,
+          "standard_deviation": 0.34319513855773226,
+          "minimum": 11.416047833333334,
+          "maximum": 12.218513333333334
+        },
+        "inference_only_p95_ms_across_seeds": {
+          "mean": 12.760987,
+          "standard_deviation": 0.40174692887127295,
+          "minimum": 12.380105,
+          "maximum": 13.32335
+        },
+        "inference_only_maximum_ms_across_seeds": {
+          "mean": 17.593780000000002,
+          "standard_deviation": 4.975480967404056,
+          "minimum": 13.9764,
+          "maximum": 26.1661
+        },
+        "preprocessing_plus_inference_p95_ms_across_seeds": {
+          "mean": 14.144794999999998,
+          "standard_deviation": 1.4158065988598145,
+          "minimum": 12.94646,
+          "maximum": 16.459639999999997
+        }
+      }
+    }
+  },
+  "figures": [
+    "orientation-trajectories-by-class.png",
+    "position-trajectories-by-class.png"
+  ],
+  "environment": {
+    "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.14",
+    "python_implementation": "CPython",
+    "numpy": "2.5.3",
+    "scikit_learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "implementation": "Python scikit-learn software prototype"
+  },
+  "provenance": {
+    "git_commit": "2c11de84bf4e321e81ce34d88dd371a25e7d8cc6",
+    "git_status_porcelain": "M configs/pilot.json\n M src/python/puf_snn/data/generator.py\n M src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/HeadPoseCapture.cs\n M src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowProcessor.cs\n M \"src/quest-logger/QuestLogger/Assets/XR/Settings/OpenXR Editor Settings.asset\"\n M \"src/quest-logger/QuestLogger/Assets/XR/Settings/OpenXR Package Settings.asset\"\n M tests/test_baselines.py\n M tests/test_data.py\n?? presentations/week-2/\n?? presentations/week-3/\n?? results/week-3/keegan/orientation-trajectories-by-class.png\n?? results/week-3/keegan/original-baseline-audit/\n?? results/week-3/keegan/position-trajectories-by-class.png\n?? src/python/scripts/run_baseline_diagnostics.py\n?? src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowProcessorTests.cs\n?? src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/RawPoseBuffer.cs"
+  }
+}

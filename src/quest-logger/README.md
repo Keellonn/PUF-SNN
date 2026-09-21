@@ -27,7 +27,9 @@ It collects:
 - `CommonUsages.isTracked`
 - `CommonUsages.trackingState`
 
-`HeadPoseCapture` uses `Application.onBeforeRender` to queue at most one pose per rendered frame. The callback does not write files or resample data. Each raw sample uses a real monotonic capture time instead of an assumed frame interval.
+`HeadPoseCapture` uses `Application.onBeforeRender` to queue at most one pose per rendered frame. The callback does not write files or resample data. `RawPoseBuffer` is the queue between capture and later processing.
+
+Each raw timestamp is calculated from `System.Diagnostics.Stopwatch.ElapsedTicks`, converted to nanoseconds using `Stopwatch.Frequency`. The stopwatch begins in the component's `Awake` method. This is monotonic elapsed application time. It is not Quest hardware time, Unity wall-clock time, UTC, or a cryptographically trusted timestamp.
 
 ## Position and orientation
 
@@ -37,7 +39,7 @@ Unity uses these directions:
 - positive y points up
 - positive z points forward
 
-The logger stores the source position and quaternion in the `unity_device_origin` coordinate frame. The conventional classifier later subtracts the first position and calculates orientation relative to the first quaternion. This keeps the saved logger output consistent with `schemas/quest-window.schema.json`.
+The logger stores the source position and quaternion in the `unity_device_origin` coordinate frame. Position components are meters. Quaternion components are dimensionless and stored in `[x, y, z, w]` order. The conventional classifier later subtracts the first position and calculates orientation relative to the first quaternion. This keeps the saved logger output consistent with `schemas/quest-window.schema.json`.
 
 Orientation is stored as a normalized quaternion in `[x, y, z, w]` order. Equivalent quaternion signs are made continuous so an ordinary rotation is not represented as a sudden sign jump.
 
@@ -51,7 +53,21 @@ Each accepted motion window:
 - uses recorded monotonic timestamps
 - stays separate from every other trial
 
-Position uses linear interpolation. Orientation uses quaternion SLERP. A window is rejected when a source timestamp gap is greater than 50 ms, the source data does not cover the final target time, or fewer than 95 percent of the resampled poses have valid tracking.
+Position uses linear interpolation. Orientation uses normalized quaternion SLERP after enforcing equivalent-quaternion sign continuity.
+
+Tracking coverage is calculated by counting the 120 resampled output poses whose lower and upper source poses are both valid. A window is accepted at exactly 114/120 valid samples (95%) and rejected below that threshold. This is a sample-count rule, not a percentage-of-time rule.
+
+A window is rejected when:
+
+- source timestamps do not strictly increase;
+- any adjacent source timestamp gap is greater than 50 ms;
+- source data does not reach the final required 60 Hz target time;
+- a position or orientation contains NaN or infinity;
+- an orientation is missing or has zero magnitude;
+- fewer than 114 of 120 resampled poses are valid; or
+- processing cannot construct the required output.
+
+Rejected windows are currently dropped from the classifier JSONL file and reported with a Unity warning containing the trial ID and reason. They are not repaired or silently retained. A later authenticated audit-record layer should store structured acceptance/rejection records. Tier-2 synthetic anomaly copies should be created from already accepted clean source windows, remain in the source split, and be reported separately so capture-quality rejection is not confused with anomaly detection.
 
 ## Trial process
 
@@ -82,14 +98,21 @@ The logger creates sensor and experiment data. It does not implement PUF credent
 
 ## Tests
 
-The EditMode tests prove that the processor:
+The EditMode suite contains these explicit checks:
 
-- creates exactly 120 ordered samples
-- normalizes quaternions and keeps their signs continuous
-- rejects a timestamp gap above 50 ms
-- rejects tracking coverage below 95 percent
+| Test | What it verifies |
+|---|---|
+| `CreateWindowProduces120OrderedNormalizedSamples` | Accepted artificial input produces 120 ordered, tracked, normalized, sign-continuous output samples. |
+| `CreateWindowRejectsTimestampGapAbove50Milliseconds` | A raw gap above the configured limit is rejected with a reason. |
+| `CreateWindowRejectsTrackingBelow95Percent` | Tracking coverage below 95% is rejected. |
+| `CreateWindowAcceptsExactly95PercentTracking` | The threshold is inclusive: exactly 114/120 valid output samples pass. |
+| `CreateWindowNormalizesNonUnitQuaternionInput` | Non-unit but nonzero quaternion inputs are normalized. |
+| `CreateWindowMakesEquivalentQuaternionSignsContinuous` | Alternating equivalent `q`/`-q` inputs do not create false jumps. |
+| `CreateWindowRejectsMissingOrZeroOrientation` | A zero/missing orientation is rejected. |
+| `WriterRejectsMalformedJsonlLine` | Malformed or structurally incomplete JSONL is rejected during reload. |
+| `ArtificialStreamPassesQueueInterpolationJsonlAndReload` | Artificial raw poses pass through the queue, interpolation/windowing, JSONL writer, reload, and expected-field/value checks. |
 
-These tests use artificial raw poses and do not require a headset. They do not prove physical Quest capture, Android deployment, real motion quality, or permission to retain human-derived recordings.
+These tests use artificial raw poses and do not require a headset. They verify software behavior only; they do not prove physical Quest capture, Android deployment, real motion quality, or permission to retain human-derived recordings.
 
 After an authorized JSONL file is copied from the headset, validate it from the repository root with:
 

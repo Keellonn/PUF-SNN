@@ -33,13 +33,32 @@ namespace PufSnn.QuestLogger {
             record = null;
             rejectionReason = ValidateMetadata(metadata);
 
-            if (rejectionReason != null) {
+            if (rejectionReason != null)
                 return false;
-            }
 
             if (rawSamples == null || rawSamples.Count < 2) {
                 rejectionReason = "the trial contains fewer than two raw samples";
                 return false;
+            }
+
+            for (int index = 0; index < rawSamples.Count; index++) {
+                RawHeadPoseSample sample = rawSamples[index];
+
+                if (!IsFinite(sample.position_m) || !IsFinite(sample.orientation_xyzw)) {
+                    rejectionReason = "a raw pose contains a non-finite position or orientation";
+                    return false;
+                }
+
+                float orientationSquaredMagnitude =
+                    sample.orientation_xyzw.x * sample.orientation_xyzw.x +
+                    sample.orientation_xyzw.y * sample.orientation_xyzw.y +
+                    sample.orientation_xyzw.z * sample.orientation_xyzw.z +
+                    sample.orientation_xyzw.w * sample.orientation_xyzw.w;
+
+                if (orientationSquaredMagnitude < 0.000001f) {
+                    rejectionReason = "a raw pose has a missing or zero orientation";
+                    return false;
+                }
             }
 
             // this rejects bad timing before interpolation
@@ -105,21 +124,18 @@ namespace PufSnn.QuestLogger {
                 Quaternion lowerOrientation = Normalize(lower.orientation_xyzw);
                 Quaternion upperOrientation = Normalize(upper.orientation_xyzw);
 
-                if (Quaternion.Dot(lowerOrientation, upperOrientation) < 0.0f) {
+                if (Quaternion.Dot(lowerOrientation, upperOrientation) < 0.0f)
                     upperOrientation = Negate(upperOrientation);
-                }
 
                 Quaternion orientation = Normalize(Quaternion.Slerp(lowerOrientation, upperOrientation, amount));
 
-                if (sampleIndex > 0 && Quaternion.Dot(previousOrientation, orientation) < 0.0f) {
+                if (sampleIndex > 0 && Quaternion.Dot(previousOrientation, orientation) < 0.0f)
                     orientation = Negate(orientation);
-                }
 
                 bool trackingValid = lower.tracking_valid && upper.tracking_valid;
 
-                if (trackingValid) {
+                if (trackingValid)
                     validSampleCount++;
-                }
 
                 candidate.samples.Add(new QuestWindowSample {
                     sample_index = sampleIndex,
@@ -154,29 +170,24 @@ namespace PufSnn.QuestLogger {
         }
 
         private static string ValidateMetadata(QuestTrialMetadata metadata) {
-            if (metadata == null) {
+            if (metadata == null)
                 return "trial metadata is missing";
-            }
 
             if (
                 string.IsNullOrWhiteSpace(metadata.device_id) ||
                 string.IsNullOrWhiteSpace(metadata.session_id) ||
                 string.IsNullOrWhiteSpace(metadata.trial_id)
-            ) {
+            )
                 return "device, session, and trial ids are required";
-            }
 
-            if (!Splits.Contains(metadata.split)) {
+            if (!Splits.Contains(metadata.split))
                 return "split must be train, validation, or test";
-            }
 
-            if (!Labels.Contains(metadata.label)) {
+            if (!Labels.Contains(metadata.label))
                 return "label is not one of the five configured motion classes";
-            }
 
-            if (metadata.sequence_number < 0) {
+            if (metadata.sequence_number < 0)
                 return "sequence number cannot be negative";
-            }
 
             return null;
         }
@@ -189,20 +200,33 @@ namespace PufSnn.QuestLogger {
                 value.w * value.w
             );
 
-            if (magnitude < 0.000001f) {
+            if (magnitude < 0.000001f)
                 return Quaternion.identity;
-            }
 
-            return new Quaternion(
-                value.x / magnitude,
-                value.y / magnitude,
-                value.z / magnitude,
-                value.w / magnitude
-            );
+            return new Quaternion(value.x / magnitude, value.y / magnitude, value.z / magnitude, value.w / magnitude);
         }
 
         private static Quaternion Negate(Quaternion value) {
             return new Quaternion(-value.x, -value.y, -value.z, -value.w);
+        }
+
+        private static bool IsFinite(Vector3 value) {
+            return
+                IsFinite(value.x) &&
+                IsFinite(value.y) &&
+                IsFinite(value.z);
+        }
+
+        private static bool IsFinite(Quaternion value) {
+            return
+                IsFinite(value.x) &&
+                IsFinite(value.y) &&
+                IsFinite(value.z) &&
+                IsFinite(value.w);
+        }
+
+        private static bool IsFinite(float value) {
+            return !float.IsNaN(value) && !float.IsInfinity(value);
         }
     }
 }

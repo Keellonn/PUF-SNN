@@ -19,7 +19,8 @@ The same synthetic device groups appear in all three splits. This is not cross-d
 
 - Logistic regression with standardized features
 - Random forest with 300 trees and one processing thread
-- Random seed: 2026
+- Synthetic-data generator seed: 7
+- Diagnostic model seeds: 7, 17, 27, 37, and 47
 - Logistic regression uses the lbfgs solver, a maximum of 5,000 iterations, and a StandardScaler fitted on training data
 - Random forest uses 300 trees and one processing thread
 
@@ -27,41 +28,53 @@ For both models, each window is converted to relative position and relative quat
 
 ### Results
 
-| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
+The original fixed-template dataset produced perfect results, so I audited that run before treating it as a baseline. The audit found 480 exact orientation-trajectory matches between test windows and training windows. That explains why orientation-only and combined features gave 1.0000 test accuracy. Position-only accuracy was lower at 0.6167 for logistic regression and 0.5967 for random forest.
+
+I regenerated the same 1,800-window cross-session dataset after adding deterministic per-trial variation to position, orientation, timing, noise, drift, and still-motion behavior. The corrected diagnostic found zero exact test-to-training orientation matches, zero exact combined-feature matches, and zero near-duplicate orientation pairs under the 1e-6 tolerance. The synthetic data are still not real Quest data or a cross-device/cross-person study.
+
+| Model | Validation macro-F1 | Test accuracy | Test macro-F1 | p95 inference | p95 preprocessing + inference |
 |---|---:|---:|---:|---:|---:|
-| Logistic regression | 1.0000 | 1.0000 | 1.0000 | 0.2322 ms | 0.3896 ms |
-| Random forest | 1.0000 | 1.0000 | 1.0000 | 14.1423 ms | 21.6515 ms |
+| Logistic regression | 0.8825 +/- 0.0000 | 0.9017 +/- 0.0000 | 0.9032 +/- 0.0000 | 0.2432 +/- 0.0548 ms | 0.9447 +/- 0.1519 ms |
+| Random forest | 0.8607 +/- 0.0024 | 0.8933 +/- 0.0033 | 0.8936 +/- 0.0033 | 12.7610 +/- 0.4017 ms | 14.1448 +/- 1.4158 ms |
 
-Logistic regression's inference-only p95 is below the provisional 20 ms post-window target. Random forest is slightly above the target at 21.6515 ms p95. Authentication, feature extraction, abnormality detection, and the other processing stages aren't included in these inference measurements.
+Each value is the mean +/- sample standard deviation across the five diagnostic model seeds. Both measured preprocessing-plus-inference p95 values are below the provisional 20 ms post-window target for this classifier stage. Authentication, abnormality detection, and other system stages are not included, so this is not a total authenticated-system latency claim.
 
-Both models correctly classified all 120 test windows from each of the five motion classes. The confusion matrices contain only diagonal values.
+The corrected ablations show that orientation is still the strongest synthetic feature group, but it is no longer a lookup through exact repeated templates.
 
-| Class | Precision | Recall | F1 | Test windows |
-|---|---:|---:|---:|---:|
-| nod | 1.0000 | 1.0000 | 1.0000 | 120 |
-| shake | 1.0000 | 1.0000 | 1.0000 | 120 |
-| look_left_return | 1.0000 | 1.0000 | 1.0000 | 120 |
-| look_right_return | 1.0000 | 1.0000 | 1.0000 | 120 |
-| still | 1.0000 | 1.0000 | 1.0000 | 120 |
+| Diagnostic check | Logistic regression | Random forest |
+|---|---:|---:|
+| Position only test accuracy | 0.3533 | 0.3250 |
+| Orientation only test accuracy | 0.8733 | 0.9000 |
+| Combined feature test accuracy | 0.9017 | 0.8950 |
+| Permuted-label test accuracy | 0.1910 +/- 0.0312 | 0.1717 +/- 0.0319 |
+| Safe-metadata-only test accuracy | 0.1900 | 0.1900 |
+| Unsafe identifier-only test accuracy | 1.0000 | 1.0000 |
 
-These results confirm that the feature and classification pipeline works on the current synthetic data. No class-confusion failures were observed. The generator reuses fixed class templates and doesn't model stable device or session motion effects, which can make the task artificially easy. The perfect scores shouldn't be treated as expected real Quest performance.
+The identifier-only result is an intentional leakage control: class names in synthetic IDs make identifiers unsafe classifier features, and the actual feature builder excludes them. The near-chance permuted-label and safe-metadata checks are additional evidence that labels and safe metadata are not leaking into the corrected feature matrix.
 
 ### Artifacts and environment
 
-- Five baseline processing tests passed in the recorded run
+- All 28 Python tests passed in the corrected recorded run
 - `baseline-results.json`
+- `baseline-diagnostics.json`
+- `baseline-diagnostics.md`
 - `baseline-summary.md`
 - `logistic_regression-confusion-matrix.png`
 - `random_forest-confusion-matrix.png`
+- `position-trajectories-by-class.png`
+- `orientation-trajectories-by-class.png`
+- `original-baseline-audit/` with the original configuration and diagnostic output
 
 The recorded environment was an HP Pavilion Plus Laptop 16-ab1xxx running Windows 11 with an Intel64 Family 6 Model 170 processor. The software environment was CPython 3.13.14, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2.
 
 The timing code uses 20 warm-up predictions and then times 600 individual one-window predictions using `time.perf_counter_ns()`.
 
 Repository: https://github.com/Keellonn/PUF-SNN  
-Recorded code commit: `4f540a7c9d32035a66d775bedd047756960242de`  
-Working tree clean before run: `True`  
-Recorded input SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
+Base commit reported by the diagnostic: `2c11de84bf4e321e81ce34d88dd371a25e7d8cc6`  
+Working tree clean before run: `False`; the corrected files had not been committed yet  
+Corrected pilot configuration SHA-256: `7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846`  
+Corrected input SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`  
+Original audited input SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`
 
 ### Recreate my conventional classification baseline
 
@@ -71,8 +84,8 @@ From the repository root with the normal Windows virtual environment activated:
 python -m pip install -e .
 python src/python/scripts/generate_data.py
 python src/python/scripts/validate_data.py
-python -m unittest tests.test_baselines -v
-python src/python/scripts/train_baselines.py --machine-model "YOUR LAPTOP MODEL"
+python -m unittest discover -s tests -v
+python src/python/scripts/run_baseline_diagnostics.py --input data/generated/synthetic-windows.jsonl --config configs/pilot.json --output results/week-3/keegan --machine-model "YOUR LAPTOP MODEL" --seeds 7 17 27 37 47 --warmup 20 --timed-windows 600
 ```
 
 ## Quest head-motion logger prototype
@@ -81,11 +94,11 @@ An initial Unity logger was implemented for collecting Quest head-position, head
 
 The logger contains:
 
-- head-pose capture using `Application.onBeforeRender`;
+- head-pose capture using `Application.onBeforeRender` and `InputDevices.GetDeviceAtXRNode(XRNode.Head)`;
 - monotonic capture timestamps;
 - a queue that separates pose capture from file writing and window processing;
 - two-second motion windows;
-- fixed-grid output containing exactly 120 samples at 60 Hz;
+- fixed-grid output containing exactly 120 samples across the two-second window;
 - linear interpolation for position;
 - quaternion SLERP for orientation;
 - quaternion normalization and sign continuity;
@@ -111,7 +124,7 @@ A window is rejected when:
 - source timestamps are not strictly increasing;
 - the processor cannot produce exactly 120 ordered output samples.
 
-Recording remains disabled by default through the trial controller's `recordingAuthorized` setting. It must only be enabled for an approved headset-recording session.
+Recording remains disabled by default through the trial controller's `recordingAuthorized` setting. No human-derived Quest recording was collected for this software-only work.
 
 ### Unity environment
 
@@ -130,13 +143,19 @@ Android Build Support, OpenJDK, and the Android SDK and NDK tools were installed
 
 ### Automated evidence
 
-The Unity EditMode test suite completed with all three tests passing in 0.033 seconds.
+The Unity EditMode test suite completed with all nine tests passing in 0.043 seconds.
 
 | Test | Purpose | Actual result |
 |---|---|---|
-| Accepted-window processing | Produce 120 ordered samples with normalized, sign-continuous quaternions | Passed |
+| Artificial stream, interpolation, JSONL, and reload | Exercise the queued end-to-end path with artificial raw poses | Passed |
+| Exactly 95 percent tracking | Accept exactly 114 valid samples out of 120 | Passed |
+| Equivalent quaternion signs | Keep quaternion sign continuity | Passed |
+| Non-unit quaternion input | Normalize orientation input | Passed |
+| Fixed-grid output | Produce 120 ordered normalized samples | Passed |
+| Missing or zero orientation | Reject invalid orientation input | Passed |
 | Timestamp-gap rejection | Reject a source gap greater than 50 milliseconds | Passed |
 | Tracking-validity rejection | Reject tracking coverage below 95 percent | Passed |
+| Malformed JSONL writer input | Reject a malformed JSONL line | Passed |
 
 Unity OpenXR Project Validation reported zero issues for the active Meta Quest configuration. The Unity Console was also cleared after compilation and showed no red compilation errors.
 
@@ -156,19 +175,19 @@ Evidence:
 - `src/python/scripts/validate_quest_log.py`
 - `src/quest-logger/README.md`
 
-### Limitations and next hardware step
+### Limitations and next integration step
 
 The passing EditMode tests verify the window-processing code using artificial raw poses. They do not prove that the project has been successfully installed on a physical Quest 3 or that real headset motion has been captured correctly.
 
-The following hardware tasks remain:
+The following hardware tasks remain for a later approved hardware phase:
 
 - connect an assigned Quest 3 through ADB;
 - confirm that Unity detects the headset;
 - build and install the Android application;
 - confirm that the application launches on the headset;
-- perform an approved test capture;
-- copy the resulting JSONL file from the headset;
-- validate the captured file with `validate_quest_log.py`.
+- validate any future approved captured file with `validate_quest_log.py`.
+
+The immediate shared software task is to agree on the canonical versioned authenticated-window representation, protect the complete serialized message, and add the first Tier-1 authentication tests before starting the SNN baseline.
 
 No claim about physical Quest deployment, real-motion quality, authentication performance, or human-data collection is made from the current software-only tests.
 
