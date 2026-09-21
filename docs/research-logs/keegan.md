@@ -401,7 +401,8 @@ The timing measurements use 20 warm-up predictions, 600 individual one-window pr
 The Quest logger correction also completed: the Unity EditMode suite now has all 9 tests passing in 0.043 seconds. The tests cover queued artificial-stream processing, fixed-grid interpolation, quaternion normalization and sign continuity, zero-orientation rejection, timestamp-gap rejection, tracking thresholds including exactly 114 valid samples out of 120, and JSONL writer validation. No human-derived motion data was collected.
 
 Recorded baseline environment: HP Pavilion Plus Laptop 16-ab1xxx, Windows 11, Intel64 Family 6 Model 170 processor, CPython 3.13.14, NumPy 2.5.3, scikit-learn 1.9.1, and Matplotlib 3.11.2.
-
+Repository: https://github.com/Keellonn/PUF-SNN  
+Corrected implementation and results commit: `e4e0523d9232ded6c7ff266fd5d495a8c8d31fc0`
 Base commit reported by the corrected diagnostic: `2c11de84bf4e321e81ce34d88dd371a25e7d8cc6`  
 Corrected pilot configuration SHA-256: `7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846`  
 Corrected dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`  

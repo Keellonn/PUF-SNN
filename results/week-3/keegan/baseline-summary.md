@@ -77,5 +77,6 @@ Loading, training, authentication, anomaly detection, logging, and the two-secon
 - Corrected configuration SHA-256: 7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846
 - Corrected input SHA-256: 752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661
 - Original input SHA-256: 0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00
+- Corrected implementation and results commit: `e4e0523d9232ded6c7ff266fd5d495a8c8d31fc0`
 
 The 28 Python tests passed in 13.084 seconds and the corrected dataset validation passed for all 1,800 windows. The original `baseline-results.json` and confusion matrices remain as historical evidence. The updated diagnostics are in `baseline-diagnostics.json`, `baseline-diagnostics.md`, and `original-baseline-audit`.

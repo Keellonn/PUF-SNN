@@ -70,6 +70,7 @@ The recorded environment was an HP Pavilion Plus Laptop 16-ab1xxx running Window
 The timing code uses 20 warm-up predictions and then times 600 individual one-window predictions using `time.perf_counter_ns()`.
 
 Repository: https://github.com/Keellonn/PUF-SNN  
+Corrected implementation and results commit: `e4e0523d9232ded6c7ff266fd5d495a8c8d31fc0`
 Base commit reported by the diagnostic: `2c11de84bf4e321e81ce34d88dd371a25e7d8cc6`  
 Working tree clean before run: `False`; the corrected files had not been committed yet  
 Corrected pilot configuration SHA-256: `7e9b12fa8679c9fe08e9396b1a9ea0f3c36465afce07f666c6d5817021924846`  
