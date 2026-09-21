@@ -626,6 +626,13 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Kept human-derived recording disabled - no headset motion data was collected or retained
 - Finished week 3 new presentation, based on new week 3 results, as last week Will and I presented
 
+## Thursday, September 17, 2026 - 0.92 hours
+
+### 1:05 PM - 2:00 PM - 0.92 hours
+
+- Agenda for this week, word of the week
+- Watched both presentations, first about the Kirchoffs key, then about digital twins
+
 ## Sunday, September 20, 2026 - 3.22 hours
 
 ### 6:52 PM - 10:05 PM - 3.22 hours
