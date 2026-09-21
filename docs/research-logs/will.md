@@ -498,7 +498,7 @@ The current simulated design contains 128 ring oscillators with fixed adjacent d
 (RO0, RO1), (RO2, RO3), ... , (RO126, RO127)
 
 Each pair produces one response bit using this comparison:
-response[n] = 1 if frequency(RO[n]) > frequency(RO[2n+1])
+response[n] = 1 if frequency(RO[2n]) > frequency(RO[2n+1])
 reponse[n] = 0 If anything else
 
 Since each is use in exactly one pair, the design currently creates a fixed 64-Bit response.
@@ -794,8 +794,14 @@ The current limiations are:
 - Explained how to transistion into layer 3, once reconstruction is finalized
 - Added my Week 3 work into Keegan and I's presentation
 
+# 1:04pm - 1:50pm (0.77 Hours)
+- Weekly meeting
+    - Listened to Zane's presentation on Kirchhoff Law Johnson Noise Key exchange systems
+    - Listened to Shreyas's presentation on digital twins
+- Listened to presentation feedback to try and improve upon my own presentations
+
 # Friday September, 18
-## 2:00pm - 2:18pm ()
+## 2:00pm - 2:18pm (0.30 Hours)
 - Senior Design PUF Consultation
     - Met with a senior design student, Jayden Jones, who is working on FPGA-based PUF application
     - Discussed my simulated PUF architecture
