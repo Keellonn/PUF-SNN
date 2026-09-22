@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/puf-snn/authenticated-window.schema.json",
+  "title": "PUF-SNN authenticated motion-window envelope v1.0",
+  "description": "One processed motion window plus its HMAC metadata. The HMAC input is the canonical UTF-8 serialization of the protected object only. Verifier-generated audit results are stored separately and are not trusted from this sender message.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protected",
+    "authentication"
+  ],
+  "properties": {
+    "protected": {
+      "$ref": "#/$defs/protectedMessage"
+    },
+    "authentication": {
+      "$ref": "#/$defs/authentication"
+    }
+  },
+  "$defs": {
+    "protectedMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_version",
+        "message_schema_version",
+        "payload_schema_version",
+        "device_id",
+        "session_id",
+        "window_id",
+        "sequence_number",
+        "capture_start_ns",
+        "capture_end_ns",
+        "payload_encoding",
+        "data_quality",
+        "payload"
+      ],
+      "properties": {
+        "protocol_version": {
+          "const": "1.0"
+        },
+        "message_schema_version": {
+          "const": "1.0"
+        },
+        "payload_schema_version": {
+          "const": "0.2"
+        },
+        "device_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Public pseudonymous device identifier. The HMAC and session state provide authentication, not this identifier alone."
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "window_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sequence_number": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capture_start_ns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capture_end_ns": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "payload_encoding": {
+          "const": "puf-snn-fixed-decimal-json-v1"
+        },
+        "data_quality": {
+          "$ref": "#/$defs/dataQuality"
+        },
+        "payload": {
+          "$ref": "#/$defs/motionPayload"
+        }
+      }
+    },
+    "dataQuality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sample_count",
+        "tracking_valid_count",
+        "tracking_valid_fraction_ppm"
+      ],
+      "properties": {
+        "status": {
+          "const": "pass"
+        },
+        "sample_count": {
+          "const": 120
+        },
+        "tracking_valid_count": {
+          "type": "integer",
+          "minimum": 114,
+          "maximum": 120
+        },
+        "tracking_valid_fraction_ppm": {
+          "type": "integer",
+          "minimum": 950000,
+          "maximum": 1000000,
+          "description": "Valid tracking fraction in integer parts per million so canonical serialization never depends on float formatting."
+        }
+      }
+    },
+    "motionPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinate_frame",
+        "target_sample_rate_hz",
+        "samples"
+      ],
+      "properties": {
+        "coordinate_frame": {
+          "const": "unity_device_origin"
+        },
+        "target_sample_rate_hz": {
+          "const": 60
+        },
+        "samples": {
+          "type": "array",
+          "minItems": 120,
+          "maxItems": 120,
+          "items": {
+            "$ref": "#/$defs/sample"
+          }
+        }
+      }
+    },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sample_index",
+        "capture_time_ns",
+        "position_m",
+        "orientation_xyzw",
+        "tracking_valid"
+      ],
+      "properties": {
+        "sample_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 119
+        },
+        "capture_time_ns": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "position_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/fixedDecimal"
+          }
+        },
+        "orientation_xyzw": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/fixedDecimal"
+          }
+        },
+        "tracking_valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fixedDecimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)\\.[0-9]{8}$",
+      "description": "A finite motion value encoded as a base-10 string with exactly eight digits after the decimal point. Negative zero is forbidden by the serializer."
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "key_id",
+        "tag_hex"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "HMAC-SHA-256"
+        },
+        "key_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Public identifier for the active session key. It is not the key or reconstructed credential."
+        },
+        "tag_hex": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
