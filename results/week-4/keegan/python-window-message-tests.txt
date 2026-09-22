@@ -1,0 +1,21 @@
+test_builder_accepts_exactly_114_tracking_valid_samples (test_window_message.WindowMessageTests.test_builder_accepts_exactly_114_tracking_valid_samples)
+the protected message accepts the existing 95 percent quality boundary ... ok
+test_builder_creates_expected_versioned_message (test_window_message.WindowMessageTests.test_builder_creates_expected_versioned_message)
+the builder includes the required protected metadata, quality, and payload ... ok
+test_builder_rejects_bad_input_before_authentication (test_window_message.WindowMessageTests.test_builder_rejects_bad_input_before_authentication)
+short, low-quality, and nonfinite windows cannot enter the authentication layer ... ok
+test_canonical_bytes_are_deterministic (test_window_message.WindowMessageTests.test_canonical_bytes_are_deterministic)
+equivalent protected objects always produce the same compact UTF-8 bytes ... ok
+test_each_protected_section_changes_the_tag (test_window_message.WindowMessageTests.test_each_protected_section_changes_the_tag)
+changing protected metadata, quality, or motion data invalidates the original tag ... ok
+test_envelope_keeps_tag_outside_the_protected_object (test_window_message.WindowMessageTests.test_envelope_keeps_tag_outside_the_protected_object)
+the final envelope separates protected sender data from authentication output ... ok
+test_motion_values_use_fixed_eight_decimal_strings (test_window_message.WindowMessageTests.test_motion_values_use_fixed_eight_decimal_strings)
+motion values have one language-independent decimal representation ... ok
+test_python_canonical_bytes_match_shared_golden_vector (test_window_message_golden.GoldenWindowMessageTests.test_python_canonical_bytes_match_shared_golden_vector)
+Python produces the fixed byte count, SHA-256, and test-only HMAC ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.026s
+
+OK

@@ -1,0 +1,15 @@
+{
+  "purpose": "public test-only cross-language vector; never use this key for a real session",
+  "source": "fixed artificial Python and Unity test window",
+  "source_window_id": "quest-02-session-01-nod-000-window-000",
+  "protocol_version": "1.0",
+  "message_schema_version": "1.0",
+  "payload_encoding": "puf-snn-fixed-decimal-json-v1",
+  "key_id": "week4-test-session-key-001",
+  "test_session_key_hex": "1111111111111111111111111111111111111111111111111111111111111111",
+  "canonical_byte_count": 24308,
+  "canonical_sha256": "87c89fca1426ed031788192fbcee551e91036f5d72301da4a7d5137f63bfdf2d",
+  "expected_hmac_sha256": "b8ae3c52deefcb0432334388671bf82f8fec41b1a2f7edb016f5012301a882e1",
+  "canonical_file": "canonical-protected-message.json",
+  "envelope_file": "authenticated-window-example.json"
+}

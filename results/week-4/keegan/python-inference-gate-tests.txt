@@ -1,0 +1,13 @@
+test_accepted_window_keeps_identical_classifier_features (test_inference_gate.InferenceGateTests.test_accepted_window_keeps_identical_classifier_features)
+canonical fixed-decimal transport does not change the conventional feature vector ... ok
+test_inconsistent_result_and_reason_is_rejected (test_inference_gate.InferenceGateTests.test_inconsistent_result_and_reason_is_rejected)
+accept and reject decisions must use consistent reason values ... ok
+test_mismatched_verifier_result_is_rejected (test_inference_gate.InferenceGateTests.test_mismatched_verifier_result_is_rejected)
+an acceptance for another window cannot unlock this payload ... ok
+test_rejected_window_never_reaches_consumer (test_inference_gate.InferenceGateTests.test_rejected_window_never_reaches_consumer)
+a rejected verifier result stops before feature processing or inference ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+OK

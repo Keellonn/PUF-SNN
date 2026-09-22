@@ -1,0 +1,1951 @@
+{
+  "protected": {
+    "protocol_version": "1.0",
+    "message_schema_version": "1.0",
+    "payload_schema_version": "0.2",
+    "device_id": "quest-02",
+    "session_id": "quest-02-session-01",
+    "window_id": "quest-02-session-01-nod-000-window-000",
+    "sequence_number": 0,
+    "capture_start_ns": 1000000000,
+    "capture_end_ns": 3000000000,
+    "payload_encoding": "puf-snn-fixed-decimal-json-v1",
+    "data_quality": {
+      "status": "pass",
+      "sample_count": 120,
+      "tracking_valid_count": 120,
+      "tracking_valid_fraction_ppm": 1000000
+    },
+    "payload": {
+      "coordinate_frame": "unity_device_origin",
+      "target_sample_rate_hz": 60,
+      "samples": [
+        {
+          "sample_index": 0,
+          "capture_time_ns": 1000000000,
+          "position_m": [
+            "0.12500000",
+            "-0.25000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 1,
+          "capture_time_ns": 1016666667,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 2,
+          "capture_time_ns": 1033333334,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 3,
+          "capture_time_ns": 1050000001,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 4,
+          "capture_time_ns": 1066666668,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 5,
+          "capture_time_ns": 1083333335,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 6,
+          "capture_time_ns": 1100000002,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 7,
+          "capture_time_ns": 1116666669,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 8,
+          "capture_time_ns": 1133333336,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 9,
+          "capture_time_ns": 1150000003,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 10,
+          "capture_time_ns": 1166666670,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 11,
+          "capture_time_ns": 1183333337,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 12,
+          "capture_time_ns": 1200000004,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 13,
+          "capture_time_ns": 1216666671,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 14,
+          "capture_time_ns": 1233333338,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 15,
+          "capture_time_ns": 1250000005,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 16,
+          "capture_time_ns": 1266666672,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 17,
+          "capture_time_ns": 1283333339,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 18,
+          "capture_time_ns": 1300000006,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 19,
+          "capture_time_ns": 1316666673,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 20,
+          "capture_time_ns": 1333333340,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 21,
+          "capture_time_ns": 1350000007,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 22,
+          "capture_time_ns": 1366666674,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 23,
+          "capture_time_ns": 1383333341,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 24,
+          "capture_time_ns": 1400000008,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 25,
+          "capture_time_ns": 1416666675,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 26,
+          "capture_time_ns": 1433333342,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 27,
+          "capture_time_ns": 1450000009,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 28,
+          "capture_time_ns": 1466666676,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 29,
+          "capture_time_ns": 1483333343,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 30,
+          "capture_time_ns": 1500000010,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 31,
+          "capture_time_ns": 1516666677,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 32,
+          "capture_time_ns": 1533333344,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 33,
+          "capture_time_ns": 1550000011,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 34,
+          "capture_time_ns": 1566666678,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 35,
+          "capture_time_ns": 1583333345,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 36,
+          "capture_time_ns": 1600000012,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 37,
+          "capture_time_ns": 1616666679,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 38,
+          "capture_time_ns": 1633333346,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 39,
+          "capture_time_ns": 1650000013,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 40,
+          "capture_time_ns": 1666666680,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 41,
+          "capture_time_ns": 1683333347,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 42,
+          "capture_time_ns": 1700000014,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 43,
+          "capture_time_ns": 1716666681,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 44,
+          "capture_time_ns": 1733333348,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 45,
+          "capture_time_ns": 1750000015,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 46,
+          "capture_time_ns": 1766666682,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 47,
+          "capture_time_ns": 1783333349,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 48,
+          "capture_time_ns": 1800000016,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 49,
+          "capture_time_ns": 1816666683,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 50,
+          "capture_time_ns": 1833333350,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 51,
+          "capture_time_ns": 1850000017,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 52,
+          "capture_time_ns": 1866666684,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 53,
+          "capture_time_ns": 1883333351,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 54,
+          "capture_time_ns": 1900000018,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 55,
+          "capture_time_ns": 1916666685,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 56,
+          "capture_time_ns": 1933333352,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 57,
+          "capture_time_ns": 1950000019,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 58,
+          "capture_time_ns": 1966666686,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 59,
+          "capture_time_ns": 1983333353,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 60,
+          "capture_time_ns": 2000000020,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 61,
+          "capture_time_ns": 2016666687,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 62,
+          "capture_time_ns": 2033333354,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 63,
+          "capture_time_ns": 2050000021,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 64,
+          "capture_time_ns": 2066666688,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 65,
+          "capture_time_ns": 2083333355,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 66,
+          "capture_time_ns": 2100000022,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 67,
+          "capture_time_ns": 2116666689,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 68,
+          "capture_time_ns": 2133333356,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 69,
+          "capture_time_ns": 2150000023,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 70,
+          "capture_time_ns": 2166666690,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 71,
+          "capture_time_ns": 2183333357,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 72,
+          "capture_time_ns": 2200000024,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 73,
+          "capture_time_ns": 2216666691,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 74,
+          "capture_time_ns": 2233333358,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 75,
+          "capture_time_ns": 2250000025,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 76,
+          "capture_time_ns": 2266666692,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 77,
+          "capture_time_ns": 2283333359,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 78,
+          "capture_time_ns": 2300000026,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 79,
+          "capture_time_ns": 2316666693,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 80,
+          "capture_time_ns": 2333333360,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 81,
+          "capture_time_ns": 2350000027,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 82,
+          "capture_time_ns": 2366666694,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 83,
+          "capture_time_ns": 2383333361,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 84,
+          "capture_time_ns": 2400000028,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 85,
+          "capture_time_ns": 2416666695,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 86,
+          "capture_time_ns": 2433333362,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 87,
+          "capture_time_ns": 2450000029,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 88,
+          "capture_time_ns": 2466666696,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 89,
+          "capture_time_ns": 2483333363,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 90,
+          "capture_time_ns": 2500000030,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 91,
+          "capture_time_ns": 2516666697,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 92,
+          "capture_time_ns": 2533333364,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 93,
+          "capture_time_ns": 2550000031,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 94,
+          "capture_time_ns": 2566666698,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 95,
+          "capture_time_ns": 2583333365,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 96,
+          "capture_time_ns": 2600000032,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 97,
+          "capture_time_ns": 2616666699,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 98,
+          "capture_time_ns": 2633333366,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 99,
+          "capture_time_ns": 2650000033,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 100,
+          "capture_time_ns": 2666666700,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 101,
+          "capture_time_ns": 2683333367,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 102,
+          "capture_time_ns": 2700000034,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 103,
+          "capture_time_ns": 2716666701,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 104,
+          "capture_time_ns": 2733333368,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 105,
+          "capture_time_ns": 2750000035,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 106,
+          "capture_time_ns": 2766666702,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 107,
+          "capture_time_ns": 2783333369,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 108,
+          "capture_time_ns": 2800000036,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 109,
+          "capture_time_ns": 2816666703,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 110,
+          "capture_time_ns": 2833333370,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 111,
+          "capture_time_ns": 2850000037,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 112,
+          "capture_time_ns": 2866666704,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 113,
+          "capture_time_ns": 2883333371,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 114,
+          "capture_time_ns": 2900000038,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 115,
+          "capture_time_ns": 2916666705,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 116,
+          "capture_time_ns": 2933333372,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 117,
+          "capture_time_ns": 2950000039,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 118,
+          "capture_time_ns": 2966666706,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        },
+        {
+          "sample_index": 119,
+          "capture_time_ns": 2983333373,
+          "position_m": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000"
+          ],
+          "orientation_xyzw": [
+            "0.00000000",
+            "0.00000000",
+            "0.00000000",
+            "1.00000000"
+          ],
+          "tracking_valid": true
+        }
+      ]
+    }
+  },
+  "authentication": {
+    "algorithm": "HMAC-SHA-256",
+    "key_id": "week4-test-session-key-001",
+    "tag_hex": "b8ae3c52deefcb0432334388671bf82f8fec41b1a2f7edb016f5012301a882e1"
+  }
+}
