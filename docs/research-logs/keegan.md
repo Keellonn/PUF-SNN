@@ -2,7 +2,7 @@
 
 **Owner:** Keegan Hoyne  
 **Current week:** Week 4  
-**Last updated:** September 20, 2026
+**Last updated:** September 22, 2026
 
 ## Current research question
 
@@ -409,13 +409,35 @@ Corrected dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34
 Original audited dataset SHA-256: `0e29a1091db2a82968e75ef879934cb3164c38f4df874766f2c29c76b3231f00`  
 Working tree status during the corrected run: not clean because the fixes had not been committed yet
 
+# Week 4: Authenticated Window Integration
+
+## Shared interface and ownership agreement
+
+I confirmed the authenticated-window contract with Will before continuing the integration work. We agreed that HMAC-SHA-256 covers the complete canonical `protected` object, motion values use fixed eight-decimal strings, and the tag remains in a separate `authentication` object. I am responsible for converting validated Quest windows into the protected motion payload and ensuring that rejected verifier decisions cannot reach inference. Will is responsible for PUF credential reconstruction, session-key derivation, tag verification, verifier-owned replay and sequence state, and the authentication attack measurements.
+
+The protected object now includes the protocol and schema versions, device, session, and window identifiers, sequence number, capture bounds, data-quality summary, and all 120 processed motion samples. Labels, dataset splits, predictions, and verifier audit decisions remain outside the trusted sender message.
+
+## Cross-language representation and inference gate
+
+I implemented the Python authenticated-window builder, deterministic canonical serializer, strict JSON schema, test-only golden-vector generator, and authentication-to-inference gate. The canonicalization rules use sorted compact UTF-8 JSON, exactly eight decimal places for position and quaternion values, round-half-even behavior, normalized negative zero, integer timestamps and quality counts, and rejection of nonfinite values.
+
+I also implemented the Unity canonical writer. Python and Unity produced the same SHA-256 value for the shared artificial motion window. The saved canonical object contains 24,308 bytes and has SHA-256 `87c89fca1426ed031788192fbcee551e91036f5d72301da4a7d5137f63bfdf2d`. The public test-only key produced expected HMAC-SHA-256 `b8ae3c52deefcb0432334388671bf82f8fec41b1a2f7edb016f5012301a882e1`.
+
+The final targeted evidence had all 8 authenticated-window and golden-vector Python tests pass in 0.025 seconds, all 4 inference-gate tests pass in 0.013 seconds, and all 13 Unity EditMode tests pass. The Unity total includes the original nine logger tests and four new tests for the 95 percent boundary, Python golden hash, nonfinite-value rejection, and protected-motion mutation.
+
+The inference gate requires an accepted verifier result to match the device, session, window, and sequence number in the protected message. A rejected or mismatched result stops before feature processing or inference. The accepted-path test also confirms that the fixed-decimal transport representation preserves the conventional-classifier feature vector.
+
+Repository: https://github.com/Keellonn/PUF-SNN  
+Authenticated-window interface commit: `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`  
+Cross-language serialization, inference-gate, tests, and evidence commit: `9bb890c84a23dfef2ecf087292e5d772328c92c5`
+
 ## Next modeling step
 
-1. Commit the corrected generator, diagnostic results, logger tests, and documentation so the current evidence has a permanent commit.
-2. Agree with Will on the canonical versioned authenticated-window representation and protect the complete serialized message, including the required metadata.
-3. Implement and document the first five Tier-1 authentication attacks and their expected rejection reasons.
-4. Measure authentication latency and total post-window latency before starting the SNN baseline.
-5. Continue Quest logger work only without collecting or retaining human-derived motion data unless an approved later phase changes that scope.
+1. Connect the verifier implementation and derived test session key to the agreed authenticated-window interface.
+2. Run and document the five Tier-1 authentication attacks with exact expected and observed rejection reasons.
+3. Measure authentication latency and total post-window latency using the stable integrated path.
+4. Begin the SNN baseline after the Tier-1 integration path is reproducible and its current limitations are documented.
+5. Continue Quest logger work without collecting or retaining human-derived motion data unless an approved later phase changes that scope.
 
 ---
 
@@ -646,3 +668,25 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Fixed the Unity Quest logger test and writer issues, then confirmed that all 9 Unity EditMode tests passed.
 - Updated my Week 3 results documentation and research log with the corrected baseline results, diagnostic evidence, test totals, logger results, and current limitations
 - Updated the Week 3 slideshow content and speaker notes so the slides use the corrected metrics, explain the original leakage issue, replace the outdated 3-test result, and show the correct next Tier 1 integration work before beginning the SNN baseline
+
+## Monday, September 21, 2026 - 3.35 hours
+
+### 9:15 PM - 12:36 AM - 3.35 hours
+
+- Confirmed the shared authenticated-window design with Will, including that HMAC-SHA-256 covers the complete canonical protected object, motion values use fixed eight-decimal strings, and the authentication tag remains outside the protected object
+- Confirmed that I am responsible for building the validated motion payload and controlling entry into inference, while Will is responsible for connecting the reconstructed credential, session-key derivation, and verifier logic
+- Added the strict authenticated-window JSON schema and documented the versioned interface between the Quest motion pipeline and authentication layer
+- Implemented deterministic Python serialization using sorted compact UTF-8 JSON, fixed eight-decimal motion strings, round-half-even behavior, and negative-zero normalization
+- Added input checks that reject short windows, tracking coverage below 95 percent, invalid sample structures, and nonfinite motion values before authentication
+- Added a shared test-only golden vector containing the canonical protected message, schema-valid authenticated envelope, expected SHA-256 hash, and expected HMAC-SHA-256 tag
+- Confirmed that the generated canonical message contains 24,308 bytes and has SHA-256 hash `87c89fca1426ed031788192fbcee551e91036f5d72301da4a7d5137f63bfdf2d`
+- Added the Python inference gate so rejected authentication decisions cannot reach feature processing or classification
+- Added tests confirming that verifier results must match the correct device, session, window, and sequence number before the motion payload can proceed
+- Added the Unity canonical message writer and confirmed that Unity produces the same canonical SHA-256 value as Python
+- Ran all eight Python window-message and golden-vector tests successfully
+- Ran all four Python inference-gate tests successfully
+- Ran all 13 Unity EditMode tests successfully, including the four new canonical-serialization tests
+- Saved the generated shared artifacts, Python test evidence, and Unity Test Runner screenshot in the Week 4 results folders
+- Committed and pushed the initial authenticated-window interface as `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`
+- Committed and pushed the cross-language serialization, inference-gate, tests, and evidence as `9bb890c84a23dfef2ecf087292e5d772328c92c5`
+- Updated the Week 4 results and research log with the recorded evidence, limitations, and repository provenance
