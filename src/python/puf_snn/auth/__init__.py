@@ -5,6 +5,8 @@ from puf_snn.auth.window_message import build_protected_message
 from puf_snn.auth.window_message import canonicalize_protected_message
 from puf_snn.auth.inference_gate import protected_payload_to_motion_record
 from puf_snn.auth.inference_gate import route_verified_window
+from puf_snn.auth.verifier import Verifier, VerificationResult, provision_verifier
+from puf_snn.auth.sender import Sender
 
 
 __all__ = [
@@ -13,4 +15,8 @@ __all__ = [
     "canonicalize_protected_message",
     "protected_payload_to_motion_record",
     "route_verified_window",
+    "Verifier",
+    "VerificationResult",
+    "provision_verifier",
+    "Sender",
 ]

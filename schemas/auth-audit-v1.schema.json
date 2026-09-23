@@ -1,0 +1,421 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PUF-SNN operational authentication audit v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "audit_schema",
+    "protocol_version",
+    "event_id",
+    "event_type",
+    "origin",
+    "attempt_id",
+    "device_id",
+    "session_id",
+    "window_id",
+    "identity_authenticated",
+    "sequence_number",
+    "observed_protocol_version",
+    "recorded_utc",
+    "recorded_monotonic_ns",
+    "decision",
+    "reason",
+    "detail",
+    "authentication_result",
+    "order_result",
+    "expected_sequence",
+    "last_accepted_before",
+    "last_accepted_after",
+    "missing_start",
+    "missing_end",
+    "missing_count",
+    "state_before",
+    "state_after",
+    "authenticated_bytes_sha256",
+    "latency_ns",
+    "provenance"
+  ],
+  "properties": {
+    "audit_schema": {
+      "const": "puf-snn-auth-audit-v1"
+    },
+    "protocol_version": {
+      "const": "2.0"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}:[1-9][0-9]*$"
+    },
+    "event_type": {
+      "enum": [
+        "reconstruction",
+        "session_establishment",
+        "session_message",
+        "session_control",
+        "window",
+        "sender_window"
+      ]
+    },
+    "origin": {
+      "enum": [
+        "sender",
+        "verifier"
+      ]
+    },
+    "attempt_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "device_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "window_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "identity_authenticated": {
+      "type": "boolean"
+    },
+    "sequence_number": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "observed_protocol_version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "recorded_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$"
+    },
+    "recorded_monotonic_ns": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "decision": {
+      "enum": [
+        "accept",
+        "reject",
+        "closed"
+      ]
+    },
+    "reason": {
+      "enum": [
+        "accepted",
+        "failed_reconstruction",
+        "malformed_message",
+        "unsupported_protocol_version",
+        "invalid_payload_schema",
+        "unknown_device",
+        "unknown_session",
+        "inactive_session",
+        "expired_session",
+        "session_busy",
+        "session_refused",
+        "resource_limit",
+        "handshake_timeout",
+        "invalid_challenge",
+        "key_confirmation_failed",
+        "invalid_tag",
+        "invalid_key_id",
+        "device_session_mismatch",
+        "data_quality_failure",
+        "duplicate_sequence",
+        "stale_sequence",
+        "future_sequence_gap",
+        "sequence_out_of_range",
+        "session_limit_reached",
+        "session_closed",
+        "session_replaced",
+        "internal_error"
+      ]
+    },
+    "detail": {
+      "enum": [
+        null,
+        "decoder_failure",
+        "invalid_format_or_padding",
+        "backend_exception",
+        "audit_unavailable",
+        "invariant_failure"
+      ]
+    },
+    "authentication_result": {
+      "enum": [
+        "pass",
+        "fail",
+        "not_checked"
+      ]
+    },
+    "order_result": {
+      "enum": [
+        "pass",
+        "duplicate",
+        "stale",
+        "gap",
+        "not_checked"
+      ]
+    },
+    "expected_sequence": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "last_accepted_before": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "last_accepted_after": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "missing_start": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "missing_end": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "missing_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 18446744073709551615
+    },
+    "state_before": {
+      "enum": [
+        null,
+        "PENDING",
+        "ACTIVE",
+        "FAILED",
+        "EXPIRED",
+        "CLOSED"
+      ]
+    },
+    "state_after": {
+      "enum": [
+        null,
+        "PENDING",
+        "ACTIVE",
+        "FAILED",
+        "EXPIRED",
+        "CLOSED"
+      ]
+    },
+    "authenticated_bytes_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "latency_ns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reconstruction",
+        "session_establishment",
+        "kdf",
+        "sender_prepare",
+        "sender_hmac",
+        "verifier_auth",
+        "audit_io"
+      ],
+      "properties": {
+        "reconstruction": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "session_establishment": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "kdf": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sender_prepare": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sender_hmac": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "verifier_auth": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "audit_io": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "source_id",
+        "config_sha256",
+        "input_artifact_sha256",
+        "source_record_id"
+      ],
+      "properties": {
+        "run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "config_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "input_artifact_sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "accept"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reason": {
+            "const": "accepted"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "closed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "event_type": {
+            "const": "session_control"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "authentication_result": {
+            "enum": [
+              "fail",
+              "not_checked"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "authenticated_bytes_sha256": {
+            "type": "null"
+          },
+          "identity_authenticated": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}

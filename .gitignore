@@ -139,3 +139,9 @@ sim_results/
 
 # temporary PUF simulation runs
 results/week-2/
+
+# layer 2 PUF simulation runs
+results/week-4/will/reconstruction
+
+#layer 3 PUF simulation runs
+results/week-4/will/authentication

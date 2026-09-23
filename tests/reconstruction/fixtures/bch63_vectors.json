@@ -1,0 +1,20 @@
+{
+  "provenance": "Approved 2026-09-22 checkpoint: independent GF(64) root-product construction and binary polynomial division, cross-checked against galois 0.4.11; not same-backend round trips.",
+  "primitive_polynomial_hex": "43",
+  "generator_polynomial_hex": "86e8113",
+  "packing": "codeword coefficients x^62..x^0 placed MSB-first in 8 bytes; final low bit is zero transport padding outside the code",
+  "vectors": [
+    {"credential_hex": "00000000", "packed_codeword_hex": "0000000000000000"},
+    {"credential_hex": "00000001", "packed_codeword_hex": "000000010dd02260"},
+    {"credential_hex": "12345678", "packed_codeword_hex": "123456780f17b14a"},
+    {"credential_hex": "ffffffff", "packed_codeword_hex": "ffffffff0b04e03c"},
+    {"credential_hex": "80000000", "packed_codeword_hex": "80000000086e8112"}
+  ],
+  "six_error_miscorrection": {
+    "enrolled_credential_hex": "00000000",
+    "flipped_indices": [31, 36, 37, 39, 40, 41],
+    "reported_correction_count": 5,
+    "candidate_credential_hex": "00000001",
+    "padding_valid": true
+  }
+}

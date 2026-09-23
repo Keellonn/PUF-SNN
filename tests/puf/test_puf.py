@@ -24,9 +24,17 @@ CONFIG_PATH = ROOT / "configs" / "puf_baseline.json"
 class ConfigurationTests(unittest.TestCase):
     def test_default_configuration(self) -> None:
         config = load_config(CONFIG_PATH)
+        self.assertEqual(config.number_of_devices, 6)
         self.assertEqual(config.number_of_oscillators, 128)
         self.assertEqual(config.pairing_scheme, "adjacent")
+        self.assertEqual(config.nominal_frequency, 100.0)
+        self.assertEqual(config.manufacturing_std, 1.0)
+        self.assertEqual(config.aging_std, 0.0)
+        self.assertEqual(config.repeated_reads, 100)
+        self.assertEqual(config.reference_conditions.environmental_offset, 0.0)
         self.assertEqual(config.reference_conditions.measurement_noise_std, 0)
+        self.assertEqual(config.read_conditions, ReadConditions(0.0, 0.1))
+        self.assertEqual(config.noise_sweep, (0.0, 0.05, 0.1, 0.25, 0.5, 1.0))
 
     def test_invalid_parameters(self) -> None:
         config = load_config(CONFIG_PATH)

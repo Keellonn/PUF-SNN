@@ -1,2 +1,3 @@
-# Python >= 3.10, Simulation and metrics use the standard library.
+# Python >= 3.12,<3.14. Layer 1 simulation and metrics use the standard library.
 matplotlib==3.10.6
+galois==0.4.11

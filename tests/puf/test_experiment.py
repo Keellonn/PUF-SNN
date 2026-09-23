@@ -14,11 +14,22 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src" / "python"))
 
 from scripts.run_puf_baseline import run_baseline, save_tables, simulate
-from puf_snn.puf.variables import ReadConditions, load_config
+from puf_snn.puf.variables import ExperimentConfig, ReadConditions
+
+# Pin scientific regression inputs independently of the CLI convenience config.
+# Seed 1234 is one member of the corrected 20-run, six-device cohort.
+FROZEN_BASELINE = ExperimentConfig(
+    number_of_devices=6, number_of_oscillators=128,
+    pairing_scheme="adjacent", nominal_frequency=100.0,
+    manufacturing_std=1.0, aging_std=0.0, repeated_reads=100,
+    random_seed=1234, reference_conditions=ReadConditions(0.0, 0.0),
+    read_conditions=ReadConditions(0.0, 0.1),
+    noise_sweep=(0.0, 0.05, 0.1, 0.25, 0.5, 1.0),
+)
 
 class ExperimentTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.config = replace(load_config(ROOT / "configs/puf_baseline.json"),
+        self.config = replace(FROZEN_BASELINE,
                               number_of_devices=3, repeated_reads=8,
                               number_of_oscillators=16,
                               noise_sweep=(0.0, 0.1, 1.0))
@@ -112,10 +123,37 @@ class ExperimentTests(unittest.TestCase):
             "uniqueness_pairs.csv":
                 "e57dbb259375e41b0f854c8a3740341cb15dff68ceaf2834fd9974fe50209e93",
         }
-        config = load_config(ROOT / "configs/puf_baseline.json")
+        # Historical private-repository fixture predates the six-device cohort.
+        # Preserve its hashes and original inputs, not the current CLI defaults.
+        config = replace(FROZEN_BASELINE, number_of_devices=10)
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)
             save_tables(directory, simulate(config))
+            actual = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                      for path in directory.glob("*.csv")}
+        self.assertEqual(actual, expected)
+
+    def test_corrected_six_device_baseline_csvs_match_exactly(self) -> None:
+        # Frozen archive: sim_results/run-seed-1234-v1xoukxp (Python 3.12.4),
+        # recorded revision 379aaece56595e27ec1830d39b3fa9877b7aabe2.
+        # Separate from, and additional to, the historical ten-device fixture.
+        expected = {
+            "devices.csv":
+                "af3ee124c10bc3605f468ca765276d1d29c86958b7328deaaedf61aab3b63300",
+            "metrics.csv":
+                "5980768d9a01a9e6ac78d26ae6fd0d5d6c5a62522002003461485cf48aa14ab1",
+            "noise_sweep.csv":
+                "392744984210f639a904b4705b0cde5c84de22d03a5d4f964c42aba05bc368b7",
+            "noise_sweep_summary.csv":
+                "c0a8e6377f57471b6dbd89ba56c263ccc1d89c38ce958a5f8931a99709983509",
+            "summary.csv":
+                "6e52dd3859f7091f1368528ef0da3ac02235723c0fe2998185e5a2104f69f197",
+            "uniqueness_pairs.csv":
+                "6fdc6f94ec53aa3e06064f3e8e09538d1512d9bf26d670d1e1dafbfa444b0681",
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            save_tables(directory, simulate(FROZEN_BASELINE))
             actual = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
                       for path in directory.glob("*.csv")}
         self.assertEqual(actual, expected)

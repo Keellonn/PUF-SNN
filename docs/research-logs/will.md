@@ -483,9 +483,9 @@ Max:
 - Uniqueness: 52.6041667%
 - Uniformity: 55.7291667%
 
-The simulated PUF shows an average BER of roughly 3.23 %. The reliability is roughly 96.77 %. 
-The inter-device uniqueness averages to  roughly 49.71 % meaning that the responses from different simulated devices differ in almost half of their bits.
-The uniformity averaged to roughly 50.19 % meaning that there is almost a perfect balance between zeros and ones.
+The simulated PUF shows an average BER of 3.207552083%. The reliability is 96.792447917%.
+The inter-device uniqueness averages to 49.578125000% meaning that the responses from different simulated devices differ in almost half of their bits.
+The uniformity averaged to 50.065104167% meaning that there is almost a perfect balance between zeros and ones.
 
 These measurements and readings are the Layer 1 Baseline for selecting the layer 2 credential-reconstruction mechanism.
 
@@ -743,7 +743,7 @@ The current limiations are:
 # Monday September, 14
 ## 8:46pm - 10:19pm (1.55 Hours)
 - Measured and sorted the baseline layer 1 PUF simulator
-- Created a spreadsheet, layer1baseline.xlsx
+- Created a spreadsheet, layer1baseline.csv
 - Used it to sort statistics of the PUF simulator before reconstruction
 - I ran 20 simulations with different seeds and logged:
     - Seed
@@ -824,3 +824,80 @@ The current limiations are:
         - Authentication process and design (Not currently implemented)
         - Strong PUF design (Out of scope)
     - Jayden indicated that major gaps in his research were about statistics and effictiveness testing and that my testing model was very useful for his team's design
+
+# Monday September, 21
+## 9:22pm - 11:47pm (2.42 Hours)
+- Began implementing layer 2 reconstruction
+- Defined the code-offset construction using the 64 bit simulated PUF response
+    - Fixed 63 bit subset for BCH(63, 36, t = 5)
+- Defined the 32 bit pilot credential with four padding bits with seperate enrollment behavior from reconstruction
+- Developed the Layer 2 outcomes,
+    - Successful reconstruction
+    - Decoder failure
+    - Invalid padding
+    - Valid format miscorrection
+# Tuesday September, 22
+## 1:04pm - 4:17pm (3.22 Hours)
+- Continued implementation for layer 2
+- Completed the main enrollment and reconstruction flow:
+    - Helper data generation
+    - BCH decoding
+    - Credential recovery
+    - Structured reconstruction results
+- Reviewed reconstruction behavior around the BCH correction limit and comfirmed that response outside the t=5 scope may fail or produce invalid padding
+- Reviewed and elevated noise layer 2 results to understand the impact of noise
+- Layer 2 experiment results,
+    - 12,000 nominal reconstruction attempts
+    - 11,805 correct reconstructions
+    - 195 failures
+    - Success rate: 98.375%
+    - FRR: 1.625%
+    - Breakdown of failures,
+        - 186 Decoder failures
+        - 7 invalid-padding results
+        - 2 valid format wrong credentials
+
+## 5:48pm - 7:45pm (1.95 Hours)
+- Finalized layer 2
+- Began implementation for a basic layer 3 design
+- Defined the session establishment flow using,
+    - Reconstructed credential
+    - Fresh client/server nonces
+    - Transcript
+    - HKDF-SHA256 session key derivation
+    - Mutual key comfirmation
+- Defined the security boundary so that a valid but incorrect Layer 2 credential cannot create an authenticated session
+- Began defining the canonical authenticated sensor window format
+- Replaced the earlier decimal-serialization concept with an exact binary32/fixed-width representation to support Python/C# authentication
+
+## 10:37pm - 11:59pm (1.37 Hours)
+- Continued implementation for layer 3
+- Developed the sender flow for,
+    - Canonical window serialization
+    - Sequence assignment
+    - HMAC-SHA256 generation
+    - Authenticated transport envelopes
+- Developed the verifier flow for,
+    - Parsing
+    - Session lookup
+    - HMAC Verification
+    - Device and session binding
+    - Quality checks
+    - Strict replay and sequence enforcement
+- Added session lifecycle behavior such as
+    - Active
+    - Closed
+    - Expired
+    - Failed
+    - Replacement
+    - TTL
+    - Maximum window handling
+- Added verifier audit behavior and began validating that rejected messages cannot modify trusted replay state or reach the accepted boundary
+
+
+# Wednesday September, 23
+## 12:00am - 12:36am ()
+- Finalized layer 3 implementation
+
+## 3:46pm - 6:22pm ()
+- Added tier 1 attack implementation

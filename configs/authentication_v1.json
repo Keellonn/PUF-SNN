@@ -1,0 +1,10 @@
+{
+  "config_version": "puf-snn-auth-config-v1",
+  "protocol_profile": "puf-snn-l3-v1-wire2",
+  "handshake_timeout_ms": 10000,
+  "session_ttl_ms": 300000,
+  "max_windows": 10000,
+  "max_pending_sessions": 128,
+  "max_sessions_per_process": 10000,
+  "warmup_iterations": 20
+}

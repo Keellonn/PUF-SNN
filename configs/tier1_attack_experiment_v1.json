@@ -1,0 +1,17 @@
+{
+  "config_version": "puf-snn-tier1-config-v1",
+  "baseline_version": "Layer 3 Authentication Baseline v1",
+  "protocol_profile": "puf-snn-l3-v1-wire2",
+  "attack_set_version": "puf-snn-tier1-attacks-v1",
+  "trials_per_primary_attack": 100,
+  "legitimate_control_trials": 100,
+  "supporting_cross_session_trials": 100,
+  "experiment_seed": 20260923,
+  "warmup_count": 20,
+  "expected_attack_names": ["same_session_replay", "prior_session_replay", "cross_device_substitution", "payload_modification", "metadata_modification"],
+  "prior_session_variant": "authenticated_replacement",
+  "primary_metadata_field": "sequence_number",
+  "result_schema_version": "puf-snn-tier1-attempt-v1",
+  "timing_methodology": "layer3-v1-perf-counter-ns-linear-p95",
+  "confidence_interval_method": "wilson-two-sided-95-z-1.959963984540054"
+}
