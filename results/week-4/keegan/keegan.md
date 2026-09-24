@@ -189,6 +189,7 @@ Evidence files:
 ## Repository provenance
 
 Repository: https://github.com/Keellonn/PUF-SNN  
+SNN results and documentation commit: `0e8a8571900cac9c7f0db6777c1ecd2afff683b9`  
 Initial authenticated-window interface commit: `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`  
 Initial cross-language serialization, inference-gate, tests, and evidence commit: `9bb890c84a23dfef2ecf087292e5d772328c92c5`  
 Final classifier-integration commit: `ab0c5a6d269013bdd1ca84547adeec973f788fa9`  
