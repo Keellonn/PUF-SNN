@@ -1,0 +1,30 @@
+{
+  "channels": [
+    "relative_position_x",
+    "relative_position_y",
+    "relative_position_z",
+    "relative_orientation_x",
+    "relative_orientation_y",
+    "relative_orientation_z",
+    "relative_orientation_w"
+  ],
+  "fitted_from": "train",
+  "mean": [
+    0.0001019601231944465,
+    0.00048628596013888825,
+    0.00016233101111111066,
+    -0.0033323334105728724,
+    0.0003624303741258245,
+    -0.0021235076945395246,
+    0.9913776031072792
+  ],
+  "standard_deviation": [
+    0.006681200067176355,
+    0.006669658737498342,
+    0.006712648879972847,
+    0.06375765008050292,
+    0.10121786757357538,
+    0.050879723035766586,
+    0.01599568987247607
+  ]
+}

@@ -1,21 +1,21 @@
 # Week 4 Results
 
-This week covered the first software integration between the validated Quest motion-window pipeline and the session-authentication layer.
+This week covered the software integration between the validated Quest motion-window pipeline and the session-authentication layer, followed by the first recurrent SNN motion-classification baseline.
 
-The completed work defines a versioned authenticated-window message, a strict JSON schema, deterministic Python and Unity serialization, a shared cross-language golden vector, and a gate that prevents rejected windows from reaching feature processing or inference.
+The completed work defines the initial authenticated-window message and cross-language golden vector, the final Wire Protocol 2.0 classifier boundary, and a three-seed SNN baseline using the accepted 120-sample motion windows.
 
 No human-derived motion data were collected during this work.
 
-## Authenticated-window interface
+## Initial authenticated-window interface
 
-The transmitted message is divided into two top-level sections:
+The initial transmitted message was divided into two top-level sections:
 
-- `protected` contains every sender field covered by the HMAC;
-- `authentication` contains the algorithm name, public session-key identifier, and HMAC tag.
+- `protected` contained every sender field covered by the HMAC;
+- `authentication` contained the algorithm name, public session-key identifier, and HMAC tag.
 
-The authentication tag is kept outside the protected object because a tag cannot be included in its own input. Verifier decisions and experiment results are also excluded from the sender message so the sender cannot claim that its own message was accepted.
+The authentication tag was kept outside the protected object because a tag cannot be included in its own input. Verifier decisions and experiment results were also excluded from the sender message so the sender could not claim that its own message was accepted.
 
-The protected object includes:
+The protected object included:
 
 - protocol, message-schema, and motion-payload versions;
 - pseudonymous device, session, and window identifiers;
@@ -25,23 +25,25 @@ The protected object includes:
 - the protected data-quality summary;
 - all 120 processed position, orientation, timestamp, and tracking-valid samples.
 
-Ground-truth labels, dataset splits, source-trial identifiers, classifier predictions, and verifier audit decisions are not treated as trusted sensor-message fields.
+Ground-truth labels, dataset splits, source-trial identifiers, classifier predictions, and verifier audit decisions were not treated as trusted sensor-message fields.
 
-I confirmed the shared contract with Will. The complete canonical protected object is the HMAC-SHA-256 input, motion values use fixed eight-decimal strings, and the authentication tag remains outside the protected object. I own the validated motion payload and the gate into inference. Will owns PUF credential reconstruction, session-key derivation, tag verification, replay and sequence state, and authentication attack measurements.
+I confirmed the initial shared contract with Will. The complete canonical protected object was the HMAC-SHA-256 input, motion values used fixed eight-decimal strings, and the authentication tag remained outside the protected object. I owned the validated motion payload and the gate into inference. Will owned PUF credential reconstruction, session-key derivation, tag verification, replay and sequence state, and authentication attack measurements.
 
-## Deterministic canonical serialization
+This initial decimal JSON interface was later superseded by Will's frozen Wire Protocol 2.0 binary implementation. The initial files remain as development evidence, but new integration uses the final binary protocol described below.
 
-The Python reference implementation converts the protected object into one deterministic byte representation before authentication. Position and quaternion components are encoded as base-10 strings with exactly eight digits after the decimal point. Values use round-half-even behavior, negative zero is normalized to `0.00000000`, and nonfinite values are rejected.
+## Initial deterministic canonical serialization
 
-Object keys are sorted lexicographically, JSON separators contain no added whitespace, and the final document is encoded as UTF-8 without a byte-order mark. Timestamps, sequence numbers, sample indexes, and quality counts remain integers, while tracking values remain booleans.
+The Python reference implementation converted the protected object into one deterministic byte representation before authentication. Position and quaternion components were encoded as base-10 strings with exactly eight digits after the decimal point. Values used round-half-even behavior, negative zero was normalized to `0.00000000`, and nonfinite values were rejected.
 
-The Unity implementation applies the same ordering, formatting, and validation rules. Its automated test reproduces the SHA-256 value generated by Python for the shared artificial window.
+Object keys were sorted lexicographically, JSON separators contained no added whitespace, and the final document was encoded as UTF-8 without a byte-order mark. Timestamps, sequence numbers, sample indexes, and quality counts remained integers, while tracking values remained booleans.
 
-These rules prevent equivalent motion windows from producing different HMAC inputs because of language-specific floating-point or JSON formatting behavior.
+The Unity implementation applied the same ordering, formatting, and validation rules. Its automated test reproduced the SHA-256 value generated by Python for the shared artificial window.
+
+These rules prevented equivalent motion windows from producing different HMAC inputs because of language-specific floating-point or JSON formatting behavior.
 
 ## Input and data-quality checks
 
-The message builder accepts only windows containing exactly 120 consecutive samples. Every sample must contain:
+The initial message builder accepted only windows containing exactly 120 consecutive samples. Every sample had to contain:
 
 - an integer sample index;
 - an integer capture timestamp;
@@ -49,13 +51,13 @@ The message builder accepts only windows containing exactly 120 consecutive samp
 - four finite quaternion values;
 - a Boolean tracking-valid value.
 
-At least 114 of the 120 samples must have valid tracking, preserving the existing 95 percent quality boundary. The protected quality summary records the sample count, tracking-valid count, and tracking-valid fraction in integer parts per million. Using an integer fraction avoids another cross-language floating-point representation difference.
+At least 114 of the 120 samples had to have valid tracking, preserving the existing 95 percent quality boundary. The protected quality summary recorded the sample count, tracking-valid count, and tracking-valid fraction in integer parts per million. Using an integer fraction avoided another cross-language floating-point representation difference.
 
-A short window, a window below the tracking threshold, or a window containing a nonfinite motion value is rejected before it can enter the authentication layer.
+A short window, a window below the tracking threshold, or a window containing a nonfinite motion value was rejected before it could enter the authentication layer.
 
 ## Shared cross-language golden vector
 
-The shared golden vector uses one fixed artificial motion window and a public test-only key. It contains no human data and the key must never be used for a real session.
+The shared golden vector used one fixed artificial motion window and a public test-only key. It contained no human data and the key must never be used for a real session.
 
 | Field | Recorded value |
 |---|---|
@@ -65,38 +67,97 @@ The shared golden vector uses one fixed artificial motion window and a public te
 | Expected HMAC-SHA-256 | `b8ae3c52deefcb0432334388671bf82f8fec41b1a2f7edb016f5012301a882e1` |
 | Key identifier | `week4-test-session-key-001` |
 
-The independently executed `Get-FileHash` result matched the SHA-256 value stored in `golden-vector.json`. Python and Unity therefore agree on the canonical protected-message representation used by the test vector.
+The independently executed `Get-FileHash` result matched the SHA-256 value stored in `golden-vector.json`. Python and Unity therefore agreed on the initial canonical protected-message representation used by the test vector.
 
-## Authentication-to-inference gate
+## Initial authentication-to-inference gate
 
-The new inference gate keeps the authentication decision separate from the classifier. An accepted result must match the protected message's device ID, session ID, window ID, and sequence number. A rejected result never calls feature processing or the inference consumer.
+The initial inference gate kept the authentication decision separate from the classifier. An accepted result had to match the protected message's device ID, session ID, window ID, and sequence number. A rejected result never called feature processing or the inference consumer.
 
-The gate tests also confirm that converting an accepted fixed-decimal transport payload back into numeric motion data preserves the same conventional-classifier feature vector. This test checks the interface boundary; it does not claim authentication security or SNN performance.
+The gate tests also confirmed that converting an accepted fixed-decimal transport payload back into numeric motion data preserved the same conventional-classifier feature vector. This test checked the initial interface boundary; it did not claim authentication security or SNN performance.
+
+## Final Wire Protocol 2.0 classifier boundary
+
+The final shared path uses Wire Protocol 2.0 instead of the initial fixed-decimal JSON transport.
+
+The processed-record adapter converts an already processed Quest-style record into an immutable binary `Window`. It validates the window ID, capture bounds, 120 consecutive sample indexes, timestamps, three position values, four quaternion values, tracking flags, and tracking-valid count and fraction.
+
+Finite motion values are converted once to IEEE-754 binary32 using round-to-nearest/even. Negative zero is normalized to positive zero. Booleans, strings, nonfinite values, and binary32 overflow are rejected.
+
+`Sender.seal_window()` binds the authenticated device ID, cryptographic session ID, and sequence number. Dataset labels and split identifiers do not enter the accepted classifier record.
+
+`ExactlyOnceClassifierRelease` releases only the immutable window supplied by the verifier. Rejected, modified, malformed, replayed, low-quality, wrong-device, and wrong-session messages make zero classifier calls. An accepted event is recorded before preprocessing so a retry cannot deliver the same result twice after an exception.
+
+The final classifier input contains 120 time steps with three relative-position and four relative-quaternion channels. Tracking validity remains authenticated metadata and is checked before release, but it is not a model feature.
+
+## SNN baseline
+
+The first SNN is a software recurrent leaky integrate-and-fire classifier.
+
+- Input shape: `[batch, 120, 7]`
+- Input method: normalized values at each time step
+- Hidden layer: 64 recurrent LIF neurons
+- Outputs: 5 motion classes
+- LIF beta: 0.9
+- Loss: cross-entropy
+- Optimizer: Adam
+- Learning rate: 0.001
+- Batch size: 32
+- Maximum training length: 50 epochs
+- Early stopping: validation macro-F1 with patience 8
+- Random seeds: 7, 17, and 27
+
+Normalization was fitted using the 600 training windows only. Session 1 remained the training split, session 2 remained validation, and session 3 remained testing. Every split had shape `[600, 120, 7]`.
+
+## SNN results
+
+| Seed | Best epoch | Validation macro-F1 | Test accuracy | Test macro-F1 | Median inference | p95 inference |
+|---:|---:|---:|---:|---:|---:|---:|
+| 7 | 20 | 0.8602 | 0.8500 | 0.8505 | 9.7283 ms | 14.5419 ms |
+| 17 | 25 | 0.8547 | 0.8567 | 0.8563 | 9.7943 ms | 14.5474 ms |
+| 27 | 22 | 0.8523 | 0.8583 | 0.8584 | 9.7755 ms | 14.4730 ms |
+| Mean | - | 0.8557 | 0.8550 | 0.8551 | 9.7660 ms | 14.5208 ms |
+| Standard deviation | - | 0.0033 | 0.0036 | 0.0034 | 0.0278 ms | 0.0338 ms |
+
+The corrected logistic regression baseline reached 0.9032 test macro-F1. The SNN mean was 0.0481 lower, or 4.81 percentage points, so it narrowly met the provisional requirement of remaining within five points of the best conventional baseline.
+
+The all-seed confusion matrix contains 1,800 test predictions. `look_left_return` had 338 of 360 predictions correct. The largest error groups were nod predicted as still, shake predicted as look right, and shake predicted as still.
+
+The mean SNN p95 was 14.5208 ms for one already normalized window per CPU model call. This was inference-only timing. It excluded preprocessing, authentication, logging, loading, training, and the two-second capture period. The result therefore does not establish complete authenticated post-window latency.
 
 ## Automated evidence
 
 | Test group | Purpose | Actual result |
 |---|---|---:|
-| Python authenticated-window and golden-vector tests | Validate message construction, fixed-decimal encoding, deterministic bytes, protected-field coverage, quality boundaries, invalid-input rejection, envelope separation, and the shared vector | 8 of 8 passed in 0.025 seconds |
-| Python inference-gate tests | Validate accepted-feature equivalence, consistent decisions, message binding, and rejection before inference | 4 of 4 passed in 0.013 seconds |
-| Unity Quest Logger EditMode tests | Run the existing nine logger tests and four new canonical-writer tests | 13 of 13 passed |
-| JSON Schema check | Validate the authenticated-window schema as Draft 2020-12 | Passed |
-| Independent canonical-file hash | Recompute the saved canonical message's SHA-256 value | Matched |
+| Python authenticated-window and golden-vector tests | Validate initial message construction, fixed-decimal encoding, deterministic bytes, protected-field coverage, quality boundaries, invalid-input rejection, envelope separation, and the shared vector | 8 of 8 passed in 0.025 seconds |
+| Python inference-gate tests | Validate initial accepted-feature equivalence, consistent decisions, message binding, and rejection before inference | 4 of 4 passed in 0.013 seconds |
+| Unity Quest Logger EditMode tests | Run the existing nine logger tests and four initial canonical-writer tests | 13 of 13 passed |
+| JSON Schema check | Validate the initial authenticated-window schema as Draft 2020-12 | Passed |
+| Independent canonical-file hash | Recompute the saved initial canonical message's SHA-256 value | Matched |
+| Final classifier-integration tests | Validate accepted delivery exactly once and zero classifier calls for rejected messages | 12 of 12 passed |
+| SNN data, model, and integration tests | Validate configuration, data shape, metadata exclusion, split separation, reproducibility, model behavior, evaluation, and authenticated release | 14 of 14 passed in 8.419 seconds |
 
-The four new Unity tests confirm that the canonical writer:
+The four initial Unity canonical-writer tests confirmed that the writer:
 
-- accepts exactly 114 tracking-valid samples and rejects 113;
-- produces the Python golden-vector SHA-256 value;
-- rejects nonfinite motion values;
-- changes the canonical hash when protected motion data changes.
+- accepted exactly 114 tracking-valid samples and rejected 113;
+- produced the Python golden-vector SHA-256 value;
+- rejected nonfinite motion values;
+- changed the canonical hash when protected motion data changed.
 
-An earlier complete repository test run executed 81 tests. All seven initial authenticated-window tests passed. Three existing PUF experiment tests reported baseline seed and output-path expectation mismatches; no failure occurred in the authenticated-window interface tests.
+The final classifier-integration tests confirmed valid delivery exactly once and zero classifier calls for modified payloads, invalid tags, duplicates, future sequence gaps, wrong devices, wrong sessions, low-quality windows, and malformed envelopes.
+
+The SNN tests confirmed the final `[120, 7]` contract, training-only normalization, split separation, metadata exclusion, reproducible initialization and ordering, finite gradients, correct output shape, evaluation output, and one accepted release into the SNN input.
 
 Evidence files:
 
 - `results/week-4/keegan/python-window-message-tests.txt`
 - `results/week-4/keegan/python-inference-gate-tests.txt`
 - `results/week-4/keegan/canonical-serializer-tests.png`
+- `results/week-4/keegan/snn-tests.txt`
+- `results/week-4/keegan/snn-baseline/summary.csv`
+- `results/week-4/keegan/snn-baseline/summary.json`
+- `results/week-4/keegan/snn-baseline/confusion-matrix-all-seeds.png`
+- `results/week-4/keegan/snn-baseline/manifest.json`
+- `results/week-4/keegan/snn-baseline/COMPLETE`
 - `results/week-4/shared/golden-vector/golden-vector.json`
 - `results/week-4/shared/golden-vector/canonical-protected-message.json`
 - `results/week-4/shared/golden-vector/authenticated-window-example.json`
@@ -105,7 +166,6 @@ Evidence files:
 
 - `docs/authenticated-window-interface.md`
 - `schemas/authenticated-window.schema.json`
-- `src/python/puf_snn/auth/__init__.py`
 - `src/python/puf_snn/auth/window_message.py`
 - `src/python/puf_snn/auth/inference_gate.py`
 - `src/python/scripts/generate_window_message_vector.py`
@@ -114,15 +174,33 @@ Evidence files:
 - `tests/test_window_message.py`
 - `tests/test_window_message_golden.py`
 - `tests/test_inference_gate.py`
+- `src/python/puf_snn/integration/classifier_boundary.py`
+- `tests/auth/test_classifier_integration.py`
+- `configs/snn_baseline.json`
+- `src/python/puf_snn/snn/configuration.py`
+- `src/python/puf_snn/snn/dataset.py`
+- `src/python/puf_snn/snn/model.py`
+- `src/python/puf_snn/snn/evaluation.py`
+- `src/python/scripts/train_snn.py`
+- `tests/snn/test_snn_data.py`
+- `tests/snn/test_snn_model.py`
+- `tests/snn/test_snn_integration.py`
 
 ## Repository provenance
 
 Repository: https://github.com/Keellonn/PUF-SNN  
-Authenticated-window interface commit: `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`  
-Cross-language serialization, inference-gate, tests, and evidence commit: `9bb890c84a23dfef2ecf087292e5d772328c92c5`
+SNN results and documentation commit: `0e8a8571900cac9c7f0db6777c1ecd2afff683b9`  
+Initial authenticated-window interface commit: `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`  
+Initial cross-language serialization, inference-gate, tests, and evidence commit: `9bb890c84a23dfef2ecf087292e5d772328c92c5`  
+Final classifier-integration commit: `ab0c5a6d269013bdd1ca84547adeec973f788fa9`  
+SNN implementation and run-source commit: `09a1ac70dd85e946f24be9a4faf888f15922c1ff`  
+SNN input SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`  
+SNN configuration SHA-256: `87d93e052bf680dba95a1aa144229abba6cb9d478ebd9fcebcfb8389d82db682`
 
 ## Current scope
 
-This result establishes the shared message contract, deterministic Python and Unity representation, test-only golden vector, and the software gate between authentication and inference.
+This result establishes the initial interface evidence, the final Wire Protocol 2.0 classifier boundary, and the first reproducible recurrent SNN baseline.
 
-The HMAC in the golden vector uses an explicitly synthetic public test key only to prove the byte and tag contract. This work does not claim a reconstructed hardware PUF credential, completed attack-rejection measurements, total authenticated-system latency, live Quest transmission, or SNN performance.
+The initial golden vector used an explicitly synthetic public test key and does not represent the final binary transport. The SNN result measures corrected synthetic cross-session classification. The same synthetic device profiles appear in every split, so this is not cross-device or cross-person performance.
+
+This work does not claim a physical hardware PUF, live Quest transmission, real human motion classification, neuromorphic energy savings, complete authenticated-system latency, or Tier 2 abnormality-detection performance.

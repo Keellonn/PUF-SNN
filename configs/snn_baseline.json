@@ -1,0 +1,72 @@
+{
+  "experiment_name": "snn-motion-baseline-v1",
+  "dataset": {
+    "input_path": "data/generated/synthetic-windows.jsonl",
+    "labels": [
+      "nod",
+      "shake",
+      "look_left_return",
+      "look_right_return",
+      "still"
+    ],
+    "splits": {
+      "train": "session_1",
+      "validation": "session_2",
+      "test": "session_3"
+    },
+    "time_steps": 120,
+    "input_channels": 7,
+    "channels": [
+      "relative_position_x",
+      "relative_position_y",
+      "relative_position_z",
+      "relative_orientation_x",
+      "relative_orientation_y",
+      "relative_orientation_z",
+      "relative_orientation_w"
+    ],
+    "normalization": "training_split_per_channel"
+  },
+  "model": {
+    "type": "recurrent_lif",
+    "encoding": "direct_continuous",
+    "hidden_neurons": 64,
+    "lif_beta": 0.9,
+    "lif_threshold": 1.0,
+    "surrogate_slope": 25.0,
+    "output_classes": 5,
+    "output_aggregation": "mean_output_membrane_across_time"
+  },
+  "training": {
+    "device": "cpu",
+    "torch_threads": 1,
+    "loss": "cross_entropy",
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "maximum_epochs": 50,
+    "gradient_clip_norm": 1.0,
+    "early_stopping_metric": "validation_macro_f1",
+    "early_stopping_patience": 8,
+    "random_seeds": [
+      7,
+      17,
+      27
+    ]
+  },
+  "evaluation": {
+    "metrics": [
+      "accuracy",
+      "macro_f1",
+      "per_class_precision",
+      "per_class_recall",
+      "per_class_f1",
+      "confusion_matrix"
+    ],
+    "warmup_windows": 20,
+    "timed_windows": 600,
+    "timer": "time.perf_counter_ns",
+    "latency_unit": "milliseconds"
+  },
+  "output_directory": "results/week-4/keegan/snn-baseline"
+}

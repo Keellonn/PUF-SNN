@@ -102,7 +102,7 @@
     "group_key": "source_trial_id"
   },
   "models": {
-    "input_channels": 8,
+    "input_channels": 7,
     "time_steps": 120,
     "conventional_baselines": [
       "logistic_regression",
@@ -125,7 +125,8 @@
     },
     "lightgbm_status": "deferred_until_initial_baselines_work",
     "snn": {
-      "status": "blocked_until_baseline_diagnostics_and_tier1_path_are_stable",
+      "status": "completed_three_seed_baseline",
+      "input_channels": 7,
       "encoding": "direct_continuous",
       "hidden_lif_neurons": 64,
       "beta": 0.9,
@@ -156,3 +157,4 @@
     "maximum_relative_authentication_overhead": 0.10
   }
 }
+

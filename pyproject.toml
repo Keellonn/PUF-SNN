@@ -17,6 +17,11 @@ dependencies = [
     "galois==0.4.11"
 ]
 
+[project.optional-dependencies]
+snn = [
+    "torch==2.14.0"
+]
+
 # find the shared puf_snn package inside src/python
 [tool.setuptools]
 package-dir = {"" = "src/python"}

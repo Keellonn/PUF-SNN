@@ -1,0 +1,26 @@
+{
+  "train": {
+    "window_count": 600,
+    "shape": [
+      600,
+      120,
+      7
+    ]
+  },
+  "validation": {
+    "window_count": 600,
+    "shape": [
+      600,
+      120,
+      7
+    ]
+  },
+  "test": {
+    "window_count": 600,
+    "shape": [
+      600,
+      120,
+      7
+    ]
+  }
+}
