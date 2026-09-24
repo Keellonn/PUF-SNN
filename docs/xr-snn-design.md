@@ -11,7 +11,7 @@ This document describes my part of the project
 - Sensor abnormality detection
 - Model and latency evaluation
 
-The initial Unity Quest logger software prototype has been implemented. OpenXR and Meta Quest support are configured, and all three EditMode tests pass. Physical headset detection, Android deployment, and approved real-data collection are not complete. Until the approved data-collection workflow is confirmed, I'm using a synthetic generator that follows the same data format.
+The initial Unity Quest logger software prototype has been implemented. OpenXR and Meta Quest support are configured, and all nine core EditMode tests pass. Physical headset detection, Android deployment, and approved real-data collection are not complete. Until the approved data-collection workflow is confirmed, I'm using a synthetic generator that follows the same data format.
 
 ## Quest setup
 
@@ -82,7 +82,7 @@ The 50 ms and 95% limits are starting values. We'll review them after seeing tim
 
 ## Initial model input
 
-The first model input will have this shape
+The first model input has this shape
 `[batch, 120, 7]`
 
 The 7 channels are
@@ -94,7 +94,7 @@ The 7 channels are
 6. Relative quaternion z
 7. Relative quaternion w
 
-Normalization will be calculated using training data only.
+Normalization is calculated using training data only.
 Tracking validity remains authenticated metadata and is checked before classifier release, but it is not a model feature.
 
 Possible later features include
@@ -108,6 +108,14 @@ Possible later features include
 These aren't required for the first baseline.
 
 The conventional baselines and SNN use the same 7 pose channels per time step: 3 relative-position values and 4 relative-quaternion values. The conventional models flatten 120 time steps into 840 features, while the SNN preserves the 120-step sequence. Tracking validity and timestamps are authenticated and validated but aren't classifier features.
+
+## Authenticated classifier boundary
+
+The initial fixed-decimal authenticated-window interface and cross-language golden vector established the protected fields, quality boundary, and rejection-before-inference behavior. The final integration uses Will's Wire Protocol 2.0 binary implementation instead of the initial decimal JSON transport.
+
+The final processed-record adapter converts a validated 120-sample record into an immutable binary window. The sender binds the authenticated device, session, and sequence values. The verifier releases only an accepted window through `ExactlyOnceClassifierRelease`.
+
+Rejected, modified, malformed, replayed, low-quality, wrong-device, and wrong-session messages make zero classifier calls. Labels and split identifiers aren't included in the accepted classifier record.
 
 ## Dataset splits
 
@@ -133,7 +141,7 @@ Cross participant testing requires approved human data.
 
 ## Conventional classifiers
 
-Models are being implemented in this order
+Models were implemented in this order
 1. Logistic regression with standardized features
 2. Random forest with 300 trees and one processing thread
 3. LightGBM, if the first two are working
@@ -158,7 +166,7 @@ We'll report
 
 ## SNN classifier
 
-The first SNN plan is
+The first SNN baseline uses
 - Input shape: `[batch, 120, 7]`
 - Input method: normalized values at each time step
 - Hidden layer: 64 recurrent LIF neurons
@@ -172,7 +180,18 @@ The first SNN plan is
 - Early stopping: validation macro-F1 doesn't improve for 8 epochs
 - Random seeds: 7, 17, and 27
 
-The output membrane values will be averaged across the 120 time steps to create the 5 class scores.
+The output membrane values are averaged across the 120 time steps to create the 5 class scores.
+
+The three-seed baseline produced
+- Mean validation macro-F1: 0.8557 ± 0.0033
+- Mean test accuracy: 0.8550 ± 0.0036
+- Mean test macro-F1: 0.8551 ± 0.0034
+- Mean median inference time: 9.7660 ± 0.0278 ms
+- Mean p95 inference time: 14.5208 ± 0.0338 ms
+
+The best epochs were 20, 25, and 22. The SNN test macro-F1 was 4.81 percentage points below the corrected logistic-regression baseline, so it met the provisional maximum 5 point gap.
+
+The latency values measure one already normalized window per CPU model call. They don't include authentication, preprocessing, audit persistence, loading, training, or the 2 second capture interval. They don't establish complete authenticated post-window latency.
 
 This is a software SNN. We won't claim energy savings unless we measure them on comparable hardware.
 
@@ -254,17 +273,17 @@ The current generator uses random seed 7 and creates
 
 The synthetic generator directly creates a fixed 60 Hz grid and doesn't perform resampling. The Quest logger separately implements linear position interpolation and quaternion SLERP for irregular captured poses.
 
-Every class receives independent Gaussian position noise with a standard deviation of 0.0008 meters per axis and sample. All tracking-valid values are true in the clean synthetic data.
+Every class receives independent position and orientation variation. The current settings include position noise with a standard deviation of 0.003 meters, position drift with a standard deviation of 0.006 meters, 0.60 degree orientation noise, and 3 degree orientation drift. All tracking-valid values are true in the clean synthetic data.
 
-The class patterns are
-- nod: one x-axis sinusoidal rotation cycle with a -22 degree coefficient and a 0.006 meter half-sine vertical movement
-- shake: one y-axis sinusoidal rotation cycle with a 20 degree coefficient and a 0.004 meter side-to-side position cycle
-- look_left_return: a y-axis half-sine turn reaching -32 degrees and returning
-- look_right_return: a y-axis half-sine turn reaching 32 degrees and returning
-- still: a y-axis random walk with zero-mean Gaussian steps and a 0.08 degree standard deviation per sample
+The class patterns remain based on
+- nod: an x-axis rotation with a -22 degree coefficient and vertical movement
+- shake: a y-axis rotation with a 20 degree coefficient and side-to-side movement
+- look_left_return: a y-axis turn reaching about -32 degrees and returning
+- look_right_return: a y-axis turn reaching about 32 degrees and returning
+- still: small nonzero position and orientation random walks
 
-Trial amplitude scale and frequency scale are fixed at 1.0. Phase offset is fixed at 0.0 radians. Position and quaternion values are rounded to 8 decimal places.
+The corrected generator varies amplitude, motion duration, start delay, phase warp, peak timing, secondary-axis movement, return error, starting pose, noise, drift, and sway. It also applies separate synthetic device and session effects. Position and quaternion values are rounded to 8 decimal places.
 
-The generator doesn't apply stable device-specific or session-specific motion effects. Device IDs are balanced grouping identifiers. Session IDs control grouping, timestamps, trial order, and the cross-session split, but don't change the motion pattern.
+The corrected dataset has zero exact test-to-training orientation matches and zero exact complete-payload matches. The split still measures performance across synthetic session groups, not physical devices or people.
 
-Because the same class templates are reused, classification may be artificially easy. This dataset doesn't model physical differences between Quest headsets, recording sessions, or participants. The split measures performance across synthetic session groups, not cross-device or cross-person generalization.
+These parameters are provisional engineering assumptions. They aren't calibrated human or Quest motion distributions, and the current results shouldn't be treated as real-device or cross-person performance.

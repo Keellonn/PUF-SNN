@@ -1,0 +1,19 @@
+test_configuration_matches_final_contract (test_snn_data.SnnDataTests.test_configuration_matches_final_contract) ... ok
+test_existing_splits_stay_separate (test_snn_data.SnnDataTests.test_existing_splits_stay_separate) ... ok
+test_input_shape_is_120_by_7 (test_snn_data.SnnDataTests.test_input_shape_is_120_by_7) ... ok
+test_metadata_does_not_change_input (test_snn_data.SnnDataTests.test_metadata_does_not_change_input) ... ok
+test_normalization_is_fit_from_training_only (test_snn_data.SnnDataTests.test_normalization_is_fit_from_training_only) ... ok
+test_seeded_behavior_is_reproducible (test_snn_data.SnnDataTests.test_seeded_behavior_is_reproducible) ... ok
+test_sequence_matches_conventional_preprocessing (test_snn_data.SnnDataTests.test_sequence_matches_conventional_preprocessing) ... ok
+test_split_overlap_is_rejected (test_snn_data.SnnDataTests.test_split_overlap_is_rejected) ... ok
+test_accepted_window_reaches_snn_input_once (test_snn_integration.SnnIntegrationTests.test_accepted_window_reaches_snn_input_once) ... ok
+test_backward_pass_has_finite_gradients (test_snn_model.SnnModelTests.test_backward_pass_has_finite_gradients) ... ok
+test_evaluation_outputs (test_snn_model.SnnModelTests.test_evaluation_outputs) ... ok
+test_model_initialization_is_reproducible (test_snn_model.SnnModelTests.test_model_initialization_is_reproducible) ... ok
+test_model_rejects_wrong_input_shape (test_snn_model.SnnModelTests.test_model_rejects_wrong_input_shape) ... ok
+test_output_shape (test_snn_model.SnnModelTests.test_output_shape) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 8.419s
+
+OK

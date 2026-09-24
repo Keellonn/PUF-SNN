@@ -690,3 +690,33 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Committed and pushed the initial authenticated-window interface as `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`
 - Committed and pushed the cross-language serialization, inference-gate, tests, and evidence as `9bb890c84a23dfef2ecf087292e5d772328c92c5`
 - Updated the Week 4 results and research log with the recorded evidence, limitations, and repository provenance
+
+## Wednesday, September 23, 2026 - 4.92 estimated hours
+
+### 7:03 PM - 11:58 PM - 4.92 hours
+
+- Reviewed the completed authentication-to-classifier integration with Will and confirmed the final division of responsibilities
+- Updated my work from the initial authenticated-window prototype to the final Wire Protocol 2.0 classifier boundary
+- Confirmed that rejected, modified, replayed, low-quality, and incorrectly attributed windows cannot reach the classifier
+- Confirmed that accepted windows are released exactly once as 120 samples containing seven relative-pose channels
+- Ran all 12 classifier-integration tests successfully
+- Created the deterministic recurrent SNN configuration using three random seeds
+- Implemented the SNN data loader using the existing training, validation, and testing sessions
+- Kept labels, identifiers, timestamps, tracking values, and split metadata out of the SNN input
+- Added training-only normalization and checks for input shape, split separation, metadata exclusion, and reproducibility
+- Implemented the recurrent leaky integrate-and-fire model, training loop, early stopping, evaluation metrics, confusion matrices, and CPU latency measurements
+- Added and ran 14 SNN data, model, and authenticated-integration tests successfully
+- Ran the official three-seed SNN baseline using the corrected synthetic dataset
+- Recorded mean test accuracy of 85.50 percent and mean test macro-F1 of 85.51 percent
+- Confirmed that the SNN finished 4.81 percentage points below logistic regression and met the provisional maximum five-point gap
+- Recorded mean median inference latency of 9.7660 ms and mean p95 inference latency of 14.5208 ms
+- Reviewed the combined confusion matrix and identified still motion and shake as the most difficult classes
+- Saved the SNN metrics, training histories, confusion matrices, latency evidence, environment information, and reproducibility manifest
+- Updated the Week 4 results, XR and SNN design, pilot configuration, limitations, and research documentation
+- Corrected the Week 3 baseline slide by removing the misleading perfect confusion matrix from the original flawed dataset
+- Updated the Week 3 validation slide to remove next steps that were completed during Week 4
+- Added a shared slide explaining the final authenticated classifier boundary and the ownership split between Will and me
+- Added slides covering the SNN architecture, training configuration, three-seed results, conventional-model comparison, and inference latency
+- Added the combined SNN confusion matrix and explained the largest class errors
+- Added a Week 4 validation and scope slide separating completed work from remaining real-Quest, total-latency, and abnormality-detection work
+- Added speaker notes and matched the new diagrams and slides to the existing presentation style

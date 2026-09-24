@@ -1,0 +1,12 @@
+{
+  "unit": "milliseconds",
+  "timing_method": "time.perf_counter_ns",
+  "prediction_method": "one 120-sample window per model call",
+  "warmup_count": 20,
+  "timed_prediction_count": 600,
+  "median_ms": 9.7943,
+  "p95_ms": 14.547374999999995,
+  "mean_ms": 10.415484666666668,
+  "minimum_ms": 8.9846,
+  "maximum_ms": 17.5928
+}

@@ -125,7 +125,7 @@
     },
     "lightgbm_status": "deferred_until_initial_baselines_work",
     "snn": {
-      "status": "ready_for_three_seed_baseline",
+      "status": "completed_three_seed_baseline",
       "input_channels": 7,
       "encoding": "direct_continuous",
       "hidden_lif_neurons": 64,
@@ -157,3 +157,4 @@
     "maximum_relative_authentication_overhead": 0.10
   }
 }
+
