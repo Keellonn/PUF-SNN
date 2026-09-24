@@ -671,6 +671,401 @@ The current limiations are:
 - The BCH(63,36,t=5) construction must be validated experimentally rather than assumed to be successful
 - Bit error idependence has not been established
 
+# Layer 2, Credential Reconstruction Implementation
+
+## Purpose
+Layer 2 takes the noisy 64 bit response from layer 1 and attempts to reonstruct the same device credential that was established during enrollment.
+The main goal for this layer is to determine if a stable credential can be recovered from a noisy response before the credential is used for layer 3 session authentication.
+
+## Reconstruction Design
+The current design uses a BCH(63,36,t=5) error correcting code,
+- Layer 1 produces a 64-bit PUF response
+- Layer 2 uses response bits 0 through 62
+- Bit 63 is omitted because the selected BCH code operates on 63-bit codewords
+- The credential is 32 bits
+- Four zero padding bits are appended to form the 36-bit BCH message
+- BCH can correct up to five bit errors in the selected 63-bit response
+
+## Enrollment Process
+Within the enrollment process,
+- A trusted 64-bit reference PUF response is provided
+- A 32-bit credential is generated for the simulated device
+- Four zero padding bits are appended to the credential
+- The 36-bit message is BCH encoded into a 63-bit codeword
+- The codeword is XORed with the selected 63 reference bits
+- The resulting 63-bit value is stored as public helper data
+
+## Reconstruction Process
+During reconstruction,
+- A noisy 64-bit PUF response is received
+- Bits 0 through 62 are selected
+- The noisy response is XORed with the stored helper data
+- The resulting 63-bit word is passed to the BCH decoder
+- The decoded message is checked for valid zero padding
+- If valid, the first 32 bits are returned as the candidate credential
+
+The reconstruction process does not compare the candidate credential against the enrolled credential. The credential correctness is measured by the experiment evaluator.
+
+## Reconstruction Outcomes
+A reconstruction attempt produces,
+- `candidate_valid_format`; BCH returned a candidate credential with valid padding
+- `decoder_failure`; the BCH decoder could not return a usable codeword
+- `invalid_format_or_padding`; BCH returned a message, but the required padding bits were invalid
+
+A valid-format candidate is not automatically known to be the correct credential. The experiment evaluator later determines whether the candidate matches the enrolled credential.
+
+## Metrics Collected
+The results measure:
+    - Total reconstruction attempts
+    - Successful credential reconstructions
+    - Failed credential reconstructions
+    - Reconstructions success rate
+    - False rejection rate (FRR)
+    - Decoder failures
+    - Invalid format or invalid padding outcomes
+    - Miscorrections
+    - 63 bit response BER
+    - Distribution of actual bit errors in the 63 bit response
+    - Reconstruction outcomes grouped by actual error count
+    - Reconstruction latency including,
+        - Mean
+        - Median
+        - p95
+        - Maximum
+    - Per device reconstruction performance
+
+## Current Limitations
+- The PUF responses are simulated rather than collected from a physical PUF
+- Enrollment currently uses an ideal noiseless reference response
+- The 32-bit credential is intended to validate the reconstruction mechanism, not provide production-grade cryptographic strength
+- BCH(63,36,t=5) corrects at most five bit errors by design
+- Reconstruction success alone does not authenticate the device; Layer 3 performs cryptographic key confirmation and session/window authentication
+
+# Layer 2, Experiment Results
+
+## Experiment Overview
+Much like the layer 1 baseline I established through experiments, the layer 2 baseline was defined using a 20 seperate seed experiment. I took the 20 runs from the layer 1 baseline and ran the layer 2 simulation and recorded the important stats.
+
+## Results
+Seed-specific statistics and data is stored in,
+\results\week3\will\layer2baseline.csv
+
+Overall statistics,
+- Attempt total: 12000
+- Success Count: 11805
+- Success Rate: 98.375%
+- Failure Count: 195
+- FRR: 1.625%
+- Decoder Failures: 186
+- Invalid Format: 7
+- Max Latency: 2390163000 ns
+- Mean Latency: 4865066.308 ns
+
+## Important Takeaways Before Layer 3
+Across the 20 seeded Layer 2 runs, the reconstruction system successfully recovered the enrolled credential in 11,805 of 12,000 attempts, giving an observed reconstruction success rate of 98.375%. The observed false rejection rate (FRR) was 1.625%. This is above the current provisional 1% target, so the present BCH(63,36,t=5) construction should be treated as a working baseline rather than a final optimized reconstruction design. Most reconstruction failures were BCH decoder failures. Of the 195 total failures, 186 were decoder failures and 7 produced invalid-format or invalid-padding results. The remaining 2 failures were valid-format wrong-credential reconstructions, or miscorrections. These cases are especially important because Layer 2 can return a structurally valid credential without knowing whether it is the originally enrolled credential. The miscorrection cases justify the Layer 3 key-confirmation step. Layer 3 must independently verify possession of the expected credential-derived key rather than assuming that every valid-format Layer 2 result is correct. Reconstruction performance varied across the 20 simulated PUF populations. The pooled 98.375% success rate therefore does not imply that every simulated device or seed has the same reconstruction reliability. The results demonstrate that BCH-based reconstruction is generally successful under the nominal Layer 1 noise conditions, but the observed failure rate shows that reconstruction reliability remains an important limitation of the current pilot. The recorded mean reconstruction latency was approximately 4.87 ms across these single-run experiments. The maximum recorded latency of approximately 2.39 seconds is dominated by the first cold BCH decode/JIT initialization and should not be interpreted as normal steady-state reconstruction latency. Layer 2 establishes a candidate credential only. It does not authenticate sensor windows or provide replay, freshness, ordering, or payload-integrity protection. Those responsibilities are handled by Layer 3. These results support proceeding to Layer 3 with the current reconstruction design as the frozen pilot baseline while clearly documenting the observed 1.625% FRR and the existence of rare valid-format miscorrections.
+
+# Layer 3 Implementation
+
+## Purpose
+Layer 3 takes a credential candidate produced by Layer 2 and uses it to establish an authenticated session.
+Once the session is established, Layer 3 protects each motion window before it is released to the inference pipeline.
+
+Layer 3 includes,
+- Device and session binding
+- Credential possession confirmation
+- Payload integrity
+- Protected-metadata integrity
+- Freshness
+- Sequence ordering
+- Replay rejection
+- Session lifecycle enforcement
+
+## Session Establishment
+Layer 3 begins with a ReconstructionResult produced by Layer 2.
+A valid-format reconstructed credential allows a session attempt to begin, but it does not prove that the reconstructed credential is correct.
+
+The session establishment process follows,
+- The sender begins a session attempt using the reconstructed credential
+- The sender generates a fresh client nonce
+- The verifier returns fresh session information and a server nonce
+- The sender derives a session key from the reconstructed credential
+- The verifier independently derives the expected session key using its enrolled credential
+- The sender creates a client key-confirmation proof
+- The verifier checks the client proof
+- The verifier creates a server key-confirmation proof
+- The sender verifies the server proof
+- The session becomes active only if both sides demonstrate possession of matching credential-derived key material
+
+## Session Key Derivation
+The current implementation derives the Layer 3 session key with HKDF-SHA-256.
+
+The session key is derived from,
+- The reconstructed credential
+- Fresh session randomness
+- The session transcript
+
+The verifier does not accept a sender-supplied session key. It independently derives the expected key using the credential provisioned for that device.
+The current 32-bit credential is used only as a pilot credential to validate the mechanism. It is not intended to provide production-grade cryptographic strength.
+
+## Wire Protocol 2.0
+Layer 3 uses Wire Protocol 2.0 for authenticated motion windows.
+Each motion window is converted into a deterministic fixed-width binary representation before authentication.
+
+Protected information is as follows,
+- Protocol information
+- Device identifier
+- Session identifier
+- Sequence number
+- Window identifier
+- Capture start and end times
+- Tracking-quality information
+- Sample indexes
+- Sample timestamps
+- Position values
+- Quaternion orientation values
+- Tracking-valid flags
+
+The serialized binary window is the data protected by the HMAC.
+
+## Window Authentication
+For each window, the sender,
+- Assigns the current device identifier.
+- Assigns the active session identifier.
+- Assigns the next sequence number.
+- Serializes the window into the Wire-2 binary representation.
+- Computes HMAC-SHA-256 over the authenticated bytes.
+- Creates the transport envelope containing the authenticated bytes and tag.
+
+Afterwards the verifier,
+- Parses the message.
+- Looks up the device.
+- Looks up and validates the session.
+- Verifies the HMAC.
+- Verifies device and session binding.
+- Applies tracking-quality checks.
+- Applies sequence and replay checks.
+- Commits the final decision and audit information.
+
+## Sequence and Replay Protection
+The current implementation uses strict consecutive sequence numbers.
+The first accepted window uses sequence number 0.
+The later windows follow,
+- The expected next sequence number is accepted
+- A repeated sequence number is treated as a duplicate
+- A lower sequence number is treated as stale
+- A higher-than-expected sequence number creates a sequence gap
+- Windows from inactive or expired sessions are rejected
+
+HMAC protects the sequence number and other protected metadata from modification.
+Replay protection itself comes from verifier-side session and sequence tracking.
+
+## Accepted Payload Release
+Inference is only allowed to receive a window after successful verification.
+Verifier.release_accepted() releases the immutable window that was actually authenticated.
+This prevents one window from being authenticated while a different window is passed into inference.
+
+## Latency Measurements
+The Layer 3 runner is able to measure,
+- Session establishment latency
+- Sender preparation latency
+- HMAC latency
+- Verifier authentication latency
+- Total Layer 3 latency
+- Audit I/O latency
+
+## Current Limitations
+- The current implementation is a software prototype
+- Timing measurements are workstation/Python measurements rather than Quest, FPGA, or embedded timing measurements
+- The Layer 3 demonstration uses a fixed synthetic valid credential instead of a noisy Layer 2 reconstruction
+- The three measured windows are a functional demonstration rather than a large-sample security experiment
+- The 32-bit pilot credential is not intended to provide production-grade cryptographic strength
+- The current design provides authentication and integrity but does not provide payload confidentiality
+- Formal attack evaluation is performed separately using the Tier 1 experiment
+
+## Important Takeaways Before Tier 1 Attacks
+- Layer 3 establishes an authenticated session using credential-derived key material
+- Motion windows are protected for integrity, device/session binding, freshness, and ordering before inference
+- Layer 3 provides the credential confirmation that Layer 2 cannot provide by itself
+- A valid-format but incorrect Layer 2 credential should fail session key confirmation
+- The current Layer 3 runner demonstrates the normal successful authentication path
+- Formal attack rejection and larger-sample authentication analysis are handled by the Tier 1 experiment
+
+# Tier 1 Attack Implementation
+
+## Purpose
+The Tier 1 experiment evaluates attacks that should be rejected by the Layer 3 authentication gate before motion data is allowed to reach inference.
+The attacks focus,
+- Replay protection
+- Session binding
+- Device binding
+- Payload integrity
+- Protected-metadata integrity
+- Sequence enforcement
+
+Tier 1 does not evaluate whether an authenticated motion pattern is semantically abnormal.
+Noise, drift, freezes, pose jumps, and other correctly authenticated motion changes all belong to Tier 2 experiments which are not yet implemented.
+
+## Threat Model
+The Tier 1 attacker can observe and manipulate transmitted authenticated traffic but does not possess the session key.
+
+The attacker may,
+- Replay a previously valid message
+- Change protected device information
+- Change protected session information
+- Modify motion payload data
+- Modify protected metadata
+- Submit traffic under the wrong session or device context
+
+The attacker does not have access to the credential-derived authentication key.
+An attack is considered successful only if manipulated or replayed traffic is incorrectly accepted by the verifier.
+
+## Legitimate Control
+The legitimate-control trials provide the positive baseline.
+
+A correctly generated window with,
+- The correct device
+- The correct active session
+- A valid HMAC
+- Acceptable tracking quality
+- The expected sequence number
+shall be accepted
+
+## Same-Session Replay
+The attacker resubmits a previously accepted authenticated window in the same active session.
+The original message and HMAC remain unchanged.
+Since the message was previously accepted, the sequence number has already been consumed.
+
+The expected rejection reason,
+duplicate_sequence
+
+## Prior-Session Replay
+The attacker captures a legitimate authenticated window from one session.
+A new valid session is later established and the previous session becomes inactive.
+The attacker then replays the old window.
+
+The expected rejection reason,
+inactive_session
+
+## Cross-Device Substitution
+The attacker takes a valid authenticated message for one device and changes the protected device identity while retaining the original authentication tag.
+Changing the protected device identifier changes the authenticated data.
+Because the attacker cannot generate a new valid tag, verification should fail.
+
+The expected rejection reason,
+invalid_tag
+
+## Payload Modification
+The attacker modifies part of the motion payload after the sender has generated the HMAC.
+The original authentication tag is retained.
+Because the sensor payload is included in the authenticated Wire-2 representation, the modified payload should fail HMAC verification.
+
+The expected rejection reason,
+invalid_tag
+
+## Metadata Modification
+The attacker modifies protected metadata after authentication.
+The Tier 1 experiment modifies protected sequence information while retaining the original HMAC.
+Because the sequence number is part of the authenticated data, the modified message should fail authentication.
+
+The expected rejection reason,
+invalid_tag
+
+## Supporting Cross-Session Substitution
+The attacker changes the protected session identifier to another active session while retaining the original authentication tag.
+The message no longer matches the session context under which the tag was generated.
+
+The expected rejection reason,
+invalid_tag
+
+## State-Safety Checks
+Rejecting the attack is not enough by itself.
+The experiment also checks that rejected traffic does not incorrectly change trusted verifier state.
+
+That means it checks for,
+- Unexpected sequence advancement
+- Unexpected accepted-window count changes
+- Unexpected session-state mutation
+- Rejected payload reaching the trusted consumer
+
+A rejected attack should leave trusted accepted-window state unchanged.
+
+## Payload-Release Checks
+Rejected traffic must not reach the accepted-payload callback.
+Only windows associated with a successful accepted verification result should be released to the inference pipeline.
+Payload-release violations are therefore recorded separately from the verifier's accept/reject decision.
+
+## Attack Rejection Metric
+The primary attack metric is,
+
+Observed Rejection Rate = Rejected Attack Trials / Total Attack Trials
+
+Results should be described as observed finite-trial results.
+For example: 100/100 observed rejection
+This should not be treated as proof that the attack can never succeed.
+
+## Latency Measurements
+Tier 1 measures authentication timing during both legitimate and attack traffic.
+The primary timing measurements are,
+- Sender preparation latency
+- HMAC latency
+- Verifier authentication latency
+- Total Layer 3 latency
+
+For each window,
+- Total Layer 3 = Sender Preparation + Verifier Authentication
+- HMAC timing is already included inside sender preparation and should not be added separately
+- Percentiles should be calculated from the total per-window measurements rather than by adding independently calculated percentile values
+
+## Reproducibility
+The Tier 1 experiment records the following,
+- Experiment configuration
+- Experiment seed
+- Trial plan
+- Raw attempts
+- Expected results
+- Actual results
+- Audit records
+- Latency results
+- Reconciliation information
+- Baseline hashes
+- Environment metadata
+- Artifact manifest
+- Completion marker
+
+## Current Limitations
+- The experiment evaluates a software authentication prototype
+- The experiment does not evaluate a physical Quest PUF
+- Tier 1 does not evaluate semantic abnormalities in authenticated motion data
+- Tier 1 does not evaluate SNN adversarial examples
+- Finite attack trials do not prove universal rejection
+- The attacker is not assumed to possess the credential-derived authentication key
+- Timing results are workstation/Python measurements rather than embedded Quest or FPGA performance measurements
+- More advanced semantic and adaptive attacks remain outside the current Tier 1 scope
+
+## Important Takeaways
+- Tier 1 evaluates whether replayed, modified, or misattributed traffic is rejected before inference
+- Legitimate controls are included to verify that valid traffic continues to be accepted
+- Replay protection depends on session and sequence tracking in addition to HMAC verification
+- Payload and protected-metadata modification should be detected through HMAC verification
+- Rejected traffic must not advance trusted state
+- Rejected traffic must not reach the inference callback
+- The Tier 1 experiment provides the formal security-evaluation framework for Layer 3
+- The smaller Layer 3 synthetic runner is primarily used to demonstrate the successful authentication path
+
+# Plans for next week
+Complete formal analysis of the Tier 1 authentication attack experiment
+- Measure observed rejection rate for each attack
+- Verify expected rejection reasons
+- Check trusted-state mutation and payload-release behavior
+- Perform a larger Layer 3 authentication-latency analysis,
+    - Sender preparation latency
+    - Verifier authentication latency
+    - Total Layer 3 latency
+- Finish and validate the shared authentication-to-classifier boundary with Keegan
+- Test the end-to-end path from processed motion window through authentication and into the classifier input
+- Begin evaluating the combined authentication and inference pipeline
+- Keep the current Layer 2 reconstruction implementation as the frozen pilot baseline while documenting the observed 1.625% FRR
+
 # Hours and Work:
 
 # Tuesday September, 9
@@ -836,6 +1231,7 @@ The current limiations are:
     - Decoder failure
     - Invalid padding
     - Valid format miscorrection
+
 # Tuesday September, 22
 ## 1:04pm - 4:17pm (3.22 Hours)
 - Continued implementation for layer 2
@@ -847,7 +1243,7 @@ The current limiations are:
 - Reviewed reconstruction behavior around the BCH correction limit and comfirmed that response outside the t=5 scope may fail or produce invalid padding
 - Reviewed and elevated noise layer 2 results to understand the impact of noise
 - Layer 2 experiment results,
-    - 12,000 nominal reconstruction attempts
+    - 12,000 reconstruction attempts
     - 11,805 correct reconstructions
     - 195 failures
     - Success rate: 98.375%
@@ -894,10 +1290,50 @@ The current limiations are:
     - Maximum window handling
 - Added verifier audit behavior and began validating that rejected messages cannot modify trusted replay state or reach the accepted boundary
 
-
 # Wednesday September, 23
 ## 12:00am - 12:36am ()
-- Finalized layer 3 implementation
+- Continued layer 3 implementaion
+- Finalized the authentication design
+- Completed session establishment
+- Finalized wire protocol 2.0 for binary window authentication
+- Completed sender-side behavior for,
+    - Device/session binding
+    - Sequence assignment
+    - Binary window serialization
+    - HMAC-SHA-256 generation
+- Completed verifier side behavior for,
+    - HMAC verification
+    - Session validation
+    - Tracking quality checks
+    - Replay and sequence enforcement
+    - Accepted and rejection handling
+- Finalized accepted-payload release so only successfully authenticated windows are able to continue towards inference
+- Added layer 3 latency and audit measurements
 
 ## 3:46pm - 6:22pm ()
-- Added tier 1 attack implementation
+- Added Tier 1 authentication attack implementation
+- Implemented the primary Tier 1 Attacks,
+    - Same session replay
+    - Prior session replay
+    - Cross device subsitution
+    - Payload modification
+    - Protected metadata modification
+- Added supporting cross-session substitution testing
+- Added legitimate control trials to verify that vlaid traffic is still being accepted
+
+## 9:30pm - 11:59pm ()
+- Continued Tier 1 attack implementation
+- Added expected rejection reason checks for each attack type
+- Added checks that rejected traffic doesn't
+    - Advance trusted sequence state
+    - Change accepted window state
+    - Modify trusted session state
+    - Reach the accepted payload call back
+- Added Tier 1 experiment configuration and attack planning
+- Structured the Tier 1 experiment so that the results can be analyzed seperatly from the Layer 3 demonstration
+- Began polishing research log/documentation of this week's progress
+
+# Thursday September, 24
+## 12:00am - 1:03am ()
+- Continued polishing research log/documentation of layer 2, 3, and tier 1 attacks
+- Updated slideshow for this week

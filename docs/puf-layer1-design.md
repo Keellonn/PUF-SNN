@@ -1,4 +1,4 @@
-# Simulated PUF and Authentication Design
+# Simulated Layer 1 PUF
 
 **Owner:** Will Wallace  
 **Version:** 0.2  
@@ -62,7 +62,7 @@ Sucessful runs save,
 - Configuration metadata
 - Generated plots
 
-# Project Overview
+# Layer Overview
 This simulation implements a configurable simulation of a ring_oscillator PUF. Currently the simulation generates device-specfic noisy response bits and then evaulating their behavior. Soon authentication and key-reconstruction layers will be added. 
 
 ## Scope
