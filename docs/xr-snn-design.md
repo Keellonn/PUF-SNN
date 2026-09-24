@@ -83,9 +83,9 @@ The 50 ms and 95% limits are starting values. We'll review them after seeing tim
 ## Initial model input
 
 The first model input will have this shape
-`[batch, 120, 8]`
+`[batch, 120, 7]`
 
-The 8 channels are
+The 7 channels are
 1. Relative x position
 2. Relative y position
 3. Relative z position
@@ -93,9 +93,9 @@ The 8 channels are
 5. Relative quaternion y
 6. Relative quaternion z
 7. Relative quaternion w
-8. Tracking-valid value
 
 Normalization will be calculated using training data only.
+Tracking validity remains authenticated metadata and is checked before classifier release, but it is not a model feature.
 
 Possible later features include
 - Velocity
@@ -107,7 +107,7 @@ Possible later features include
 
 These aren't required for the first baseline.
 
-The implemented conventional baselines use 7 channels per time step: 3 relative-position values and 4 relative-quaternion values. They flatten 120 time steps into 840 features. Tracking validity and timestamps are used for validation but aren't classifier features. The planned 8-channel input above is for the later SNN.
+The conventional baselines and SNN use the same 7 pose channels per time step: 3 relative-position values and 4 relative-quaternion values. The conventional models flatten 120 time steps into 840 features, while the SNN preserves the 120-step sequence. Tracking validity and timestamps are authenticated and validated but aren't classifier features.
 
 ## Dataset splits
 
@@ -159,7 +159,7 @@ We'll report
 ## SNN classifier
 
 The first SNN plan is
-- Input shape: `[batch, 120, 8]`
+- Input shape: `[batch, 120, 7]`
 - Input method: normalized values at each time step
 - Hidden layer: 64 recurrent LIF neurons
 - Outputs: 5 motion classes
