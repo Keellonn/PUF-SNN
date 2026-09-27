@@ -1,0 +1,18 @@
+test_absolute_time_offset_does_not_hide_a_copy (test_motion_diagnostics.MotionDiagnosticsTests.test_absolute_time_offset_does_not_hide_a_copy) ... ok
+test_angular_velocity_uses_timestamp_intervals (test_motion_diagnostics.MotionDiagnosticsTests.test_angular_velocity_uses_timestamp_intervals) ... ok
+test_clean_windows_have_no_full_content_overlap (test_motion_diagnostics.MotionDiagnosticsTests.test_clean_windows_have_no_full_content_overlap) ... ok
+test_copy_with_different_identifiers_and_label_fails_each_split_pair (test_motion_diagnostics.MotionDiagnosticsTests.test_copy_with_different_identifiers_and_label_fails_each_split_pair) ... ok
+test_data_seed_changes_motion_without_changing_split_mapping (test_motion_diagnostics.MotionDiagnosticsTests.test_data_seed_changes_motion_without_changing_split_mapping) ... ok
+test_feature_group_shapes_and_metadata_exclusion (test_motion_diagnostics.MotionDiagnosticsTests.test_feature_group_shapes_and_metadata_exclusion) ... ok
+test_initial_orientation_shift_is_relative_pose_invariant (test_motion_diagnostics.MotionDiagnosticsTests.test_initial_orientation_shift_is_relative_pose_invariant) ... ok
+test_model_seed_changes_do_not_change_generated_motion (test_motion_diagnostics.MotionDiagnosticsTests.test_model_seed_changes_do_not_change_generated_motion) ... ok
+test_pooled_metrics_are_calculated_from_counts (test_motion_diagnostics.MotionDiagnosticsTests.test_pooled_metrics_are_calculated_from_counts) ... ok
+test_rotation_distance_ignores_equivalent_quaternion_signs (test_motion_diagnostics.MotionDiagnosticsTests.test_rotation_distance_ignores_equivalent_quaternion_signs) ... ok
+test_small_jitter_is_not_exact_but_is_detected_as_near (test_motion_diagnostics.MotionDiagnosticsTests.test_small_jitter_is_not_exact_but_is_detected_as_near) ... ok
+test_time_warp_preserves_unit_quaternions_and_source_split (test_motion_diagnostics.MotionDiagnosticsTests.test_time_warp_preserves_unit_quaternions_and_source_split) ... ok
+test_tracking_and_relative_timestamps_are_part_of_full_content (test_motion_diagnostics.MotionDiagnosticsTests.test_tracking_and_relative_timestamps_are_part_of_full_content) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.213s
+
+OK

@@ -86,7 +86,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=ROOT / "data" / "generated" / "synthetic-windows.jsonl")
     parser.add_argument("--config", type=Path, default=ROOT / "configs" / "pilot.json")
-    parser.add_argument("--output", type=Path, default=ROOT / "results" / "week-3" / "keegan")
+    parser.add_argument("--output", type=Path, default=ROOT / "results" / "week-4" / "keegan" / "conventional-baselines")
     parser.add_argument("--machine-model", required=True, help="Human-readable workstation model for the timing record.")
     parser.add_argument("--seeds", nargs="+", type=int, default=[7, 17, 27, 37, 47])
     parser.add_argument("--warmup", type=int, default=20)
@@ -115,10 +115,7 @@ def git_value(*arguments: str) -> str | None:
 
 
 def metric_record(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
-    return {
-        "accuracy": float(accuracy_score(y_true, y_pred)),
-        "macro_f1": float(f1_score(y_true, y_pred, labels=LABELS, average="macro", zero_division=0)),
-    }
+    return baseline.calculate_metrics(y_true, y_pred)
 
 
 def summarize(values: list[float]) -> dict[str, float]:
@@ -263,20 +260,25 @@ def feature_audit() -> dict[str, Any]:
     }
 
 
-def label_permutation_test(arrays: dict[str, dict[str, Any]], seeds: list[int]) -> dict[str, Any]:
+def label_permutation_test(arrays: dict[str, dict[str, Any]], seeds: list[int], permutation_seeds: list[int] | None = None) -> dict[str, Any]:
     train_x = arrays["train"]["features"]
     train_y = arrays["train"]["labels"]
     test_x = arrays["test"]["features"]
     test_y = arrays["test"]["labels"]
     runs = []
 
-    for seed in seeds:
-        permuted = np.random.default_rng(seed).permutation(train_y)
+    permutation_seeds = seeds if permutation_seeds is None else permutation_seeds
+
+    if len(permutation_seeds) != len(seeds):
+        raise ValueError("permutation seeds must match the model seed count")
+
+    for seed, permutation_seed in zip(seeds, permutation_seeds):
+        permuted = np.random.default_rng(permutation_seed).permutation(train_y)
         models = {
             "logistic_regression": create_logistic(seed),
             "random_forest": create_forest(seed),
         }
-        run = {"seed": seed, "models": {}}
+        run = {"seed": seed, "permutation_seed": permutation_seed, "models": {}}
         for name, model in models.items():
             run["models"][name] = fit_and_score(model, train_x, permuted, test_x, test_y)
         runs.append(run)
@@ -504,7 +506,14 @@ def run_multiseed_baselines(arrays: dict[str, dict[str, Any]], seeds: list[int],
 
             combined_latency = timed_calls(test_records, preprocess_and_predict, warmup_count, timed_count)
 
+            if model_name == "logistic_regression":
+                fitted = model.named_steps["classifier"]
+                complexity = {"trainable_parameters": int(fitted.coef_.size + fitted.intercept_.size)}
+            else:
+                complexity = {"trainable_parameters": None, "trees": len(model.estimators_), "nodes": int(sum(tree.tree_.node_count for tree in model.estimators_)), "leaves": int(sum(tree.tree_.n_leaves for tree in model.estimators_)), "meaning": "tree structure counts are not neural trainable parameters"}
+
             run["models"][model_name] = {
+                "model_complexity": complexity,
                 "training_latency_ms": float(training_ms),
                 "validation": metric_record(validation_y, model.predict(validation_x)),
                 "test": metric_record(test_y, model.predict(test_x)),
@@ -608,7 +617,7 @@ def markdown_number(value: float) -> str:
 
 def write_markdown(results: dict[str, Any], path: Path) -> None:
     lines = [
-        "# Week 3 Baseline Diagnostics",
+        "# Conventional Baseline Diagnostics",
         "",
         "This report diagnoses the conventional classification baseline. It does not contain an SNN result.",
         "",
@@ -728,18 +737,23 @@ def main() -> None:
     input_path = resolve_path(args.input)
     config_path = resolve_path(args.config)
     output_directory = resolve_path(args.output)
-    output_directory.mkdir(parents=True, exist_ok=True)
 
-    if len(args.seeds) < 5:
+    if len(set(args.seeds)) < 5:
         raise ValueError("faculty requested at least five random seeds")
+
+    if args.warmup < 0 or args.timed_windows <= 0:
+        raise ValueError("warm-up must be nonnegative and timed windows must be positive")
 
     config = json.loads(config_path.read_text(encoding="utf-8"))
     records = baseline.load_records(input_path)
+    from puf_snn.motion_diagnostics import assert_no_full_window_duplicates
+    assert_no_full_window_duplicates(records)
     arrays = build_arrays(records)
+    output_directory.mkdir(parents=True, exist_ok=False)
     figures = plot_trajectories(arrays, output_directory)
 
     results = {
-        "experiment": "week 3 conventional-classification diagnostics",
+        "experiment": "corrected conventional-classification diagnostics",
         "scope": "diagnostics and conventional baselines only; no SNN",
         "input": {
             "path": str(input_path),
@@ -757,7 +771,7 @@ def main() -> None:
         },
         "feature_audit": feature_audit(),
         "ablation": ablation_test(arrays, args.seeds[0]),
-        "label_permutation": label_permutation_test(arrays, args.seeds),
+        "label_permutation": label_permutation_test(arrays, args.seeds, config.get("randomness", {}).get("label_permutation_seeds")),
         "metadata_only": metadata_only_test(arrays, args.seeds[0]),
         "duplicates": duplicate_test(arrays),
         "multiseed_baselines": run_multiseed_baselines(arrays, args.seeds, args.warmup, args.timed_windows),
@@ -779,11 +793,36 @@ def main() -> None:
         },
     }
 
+    for run in results["multiseed_baselines"]["runs"]:
+        for model_name, model_result in run["models"].items():
+            baseline.save_confusion_matrix(model_result["test"]["confusion_matrix"], f"Corrected {model_name} seed {run['seed']}", output_directory / f"{model_name}-seed-{run['seed']}-confusion-matrix.png")
+
+    results["logistic_repeatability"] = "lbfgs is deterministic on this fixed data; changing random_state does not create an independently sampled dataset or a confidence interval"
     json_path = output_directory / "baseline-diagnostics.json"
     markdown_path = output_directory / "baseline-diagnostics.md"
     json_path.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
     write_markdown(results, markdown_path)
 
+    from puf_snn.motion_diagnostics import pooled_metrics
+    per_class_lines = ["# Corrected conventional per-class results", "", "Rows are true classes; columns are predicted classes in the configured order."]
+
+    for model_name in ("logistic_regression", "random_forest"):
+        models = results["multiseed_baselines"]["runs"]
+        pooled = pooled_metrics([run["models"][model_name]["test"]["confusion_matrix"] for run in models], tuple(LABELS))
+        (output_directory / f"{model_name}-pooled-test-metrics.json").write_text(json.dumps(pooled, indent=2) + "\n", encoding="utf-8")
+        baseline.save_confusion_matrix(pooled["confusion_matrix"], f"Corrected {model_name} pooled predictions", output_directory / f"{model_name}-pooled-confusion-matrix.png")
+
+        for name, metrics in [(f"seed {run['seed']}", run["models"][model_name]["test"]) for run in models] + [("pooled predictions", pooled)]:
+            per_class_lines.extend(["", f"## {model_name}: {name}", "", "| Class | Precision | Recall | F1 | Support |", "|---|---:|---:|---:|---:|"])
+
+            for label, values in metrics["per_class"].items():
+                per_class_lines.append(f"| {label} | {values['precision']:.4f} | {values['recall']:.4f} | {values['f1']:.4f} | {values['support']} |")
+
+            per_class_lines.extend(["", "```text", *[str(row) for row in metrics["confusion_matrix"]], "```"])
+
+    per_class_lines.extend(["", results["logistic_repeatability"], "", "Seed repetitions and pooled predictions share the same test windows; they are not independent recordings."])
+    (output_directory / "per-class-results.md").write_text("\n".join(per_class_lines) + "\n", encoding="utf-8")
+    (output_directory / "COMPLETE").write_text("complete\n", encoding="utf-8")
     print(f"Wrote {json_path}")
     print(f"Wrote {markdown_path}")
     for figure in figures:

@@ -1,0 +1,17 @@
+test_clean_dataset_has_no_prohibited_split_overlap (test_splits.SplitTests.test_clean_dataset_has_no_prohibited_split_overlap)
+window, trial, source-trial, and session ids are disjoint between splits ... ok
+test_validator_catches_duplicate_window (test_splits.SplitTests.test_validator_catches_duplicate_window)
+reusing a window id across records is rejected ... ok
+test_validator_catches_sequence_gap (test_splits.SplitTests.test_validator_catches_sequence_gap)
+a missing sequence number in the saved clean session is rejected ... ok
+test_validator_catches_session_split_leakage (test_splits.SplitTests.test_validator_catches_session_split_leakage)
+placing part of a session in another split is rejected ... ok
+test_validator_catches_source_trial_leakage (test_splits.SplitTests.test_validator_catches_source_trial_leakage)
+a source-trial id shared between training and testing is rejected ... ok
+test_validator_catches_whole_session_in_wrong_split (test_splits.SplitTests.test_validator_catches_whole_session_in_wrong_split)
+moving a complete session to the wrong configured split is rejected ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.989s
+
+OK

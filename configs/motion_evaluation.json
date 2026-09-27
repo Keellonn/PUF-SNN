@@ -1,0 +1,65 @@
+{
+  "experiment_name": "corrected-motion-evaluation-v1",
+  "feature_groups": [
+    "raw_relative_pose",
+    "quaternion_only",
+    "quaternion_plus_angular_velocity",
+    "position_plus_quaternion"
+  ],
+  "model_seeds": [
+    7,
+    17,
+    27
+  ],
+  "rotation_near_threshold_deg": 1,
+  "combined_near_threshold": {
+    "position_rms_m": 0.001,
+    "orientation_rms_deg": 1
+  },
+  "stress": {
+    "amplitude_scales": [
+      0.75,
+      1.25
+    ],
+    "speed_scales": [
+      0.85,
+      1.15
+    ],
+    "initial_orientation_deg": [
+      -15,
+      15
+    ],
+    "time_shift_seconds": [
+      -0.1,
+      0.1
+    ]
+  },
+  "nod_sweep": {
+    "amplitude_scales": [
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "speed_scales": [
+      0.75,
+      1,
+      1.25
+    ]
+  },
+  "architecture": {
+    "hidden_neurons": [
+      32,
+      64
+    ],
+    "selection_split": "validation",
+    "test_use": "fixed comparisons; not architecture selection"
+  },
+  "timing": {
+    "warmup_windows": 20,
+    "timed_windows": 600
+  },
+  "human_recording": false
+}
+

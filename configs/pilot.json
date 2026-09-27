@@ -155,6 +155,45 @@
     "authentication_p95_ms": 1.0,
     "post_window_decision_p95_ms": 20.0,
     "maximum_relative_authentication_overhead": 0.10
+  },
+  "randomness": {
+    "data_generation_seed": 7,
+    "split_generation_seed": null,
+    "split_method": "fixed session indexes; no randomized split generation",
+    "conventional_model_seeds": [
+      7,
+      17,
+      27,
+      37,
+      47
+    ],
+    "label_permutation_seeds": [
+      1007,
+      1017,
+      1027,
+      1037,
+      1047
+    ],
+    "snn_model_initialization_seeds": [
+      7,
+      17,
+      27
+    ],
+    "snn_training_seeds": [
+      107,
+      117,
+      127
+    ],
+    "attack_generation": {
+      "config": "configs/tier1_attack_experiment_v1.json",
+      "field": "experiment_seed",
+      "value": 20260923
+    },
+    "puf_simulation": {
+      "config": "configs/puf_baseline.json",
+      "field": "random_seed",
+      "value": 6767
+    },
+    "session_randomness": "OS cryptographic randomness; not seeded by experiment settings"
   }
 }
-

@@ -48,7 +48,7 @@ The first logger will use Unity's device origin tracking space
 - Position is measured in meters
 
 If the tracking origin changes during a trial, that trial will be restarted.
-Position will be stored relative to the first valid pose in the trial. This helps prevent the headset's location in the room from becoming part of the movement classification.
+Source positions are stored in device-origin coordinates. After authentication, classifier preprocessing subtracts the first sample's position so room location is not a model feature.
 
 Orientation will be stored as a quaternion
 `x, y, z, w`
@@ -58,9 +58,9 @@ For every quaternion, the logger will
 2. Normalize it
 3. Compare it with the previous quaternion
 4. Flip its sign if their dot product is negative
-5. Calculate orientation relative to the first valid orientation in the trial
+5. Save the source quaternion; classifier preprocessing calculates first-pose-relative orientation after acceptance
 
-The original normalized quaternion will also be saved. The source data won't be converted to Euler angles.
+The normalized, sign-continuous source quaternion is saved. The source data won't be converted to Euler angles.
 
 ## Windows and timing
 
@@ -146,7 +146,7 @@ Models were implemented in this order
 2. Random forest with 300 trees and one processing thread
 3. LightGBM, if the first two are working
 
-The first two models use random seed 2026. Logistic regression uses the lbfgs solver and a maximum of 5,000 iterations. Scaling is fitted on training data only.
+The initial historical run used seed 2026; corrected conventional comparisons use seeds 7, 17, 27, 37 and 47. Logistic regression uses the lbfgs solver and a maximum of 5,000 iterations. Scaling is fitted on training data only.
 
 Every model should use the same
 - Source trials
@@ -284,6 +284,30 @@ The class patterns remain based on
 
 The corrected generator varies amplitude, motion duration, start delay, phase warp, peak timing, secondary-axis movement, return error, starting pose, noise, drift, and sway. It also applies separate synthetic device and session effects. Position and quaternion values are rounded to 8 decimal places.
 
-The corrected dataset has zero exact test-to-training orientation matches and zero exact complete-payload matches. The split still measures performance across synthetic session groups, not physical devices or people.
+The existing diagnostic found zero exact test-to-training orientation-feature and combined-feature matches. This is not itself a full raw-window duplicate proof. The Week 4 content-hash tests compare all split pairs and the physical nearest-neighbor analysis exposes near copies. The split still measures performance across synthetic session groups, not physical devices or people.
 
 These parameters are provisional engineering assumptions. They aren't calibrated human or Quest motion distributions, and the current results shouldn't be treated as real-device or cross-person performance.
+
+
+## Exact baseline methods and feedback evaluation
+
+The data seed remains 7. Fixed session-index assignment has no split RNG. Model initialization seeds are 7, 17 and 27; the revised SNN training/shuffle seeds are 107, 117 and 127. Historical saved checkpoints used the same initialization/shuffle seed and remain unchanged. Separate-seed training produces a new named run, not a retroactive relabeling of those checkpoints.
+
+For each window, positions are p[t] - p[0]. Quaternions are normalized and adjacent equivalent signs are made continuous; relative orientation is inverse(q[0]) multiplied by q[t] in xyzw order. LR StandardScaler learns a mean/SD for each of 840 flattened features from Session 1 only. SNN means/SDs use all Session-1 windows/time points separately for each of seven channels; zero-variance SD is replaced by one. RF does not scale. Angular velocity ablations use shortest quaternion increments converted to rotation vectors divided by actual timestamp intervals, with a zero first velocity. No classifier converts quaternions to Euler angles.
+
+The SNN uses three Linear layers: input 7->64 with bias, recurrent 64->64 without bias, and readout 64->5 with bias. Recurrent connectivity is dense and learned, including diagonal connections. Hidden state starts at zero for every window. Each step computes u = 0.9*u + input_current + recurrent(previous_spikes), emits a hard spike for u >= 1, then subtracts one threshold using detached spikes. The backward surrogate is 1 / (1 + 25*abs(u-threshold))^2. Readout is a nonspiking membrane with the same 0.9 decay; its 120 scores are averaged and argmax selects the class.
+
+Initialization is PyTorch nn.Linear's reset_parameters procedure: Kaiming-uniform weights with a=sqrt(5), and uniform biases bounded by 1/sqrt(fan_in). Cross-entropy is optimized by Adam at 0.001 with batches of 32 and gradient clipping at norm one. Maximum training is 50 epochs, with the best Session-2 macro-F1 checkpoint and patience eight. The 64-neuron model has 4,933 trainable parameters; the 32-neuron comparison has 1,445. LR has 4,205 coefficients/intercepts for the 840-feature five-class model. RF structure is reported as 300 trees and fitted node/leaf counts, not a misleading neural parameter equivalent.
+
+The original forward timer starts after tensor construction/transfer. It includes the recurrent forward loop and temporal aggregation, but excludes normalization, tensor preparation, argmax/CPU decoding, authentication, audit, loading, training and capture. Timing batch size is one, independently of training batch size. New pipeline timing includes the common binary32 conversion, relative preprocessing/normalization, tensor handling, decoding and real in-memory gate/audit work. Durable audit I/O, network transfer and session setup are excluded and explicitly listed. Session setup uses an explicit known-correct synthetic candidate; it does not measure PUF reconstruction reliability.
+
+Full-window hashes include sample indexes, relative capture times, position, orientation, tracking state, window duration, sample rate and coordinate frame. IDs, labels, split assignment and absolute time origin cannot hide a copy. Near-neighbor distances use first-pose-relative position RMS in meters and sign-invariant quaternion geodesic RMS in degrees, with the same physical procedure before/after correction. The configured 1 mm/1 degree sensitivity thresholds are provisional, not human-calibrated definitions of leakage.
+
+Feature ablations use conventional classifiers: unscaled raw-relative-pose LR, scaled quaternion-only LR, scaled quaternion+angular-velocity LR, and scaled position+quaternion LR, with matching RF controls. Raw relative pose and position+quaternion contain the same seven channels; their distinction is a scaling control for LR, not a different RF representation. SNN input remains seven pose channels.
+
+Stress tests are fixed paired transformations, not new independent recordings. Relative starting-orientation invariance is reported separately. Amplitude transforms scale the observed trajectory including noise; timing transforms clamp endpoints. The targeted nod sweep instead changes intentional nod rotation/position coefficients and duration range in the generator while retaining noise, drift, sway and return error. Report realized motion statistics because duration clipping can limit requested speed changes. Nominal low-amplitude nod labels become ambiguous near still; no physical realism is inferred.
+
+The one architecture ablation compares 32 and 64 neurons with otherwise identical configurations and separated seed roles. Any selection uses validation macro-F1 only. Test comparisons do not trigger further tuning. Per-seed and pooled metrics/curves are derived from saved counts/history; pooled predictions reuse the same test windows and are not independent recordings.
+
+The current conclusion is competitive but not superior in a CPU software prototype. No measured energy advantage, physical Quest performance, cross-person result or cross-device classifier generalization is established.
+

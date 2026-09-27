@@ -94,6 +94,8 @@ def measure_inference_latency(model: torch.nn.Module, sequences: np.ndarray, war
     latency_array = np.asarray(latency_values_ms, dtype=np.float64)
 
     return {
+        "scope": "forward call including temporal aggregation; excludes preprocessing, tensor construction, transfer, argmax/CPU decoding, authentication and audit",
+        "batch_size": 1,
         "unit": "milliseconds",
         "timing_method": "time.perf_counter_ns",
         "prediction_method": "one 120-sample window per model call",
@@ -132,3 +134,4 @@ def save_confusion_matrix(matrix: list[list[int]], title: str, output_path: Path
     figure.tight_layout()
     figure.savefig(output_path, dpi=200, bbox_inches="tight")
     plt.close(figure)
+

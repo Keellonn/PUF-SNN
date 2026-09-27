@@ -431,13 +431,17 @@ Repository: https://github.com/Keellonn/PUF-SNN
 Authenticated-window interface commit: `e1c4bf4775e1b4c63657167f46edc5d6e7e72cee`  
 Cross-language serialization, inference-gate, tests, and evidence commit: `9bb890c84a23dfef2ecf087292e5d772328c92c5`
 
-## Next modeling step
+## Original next modeling step (historical)
 
 1. Connect the verifier implementation and derived test session key to the agreed authenticated-window interface.
 2. Run and document the five Tier-1 authentication attacks with exact expected and observed rejection reasons.
 3. Measure authentication latency and total post-window latency using the stable integrated path.
 4. Begin the SNN baseline after the Tier-1 integration path is reproducible and its current limitations are documented.
 5. Continue Quest logger work without collecting or retaining human-derived motion data unless an approved later phase changes that scope.
+
+## Week 4 feedback evaluation
+
+The original template-leakage audit and preliminary SNN results are preserved. The follow-up evaluation package adds full-window and near-duplicate checks, generator/feature/protocol methods, separated seed roles, complete per-class/curve reporting, nod/still and fixed robustness/feature comparisons, a 32-versus-64 comparison and shared pipeline timing. Actual follow-up numerical results, commands, configurations, figure paths and commits will be recorded after the runs complete. No new hours or completed-work claims have been added in advance.
 
 ---
 

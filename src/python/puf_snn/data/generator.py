@@ -17,8 +17,8 @@ each window contains
 
 makes 6 * 3 * 20 * 5 = 1,800 clean windows * 120 samples = 216,000 samples in total
 
-motion settings come from pilot.json device and session ids only group the data
-this generator uses a fixed grid and does not model stable device/session motion effects
+motion settings come from pilot.json and include shared device and session amplitude/duration effects
+these effects are engineering assumptions applied across all labels rather than calibrated hardware differences
 
 overall, this file creates the variable synthetic motion used by the conventional baseline
 it keeps the existing schema and session split while removing the repeated orientation templates
@@ -331,7 +331,12 @@ def _validate_config(config: dict[str, Any]) -> None:
 def generate_records(config: dict[str, Any]) -> list[dict[str, Any]]:
     # the same seed recreates the same data while every trial still gets its own variation
     _validate_config(config)
-    rng = random.Random(int(config["project"]["random_seed"]))
+    generation_seed = int(config.get("randomness", {}).get("data_generation_seed", config["project"]["random_seed"]))
+
+    if generation_seed != int(config["project"]["random_seed"]):
+        raise ValueError("the legacy seed alias must match data_generation_seed")
+
+    rng = random.Random(generation_seed)
     capture = config["capture"]
     motion = config["synthetic_motion"]
     synthetic = config["synthetic_data"]

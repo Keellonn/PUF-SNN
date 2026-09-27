@@ -1,0 +1,8 @@
+test_binary_mutations_reject_without_poisoning_next_window (test_protocol_rejection.ProtocolRejectionTests.test_binary_mutations_reject_without_poisoning_next_window) ... ok
+test_invalid_tag_with_high_sequence_does_not_poison_valid_sequence (test_protocol_rejection.ProtocolRejectionTests.test_invalid_tag_with_high_sequence_does_not_poison_valid_sequence) ... ok
+test_outer_json_key_order_is_not_binary_field_order (test_protocol_rejection.ProtocolRejectionTests.test_outer_json_key_order_is_not_binary_field_order) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 5.091s
+
+OK

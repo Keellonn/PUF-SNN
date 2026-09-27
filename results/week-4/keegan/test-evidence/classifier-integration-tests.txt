@@ -1,0 +1,17 @@
+test_classifier_record_matches_current_120_by_7_preprocessing (test_classifier_integration.AdapterTests.test_classifier_record_matches_current_120_by_7_preprocessing) ... ok
+test_numeric_policy_rejects_invalid_values (test_classifier_integration.AdapterTests.test_numeric_policy_rejects_invalid_values) ... ok
+test_processed_record_rounds_once_and_leaves_binding_to_sender (test_classifier_integration.AdapterTests.test_processed_record_rounds_once_and_leaves_binding_to_sender) ... ok
+test_exact_replay_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_exact_replay_is_rejected_without_delivery_or_state_change) ... ok
+test_future_gap_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_future_gap_is_rejected_without_delivery_or_state_change) ... ok
+test_invalid_hmac_is_rejected_without_delivery (test_classifier_integration.SharedEndToEndTests.test_invalid_hmac_is_rejected_without_delivery) ... ok
+test_low_quality_valid_tag_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_low_quality_valid_tag_is_rejected_without_delivery_or_state_change) ... ok
+test_malformed_window_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_malformed_window_is_rejected_without_delivery_or_state_change) ... ok
+test_modified_payload_is_rejected_without_delivery (test_classifier_integration.SharedEndToEndTests.test_modified_payload_is_rejected_without_delivery) ... ok
+test_valid_window_delivers_exact_authenticated_payload_once (test_classifier_integration.SharedEndToEndTests.test_valid_window_delivers_exact_authenticated_payload_once) ... ok
+test_wrong_device_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_wrong_device_is_rejected_without_delivery_or_state_change) ... ok
+test_wrong_session_is_rejected_without_delivery_or_state_change (test_classifier_integration.SharedEndToEndTests.test_wrong_session_is_rejected_without_delivery_or_state_change) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 4.744s
+
+OK

@@ -1,0 +1,47 @@
+{
+  "source": "actual C# writer under supplemental .NET; not Unity execution",
+  "canonical_sha256": "7092fd8117c0639d9e6a470320fff577a0ab7d9c2f656bd3f16f16fd5b5186fa",
+  "observations": [
+    {
+      "mutation": "wrong_endianness",
+      "decision": "reject",
+      "reason": "invalid_tag",
+      "classifier_calls_after_rejection": 0,
+      "state_unchanged": true,
+      "valid_next_window_accepted": true
+    },
+    {
+      "mutation": "changed_float",
+      "decision": "reject",
+      "reason": "invalid_tag",
+      "classifier_calls_after_rejection": 0,
+      "state_unchanged": true,
+      "valid_next_window_accepted": true
+    },
+    {
+      "mutation": "reordered_binary_fields",
+      "decision": "reject",
+      "reason": "invalid_tag",
+      "classifier_calls_after_rejection": 0,
+      "state_unchanged": true,
+      "valid_next_window_accepted": true
+    },
+    {
+      "mutation": "modified_version",
+      "decision": "reject",
+      "reason": "unsupported_protocol_version",
+      "classifier_calls_after_rejection": 0,
+      "state_unchanged": true,
+      "valid_next_window_accepted": true
+    },
+    {
+      "mutation": "altered_payload_length",
+      "decision": "reject",
+      "reason": "invalid_payload_schema",
+      "classifier_calls_after_rejection": 0,
+      "state_unchanged": true,
+      "valid_next_window_accepted": true
+    }
+  ],
+  "scope": "five deterministic cross-language negative cases, not independent attack-rate estimates; outer JSON key order is not authenticated binary field order"
+}

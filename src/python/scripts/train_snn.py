@@ -29,6 +29,7 @@ from puf_snn.snn.configuration import load_snn_config, seed_everything
 from puf_snn.snn.dataset import LABELS, apply_channel_normalization, build_snn_datasets, fit_channel_normalization, load_records
 from puf_snn.snn.evaluation import calculate_metrics, measure_inference_latency, predict_indexes, save_confusion_matrix
 from puf_snn.snn.model import create_model
+from puf_snn.motion_diagnostics import assert_no_full_window_duplicates
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -114,11 +115,15 @@ def fit_seed(seed: int, config: dict, datasets: dict[str, dict[str, object]], ou
     training_config = config["training"]
     seed_everything(seed, training_config["torch_threads"])
     model = create_model(config["model"]).to(device)
+    seed_index = training_config["random_seeds"].index(seed)
+    training_seed = training_config.get("training_seeds", training_config["random_seeds"])[seed_index]
+    # initialization and training order are controlled by separate recorded streams
+    seed_everything(training_seed, training_config["torch_threads"])
     optimizer = torch.optim.Adam(model.parameters(), lr=training_config["learning_rate"])
     loss_function = nn.CrossEntropyLoss()
     training_sequences = torch.from_numpy(datasets["train"]["sequences"])
     training_labels = torch.from_numpy(datasets["train"]["label_indexes"])
-    generator = torch.Generator().manual_seed(seed)
+    generator = torch.Generator().manual_seed(training_seed)
     training_loader = DataLoader(TensorDataset(training_sequences, training_labels), batch_size=training_config["batch_size"], shuffle=True, generator=generator, num_workers=0)
     best_validation_macro_f1 = -1.0
     best_epoch = 0
@@ -167,7 +172,8 @@ def fit_seed(seed: int, config: dict, datasets: dict[str, dict[str, object]], ou
 
     torch.save({
         "seed": seed,
-        "labels": LABELS,
+        "training_seed": training_seed,
+        "labels": list(LABELS),
         "model_config": config["model"],
         "state_dict": model.state_dict(),
     }, seed_directory / "model-state.pt")
@@ -180,6 +186,8 @@ def fit_seed(seed: int, config: dict, datasets: dict[str, dict[str, object]], ou
 
     return {
         "seed": seed,
+        "training_seed": training_seed,
+        "trainable_parameters": sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad),
         "best_epoch": best_epoch,
         "epochs_completed": len(history),
         "validation": validation_metrics,
@@ -274,6 +282,7 @@ def main() -> int:
 
     try:
         records = load_records(input_path)
+        assert_no_full_window_duplicates(records)
         datasets = build_snn_datasets(records)
         normalization = fit_channel_normalization(datasets["train"]["sequences"])
 

@@ -2,7 +2,7 @@
 
 This week covered the software integration between the validated Quest motion-window pipeline and the session-authentication layer, followed by the first recurrent SNN motion-classification baseline.
 
-The completed work defines the initial authenticated-window message and cross-language golden vector, the final Wire Protocol 2.0 classifier boundary, and a three-seed SNN baseline using the accepted 120-sample motion windows.
+The completed work defines the initial authenticated-window message and cross-language golden vector, the final Wire Protocol 2.0 classifier boundary, and a classifier-only three-seed SNN baseline using validated 120-sample synthetic motion windows. Accepted-window delivery was tested separately; the original baseline did not authenticate every training/test example.
 
 No human-derived motion data were collected during this work.
 
@@ -120,7 +120,7 @@ Normalization was fitted using the 600 training windows only. Session 1 remained
 
 The corrected logistic regression baseline reached 0.9032 test macro-F1. The SNN mean was 0.0481 lower, or 4.81 percentage points, so it narrowly met the provisional requirement of remaining within five points of the best conventional baseline.
 
-The all-seed confusion matrix contains 1,800 test predictions. `look_left_return` had 338 of 360 predictions correct. The largest error groups were nod predicted as still, shake predicted as look right, and shake predicted as still.
+The all-seed confusion matrix contains 1,800 model predictions on the same 600 test windows repeated across three seeds, not 1,800 independent recordings. `look_left_return` had 338 of 360 predictions correct. The largest error groups were nod predicted as still, shake predicted as look right, and shake predicted as still.
 
 The mean SNN p95 was 14.5208 ms for one already normalized window per CPU model call. This was inference-only timing. It excluded preprocessing, authentication, logging, loading, training, and the two-second capture period. The result therefore does not establish complete authenticated post-window latency.
 
@@ -174,7 +174,7 @@ Evidence files:
 - `tests/test_window_message.py`
 - `tests/test_window_message_golden.py`
 - `tests/test_inference_gate.py`
-- `src/python/puf_snn/integration/classifier_boundary.py`
+- `src/python/puf_snn/integration.py`
 - `tests/auth/test_classifier_integration.py`
 - `configs/snn_baseline.json`
 - `src/python/puf_snn/snn/configuration.py`
@@ -204,3 +204,11 @@ This result establishes the initial interface evidence, the final Wire Protocol 
 The initial golden vector used an explicitly synthetic public test key and does not represent the final binary transport. The SNN result measures corrected synthetic cross-session classification. The same synthetic device profiles appear in every split, so this is not cross-device or cross-person performance.
 
 This work does not claim a physical hardware PUF, live Quest transmission, real human motion classification, neuromorphic energy savings, complete authenticated-system latency, or Tier 2 abnormality-detection performance.
+
+
+## Week 4 feedback evaluation
+
+The original baseline above is preserved. The feedback follow-up adds full-window cross-split content tests, physical near-neighbor analysis, complete corrected conventional/SNN reports, separate seed roles, motion/error and feature/stress analysis, one architecture comparison, and a shared known-correct-candidate pipeline benchmark. These follow-up runs have not yet been recorded in this copy. Run the supplied guide and record_feedback_results.py to replace this paragraph with actual evidence; do not claim pending experiments passed.
+
+The current CPU SNN is competitive but not superior. Reconstruction reliability, pre-HKDF credential verification, formal Tier-1 evaluation and remaining authentication-stage timing remain Will/shared follow-up, not completed results here.
+

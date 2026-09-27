@@ -1,5 +1,5 @@
 {
-  "experiment_name": "snn-motion-baseline-separate-seeds-v1",
+  "experiment_name": "snn-motion-architecture-32-v1",
   "dataset": {
     "input_path": "data/generated/synthetic-windows.jsonl",
     "labels": [
@@ -30,7 +30,7 @@
   "model": {
     "type": "recurrent_lif",
     "encoding": "direct_continuous",
-    "hidden_neurons": 64,
+    "hidden_neurons": 32,
     "lif_beta": 0.9,
     "lif_threshold": 1,
     "surrogate_slope": 25,
@@ -73,6 +73,6 @@
     "timer": "time.perf_counter_ns",
     "latency_unit": "milliseconds"
   },
-  "output_directory": "results/week-4/keegan/snn-baseline-separate-seeds"
+  "output_directory": "results/week-4/keegan/snn-architecture-32"
 }
 

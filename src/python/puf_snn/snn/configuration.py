@@ -105,6 +105,17 @@ def validate_snn_config(config: dict[str, Any]) -> None:
     if len(set(random_seeds)) != len(random_seeds):
         raise ValueError("random seeds must not contain duplicates")
 
+    training_seeds = training.get("training_seeds", random_seeds)
+
+    if not isinstance(training_seeds, list) or len(training_seeds) != len(random_seeds):
+        raise ValueError("training_seeds must match the model initialization seed count")
+
+    if any(type(seed) is not int or seed < 0 for seed in [*random_seeds, *training_seeds]):
+        raise ValueError("initialization and training seeds must be nonnegative integers")
+
+    if "training_seeds" in training and set(training_seeds) & set(random_seeds):
+        raise ValueError("training seeds must be separate from model initialization seeds")
+
     if evaluation["warmup_windows"] < 0 or evaluation["timed_windows"] <= 0:
         raise ValueError("evaluation timing counts are invalid")
 
@@ -126,3 +137,4 @@ def seed_everything(seed: int, torch_threads: int = 1) -> None:
         torch.cuda.manual_seed_all(seed)
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
+

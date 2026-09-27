@@ -77,11 +77,5 @@ class RecurrentLifClassifier(nn.Module):
 
 
 def create_model(model_config: dict) -> RecurrentLifClassifier:
-    return RecurrentLifClassifier(
-        input_channels=7,
-        hidden_neurons=model_config["hidden_neurons"],
-        output_classes=model_config["output_classes"],
-        beta=model_config["lif_beta"],
-        threshold=model_config["lif_threshold"],
-        surrogate_slope=model_config["surrogate_slope"],
-    )
+    return RecurrentLifClassifier(input_channels=7, hidden_neurons=model_config["hidden_neurons"], output_classes=model_config["output_classes"], beta=model_config["lif_beta"], threshold=model_config["lif_threshold"], surrogate_slope=model_config["surrogate_slope"])
+

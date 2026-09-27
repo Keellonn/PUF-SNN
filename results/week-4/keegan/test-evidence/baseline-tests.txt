@@ -1,0 +1,11 @@
+test_build_datasets_keeps_splits_separate (test_baselines.BaselineFeatureTests.test_build_datasets_keeps_splits_separate) ... ok
+test_feature_shape_and_relative_pose (test_baselines.BaselineFeatureTests.test_feature_shape_and_relative_pose) ... ok
+test_logistic_scaler_is_fit_from_training_only (test_baselines.BaselineFeatureTests.test_logistic_scaler_is_fit_from_training_only) ... ok
+test_metadata_does_not_change_features (test_baselines.BaselineFeatureTests.test_metadata_does_not_change_features) ... ok
+test_quaternion_sign_continuity (test_baselines.BaselineFeatureTests.test_quaternion_sign_continuity) ... ok
+test_short_window_is_rejected (test_baselines.BaselineFeatureTests.test_short_window_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.040s
+
+OK

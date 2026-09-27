@@ -1,0 +1,1 @@
+PASS: 11 scalar groups and 26 complete-window vectors, raw bytes/SHA256/HMAC; supplemental .NET, not Unity.

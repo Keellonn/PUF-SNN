@@ -1,0 +1,37 @@
+test_active_classes_use_multiple_orientation_trajectories (test_data.DataTests.test_active_classes_use_multiple_orientation_trajectories)
+active classes vary instead of copying one orientation template ... ok
+test_generated_identifiers_match_their_records (test_data.DataTests.test_generated_identifiers_match_their_records)
+device, session, trial, label, source, and window ids agree ... ok
+test_generated_quaternions_are_normalized_and_continuous (test_data.DataTests.test_generated_quaternions_are_normalized_and_continuous)
+all generated quaternions have unit norm and continuous signs ... ok
+test_generated_records_pass_validation (test_data.DataTests.test_generated_records_pass_validation)
+clean records pass the schema, quality rules, and configured identifier checks ... ok
+test_generated_windows_have_120_ordered_samples (test_data.DataTests.test_generated_windows_have_120_ordered_samples)
+every fixed-grid window has 120 consecutive indexes and increasing times ... ok
+test_generator_is_deterministic_and_balanced (test_data.DataTests.test_generator_is_deterministic_and_balanced)
+same seed reproduces records and every device-session has balanced class counts ... ok
+test_schema_rejects_wrong_types_and_extra_fields (test_data.DataTests.test_schema_rejects_wrong_types_and_extra_fields)
+schema types, required fields, enums, and extra-field rules are enforced ... ok
+test_still_contains_small_nonzero_variable_motion (test_data.DataTests.test_still_contains_small_nonzero_variable_motion)
+still is not an exact zero-motion shortcut ... ok
+test_tracking_threshold_accepts_114_and_rejects_113 (test_data.DataTests.test_tracking_threshold_accepts_114_and_rejects_113)
+exactly 95 percent tracking passes and a lower fraction fails ... ok
+test_validator_catches_bad_quaternion (test_data.DataTests.test_validator_catches_bad_quaternion)
+an invalid zero quaternion is rejected ... ok
+test_validator_catches_id_mismatch (test_data.DataTests.test_validator_catches_id_mismatch)
+changing a device without its session and trial relationships fails ... ok
+test_validator_catches_missing_group (test_data.DataTests.test_validator_catches_missing_group)
+removing a whole session cannot pass just because the remaining records are valid ... ok
+test_validator_catches_quaternion_sign_flip (test_data.DataTests.test_validator_catches_quaternion_sign_flip)
+an isolated equivalent quaternion sign flip is rejected ... ok
+test_validator_catches_timestamp_gap_and_order (test_data.DataTests.test_validator_catches_timestamp_gap_and_order)
+large gaps and repeated timestamps are rejected ... ok
+test_validator_rejects_nonfinite_position (test_data.DataTests.test_validator_rejects_nonfinite_position)
+nan and infinity cannot pass as valid position values ... ok
+test_validator_rejects_short_window (test_data.DataTests.test_validator_rejects_short_window)
+a saved window with only 119 samples fails the schema ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 11.748s
+
+OK

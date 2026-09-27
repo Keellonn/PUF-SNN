@@ -105,14 +105,14 @@ The scripted pilot will create
 - 5 classes
 - 1,800 synthetic windows across six device profiles and 18 device-session groups.
 
-In the current generator, device profiles are grouping identifiers, not calibrated headset models. No stable device or session motion effects are implemented. Position noise is independently drawn without using the class label; the still class also uses a small orientation random walk. The other orientation trajectories share fixed class templates, which can make classification artificially easy. These limits and all generator settings are documented in configs/pilot.json and the XR/SNN design document.
+The corrected generator uses provisional device/session amplitude and duration effects shared across all labels, plus trial-level starting pose, amplitude, duration, onset, phase warp, peak/return timing, secondary-axis movement, return error, noise, drift and sway. Still includes nonzero position and orientation random walks. These are engineering assumptions, not calibrated headset or human distributions. The original repeated-orientation result remains preserved as methodological evidence. Full-window cross-split comparisons and rotation-aware nearest-neighbor analysis supplement the existing identifier and exact-feature checks.
 
 The primary pilot split is cross session
 - Session 1: training
 - Session 2: validation and threshold selection
 - Session 3: final testing
 
-Device IDs intentionally occur in all three splits. This split does not measure cross-device or cross-person generalization, and the shared synthetic templates limit conclusions about real cross-session performance. Cross-device inference generalization is outside the initial pilot; cross-device authentication-substitution attacks remain in scope.
+Device IDs intentionally occur in all three splits. This split does not measure cross-device or cross-person generalization, and the synthetic parametric motion families limit conclusions about real cross-session performance. Cross-device inference generalization is outside the initial pilot; cross-device authentication-substitution attacks remain in scope.
 
 Attacked copies stay in the same split as their clean source. They don't count as new independent trials. Automated checks will fail if a source trial or session appears in more than one split.
 
@@ -161,10 +161,9 @@ The final simulated-PUF structure and error-correction method will be selected a
 
 The classifier answers the question: Which of the five head motions occurred?
 
-The proposed SNN input tensor will have the shape
-[batch, 120 time steps, 8 channels]
+The implemented SNN input tensor has shape `[batch, 120 time steps, 7 channels]`.
 
-The proposed SNN channels are relative position `(x, y, z)`, relative quaternion `(x, y, z, w)`, and the tracking-valid mask. The implemented conventional baselines instead flatten the seven pose channels across 120 time steps into 840 features; they do not include the tracking mask or metadata as model features. Any fitted scaling or normalization uses training data only.
+The seven channels are relative position `(x, y, z)` and relative quaternion `(x, y, z, w)`. Tracking quality is authenticated and validated but never used as a model feature. Conventional baselines flatten the same seven pose channels into 840 values. LR uses training-only scaling per flattened feature; the SNN uses training-only scaling per channel across training windows/time points; RF is unscaled. Quaternion normalization and sign continuity precede first-pose-relative rotations. Euler angles are not model features.
 
 The first classification baselines are
 1. Multinomial logistic regression
@@ -178,7 +177,7 @@ The first anomaly experiment will be supervised and separate from motion classif
 - normal: unchanged clean window
 - suspicious: a documented sensor change was applied before authentication
 
-Logistic regression and random forest will be used first. A separate SNN anomaly model may be added afterward. Classification confidence won't automatically be treated as an anomaly score. The anomaly labels, transform severities, and artifact controls must be documented and accepted before implementing the supervised anomaly baseline. Tier 2 semantic attacks and full SNN implementation wait until a stable, reproducible Tier 1 integration path is established.
+Logistic regression and random forest will be used first. A separate SNN anomaly model may be added afterward. Classification confidence won't automatically be treated as an anomaly score. The anomaly labels, transform severities, and artifact controls must be documented and accepted before implementing the supervised anomaly baseline. The first recurrent SNN baseline and the accepted-window integration tests are implemented. Their classifier-only results do not establish full authenticated-system performance. Tier 2 semantic attacks and anomaly-detector development remain a separate later experiment.
 
 ## Threat model and attacks
 
@@ -315,3 +314,12 @@ More detailed information is stored separately
 - `docs/faculty-decision-memo.md`: decisions that require faculty or lab approval
 - `schemas/`: machine-readable data and experiment-record formats
 - `configs/pilot.json`: current experimental settings
+
+
+## Week 4 evaluation clarification
+
+The preliminary CPU SNN is competitive within the predeclared five-point macro-F1 gap but not superior to the conventional models. Preserve historical runs and use Session 2, not Session 3, for selection. The feedback evaluation records separate initialization/training seeds, complete per-class metrics, learning curves, full-window and rotation-aware leakage diagnostics, nod/still analysis, fixed feature/stress comparisons and one 32-versus-64-neuron comparison.
+
+Data generation uses seed 7 and retains its original draw sequence. Session-index splits are deterministic and have no random split seed. Role-specific model/training/permutation seeds and pointers to attack/PUF configurations are recorded in configs/pilot.json. OS session randomness remains cryptographic and unseeded. See docs/xr-snn-design.md for exact model and timing boundaries, docs/authenticated-window-interface.md for the current Wire Protocol 2.0 binary contract and rejection policy, and docs/puf-layer3-design.md for Will's Layer 3 implementation overview.
+
+Layer-2 session reconstruction FRR and per-window verifier FRR require separate denominators; do not equate them without an explicit end-to-end mapping. Current reconstruction and key-confirmation limitations remain Will's responsibility. A known-correct-candidate pipeline benchmark excludes reconstruction failures and cannot establish overall legitimate-window availability.
