@@ -511,6 +511,7 @@ Classifier-only pipeline timing includes the common binary32 conversion, adapter
 - Dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`
 - Commands, source/configuration hashes, seed roles, environment and figure paths are recorded in the run manifests and saved configurations.
 - Permanent methods: `docs/xr-snn-design.md`, `docs/authenticated-window-interface.md` and Will's `docs/puf-layer3-design.md`.
+- Pushed evaluation-results commit: `7cdbd81674740e6ff975542139766fa9e0ddd129`
 
 ### Remaining shared requirements
 
