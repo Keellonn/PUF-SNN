@@ -1,0 +1,141 @@
+{
+  "randomness": {
+    "data_generation_seed": 7,
+    "split_generation_seed": null,
+    "split_method": "fixed session indexes; no randomized split generation",
+    "conventional_model_seeds": [
+      7,
+      17,
+      27,
+      37,
+      47
+    ],
+    "label_permutation_seeds": [
+      1007,
+      1017,
+      1027,
+      1037,
+      1047
+    ],
+    "snn_model_initialization_seeds": [
+      7,
+      17,
+      27
+    ],
+    "snn_training_seeds": [
+      107,
+      117,
+      127
+    ],
+    "attack_generation": {
+      "config": "configs/tier1_attack_experiment_v1.json",
+      "field": "experiment_seed",
+      "value": 20260923
+    },
+    "puf_simulation": {
+      "config": "configs/puf_baseline.json",
+      "field": "random_seed",
+      "value": 6767
+    },
+    "session_randomness": "OS cryptographic randomness; not seeded by experiment settings"
+  },
+  "synthetic_motion": {
+    "generation_method": "variable_fixed_grid_v1",
+    "parameter_status": "provisional engineering assumptions; not calibrated human or Quest motion",
+    "resampling_applied": false,
+    "tracking_valid_probability": 1.0,
+    "round_decimal_places": 8,
+    "session_spacing_seconds": 10000,
+    "trial_amplitude_scale_range": [
+      0.25,
+      1.4
+    ],
+    "motion_duration_s_range": [
+      0.8,
+      1.9
+    ],
+    "start_delay_s_range": [
+      0.0,
+      0.55
+    ],
+    "phase_warp_range_rad": [
+      -0.7,
+      0.7
+    ],
+    "peak_timing_fraction_range": [
+      0.25,
+      0.75
+    ],
+    "secondary_axis_scale_range": [
+      -0.65,
+      0.65
+    ],
+    "return_error_std_deg": 3.0,
+    "position_noise_std_m": 0.003,
+    "position_drift_std_m": 0.006,
+    "position_sway_amplitude_m_range": [
+      0.001,
+      0.006
+    ],
+    "orientation_noise_std_deg": 0.6,
+    "orientation_drift_std_deg": 3.0,
+    "orientation_sway_amplitude_deg_range": [
+      0.5,
+      4.0
+    ],
+    "start_position_m_range": [
+      -0.2,
+      0.2
+    ],
+    "start_orientation_deg_range": [
+      -12.0,
+      12.0
+    ],
+    "device_effects": {
+      "enabled": true,
+      "amplitude_scale_std": 0.1,
+      "duration_scale_std": 0.08
+    },
+    "session_effects": {
+      "enabled": true,
+      "amplitude_scale_std": 0.12,
+      "duration_scale_std": 0.1
+    },
+    "classes": {
+      "nod": {
+        "rotation_axis": "x",
+        "peak_rotation_deg": -22.0,
+        "cycles_per_action": 1.0,
+        "vertical_position_peak_m": 0.006
+      },
+      "shake": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": 20.0,
+        "cycles_per_action": 1.0,
+        "horizontal_position_peak_m": 0.004
+      },
+      "look_left_return": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": -32.0,
+        "trajectory": "half_sine_return"
+      },
+      "look_right_return": {
+        "rotation_axis": "y",
+        "peak_rotation_deg": 32.0,
+        "trajectory": "half_sine_return"
+      },
+      "still": {
+        "rotation_axis": "y",
+        "orientation_random_walk_step_std_deg": 0.2,
+        "position_random_walk_step_std_m": 0.0003
+      }
+    }
+  },
+  "splits": {
+    "primary_claim": "cross_session",
+    "train_session_index": 1,
+    "validation_session_index": 2,
+    "test_session_index": 3,
+    "group_key": "source_trial_id"
+  }
+}

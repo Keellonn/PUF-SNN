@@ -309,5 +309,11 @@ Stress tests are fixed paired transformations, not new independent recordings. R
 
 The one architecture ablation compares 32 and 64 neurons with otherwise identical configurations and separated seed roles. Any selection uses validation macro-F1 only. Test comparisons do not trigger further tuning. Per-seed and pooled metrics/curves are derived from saved counts/history; pooled predictions reuse the same test windows and are not independent recordings.
 
-The current conclusion is competitive but not superior in a CPU software prototype. No measured energy advantage, physical Quest performance, cross-person result or cross-device classifier generalization is established.
+The historical initial SNN run had macro-F1 0.8551 and met the provisional five-point gap. The separately seeded 64-neuron follow-up has macro-F1 0.8500 and a 5.32-point gap to LR, so it misses that criterion. The validation-selected 32-neuron ablation has macro-F1 0.8619 and a 4.12-point gap, so it meets the criterion. Neither SNN outperforms LR or RF. The 64-neuron model remains the reference baseline and the 32-neuron result remains the predefined architecture ablation.
+
+The matched accepted pipeline benchmark uses the 64-neuron SNN. Its authenticated p95 range is 18.324-18.737 ms across three seeds, while authenticated LR is 10.894-11.099 ms and authenticated RF is 23.831-24.234 ms. Maximum authenticated times exceed 20 ms in every condition, including 335.650 ms for SNN, 354.627 ms for LR and 387.297 ms for RF. Slow observations occur inside the adapter timing boundary; their cause is not established. The accepted-window p95 measurements are not hard real-time guarantees. The bad-tag receiver path has p95 0.9814 ms over 600 timing repetitions and makes zero classifier calls without advancing sequence state.
+
+The saved full Python suite passed 322 tests. The reviewed Unity screenshot records 15 passing EditMode tests, including actual final binary-writer execution. Supplemental .NET positive checks and the five controlled C# negative vectors are separate evidence, not a formal attack-rate study.
+
+No measured energy advantage, physical Quest performance, cross-person result or cross-device classifier generalization is established. Reconstruction reliability, independent credential verification and full session setup costs are not established by the recurring-window pipeline benchmark.
 

@@ -189,7 +189,7 @@ def snn_report(arguments: argparse.Namespace) -> None:
 
         lines.extend(["", "Confusion matrix: rows are true labels; columns are predicted labels in the configured class order.", "", "```text", *[str(row) for row in result["confusion_matrix"]], "```"])
 
-    lines.extend(["", metrics["limitation"], "", "The saved latency is forward-only: normalization, tensor creation/transfer, argmax and CPU output decoding, authentication, audit and capture are excluded. Training batch size is 32; timing batch size is one.", "", "Conclusion: competitive but not superior in this CPU software prototype. No measured energy advantage or real-world robustness is established."])
+    lines.extend(["", metrics["limitation"], "", "The saved latency is forward-only: normalization, tensor creation/transfer, argmax and CPU output decoding, authentication, audit and capture are excluded. Training batch size is 32; timing batch size is one.", "", "Conclusion: This report describes the saved SNN run. Determine the five-point macro-F1 criterion from a matched conventional comparison and distinguish the reference baseline from an architecture ablation. No measured energy advantage or real-world robustness is established."])
     (arguments.output / "snn-report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

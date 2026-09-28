@@ -441,7 +441,80 @@ Cross-language serialization, inference-gate, tests, and evidence commit: `9bb89
 
 ## Week 4 feedback evaluation
 
-The original template-leakage audit and preliminary SNN results are preserved. The follow-up evaluation package adds full-window and near-duplicate checks, generator/feature/protocol methods, separated seed roles, complete per-class/curve reporting, nod/still and fixed robustness/feature comparisons, a 32-versus-64 comparison and shared pipeline timing. Actual follow-up numerical results, commands, configurations, figure paths and commits will be recorded after the runs complete. No new hours or completed-work claims have been added in advance.
+The original template-leakage finding and Week 4 baseline remain preserved in this log. This follow-up uses the same corrected dataset, separate model-initialization/training seeds, and explicitly scoped diagnostics rather than overwriting that run.
+
+| Model | Test macro-F1 mean | SD |
+|---|---:|---:|
+| logistic_regression | 0.9032 | 0.0000 |
+| random_forest | 0.8936 | 0.0033 |
+| SNN 64, separate training seeds | 0.8500 | 0.0167 |
+| SNN 32, architecture ablation | 0.8619 | 0.0051 |
+
+The 64-neuron follow-up has mean test accuracy 0.8494. Its macro-F1 gap to the strongest conventional model is 5.32 percentage points; the provisional five-point target is not met. Conventional SD uses the original diagnostic's sample-SD convention; SNN SD uses its saved population-SD convention. Neither estimates variation across independent human/device datasets.
+
+Full-window cross-split duplicate check: True. All three split-pair counts and physical before/after nearest-neighbor distributions are in data-diagnostics.json; provisional sensitivity thresholds are not a universal no-leakage proof.
+
+The saved reports contain per-seed/pooled precision, recall, F1, support and complete confusion matrices, training loss/validation-F1 curves and best/stopping epochs. Pooled predictions reuse the same source test windows. LR's deterministic lbfgs procedure explains unchanged fixed-data results across model seeds.
+
+The predefined 32-versus-64 comparison selected 32 neurons using validation macro-F1 only. The 32-neuron ablation has mean test accuracy 0.8611, mean macro-F1 0.8619 and a 4.12-point gap to the strongest conventional model, so the provisional five-point criterion is met. It has 1,445 trainable parameters versus 4,933 for the reference model. The existing 64-neuron baseline remains the reference; Session-3 comparison did not drive another tuning loop.
+
+Nod/still trajectories, per-window motion statistics, intentional-amplitude/duration sweep, moderate paired stress tests and conventional feature ablations are recorded in motion-analysis. Initial-orientation changes are relative-pose invariance checks; low-amplitude nominal nod labels become ambiguous near still. Synthetic success does not establish realistic physical motion.
+
+Pipeline timing compares the same binary32-quantized motion through classifier-only and authenticated paths. Accepted predictions must match; the bad-tag timing path makes zero preprocessing/classifier calls and preserves sequence state. Total time is measured directly. Loading, capture, networking and durable audit I/O are excluded. Session setup uses a known-correct synthetic candidate, so reconstruction reliability and overall legitimate-window availability are not established.
+
+Conclusion: The follow-up misses the provisional accuracy-gap target; do not describe this new run as meeting the competitive-baseline criterion. These are CPU software-prototype results, with no measured energy advantage, physical Quest result, cross-person or cross-device classifier generalization.
+
+### Post-window pipeline timing
+
+| Model | Path | Median range (ms) | p95 range (ms) | Largest observed time (ms) |
+|---|---|---:|---:|---:|
+| Logistic regression | Classifier-only pipeline | 1.741-1.934 | 2.145-2.495 | 3.697 |
+| Logistic regression | Authentication plus classifier | 9.063-9.207 | 10.894-11.099 | 354.627 |
+| SNN 64 | Classifier-only pipeline | 8.817-9.182 | 9.581-10.315 | 16.012 |
+| SNN 64 | Authentication plus classifier | 15.824-17.295 | 18.324-18.737 | 335.650 |
+| Random forest | Classifier-only pipeline | 13.057-14.254 | 15.402-15.986 | 22.718 |
+| Random forest | Authentication plus classifier | 20.519-20.974 | 23.831-24.234 | 387.297 |
+
+Ranges describe separate seed runs, not pooled percentiles. Each condition used 20 warm-up and 600 timed windows per seed with time.perf_counter_ns. The SNN pipeline comparison uses 64 neurons, not the 32-neuron ablation.
+
+Bad-tag receiver timing: median 0.9164 ms, p95 0.9814 ms, maximum 1.3537 ms over 600 repetitions, with zero classifier calls and unchanged sequence state. These timing repetitions are not independent Tier-1 security trials.
+
+Authenticated LR and SNN p95 values were below 20 ms; authenticated RF p95 was above 20 ms. Maximum accepted times exceeded 20 ms in every authenticated condition. Slow observations were inside the adapter timer, but their cause is not established. These measurements do not provide a real-time deadline guarantee.
+
+Classifier-only pipeline timing includes the common binary32 conversion, adapter/preprocessing, normalization where applicable, tensor handling and output decoding. Authentication paths also include actual verifier and in-memory audit work. PUF reconstruction, independent credential verification, session setup, capture, loading, networking and durable audit I/O are excluded. Nested stage percentiles must not be summed to estimate total time.
+
+### Final software validation
+
+- Saved full Python suite: 322 tests passed. The 74 targeted revision tests are included in this total.
+- Reviewed Unity screenshot: 15 of 15 EditMode tests passed, comprising 9 logger, 4 legacy canonical-writer and 2 final binary-writer tests.
+- Dataset validation: 1,800 windows, balanced across the five labels and three splits.
+- Supplemental .NET positive checks: 11 scalar groups and 26 complete-window vectors. This evidence is separate from actual Unity execution.
+- Five C# negative vectors were rejected with zero classifier calls, unchanged sequence state and subsequent valid-window acceptance.
+- The detailed SNN report has a reporting-only conclusion amendment recorded in its manifest. Training, checkpoints and numerical metric artifacts are unchanged.
+
+### Evidence
+
+- data: `results/week-4/keegan/data-diagnostics`
+- conventional: `results/week-4/keegan/conventional-baselines`
+- original_snn_report: `results/week-4/keegan/snn-original-report`
+- snn: `results/week-4/keegan/snn-baseline-separate-seeds`
+- snn_report: `results/week-4/keegan/snn-detailed-report`
+- small_snn: `results/week-4/keegan/snn-architecture-32`
+- architecture: `results/week-4/keegan/snn-architecture-comparison`
+- motion: `results/week-4/keegan/motion-analysis`
+- pipeline: `results/week-4/shared/pipeline-benchmark`
+- C# negative protocol evidence: `results/week-4/shared/protocol-validation/negative-results.json`
+
+### Provenance
+
+- Evaluation source commit: `e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d`
+- Dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`
+- Commands, source/configuration hashes, seed roles, environment and figure paths are recorded in the run manifests and saved configurations.
+- Permanent methods: `docs/xr-snn-design.md`, `docs/authenticated-window-interface.md` and Will's `docs/puf-layer3-design.md`.
+
+### Remaining shared requirements
+
+Will owns independent enrollment verification before HKDF, reconstruction FRR/miscorrection/noise/BER sensitivity and improvement comparisons, formal Tier-1 attack counts/uncertainty/state tests, and evidence-manifest reconciliation. Remaining shared work includes disjoint replay/audit/session-confirmation timing and any durable-storage benchmark. Final binary Unity execution has passed and is reported separately from supplemental .NET execution. Human recording remains disabled.
 
 ---
 
@@ -695,7 +768,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Committed and pushed the cross-language serialization, inference-gate, tests, and evidence as `9bb890c84a23dfef2ecf087292e5d772328c92c5`
 - Updated the Week 4 results and research log with the recorded evidence, limitations, and repository provenance
 
-## Wednesday, September 23, 2026 - 4.92 estimated hours
+## Wednesday, September 23, 2026 - 4.92 hours
 
 ### 7:03 PM - 11:58 PM - 4.92 hours
 
@@ -724,3 +797,37 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Added the combined SNN confusion matrix and explained the largest class errors
 - Added a Week 4 validation and scope slide separating completed work from remaining real-Quest, total-latency, and abnormality-detection work
 - Added speaker notes and matched the new diagrams and slides to the existing presentation style
+
+## Sunday, September 27, 2026 - 6.16 hours
+
+### 4:15 PM - 6:52 PM - 2.62 hours
+
+- Reviewed Dr. Garcia's Week 4 feedback and separated my synthetic-motion, SNN, and classifier-interface revisions from Will's reconstruction and formal authentication evaluation
+- Expanded the generator documentation to explain movement amplitude, speed, starting pose, timing, noise, drift, return behavior, still motion, and synthetic device/session variation
+- Implemented full-window content hashes that compare motion, relative timestamps, tracking, and sample structure across every split pair without relying on labels or identifiers
+- Added nearest-neighbor diagnostics using relative-position RMS and sign-invariant quaternion rotation distances to compare the original and corrected datasets
+- Added regression tests for copied windows with changed identifiers, small numerical jitter, timestamp offsets, quaternion signs, metadata exclusion, and split preservation
+- Separated the recorded data, initialization, training/shuffle, attack, and PUF seed roles, while documenting that the fixed session split does not use a random seed
+- Added detailed SNN reporting for per-seed and pooled precision, recall, F1, confusion matrices, training curves, best checkpoints, stopping epochs, parameter counts, and timing scope
+- Added the predefined 32-neuron configuration and reporting checks for the 32-versus-64 comparison, keeping Session 2 as the model-selection split
+- Implemented conventional feature ablations, paired motion transformations, and a targeted nod-amplitude/speed experiment without changing the main seven-channel SNN input
+- Documented the final binary layout, authenticated fields, preprocessing boundary, sequence policy, rejection behavior, and audit-record scope
+- Added C# negative protocol vectors and Python checks for controlled rejection, zero classifier calls, unchanged sequence state, and acceptance of the next valid window
+- Added matched classifier-only and authenticated pipeline benchmarks, including accepted/rejected paths, serialization, HMAC primitives, and separately scoped synthetic session setup
+- Ran all 74 targeted Python tests and 15 Unity EditMode tests successfully, completed the supplemental .NET checks, saved the evidence, and committed the revision source
+
+### 9:14 PM - 12:41 AM - 3.54 hours
+
+- Ran the original-versus-corrected data diagnostics and confirmed zero corrected full-window duplicates across the training, validation, and testing split pairs
+- Reviewed the nearest-neighbor distributions and confirmed that the corrected trajectories no longer reproduced the original near-identical orientation patterns
+- Reran the five-seed conventional baselines and saved complete per-class results, pooled confusion matrices, refreshed latency measurements, and leakage controls
+- Ran the separately seeded 64-neuron SNN and the predefined 32-neuron comparison, saving checkpoints, training histories, metrics, confusion matrices, configurations, and provenance
+- Reviewed the training curves and validation-only architecture selection, recording that the 64-neuron result missed the five-point macro-F1 target while the 32-neuron ablation met it
+- Analyzed quaternion-only, quaternion-plus-angular-velocity, and relative-pose feature results, including the effect of training-only scaling on logistic regression
+- Examined representative correct and incorrect nod/still trajectories and measured sensitivity to amplitude, speed, initial orientation, and timing changes
+- Reviewed accepted and rejected pipeline timings, confirmed matching accepted predictions, and documented the large latency outliers and excluded reconstruction, capture, network, and durable-storage costs
+- Ran the full Python repository suite successfully with 322 tests and saved the console evidence
+- Checked result completion markers, dataset consistency, source provenance, and artifact hashes while preserving the original leakage finding and earlier SNN baseline
+- Corrected the fixed SNN conclusion in the reporting code, amended the detailed report and matching manifest, and kept the numerical metrics and trained models unchanged
+- Updated my results summary, research log, and XR/SNN design documentation with the architecture comparison, pipeline timing, validation evidence, and remaining limitations
+- Updated the slideshow tables, confusion matrices, validation evidence, conclusions, and speaker notes, including the leakage, motion-sensitivity, nod/still, and pipeline-latency findings

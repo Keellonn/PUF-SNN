@@ -1,0 +1,273 @@
+{
+  "thresholds": {
+    "position_rms_m": 0.001,
+    "orientation_rms_deg": 1
+  },
+  "threshold_interpretation": "provisional sensitivity thresholds, not calibrated human-motion or universal leakage criteria",
+  "balance": {
+    "balanced_within_each_device_session": true,
+    "counts": {
+      "sim-device-01/sim-device-01-session-01": {
+        "shake": 20,
+        "look_right_return": 20,
+        "nod": 20,
+        "look_left_return": 20,
+        "still": 20
+      },
+      "sim-device-01/sim-device-01-session-02": {
+        "shake": 20,
+        "look_left_return": 20,
+        "nod": 20,
+        "still": 20,
+        "look_right_return": 20
+      },
+      "sim-device-01/sim-device-01-session-03": {
+        "shake": 20,
+        "look_right_return": 20,
+        "still": 20,
+        "look_left_return": 20,
+        "nod": 20
+      },
+      "sim-device-02/sim-device-02-session-01": {
+        "shake": 20,
+        "look_right_return": 20,
+        "still": 20,
+        "nod": 20,
+        "look_left_return": 20
+      },
+      "sim-device-02/sim-device-02-session-02": {
+        "shake": 20,
+        "look_right_return": 20,
+        "still": 20,
+        "look_left_return": 20,
+        "nod": 20
+      },
+      "sim-device-02/sim-device-02-session-03": {
+        "look_right_return": 20,
+        "shake": 20,
+        "nod": 20,
+        "look_left_return": 20,
+        "still": 20
+      },
+      "sim-device-03/sim-device-03-session-01": {
+        "nod": 20,
+        "shake": 20,
+        "still": 20,
+        "look_left_return": 20,
+        "look_right_return": 20
+      },
+      "sim-device-03/sim-device-03-session-02": {
+        "still": 20,
+        "look_left_return": 20,
+        "look_right_return": 20,
+        "nod": 20,
+        "shake": 20
+      },
+      "sim-device-03/sim-device-03-session-03": {
+        "shake": 20,
+        "still": 20,
+        "look_left_return": 20,
+        "look_right_return": 20,
+        "nod": 20
+      },
+      "sim-device-04/sim-device-04-session-01": {
+        "look_left_return": 20,
+        "still": 20,
+        "nod": 20,
+        "shake": 20,
+        "look_right_return": 20
+      },
+      "sim-device-04/sim-device-04-session-02": {
+        "look_left_return": 20,
+        "nod": 20,
+        "look_right_return": 20,
+        "shake": 20,
+        "still": 20
+      },
+      "sim-device-04/sim-device-04-session-03": {
+        "nod": 20,
+        "still": 20,
+        "look_right_return": 20,
+        "shake": 20,
+        "look_left_return": 20
+      },
+      "sim-device-05/sim-device-05-session-01": {
+        "shake": 20,
+        "nod": 20,
+        "still": 20,
+        "look_right_return": 20,
+        "look_left_return": 20
+      },
+      "sim-device-05/sim-device-05-session-02": {
+        "look_left_return": 20,
+        "shake": 20,
+        "still": 20,
+        "look_right_return": 20,
+        "nod": 20
+      },
+      "sim-device-05/sim-device-05-session-03": {
+        "still": 20,
+        "look_left_return": 20,
+        "shake": 20,
+        "look_right_return": 20,
+        "nod": 20
+      },
+      "sim-device-06/sim-device-06-session-01": {
+        "look_right_return": 20,
+        "shake": 20,
+        "nod": 20,
+        "look_left_return": 20,
+        "still": 20
+      },
+      "sim-device-06/sim-device-06-session-02": {
+        "look_right_return": 20,
+        "nod": 20,
+        "still": 20,
+        "shake": 20,
+        "look_left_return": 20
+      },
+      "sim-device-06/sim-device-06-session-03": {
+        "shake": 20,
+        "still": 20,
+        "nod": 20,
+        "look_left_return": 20,
+        "look_right_return": 20
+      }
+    },
+    "limitation": "balanced groups and excluded IDs reduce direct label proxies; they do not establish real-device generalization"
+  },
+  "datasets": {
+    "original": {
+      "full_windows": {
+        "method": "full sample content and relative timestamps; excludes label, split, IDs, sequence and absolute time origin",
+        "pairs": {
+          "train_to_validation": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          },
+          "train_to_test": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          },
+          "validation_to_test": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          }
+        },
+        "passed": true
+      },
+      "neighbor_distributions": {
+        "any_label": {
+          "orientation_rms_deg": {
+            "count": 600,
+            "minimum": 0.0,
+            "p05": 0.0,
+            "median": 3.8181918208328447e-07,
+            "mean": 0.04532608599580585,
+            "p95": 0.24739085983407513,
+            "maximum": 0.38519998436595604
+          },
+          "combined_scaled_distance": {
+            "count": 600,
+            "minimum": 1.6932150764674911,
+            "p05": 1.8339161979967455,
+            "median": 1.9531719600121804,
+            "mean": 1.9660592929858656,
+            "p95": 2.151186456840289,
+            "maximum": 2.436439335822218
+          },
+          "near_both_thresholds_count": 0,
+          "orientation_within_threshold_count": 600
+        },
+        "same_label": {
+          "orientation_rms_deg": {
+            "count": 600,
+            "minimum": 0.0,
+            "p05": 0.0,
+            "median": 3.8181918208328447e-07,
+            "mean": 0.04532608599580585,
+            "p95": 0.24739085983407513,
+            "maximum": 0.38519998436595604
+          },
+          "combined_scaled_distance": {
+            "count": 600,
+            "minimum": 1.6932150764674911,
+            "p05": 1.8339161979967455,
+            "median": 1.9531719600121804,
+            "mean": 1.9660592929858656,
+            "p95": 2.151186456840289,
+            "maximum": 2.436439335822218
+          },
+          "near_both_thresholds_count": 0,
+          "orientation_within_threshold_count": 600
+        }
+      }
+    },
+    "corrected": {
+      "full_windows": {
+        "method": "full sample content and relative timestamps; excludes label, split, IDs, sequence and absolute time origin",
+        "pairs": {
+          "train_to_validation": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          },
+          "train_to_test": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          },
+          "validation_to_test": {
+            "shared_payload_hashes": 0,
+            "matching_window_pairs": 0
+          }
+        },
+        "passed": true
+      },
+      "neighbor_distributions": {
+        "any_label": {
+          "orientation_rms_deg": {
+            "count": 600,
+            "minimum": 2.5092389141128337,
+            "p05": 3.5569329282411184,
+            "median": 6.425321361339674,
+            "mean": 6.943086305675647,
+            "p95": 11.773732015316584,
+            "maximum": 18.23968135417384
+          },
+          "combined_scaled_distance": {
+            "count": 600,
+            "minimum": 9.47742953683541,
+            "p05": 10.182722872424264,
+            "median": 13.229888902846486,
+            "mean": 13.70859783695439,
+            "p95": 19.140993448741067,
+            "maximum": 24.145889648803756
+          },
+          "near_both_thresholds_count": 0,
+          "orientation_within_threshold_count": 0
+        },
+        "same_label": {
+          "orientation_rms_deg": {
+            "count": 600,
+            "minimum": 2.5092389141128337,
+            "p05": 3.5624026593938987,
+            "median": 6.588884994726129,
+            "mean": 7.047835148809991,
+            "p95": 11.773732015316584,
+            "maximum": 18.23968135417384
+          },
+          "combined_scaled_distance": {
+            "count": 600,
+            "minimum": 9.47742953683541,
+            "p05": 10.238461373856701,
+            "median": 13.59172287450981,
+            "mean": 13.950578599593182,
+            "p95": 19.140993448741067,
+            "maximum": 24.145889648803756
+          },
+          "near_both_thresholds_count": 0,
+          "orientation_within_threshold_count": 0
+        }
+      }
+    }
+  }
+}

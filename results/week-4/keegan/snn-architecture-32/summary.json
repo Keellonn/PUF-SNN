@@ -1,0 +1,547 @@
+{
+  "seed_count": 3,
+  "seeds": [
+    7,
+    17,
+    27
+  ],
+  "per_seed": [
+    {
+      "seed": 7,
+      "training_seed": 107,
+      "trainable_parameters": 1445,
+      "best_epoch": 23,
+      "epochs_completed": 31,
+      "validation": {
+        "sample_count": 600,
+        "accuracy": 0.8533333333333334,
+        "macro_f1": 0.8531071845644727,
+        "per_class": {
+          "nod": {
+            "precision": 0.8898305084745762,
+            "recall": 0.875,
+            "f1": 0.8823529411764706,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.8877551020408163,
+            "recall": 0.725,
+            "f1": 0.7981651376146789,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.8760330578512396,
+            "recall": 0.8833333333333333,
+            "f1": 0.8796680497925311,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.8943089430894309,
+            "recall": 0.9166666666666666,
+            "f1": 0.9053497942386831,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7428571428571429,
+            "recall": 0.8666666666666667,
+            "f1": 0.8,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            105,
+            0,
+            2,
+            2,
+            11
+          ],
+          [
+            3,
+            87,
+            6,
+            11,
+            13
+          ],
+          [
+            4,
+            4,
+            106,
+            0,
+            6
+          ],
+          [
+            1,
+            3,
+            0,
+            110,
+            6
+          ],
+          [
+            5,
+            4,
+            7,
+            0,
+            104
+          ]
+        ]
+      },
+      "test": {
+        "sample_count": 600,
+        "accuracy": 0.865,
+        "macro_f1": 0.8650586817908262,
+        "per_class": {
+          "nod": {
+            "precision": 0.9043478260869565,
+            "recall": 0.8666666666666667,
+            "f1": 0.8851063829787233,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.8653846153846154,
+            "recall": 0.75,
+            "f1": 0.8035714285714286,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666,
+            "f1": 0.9166666666666666,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.9008264462809917,
+            "recall": 0.9083333333333333,
+            "f1": 0.9045643153526971,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7571428571428571,
+            "recall": 0.8833333333333333,
+            "f1": 0.8153846153846154,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            104,
+            1,
+            2,
+            0,
+            13
+          ],
+          [
+            3,
+            90,
+            4,
+            10,
+            13
+          ],
+          [
+            1,
+            6,
+            110,
+            0,
+            3
+          ],
+          [
+            1,
+            5,
+            0,
+            109,
+            5
+          ],
+          [
+            6,
+            2,
+            4,
+            2,
+            106
+          ]
+        ]
+      },
+      "inference_latency": {
+        "scope": "forward call including temporal aggregation; excludes preprocessing, tensor construction, transfer, argmax/CPU decoding, authentication and audit",
+        "batch_size": 1,
+        "unit": "milliseconds",
+        "timing_method": "time.perf_counter_ns",
+        "prediction_method": "one 120-sample window per model call",
+        "warmup_count": 20,
+        "timed_prediction_count": 600,
+        "median_ms": 6.9562,
+        "p95_ms": 7.889999999999999,
+        "mean_ms": 7.0908793333333335,
+        "minimum_ms": 6.347,
+        "maximum_ms": 14.6351
+      }
+    },
+    {
+      "seed": 17,
+      "training_seed": 117,
+      "trainable_parameters": 1445,
+      "best_epoch": 31,
+      "epochs_completed": 39,
+      "validation": {
+        "sample_count": 600,
+        "accuracy": 0.8616666666666667,
+        "macro_f1": 0.8622137533334044,
+        "per_class": {
+          "nod": {
+            "precision": 0.9423076923076923,
+            "recall": 0.8166666666666667,
+            "f1": 0.875,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.8482142857142857,
+            "recall": 0.7916666666666666,
+            "f1": 0.8189655172413793,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.8527131782945736,
+            "recall": 0.9166666666666666,
+            "f1": 0.8835341365461847,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.9298245614035088,
+            "recall": 0.8833333333333333,
+            "f1": 0.905982905982906,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7659574468085106,
+            "recall": 0.9,
+            "f1": 0.8275862068965517,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            98,
+            2,
+            6,
+            0,
+            14
+          ],
+          [
+            0,
+            95,
+            8,
+            8,
+            9
+          ],
+          [
+            2,
+            3,
+            110,
+            0,
+            5
+          ],
+          [
+            0,
+            9,
+            0,
+            106,
+            5
+          ],
+          [
+            4,
+            3,
+            5,
+            0,
+            108
+          ]
+        ]
+      },
+      "test": {
+        "sample_count": 600,
+        "accuracy": 0.865,
+        "macro_f1": 0.866002349012762,
+        "per_class": {
+          "nod": {
+            "precision": 0.9009009009009009,
+            "recall": 0.8333333333333334,
+            "f1": 0.8658008658008658,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.912621359223301,
+            "recall": 0.7833333333333333,
+            "f1": 0.8430493273542601,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.9256198347107438,
+            "recall": 0.9333333333333333,
+            "f1": 0.9294605809128631,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.8934426229508197,
+            "recall": 0.9083333333333333,
+            "f1": 0.9008264462809917,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7272727272727273,
+            "recall": 0.8666666666666667,
+            "f1": 0.7908745247148289,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            100,
+            1,
+            3,
+            1,
+            15
+          ],
+          [
+            0,
+            94,
+            3,
+            8,
+            15
+          ],
+          [
+            3,
+            3,
+            112,
+            0,
+            2
+          ],
+          [
+            1,
+            3,
+            0,
+            109,
+            7
+          ],
+          [
+            7,
+            2,
+            3,
+            4,
+            104
+          ]
+        ]
+      },
+      "inference_latency": {
+        "scope": "forward call including temporal aggregation; excludes preprocessing, tensor construction, transfer, argmax/CPU decoding, authentication and audit",
+        "batch_size": 1,
+        "unit": "milliseconds",
+        "timing_method": "time.perf_counter_ns",
+        "prediction_method": "one 120-sample window per model call",
+        "warmup_count": 20,
+        "timed_prediction_count": 600,
+        "median_ms": 7.2395,
+        "p95_ms": 7.525709999999999,
+        "mean_ms": 7.243145666666666,
+        "minimum_ms": 6.2302,
+        "maximum_ms": 11.8451
+      }
+    },
+    {
+      "seed": 27,
+      "training_seed": 127,
+      "trainable_parameters": 1445,
+      "best_epoch": 33,
+      "epochs_completed": 41,
+      "validation": {
+        "sample_count": 600,
+        "accuracy": 0.865,
+        "macro_f1": 0.8654742705493085,
+        "per_class": {
+          "nod": {
+            "precision": 0.911504424778761,
+            "recall": 0.8583333333333333,
+            "f1": 0.8841201716738197,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.8376068376068376,
+            "recall": 0.8166666666666667,
+            "f1": 0.8270042194092827,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.8842975206611571,
+            "recall": 0.8916666666666667,
+            "f1": 0.8879668049792531,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.9152542372881356,
+            "recall": 0.9,
+            "f1": 0.907563025210084,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7862595419847328,
+            "recall": 0.8583333333333333,
+            "f1": 0.8207171314741036,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            103,
+            4,
+            2,
+            0,
+            11
+          ],
+          [
+            2,
+            98,
+            6,
+            7,
+            7
+          ],
+          [
+            2,
+            5,
+            107,
+            0,
+            6
+          ],
+          [
+            0,
+            8,
+            0,
+            108,
+            4
+          ],
+          [
+            6,
+            2,
+            6,
+            3,
+            103
+          ]
+        ]
+      },
+      "test": {
+        "sample_count": 600,
+        "accuracy": 0.8533333333333334,
+        "macro_f1": 0.8546729495177197,
+        "per_class": {
+          "nod": {
+            "precision": 0.9433962264150944,
+            "recall": 0.8333333333333334,
+            "f1": 0.8849557522123894,
+            "support": 120
+          },
+          "shake": {
+            "precision": 0.8421052631578947,
+            "recall": 0.8,
+            "f1": 0.8205128205128205,
+            "support": 120
+          },
+          "look_left_return": {
+            "precision": 0.9112903225806451,
+            "recall": 0.9416666666666667,
+            "f1": 0.9262295081967213,
+            "support": 120
+          },
+          "look_right_return": {
+            "precision": 0.8916666666666667,
+            "recall": 0.8916666666666667,
+            "f1": 0.8916666666666667,
+            "support": 120
+          },
+          "still": {
+            "precision": 0.7058823529411765,
+            "recall": 0.8,
+            "f1": 0.75,
+            "support": 120
+          }
+        },
+        "confusion_matrix": [
+          [
+            100,
+            1,
+            1,
+            0,
+            18
+          ],
+          [
+            1,
+            96,
+            4,
+            8,
+            11
+          ],
+          [
+            1,
+            3,
+            113,
+            0,
+            3
+          ],
+          [
+            0,
+            5,
+            0,
+            107,
+            8
+          ],
+          [
+            4,
+            9,
+            6,
+            5,
+            96
+          ]
+        ]
+      },
+      "inference_latency": {
+        "scope": "forward call including temporal aggregation; excludes preprocessing, tensor construction, transfer, argmax/CPU decoding, authentication and audit",
+        "batch_size": 1,
+        "unit": "milliseconds",
+        "timing_method": "time.perf_counter_ns",
+        "prediction_method": "one 120-sample window per model call",
+        "warmup_count": 20,
+        "timed_prediction_count": 600,
+        "median_ms": 6.894299999999999,
+        "p95_ms": 7.612864999999999,
+        "mean_ms": 7.00852,
+        "minimum_ms": 6.1015,
+        "maximum_ms": 11.8212
+      }
+    }
+  ],
+  "validation_macro_f1": {
+    "mean": 0.8602650694823951,
+    "standard_deviation": 0.00523349663242902,
+    "minimum": 0.8531071845644727,
+    "maximum": 0.8654742705493085
+  },
+  "test_accuracy": {
+    "mean": 0.8611111111111112,
+    "standard_deviation": 0.005499719409228674,
+    "minimum": 0.8533333333333334,
+    "maximum": 0.865
+  },
+  "test_macro_f1": {
+    "mean": 0.8619113267737694,
+    "standard_deviation": 0.00513278390558258,
+    "minimum": 0.8546729495177197,
+    "maximum": 0.866002349012762
+  },
+  "median_inference_ms": {
+    "mean": 7.0299999999999985,
+    "standard_deviation": 0.15027882973548426,
+    "minimum": 6.894299999999999,
+    "maximum": 7.2395
+  },
+  "p95_inference_ms": {
+    "mean": 7.676191666666665,
+    "standard_deviation": 0.1553158095802082,
+    "minimum": 7.525709999999999,
+    "maximum": 7.889999999999999
+  }
+}

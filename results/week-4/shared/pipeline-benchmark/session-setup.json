@@ -1,0 +1,3028 @@
+{
+  "rows": [
+    {
+      "session_establishment_ns": 208900,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 211300,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 209800,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 209800,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 205400,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 206800,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 213900,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 9600
+    },
+    {
+      "session_establishment_ns": 207800,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 207600,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 207300,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 205200,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 207900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 219900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 208200,
+      "sender_kdf_ns": 6900,
+      "verifier_kdf_ns": 8900
+    },
+    {
+      "session_establishment_ns": 208100,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 202500,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 210800,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 207900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 205100,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 211700,
+      "sender_kdf_ns": 7200,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 205700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 200000,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 202300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 206500,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 203800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 202300,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 220400,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 9400
+    },
+    {
+      "session_establishment_ns": 202800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 206200,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 205600,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 202300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 202200,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 207300,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 221800,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 9200
+    },
+    {
+      "session_establishment_ns": 207700,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 204200,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 207600,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 365200,
+      "sender_kdf_ns": 11200,
+      "verifier_kdf_ns": 16400
+    },
+    {
+      "session_establishment_ns": 354500,
+      "sender_kdf_ns": 11200,
+      "verifier_kdf_ns": 12000
+    },
+    {
+      "session_establishment_ns": 218100,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 10200
+    },
+    {
+      "session_establishment_ns": 205600,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 204200,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 202100,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 205500,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 201200,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 218900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 9400
+    },
+    {
+      "session_establishment_ns": 203900,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 204100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 201400,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 199900,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 203200,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 199800,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 215400,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 9600
+    },
+    {
+      "session_establishment_ns": 203000,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 201200,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 201800,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 200400,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 201900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 202200,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 212100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 9600
+    },
+    {
+      "session_establishment_ns": 205300,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 201100,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 204000,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 201900,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 206800,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 206800,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 210100,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 9400
+    },
+    {
+      "session_establishment_ns": 207300,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 204000,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 205700,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 205700,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 201400,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 203700,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 205300,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 9100
+    },
+    {
+      "session_establishment_ns": 202600,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 203500,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 206900,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 206800,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 200900,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 212500,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 203900,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 207000,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 204300,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 200300,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 204900,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 200100,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 216300,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 203600,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 203000,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 207500,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 203400,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 916100,
+      "sender_kdf_ns": 26600,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 203300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 10300
+    },
+    {
+      "session_establishment_ns": 179300,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 169900,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 167100,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 6800
+    },
+    {
+      "session_establishment_ns": 170400,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 174500,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 179900,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 166300,
+      "sender_kdf_ns": 5100,
+      "verifier_kdf_ns": 7100
+    },
+    {
+      "session_establishment_ns": 165000,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 6800
+    },
+    {
+      "session_establishment_ns": 167500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 6700
+    },
+    {
+      "session_establishment_ns": 169700,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 174800,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 171200,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 163600,
+      "sender_kdf_ns": 5100,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 178000,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 171300,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 175600,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 173500,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 171500,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 172600,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 169800,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 173300,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 177700,
+      "sender_kdf_ns": 5100,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 174700,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 173000,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 169800,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 171500,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 170300,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6800
+    },
+    {
+      "session_establishment_ns": 172600,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 170200,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 171400,
+      "sender_kdf_ns": 5100,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 173900,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 171400,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 175700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7100
+    },
+    {
+      "session_establishment_ns": 170200,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 171600,
+      "sender_kdf_ns": 5100,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 169900,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 171700,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 180100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 171500,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 171700,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 171700,
+      "sender_kdf_ns": 5000,
+      "verifier_kdf_ns": 6800
+    },
+    {
+      "session_establishment_ns": 172600,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 174300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 173000,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 6900
+    },
+    {
+      "session_establishment_ns": 173700,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7000
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 175300,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 175300,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 176600,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7100
+    },
+    {
+      "session_establishment_ns": 182500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 180500,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 173100,
+      "sender_kdf_ns": 5200,
+      "verifier_kdf_ns": 7100
+    },
+    {
+      "session_establishment_ns": 176100,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 189900,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 182300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 196300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 224100,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 187200,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 179400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 211400,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 10300
+    },
+    {
+      "session_establishment_ns": 199000,
+      "sender_kdf_ns": 7100,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 197100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 198500,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 182900,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 178600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 182200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 187800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 181000,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 186500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 186500,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188400,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184800,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182100,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 180100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 181600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 188800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 182100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 189300,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187700,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 203300,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 9400
+    },
+    {
+      "session_establishment_ns": 181100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 180100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 180500,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 183000,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184100,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 182700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 181700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 186000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 179800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 181900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 179900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 181700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 179600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 178400,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 188800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 181600,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 178200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 180700,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 181500,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 182600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 193200,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 180500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 179600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 182000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 179300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 181800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 203600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 183400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 181000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 179400,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 181400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 180800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 181600,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 185500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 185800,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 181100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 185000,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 184600,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 197000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 184800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 183400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 208300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 187400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 189700,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 181000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 187400,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 183500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 180800,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 180400,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 180600,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 180500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 195100,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185000,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 192200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 190900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 181400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 183900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 217900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 189700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 185500,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 186600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 188300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 185300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 187200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 195700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 180500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 183200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 184300,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 180700,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 181600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185000,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184800,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 208600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 195800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189400,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 197300,
+      "sender_kdf_ns": 7000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 210600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 11600
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 196500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 204100,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 217500,
+      "sender_kdf_ns": 7000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 218600,
+      "sender_kdf_ns": 7200,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 200200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 203100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 189200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 189500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 182100,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184100,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187400,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185900,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 189800,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 206900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 198200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184500,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 183700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 185400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 194100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 181800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 190200,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185700,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 199100,
+      "sender_kdf_ns": 6700,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 189600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 183900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 186600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 182900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 189500,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 216300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 206900,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 211700,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 187600,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 193000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 192900,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 190200,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 192200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 184500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 232600,
+      "sender_kdf_ns": 7000,
+      "verifier_kdf_ns": 10600
+    },
+    {
+      "session_establishment_ns": 194300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 244900,
+      "sender_kdf_ns": 7000,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 182000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 182800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 187800,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 200100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190500,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184800,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 197900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 183700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 180900,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 182200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 181600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 180700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 179500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 183000,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 186900,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187200,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 188700,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 186800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 210700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 204800,
+      "sender_kdf_ns": 7200,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 181200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 183400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 191600,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 190200,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187600,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 195200,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 181100,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 180800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 181200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 183500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185500,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 196800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 185100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 184000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189600,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 245500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 14000
+    },
+    {
+      "session_establishment_ns": 191400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 188900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 191100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 190600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 183300,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 197600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 181000,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 180600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 179300,
+      "sender_kdf_ns": 5400,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 183200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 195200,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184100,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 193000,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 188300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187200,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 183700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 194500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 14000
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 189300,
+      "sender_kdf_ns": 5300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 182400,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 189300,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 186600,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 182600,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 183800,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 186000,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 195800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 187000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 184100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187300,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 183900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 184700,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 185100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 183300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 183600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 180600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 192100,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7200
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 183400,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 185600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 182400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 196200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8700
+    },
+    {
+      "session_establishment_ns": 186300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 187200,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 189100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 244800,
+      "sender_kdf_ns": 7600,
+      "verifier_kdf_ns": 11300
+    },
+    {
+      "session_establishment_ns": 241800,
+      "sender_kdf_ns": 7900,
+      "verifier_kdf_ns": 12100
+    },
+    {
+      "session_establishment_ns": 223100,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 14300
+    },
+    {
+      "session_establishment_ns": 197700,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 9000
+    },
+    {
+      "session_establishment_ns": 210700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 12800
+    },
+    {
+      "session_establishment_ns": 187000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189000,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 191600,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 185200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 199400,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 187500,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 188400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186200,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 185700,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 187700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 185100,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 193000,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187500,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 189500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 186400,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 187900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 199400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 193200,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 9200
+    },
+    {
+      "session_establishment_ns": 189000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 186500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 184200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 186200,
+      "sender_kdf_ns": 5500,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 188600,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 188800,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 184100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184600,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 186800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188700,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 188300,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187300,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 194800,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186900,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 187800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 187600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 184900,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 187800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 190000,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 197500,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7400
+    },
+    {
+      "session_establishment_ns": 188000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7300
+    },
+    {
+      "session_establishment_ns": 184400,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186600,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188600,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 188200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 194800,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 192300,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186000,
+      "sender_kdf_ns": 5600,
+      "verifier_kdf_ns": 7500
+    },
+    {
+      "session_establishment_ns": 288000,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 219400,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 10400
+    },
+    {
+      "session_establishment_ns": 212800,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 10300
+    },
+    {
+      "session_establishment_ns": 205500,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 10300
+    },
+    {
+      "session_establishment_ns": 210000,
+      "sender_kdf_ns": 7400,
+      "verifier_kdf_ns": 9100
+    },
+    {
+      "session_establishment_ns": 217900,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 11600
+    },
+    {
+      "session_establishment_ns": 198100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8600
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 188300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 191800,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 190700,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 196700,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 193000,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 191100,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 186700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 190800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 188900,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 188500,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 186200,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7600
+    },
+    {
+      "session_establishment_ns": 189800,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 197900,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 8500
+    },
+    {
+      "session_establishment_ns": 190300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 194400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 192000,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 189800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 189300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 199900,
+      "sender_kdf_ns": 6800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 191200,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 196000,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 192800,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 194400,
+      "sender_kdf_ns": 5700,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 202400,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 191200,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194100,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 196800,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 194900,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 191700,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194500,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 196100,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 9000
+    },
+    {
+      "session_establishment_ns": 196000,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 192900,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 194400,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 194500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 194300,
+      "sender_kdf_ns": 6400,
+      "verifier_kdf_ns": 8400
+    },
+    {
+      "session_establishment_ns": 199700,
+      "sender_kdf_ns": 6500,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 208000,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 9200
+    },
+    {
+      "session_establishment_ns": 195300,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 197700,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 197500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8800
+    },
+    {
+      "session_establishment_ns": 195900,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 192500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 194400,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 204200,
+      "sender_kdf_ns": 6900,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 213200,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 201900,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 9500
+    },
+    {
+      "session_establishment_ns": 195500,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 199000,
+      "sender_kdf_ns": 6100,
+      "verifier_kdf_ns": 8200
+    },
+    {
+      "session_establishment_ns": 198100,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 8300
+    },
+    {
+      "session_establishment_ns": 193300,
+      "sender_kdf_ns": 6000,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 206100,
+      "sender_kdf_ns": 14300,
+      "verifier_kdf_ns": 8000
+    },
+    {
+      "session_establishment_ns": 192800,
+      "sender_kdf_ns": 7300,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 192800,
+      "sender_kdf_ns": 6600,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 189300,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7800
+    },
+    {
+      "session_establishment_ns": 195300,
+      "sender_kdf_ns": 6200,
+      "verifier_kdf_ns": 7900
+    },
+    {
+      "session_establishment_ns": 197600,
+      "sender_kdf_ns": 5900,
+      "verifier_kdf_ns": 8100
+    },
+    {
+      "session_establishment_ns": 194300,
+      "sender_kdf_ns": 5800,
+      "verifier_kdf_ns": 7700
+    },
+    {
+      "session_establishment_ns": 202400,
+      "sender_kdf_ns": 6300,
+      "verifier_kdf_ns": 7800
+    }
+  ],
+  "summary": {
+    "session_establishment_ns": {
+      "count": 600,
+      "unit": "milliseconds",
+      "median_ms": 0.1878,
+      "p95_ms": 0.2117,
+      "maximum_ms": 0.9161
+    },
+    "sender_kdf_ns": {
+      "count": 600,
+      "unit": "milliseconds",
+      "median_ms": 0.0059,
+      "p95_ms": 0.0067,
+      "maximum_ms": 0.0266
+    },
+    "verifier_kdf_ns": {
+      "count": 600,
+      "unit": "milliseconds",
+      "median_ms": 0.0077,
+      "p95_ms": 0.009004999999999996,
+      "maximum_ms": 0.0164
+    }
+  },
+  "scope": "fresh sessions with OS randomness and an explicit known-correct synthetic candidate; sender/verifier creation and trusted enrollment are outside establish's timer; reconstruction and independent credential verification are not measured; KDF is nested inside session establishment"
+}

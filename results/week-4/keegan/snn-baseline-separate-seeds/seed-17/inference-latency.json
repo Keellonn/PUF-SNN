@@ -1,0 +1,14 @@
+{
+  "scope": "forward call including temporal aggregation; excludes preprocessing, tensor construction, transfer, argmax/CPU decoding, authentication and audit",
+  "batch_size": 1,
+  "unit": "milliseconds",
+  "timing_method": "time.perf_counter_ns",
+  "prediction_method": "one 120-sample window per model call",
+  "warmup_count": 20,
+  "timed_prediction_count": 600,
+  "median_ms": 7.9778,
+  "p95_ms": 9.465939999999998,
+  "mean_ms": 8.2026225,
+  "minimum_ms": 7.5193,
+  "maximum_ms": 14.5698
+}

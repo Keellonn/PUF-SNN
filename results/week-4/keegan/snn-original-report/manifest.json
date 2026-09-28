@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-09-27T23:01:46.945979+00:00",
+  "git_commit": "e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d",
+  "git_status": [
+    "?? results/week-4/keegan/conventional-baselines/",
+    "?? results/week-4/keegan/data-diagnostics/",
+    "?? results/week-4/keegan/snn-original-report/"
+  ],
+  "command": [
+    "src/python/scripts/evaluate_motion.py",
+    "snn",
+    "--snn-baseline",
+    "results/week-4/keegan/snn-baseline",
+    "--output",
+    "results/week-4/keegan/snn-original-report",
+    "--machine-model",
+    "HP Pavilion Plus Laptop 16-ab1xxx"
+  ],
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "source_sha256": {
+    "src/python/scripts/evaluate_motion.py": "f7d04bd670b2cf3db7af758d8cbeb815ca92066244a70f00a4acb94c339aaecf",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b",
+    "src/python/puf_snn/snn/model.py": "e2fc47e596ddd26ef79f0e7e3ee787216f7db85d2f4167704e48b003b0c10556",
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d"
+  },
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.3",
+  "torch": "2.14.0+cpu",
+  "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+  "configuration_sha256": "4a08ad1081949b36f53de6e13ff449775ffe6883f22adb907d45b29ea917b576",
+  "pilot_sha256": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2",
+  "artifacts": {
+    "configuration.json": "ba17d2ffb302f9b0505e68c74db95332e46e3162979ac7f8a64dda7248d398f7",
+    "pooled-confusion-matrix.png": "0bf30b2640b5815b7b6a80179e0afe3c52af3f8fee682cef5653a028afc36cbf",
+    "pooled-test-metrics.json": "9f34c468d85f72f6b156229e45d0e6d6ba07e1a1affbe12919d712f91674f350",
+    "seed-17-training-curves.png": "821075d9c931491a7fdcfc2110980ceffdceec1f52b594501979d828319bba31",
+    "seed-27-training-curves.png": "8ddf9333fb2d8a1629a97d8cc01215a67ad3349935eb2b3ae05089b3c514bf2d",
+    "seed-7-training-curves.png": "00f6354e02aea4ecc6fc6cac62d9cfd536e0c27d00173e361881069d00a83d96",
+    "snn-report.md": "2105bde29ccc1774306fa5e924c5e491e460c8d7329467af1b92399f2f8ca726"
+  }
+}

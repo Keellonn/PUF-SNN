@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-09-28T02:57:40.399181+00:00",
+  "git_commit": "e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d",
+  "git_status": [
+    "?? results/week-4/keegan/conventional-baselines/",
+    "?? results/week-4/keegan/data-diagnostics/",
+    "?? results/week-4/keegan/snn-architecture-32/",
+    "?? results/week-4/keegan/snn-architecture-comparison/",
+    "?? results/week-4/keegan/snn-baseline-separate-seeds/",
+    "?? results/week-4/keegan/snn-detailed-report/",
+    "?? results/week-4/keegan/snn-original-report/"
+  ],
+  "command": [
+    "src/python/scripts/evaluate_motion.py",
+    "architecture",
+    "--snn-baseline",
+    "results/week-4/keegan/snn-baseline-separate-seeds",
+    "--snn-32",
+    "results/week-4/keegan/snn-architecture-32",
+    "--output",
+    "results/week-4/keegan/snn-architecture-comparison",
+    "--machine-model",
+    "HP Pavilion Plus Laptop 16-ab1xxx"
+  ],
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "source_sha256": {
+    "src/python/scripts/evaluate_motion.py": "f7d04bd670b2cf3db7af758d8cbeb815ca92066244a70f00a4acb94c339aaecf",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b",
+    "src/python/puf_snn/snn/model.py": "e2fc47e596ddd26ef79f0e7e3ee787216f7db85d2f4167704e48b003b0c10556",
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d"
+  },
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.3",
+  "torch": "2.14.0+cpu",
+  "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+  "configuration_sha256": "4a08ad1081949b36f53de6e13ff449775ffe6883f22adb907d45b29ea917b576",
+  "pilot_sha256": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2",
+  "artifacts": {
+    "architecture-comparison.json": "4f083f934055b12547af61ff4394b437aae79c4407acdca7968896b099399ba2",
+    "architecture-comparison.md": "636d5dcb58c6ccbad2e1a0308e5d08710332cfd081d5a69b2fb629c2465f5732",
+    "configuration.json": "ba17d2ffb302f9b0505e68c74db95332e46e3162979ac7f8a64dda7248d398f7"
+  }
+}

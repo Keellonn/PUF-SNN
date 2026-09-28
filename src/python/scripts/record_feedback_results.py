@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 
 from pathlib import Path
@@ -46,6 +47,53 @@ def replace_feedback_section(path: Path, section: str, research_log: bool = Fals
         updated = original[:start] + section.rstrip() + "\n"
 
     path.write_text(updated, encoding="utf-8")
+
+
+def pipeline_summary_lines(directory: Path) -> list[str]:
+    accepted = read_json(directory / "accepted-paths.json")
+    rejected = read_json(directory / "rejected-path.json")
+    lines = ["### Post-window pipeline timing", "", "| Model | Path | Median range (ms) | p95 range (ms) | Largest observed time (ms) |", "|---|---|---:|---:|---:|"]
+
+    for family, label in (("logistic_regression", "Logistic regression"), ("snn", "SNN 64"), ("random_forest", "Random forest")):
+        runs = [values for name, values in accepted.items() if name.startswith(f"{family}_seed_")]
+
+        if len(runs) != 3:
+            raise ValueError(f"expected three pipeline runs for {family}")
+
+        if any(not row["authentication_plus_classifier"]["accepted_predictions_identical"] for row in runs):
+            raise ValueError("authenticated and classifier-only predictions differ")
+
+        for mode, path_label in (("classifier_only", "Classifier-only pipeline"), ("authentication_plus_classifier", "Authentication plus classifier")):
+            summaries = [row[mode]["summary"]["total_ns"] for row in runs]
+            medians = [row["median_ms"] for row in summaries]
+            percentiles = [row["p95_ms"] for row in summaries]
+            maximum = max(row["maximum_ms"] for row in summaries)
+            lines.append(f"| {label} | {path_label} | {min(medians):.3f}-{max(medians):.3f} | {min(percentiles):.3f}-{max(percentiles):.3f} | {maximum:.3f} |")
+
+    if rejected["classifier_calls"] != 0 or not rejected["state_unchanged"]:
+        raise ValueError("the bad-tag path must preserve state and make no classifier calls")
+
+    timing = rejected["summary"]
+    lines.extend(["", "Ranges describe separate seed runs, not pooled percentiles. Each condition used 20 warm-up and 600 timed windows per seed with time.perf_counter_ns. The SNN pipeline comparison uses 64 neurons, not the 32-neuron ablation.", "", f"Bad-tag receiver timing: median {timing['median_ms']:.4f} ms, p95 {timing['p95_ms']:.4f} ms, maximum {timing['maximum_ms']:.4f} ms over {timing['count']} repetitions, with zero classifier calls and unchanged sequence state. These timing repetitions are not independent Tier-1 security trials.", "", "Authenticated LR and SNN p95 values were below 20 ms; authenticated RF p95 was above 20 ms. Maximum accepted times exceeded 20 ms in every authenticated condition. Slow observations were inside the adapter timer, but their cause is not established. These measurements do not provide a real-time deadline guarantee.", "", "Classifier-only pipeline timing includes the common binary32 conversion, adapter/preprocessing, normalization where applicable, tensor handling and output decoding. Authentication paths also include actual verifier and in-memory audit work. PUF reconstruction, independent credential verification, session setup, capture, loading, networking and durable audit I/O are excluded. Nested stage percentiles must not be summed to estimate total time."])
+    return lines
+
+
+def validation_summary_lines() -> list[str]:
+    evidence = ROOT / "results/week-4/keegan/test-evidence/full-python-suite.txt"
+    raw = evidence.read_bytes()
+    encoding = "utf-16" if raw.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8-sig"
+    output = raw.decode(encoding)
+    counts = re.findall(r"Ran\s+(\d+)\s+tests?", output)
+
+    if not counts or not re.search(r"^OK\s*$", output, re.MULTILINE) or re.search(r"^FAILED\b", output, re.MULTILINE):
+        raise ValueError("saved full-suite evidence does not report a successful run")
+
+    screenshot = ROOT / "results/week-4/shared/protocol-validation/unity-editmode-tests.png"
+
+    if not screenshot.is_file():
+        raise ValueError("the reviewed Unity validation screenshot is missing")
+
+    return ["### Final software validation", "", f"- Saved full Python suite: {counts[-1]} tests passed. The 74 targeted revision tests are included in this total.", "- Reviewed Unity screenshot: 15 of 15 EditMode tests passed, comprising 9 logger, 4 legacy canonical-writer and 2 final binary-writer tests.", "- Dataset validation: 1,800 windows, balanced across the five labels and three splits.", "- Supplemental .NET positive checks: 11 scalar groups and 26 complete-window vectors. This evidence is separate from actual Unity execution.", "- Five C# negative vectors were rejected with zero classifier calls, unchanged sequence state and subsequent valid-window acceptance.", "- The detailed SNN report has a reporting-only conclusion amendment recorded in its manifest. Training, checkpoints and numerical metric artifacts are unchanged."]
 
 
 def main() -> None:
@@ -95,7 +143,13 @@ def main() -> None:
         section.append(f"| {name} | {values['test_macro_f1']['mean']:.4f} | {values['test_macro_f1']['standard_deviation']:.4f} |")
 
     section.append(f"| SNN 64, separate training seeds | {snn['test_macro_f1']['mean']:.4f} | {snn['test_macro_f1']['standard_deviation']:.4f} |")
-    section.extend(["", f"The 64-neuron follow-up has mean test accuracy {snn['test_accuracy']['mean']:.4f}. Its macro-F1 gap to the strongest conventional model is {gap:.2f} percentage points; the provisional five-point target is {'met' if threshold_met else 'not met'}. Conventional SD uses the original diagnostic's sample-SD convention; SNN SD uses its saved population-SD convention. Neither estimates variation across independent human/device datasets.", "", f"Full-window cross-split duplicate check: {data['datasets']['corrected']['full_windows']['passed']}. All three split-pair counts and physical before/after nearest-neighbor distributions are in data-diagnostics.json; provisional sensitivity thresholds are not a universal no-leakage proof.", "", "The saved reports contain per-seed/pooled precision, recall, F1, support and complete confusion matrices, training loss/validation-F1 curves and best/stopping epochs. Pooled predictions reuse the same source test windows. LR's deterministic lbfgs procedure explains unchanged fixed-data results across model seeds.", "", f"The predefined 32-versus-64 comparison selected {architecture['selected_by_validation_only']} neurons using validation macro-F1 only. The existing 64-neuron baseline remains the baseline; Session-3 comparison did not drive another tuning loop.", "", "Nod/still trajectories, per-window motion statistics, intentional-amplitude/duration sweep, moderate paired stress tests and conventional feature ablations are recorded in motion-analysis. Initial-orientation changes are relative-pose invariance checks; low-amplitude nominal nod labels become ambiguous near still. Synthetic success does not establish realistic physical motion.", "", "Pipeline timing compares the same binary32-quantized motion through classifier-only and authenticated paths. Accepted predictions must match; the bad-tag timing path makes zero preprocessing/classifier calls and preserves sequence state. Total time is measured directly. Loading, capture, networking and durable audit I/O are excluded. Session setup uses a known-correct synthetic candidate, so reconstruction reliability and overall legitimate-window availability are not established.", "", f"Conclusion: {conclusion} These are CPU software-prototype results, with no measured energy advantage, physical Quest result, cross-person or cross-device classifier generalization.", "", "### Evidence", ""])
+    small_snn = read_json(directories["small_snn"] / "summary.json")
+    small_gap = (strongest - small_snn["test_macro_f1"]["mean"]) * 100.0
+    section.append(f"| SNN 32, architecture ablation | {small_snn['test_macro_f1']['mean']:.4f} | {small_snn['test_macro_f1']['standard_deviation']:.4f} |")
+    section.extend(["", f"The 64-neuron follow-up has mean test accuracy {snn['test_accuracy']['mean']:.4f}. Its macro-F1 gap to the strongest conventional model is {gap:.2f} percentage points; the provisional five-point target is {'met' if threshold_met else 'not met'}. Conventional SD uses the original diagnostic's sample-SD convention; SNN SD uses its saved population-SD convention. Neither estimates variation across independent human/device datasets.", "", f"Full-window cross-split duplicate check: {data['datasets']['corrected']['full_windows']['passed']}. All three split-pair counts and physical before/after nearest-neighbor distributions are in data-diagnostics.json; provisional sensitivity thresholds are not a universal no-leakage proof.", "", "The saved reports contain per-seed/pooled precision, recall, F1, support and complete confusion matrices, training loss/validation-F1 curves and best/stopping epochs. Pooled predictions reuse the same source test windows. LR's deterministic lbfgs procedure explains unchanged fixed-data results across model seeds.", "", f"The predefined 32-versus-64 comparison selected {architecture['selected_by_validation_only']} neurons using validation macro-F1 only. The 32-neuron ablation has mean test accuracy {small_snn['test_accuracy']['mean']:.4f}, mean macro-F1 {small_snn['test_macro_f1']['mean']:.4f} and a {small_gap:.2f}-point gap to the strongest conventional model, so the provisional five-point criterion is {'met' if small_gap <= 5.0 else 'not met'}. It has 1,445 trainable parameters versus 4,933 for the reference model. The existing 64-neuron baseline remains the reference; Session-3 comparison did not drive another tuning loop.", "", "Nod/still trajectories, per-window motion statistics, intentional-amplitude/duration sweep, moderate paired stress tests and conventional feature ablations are recorded in motion-analysis. Initial-orientation changes are relative-pose invariance checks; low-amplitude nominal nod labels become ambiguous near still. Synthetic success does not establish realistic physical motion.", "", "Pipeline timing compares the same binary32-quantized motion through classifier-only and authenticated paths. Accepted predictions must match; the bad-tag timing path makes zero preprocessing/classifier calls and preserves sequence state. Total time is measured directly. Loading, capture, networking and durable audit I/O are excluded. Session setup uses a known-correct synthetic candidate, so reconstruction reliability and overall legitimate-window availability are not established.", "", f"Conclusion: {conclusion} These are CPU software-prototype results, with no measured energy advantage, physical Quest result, cross-person or cross-device classifier generalization.", "", "### Evidence", ""])
+
+    evidence_start = section.index("### Evidence")
+    section[evidence_start:evidence_start] = pipeline_summary_lines(directories["pipeline"]) + [""] + validation_summary_lines() + [""]
 
     for name, directory in directories.items():
         section.append(f"- {name}: `{directory.relative_to(ROOT).as_posix()}`")
@@ -106,7 +160,7 @@ def main() -> None:
         verify_commit(arguments.results_commit)
         section.append(f"- Pushed evaluation-results commit: `{arguments.results_commit}`")
 
-    section.extend(["", "### Remaining shared requirements", "", "Will owns independent enrollment verification before HKDF, reconstruction FRR/miscorrection/noise/BER sensitivity and improvement comparisons, formal Tier-1 attack counts/uncertainty/state tests, and evidence-manifest reconciliation. Remaining shared work includes disjoint replay/audit/session-confirmation timing and any durable-storage benchmark. Final binary Unity execution must be reported separately from supplemental .NET execution. Human recording remains disabled."])
+    section.extend(["", "### Remaining shared requirements", "", "Will owns independent enrollment verification before HKDF, reconstruction FRR/miscorrection/noise/BER sensitivity and improvement comparisons, formal Tier-1 attack counts/uncertainty/state tests, and evidence-manifest reconciliation. Remaining shared work includes disjoint replay/audit/session-confirmation timing and any durable-storage benchmark. Final binary Unity execution has passed and is reported separately from supplemental .NET execution. Human recording remains disabled."])
     protocol_path = ROOT / "results/week-4/shared/protocol-validation/negative-results.json"
 
     if not protocol_path.is_file():

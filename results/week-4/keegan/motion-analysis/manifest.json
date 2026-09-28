@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-09-28T03:01:23.490013+00:00",
+  "git_commit": "e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d",
+  "git_status": [
+    "?? results/week-4/keegan/conventional-baselines/",
+    "?? results/week-4/keegan/data-diagnostics/",
+    "?? results/week-4/keegan/motion-analysis/",
+    "?? results/week-4/keegan/snn-architecture-32/",
+    "?? results/week-4/keegan/snn-architecture-comparison/",
+    "?? results/week-4/keegan/snn-baseline-separate-seeds/",
+    "?? results/week-4/keegan/snn-detailed-report/",
+    "?? results/week-4/keegan/snn-original-report/"
+  ],
+  "command": [
+    "src/python/scripts/evaluate_motion.py",
+    "analysis",
+    "--snn-baseline",
+    "results/week-4/keegan/snn-baseline-separate-seeds",
+    "--output",
+    "results/week-4/keegan/motion-analysis",
+    "--machine-model",
+    "HP Pavilion Plus Laptop 16-ab1xxx"
+  ],
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "source_sha256": {
+    "src/python/scripts/evaluate_motion.py": "f7d04bd670b2cf3db7af758d8cbeb815ca92066244a70f00a4acb94c339aaecf",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b",
+    "src/python/puf_snn/snn/model.py": "e2fc47e596ddd26ef79f0e7e3ee787216f7db85d2f4167704e48b003b0c10556",
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d"
+  },
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.3",
+  "torch": "2.14.0+cpu",
+  "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+  "configuration_sha256": "4a08ad1081949b36f53de6e13ff449775ffe6883f22adb907d45b29ea917b576",
+  "pilot_sha256": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2",
+  "artifacts": {
+    "clean-results.json": "6591f136b61246d06b8bec21de822c7cabea0223bf3505922a41a98a1b9f6358",
+    "configuration.json": "ba17d2ffb302f9b0505e68c74db95332e46e3162979ac7f8a64dda7248d398f7",
+    "feature-ablations.json": "caa39ba8f4fc820549f23605fe8ddf3cb1977696dfe89eea336b94fa74847e2e",
+    "logistic_regression_seed_17-nod-still-examples.png": "bd596b5800fff0d281de08901f4dcf3da72a5435779a63f95e0455aec2131cc9",
+    "logistic_regression_seed_27-nod-still-examples.png": "bd596b5800fff0d281de08901f4dcf3da72a5435779a63f95e0455aec2131cc9",
+    "logistic_regression_seed_7-nod-still-examples.png": "bd596b5800fff0d281de08901f4dcf3da72a5435779a63f95e0455aec2131cc9",
+    "model-complexity.json": "79cfa1a8d02b13589eb7219cc91e42db93934d5ca504c056410cafea513e41ba",
+    "motion-analysis.md": "5f76bc745ce0ebbe546b4b47d8e5ce96172a90d03e41e7935a3bbbeb73c5a7c3",
+    "motion-statistics.json": "8fa5861fda6820ec03146f7caff061a857583ae24baaaa761f20805180cb1d85",
+    "nod-amplitude-to-still.png": "f410fd85a7e6c6f3a5b997d03ed52317a2854bea5918a6f52a309f4c079a202d",
+    "nod-still-sweep.json": "57465d0320eac487572940a75cbc7a5ff00de2d1d7e17435bbf3f2dd1befc9d9",
+    "predictions.json": "b500b5ef2cbed0a2b4fbb4db65d1256ea47ab4a54075ea1b01f9de9880248275",
+    "random_forest_seed_17-nod-still-examples.png": "42b1138ca818efdc33b2a3f36b240ab61b6632aa9cd5ceea1db390985c43d8bd",
+    "random_forest_seed_27-nod-still-examples.png": "4b141188456f532e95ce77319674506e8d113a38bb6a0f8cba1d13ea9d4da568",
+    "random_forest_seed_7-nod-still-examples.png": "08d8a9298839bc24e2ea394509404c2b962fcc23ba3a8ffc6ce73a0b75766b3f",
+    "snn_seed_17-nod-still-examples.png": "da643d31fe832bddf04e491fde273f726754e289fa111fd343bad77c15b1c2e8",
+    "snn_seed_27-nod-still-examples.png": "0f0cf116644b153f5acd829611f1db90647f79d4f194fc33c82e3e7e91fdf813",
+    "snn_seed_7-nod-still-examples.png": "08d8a9298839bc24e2ea394509404c2b962fcc23ba3a8ffc6ce73a0b75766b3f",
+    "stress-results.json": "796a621881c7b895469a58e850b187af89fd5b5a6776a8e5014efe0057934bc6"
+  }
+}

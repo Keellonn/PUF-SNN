@@ -1,0 +1,62 @@
+{
+  "schema_version": "snn-baseline-manifest-v1",
+  "created_utc": "2026-09-28T02:57:22.593228+00:00",
+  "input_path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "config_path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\configs\\snn_32.json",
+  "config_sha256": "14959253644d3d3042309e0066e8fa686fcdb6ca1443cc593b36e85f9bfbbe11",
+  "git": {
+    "commit": "e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d",
+    "branch": "main",
+    "status_porcelain": [
+      "?? results/week-4/keegan/conventional-baselines/",
+      "?? results/week-4/keegan/data-diagnostics/",
+      "?? results/week-4/keegan/snn-baseline-separate-seeds/",
+      "?? results/week-4/keegan/snn-original-report/"
+    ]
+  },
+  "environment": {
+    "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.13.14",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+    "logical_cpu_count": 22,
+    "packages": {
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "torch": "2.14.0+cpu",
+      "puf-snn": "0.1.0"
+    },
+    "torch_device": "cpu",
+    "torch_threads": 1,
+    "deterministic_algorithms": true
+  },
+  "artifacts": {
+    "config.json": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+    "confusion-matrix-all-seeds.png": "417da90fe1114d3f832f006df0ed84aea07cecdb1185e03842cc74b4e1306a01",
+    "dataset-summary.json": "1d4a6ab1d87b75f723225a29d9794319c03091c15d386e787d44e15306b7dfa0",
+    "environment.json": "5bb8cbe43d34040e8fbcdf1143b2ba79a2958aed5939c7976cada0fabbe0c794",
+    "normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "seed-17/confusion-matrix.png": "bf5a96f9445c44c8546012bb0d35e91980764c33ed51ec291dd73d69e3c2fc43",
+    "seed-17/inference-latency.json": "f1368cdedc6edf9f5328a760092194792664e4f47b0e28e1570dd59e04a074de",
+    "seed-17/model-state.pt": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+    "seed-17/test-metrics.json": "e1a2641222ce5fced4fc98ac159f2645a1b99ad1acacbea34f05cafbed56cb3a",
+    "seed-17/training-history.json": "a7e1f2baf15fe96f73bfe90dc60a75cdbdd76f4ea6147947acf0aba8f6fc24ce",
+    "seed-17/validation-metrics.json": "ef865dfacbed99f249e7035e4341ce1b9c4ac670907ca7a32c5ea0d4ee8dc504",
+    "seed-27/confusion-matrix.png": "4eb04656f9741c943749ac6debaaea49f3ba43a0c3c3185e331f0ea81e29448c",
+    "seed-27/inference-latency.json": "f9e93b0b078d484b8c603cc4b9bf69a35537ec428fe60f21c761d477f46940b8",
+    "seed-27/model-state.pt": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830",
+    "seed-27/test-metrics.json": "05d3b42a97d8998dc77c54a1148a4b15b1cba9975187a03fde00792953a1bc89",
+    "seed-27/training-history.json": "2818e7e7e0e7cc963f0bf8acf0ea8a7f6f4ff380996f410bbf8ca56a0522293d",
+    "seed-27/validation-metrics.json": "64776b94a410beb185a00835bc3e1679a0b929494e02511bfbf9212979704ca1",
+    "seed-7/confusion-matrix.png": "1a60e5a87da341f37e5902aabcaaf596c3ee62a01382fd9502f4b10f2b603910",
+    "seed-7/inference-latency.json": "5af91b57d95b4c06c5bfbdf0b3de8ee250f182f4232a679e9f21f9d07744f72a",
+    "seed-7/model-state.pt": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6",
+    "seed-7/test-metrics.json": "a891c6d7f63e5a60b8a32093692a0d61189795befb4802377250f11f8d7ed560",
+    "seed-7/training-history.json": "2fe9dc2b4fa995702925b47076f682cc00be5beb32c64e61c974dbad8aefc150",
+    "seed-7/validation-metrics.json": "75192f7ad10bf0e69f9bd026212ce86b4f8bd4d9d6c318c385f8f0d16c28d9e9",
+    "summary.csv": "66560c304082105f23c6990f134e26a78514e61143c9e090c9d444a13860d813",
+    "summary.json": "1b5edc2097541b031dc20609de9831c9d2123183e2556fd389654579c38e1b39"
+  }
+}

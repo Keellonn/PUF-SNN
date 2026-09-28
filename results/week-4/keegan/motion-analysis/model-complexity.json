@@ -1,0 +1,50 @@
+{
+  "snn_seed_7": {
+    "trainable_parameters": 4933,
+    "kind": "learned neural weights and biases"
+  },
+  "snn_seed_17": {
+    "trainable_parameters": 4933,
+    "kind": "learned neural weights and biases"
+  },
+  "snn_seed_27": {
+    "trainable_parameters": 4933,
+    "kind": "learned neural weights and biases"
+  },
+  "logistic_regression_seed_7": {
+    "trainable_parameters": 4205,
+    "kind": "LR coefficients and intercepts; scaler statistics excluded"
+  },
+  "random_forest_seed_7": {
+    "trainable_parameters": null,
+    "trees": 300,
+    "nodes": 37410,
+    "leaves": 18855,
+    "maximum_depth": 25,
+    "kind": "tree structure counts, not neural trainable parameters"
+  },
+  "logistic_regression_seed_17": {
+    "trainable_parameters": 4205,
+    "kind": "LR coefficients and intercepts; scaler statistics excluded"
+  },
+  "random_forest_seed_17": {
+    "trainable_parameters": null,
+    "trees": 300,
+    "nodes": 37260,
+    "leaves": 18780,
+    "maximum_depth": 23,
+    "kind": "tree structure counts, not neural trainable parameters"
+  },
+  "logistic_regression_seed_27": {
+    "trainable_parameters": 4205,
+    "kind": "LR coefficients and intercepts; scaler statistics excluded"
+  },
+  "random_forest_seed_27": {
+    "trainable_parameters": null,
+    "trees": 300,
+    "nodes": 37348,
+    "leaves": 18824,
+    "maximum_depth": 24,
+    "kind": "tree structure counts, not neural trainable parameters"
+  }
+}

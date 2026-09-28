@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-09-28T03:04:08.553740+00:00",
+  "git_commit": "e4d9b2701c78fe20953cd9e0f3a2f9fa15c7080d",
+  "git_status": [
+    "?? results/week-4/keegan/conventional-baselines/",
+    "?? results/week-4/keegan/data-diagnostics/",
+    "?? results/week-4/keegan/motion-analysis/",
+    "?? results/week-4/keegan/snn-architecture-32/",
+    "?? results/week-4/keegan/snn-architecture-comparison/",
+    "?? results/week-4/keegan/snn-baseline-separate-seeds/",
+    "?? results/week-4/keegan/snn-detailed-report/",
+    "?? results/week-4/keegan/snn-original-report/",
+    "?? results/week-4/shared/pipeline-benchmark/"
+  ],
+  "command": [
+    "src/python/scripts/benchmark_classifier_pipeline.py",
+    "--snn-baseline",
+    "results/week-4/keegan/snn-baseline-separate-seeds",
+    "--output",
+    "results/week-4/shared/pipeline-benchmark",
+    "--machine-model",
+    "HP Pavilion Plus Laptop 16-ab1xxx",
+    "--warmup",
+    "20",
+    "--timed-windows",
+    "600"
+  ],
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "source_sha256": {
+    "src/python/scripts/evaluate_motion.py": "f7d04bd670b2cf3db7af758d8cbeb815ca92066244a70f00a4acb94c339aaecf",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b",
+    "src/python/puf_snn/snn/model.py": "e2fc47e596ddd26ef79f0e7e3ee787216f7db85d2f4167704e48b003b0c10556",
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d"
+  },
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.3",
+  "torch": "2.14.0+cpu",
+  "machine_model": "HP Pavilion Plus Laptop 16-ab1xxx",
+  "warmup": 20,
+  "timed_windows": 600,
+  "timer": "time.perf_counter_ns",
+  "timer_resolution_seconds": 1e-07,
+  "authentication_configuration_sha256": "fa75ac425c3afdbce7c2d2b3b79ee79d7338a78d71e3b185db8d4481fe0d4263",
+  "snn_manifest_sha256": "86f45f03fa7bc24643de4e1aba2ca60897a109c3c414f92fea2e2331293c9e6d"
+}

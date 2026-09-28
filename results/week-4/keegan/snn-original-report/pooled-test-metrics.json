@@ -1,0 +1,75 @@
+{
+  "prediction_count": 1800,
+  "accuracy": 0.855,
+  "macro_f1": 0.854938835431682,
+  "confusion_matrix": [
+    [
+      305,
+      3,
+      5,
+      2,
+      45
+    ],
+    [
+      5,
+      274,
+      12,
+      37,
+      32
+    ],
+    [
+      1,
+      10,
+      338,
+      0,
+      11
+    ],
+    [
+      4,
+      14,
+      0,
+      328,
+      14
+    ],
+    [
+      21,
+      5,
+      24,
+      16,
+      294
+    ]
+  ],
+  "per_class": {
+    "nod": {
+      "precision": 0.9077380952380952,
+      "recall": 0.8472222222222222,
+      "f1": 0.8764367816091955,
+      "support": 360
+    },
+    "shake": {
+      "precision": 0.8954248366013072,
+      "recall": 0.7611111111111111,
+      "f1": 0.8228228228228229,
+      "support": 360
+    },
+    "look_left_return": {
+      "precision": 0.8918205804749341,
+      "recall": 0.9388888888888889,
+      "f1": 0.9147496617050067,
+      "support": 360
+    },
+    "look_right_return": {
+      "precision": 0.856396866840731,
+      "recall": 0.9111111111111111,
+      "f1": 0.8829071332436069,
+      "support": 360
+    },
+    "still": {
+      "precision": 0.7424242424242424,
+      "recall": 0.8166666666666667,
+      "f1": 0.7777777777777778,
+      "support": 360
+    }
+  },
+  "limitation": "pooled model predictions on repeated source windows; not independent new recordings"
+}
