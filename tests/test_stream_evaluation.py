@@ -6,13 +6,16 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
 from puf_snn.attacks.evaluation import assert_case_split_separation, assert_plan_matches, composite_consumer, construct_cohorts, evaluate_authenticated_cases, prepare_model_inputs, summarize_construction, summarize_predictions
 from puf_snn.attacks.stream import apply_stream_attack, iter_attack_cases
 from puf_snn.auth.config import AuthConfig
+from puf_snn.auth.session import Failure
 from puf_snn.data.generator import generate_records
 from puf_snn.integration import ExactlyOnceClassifierRelease, processed_record_to_wire_window
 
@@ -21,7 +24,7 @@ ATTACK_CONFIG = ROOT / "configs/stream_attacks.json"
 EVALUATION_CONFIG = ROOT / "configs/stream_evaluation.json"
 sys.path.insert(0, str(ROOT / "src/python/scripts"))
 from run_layer3_demo import establish, initialize_material
-from evaluate_stream_attacks import check_artifacts, save_detection_figures
+from evaluate_stream_attacks import bind_recovery_context, check_artifacts, save_detection_figures, write_json, write_rows
 
 
 class MotionStub:
@@ -179,6 +182,134 @@ class StreamEvaluationTests(unittest.TestCase):
                 check_artifacts(directory, manifest, ["sample.json"])
             with self.assertRaises(ValueError):
                 check_artifacts(directory, manifest, ["../sample.json"])
+
+    def small_test_cohort(self) -> tuple[dict, dict]:
+        source = next(record for record in self.records if record["split"] == "test")
+        cases = [case for case in iter_attack_cases([source], self.attack_config) if case["attack_type"] in ("clean", "position_jump") and case["severity"] in ("clean", "medium")]
+        return source, {"cases": cases}
+
+    def test_session_renews_by_elapsed_time_before_the_case_limit(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        now = [1_000_000_000]
+        original = motion.predict
+        def slow_predict(values):
+            result = original(values)
+            now[0] += 241_000_000_000
+            return result
+        motion.predict = slow_predict
+        with patch("time.monotonic_ns", side_effect=lambda: now[0]):
+            result = evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), establish, self.material, 100)
+        self.assertEqual(result["session_count"], 2)
+        self.assertEqual([row["sequence_number"] for row in result["evidence"]], [0, 0])
+        self.assertEqual((motion.calls, anomaly.calls), (2, 2))
+
+    def test_sender_expiry_race_uses_a_new_session_without_duplicate_model_calls(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        establishments = [0]
+        def expiring_establish(config, material):
+            sender, verifier, elapsed = establish(config, material)
+            establishments[0] += 1
+            if establishments[0] == 1:
+                original = sender.seal_window
+                calls = [0]
+                def seal(window):
+                    calls[0] += 1
+                    if calls[0] == 2:
+                        expired_time = time.monotonic_ns() + 301_000_000_000
+                        with patch("puf_snn.auth.sender.time.monotonic_ns", return_value=expired_time):
+                            return original(window)
+                    return original(window)
+                sender.seal_window = seal
+            return sender, verifier, elapsed
+        with tempfile.TemporaryDirectory() as temporary:
+            events = Path(temporary) / "session-events.jsonl"
+            result = evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), expiring_establish, self.material, 100, session_events_path=events)
+            observed = [json.loads(line) for line in events.read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(establishments[0], 2)
+        self.assertEqual(observed[0]["reason"], "expired_session")
+        self.assertEqual(observed[0]["classifier_calls_for_failed_attempt"], 0)
+        self.assertEqual((motion.calls, anomaly.calls), (2, 2))
+        self.assertEqual(len(result["evidence"]), 2)
+
+    def test_verifier_expiry_race_retags_in_a_fresh_session_before_delivery(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        establishments = [0]
+        def expiring_establish(config, material):
+            sender, verifier, elapsed = establish(config, material)
+            establishments[0] += 1
+            if establishments[0] == 1:
+                original = verifier.verify_window
+                def verify(packet):
+                    expired_time = time.monotonic_ns() + 301_000_000_000
+                    with patch("puf_snn.auth.verifier.time.monotonic_ns", return_value=expired_time):
+                        return original(packet)
+                verifier.verify_window = verify
+            return sender, verifier, elapsed
+        result = evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), expiring_establish, self.material, 100)
+        self.assertEqual(establishments[0], 2)
+        self.assertEqual((motion.calls, anomaly.calls), (2, 2))
+        self.assertEqual(len(result["evidence"]), 2)
+
+    def test_other_sender_failures_are_not_hidden_by_session_retries(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        establishments = [0]
+        def failed_establish(config, material):
+            sender, verifier, elapsed = establish(config, material)
+            establishments[0] += 1
+            sender.seal_window = lambda window: Failure("invalid_payload_schema")
+            return sender, verifier, elapsed
+        with self.assertRaisesRegex(RuntimeError, "invalid_payload_schema"):
+            evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), failed_establish, self.material, 100)
+        self.assertEqual(establishments[0], 1)
+        self.assertEqual((motion.calls, anomaly.calls), (0, 0))
+
+    def test_checkpoint_resume_skips_already_completed_model_calls(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint = Path(temporary) / "authentication-checkpoint.jsonl"
+            first = evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), establish, self.material, 100, checkpoint_path=checkpoint)
+            resumed = evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), establish, self.material, 100, checkpoint_path=checkpoint)
+        self.assertEqual(resumed["reused_checkpoint_cases"], 2)
+        self.assertEqual((motion.calls, anomaly.calls), (2, 2))
+        self.assertEqual(first["evidence"], resumed["evidence"])
+
+    def test_checkpoint_tampering_stops_before_model_execution(self) -> None:
+        source, cohort = self.small_test_cohort()
+        models, detectors, motion, anomaly = self.models()
+        with tempfile.TemporaryDirectory() as temporary:
+            checkpoint = Path(temporary) / "authentication-checkpoint.jsonl"
+            evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), establish, self.material, 100, checkpoint_path=checkpoint)
+            rows = [json.loads(line) for line in checkpoint.read_text(encoding="utf-8").splitlines()]
+            rows[0]["prediction"]["motion"]["motion"] = 4
+            checkpoint.write_text("\n".join(json.dumps(row) for row in rows) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "hash chain"):
+                evaluate_authenticated_cases([source], cohort, models, detectors, AuthConfig(), establish, self.material, 100, checkpoint_path=checkpoint)
+        self.assertEqual((motion.calls, anomaly.calls), (2, 2))
+
+    def test_checkpoint_context_rejects_changed_models_or_inputs(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            bind_recovery_context(output, {"input_sha256": "first", "model": "frozen"})
+            bind_recovery_context(output, {"input_sha256": "first", "model": "frozen"})
+            with self.assertRaises(ValueError):
+                bind_recovery_context(output, {"input_sha256": "second", "model": "frozen"})
+
+    def test_result_finalization_reuses_identical_files_but_never_overwrites_different_results(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            write_json(output / "result.json", {"value": 1})
+            write_json(output / "result.json", {"value": 1})
+            with self.assertRaises(ValueError):
+                write_json(output / "result.json", {"value": 2})
+            write_rows(output / "rows.jsonl", [{"value": 1}])
+            write_rows(output / "rows.jsonl", [{"value": 1}])
+            with self.assertRaises(ValueError):
+                write_rows(output / "rows.jsonl", [{"value": 2}])
 
     def test_heatmap_marks_unconstructable_conditions_as_unavailable(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

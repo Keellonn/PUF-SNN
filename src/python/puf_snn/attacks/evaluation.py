@@ -6,7 +6,11 @@ the same accepted record supplies motion classification and downstream anomaly s
 from __future__ import annotations
 
 from collections import Counter
+import hashlib
+import json
 from itertools import zip_longest
+from pathlib import Path
+import time
 
 import numpy as np
 import torch
@@ -108,58 +112,170 @@ def composite_consumer(models: dict, detectors: dict):
     return consume
 
 
-def evaluate_authenticated_cases(records: list[dict], cohort: dict, models: dict, detectors: dict, auth_config: AuthConfig, establish_session, material, case_limit: int, progress=None) -> dict:
+def _checkpoint_digest(row: dict) -> str:
+    encoded = json.dumps(row, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def read_authentication_checkpoint(path: Path | None, cases: list[dict], models: dict, detectors: dict) -> tuple[list[dict], str]:
+    rows = []
+    previous = "0" * 64
+    events = set()
+    sequences = set()
+    if path is None or not path.exists():
+        return rows, previous
+    with path.open(encoding="utf-8") as handle:
+        for index, line in enumerate(handle):
+            if not line.endswith("\n"):
+                raise ValueError("authentication checkpoint has an incomplete final line; preserve it and stop")
+            row = json.loads(line)
+            saved_hash = row.pop("row_sha256")
+            if row.get("previous_sha256") != previous or _checkpoint_digest(row) != saved_hash:
+                raise ValueError("authentication checkpoint hash chain does not match")
+            if index >= len(cases) or row["case_id"] != cases[index]["case_id"]:
+                raise ValueError("authentication checkpoint does not match the ordered test cases")
+            prediction = row["prediction"]
+            if set(prediction["motion"]) != set(models) or set(prediction["anomaly"]) != set(detectors):
+                raise ValueError("checkpoint model names differ from the frozen experiment")
+            for value in prediction["motion"].values():
+                if type(value) is not int or not 0 <= value < len(LABELS):
+                    raise ValueError("invalid checkpoint motion prediction")
+            for name, value in prediction["anomaly"].items():
+                score = value["score"]
+                if type(score) not in (int, float) or not np.isfinite(score) or not 0 <= score <= 1 or type(value["flag"]) is not bool or value["flag"] != (score >= detectors[name]["threshold"]["threshold"]):
+                    raise ValueError("invalid checkpoint anomaly prediction")
+            evidence = row["evidence"]
+            sequence = (evidence["session_id"], evidence["sequence_number"])
+            if evidence["case_id"] != row["case_id"] or evidence["source_window_id"] != cases[index]["source_window_id"] or evidence["decision"] != "accept" or evidence["accepted_model_inputs_match"] is not True or evidence["event_id"] in events or sequence in sequences:
+                raise ValueError("invalid or duplicated accepted-delivery checkpoint")
+            events.add(evidence["event_id"])
+            sequences.add(sequence)
+            rows.append(row)
+            previous = saved_hash
+    return rows, previous
+
+
+def evaluate_authenticated_cases(records: list[dict], cohort: dict, models: dict, detectors: dict, auth_config: AuthConfig, establish_session, material, case_limit: int, progress=None, checkpoint_path: Path | None = None, session_events_path: Path | None = None) -> dict:
     if type(case_limit) is not int or not 1 <= case_limit <= 100 or case_limit >= auth_config.max_windows:
         raise ValueError("session batches must be at most 100 and below the configured window limit")
     sources = {record["window_id"]: record for record in records}
     motion = {name: [] for name in models}
     anomaly = {name: {"scores": [], "flags": []} for name in detectors}
     evidence = []
+    saved_rows, previous_hash = read_authentication_checkpoint(checkpoint_path, cohort["cases"], models, detectors)
     consumer = composite_consumer(models, detectors)
-    session_count = 0
-    for start in range(0, len(cohort["cases"]), case_limit):
-        sender, verifier, _ = establish_session(auth_config, material)
-        session_count += 1
-        matched = [0]
-        def preprocess(record: dict) -> tuple[np.ndarray, np.ndarray]:
-            inputs = prepare_model_inputs(record)
-            index = current_index
-            if not np.array_equal(inputs[0], cohort["sequences"][index]) or not np.array_equal(inputs[1], cohort["anomaly_features"][index]):
-                raise RuntimeError("accepted sensor data does not match the paired unauthenticated inputs")
-            matched[0] += 1
-            return inputs
-        gate = ExactlyOnceClassifierRelease(verifier, preprocess, consumer)
-        try:
-            for current_index in range(start, min(start + case_limit, len(cohort["cases"]))):
-                case = cohort["cases"][current_index]
-                outcome = apply_stream_attack(sources[case["source_window_id"]], case)
-                if outcome["status"] != "quality_valid":
-                    raise RuntimeError("deterministic reconstruction changed between paired evaluation conditions")
-                packet = sender.seal_window(processed_record_to_wire_window(outcome["record"]))
-                if isinstance(packet, Failure):
-                    raise RuntimeError(f"sender unexpectedly rejected a constructed case: {packet.reason}")
-                result = verifier.verify_window(packet)
-                if result.result != "accept":
-                    raise RuntimeError(f"a legitimate tagged Tier 2 window was rejected: {result.reason}; stop and investigate the harness")
-                prediction = gate.deliver(result)
-                for name in motion:
-                    motion[name].append(prediction["motion"][name])
-                for name in anomaly:
-                    anomaly[name]["scores"].append(prediction["anomaly"][name]["score"])
-                    anomaly[name]["flags"].append(prediction["anomaly"][name]["flag"])
-                status = verifier.session_status(sender.session_id)
-                if status.last_accepted != result.sequence_number:
-                    raise RuntimeError("downstream inference changed the committed authentication sequence")
-                evidence.append({"case_id": case["case_id"], "source_window_id": case["source_window_id"], "decision": result.result, "reason": result.reason, "event_id": result.event_id, "device_id": result.device_id, "session_id": sender.session_id.hex(), "sequence_number": result.sequence_number, "authenticated_bytes_sha256": result.authenticated_bytes_sha256, "verifier_last_accepted_after_models": status.last_accepted, "accepted_model_inputs_match": True, "motion_model_calls": len(models), "anomaly_model_calls": len(detectors)})
+    sender = verifier = gate = None
+    session_started = 0
+    session_cases = 0
+    matched = [0]
+    current_index = 0
+    expected_inputs = None
+    renewal_age_ns = int(auth_config.session_ttl_ms * 1_000_000 * 0.8)
+    checkpoint = checkpoint_path.open("a", encoding="utf-8", newline="\n") if checkpoint_path is not None else None
+    session_events = session_events_path.open("a", encoding="utf-8", newline="\n") if session_events_path is not None else None
+
+    def record_session_event(stage: str, reason: str, case_id: str | None, session_id: str | None) -> None:
+        if session_events is not None:
+            row = {"stage": stage, "reason": reason, "case_id": case_id, "session_id": session_id, "classifier_calls_for_failed_attempt": 0, "anomaly_calls_for_failed_attempt": 0}
+            session_events.write(json.dumps(row, sort_keys=True, allow_nan=False) + "\n")
+            session_events.flush()
+
+    def close_session() -> None:
+        nonlocal sender, verifier, gate
+        if verifier is not None:
             if matched[0] != len(gate.consumed_event_ids):
                 raise RuntimeError("at-most-once delivery evidence does not reconcile")
             if verifier.incomplete or sender.incomplete:
                 raise RuntimeError("authentication evidence is incomplete")
-        finally:
             verifier.close_all_sessions()
-        if progress is not None:
+        sender = verifier = gate = None
+
+    def preprocess(record: dict) -> tuple[np.ndarray, np.ndarray]:
+        inputs = prepare_model_inputs(record)
+        if not np.array_equal(inputs[0], expected_inputs[0]) or not np.array_equal(inputs[1], expected_inputs[1]):
+            raise RuntimeError("accepted sensor data does not match the paired unauthenticated inputs")
+        matched[0] += 1
+        return inputs
+
+    def open_session() -> None:
+        nonlocal sender, verifier, gate, session_started, session_cases
+        close_session()
+        # start the age estimate before the handshake so it is conservative for the sender's TTL
+        session_started = time.monotonic_ns()
+        sender, verifier, _ = establish_session(auth_config, material)
+        gate = ExactlyOnceClassifierRelease(verifier, preprocess, consumer)
+        session_cases = 0
+        matched[0] = 0
+
+    def append_prediction(prediction: dict, row: dict) -> None:
+        for name in motion:
+            motion[name].append(prediction["motion"][name])
+        for name in anomaly:
+            anomaly[name]["scores"].append(prediction["anomaly"][name]["score"])
+            anomaly[name]["flags"].append(prediction["anomaly"][name]["flag"])
+        evidence.append(row)
+
+    try:
+        for saved in saved_rows:
+            append_prediction(saved["prediction"], saved["evidence"])
+        if saved_rows and progress is not None:
             progress(len(evidence), len(cohort["cases"]))
-    return {"motion": {name: np.asarray(values, dtype=np.int64) for name, values in motion.items()}, "anomaly": {name: {"scores": np.asarray(values["scores"]), "flags": np.asarray(values["flags"], dtype=bool)} for name, values in anomaly.items()}, "evidence": evidence, "session_count": session_count}
+        for current_index in range(len(saved_rows), len(cohort["cases"])):
+            case = cohort["cases"][current_index]
+            outcome = apply_stream_attack(sources[case["source_window_id"]], case)
+            if outcome["status"] != "quality_valid":
+                raise RuntimeError("deterministic reconstruction changed between paired evaluation conditions")
+            # recovery reconstructs test windows only and never fits a model or chooses another threshold
+            expected_inputs = prepare_model_inputs(outcome["record"])
+            if "sequences" in cohort and (not np.array_equal(expected_inputs[0], cohort["sequences"][current_index]) or not np.array_equal(expected_inputs[1], cohort["anomaly_features"][current_index])):
+                raise RuntimeError("reconstructed inputs differ from the original cohort")
+            window = processed_record_to_wire_window(outcome["record"])
+            for attempt in range(2):
+                if sender is None or session_cases >= case_limit or time.monotonic_ns() - session_started >= renewal_age_ns:
+                    open_session()
+                session_id = sender.session_id.hex()
+                packet = sender.seal_window(window)
+                if isinstance(packet, Failure):
+                    record_session_event("sender", packet.reason, case["case_id"], session_id)
+                    if packet.reason == "expired_session" and attempt == 0:
+                        open_session()
+                        continue
+                    raise RuntimeError(f"sender unexpectedly rejected a constructed case: {packet.reason}")
+                result = verifier.verify_window(packet)
+                if result.result != "accept":
+                    record_session_event("verifier", result.reason, case["case_id"], session_id)
+                    if result.reason == "expired_session" and attempt == 0:
+                        open_session()
+                        continue
+                    raise RuntimeError(f"a legitimate tagged Tier 2 window was rejected: {result.reason}; stop and investigate the harness")
+                committed = verifier.session_status(sender.session_id)
+                if committed.last_accepted != result.sequence_number:
+                    raise RuntimeError("authentication sequence was not committed before model execution")
+                prediction = gate.deliver(result)
+                status = verifier.session_status(sender.session_id)
+                if status.last_accepted is not None and status.last_accepted != result.sequence_number:
+                    raise RuntimeError("downstream inference changed the committed authentication sequence")
+                row = {"case_id": case["case_id"], "source_window_id": case["source_window_id"], "decision": result.result, "reason": result.reason, "event_id": result.event_id, "device_id": result.device_id, "session_id": session_id, "sequence_number": result.sequence_number, "authenticated_bytes_sha256": result.authenticated_bytes_sha256, "verifier_last_accepted_before_models": committed.last_accepted, "verifier_last_accepted_after_models": status.last_accepted, "session_state_after_models": status.state, "accepted_model_inputs_match": True, "motion_model_calls": len(models), "anomaly_model_calls": len(detectors)}
+                if checkpoint is not None:
+                    saved = {"case_id": case["case_id"], "prediction": prediction, "evidence": row, "previous_sha256": previous_hash}
+                    previous_hash = _checkpoint_digest(saved)
+                    saved["row_sha256"] = previous_hash
+                    checkpoint.write(json.dumps(saved, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n")
+                    checkpoint.flush()
+                append_prediction(prediction, row)
+                session_cases += 1
+                break
+            if progress is not None and (len(evidence) % case_limit == 0 or len(evidence) == len(cohort["cases"])):
+                progress(len(evidence), len(cohort["cases"]))
+    finally:
+        try:
+            close_session()
+        finally:
+            if checkpoint is not None:
+                checkpoint.close()
+            if session_events is not None:
+                session_events.close()
+    return {"motion": {name: np.asarray(values, dtype=np.int64) for name, values in motion.items()}, "anomaly": {name: {"scores": np.asarray(values["scores"]), "flags": np.asarray(values["flags"], dtype=bool)} for name, values in anomaly.items()}, "evidence": evidence, "session_count": len({row["session_id"] for row in evidence}), "reused_checkpoint_cases": len(saved_rows)}
 
 
 def summarize_construction(outcomes: list[dict]) -> dict:
