@@ -1,0 +1,55 @@
+{
+  "source_window_count": 1800,
+  "source_windows_by_split": {
+    "train": 600,
+    "validation": 600,
+    "test": 600
+  },
+  "planned_case_count": 50400,
+  "planned_cases_by_split": {
+    "test": 16800,
+    "train": 16800,
+    "validation": 16800
+  },
+  "planned_cases_by_condition": {
+    "clean:clean": 1800,
+    "dropped_samples:high": 1800,
+    "dropped_samples:low": 1800,
+    "dropped_samples:medium": 1800,
+    "frozen_pose:high": 1800,
+    "frozen_pose:low": 1800,
+    "frozen_pose:medium": 1800,
+    "orientation_drift:high": 1800,
+    "orientation_drift:low": 1800,
+    "orientation_drift:medium": 1800,
+    "orientation_jump:high": 1800,
+    "orientation_jump:low": 1800,
+    "orientation_jump:medium": 1800,
+    "orientation_noise:high": 1800,
+    "orientation_noise:low": 1800,
+    "orientation_noise:medium": 1800,
+    "position_drift:high": 1800,
+    "position_drift:low": 1800,
+    "position_drift:medium": 1800,
+    "position_jump:high": 1800,
+    "position_jump:low": 1800,
+    "position_jump:medium": 1800,
+    "position_noise:high": 1800,
+    "position_noise:low": 1800,
+    "position_noise:medium": 1800,
+    "timestamp_jitter:high": 1800,
+    "timestamp_jitter:low": 1800,
+    "timestamp_jitter:medium": 1800
+  },
+  "source_dataset_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "source_validation_passed": true,
+  "source_full_window_cross_split_duplicates": 0,
+  "example_case_count": 84,
+  "example_outcomes": {
+    "construction_failure": 8,
+    "quality_valid": 76
+  },
+  "authentication_executed": false,
+  "models_executed": false,
+  "limitation": "planned transformed copies are paired with their original source, not independent recordings; example outcomes are a smoke check, not complete attack or detector results"
+}

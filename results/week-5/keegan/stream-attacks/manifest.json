@@ -1,0 +1,45 @@
+{
+  "run_type": "tier2_stream_attack_plan",
+  "source_commit": "604bac8ce7dd191a18e0981daa795563cbf2dd53",
+  "source_worktree_dirty": false,
+  "sources_outside_checkout": false,
+  "source_sha256": {
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\scripts\\generate_stream_attack_plan.py": "9d8a47ffd22292ee1180aa240e1cc8b8aedfbd654535e3fd90dd25fa45c17d5c",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\attacks\\stream.py": "9920faf0217f8d5a059f0ba0464cccd5ab537252db1ff36a4270f2669c7e0af7",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\integration.py": "7690d3e139163be50a78bf5ed9b5c009f6f0246b305f5bb57cdb4eb87d97e366",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\auth\\binary_window.py": "78159d6a8c8601b40ff0158f7d2ac4b85e2179b72ebeae0ea186bf70f408877e",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\data\\validation.py": "ee51077e9c2550d2ec82a68e4a616c2f0b06a46539de8910dbd1230c7bec5c0a",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\src\\python\\puf_snn\\snn\\dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\schemas\\quest-window.schema.json": "e980bdaa08b10d29e78070ef7e850f238e57dea7b3473c711a3857a7461f13c4",
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\configs\\pilot.json": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2"
+  },
+  "input_path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\data\\generated\\synthetic-windows.jsonl",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "config_path": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\configs\\stream_attacks.json",
+  "config_sha256": "a2251e963c00b665eb36a4a865ade1d3e9ae31326016972f1ccb4f845cc31cd9",
+  "command": [
+    "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Scripts\\python.exe",
+    "src/python/scripts/generate_stream_attack_plan.py",
+    "--input",
+    "data/generated/synthetic-windows.jsonl",
+    "--config",
+    "configs/stream_attacks.json",
+    "--output",
+    "results/week-5/keegan/stream-attacks"
+  ],
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.5.3",
+    "rng": "numpy PCG64; per-case parameter and transform seeds derived with SHA-256"
+  },
+  "artifacts": {
+    "attack-plan.jsonl": "13e6a44826bf27e3b2f359561349cef8540f69a101cc1201ab52133c0cafda50",
+    "config.json": "23e36efd8d37f3fadb6d031bb71ef39f7390cf930cc68321dd4994fbe3de773f",
+    "example-outcomes.json": "58912e3817cf33f3f1c316e17a940e86724766a252c5c8606e9e372d48058e5a",
+    "stream-attacks.md": "4a5afce70274aa52764a5c14bf23a46dacc689c37d4fbafd445a6fa81a536096",
+    "summary.json": "dc62c8a4e8ce530fc90ac925fb77b36c4750f72fe90cbfa5661b0a3acdda54e2"
+  },
+  "scope": "attack plan and example construction checks only; no authentication/model evaluation"
+}

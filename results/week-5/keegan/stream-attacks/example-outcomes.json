@@ -1,0 +1,2537 @@
+[
+  {
+    "case": {
+      "case_id": "tier2-980452744a155e43051ea8cb",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "clean",
+      "severity": "clean",
+      "is_anomaly": false,
+      "injection_stage": "none",
+      "nominal_magnitude": 0.0,
+      "magnitude": 0.0,
+      "unit": "none",
+      "derived_seed": 10953970853084487235,
+      "parameter_seed": 368917813575655909
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {},
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a21742010d22deef4b07a4e97258d1d9bd8324bed6afd165eab3371905aa5df2"
+  },
+  {
+    "case": {
+      "case_id": "tier2-fdb67e18c733add2583be846",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.005,
+      "magnitude": 0.004541444751879371,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 18281938382243474898,
+      "parameter_seed": 6357930688301119005
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.008531585615790663
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "436bcbaa9e591ccd3c9243d095718f3a0c2ee82547235309d2cbe5765f8ab069"
+  },
+  {
+    "case": {
+      "case_id": "tier2-31c47c3850454d442d049438",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.01,
+      "magnitude": 0.010337006889983813,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 3586127784600489284,
+      "parameter_seed": 3243880601341352218
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.017303931786397077
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "134d3a71cc844ea4c652ab4f6b9126eec109e11606af0bc5d6a6ffac95b55da1"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a95b29b2082e24ae1f4eb51b",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.02147948217087661,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 12203393459908650158,
+      "parameter_seed": 2255939593867077504
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.03737681372466248
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1ae58e9f6d00c9e4b0e547dc53a1c9aa5346c0461329efc7246a3384075e6770"
+  },
+  {
+    "case": {
+      "case_id": "tier2-2129d2787fa74371b676875c",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.5,
+      "magnitude": 0.5553835927296792,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 2389672492276335473,
+      "parameter_seed": 13147844992586739549
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 0.5296147549152457
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a851b9e5dc486105a1361cba4485df2595f04508e126343c73c7fe1750c6ce02"
+  },
+  {
+    "case": {
+      "case_id": "tier2-1eeba38f48e60a2db61d6adf",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 1.0,
+      "magnitude": 1.1327011001312037,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 2228054276463528493,
+      "parameter_seed": 13122762398078899814
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 1.1340791561996815
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "dc8afebf79870e487c3b1ff38e32467550aee7f32c80bb8a4097762e326cedee"
+  },
+  {
+    "case": {
+      "case_id": "tier2-3a709038e4e3ae84ffd00ec5",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 2.004437365890958,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 4211024225624108676,
+      "parameter_seed": 18433249515837323556
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 2.224545876762858
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "22c48d6375cdec938a46a603e04a22e278c90c36caab3be473eef9315922857a"
+  },
+  {
+    "case": {
+      "case_id": "tier2-12a79d4c2dbc323ede9ab233",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.02026443981068801,
+      "unit": "meters_total_drift",
+      "derived_seed": 1344215964303766078,
+      "parameter_seed": 16040328957994394351
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.33488760323269523,
+        0.6053576001759594,
+        0.7220751132051736
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f26f98cb0ba7cc50f44d7b4ad472bcd60c61bedd6d692d25b3665e0862bd5fd4"
+  },
+  {
+    "case": {
+      "case_id": "tier2-1bfb66be678f91691385c838",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.04154364519223566,
+      "unit": "meters_total_drift",
+      "derived_seed": 2016318226145710441,
+      "parameter_seed": 1406750604552629699
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.928025600654121,
+        0.14211563850929812,
+        0.3443423148868761
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "4940bfa72b5f84de3043b95bf389087ff0192d1b7321cfd63d1f29c0b377aa1b"
+  },
+  {
+    "case": {
+      "case_id": "tier2-e20b8d374b4b077ab8953df5",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.11644575343609619,
+      "unit": "meters_total_drift",
+      "derived_seed": 16288267745941456762,
+      "parameter_seed": 13300605200845800717
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.44861328643426723,
+        0.6519743818724817,
+        -0.611290049499124
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "58574b8ac5b1a3cc3b086c8d456b78335d3d6d308eece05bef7acd026c315791"
+  },
+  {
+    "case": {
+      "case_id": "tier2-4e6d3f3efc49e331fe50ae01",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 2.3444533417348437,
+      "unit": "degrees_total_drift",
+      "derived_seed": 5651242647173063473,
+      "parameter_seed": 18325338204120450458
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.529207272142179,
+        -0.3193475715445805,
+        -0.7861022781167936
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1c43aa42931bcda6b5707458e2e9559f78f374cbc1452cbc4e563e64ae5f03a7"
+  },
+  {
+    "case": {
+      "case_id": "tier2-20f8166e1cd50733a3a3106f",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 5.325044200707982,
+      "unit": "degrees_total_drift",
+      "derived_seed": 2375673465623873331,
+      "parameter_seed": 11791286319488027810
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.8183689498950986,
+        -0.3587158305799194,
+        -0.4489935575695405
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f595491078016d57e97faa1a165050485ef1a662484a9b010dc838cda49de263"
+  },
+  {
+    "case": {
+      "case_id": "tier2-f2f0d625b391274af11ab756",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 11.656148580258538,
+      "unit": "degrees_total_drift",
+      "derived_seed": 17505727209003886410,
+      "parameter_seed": 17373400092788770128
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.8022826143752511,
+        -0.46945183139899854,
+        0.3687242664476244
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "adcbc7c35cd33a8e1f20869f96449cf287dcefbf86a26b007b30246266cefdb5"
+  },
+  {
+    "case": {
+      "case_id": "tier2-82f4ac3f5c44224c0e756b25",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 4.0,
+      "magnitude": 3.864214146262162,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 9436356507378917964,
+      "parameter_seed": 1041856699622175543
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 3.849055,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 22.829902
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "8c48a1e4a63fd835fd8f29f02fdf7d1310b6f94957f23b8b3d541a9062cd7320"
+  },
+  {
+    "case": {
+      "case_id": "tier2-901ea2735112077feaec09b5",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 8.0,
+      "magnitude": 6.969863437949571,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 10384916406928017279,
+      "parameter_seed": 16927915773996177050
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 6.902513,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 27.76857
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "2bebf14e4632765e41bedeb5b4ba6d146f3c3306bce662ce7204d9326b99f187"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a19537d4de544fcf678a3ac2",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 16.0,
+      "magnitude": 13.21019690203321,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 11643273799038947279,
+      "parameter_seed": 7460840338963190102
+    },
+    "status": "construction_failure",
+    "reason": "source_timestamps_not_increasing",
+    "details": {
+      "maximum_realized_offset_ms": 13.080652,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 41.697783
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-8cb7c5bed7a34b96740113c9",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.05799650087587752,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 10139790509500222358,
+      "parameter_seed": 8358984138925653673
+    },
+    "status": "construction_failure",
+    "reason": "source_gap_exceeds_50_ms",
+    "details": {
+      "dropped_sample_indexes": [
+        19,
+        41,
+        57,
+        83,
+        95,
+        101,
+        102
+      ],
+      "realized_drop_fraction": 0.058333333333333334,
+      "source_sample_count": 113,
+      "maximum_source_gap_ms": 50.000001
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-5f16a9f0e52646c6a7dc79ab",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.09092026205671039,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 6851850735192524486,
+      "parameter_seed": 12095676477197525543
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "dropped_sample_indexes": [
+        12,
+        16,
+        31,
+        33,
+        35,
+        40,
+        42,
+        48,
+        56,
+        59,
+        111
+      ],
+      "realized_drop_fraction": 0.09166666666666666,
+      "source_sample_count": 109,
+      "maximum_source_gap_ms": 33.333334
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "7ab50965c67beaaa21aae279b00a5eefb943a1cc9b69886fed3aec60d6d3cce2"
+  },
+  {
+    "case": {
+      "case_id": "tier2-99e8349e01702d27e1eeef22",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.17496699434252766,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 11090171935633452327,
+      "parameter_seed": 16280212633994028660
+    },
+    "status": "construction_failure",
+    "reason": "source_gap_exceeds_50_ms",
+    "details": {
+      "dropped_sample_indexes": [
+        2,
+        8,
+        20,
+        26,
+        29,
+        37,
+        40,
+        52,
+        55,
+        58,
+        62,
+        70,
+        76,
+        80,
+        83,
+        86,
+        93,
+        94,
+        103,
+        108,
+        112
+      ],
+      "realized_drop_fraction": 0.175,
+      "source_sample_count": 99,
+      "maximum_source_gap_ms": 50.000001
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-65113c2d3f4e80bd7485f0a3",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 100.0,
+      "magnitude": 114.94957712626166,
+      "unit": "milliseconds",
+      "derived_seed": 7282668237468106941,
+      "parameter_seed": 8396381665588655807
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 2,
+      "frozen_sample_count": 7,
+      "realized_duration_ms": 116.66666666666667
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1147a19e8a5675583c4e64ce10af2fcd836e1615d3a0d672c32f806183822640"
+  },
+  {
+    "case": {
+      "case_id": "tier2-4d4a8fd6be6c3b8b9fa0d9be",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 250.0,
+      "magnitude": 250.57872469054422,
+      "unit": "milliseconds",
+      "derived_seed": 5569422041677577099,
+      "parameter_seed": 11502432862501427207
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 103,
+      "frozen_sample_count": 15,
+      "realized_duration_ms": 250.0
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "c1d775990985ddbc1c3d3859a06f2891996879fb11fca4d4822e19c93232e0b4"
+  },
+  {
+    "case": {
+      "case_id": "tier2-aa22ed4f3a1eb990169e2470",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 500.0,
+      "magnitude": 569.0750912461216,
+      "unit": "milliseconds",
+      "derived_seed": 12259622060189202832,
+      "parameter_seed": 1629780182066195631
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 2,
+      "frozen_sample_count": 34,
+      "realized_duration_ms": 566.6666666666666
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1de7f3587d7f07f83ad4e492c3516848024941f04647ecb5930e7224a82a45a6"
+  },
+  {
+    "case": {
+      "case_id": "tier2-1ab0ba6794e958184a63e939",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.04132818300369767,
+      "unit": "meters_step_offset",
+      "derived_seed": 1923241994929920024,
+      "parameter_seed": 5360384413502398749
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 61,
+      "direction_xyz": [
+        -0.23848992383089104,
+        -0.6037526650891605,
+        0.7606610780294151
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "4c1a733c6253b394db8363086ccaed8b200ca84d75ab66a9c4d1e771bcd46cb5"
+  },
+  {
+    "case": {
+      "case_id": "tier2-d226fb8a138d0042f730fdcb",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.10070653900366547,
+      "unit": "meters_step_offset",
+      "derived_seed": 15143067367531937858,
+      "parameter_seed": 17812015578440903994
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 90,
+      "direction_xyz": [
+        -0.5469068385708284,
+        0.8323353875632743,
+        -0.09005949441538866
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "daf37ae492aa372385f8470eeba2ec08e61381f47a8d313afeb602695d8a3119"
+  },
+  {
+    "case": {
+      "case_id": "tier2-c43f0fcec313931da924482b",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.2071420584917165,
+      "unit": "meters_step_offset",
+      "derived_seed": 14141038735677166365,
+      "parameter_seed": 12187945842338742240
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 29,
+      "direction_xyz": [
+        -0.4641685834613549,
+        0.8440836223012828,
+        0.26845924213970496
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1775683dd979d60fd7c278eaf1fc1af55fb828981e4c2a763ae51fa6434ebc54"
+  },
+  {
+    "case": {
+      "case_id": "tier2-c10b9576030608dd0e399de0",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 5.252447836952676,
+      "unit": "degrees_step_offset",
+      "derived_seed": 13910376208153315549,
+      "parameter_seed": 1025023976468819219
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 70,
+      "direction_xyz": [
+        -0.3248151989560438,
+        -0.33419847176940903,
+        -0.8847635096420609
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "cfce9199cf08d09208121d5019142d72d6963b35ba3a731c33c36e8370cb6b14"
+  },
+  {
+    "case": {
+      "case_id": "tier2-0ce413b7b71738e9e4862e6e",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 11.106469653209734,
+      "unit": "degrees_step_offset",
+      "derived_seed": 928889102916860137,
+      "parameter_seed": 16466900139689342435
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 59,
+      "direction_xyz": [
+        -0.07176362906301617,
+        -0.7106141181888999,
+        0.6999125349458447
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ab6f7653d05ab0f9306b9f547131acaa2470cc102545b3cd01e4b6b2c27cd9ba"
+  },
+  {
+    "case": {
+      "case_id": "tier2-6b79ea11bb79f71e6fedcc1d",
+      "source_window_id": "sim-device-01-session-01-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-01-shake-016",
+      "source_motion_sha256": "092b9875c3dde2e93bd9d79bdbeee49518fe50921416969f76977655e9b18938",
+      "split": "train",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 20.0,
+      "magnitude": 23.513000396001303,
+      "unit": "degrees_step_offset",
+      "derived_seed": 7744478396120954654,
+      "parameter_seed": 8065326934368804991
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 17,
+      "direction_xyz": [
+        -0.0713137976224547,
+        -0.5555027812758304,
+        -0.8284509655154496
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "48dfaaa4b35f4e184ac050299ade1ca202d6b084a1e615e0a03f90ee66a219c1"
+  },
+  {
+    "case": {
+      "case_id": "tier2-da4bc718416d8dcb9f80b6f9",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "clean",
+      "severity": "clean",
+      "is_anomaly": false,
+      "injection_stage": "none",
+      "nominal_magnitude": 0.0,
+      "magnitude": 0.0,
+      "unit": "none",
+      "derived_seed": 15729885030512430539,
+      "parameter_seed": 11493387432164368440
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {},
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "8f7b3f3a02e3e655ec87599aa4bf4e62d3236ad6a83ae7f9be42735c216d82a4"
+  },
+  {
+    "case": {
+      "case_id": "tier2-2d697bc807d95295480e8306",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.005,
+      "magnitude": 0.0051003628844001605,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 3272282703316734613,
+      "parameter_seed": 5192231484454291606
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.008574814183745415
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f2d3ccee36d7d02ea0d21043c014abd23292a54e6841c58395a6101345cf1e86"
+  },
+  {
+    "case": {
+      "case_id": "tier2-dbe9f73b0e4f540bb4d2898b",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.01,
+      "magnitude": 0.00896507413852255,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 15846468596895011851,
+      "parameter_seed": 13029627903764297235
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.015628876708661716
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ad966ac5de507b500ed347e726a212a5cab855e1ff92a3b859694f75aa040b02"
+  },
+  {
+    "case": {
+      "case_id": "tier2-1b39749b8be4c88a5c6d8c10",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.017296675386328217,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 1961727324112341130,
+      "parameter_seed": 6660133426366839858
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.031313728677942215
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "d9d682b01b70aa74207eb48a5144137f59be39c8c87c25ed9266d7c1b1bd686b"
+  },
+  {
+    "case": {
+      "case_id": "tier2-e317d763a42c9ea193e381e1",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.5,
+      "magnitude": 0.5328632294769091,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 16363784594030108321,
+      "parameter_seed": 10656503950906086720
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 0.5100303257252066
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "afcb4145f44d5424472a86992f3f64d90005ed735bd9d8374a4d728b1d04efa1"
+  },
+  {
+    "case": {
+      "case_id": "tier2-980567c440aae39372a4b28c",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 1.0,
+      "magnitude": 1.1916409343080727,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 10954275761244791699,
+      "parameter_seed": 8260923933859688331
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 1.3033997860987112
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "fa607cf33dc6b69b9f0884539c82c9c88db0442732cfb3baaa6fe36c2e3a0747"
+  },
+  {
+    "case": {
+      "case_id": "tier2-fe8494bdc7b2a71308849386",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 2.0420335031902006,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 18339947125379606291,
+      "parameter_seed": 613777654306461405
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 2.0590646465607567
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "443df738fdc3e19fe8860d42b5102c9526e0e76aec20cd5e54f5df56128d11c2"
+  },
+  {
+    "case": {
+      "case_id": "tier2-9ac68e31aa035d26845d9af5",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.019812690329699303,
+      "unit": "meters_total_drift",
+      "derived_seed": 11152757871186500902,
+      "parameter_seed": 9537949966528202084
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        0.2969495442111551,
+        0.09230339770543734,
+        0.9504215122590708
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "6e0985690b239a8569edcd2fc3003a6bd9e2f5f88c8aea8dbc584f9aad15ba6d"
+  },
+  {
+    "case": {
+      "case_id": "tier2-c1cb11965aa98d24f143cbb7",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.04331892183768762,
+      "unit": "meters_total_drift",
+      "derived_seed": 13964274407056182564,
+      "parameter_seed": 17384962976640113942
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.2742671223270189,
+        0.9235820877694422,
+        0.2679060894453401
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "e5d7173fb04919f4b3a0d338c260883197ef277b16114493f7d0b45c44b84709"
+  },
+  {
+    "case": {
+      "case_id": "tier2-ab674cd49bdd57f73cabb4fa",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.09939967107486264,
+      "unit": "meters_total_drift",
+      "derived_seed": 12350924979118626807,
+      "parameter_seed": 4371786850050356456
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.973742124943667,
+        0.1318401271026776,
+        -0.18559217385369958
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a213dd5139a283ef51316ad6ca94846bf084bf6e25f871527b472281ac2721c5"
+  },
+  {
+    "case": {
+      "case_id": "tier2-7c1e69c521586bef9f850932",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 2.154313745624818,
+      "unit": "degrees_total_drift",
+      "derived_seed": 8943702205393300463,
+      "parameter_seed": 11494603736215937108
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        0.8821840982905246,
+        0.4688172371897658,
+        0.04429012121330291
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "6e45e27fd09e9998abd18e7e13e55284218102786b5617b77213b51ab5723bc0"
+  },
+  {
+    "case": {
+      "case_id": "tier2-11f7d2cf0402254e5d1521d9",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 4.425356265894135,
+      "unit": "degrees_total_drift",
+      "derived_seed": 1294735204459619662,
+      "parameter_seed": 6707304436153589351
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        0.9849606720631143,
+        0.055632063195145,
+        0.1635773457225342
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "c799a51c26dcae1d0777d5652977110e8bc8d1cff4dd2d0cc10dcb32db9e4a13"
+  },
+  {
+    "case": {
+      "case_id": "tier2-58845dd48f24e3efcf1bd76a",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 11.632935480792883,
+      "unit": "degrees_total_drift",
+      "derived_seed": 6378326139779474415,
+      "parameter_seed": 14923758644457850537
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.10026478508871424,
+        -0.2101264407156313,
+        -0.972519332344244
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ff51b163de0bad8577241c4acf6764e118e0659fd04b2e8490f9fc3caaf80f50"
+  },
+  {
+    "case": {
+      "case_id": "tier2-cbbdc70659782bc63a73b96d",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 4.0,
+      "magnitude": 4.601843170227914,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 14681109190382463942,
+      "parameter_seed": 4211913958429238224
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 4.490188,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 24.580959
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "4d33e9d54ed7288aeb9f6757cc057932498ab88f27e21082a0a759a5fcb9ef90"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a3033f26c7013e24034ad50b",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 8.0,
+      "magnitude": 7.820509993027579,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 11746301688892440100,
+      "parameter_seed": 237236176389980618
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 7.804664,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 30.140218
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a438963511171799620a309a2c2392b42f878292d684364b01085198d7564c80"
+  },
+  {
+    "case": {
+      "case_id": "tier2-b0f2af8a5abf6c113981a66e",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 16.0,
+      "magnitude": 18.066293120692155,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 12750446503802137617,
+      "parameter_seed": 4143776127409104546
+    },
+    "status": "construction_failure",
+    "reason": "source_timestamps_not_increasing",
+    "details": {
+      "maximum_realized_offset_ms": 17.848502,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 48.464208
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-e8d910d8775598aa6781eff5",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.04946646603250274,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 16778460408646572202,
+      "parameter_seed": 7458506297325371908
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "dropped_sample_indexes": [
+        1,
+        4,
+        10,
+        38,
+        93,
+        111
+      ],
+      "realized_drop_fraction": 0.05,
+      "source_sample_count": 114,
+      "maximum_source_gap_ms": 33.333334
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "d5e36e82d05f2c6b9ac649823d352272cee1bdca58088365acd6546e500c46aa"
+  },
+  {
+    "case": {
+      "case_id": "tier2-fdc08d3b29a1c2ca7068a9d8",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.09409633791153998,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 18284769772365267658,
+      "parameter_seed": 8099910675790021727
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "dropped_sample_indexes": [
+        3,
+        6,
+        28,
+        60,
+        82,
+        86,
+        89,
+        95,
+        100,
+        111,
+        117
+      ],
+      "realized_drop_fraction": 0.09166666666666666,
+      "source_sample_count": 109,
+      "maximum_source_gap_ms": 33.333334
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "d14bff924b1c88e2fa37b2fd104cfb169949f67256d242a3de0747a0c9c4f266"
+  },
+  {
+    "case": {
+      "case_id": "tier2-cc7f46f62cdaf8ba653bf2ee",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.17783816077662654,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 14735574528907999418,
+      "parameter_seed": 7294691127633016285
+    },
+    "status": "construction_failure",
+    "reason": "source_gap_exceeds_50_ms",
+    "details": {
+      "dropped_sample_indexes": [
+        2,
+        4,
+        14,
+        15,
+        25,
+        27,
+        44,
+        57,
+        59,
+        70,
+        74,
+        89,
+        92,
+        95,
+        98,
+        99,
+        105,
+        106,
+        107,
+        110,
+        117
+      ],
+      "realized_drop_fraction": 0.175,
+      "source_sample_count": 99,
+      "maximum_source_gap_ms": 66.666668
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-421c43f62afd0545135029a1",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 100.0,
+      "magnitude": 118.52216939234208,
+      "unit": "milliseconds",
+      "derived_seed": 4763757230413382981,
+      "parameter_seed": 1391658056946067169
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 15,
+      "frozen_sample_count": 7,
+      "realized_duration_ms": 116.66666666666667
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "31d46edf7b179e5c2dd4e5eb347dcf4fc73015db42a79fe1786b8b10d587ddca"
+  },
+  {
+    "case": {
+      "case_id": "tier2-d5ef3bb14c1a52925a360cff",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 250.0,
+      "magnitude": 299.6331628562002,
+      "unit": "milliseconds",
+      "derived_seed": 15415605682184540818,
+      "parameter_seed": 6500397404085485242
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 77,
+      "frozen_sample_count": 18,
+      "realized_duration_ms": 300.0
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "8d93f9b967275b339fabad298c84e0df63303ed5c8d16b7f30fc58d259b09df9"
+  },
+  {
+    "case": {
+      "case_id": "tier2-35e9d635966ba306883b6f72",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 500.0,
+      "magnitude": 506.3515803768813,
+      "unit": "milliseconds",
+      "derived_seed": 3884871679229010694,
+      "parameter_seed": 9816562351035870780
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 42,
+      "frozen_sample_count": 30,
+      "realized_duration_ms": 500.0
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a985a8e8b17c954daf2ae92edd10bfe36dea230663a316eed0eb4c467d2a0735"
+  },
+  {
+    "case": {
+      "case_id": "tier2-6d5cff120a2ca1f77dea856c",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.04732788823435999,
+      "unit": "meters_step_offset",
+      "derived_seed": 7880453900936716791,
+      "parameter_seed": 9073211100089138136
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 78,
+      "direction_xyz": [
+        0.7585467561974053,
+        -0.5900992875626021,
+        0.27638677515486104
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "09babea6939d78dc5e448c964d0e8e4dc4619af0667743c73f1cd38cd2066981"
+  },
+  {
+    "case": {
+      "case_id": "tier2-2f5f8cf1f371c2930626f1d3",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.11146465784951175,
+      "unit": "meters_step_offset",
+      "derived_seed": 3413602013369451155,
+      "parameter_seed": 443307505015087598
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 89,
+      "direction_xyz": [
+        0.6079365268299302,
+        0.6139991996680476,
+        -0.5034065575188293
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "9c92bb3730d119baece0f900b091ac045b8ebc083d749d049ff61b307d0a061e"
+  },
+  {
+    "case": {
+      "case_id": "tier2-9693d7ebfea9ed66ec6c6dd8",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.18551842995606313,
+      "unit": "meters_step_offset",
+      "derived_seed": 10850253335855492454,
+      "parameter_seed": 17036112266098914793
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 15,
+      "direction_xyz": [
+        0.5058752338829053,
+        -0.759273406349869,
+        0.40938263538379666
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "1f810e0995290e6e79a61e342936c511a4831c6a0b93aa414003678e76b7c706"
+  },
+  {
+    "case": {
+      "case_id": "tier2-0d74bbf13f4fe6e7beb9f53c",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 4.172109086575963,
+      "unit": "degrees_step_offset",
+      "derived_seed": 969606464615212775,
+      "parameter_seed": 13743285376386174988
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 35,
+      "direction_xyz": [
+        -0.9927076333231036,
+        -0.050146221391030546,
+        -0.10962167314105455
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ecf50540c0b998881eeb0ec09051e28121f9fc0b6ceee20f8f36527f55d2d0d1"
+  },
+  {
+    "case": {
+      "case_id": "tier2-37204f10d79451bd9d369d22",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 9.638293025040397,
+      "unit": "degrees_step_offset",
+      "derived_seed": 3972261805095670205,
+      "parameter_seed": 11328414685685256189
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 79,
+      "direction_xyz": [
+        0.22368085384972047,
+        -0.7883386860044241,
+        0.5731395918708442
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f769631bf8f58187b13dbc5a86bfa7cf910a4938f4cc45a804de43cb2397c561"
+  },
+  {
+    "case": {
+      "case_id": "tier2-67314323781d5f4609ea1222",
+      "source_window_id": "sim-device-01-session-02-shake-004-window-000",
+      "source_trial_id": "sim-device-01-session-02-shake-004",
+      "source_motion_sha256": "8d64935bea5656f7a6bd0db82a0e00aa5425c1870f7345f9fa8d53f8158ad61d",
+      "split": "validation",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 20.0,
+      "magnitude": 18.121061554469144,
+      "unit": "degrees_step_offset",
+      "derived_seed": 7435798279383506758,
+      "parameter_seed": 714403432073487528
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 65,
+      "direction_xyz": [
+        0.8202153944917703,
+        0.3716524399918573,
+        0.4348806393561441
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "cdf9bca54587ba3b97e8eb6abf177b983919e89f36b637eec138c6f26e63a9b5"
+  },
+  {
+    "case": {
+      "case_id": "tier2-6ccd33e69ae5b5e298dcf416",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "clean",
+      "severity": "clean",
+      "is_anomaly": false,
+      "injection_stage": "none",
+      "nominal_magnitude": 0.0,
+      "magnitude": 0.0,
+      "unit": "none",
+      "derived_seed": 7839979591856141794,
+      "parameter_seed": 11014947164566965111
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {},
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "125ad117190fb4f74615b4b9cccf44c3f8ab568e3d30549709df9aea31b50a57"
+  },
+  {
+    "case": {
+      "case_id": "tier2-04c7f281b58647585581e70c",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.005,
+      "magnitude": 0.004795356285754362,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 344510535427311448,
+      "parameter_seed": 6161459806059041753
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.0086390742369302
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ab6e5f6aa74e66b61dc37f99f78254d0994aa94612f4e83b3d43941dc5e2bd1d"
+  },
+  {
+    "case": {
+      "case_id": "tier2-c2c42c631f31b29456225a69",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.01,
+      "magnitude": 0.00883382500836111,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 14034391143030043284,
+      "parameter_seed": 6206622645840999509
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.015676791357969226
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "7e092129fe9d39512521c37d3147e581673fd8577d20d2a51616048f7974a5e0"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a3953032463789d6a6fdd9f1",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.01822241845594093,
+      "unit": "meters_per_axis_standard_deviation",
+      "derived_seed": 11787380592196684246,
+      "parameter_seed": 12033013411393516659
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_position_noise_rms_m": 0.03167781560120511
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "9eacaed3941b8a1e2e21d6155d2cea33178d88d9a2b235f8e49b3cf1b76fb9ad"
+  },
+  {
+    "case": {
+      "case_id": "tier2-88def2eb3f019d71ae468e54",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.5,
+      "magnitude": 0.49880207849762465,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 9862587326176271729,
+      "parameter_seed": 12557881106067049243
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 0.5685434415292242
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "08d85cb10b473f43e7db8b2e985110f4559c8ca031c0a83fd5640f3992c73a83"
+  },
+  {
+    "case": {
+      "case_id": "tier2-5eea8cec49743d7d4b18a805",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 1.0,
+      "magnitude": 1.1737501656561422,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 6839433930588044669,
+      "parameter_seed": 5411259693982096406
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 1.2138585791562513
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "a5747e6cb5f5eb0acdd32a262cd2704390ec269e7327022fc27583dce8e26fcc"
+  },
+  {
+    "case": {
+      "case_id": "tier2-11bb237f19462567ba1a1616",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_noise",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 1.9203822829174886,
+      "unit": "degrees_signed_angle_standard_deviation",
+      "derived_seed": 1277653948081513831,
+      "parameter_seed": 13410055126237203569
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "realized_orientation_noise_rms_deg": 2.2191127570091385
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "59f25cbb6b828564bbc0f78fd8922b9179bb56492b2b8dd412a7be8d7cf341f8"
+  },
+  {
+    "case": {
+      "case_id": "tier2-f92562eb2ece89b5075578b6",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.02,
+      "magnitude": 0.021947611924819758,
+      "unit": "meters_total_drift",
+      "derived_seed": 17952864251824474549,
+      "parameter_seed": 528461257105081863
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.9171172183614933,
+        0.3356125223532105,
+        0.21508194397622685
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f36e9d8dbdfd3595bd89d91cee416969487a60d074ea30f50fa902735f61ebc0"
+  },
+  {
+    "case": {
+      "case_id": "tier2-b759310bacd1c5eed33f5836",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.0478755249851921,
+      "unit": "meters_total_drift",
+      "derived_seed": 13211644908081890798,
+      "parameter_seed": 15221982257099794245
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.40830489403648434,
+        -0.8591481876531177,
+        0.3084663760577779
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "38932f139aad2281034bc1946b5da2c530de23e3aecef352d0842ff1d4f6c4cf"
+  },
+  {
+    "case": {
+      "case_id": "tier2-afd84ad02a421b445462dd0e",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.11239688683338245,
+      "unit": "meters_total_drift",
+      "derived_seed": 12670959809529518916,
+      "parameter_seed": 6080665499931192954
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.3260913036029556,
+        -0.01155667319370505,
+        0.9452676367141842
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "b16df5af1f9610ee5d99e716028c5c76f2e556064e85242f300a71e7d085253e"
+  },
+  {
+    "case": {
+      "case_id": "tier2-5f16005647faa5a5e82a4ffe",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 2.0,
+      "magnitude": 2.1781708357499214,
+      "unit": "degrees_total_drift",
+      "derived_seed": 6851664253665584549,
+      "parameter_seed": 16729271719615041624
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        0.3002864200524428,
+        -0.9456000940784919,
+        -0.12517399095193582
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "2bb6a5b2ce99339645dfc1750e5e03b977e5b8bc886103f7ac6a526cf03ecf9f"
+  },
+  {
+    "case": {
+      "case_id": "tier2-520a6209297d9da57fbe93a2",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 5.143229652385798,
+      "unit": "degrees_total_drift",
+      "derived_seed": 5911645252367523237,
+      "parameter_seed": 9204957015192094019
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.5961908501113299,
+        0.5835290412161737,
+        0.5514075881785298
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "22028bdd147ef51365ce3632e80161d00761c452199136848ba04410ad2f89ec"
+  },
+  {
+    "case": {
+      "case_id": "tier2-7dccaf33c14e447db1894616",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_drift",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 10.613762453614882,
+      "unit": "degrees_total_drift",
+      "derived_seed": 9064812786811290749,
+      "parameter_seed": 12792833278161217202
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "direction_xyz": [
+        -0.9721641040866822,
+        0.2078102296375412,
+        -0.10822136195470257
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "6f949e1b4d45a7110b8c4160af3dd488f97541d556ef26f2867d8df2229109ee"
+  },
+  {
+    "case": {
+      "case_id": "tier2-f7be5d96ad40bdcc901d3796",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 4.0,
+      "magnitude": 4.05456903619004,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 17851808874676403660,
+      "parameter_seed": 10384517434793061613
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 4.047585,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 24.501607
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "04abe3d41f95b7cd7d68b11a62e044d1273203e356e1148d0a0b524f8616561e"
+  },
+  {
+    "case": {
+      "case_id": "tier2-519f33e1a72c2d279d5cbc40",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 8.0,
+      "magnitude": 8.291896664065193,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 5881476682634505511,
+      "parameter_seed": 11339144945284387144
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "maximum_realized_offset_ms": 8.218171,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 30.377305
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "7c2c096b105ac6bad3e07cac598e2d73b6a882a39b9f2ffe544e65d9603313e4"
+  },
+  {
+    "case": {
+      "case_id": "tier2-d319aa5ce01aeb8f0576291a",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "timestamp_jitter",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 16.0,
+      "magnitude": 16.136266012269516,
+      "unit": "milliseconds_maximum_absolute_offset",
+      "derived_seed": 15211376532294134671,
+      "parameter_seed": 393547210342820573
+    },
+    "status": "construction_failure",
+    "reason": "source_timestamps_not_increasing",
+    "details": {
+      "maximum_realized_offset_ms": 16.111808,
+      "source_sample_count": 120,
+      "maximum_source_gap_ms": 46.079306
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-349454218ac47f6464a99eb4",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.05681961202023775,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 3788745689564217188,
+      "parameter_seed": 7253503171438799567
+    },
+    "status": "construction_failure",
+    "reason": "source_gap_exceeds_50_ms",
+    "details": {
+      "dropped_sample_indexes": [
+        17,
+        21,
+        22,
+        26,
+        60,
+        77,
+        101
+      ],
+      "realized_drop_fraction": 0.058333333333333334,
+      "source_sample_count": 113,
+      "maximum_source_gap_ms": 50.000001
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-702cab6bd49785f494342755",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.10522510150297522,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 8083023910839748084,
+      "parameter_seed": 10679203866581108668
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "dropped_sample_indexes": [
+        13,
+        18,
+        22,
+        27,
+        30,
+        37,
+        56,
+        58,
+        63,
+        76,
+        84,
+        89,
+        98
+      ],
+      "realized_drop_fraction": 0.10833333333333334,
+      "source_sample_count": 107,
+      "maximum_source_gap_ms": 33.333334
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "9b6c1c2309149f3225057081c133a159219d4b3fe4712b6948f47e6430303228"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a904d62b582ea12b61e9b48c",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "dropped_samples",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.21603877767846535,
+      "unit": "fraction_of_source_samples",
+      "derived_seed": 12179094773968052523,
+      "parameter_seed": 7055368805918308344
+    },
+    "status": "construction_failure",
+    "reason": "source_gap_exceeds_50_ms",
+    "details": {
+      "dropped_sample_indexes": [
+        4,
+        8,
+        9,
+        13,
+        14,
+        15,
+        16,
+        21,
+        37,
+        38,
+        41,
+        42,
+        53,
+        55,
+        62,
+        63,
+        67,
+        79,
+        90,
+        97,
+        99,
+        103,
+        106,
+        109,
+        110,
+        117
+      ],
+      "realized_drop_fraction": 0.21666666666666667,
+      "source_sample_count": 94,
+      "maximum_source_gap_ms": 83.333335
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": null
+  },
+  {
+    "case": {
+      "case_id": "tier2-66b4528b0b1a85560bb77d7b",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 100.0,
+      "magnitude": 109.54643358461855,
+      "unit": "milliseconds",
+      "derived_seed": 7400630844816786774,
+      "parameter_seed": 844281426518204630
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 89,
+      "frozen_sample_count": 7,
+      "realized_duration_ms": 116.66666666666667
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "95105c1e5141d744bad518c269e645dd4692031b03cd38626fd8ff64624fef95"
+  },
+  {
+    "case": {
+      "case_id": "tier2-9ff2d4873938398ed7db8ef8",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 250.0,
+      "magnitude": 241.86639103369757,
+      "unit": "milliseconds",
+      "derived_seed": 11525508073640180110,
+      "parameter_seed": 15554182935789743823
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 37,
+      "frozen_sample_count": 15,
+      "realized_duration_ms": 250.0
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "2c9cca211e5ccca41e58770993dd1fd22250a6a5892c50468a1f6187ce33734c"
+  },
+  {
+    "case": {
+      "case_id": "tier2-a40d6148958c1dc1f01f13e5",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "frozen_pose",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 500.0,
+      "magnitude": 579.7899641236797,
+      "unit": "milliseconds",
+      "derived_seed": 11821211561291947457,
+      "parameter_seed": 17302570168178622959
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 67,
+      "frozen_sample_count": 35,
+      "realized_duration_ms": 583.3333333333334
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "f1ce4fd71bdfd7d190ea049c230b7732561b5ec7e301e50c1a4a17ad087309e0"
+  },
+  {
+    "case": {
+      "case_id": "tier2-94e04d061d8ff924712de9c3",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.05,
+      "magnitude": 0.05950936332431618,
+      "unit": "meters_step_offset",
+      "derived_seed": 10727659001057638692,
+      "parameter_seed": 8155431525541736019
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 95,
+      "direction_xyz": [
+        -0.9861922030935492,
+        -0.14717491550972306,
+        0.07592419115273812
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "d8aee78e119962c60b9d09b4e48df30d523e1f5d6090be04595e958e265b0421"
+  },
+  {
+    "case": {
+      "case_id": "tier2-acd40d1d46670a6eee697679",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.1,
+      "magnitude": 0.09701960837758439,
+      "unit": "meters_step_offset",
+      "derived_seed": 12453593288972634734,
+      "parameter_seed": 17179392515656838619
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 64,
+      "direction_xyz": [
+        -0.14788811575569472,
+        -0.7691119260275379,
+        -0.6217684058075332
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "7177c969931bf0d79715e5695b07d3261e64514af9408bc2a8cf3dc46fce451a"
+  },
+  {
+    "case": {
+      "case_id": "tier2-95d3e24ca6ba92021586d871",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "position_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 0.2,
+      "magnitude": 0.17453358196239052,
+      "unit": "meters_step_offset",
+      "derived_seed": 10796221550579847682,
+      "parameter_seed": 1551165104178649283
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 23,
+      "direction_xyz": [
+        -0.6180237292597823,
+        -0.7539166999256247,
+        -0.22283689022486136
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "ac14cab23e0fa3cb1a1b4de1d6467c8c498e879508a0b0aab95ff9912372fbf2"
+  },
+  {
+    "case": {
+      "case_id": "tier2-37b6723463612a1dfb2d0eaa",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "low",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 5.0,
+      "magnitude": 4.908584312727177,
+      "unit": "degrees_step_offset",
+      "derived_seed": 4014521687178553885,
+      "parameter_seed": 18099138600963558595
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 22,
+      "direction_xyz": [
+        -0.0352041632075315,
+        0.970653479601527,
+        0.23789175990417416
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "7faf56e5440469d0d4a39d52da1bc7e5c6b64d89bd0319c281c71519f7744583"
+  },
+  {
+    "case": {
+      "case_id": "tier2-b0b651a945d61e947ef4c946",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "medium",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 10.0,
+      "magnitude": 11.87158045634754,
+      "unit": "degrees_step_offset",
+      "derived_seed": 12733454783899639444,
+      "parameter_seed": 9148158047723300484
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 22,
+      "direction_xyz": [
+        -0.9299025144950699,
+        0.05071647143014127,
+        0.36429267500379686
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "448bf869c97ff424c8887b70e137018ee69521e33f1757b9bda4e5a04e675362"
+  },
+  {
+    "case": {
+      "case_id": "tier2-9451418730ddbde16fcb69c8",
+      "source_window_id": "sim-device-01-session-03-shake-016-window-000",
+      "source_trial_id": "sim-device-01-session-03-shake-016",
+      "source_motion_sha256": "c0c90c1fec9b780d0a40d070380ec5ca98b550c366d3e11e60213d703a4b153f",
+      "split": "test",
+      "motion_label": "shake",
+      "attack_type": "orientation_jump",
+      "severity": "high",
+      "is_anomaly": true,
+      "injection_stage": "before_tag",
+      "nominal_magnitude": 20.0,
+      "magnitude": 16.85277588268064,
+      "unit": "degrees_step_offset",
+      "derived_seed": 10687395439623126497,
+      "parameter_seed": 8055648669032877562
+    },
+    "status": "quality_valid",
+    "reason": "ready_for_legitimate_sender",
+    "details": {
+      "onset_sample": 68,
+      "direction_xyz": [
+        -0.6743354687145551,
+        -0.6500215732000545,
+        -0.3503478699921656
+      ]
+    },
+    "authentication_result": "not_attempted",
+    "output_motion_sha256": "648198a6cf22ea28c2cd95cf44809049adb777392301f8d598350efb674a3623"
+  }
+]

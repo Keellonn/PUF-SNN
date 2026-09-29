@@ -1,0 +1,18 @@
+test_anomaly_flag_does_not_roll_back_accepted_sequence (test_stream_evaluation.StreamEvaluationTests.test_anomaly_flag_does_not_roll_back_accepted_sequence) ... ok
+test_artifact_check_rejects_modified_files_and_directory_traversal (test_stream_evaluation.StreamEvaluationTests.test_artifact_check_rejects_modified_files_and_directory_traversal) ... ok
+test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions (test_stream_evaluation.StreamEvaluationTests.test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions) ... ok
+test_composite_callback_runs_both_models_from_one_input (test_stream_evaluation.StreamEvaluationTests.test_composite_callback_runs_both_models_from_one_input) ... ok
+test_full_construction_keeps_failures_and_split_denominators (test_stream_evaluation.StreamEvaluationTests.test_full_construction_keeps_failures_and_split_denominators) ... ok
+test_heatmap_marks_unconstructable_conditions_as_unavailable (test_stream_evaluation.StreamEvaluationTests.test_heatmap_marks_unconstructable_conditions_as_unavailable) ... C:\Users\datbo\VSCode\PUF-SNN\src\python\scripts\evaluate_stream_attacks.py:193: PendingDeprecationWarning: The set_bad function will be deprecated in a future version. Use cmap.with_extremes(bad=...) or Colormap(bad=...) instead.
+  colors.set_bad("lightgray")
+C:\Users\datbo\VSCode\PUF-SNN\src\python\scripts\evaluate_stream_attacks.py:193: PendingDeprecationWarning: The set_bad function will be deprecated in a future version. Use cmap.with_extremes(bad=...) or Colormap(bad=...) instead.
+  colors.set_bad("lightgray")
+ok
+test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers (test_stream_evaluation.StreamEvaluationTests.test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers) ... ok
+test_saved_plan_must_match_every_reproducible_case (test_stream_evaluation.StreamEvaluationTests.test_saved_plan_must_match_every_reproducible_case) ... ok
+test_source_split_leakage_and_duplicate_cases_are_rejected (test_stream_evaluation.StreamEvaluationTests.test_source_split_leakage_and_duplicate_cases_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 31.925s
+
+OK

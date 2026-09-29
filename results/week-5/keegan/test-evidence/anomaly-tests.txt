@@ -1,0 +1,20 @@
+test_binary_metrics_use_counts_not_average_percentages (test_anomaly.AnomalyTests.test_binary_metrics_use_counts_not_average_percentages) ... ok
+test_bootstrap_resamples_sources_reproducibly_not_individual_copies (test_anomaly.AnomalyTests.test_bootstrap_resamples_sources_reproducibly_not_individual_copies) ... ok
+test_configuration_has_distinct_seed_roles_and_frozen_reference (test_anomaly.AnomalyTests.test_configuration_has_distinct_seed_roles_and_frozen_reference) ... ok
+test_constant_pose_has_visible_repeat_features (test_anomaly.AnomalyTests.test_constant_pose_has_visible_repeat_features) ... ok
+test_equivalent_quaternion_signs_do_not_change_features (test_anomaly.AnomalyTests.test_equivalent_quaternion_signs_do_not_change_features) ... ok
+test_feature_names_and_finite_shape (test_anomaly.AnomalyTests.test_feature_names_and_finite_shape) ... ok
+test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail (test_anomaly.AnomalyTests.test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail) ... ok
+test_model_features_exclude_all_supervision_and_quality_metadata (test_anomaly.AnomalyTests.test_model_features_exclude_all_supervision_and_quality_metadata) ... ok
+test_position_and_large_time_origin_do_not_change_features (test_anomaly.AnomalyTests.test_position_and_large_time_origin_do_not_change_features) ... ok
+test_source_weights_balance_sources_and_clean_transformed_mass (test_anomaly.AnomalyTests.test_source_weights_balance_sources_and_clean_transformed_mass) ... ok
+test_source_weights_reject_missing_or_duplicate_clean_control (test_anomaly.AnomalyTests.test_source_weights_reject_missing_or_duplicate_clean_control) ... ok
+test_threshold_cannot_be_selected_from_train_or_test (test_anomaly.AnomalyTests.test_threshold_cannot_be_selected_from_train_or_test) ... ok
+test_threshold_meets_validation_fpr_and_keeps_score_ties_together (test_anomaly.AnomalyTests.test_threshold_meets_validation_fpr_and_keeps_score_ties_together) ... ok
+test_training_is_reproducible_and_fits_scaler_from_weighted_train_only (test_anomaly.AnomalyTests.test_training_is_reproducible_and_fits_scaler_from_weighted_train_only) ... ok
+test_velocity_uses_actual_timestamp_intervals (test_anomaly.AnomalyTests.test_velocity_uses_actual_timestamp_intervals) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.213s
+
+OK

@@ -267,6 +267,21 @@ test_initialization_and_training_seeds_are_separate (snn.test_snn_reporting.SnnR
 test_latency_identifies_its_exclusions_and_batch_size (snn.test_snn_reporting.SnnReportingTests.test_latency_identifies_its_exclusions_and_batch_size) ... ok
 test_model_parameter_counts (snn.test_snn_reporting.SnnReportingTests.test_model_parameter_counts) ... ok
 test_shared_seed_role_is_rejected_when_explicit (snn.test_snn_reporting.SnnReportingTests.test_shared_seed_role_is_rejected_when_explicit) ... ok
+test_binary_metrics_use_counts_not_average_percentages (test_anomaly.AnomalyTests.test_binary_metrics_use_counts_not_average_percentages) ... ok
+test_bootstrap_resamples_sources_reproducibly_not_individual_copies (test_anomaly.AnomalyTests.test_bootstrap_resamples_sources_reproducibly_not_individual_copies) ... ok
+test_configuration_has_distinct_seed_roles_and_frozen_reference (test_anomaly.AnomalyTests.test_configuration_has_distinct_seed_roles_and_frozen_reference) ... ok
+test_constant_pose_has_visible_repeat_features (test_anomaly.AnomalyTests.test_constant_pose_has_visible_repeat_features) ... ok
+test_equivalent_quaternion_signs_do_not_change_features (test_anomaly.AnomalyTests.test_equivalent_quaternion_signs_do_not_change_features) ... ok
+test_feature_names_and_finite_shape (test_anomaly.AnomalyTests.test_feature_names_and_finite_shape) ... ok
+test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail (test_anomaly.AnomalyTests.test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail) ... ok
+test_model_features_exclude_all_supervision_and_quality_metadata (test_anomaly.AnomalyTests.test_model_features_exclude_all_supervision_and_quality_metadata) ... ok
+test_position_and_large_time_origin_do_not_change_features (test_anomaly.AnomalyTests.test_position_and_large_time_origin_do_not_change_features) ... ok
+test_source_weights_balance_sources_and_clean_transformed_mass (test_anomaly.AnomalyTests.test_source_weights_balance_sources_and_clean_transformed_mass) ... ok
+test_source_weights_reject_missing_or_duplicate_clean_control (test_anomaly.AnomalyTests.test_source_weights_reject_missing_or_duplicate_clean_control) ... ok
+test_threshold_cannot_be_selected_from_train_or_test (test_anomaly.AnomalyTests.test_threshold_cannot_be_selected_from_train_or_test) ... ok
+test_threshold_meets_validation_fpr_and_keeps_score_ties_together (test_anomaly.AnomalyTests.test_threshold_meets_validation_fpr_and_keeps_score_ties_together) ... ok
+test_training_is_reproducible_and_fits_scaler_from_weighted_train_only (test_anomaly.AnomalyTests.test_training_is_reproducible_and_fits_scaler_from_weighted_train_only) ... ok
+test_velocity_uses_actual_timestamp_intervals (test_anomaly.AnomalyTests.test_velocity_uses_actual_timestamp_intervals) ... ok
 test_build_datasets_keeps_splits_separate (test_baselines.BaselineFeatureTests.test_build_datasets_keeps_splits_separate) ... ok
 test_feature_shape_and_relative_pose (test_baselines.BaselineFeatureTests.test_feature_shape_and_relative_pose) ... ok
 test_logistic_scaler_is_fit_from_training_only (test_baselines.BaselineFeatureTests.test_logistic_scaler_is_fit_from_training_only) ... ok
@@ -364,6 +379,19 @@ test_rotations_remain_normalized_and_sign_continuous (test_stream_attacks.Stream
 test_source_motion_change_invalidates_saved_plan_binding (test_stream_attacks.StreamAttackTests.test_source_motion_change_invalidates_saved_plan_binding) ... ok
 test_source_order_does_not_change_seeded_cases (test_stream_attacks.StreamAttackTests.test_source_order_does_not_change_seeded_cases) ... ok
 test_transform_is_reproducible_and_does_not_mutate_source (test_stream_attacks.StreamAttackTests.test_transform_is_reproducible_and_does_not_mutate_source) ... ok
+test_anomaly_flag_does_not_roll_back_accepted_sequence (test_stream_evaluation.StreamEvaluationTests.test_anomaly_flag_does_not_roll_back_accepted_sequence) ... ok
+test_artifact_check_rejects_modified_files_and_directory_traversal (test_stream_evaluation.StreamEvaluationTests.test_artifact_check_rejects_modified_files_and_directory_traversal) ... ok
+test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions (test_stream_evaluation.StreamEvaluationTests.test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions) ... ok
+test_composite_callback_runs_both_models_from_one_input (test_stream_evaluation.StreamEvaluationTests.test_composite_callback_runs_both_models_from_one_input) ... ok
+test_full_construction_keeps_failures_and_split_denominators (test_stream_evaluation.StreamEvaluationTests.test_full_construction_keeps_failures_and_split_denominators) ... ok
+test_heatmap_marks_unconstructable_conditions_as_unavailable (test_stream_evaluation.StreamEvaluationTests.test_heatmap_marks_unconstructable_conditions_as_unavailable) ... C:\Users\datbo\VSCode\PUF-SNN\src\python\scripts\evaluate_stream_attacks.py:193: PendingDeprecationWarning: The set_bad function will be deprecated in a future version. Use cmap.with_extremes(bad=...) or Colormap(bad=...) instead.
+  colors.set_bad("lightgray")
+C:\Users\datbo\VSCode\PUF-SNN\src\python\scripts\evaluate_stream_attacks.py:193: PendingDeprecationWarning: The set_bad function will be deprecated in a future version. Use cmap.with_extremes(bad=...) or Colormap(bad=...) instead.
+  colors.set_bad("lightgray")
+ok
+test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers (test_stream_evaluation.StreamEvaluationTests.test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers) ... ok
+test_saved_plan_must_match_every_reproducible_case (test_stream_evaluation.StreamEvaluationTests.test_saved_plan_must_match_every_reproducible_case) ... ok
+test_source_split_leakage_and_duplicate_cases_are_rejected (test_stream_evaluation.StreamEvaluationTests.test_source_split_leakage_and_duplicate_cases_are_rejected) ... ok
 test_builder_accepts_exactly_114_tracking_valid_samples (test_window_message.WindowMessageTests.test_builder_accepts_exactly_114_tracking_valid_samples)
 the protected message accepts the existing 95 percent quality boundary ... ok
 test_builder_creates_expected_versioned_message (test_window_message.WindowMessageTests.test_builder_creates_expected_versioned_message)
@@ -382,6 +410,6 @@ test_python_canonical_bytes_match_shared_golden_vector (test_window_message_gold
 Python produces the fixed byte count, SHA-256, and test-only HMAC ... ok
 
 ----------------------------------------------------------------------
-Ran 348 tests in 59.830s
+Ran 372 tests in 86.920s
 
 OK
