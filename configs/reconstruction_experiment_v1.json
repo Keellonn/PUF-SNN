@@ -1,0 +1,12 @@
+{
+  "experiment_version": "layer2-experiment-v1",
+  "checkpoint": "40da3a388983030b7b696ce7bf2b801e0ed6903f",
+  "simulation_seeds": [
+    1111, 1122, 1234, 2121, 2222, 2391, 3232, 3333, 4321, 4433,
+    4444, 5426, 5555, 6543, 6666, 7654, 7777, 8231, 8888, 9999
+  ],
+  "layer1_config": "configs/puf_baseline.json",
+  "credential_stream": "layer2-v1:{simulation_seed}:{device_index}:credential",
+  "bootstrap_seed": 20260929,
+  "bootstrap_resamples": 10000
+}

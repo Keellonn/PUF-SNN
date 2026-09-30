@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "attempt_count": 84000,
+  "unique_readings": 84000,
+  "archive_response_matches": 84000,
+  "enrollment_count": 120,
+  "condition_counts": [
+    {
+      "phase": "baseline",
+      "sweep_index": "",
+      "noise": 0.1,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "0",
+      "noise": 0.0,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "1",
+      "noise": 0.05,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "2",
+      "noise": 0.1,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "3",
+      "noise": 0.25,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "4",
+      "noise": 0.5,
+      "count": 12000
+    },
+    {
+      "phase": "noise_sweep",
+      "sweep_index": "5",
+      "noise": 1.0,
+      "count": 12000
+    }
+  ],
+  "summary_groups_independently_reconciled": 1087,
+  "within_radius_successes": 56142,
+  "within_radius_failures": 0,
+  "beyond_radius_attempts": 27858,
+  "beyond_radius_successes": 0,
+  "baseline_devices_with_failures": 46,
+  "baseline_devices_above_1_percent_frr": 36,
+  "baseline_wrong_credentials": [
+    {
+      "attempt_number": 88,
+      "backend_exception": null,
+      "candidate_credential_hex": "69792ec9",
+      "candidate_message36": "011010010111100100101110110010010000",
+      "credential_stream_identity": "layer2-v1:2222:3:credential",
+      "decoder_status": "decoded",
+      "device_id": "device-3",
+      "device_index": 3,
+      "enrollment_id": "layer2-experiment-v1:2222:device-3",
+      "evaluator_ber63": 0.09523809523809523,
+      "evaluator_ber64": 0.109375,
+      "evaluator_error_count63": 6,
+      "evaluator_error_count64": 7,
+      "evaluator_failure_reason": "credential_mismatch",
+      "evaluator_outcome": "evaluator_wrong_match",
+      "evaluator_success": false,
+      "experiment_version": "layer2-experiment-v1",
+      "measurement_noise_std": 0.1,
+      "padding_valid": true,
+      "phase": "baseline",
+      "reconstruction_failure_reason": null,
+      "reconstruction_latency_ns": 1885000,
+      "reconstruction_outcome": "candidate_valid_format",
+      "reported_correction_count": 5,
+      "response64": "1110111011110101111000001010111101011100011010110101110110101100",
+      "selected_response63": "111011101111010111100000101011110101110001101011010111011010110",
+      "simulation_seed": 2222,
+      "source_id": "410cc949953619beeae988c7ff02c14b4f04780a9fa4c6d13d00265742e7929d",
+      "sweep_index": ""
+    },
+    {
+      "attempt_number": 75,
+      "backend_exception": null,
+      "candidate_credential_hex": "d6ecf09d",
+      "candidate_message36": "110101101110110011110000100111010000",
+      "credential_stream_identity": "layer2-v1:6543:1:credential",
+      "decoder_status": "decoded",
+      "device_id": "device-1",
+      "device_index": 1,
+      "enrollment_id": "layer2-experiment-v1:6543:device-1",
+      "evaluator_ber63": 0.1111111111111111,
+      "evaluator_ber64": 0.109375,
+      "evaluator_error_count63": 7,
+      "evaluator_error_count64": 7,
+      "evaluator_failure_reason": "credential_mismatch",
+      "evaluator_outcome": "evaluator_wrong_match",
+      "evaluator_success": false,
+      "experiment_version": "layer2-experiment-v1",
+      "measurement_noise_std": 0.1,
+      "padding_valid": true,
+      "phase": "baseline",
+      "reconstruction_failure_reason": null,
+      "reconstruction_latency_ns": 1393100,
+      "reconstruction_outcome": "candidate_valid_format",
+      "reported_correction_count": 5,
+      "response64": "1010100101001111101001001110111111110111001110000011110110011000",
+      "selected_response63": "101010010100111110100100111011111111011100111000001111011001100",
+      "simulation_seed": 6543,
+      "source_id": "410cc949953619beeae988c7ff02c14b4f04780a9fa4c6d13d00265742e7929d",
+      "sweep_index": ""
+    }
+  ],
+  "backend_exceptions": 0,
+  "evidence_manifest_sha256": "082db862432da3d1b523f247035d2ae5d27be3a387317792f6eda8e72960a71b",
+  "audit_source_sha256": "56fd4cfe39857f738d238124286cc7e0ae9345a6f9adeabddda70bd7396adc8c"
+}

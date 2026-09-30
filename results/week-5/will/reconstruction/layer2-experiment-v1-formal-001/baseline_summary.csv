@@ -1,0 +1,2 @@
+phase,sweep_index,measurement_noise_std,attempt_count,success_count,failure_count,success_rate,frr,decoder_failures,invalid_format,miscorrections,mean_ber63,mean_ber64,error_count_distribution,latency_sample_count,latency_mean_ns,latency_median_ns,latency_p95_ns,latency_max_ns
+baseline,,0.1,12000,11805,195,0.98375,0.01625,186,7,2,0.03197089947089947,0.032075520833333336,"{""0"": 1660, ""1"": 3109, ""2"": 3292, ""3"": 2174, ""4"": 1115, ""5"": 455, ""6"": 159, ""7"": 27, ""8"": 7, ""10"": 1, ""11"": 1}",12000,1170002.4083333334,1037800.0,2262364.999999999,16622600

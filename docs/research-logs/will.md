@@ -1,8 +1,8 @@
 # William's Research Log
 
 **Owner:** William Wallace 
-**Current week:** Week 2
-**Last updated:** September 10, 2026
+**Current week:** Week 5
+**Last updated:** September 24, 2026
 
 # Current research question
 Can a software prototype using a simulated noisy PUF-derived session credential reject replayed, modified, or misattributed Quest 3 head-motion windows before SNN inference while meeting our attack-rejection, macro-F1-loss, and latency targets?
@@ -1066,6 +1066,30 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 - Begin evaluating the combined authentication and inference pipeline
 - Keep the current Layer 2 reconstruction implementation as the frozen pilot baseline while documenting the observed 1.625% FRR
 
+# Week 5, Formal Evaluation and Reconstruction Refinement
+
+## Tier 1 Authentication Results
+
+### Experiment Configuration
+
+### Same-session Replay
+
+### Prior-Session Replay
+
+### Cross-Device Substitution
+
+### Payload Modification
+
+### Protected-Metadata Modification
+
+### Legitimate Control
+
+## State-Safety Checks
+
+## Latency Results
+
+## Interpretation and Limitations
+
 # Hours and Work:
 
 # Tuesday September, 9
@@ -1291,8 +1315,8 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 - Added verifier audit behavior and began validating that rejected messages cannot modify trusted replay state or reach the accepted boundary
 
 # Wednesday September, 23
-## 12:00am - 12:36am ()
-- Continued layer 3 implementaion
+## 12:00am - 12:36am (0.60 Hours)
+- Continued layer 3 implemenation
 - Finalized the authentication design
 - Completed session establishment
 - Finalized wire protocol 2.0 for binary window authentication
@@ -1310,7 +1334,7 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 - Finalized accepted-payload release so only successfully authenticated windows are able to continue towards inference
 - Added layer 3 latency and audit measurements
 
-## 3:46pm - 6:22pm ()
+## 3:46pm - 6:22pm (2.60 Hours)
 - Added Tier 1 authentication attack implementation
 - Implemented the primary Tier 1 Attacks,
     - Same session replay
@@ -1321,7 +1345,7 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 - Added supporting cross-session substitution testing
 - Added legitimate control trials to verify that vlaid traffic is still being accepted
 
-## 9:30pm - 11:59pm ()
+## 9:30pm - 11:59pm (2.48 Hours)
 - Continued Tier 1 attack implementation
 - Added expected rejection reason checks for each attack type
 - Added checks that rejected traffic doesn't
@@ -1334,6 +1358,11 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 - Began polishing research log/documentation of this week's progress
 
 # Thursday September, 24
-## 12:00am - 1:03am ()
+## 12:00am - 1:03am (1.05 Hours)
 - Continued polishing research log/documentation of layer 2, 3, and tier 1 attacks
 - Updated slideshow for this week
+
+## 1:00pm - 2:10pm ()
+- Weekly meeting
+- Listened to Yahia's presentation on credential coursework design
+- Listened to Warren's presentation on moving target IPv6 defense in industrial control systems

@@ -1,0 +1,1202 @@
+[
+  {
+    "credential_stream_identity": "layer2-v1:1111:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:1111:device-0",
+    "evaluator_enrolled_credential_hex": "317e2fc7",
+    "evaluator_reference64": "0100010010110001001000000010100100001111001010010101011001000000",
+    "helper63": "011101011100111100001111111011100000001010111101111100100101111",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1111:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:1111:device-1",
+    "evaluator_enrolled_credential_hex": "2837be5b",
+    "evaluator_reference64": "0000101011100011001110001001001100101011100001001100010110010110",
+    "helper63": "001000101101010010000110110010000010001001011011100110010100010",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1111:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:1111:device-2",
+    "evaluator_enrolled_credential_hex": "1740bee3",
+    "evaluator_reference64": "1101101110011100010011101101100110100001001111010000000101001101",
+    "helper63": "110011001101110011110000001110101010000111101010010110111001000",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1111:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:1111:device-3",
+    "evaluator_enrolled_credential_hex": "5b6d7834",
+    "evaluator_reference64": "0101101111010111000110101000000111000100010110010011010011001001",
+    "helper63": "000000001011101001100010101101011100010101010110101001001101010",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1111:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:1111:device-4",
+    "evaluator_enrolled_credential_hex": "5c5cb95b",
+    "evaluator_reference64": "1101000001001101111101000101101010001101000001001000100010001001",
+    "helper63": "100011000001000101001101000000011000010110100111111000011100001",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1111:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:1111:device-5",
+    "evaluator_enrolled_credential_hex": "cc3dea93",
+    "evaluator_reference64": "0011100000110101010101001011100001111111111100101111010101001001",
+    "helper63": "111101000000100010111110001010110111100110011000010001000110001",
+    "simulation_seed": 1111
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:1122:device-0",
+    "evaluator_enrolled_credential_hex": "1b593d16",
+    "evaluator_reference64": "1011110111110001101100011010101100100111100000010101111001010111",
+    "helper63": "101001101010100010001100101111010010101111111100111011000010010",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:1122:device-1",
+    "evaluator_enrolled_credential_hex": "df56a0c2",
+    "evaluator_reference64": "0010011011100011100101110100000000011001101011010011101101110011",
+    "helper63": "111110011011010100110111100000100001001110101101001100101110000",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:1122:device-2",
+    "evaluator_enrolled_credential_hex": "a332bcb8",
+    "evaluator_reference64": "0001111110011001101010101010111100101100111111101101011000010110",
+    "helper63": "101111001010101100010110000101110010010111010011100111011011100",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:1122:device-3",
+    "evaluator_enrolled_credential_hex": "55ae481e",
+    "evaluator_reference64": "1111101111100100101010100001010111001110101010101000001111100110",
+    "helper63": "101011100100101011100010000010111100110000100000100101010010101",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:1122:device-4",
+    "evaluator_enrolled_credential_hex": "121eae76",
+    "evaluator_reference64": "1100111000001101100011110111110101111000001111000011000000101110",
+    "helper63": "110111000001001100100001000010110111101110101111110110001000000",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1122:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:1122:device-5",
+    "evaluator_enrolled_credential_hex": "c613a23a",
+    "evaluator_reference64": "0110011010011000100101101111010010001001000100100001110100000001",
+    "helper63": "101000001000101100110100110011101000000100011110101101011111100",
+    "simulation_seed": 1122
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:1234:device-0",
+    "evaluator_enrolled_credential_hex": "4484a994",
+    "evaluator_reference64": "0010100110001011000101110011101000010001001011110000101101111101",
+    "helper63": "011011010000111110111110101011100001010101111011010110001101100",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:1234:device-1",
+    "evaluator_enrolled_credential_hex": "3803c1ae",
+    "evaluator_reference64": "0011001011010111111111000100100101011010011011100110010100110010",
+    "helper63": "000010101101010000111101111001110101001110100101110111010110001",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:1234:device-2",
+    "evaluator_enrolled_credential_hex": "8eeca13b",
+    "evaluator_reference64": "1100010010110011011011000110010010011000000100010100111001001001",
+    "helper63": "010010100101111111001101010111111001010001110011101101010010010",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:1234:device-3",
+    "evaluator_enrolled_credential_hex": "8ef5fa1e",
+    "evaluator_reference64": "0011011111100000100111000100110110010010001000000010110001100001",
+    "helper63": "101110010001010101100110010100111001111011101000110100010010011",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:1234:device-4",
+    "evaluator_enrolled_credential_hex": "36cb722c",
+    "evaluator_reference64": "0010000101110111001101010111010011000011011100111000110010001101",
+    "helper63": "000101111011110001000111010110001100000111011010010101000111101",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:1234:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:1234:device-5",
+    "evaluator_enrolled_credential_hex": "32fc4c01",
+    "evaluator_reference64": "0101001110000001101100000011011001111111111111110010111111001010",
+    "helper63": "011000010111110111111100001101110111000111011111110001101101101",
+    "simulation_seed": 1234
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:2121:device-0",
+    "evaluator_enrolled_credential_hex": "e9649328",
+    "evaluator_reference64": "1101111000111011100010011001010111101101100010001110000001100110",
+    "helper63": "001101110101111100011010101111011110001111001010010110111010111",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:2121:device-1",
+    "evaluator_enrolled_credential_hex": "bbc291d2",
+    "evaluator_reference64": "0001101100000011010100001001000110000110111111011110111000100110",
+    "helper63": "101000001100000111000001010000111000010110101111011100011010110",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:2121:device-2",
+    "evaluator_enrolled_credential_hex": "1b689211",
+    "evaluator_reference64": "0010001100110000110111000101100100110110011000000001111100001100",
+    "helper63": "001110000101100001001110010010000011101010000111011010101000001",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:2121:device-3",
+    "evaluator_enrolled_credential_hex": "a0da86d4",
+    "evaluator_reference64": "0100011100110101001011101010110111000010100011100110101010001000",
+    "helper63": "111001111110111110101000011110011100100111010011011011101011110",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:2121:device-4",
+    "evaluator_enrolled_credential_hex": "b8104ee2",
+    "evaluator_reference64": "0011011000111001111011100001011100011000011111011011001000010011",
+    "helper63": "100011100010100110100000111101010001100100010011010101011011111",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2121:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:2121:device-5",
+    "evaluator_enrolled_credential_hex": "78d8e8a9",
+    "evaluator_reference64": "1101010111111001100000111111011001001101110110001011000111010010",
+    "helper63": "101011010010000101101011010111110100111111010001001010011000000",
+    "simulation_seed": 2121
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:2222:device-0",
+    "evaluator_enrolled_credential_hex": "6047d7b4",
+    "evaluator_reference64": "0110001000111011101000100101110110011111010100111111010101110100",
+    "helper63": "000000100111110001110101111010011001101000101101111011011011100",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:2222:device-1",
+    "evaluator_enrolled_credential_hex": "e07043e8",
+    "evaluator_reference64": "1110001110110110000010001011110111010000001100001101110101001111",
+    "helper63": "000000111100011001001011010101011101011011110100101001011011011",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:2222:device-2",
+    "evaluator_enrolled_credential_hex": "a1dacbc1",
+    "evaluator_reference64": "1111010010111001101010001011000110011100011001101001000100010001",
+    "helper63": "010101010110001101100011011100001001000011000100000111100000010",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:2222:device-3",
+    "evaluator_enrolled_credential_hex": "697937d0",
+    "evaluator_reference64": "1110111011110101111110011011011101011100011010110101100110101101",
+    "helper63": "100001111000110011001110011001110101111010010111111101100001110",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:2222:device-4",
+    "evaluator_enrolled_credential_hex": "f1b720d6",
+    "evaluator_reference64": "1110011100110110111010111001100100111111101100010101000010101000",
+    "helper63": "000101101000000111001011010011110011010110000010111000111001010",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2222:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:2222:device-5",
+    "evaluator_enrolled_credential_hex": "2fdb308a",
+    "evaluator_reference64": "0000000011011101010000011111011011011110111011010111110101110111",
+    "helper63": "001011110000011001110001011111001101101001111010011011101101000",
+    "simulation_seed": 2222
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:2391:device-0",
+    "evaluator_enrolled_credential_hex": "91283c94",
+    "evaluator_reference64": "0010100011000000010001010011111010000100001000000011010010101001",
+    "helper63": "101110011110100001111001101010101000100000011011100111111100000",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:2391:device-1",
+    "evaluator_enrolled_credential_hex": "e3caf461",
+    "evaluator_reference64": "0000110111101101000000011101101001001000101001101001100010001011",
+    "helper63": "111011100010011111110101101110110100111010010010101110010011101",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:2391:device-2",
+    "evaluator_enrolled_credential_hex": "63d4b1d4",
+    "evaluator_reference64": "0101110101001111001010101010000100000010101001111100001100001010",
+    "helper63": "001111101001101110011011011101010000100010110001011111011101000",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:2391:device-3",
+    "evaluator_enrolled_credential_hex": "efdb1984",
+    "evaluator_reference64": "1100000010001001110010111011110010010011011110100111010111110101",
+    "helper63": "001011110101001011010010001110001001111011000111010001011100101",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:2391:device-4",
+    "evaluator_enrolled_credential_hex": "527f14cc",
+    "evaluator_reference64": "0011100011100111011000010101001101100000010011111001001001000010",
+    "helper63": "011010101001100001110101100111110110101000110001101100111111100",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:2391:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:2391:device-5",
+    "evaluator_enrolled_credential_hex": "3c1b46ec",
+    "evaluator_reference64": "1010010011011110111100110111000100000110001110111100100011101010",
+    "helper63": "100110001100010110110101100111010000001110011000101000011111001",
+    "simulation_seed": 2391
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:3232:device-0",
+    "evaluator_enrolled_credential_hex": "956c144e",
+    "evaluator_reference64": "1111100110000111010101111010001010011100001000001010010100011111",
+    "helper63": "011011001110101101000011111011001001111001110100001011000011011",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:3232:device-1",
+    "evaluator_enrolled_credential_hex": "fa2ac5bd",
+    "evaluator_reference64": "0111100001000001111011011100001100011001010011100000100010100110",
+    "helper63": "100000100110101100101000011111100001011000110000011000001011111",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:3232:device-2",
+    "evaluator_enrolled_credential_hex": "f6c6a288",
+    "evaluator_reference64": "1011111110001111101101001000100100110100100011110111011010001110",
+    "helper63": "010010010100100100010110000000010011011001101001000101011000100",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:3232:device-3",
+    "evaluator_enrolled_credential_hex": "54af1a3b",
+    "evaluator_reference64": "0101000011111001111001100100010001111010111001010000101101000011",
+    "helper63": "000001000101011011111100011111110111010001111011111101111010100",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:3232:device-4",
+    "evaluator_enrolled_credential_hex": "25ebfca3",
+    "evaluator_reference64": "0001101010011111110100100010010100110101101000101000010101001111",
+    "helper63": "001111110111010000101110100001100011100110101100000101000100001",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3232:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:3232:device-5",
+    "evaluator_enrolled_credential_hex": "23a16bbc",
+    "evaluator_reference64": "1100001111111011001100111111011101000100011000010001010100000111",
+    "helper63": "111000000101101001011000010010110100011100101000101101110110000",
+    "simulation_seed": 3232
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:3333:device-0",
+    "evaluator_enrolled_credential_hex": "43f1ec8a",
+    "evaluator_reference64": "0110101001001111011010011101110000100110101101000011100111011001",
+    "helper63": "001010011011111010000101010101100010001000001100101001110110101",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:3333:device-1",
+    "evaluator_enrolled_credential_hex": "6bcbd862",
+    "evaluator_reference64": "1000000001000011111110111001010100110010001111110010011110001011",
+    "helper63": "111010111000100000100011111101110011110100100110111011010110000",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:3333:device-2",
+    "evaluator_enrolled_credential_hex": "cab5bc7e",
+    "evaluator_reference64": "1111101011000010011100100110100001111011110000010001010010010001",
+    "helper63": "001100000111011111001110000101100111110100000101011011110100011",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:3333:device-3",
+    "evaluator_enrolled_credential_hex": "e1db73e4",
+    "evaluator_reference64": "0010111010100011100011001100111001110001111110110100001110011011",
+    "helper63": "110011110111100011111111001010100111111101110110011101110010110",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:3333:device-4",
+    "evaluator_enrolled_credential_hex": "2d42e29f",
+    "evaluator_reference64": "0110110100010101000010110100001100100101101101000101010000100100",
+    "helper63": "010000000101011111101001110111000010111100101101000111010100110",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:3333:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:3333:device-5",
+    "evaluator_enrolled_credential_hex": "68747221",
+    "evaluator_reference64": "1001111110001100111111111100100000010000001101100111100110011100",
+    "helper63": "111101111111100010001101111010010001100001111001001001000000010",
+    "simulation_seed": 3333
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:4321:device-0",
+    "evaluator_enrolled_credential_hex": "b5cda0f7",
+    "evaluator_reference64": "1001011111001100010001101000110011011100100110011010100100100000",
+    "helper63": "001000100000000111100110011110111101110010101101010011100010111",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:4321:device-1",
+    "evaluator_enrolled_credential_hex": "2e7512f1",
+    "evaluator_reference64": "0110100011011000110011000010010011001100000110001100000100110000",
+    "helper63": "010001101010110111011110110101011100001110101101011100110111011",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:4321:device-2",
+    "evaluator_enrolled_credential_hex": "5439f083",
+    "evaluator_reference64": "0001000111011011010000110110100010101111010111001001000100011101",
+    "helper63": "010001011110001010110011111010111010100101001010100001000110010",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:4321:device-3",
+    "evaluator_enrolled_credential_hex": "51639ee8",
+    "evaluator_reference64": "1000011111100011010110111111111011000100001001110011111101001010",
+    "helper63": "110101101000000011000101000101101100001111011000000110011101100",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:4321:device-4",
+    "evaluator_enrolled_credential_hex": "131bbb5c",
+    "evaluator_reference64": "0001010000110110010000110010001111111101110110001100100101100110",
+    "helper63": "000001110010110111111000011111111111010011101111000101101011101",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4321:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:4321:device-5",
+    "evaluator_enrolled_credential_hex": "1c1a3dbf",
+    "evaluator_reference64": "1011000111110001000111000000000110100110111001011100010001011110",
+    "helper63": "101011011110101100100001101111101010001001101101001101101111001",
+    "simulation_seed": 4321
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:4433:device-0",
+    "evaluator_enrolled_credential_hex": "f68c1578",
+    "evaluator_reference64": "1100110011101010010100001000000101111010101111000101010000101110",
+    "helper63": "001110100110011001000101111110010111110011101011011101000011100",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:4433:device-1",
+    "evaluator_enrolled_credential_hex": "d464c8db",
+    "evaluator_reference64": "0001010111010110110111010011111001000000001010110101100110001011",
+    "helper63": "110000011011001000010101111001010100101010000101100001111101010",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:4433:device-2",
+    "evaluator_enrolled_credential_hex": "cdd9f516",
+    "evaluator_reference64": "1010110010010101000010001101001001110001011011111110001110110000",
+    "helper63": "011000010100110011111101110001000111100011001101011111110000000",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:4433:device-3",
+    "evaluator_enrolled_credential_hex": "d510a5a5",
+    "evaluator_reference64": "1010110010100010001000111011011011110010100010111100100010100111",
+    "helper63": "011110011011001010000110000100111111110101100001011110100000101",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:4433:device-4",
+    "evaluator_enrolled_credential_hex": "28fab7a3",
+    "evaluator_reference64": "1011100001111101110111011001110000001011010111001010001100011010",
+    "helper63": "100100001000011101101010001111110000100011011111011110010001011",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4433:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:4433:device-5",
+    "evaluator_enrolled_credential_hex": "782e794a",
+    "evaluator_reference64": "1101001101011110100011100111101110101100001000010101101000001110",
+    "helper63": "101010110111000011110111001100011010101111101101100011111101000",
+    "simulation_seed": 4433
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:4444:device-0",
+    "evaluator_enrolled_credential_hex": "5d129237",
+    "evaluator_reference64": "1001110010101111000100001100000111100110110100100100101110000100",
+    "helper63": "110000011011110110000010111101101110011110011100111100010101011",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:4444:device-1",
+    "evaluator_enrolled_credential_hex": "39cde8de",
+    "evaluator_reference64": "0000110100011110000111111101001110111011110100110111011010100110",
+    "helper63": "001101001101001111110111000011011011100100101001110011100101101",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:4444:device-2",
+    "evaluator_enrolled_credential_hex": "6aa8c564",
+    "evaluator_reference64": "1000110011100111100011110100001001011001110110001011000110010011",
+    "helper63": "111001100100111101001010001001100101011100101011000010000011011",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:4444:device-3",
+    "evaluator_enrolled_credential_hex": "723f9952",
+    "evaluator_reference64": "0100000011101100100010000100000001001001011010101001001011100011",
+    "helper63": "001100101101001100010001000100100100101010000000110011110010100",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:4444:device-4",
+    "evaluator_enrolled_credential_hex": "2d3cbb2d",
+    "evaluator_reference64": "1001011001001110010000111111101100010111110100010000000011011011",
+    "helper63": "101110110111001011111000110101100001001101111010100000101100010",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:4444:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:4444:device-5",
+    "evaluator_enrolled_credential_hex": "28671ec8",
+    "evaluator_reference64": "0111010000000101010110010110010001101001110111001110110000010010",
+    "helper63": "010111000110001001000111101011000110101111111011010100011000011",
+    "simulation_seed": 4444
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:5426:device-0",
+    "evaluator_enrolled_credential_hex": "ea137e2a",
+    "evaluator_reference64": "1110001100000001111101101011110111010110000101001101100100011111",
+    "helper63": "000010010001001010001000100101111101011011101110110011110110000",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:5426:device-1",
+    "evaluator_enrolled_credential_hex": "8ec63b63",
+    "evaluator_reference64": "1100001000011100000101100110100001110110101000111010011000001101",
+    "helper63": "010011001101101000101101000010110111111111110000110000100011011",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:5426:device-2",
+    "evaluator_enrolled_credential_hex": "b4814ca3",
+    "evaluator_reference64": "0101010000101001110000010000010000100011110001001010001101111001",
+    "helper63": "111000001010100010001101101001110010101000100101000011101000000",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:5426:device-3",
+    "evaluator_enrolled_credential_hex": "0861835f",
+    "evaluator_reference64": "0111110110101100000011101011000000011000111001011110010011010101",
+    "helper63": "011101011100110110001101111011110001000010001111110110100000110",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:5426:device-4",
+    "evaluator_enrolled_credential_hex": "8dd59201",
+    "evaluator_reference64": "0111010101111001000011100100011100110010001010111100001100111011",
+    "helper63": "111110001010110010011100010001100011001110101010001111101010110",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5426:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:5426:device-5",
+    "evaluator_enrolled_credential_hex": "14e57f43",
+    "evaluator_reference64": "0100011001001011001111000000100011110101001000011010101101101110",
+    "helper63": "010100101010111001000011010010111111010001000011100000010011000",
+    "simulation_seed": 5426
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:5555:device-0",
+    "evaluator_enrolled_credential_hex": "abf05b60",
+    "evaluator_reference64": "1000110000001111001010111011011001001100110011100001010101010001",
+    "helper63": "001001111111111101110000110101100100110011001100110110111100000",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:5555:device-1",
+    "evaluator_enrolled_credential_hex": "91faa030",
+    "evaluator_reference64": "1010110110000110111100000000001100100000110100101110011001100111",
+    "helper63": "001111000111110001010000001100110010100010010010001101100111000",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:5555:device-2",
+    "evaluator_enrolled_credential_hex": "31c86b2e",
+    "evaluator_reference64": "1011100100000101001101110011001000101011001011010101111010110011",
+    "helper63": "100010001100110101011100000111000010000011011011010010101011001",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:5555:device-3",
+    "evaluator_enrolled_credential_hex": "8c181b6e",
+    "evaluator_reference64": "0001001011010111011101010011111011001101101010101001011101010111",
+    "helper63": "100111101100111101101110010100001100011110101000110000101110100",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:5555:device-4",
+    "evaluator_enrolled_credential_hex": "37e454c0",
+    "evaluator_reference64": "0111001001110101011111010101010111001110101001111101101001001111",
+    "helper63": "010001011001000100101001100101011100010101010010110101100101111",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:5555:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:5555:device-5",
+    "evaluator_enrolled_credential_hex": "87f42e60",
+    "evaluator_reference64": "1001011101100001010111010111000001110100001000010001100100010110",
+    "helper63": "000100001001010101110011000100000111110101101111000100000111010",
+    "simulation_seed": 5555
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:6543:device-0",
+    "evaluator_enrolled_credential_hex": "e48668c7",
+    "evaluator_reference64": "1001100100100101011101001010111011110011111101010010110011010011",
+    "helper63": "011111011010001100011100011010011111010101100010010000100010100",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:6543:device-1",
+    "evaluator_enrolled_credential_hex": "d6ccd89f",
+    "evaluator_reference64": "1010100101101111101001001110110111111111001010001011110100011100",
+    "helper63": "011111111010001101111100011100101111100010100111000010010101010",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:6543:device-2",
+    "evaluator_enrolled_credential_hex": "08e4a242",
+    "evaluator_reference64": "0011101100000011101001011001011101110011010000000001001101101001",
+    "helper63": "001100111110011100000111110101010111100101100100000011001100010",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:6543:device-3",
+    "evaluator_enrolled_credential_hex": "ad0a9574",
+    "evaluator_reference64": "0010011011000100000010100100000010011011100111110011010111101011",
+    "helper63": "100010111100111010011111001101001001011100010100010001110110001",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:6543:device-4",
+    "evaluator_enrolled_credential_hex": "1784fd65",
+    "evaluator_reference64": "0101011010000100110010001010001101100011100111100100011101010001",
+    "helper63": "010000010000000000110101110001100110100110000100101001010111001",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6543:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:6543:device-5",
+    "evaluator_enrolled_credential_hex": "8da42762",
+    "evaluator_reference64": "0110000001010110110001110011101101110111100110011010110110011000",
+    "helper63": "111011011111001011100000010110010111110101011010101000111000111",
+    "simulation_seed": 6543
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:6666:device-0",
+    "evaluator_enrolled_credential_hex": "c14efe11",
+    "evaluator_reference64": "0100110110011000001110010011010010000001100010100110101111100101",
+    "helper63": "100011001101011011000111001001011000010101110011001011100101100",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:6666:device-1",
+    "evaluator_enrolled_credential_hex": "d20e5daf",
+    "evaluator_reference64": "0110000110000101110110000010011100000111101001111001011000110000",
+    "helper63": "101100111000101110000101100010000000010011001000101000101110001",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:6666:device-2",
+    "evaluator_enrolled_credential_hex": "92751bf4",
+    "evaluator_reference64": "0010000011011110110000010101101001111100011100111101101001011111",
+    "helper63": "101100101010101111011010101011100111100110010000101001000100011",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:6666:device-3",
+    "evaluator_enrolled_credential_hex": "df8a223c",
+    "evaluator_reference64": "0011000011011010000011011101001101111100101010101110110101111001",
+    "helper63": "111011110101000000101111111011110111101100111101001010100000110",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:6666:device-4",
+    "evaluator_enrolled_credential_hex": "65caacd2",
+    "evaluator_reference64": "1100110011000100110101010101100100101110101001110111101011100110",
+    "helper63": "101010010000111001111001100010110010101000111110011100111111010",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:6666:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:6666:device-5",
+    "evaluator_enrolled_credential_hex": "61038046",
+    "evaluator_reference64": "0100100000001001111001101001111111101101101111010101010010011001",
+    "helper63": "001010010000101001100110110110011110010000101111010001001110000",
+    "simulation_seed": 6666
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:7654:device-0",
+    "evaluator_enrolled_credential_hex": "dd7d0157",
+    "evaluator_reference64": "1111110101110110011101111001111011001110111111110110011100101010",
+    "helper63": "001000000000101101110110110010011100001000111111110100011101011",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:7654:device-1",
+    "evaluator_enrolled_credential_hex": "276658e6",
+    "evaluator_reference64": "0001101100100001111111000011100101110111100011011010010111010111",
+    "helper63": "001111000100011110100100110111110111110111110001001101000001111",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:7654:device-2",
+    "evaluator_enrolled_credential_hex": "ac102b2c",
+    "evaluator_reference64": "1011100001101010011010100011011010011000100011100010111101001000",
+    "helper63": "000101000111101001000001000110101001110111000101011010010100010",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:7654:device-3",
+    "evaluator_enrolled_credential_hex": "f4491666",
+    "evaluator_reference64": "0001110010111111100010101011100111000101100001001101000000100100",
+    "helper63": "111010001111011010011100110111111100110100101001110101101111101",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:7654:device-4",
+    "evaluator_enrolled_credential_hex": "5957db55",
+    "evaluator_reference64": "0000010011111010101111101011111101011011001110111001010011001010",
+    "helper63": "010111011010110101100101111010100101111110100011101001001000110",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7654:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:7654:device-5",
+    "evaluator_enrolled_credential_hex": "40026983",
+    "evaluator_reference64": "1110000100110101001101001110101111110111010011010100111101111100",
+    "helper63": "101000010011011101011101011010001111101001001010110000101100101",
+    "simulation_seed": 7654
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:7777:device-0",
+    "evaluator_enrolled_credential_hex": "d09bafe2",
+    "evaluator_reference64": "1100000010101100011000010001100100100010001011011111111010001011",
+    "helper63": "000100000011011111001110111110110010101000111011001010001000110",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:7777:device-1",
+    "evaluator_enrolled_credential_hex": "157a5890",
+    "evaluator_reference64": "1001101110001100101000100111111100011010011110110000011011011001",
+    "helper63": "100011101111011011111010111011110001010011001100000010101111110",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:7777:device-2",
+    "evaluator_enrolled_credential_hex": "37cfd51f",
+    "evaluator_reference64": "0100110001001110001011000110110100000001001010110010011101001101",
+    "helper63": "011110111000000111111001011100100000011010010100101110010111110",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:7777:device-3",
+    "evaluator_enrolled_credential_hex": "b16f3ab9",
+    "evaluator_reference64": "1101010011100000100100110011000010010001101101011110110000101001",
+    "helper63": "011001011000111110101001100010011001000101000010100011111011011",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:7777:device-4",
+    "evaluator_enrolled_credential_hex": "8d016bf3",
+    "evaluator_reference64": "1001010011101011101110101011010010110111101111101011101000010100",
+    "helper63": "000110011110101011010001010001111011101100010010101010100010100",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:7777:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:7777:device-5",
+    "evaluator_enrolled_credential_hex": "20b587ca",
+    "evaluator_reference64": "1111000111010101001110100001000011111000111000000111011111011100",
+    "helper63": "110100010110000010111101110110101111110011000011110100111000011",
+    "simulation_seed": 7777
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:8231:device-0",
+    "evaluator_enrolled_credential_hex": "9bf0ac58",
+    "evaluator_reference64": "0101111110000100010010101110010010100101111100011011001100010001",
+    "helper63": "110001000111010011100110101111001010101111111011100001111110111",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:8231:device-1",
+    "evaluator_enrolled_credential_hex": "a906594a",
+    "evaluator_reference64": "1101110000000100101000000101101001001010111110011101000101101000",
+    "helper63": "011101010000001011111001000100000100001100110100110010100110001",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:8231:device-2",
+    "evaluator_enrolled_credential_hex": "a3267000",
+    "evaluator_reference64": "1010110101101110111011101000011010001110111000011100110110111100",
+    "helper63": "000011100100100010011110100001101000011111100111000111000010101",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:8231:device-3",
+    "evaluator_enrolled_credential_hex": "c7939034",
+    "evaluator_reference64": "1110011000011011111100101110101000111001110110011101111001010001",
+    "helper63": "001000011000100001100010110111100011111001100000101011010100111",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:8231:device-4",
+    "evaluator_enrolled_credential_hex": "284ed5fa",
+    "evaluator_reference64": "0100101111000100001101101111000110001011000110001011001101000010",
+    "helper63": "011000111000101011100011000010111000101001101111111001111000001",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8231:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:8231:device-5",
+    "evaluator_enrolled_credential_hex": "697a1111",
+    "evaluator_reference64": "1110001100100000111111111011011011101111110110111011111001100011",
+    "helper63": "100010100101101011101110101001111110100100111010001101101100100",
+    "simulation_seed": 8231
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:8888:device-0",
+    "evaluator_enrolled_credential_hex": "dd150a4d",
+    "evaluator_reference64": "0000000001111001011111011111101100101011110001011100100100010111",
+    "helper63": "110111010110110001110111101101100010110010010011101011100100010",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:8888:device-1",
+    "evaluator_enrolled_credential_hex": "90969fb2",
+    "evaluator_reference64": "1110111100010101100001101100001000110101001110000110001001010100",
+    "helper63": "011111111000001100011001011100000011000110111100110001100010001",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:8888:device-2",
+    "evaluator_enrolled_credential_hex": "04d7f1ae",
+    "evaluator_reference64": "0111000111000100100011001000010101001101111110101001000110010010",
+    "helper63": "011101010001001101111101001010110100000111101010100101011000111",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:8888:device-3",
+    "evaluator_enrolled_credential_hex": "1c8ed44a",
+    "evaluator_reference64": "0101111110000001110010101010111101001001000001111101111001101001",
+    "helper63": "010000110000111100011110111001010100111010001110110001011101110",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:8888:device-4",
+    "evaluator_enrolled_credential_hex": "0e32cfa3",
+    "evaluator_reference64": "0001000111101110001010111110100111100000010001101001001100011100",
+    "helper63": "000111111101110011100100010010101110100110111010100000011010000",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:8888:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:8888:device-5",
+    "evaluator_enrolled_credential_hex": "68a32381",
+    "evaluator_reference64": "1011111101001001011101101011111101111001100101000011000010101101",
+    "helper63": "110101111110101001010101001111100111110101001001001001001001011",
+    "simulation_seed": 8888
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:0:credential",
+    "device_id": "device-0",
+    "device_index": 0,
+    "enrollment_id": "layer2-experiment-v1:9999:device-0",
+    "evaluator_enrolled_credential_hex": "f97058b3",
+    "evaluator_reference64": "1110101100011100000010001110011100101101110001100011111000001111",
+    "helper63": "000100100110110001010000010101000010011000010101110011101000111",
+    "simulation_seed": 9999
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:1:credential",
+    "device_id": "device-1",
+    "device_index": 1,
+    "enrollment_id": "layer2-experiment-v1:9999:device-1",
+    "evaluator_enrolled_credential_hex": "62241b13",
+    "evaluator_reference64": "1100110011011111101101010101101001000001110000101011001100100001",
+    "helper63": "101011101111101110101110010010010100101110110101111111101001110",
+    "simulation_seed": 9999
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:2:credential",
+    "device_id": "device-2",
+    "device_index": 2,
+    "enrollment_id": "layer2-experiment-v1:9999:device-2",
+    "evaluator_enrolled_credential_hex": "249275a3",
+    "evaluator_reference64": "1110001101111001001001110110100001101110110000100010100000111000",
+    "helper63": "110001111110101101010010110010110110001011100011110100100010110",
+    "simulation_seed": 9999
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:3:credential",
+    "device_id": "device-3",
+    "device_index": 3,
+    "enrollment_id": "layer2-experiment-v1:9999:device-3",
+    "evaluator_enrolled_credential_hex": "f7917f82",
+    "evaluator_reference64": "1101010011001100100110111111110111101110110001100101000111001111",
+    "helper63": "001000110101110111100100011111111110011011100001001001011011010",
+    "simulation_seed": 9999
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:4:credential",
+    "device_id": "device-4",
+    "device_index": 4,
+    "enrollment_id": "layer2-experiment-v1:9999:device-4",
+    "evaluator_enrolled_credential_hex": "27086c6f",
+    "evaluator_reference64": "0111111011110011010001000111001011100111000001100100011000111000",
+    "helper63": "010110011111101100101000000111011110101101011001000011101000110",
+    "simulation_seed": 9999
+  },
+  {
+    "credential_stream_identity": "layer2-v1:9999:5:credential",
+    "device_id": "device-5",
+    "device_index": 5,
+    "enrollment_id": "layer2-experiment-v1:9999:device-5",
+    "evaluator_enrolled_credential_hex": "54e349f0",
+    "evaluator_reference64": "1000011100100111100010011100000011111011000111000101010111000010",
+    "helper63": "110100111100010011000000001100001111111100010001010010101001100",
+    "simulation_seed": 9999
+  }
+]

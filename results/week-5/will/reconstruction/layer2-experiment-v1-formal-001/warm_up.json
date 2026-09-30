@@ -1,0 +1,52 @@
+{
+  "algebra_initialization_ns": 3639368500,
+  "excludes_backend_import_time": true,
+  "experimental_readings_consumed": 0,
+  "masks": [
+    [],
+    [
+      0
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    [
+      31,
+      36,
+      37,
+      39,
+      40,
+      41
+    ],
+    [
+      35,
+      40,
+      41,
+      43,
+      44,
+      45
+    ]
+  ],
+  "outcomes": [
+    "candidate_valid_format",
+    "candidate_valid_format",
+    "candidate_valid_format",
+    "decoder_failure",
+    "candidate_valid_format",
+    "invalid_format_or_padding"
+  ],
+  "synthetic_probe_count": 6,
+  "synthetic_warm_up_ns": 2278122000
+}
