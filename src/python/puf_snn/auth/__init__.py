@@ -7,6 +7,15 @@ from puf_snn.auth.inference_gate import protected_payload_to_motion_record
 from puf_snn.auth.inference_gate import route_verified_window
 from puf_snn.auth.verifier import Verifier, VerificationResult, provision_verifier
 from puf_snn.auth.sender import Sender
+from puf_snn.auth.credential_verifier import (
+    CredentialAdmissionResult,
+    CredentialAdmissionService,
+    CredentialVerifierKeyProvider,
+    CredentialVerifierRecord,
+    CredentialVerifierStore,
+    InMemoryCredentialVerifierKeyProvider,
+    LocalAdmissionAuthorization,
+)
 
 
 __all__ = [
@@ -19,4 +28,11 @@ __all__ = [
     "VerificationResult",
     "provision_verifier",
     "Sender",
+    "CredentialAdmissionResult",
+    "CredentialAdmissionService",
+    "CredentialVerifierKeyProvider",
+    "CredentialVerifierRecord",
+    "CredentialVerifierStore",
+    "InMemoryCredentialVerifierKeyProvider",
+    "LocalAdmissionAuthorization",
 ]

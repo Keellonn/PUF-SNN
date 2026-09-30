@@ -10,9 +10,9 @@ from puf_snn.auth.binary_window import encode_window, parse_envelope, U64, U32, 
 from puf_snn.auth.session import Limits, SessionConfig, RegistryEntry
 from puf_snn.auth.verifier import Verifier
 try:
-    from .support import setup, activate, packet, window, wrap, offsets, mutate, CREDENTIAL
+    from .support import setup, activate, packet, window, wrap, offsets, mutate, CREDENTIAL, make_verifier
 except ImportError:
-    from support import setup, activate, packet, window, wrap, offsets, mutate, CREDENTIAL
+    from support import setup, activate, packet, window, wrap, offsets, mutate, CREDENTIAL, make_verifier
 
 
 class VerifierTests(unittest.TestCase):
@@ -194,7 +194,7 @@ class VerifierTests(unittest.TestCase):
         self.assertEqual([r['reason'] for r in self.v.audit_records if r['event_type']=='session_control'],['session_replaced'])
 
     def test_restart(self):
-        v=Verifier([RegistryEntry('sim-device','enrollment-1',CREDENTIAL)])
+        v=make_verifier([RegistryEntry('sim-device','enrollment-1',CREDENTIAL)])
         self.assertEqual(v.verify_window(packet(self.sid,self.key)).reason,'unknown_session')
 
     def test_concurrent_duplicate_barrier(self):
@@ -224,7 +224,7 @@ class VerifierTests(unittest.TestCase):
             def __eq__(self, other): return True
         for supplied in [wrong,replace(r,event_id='fake'),replace(r,accepted_window=EqualToAnything()),
                          replace(r),{'result':'accept','reason':'accepted'},
-                         Verifier([]).verify_window(b'{}')]:
+                         make_verifier([]).verify_window(b'{}')]:
             with self.assertRaises(ValueError): self.v.release_accepted(supplied,lambda w:self.fail('released'))
 
     def test_consumer_failure_keeps_commit_and_stops(self):

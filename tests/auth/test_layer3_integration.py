@@ -21,9 +21,9 @@ class IntegrationTests(unittest.TestCase):
     def setUpClass(cls): cls.material=initialize_material()
 
     def test_actual_reconstruction_and_seal_verify_release(self):
-        binding,entry,_=self.material
+        binding,entry,_,admission=self.material
         result=reconstruct((0,)*64,binding.helper_data)
-        s,v,_=establish(AuthConfig(),(binding,entry,result))
+        s,v,_=establish(AuthConfig(),(binding,entry,result,admission))
         self.assertEqual(len(s.kdf_timings_ns),1)
         self.assertEqual(len(v.kdf_timings_ns),1)
         self.assertGreaterEqual(s.kdf_timings_ns[0],0)
@@ -41,15 +41,15 @@ class IntegrationTests(unittest.TestCase):
     def test_wrong_candidate_rejected_no_active_session(self):
         from puf_snn.auth.sender import Sender
         from puf_snn.auth.verifier import Verifier
-        binding,entry,_=self.material
-        s=Sender(binding);v=Verifier([entry])
+        binding,entry,_,admission=self.material
+        s=Sender(binding, admission_service=admission);v=Verifier([entry], admission_service=admission)
         good=reconstruct((0,)*64,binding.helper_data)
         bad=replace(good,candidate_credential=bytes(4),candidate_message=(0,)*36)
-        c=s.answer_challenge(v.begin_session(s.begin_attempt(bad,'wrong-test')))
-        self.assertEqual(v.confirm_session(c),REFUSAL)
-        self.assertEqual(v.last_reason,'key_confirmation_failed')
+        self.assertEqual(s.begin_attempt(bad,'wrong-test'),Failure('credential_verification_failed'))
         self.assertFalse(v.active_session_ids)
-        self.assertEqual(s.finish_session(REFUSAL),Failure('session_refused'))
+        self.assertFalse(v._pending)
+        self.assertEqual(s.kdf_timings_ns,())
+        self.assertEqual(v.kdf_timings_ns,())
 
     def test_sender_quality_failure_does_not_consume_sequence(self):
         s,v,_=establish(AuthConfig(),self.material)

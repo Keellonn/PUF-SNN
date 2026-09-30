@@ -20,6 +20,10 @@ from puf_snn.auth.config import AuthConfig
 from puf_snn.auth.sender import Sender
 from puf_snn.auth.session import Failure, RegistryEntry, provision_device
 from puf_snn.auth.verifier import Verifier
+from puf_snn.auth.credential_verifier import (
+    CredentialAdmissionService, CredentialVerifierRecord, CredentialVerifierStore,
+    InMemoryCredentialVerifierKeyProvider,
+)
 
 
 def synthetic_window():
@@ -38,17 +42,24 @@ def initialize_material():
     helper = enroll((0,)*64, credential, enrollment_id="synthetic-enrollment")
     bits = tuple((byte >> shift) & 1 for byte in credential for shift in range(7,-1,-1)) + (0,)*4
     candidate = ReconstructionResult("candidate_valid_format", "decoded", 0, bits, credential, True, None)
+    provider = InMemoryCredentialVerifierKeyProvider.generate("demo-verifier-key")
+    record = CredentialVerifierRecord.enroll(
+        device_id="synthetic-device", enrollment_id="synthetic-enrollment",
+        reconstruction_id="puf-snn-reconstruction-v1", verifier_key_id="demo-verifier-key",
+        credential4=credential, key_provider=provider,
+    )
+    admission = CredentialAdmissionService(CredentialVerifierStore([record]), provider)
     return (provision_device("synthetic-device", "synthetic-enrollment", helper),
-            RegistryEntry("synthetic-device", "synthetic-enrollment", credential), candidate)
+            RegistryEntry("synthetic-device", "synthetic-enrollment", credential), candidate, admission)
 
 
 def establish(config, material, local_provenance=None):
-    binding, entry, candidate = material
-    sender = Sender(binding, config.session_config().limits)
-    verifier = Verifier([entry], config.session_config())
+    binding, entry, candidate, admission = material
+    sender = Sender(binding, config.session_config().limits, admission_service=admission)
+    verifier = Verifier([entry], config.session_config(), admission_service=admission)
     start = time.perf_counter_ns()
     request = sender.begin_attempt(candidate, "synthetic-attempt", local_provenance=local_provenance)
-    challenge = verifier.begin_session(request, local_provenance)
+    challenge = verifier.begin_session(request, local_provenance, admission=sender.admission)
     confirmation = sender.answer_challenge(challenge)
     response = verifier.confirm_session(confirmation)
     active = sender.finish_session(response)
@@ -68,7 +79,7 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def run_demo(output, config_path=ROOT / "configs/authentication_v1.json"):
+def run_demo(output, config_path=ROOT / "configs/authentication_v2.json"):
     config = AuthConfig.load(config_path)
     if config.max_windows < 3:
         raise ValueError("the legitimate sequence demo requires max_windows >= 3")
@@ -194,11 +205,11 @@ def run_demo(output, config_path=ROOT / "configs/authentication_v1.json"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=ROOT / "configs/authentication_v1.json")
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/authentication_v2.json")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    output = args.output or ROOT / "results/week-4/will/authentication" / (
-        datetime.now(timezone.utc).strftime("synthetic-%Y%m%dT%H%M%SZ-") + secrets.token_hex(4))
+    output = args.output or ROOT / "results/week-5/will/credential-admission-demo" / (
+        datetime.now(timezone.utc).strftime("admission-%Y%m%dT%H%M%SZ-") + secrets.token_hex(4))
     try:
         result = run_demo(output, args.config)
     except Exception:

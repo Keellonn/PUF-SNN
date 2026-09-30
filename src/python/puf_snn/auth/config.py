@@ -3,13 +3,13 @@ from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
 
-from .session import Limits, SessionConfig
+from .session import Limits, SessionConfig, PROTOCOL_PROFILE
 
 
 @dataclass(frozen=True)
 class AuthConfig:
-    config_version: str = "puf-snn-auth-config-v1"
-    protocol_profile: str = "puf-snn-l3-v1-wire2"
+    config_version: str = "puf-snn-auth-config-v2"
+    protocol_profile: str = PROTOCOL_PROFILE
     handshake_timeout_ms: int = 10000
     session_ttl_ms: int = 300000
     max_windows: int = 10000
@@ -18,8 +18,8 @@ class AuthConfig:
     warmup_iterations: int = 20
 
     def __post_init__(self):
-        if (self.config_version != "puf-snn-auth-config-v1"
-                or self.protocol_profile != "puf-snn-l3-v1-wire2"):
+        if (self.config_version != "puf-snn-auth-config-v2"
+                or self.protocol_profile != PROTOCOL_PROFILE):
             raise ValueError("invalid authentication profile")
         self.session_config()
         if type(self.warmup_iterations) is not int or not 0 <= self.warmup_iterations <= 10000:

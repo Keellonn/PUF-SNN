@@ -43,8 +43,8 @@ class SessionStatus:
     deadline_ns: int | None
 
 class Verifier(SessionVerifier):
-    def __init__(self, entries, config=SessionConfig()):
-        super().__init__(entries, config)
+    def __init__(self, entries, config=SessionConfig(), *, admission_service):
+        super().__init__(entries, config, admission_service=admission_service)
         self._audit = AuditRecorder(self.boot_id)
         self._emergency_result = VerificationResult("reject", "internal_error")
         self._attempt_provenance = {}
@@ -80,12 +80,12 @@ class Verifier(SessionVerifier):
         if self.incomplete:
             raise RuntimeError("verifier stopped: incomplete evidence")
 
-    def begin_session(self, request, local_provenance=None):
+    def begin_session(self, request, local_provenance=None, *, admission=None):
         with self._lock:
             self._ensure_running()
             try:
                 local = provenance(local_provenance)
-                response = super().begin_session(request, local)
+                response = super().begin_session(request, local, admission=admission)
                 if response == REFUSAL:
                     self._append_session_rejection("session_establishment", self.last_reason, local)
                 else:
@@ -115,6 +115,9 @@ class Verifier(SessionVerifier):
                 return self._refuse("internal_error")
 
     def _append_session_rejection(self, event_type, reason, local):
+        # Audit-v2 is deferred. Preserve v1's generic refusal vocabulary only.
+        if reason == "credential_verification_failed":
+            reason = "session_refused"
         row = self._audit.record(event_type=event_type, reason=reason, provenance=asdict(local))
         self._audit.commit(self._audit.prepare([row]))
         if reason == "internal_error":
@@ -386,5 +389,5 @@ class Verifier(SessionVerifier):
             raise RuntimeError("consumer failure: incomplete evidence") from None
 
 
-def provision_verifier(registry_entries, config=SessionConfig()):
-    return Verifier(registry_entries, config)
+def provision_verifier(registry_entries, config=SessionConfig(), *, admission_service):
+    return Verifier(registry_entries, config, admission_service=admission_service)

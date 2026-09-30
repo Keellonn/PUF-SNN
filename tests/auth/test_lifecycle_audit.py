@@ -6,20 +6,20 @@ from puf_snn.auth.session import (REFUSAL, RegistryEntry, Transcript, frame, unf
                                  client_proof, derive_session_key)
 from puf_snn.auth.verifier import Verifier
 try:
-    from .support import setup, packet, CREDENTIAL
+    from .support import setup, packet, CREDENTIAL, admitted_request, make_verifier
 except ImportError:
-    from support import setup, packet, CREDENTIAL
+    from support import setup, packet, CREDENTIAL, admitted_request, make_verifier
 
 
 def pending(v):
-    request=frame(b'P3RQ'+V(2,0)+LP(b'sim-device')+bytes(32))
-    r=unframe(v.begin_session(request));r.expect(b'P3CH');t=r.lp()
-    context=Transcript.parse(t);key=derive_session_key(CREDENTIAL,t)
-    return request,context,frame(b'P3CF'+V(2,0)+context.session_id+client_proof(key,t))
+    sender,request=admitted_request(v)
+    challenge=v.begin_session(request, admission=sender.admission)
+    confirmation=sender.answer_challenge(challenge)
+    return request,sender._context,confirmation
 
 
 class LifecycleAuditTests(unittest.TestCase):
-    def fresh(self): return Verifier([RegistryEntry('sim-device','enrollment-1',CREDENTIAL)])
+    def fresh(self): return make_verifier([RegistryEntry('sim-device','enrollment-1',CREDENTIAL)])
 
     def test_activation_once_duplicate_confirmation_message(self):
         v=self.fresh();_,c,confirmation=pending(v)

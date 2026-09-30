@@ -1,4 +1,4 @@
-"""Window sealing extension of the frozen Agent 2 handshake sender."""
+"""Window sealing extension of the mandatory credential-admission sender."""
 from dataclasses import asdict, dataclass, replace
 import base64
 import json
@@ -55,6 +55,9 @@ class Sender(SessionSender):
                         state_before=state, state_after=state,
                         provenance=asdict(self._local_provenance))
         defaults.update(values)
+        # No audit-v2 schema/events in this phase: use v1's coarse refusal.
+        if defaults.get("reason") == "credential_verification_failed":
+            defaults["reason"] = "session_refused"
         return self._audit.record(**defaults)
 
     def _append(self, rows):
@@ -65,7 +68,7 @@ class Sender(SessionSender):
         return self._fail("internal_error")
 
     def begin_attempt(self, result, attempt_id, *, local_provenance=None, reconstruction_ns=None):
-        """Observe one scheduled result; never reconstruct, compare or retry.
+        """Observe one result and independently verify it; never reconstruct/retry.
 
         A reconstruction accept means admission to a handshake only. It has no
         authenticated identity, proof result, payload hash or replay state.

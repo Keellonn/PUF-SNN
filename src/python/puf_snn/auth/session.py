@@ -10,6 +10,9 @@ import secrets
 import time
 from threading import RLock
 from .binary_window import LP, U16, U32, U64, V, ProtocolError, Reader, identifier, raw
+from .credential_verifier import CredentialAdmissionService
+
+PROTOCOL_PROFILE = "puf-snn-l3-credential-admission-v1-wire2"
 
 def hkdf_extract(salt, ikm):
     return hmac.new(raw(salt) or bytes(32), raw(ikm), hashlib.sha256).digest()
@@ -118,7 +121,7 @@ class SenderEnrollment:
     device_id: str
     enrollment_id: str
     helper_data: object
-    protocol_profile: str = "puf-snn-l3-v1-wire2"
+    protocol_profile: str = PROTOCOL_PROFILE
 
 def provision_device(device_id, enrollment_id, helper_data):
     from puf_snn.reconstruction import HelperData
@@ -165,6 +168,7 @@ class _Pending:
     transcript: bytes
     key: bytes = field(repr=False)
     deadline: int
+    admission: object = field(repr=False)
 
 @dataclass(frozen=True)
 class _Active:
@@ -190,7 +194,7 @@ class Sender:
     Clock/random injection uses unittest.mock in explicit tests; runtime always
     calls the OS random provider. No retry or reconstruction occurs here.
     """
-    def __init__(self, enrollment, limits=Limits()):
+    def __init__(self, enrollment, limits=Limits(), *, admission_service):
         if type(enrollment) is not SenderEnrollment or type(limits) is not Limits:
             raise ProtocolError("internal_error")
         # Revalidate trusted bindings, including material restored by a caller.
@@ -198,6 +202,10 @@ class Sender:
         if enrollment.protocol_profile != self.enrollment.protocol_profile:
             raise ProtocolError("internal_error")
         self.limits = limits
+        if type(admission_service) is not CredentialAdmissionService:
+            raise ProtocolError("internal_error")
+        self._admission_service = admission_service
+        self._admission = self._request = None
         self.state = "IDLE"
         self.reason = None
         self._candidate = self._key = self._client = self._context = self._transcript = None
@@ -205,6 +213,8 @@ class Sender:
         self._used_attempt_ids = set()
 
     def _fail(self, reason, detail=None):
+        self._admission_service.revoke(self._admission)
+        self._admission = self._request = None
         self._candidate = self._key = self._client = self._context = self._transcript = None
         self._nonce = None
         self.state, self.reason = "FAILED", reason
@@ -218,6 +228,8 @@ class Sender:
         if attempt_id in self._used_attempt_ids:
             return Failure("internal_error")
         self._used_attempt_ids.add(attempt_id)
+        self._admission_service.revoke(self._admission)
+        self._admission = self._request = None
         self._candidate = self._key = self._client = self._context = self._transcript = None
         self.attempt_id = attempt_id
         if type(result) is not ReconstructionResult or type(result.reported_correction_count) is not int:
@@ -245,15 +257,31 @@ class Sender:
         bits = tuple((byte >> shift) & 1 for byte in result.candidate_credential for shift in range(7, -1, -1))
         if bits != message[:32]:
             return self._fail("internal_error")
+        self._admission = self._admission_service.authorize(
+            result.candidate_credential, device_id=self.enrollment.device_id,
+            enrollment_id=self.enrollment.enrollment_id,
+            reconstruction_id=self.enrollment.helper_data.config.version,
+            attempt_id=attempt_id, timeout_ms=self.limits.handshake_timeout_ms,
+        )
+        if self._admission is None:
+            return self._fail("credential_verification_failed")
         self._start = time.monotonic_ns()
         self._deadline = self._start + self.limits.handshake_timeout_ms * 1_000_000
         try:
             self._nonce = raw(secrets.token_bytes(32), 32)
+            self._candidate = result.candidate_credential
+            self._request = frame(b"P3RQ" + V(2, 0) + LP(identifier(self.enrollment.device_id)) + self._nonce)
+            if not self._admission_service.bind_request(self._admission, self._request, attempt_id=attempt_id):
+                return self._fail("credential_verification_failed")
         except Exception:
             return self._fail("internal_error")
-        self._candidate = result.candidate_credential
         self.state, self.reason = "PENDING", None
-        return frame(b"P3RQ" + V(2, 0) + LP(identifier(self.enrollment.device_id)) + self._nonce)
+        return self._request
+
+    @property
+    def admission(self):
+        """Local-only authorization; never included in request bytes."""
+        return self._admission
 
     def _ready(self):
         if self.state != "PENDING":
@@ -282,7 +310,16 @@ class Sender:
             if (context.device_id != self.enrollment.device_id or context.client_nonce != self._nonce
                     or context.limits != self.limits):
                 raise ProtocolError("invalid_challenge")
-            key = self._derive_key(self._candidate, transcript)
+            candidate = self._admission_service.claim_candidate(
+                self._admission, self._candidate, attempt_id=self.attempt_id,
+                request=self._request, transcript=transcript,
+                device_id=self.enrollment.device_id, enrollment_id=self.enrollment.enrollment_id,
+                reconstruction_id=self.enrollment.helper_data.config.version,
+            )
+            if candidate is None:
+                return self._fail("credential_verification_failed")
+            self._admission = self._request = None
+            key = self._derive_key(candidate, transcript)
             proof = client_proof(key, transcript)
         except ProtocolError as error:
             return self._fail(error.reason)
@@ -331,7 +368,7 @@ class Verifier:
     last_reason and tombstones support local tests, not a full operational audit.
     Pending entries contain no sequence fields. No public method accepts a key.
     """
-    def __init__(self, entries, config=SessionConfig()):
+    def __init__(self, entries, config=SessionConfig(), *, admission_service):
         if type(config) is not SessionConfig:
             raise ProtocolError()
         self._registry = {}
@@ -341,6 +378,9 @@ class Verifier:
             entry.__post_init__()
             self._registry[entry.device_id] = entry
         self.config = config
+        if type(admission_service) is not CredentialAdmissionService:
+            raise ProtocolError("internal_error")
+        self._admission_service = admission_service
         try:
             self.boot_id = raw(secrets.token_bytes(16), 16)
         except Exception:
@@ -401,6 +441,7 @@ class Verifier:
 
     def _terminate_pending(self, sid, reason, now):
         pending = self._pending[sid]
+        self._admission_service.revoke(pending.admission)
         pending_map, terminal_map = self._pending.copy(), self._terminal.copy()
         del pending_map[sid]
         terminal_map[sid] = Tombstone(pending.context.device_id, sid, "FAILED", reason, now)
@@ -414,9 +455,10 @@ class Verifier:
                 if now >= pending.deadline:
                     self._terminate_pending(sid, "handshake_timeout", now)
 
-    def begin_session(self, request, local_provenance=None):
+    def begin_session(self, request, local_provenance=None, *, admission=None):
         with self._lock:
             now = time.monotonic_ns()
+            consumed = False
             try:
                 r = unframe(request)
                 r.expect(b"P3RQ")
@@ -433,21 +475,33 @@ class Verifier:
                 if (len(self._pending) >= self.config.max_pending_sessions
                         or len(self._issued) >= self.config.max_sessions_per_process):
                     raise ProtocolError("resource_limit")
+                if not self._admission_service.consume(
+                    admission, request, device_id=device, enrollment_id=entry.enrollment_id,
+                    reconstruction_id=entry.reconstruction_id,
+                ):
+                    raise ProtocolError("credential_verification_failed")
+                consumed = True
                 sid = raw(secrets.token_bytes(16), 16)
                 while sid in self._issued:
                     sid = raw(secrets.token_bytes(16), 16)
                 server_nonce = raw(secrets.token_bytes(32), 32)
                 context = Transcript(device, nonce, self.boot_id, sid, server_nonce, self.config.limits)
                 transcript = context.encode()
+                if not self._admission_service.bind_challenge(admission, transcript):
+                    raise ProtocolError("credential_verification_failed")
                 key = self._derive_key(entry.credential4, transcript)
                 challenge = frame(b"P3CH" + LP(transcript))
-                self._pending[sid] = _Pending(context, transcript, key, now + self.config.limits.handshake_timeout_ms * 1_000_000)
+                self._pending[sid] = _Pending(context, transcript, key, now + self.config.limits.handshake_timeout_ms * 1_000_000, admission)
                 self._issued.add(sid)
                 self.last_reason = None
                 return challenge
             except ProtocolError as error:
+                if consumed:
+                    self._admission_service.revoke(admission)
                 return self._refuse(error.reason)
             except Exception:
+                if consumed:
+                    self._admission_service.revoke(admission)
                 return self._refuse("internal_error")
 
     def confirm_session(self, confirmation):
@@ -484,5 +538,5 @@ class Verifier:
             self.last_reason = "accepted"
             return response
 
-def provision_verifier(registry_entries, config=SessionConfig()):
-    return Verifier(registry_entries, config)
+def provision_verifier(registry_entries, config=SessionConfig(), *, admission_service):
+    return Verifier(registry_entries, config, admission_service=admission_service)

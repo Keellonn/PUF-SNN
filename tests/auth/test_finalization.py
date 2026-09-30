@@ -33,7 +33,7 @@ class FinalizationTests(unittest.TestCase):
         cls.schema = json.loads((ROOT / "schemas/auth-audit-v1.schema.json").read_text())
 
     def sender(self):
-        return Sender(self.material[0])
+        return Sender(self.material[0], admission_service=self.material[3])
 
     def active(self, **config):
         return establish(AuthConfig(**config), self.material)[:2]
@@ -175,8 +175,8 @@ class FinalizationTests(unittest.TestCase):
         for case in ("malformed", "version", "binding", "proof"):
             with self.subTest(case=case):
                 s = self.sender()
-                v = Verifier([self.material[1]])
-                challenge = v.begin_session(s.begin_attempt(self.material[2], "one"))
+                v = Verifier([self.material[1]], admission_service=self.material[3])
+                challenge = v.begin_session(s.begin_attempt(self.material[2], "one"), admission=s.admission)
                 if case == "malformed":
                     result = s.answer_challenge(b"bad")
                     reason = "malformed_message"

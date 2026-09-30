@@ -6,25 +6,52 @@ import json
 from puf_snn.auth.binary_window import F32, Sample, Window, LP, V, encode_window, window_tag
 from puf_snn.auth.session import RegistryEntry, SessionConfig, Transcript, frame, unframe, derive_session_key, client_proof
 from puf_snn.auth.verifier import Verifier
+from puf_snn.auth.session import Sender, provision_device
+from puf_snn.auth.credential_verifier import (
+    CredentialAdmissionService, CredentialVerifierRecord, CredentialVerifierStore,
+    InMemoryCredentialVerifierKeyProvider,
+)
 
 CREDENTIAL = b"\x00\x00\x00\x01"
 
 
+def admission_for_entries(entries):
+    """Trusted synthetic enrollment, never a verification bypass."""
+    provider = InMemoryCredentialVerifierKeyProvider("synthetic-test-key", bytes(range(32)))
+    records = [CredentialVerifierRecord.enroll(
+        device_id=e.device_id, enrollment_id=e.enrollment_id, reconstruction_id=e.reconstruction_id,
+        verifier_key_id="synthetic-test-key", credential4=e.credential4, key_provider=provider,
+    ) for e in entries]
+    return CredentialAdmissionService(CredentialVerifierStore(records), provider)
+
+
+def make_verifier(entries, config=SessionConfig()):
+    return Verifier(entries, config, admission_service=admission_for_entries(entries))
+
+
+def admitted_request(v, device="sim-device", credential=CREDENTIAL):
+    from puf_snn.reconstruction import enroll, ReconstructionResult
+    entry = v._registry[device]  # Trusted fixture binding, not verification truth.
+    helper = enroll((0,)*64, credential, enrollment_id=entry.enrollment_id)
+    s = Sender(provision_device(device, entry.enrollment_id, helper), v.config.limits,
+               admission_service=v._admission_service)
+    bits = tuple((b >> shift) & 1 for b in credential for shift in range(7, -1, -1)) + (0,)*4
+    result = ReconstructionResult('candidate_valid_format', 'decoded', 0, bits, credential, True, None)
+    request = s.begin_attempt(result, 'synthetic-fixture-attempt')
+    assert type(request) is bytes
+    return s, request
+
+
 def activate(v, device="sim-device", credential=CREDENTIAL):
-    request = frame(b"P3RQ" + V(2, 0) + LP(device.encode()) + bytes(range(32)))
-    r = unframe(v.begin_session(request))
-    r.expect(b"P3CH")
-    transcript = r.lp()
-    context = Transcript.parse(transcript)
-    key = derive_session_key(credential, transcript)
-    proof = client_proof(key, transcript)
-    response = v.confirm_session(frame(b"P3CF" + V(2, 0) + context.session_id + proof))
-    assert response[4:8] == b"P3OK"
-    return context.session_id, key
+    sender, request = admitted_request(v, device, credential)
+    confirmation = sender.answer_challenge(v.begin_session(request, admission=sender.admission))
+    response = v.confirm_session(confirmation)
+    assert sender.finish_session(response) is sender
+    return sender._context.session_id, sender._key
 
 
 def setup(config=SessionConfig()):
-    v = Verifier([RegistryEntry("sim-device", "enrollment-1", CREDENTIAL),
+    v = make_verifier([RegistryEntry("sim-device", "enrollment-1", CREDENTIAL),
                   RegistryEntry("other-device", "enrollment-2", CREDENTIAL)], config)
     sid, key = activate(v)
     return v, sid, key
