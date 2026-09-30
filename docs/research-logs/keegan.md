@@ -1,8 +1,9 @@
 # Keegan Hoyne's Research Log
 
 **Owner:** Keegan Hoyne  
-**Current week:** Week 4  
-**Last updated:** September 22, 2026
+**Current week:** Week 5
+
+**Last updated:** September 29, 2026
 
 ## Current research question
 
@@ -519,6 +520,49 @@ Will owns independent enrollment verification before HKDF, reconstruction FRR/mi
 
 ---
 
+# Week 5: Tier 2 Stream Attacks and Separate Anomaly Detection
+
+## Scope and attack placement
+
+Will confirmed that this experiment can alter synthetic sensor data before the legitimate sender signs it, without changing his Wire Protocol 2.0 sender, verifier, or session-key policy. This models corrupted sensor input reaching a legitimate sender. It is separate from his keyless Tier-1 replay and substitution attacks, where changing authenticated bytes should fail verification. A quality-valid changed window may pass authentication because the sender legitimately tags those changed values.
+
+I kept the existing 64-neuron SNN as a five-class motion classifier. The new supervised anomaly detector is a separate logistic-regression or random-forest model; neither motion-classifier confidence nor an authentication decision is used as its anomaly score. One accepted-window consumer supplies both models with the same immutable authenticated motion record. An anomaly flag is downstream inference metadata and cannot change the verifier's acceptance or committed sequence state.
+
+## Reproducible plan and model evaluation
+
+The attack plan applies nine documented sensor changes at three severity levels to each clean source, alongside one clean control. It covers position and orientation noise, drift, and jumps; timestamp jitter; dropped samples; and frozen pose. The 1,800 source windows produce 50,400 planned cases, with every transformed copy remaining in its source's train, validation, or test split. Construction status and failures are retained rather than silently dropped from the attack denominator.
+
+The detector extracts 48 relative-pose and timing-derived measurements without using labels, split IDs, device/session identifiers, tracking flags, or attack settings as features. Training uses Session 1 and source-balanced weights. The scaler for logistic regression is fitted from training only. Three detector seeds are distinct from the motion, attack, and bootstrap seeds. Session 2 alone selects score thresholds subject to clean validation false-positive rate at most 5%; Session 3 is held out for the final evaluation. The existing SNN checkpoints remain frozen, and conventional motion models use the unchanged clean-data training recipe.
+
+## Completed held-out results
+
+The full construction yielded 44,899 quality-valid cases and 5,501 construction failures. Of the 16,800 planned Session 3 cases, 14,956 were quality-valid and evaluated; 1,844 failed construction before authentication. These are paired synthetic transformations of 600 held-out sources, not independent new recordings.
+
+| Motion classifier | Clean macro-F1 | All quality-valid cases macro-F1 |
+|---|---:|---:|
+| Logistic regression | 0.9048 | 0.8112 |
+| Random forest | 0.8936 | 0.8760 |
+| 64-neuron SNN | 0.8500 | 0.7452 |
+
+| Separate detector | Test F1 | Clean test FPR | Medium/high recall |
+|---|---:|---:|---:|
+| Logistic regression | 0.8424 | 5.33% | 82.85% |
+| Random forest | 0.9003 | 2.94% | 87.95% |
+
+Both detectors missed the provisional 90% medium/high recall target. The held-out clean false-positive rate for logistic regression also exceeded 5%, even though its threshold satisfied the validation constraint. Orientation drift was the largest visible gap: mean recall was approximately 5-6% for medium drift and 13-14% for high drift. Per-transform counts, confusion matrices, uncertainty intervals, and seed variation are in the saved results; a favorable pooled score does not mean every condition was detected.
+
+The real sender/verifier accepted and released all 14,956 quality-valid test cases across 150 fresh synthetic sessions. The authenticated and paired unauthenticated paths had zero motion-prediction differences and zero anomaly-flag differences. This validates input preservation and at-most-once delivery for the configured synthetic run. It is not a measurement of PUF reconstruction availability, full-system false rejection, human motion, or detector-inclusive processing latency.
+
+The first evaluation stopped when an authentication session expired. I traced that to the evaluation harness renewing sessions by case count without also checking elapsed session age. The corrected harness keeps Will's five-minute policy, renews before expiry, permits one fresh-session retry for an expiry before model delivery, and records a hash-chained checkpoint after each completed authenticated case. The completed run reused its saved construction outcomes, six fitted detectors, frozen validation thresholds, and unauthenticated predictions; the old in-memory authentication progress had to be repeated. The full Python suite passed 380 tests, including 17 stream-evaluation tests. The completed run's artifact hashes and saved case counts were checked.
+
+## Evidence, provenance, and limits
+
+The concise Week 5 account is in `results/week-5/keegan/keegan.md`; the full attack plan, method, per-case outputs, figures, and manifests are in `results/week-5/keegan/stream-attacks/`, `results/week-5/keegan/stream-evaluation/`, and `docs/tier2-stream-attacks.md`. Attack implementation was committed as `604bac8ce7dd191a18e0981daa795563cbf2dd53`; the anomaly/evaluation implementation as `57478f0967d996f7f8764589070e5c8ed63dd396`; session recovery as `40da3a388983030b7b696ce7bf2b801e0ed6903f`; completed results as `ab93d493a4b8db351be19b94e5ccf53426907996`; and stable result-file line endings as `392314314aa19f4393db66772a33a96baff642b5`.
+
+The source windows and attacks are synthetic. Severe changes can make the original motion class ambiguous. No detector-inclusive matched latency, physical Quest performance, cross-person generalization, improved PUF reconstruction, formal Tier-1 rejection rate, or durable audit timing is established here. Human-derived motion collection remains disabled pending approval.
+
+---
+
 # Hours and Work Log
 
 Hours below don't include pre employment work. Those were my test trial hours.
@@ -832,3 +876,47 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Corrected the fixed SNN conclusion in the reporting code, amended the detailed report and matching manifest, and kept the numerical metrics and trained models unchanged
 - Updated my results summary, research log, and XR/SNN design documentation with the architecture comparison, pipeline timing, validation evidence, and remaining limitations
 - Updated the slideshow tables, confusion matrices, validation evidence, conclusions, and speaker notes, including the leakage, motion-sensitivity, nod/still, and pipeline-latency findings
+
+## Monday, September 28, 2026 - 3.31 hours
+
+### 5:47 PM - 7:43 PM - 1.93 hours
+
+- Confirmed with Will that Tier-2 changes belong before the legitimate sender creates an authentication tag, while his Tier-1 work covers replay and substitution after authentication
+- Implemented the deterministic stream-attack plan with nine sensor-change types, three severity levels, and one clean control per source window
+- Preserved source-window and session split assignments, documented the configured perturbation ranges, and kept attack metadata out of the authenticated motion and model features
+- Added schema and quality checks so malformed or unconstructable changes remain recorded as construction failures rather than being mistaken for detector successes
+- Added stream-attack and accepted-boundary tests, checked reproducibility and isolation from Will's verifier state, and committed the attack implementation around 7:39 PM
+
+### 8:45 PM - 10:08 PM - 1.38 hours
+
+- Built the separate 48-feature anomaly data path and logistic-regression/random-forest baselines without changing the existing five-class SNN classifier
+- Used source-balanced Session 1 training, three distinct anomaly seeds, and Session 2-only threshold selection under the clean validation false-positive constraint
+- Implemented paired held-out motion and anomaly evaluation using the same changed sensor window in unauthenticated and sender/verifier-accepted conditions
+- Added tests for feature exclusions, training-only fitting, split preservation, threshold selection, and exactly matched accepted model inputs
+- Committed the anomaly/evaluation implementation around 9:10 PM, generated the complete attack plan, and began the long evaluation run
+
+## Tuesday, September 29, 2026 - 5.35 hours
+
+### 12:09 PM - 2:13 PM - 2.07 hours
+
+- Diagnosed the interrupted evaluation: the harness rotated sessions by case count, but a session could expire by elapsed time before that limit
+- Preserved the completed construction, fitted detector models, validation thresholds, and unauthenticated predictions rather than rerunning or retuning them
+- Added conservative age-based renewal, a single fresh-session retry for expiry before inference, and per-case hash-chained authentication checkpoints
+- Added recovery checks for saved source/configuration/model artifacts, case order, detector flags, and accepted-delivery evidence
+- Ran the updated targeted tests and the full 380-test Python suite, then committed the expiry/recovery fix around 2:11 PM
+
+### 7:05 PM - 8:58 PM - 1.88 hours
+
+- Resumed the held-out evaluation from the saved stages and completed authentication and model delivery for all 14,956 quality-valid test cases
+- Reconciled the 50,400 planned cases with 44,899 quality-valid constructions and 5,501 construction failures, including 1,844 test-split construction failures
+- Compared motion macro-F1 before and after synthetic stream changes and reviewed the separate anomaly precision, recall, F1, and clean false-positive rates
+- Confirmed that both detector families missed the provisional 90% medium/high recall target and identified orientation drift as a major weakness
+- Verified zero motion-prediction and anomaly-flag differences between paired accepted and unauthenticated conditions, then committed the completed result artifacts around 9:00 PM
+
+### 9:22 PM - 10:46 PM - 1.4 hours
+
+- Verified the completed Week 5 evaluation, including case counts, authenticated delivery, the completion marker, and 22 artifact hashes.
+- Added a line-ending rule to preserve result hashes across checkouts and pushed the result commits.
+- Updated the Week 5 results summary and corrected outdated wording in the Tier-2 design and project specification.
+- Corrected the authentication-to-classifier slide to describe at-most-once release.
+- Added two Week 5 slides covering the stream-attack boundary and held-out classifier/anomaly-detector results, with diagrams and speaker notes.

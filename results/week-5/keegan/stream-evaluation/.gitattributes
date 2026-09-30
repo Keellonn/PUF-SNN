@@ -1,0 +1,5 @@
+# Preserve exact Week 5 result bytes for SHA-256 verification on Windows.
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+COMPLETE text eol=lf
