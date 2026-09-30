@@ -177,7 +177,7 @@ The first anomaly experiment will be supervised and separate from motion classif
 - normal: unchanged clean window
 - suspicious: a documented sensor change was applied before authentication
 
-Logistic regression and random forest will be used first. A separate SNN anomaly model may be added afterward. Classification confidence won't automatically be treated as an anomaly score. The anomaly labels, transform severities, and artifact controls must be documented and accepted before implementing the supervised anomaly baseline. The first recurrent SNN baseline and the accepted-window integration tests are implemented. Their classifier-only results do not establish full authenticated-system performance. Tier 2 semantic attacks and anomaly-detector development remain a separate later experiment.
+Logistic regression and random forest were used in the first separate supervised anomaly experiment. A separate SNN anomaly model may be added afterward. Classification confidence is not treated as an anomaly score. The anomaly labels, transform severities, and artifact controls are documented in `docs/tier2-stream-attacks.md`. The first recurrent SNN remains a motion classifier. The Week 5 Tier 2 attack evaluation and held-out detector results are recorded in `results/week-5/keegan/`. Both detectors missed the provisional 90% medium/high detection target; these synthetic results do not establish detector-inclusive latency, physical Quest performance, or full-system availability.
 
 ## Threat model and attacks
 
