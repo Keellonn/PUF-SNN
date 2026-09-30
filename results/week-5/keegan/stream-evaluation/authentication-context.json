@@ -1,0 +1,67 @@
+{
+  "checkpoint_version": "accepted-stream-evaluation-v1",
+  "origin_source_commit": "57478f0967d996f7f8764589070e5c8ed63dd396",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "plan_manifest_sha256": "1459e17da51de57167670407372f555ebf230abaecd31aced3c98173583e180d",
+  "configuration": {
+    "experiment_name": "tier2-motion-and-anomaly-evaluation-v1",
+    "source_dataset_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+    "motion_model_seeds": [
+      7,
+      17,
+      27
+    ],
+    "anomaly_model_seeds": [
+      6007,
+      6017,
+      6027
+    ],
+    "bootstrap_seed": 7007,
+    "bootstrap_repetitions": 400,
+    "validation_clean_fpr_limit": 0.05,
+    "medium_high_detection_target": 0.9,
+    "anomaly_features": "relative-pose-kinematics-48-v1",
+    "logistic_regression": {
+      "C": 1.0,
+      "max_iter": 5000
+    },
+    "random_forest": {
+      "n_estimators": 100,
+      "min_samples_leaf": 2
+    },
+    "training_weights": "equal_source_equal_clean_and_transformed_mass",
+    "snn_reference_directory": "results/week-4/keegan/snn-baseline-separate-seeds",
+    "snn_hidden_neurons": 64,
+    "unauthenticated_prediction_batch_size": 128,
+    "authenticated_session_case_limit": 100,
+    "torch_threads": 1,
+    "output_directory": "results/week-5/keegan/stream-evaluation"
+  },
+  "cached_artifact_sha256": {
+    "config.json": "ba88202515d05b2a1e2f2fc345be311c87941be5040adf3999c0247455d88b99",
+    "attack-config.json": "23e36efd8d37f3fadb6d031bb71ef39f7390cf930cc68321dd4994fbe3de773f",
+    "anomaly-feature-names.json": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+    "construction-summary.json": "81419cf5266b9f0a652193a4a209ba2baf5fbe5fbe87139526bb76e3d3dd6058",
+    "construction-outcomes.jsonl": "2fc7c263068b9624b6fb22c506b4f2051f8982f02648c19f0c741f9cb2d1f4ab",
+    "frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "unauthenticated-test-predictions.jsonl": "42a807491b75881b9943c7e32a26f0f0a23f672703ddf953a9444f86579b1f62",
+    "models/anomaly_logistic_regression_seed6007.joblib": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+    "models/anomaly_random_forest_seed6007.joblib": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+    "models/anomaly_logistic_regression_seed6017.joblib": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+    "models/anomaly_random_forest_seed6017.joblib": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+    "models/anomaly_logistic_regression_seed6027.joblib": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+    "models/anomaly_random_forest_seed6027.joblib": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784"
+  },
+  "evaluation_code_sha256": {
+    "runner": "dae8897424cc6109065accb445dd420035d76e3a83c66b8eb967a4656aad15b1",
+    "accepted_path": "086ffc695346ca65632c7c1494ad6b6b1b8db02d67755405ffd80c823a88a706"
+  },
+  "motion_reference": {
+    "config.json": "f195cf7914f698c5ea9c380d413a1a5b5e4e59e79de0b0f3b2e54fe73742fe8f",
+    "normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "seed-7/model-state.pt": "9ca1994411465115447988a4162e48834985010764b396f58e13653eac88adec",
+    "seed-17/model-state.pt": "c83d3aa0ec40e9bd9b9fcfc3d48d7f1b25e221858076045b1035a35dd1d03f7b",
+    "seed-27/model-state.pt": "2a9c74d0ec05b2e62e9bcdeb0f572917f093c71174b4bfa3f010ac8ca5a61f37"
+  },
+  "authentication_config_sha256": "fa75ac425c3afdbce7c2d2b3b79ee79d7338a78d71e3b185db8d4481fe0d4263"
+}
