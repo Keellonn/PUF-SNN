@@ -1,0 +1,68 @@
+{
+  "all_source_rows_once": true,
+  "auditor_source_sha256": "e47f17fc09be8216c0992148f52dcc3effab5da618344f3d566cd099d9f3a5a3",
+  "formal_verifier_invocations": 56572,
+  "integration": {
+    "miscorrections": {
+      "all_passed": true,
+      "counter_totals": {
+        "active_session_creation": 0,
+        "active_session_publication": 0,
+        "client_proof": 0,
+        "common_derive_session_key": 0,
+        "credential_verification_calls": 430,
+        "hkdf_expand": 0,
+        "hkdf_extract": 0,
+        "p3rq_created": 0,
+        "p3rq_emitted": 0,
+        "pending_session_creation": 0,
+        "receiver_authorization_accepted": 0,
+        "receiver_begin_session": 0,
+        "receiver_derive_session_key": 0,
+        "sender_active_transition": 0,
+        "sender_derive_session_key": 0,
+        "sender_pending_transition": 0,
+        "server_proof": 0
+      },
+      "n": 430
+    },
+    "positive_controls": {
+      "all_passed": true,
+      "counter_totals": {
+        "active_session_creation": 120,
+        "active_session_publication": 120,
+        "client_proof": 240,
+        "common_derive_session_key": 0,
+        "credential_verification_calls": 120,
+        "hkdf_expand": 240,
+        "hkdf_extract": 240,
+        "p3rq_created": 120,
+        "p3rq_emitted": 120,
+        "pending_session_creation": 120,
+        "receiver_authorization_accepted": 120,
+        "receiver_begin_session": 120,
+        "receiver_derive_session_key": 120,
+        "sender_active_transition": 120,
+        "sender_derive_session_key": 120,
+        "sender_pending_transition": 120,
+        "server_proof": 240
+      },
+      "n": 120
+    }
+  },
+  "latency_pairing_and_summaries_recomputed": true,
+  "not_checked_only_decoder_or_format": true,
+  "protected_bytes_unchanged": true,
+  "protected_file_count": 547,
+  "safe_field_checks_passed": true,
+  "source_attempts": 84000,
+  "source_manifest_sha256": "082db862432da3d1b523f247035d2ae5d27be3a387317792f6eda8e72960a71b",
+  "source_population": {
+    "correct": 56142,
+    "decoder_failure": 26447,
+    "invalid_format_or_padding": 981,
+    "wrong": 430
+  },
+  "status": "PASS",
+  "unique_source_locators": 84000
+}

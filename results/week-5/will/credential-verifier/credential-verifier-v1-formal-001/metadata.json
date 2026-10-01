@@ -1,0 +1,45 @@
+{
+  "clock": {
+    "adjustable": false,
+    "implementation": "QueryPerformanceCounter()",
+    "monotonic": true,
+    "resolution": 1e-07
+  },
+  "finished_utc": "2026-09-30T22:00:37.027942+00:00",
+  "forbidden_reconstruction_calls": 0,
+  "formal_verifier_calls": 56572,
+  "gc_policy": "default enabled",
+  "key_persisted": false,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]",
+  "reconstruction_rerun": false,
+  "source_code_sha256": {
+    "configs/credential_verifier_experiment_v1.json": "bd3555b626c32361e96cf04240bd4425e559e565f7c57a50c00f6d6bcd2dae83",
+    "schemas/credential-verifier-attempt-v1.schema.json": "9e8e33c2b71cf91dd4cc2cff0add387b869a4912c09d20a831d699f64a12e6f6",
+    "src/python/scripts/audit_credential_verifier_experiment.py": "e47f17fc09be8216c0992148f52dcc3effab5da618344f3d566cd099d9f3a5a3",
+    "src/python/scripts/run_credential_verifier_experiment.py": "8cb48d9586c411bb75da77c33140eac980251d5d9b1eaa3d4d94403fdfcbdef6",
+    "tests/experiments/test_credential_verifier_experiment.py": "70c1dade838fd27c357b498a1a939bac463eb3768952562a9bb4822087b6776c"
+  },
+  "source_counts": {
+    "correct": 56142,
+    "decoder_failure": 26447,
+    "invalid_format": 981,
+    "wrong": 430
+  },
+  "started_utc": "2026-09-30T22:00:32.470599+00:00",
+  "status": "evaluated_pending_independent_reconciliation",
+  "thread_policy": "single sequential evaluator thread",
+  "timing_scope": {
+    "clock": "time.perf_counter_ns",
+    "operation": "CredentialAdmissionService.verify",
+    "order": "saved source row order",
+    "outliers": "retain all",
+    "p95": "linear interpolation at (n-1)*0.95",
+    "scope": "lookup, trusted binding validation, key access, HMAC, constant-time comparison, structured result"
+  },
+  "verifier_records": 120,
+  "warmup": {
+    "count": 200,
+    "policy": "separate synthetic enrollment and alternating 100 pass/100 mismatch calls; excluded from source rows and timing"
+  }
+}

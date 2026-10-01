@@ -1,0 +1,23 @@
+population,measurement,n,mean_ns,median_ns,p95_ns,max_ns
+Nominal,verification,11807,10719.225882950792,10000,12500.0,285100
+Nominal,archived reconstruction + current verification composite latency,11807,1179026.6706191243,1048800,2273099.999999999,16634400
+Sweep SD 0.0,verification,12000,10686.583333333334,10100.0,12204.999999999927,137800
+Sweep SD 0.0,archived reconstruction + current verification composite latency,12000,174621.63333333333,156000.0,261500.0,1264800
+Sweep SD 0.05,verification,11997,10517.496040676835,10000,11800.0,190400
+Sweep SD 0.05,archived reconstruction + current verification composite latency,11997,864483.962657331,904800,1959739.9999999998,4618000
+Sweep SD 0.1,verification,11820,20468.646362098138,21500.0,26900.0,2060600
+Sweep SD 0.1,archived reconstruction + current verification composite latency,11820,1134080.888324873,1026950.0,2152310.0,8749400
+Sweep SD 0.25,verification,7679,27500.76832920953,22700,40500.0,848800
+Sweep SD 0.25,archived reconstruction + current verification composite latency,7679,1294676.3510873811,1115200,2188010.0,6786800
+Sweep SD 0.5,verification,1106,31483.54430379747,25700.0,46575.0,720300
+Sweep SD 0.5,archived reconstruction + current verification composite latency,1106,1367314.9186256782,1171500.0,2301975.0,5755400
+Sweep SD 1.0,verification,163,40679.754601226996,35800,56170.00000000003,194900
+Sweep SD 1.0,archived reconstruction + current verification composite latency,163,1368028.2208588957,1172500,2265770.0,4105200
+correct,verification,56142,15328.796622849204,10200.0,25400.0,2060600
+correct,archived reconstruction + current verification composite latency,56142,906200.4987353496,946400.0,2054494.9999999998,16634400
+wrong,verification,430,34789.3023255814,27800.0,50409.99999999999,592100
+wrong,archived reconstruction + current verification composite latency,430,1380064.8837209302,1184200.0,2318889.999999999,4229800
+all invocations,verification,56572,15476.71462914516,10200.0,25900.0,2060600
+all invocations,archived reconstruction + current verification composite latency,56572,909802.3103301987,948500.0,2056900.0,16634400
+decoder_failure,archived reconstruction only; verifier not checked,26447,1117078.4474609597,951600,1926569.9999999998,7975500
+invalid_format_or_padding,archived reconstruction only; verifier not checked,981,1336314.0672782874,1155800,2215800.0,4285700

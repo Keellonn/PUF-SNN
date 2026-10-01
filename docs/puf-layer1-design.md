@@ -1,8 +1,8 @@
 # Simulated Layer 1 PUF
 
-**Owner:** Will Wallace  
-**Version:** 0.2  
-**Last updated:** September 11, 2026
+**Owner:** Will Wallace
+**Week:** 2
+**Status:** Complete
 
 # How to run as of Week 2
 

@@ -1,8 +1,8 @@
 # Layer 2 Credential Reconstruction
 
-**Owner:** Will Wallace  
-**Version:** 0.1
-**Last updated:** September 22, 2026
+**Owner:** Will Wallace
+**Version:** 0.2
+**Last updated:** September 30, 2026
 
 # How to run as of Week 4
 
@@ -22,29 +22,66 @@ The reconstruction statistics and results are stored within the directory:
 \results\week-4\will\reconstruction
 
 The results measure:
-    - Total reconstruction attempts
-    - Successful credential reconstructions
-    - Failed credential reconstructions
-    - Reconstructions success rate
-    - False rejection rate (FRR)
-    - Decoder failures
-    - Invalid format or invalid padding outcomes
-    - Miscorrections
-    - 63 bit response BER
-    - Distribution of actual bit errors in the 63 bit response
-    - Reconstruction outcomes grouped by actual error count
-    - Reconstruction latency including,
-        - Mean
-        - Median
-        - p95
-        - Maximum
-    - Per device reconstruction performance
+# How to Run
+
+## Prerequisites
+Working Layer 1 simulation evidence.
+
+## Running a Single Layer 2 Reconstruction Experiment
+
+To run the original single-run Layer 2 workflow on the most recent compatible Layer 1 simulation, use:
+
+`.\run_layer2.ps1`
+
+To run Layer 2 for a specified Layer 1 simulation, use:
+
+`.\run_layer2.ps1 -InputRun "sim_results\run-seed-[existing-seed]-[existing-id]"`
+
+This helper workflow produces individual Layer 2 reconstruction results under:
+
+`\results\week-4\will\reconstruction`
+
+## Formal Layer 2 Evaluation
+
+The completed Week 5 formal reconstruction evaluation is documented in:
+
+`docs/layer2-formal-evaluation-week5.md`
+
+Its sealed evidence is stored under:
+
+`results/week-5/will/reconstruction/layer2-experiment-v1-formal-001`
+
+The formal evaluation used the frozen BCH reconstruction design and evaluated 84,000 total reconstruction attempts across the nominal condition and six noise-sweep conditions.
+
+The formal evidence directory should not be reused or overwritten by future runs.
+
+## Results
+
+Layer 2 reconstruction results measure,
+- Total reconstruction attempts
+- Successful credential reconstructions
+- Failed credential reconstructions
+- Reconstruction success rate
+- False rejection rate (FRR)
+- Decoder failures
+- Invalid format or invalid padding outcomes
+- Miscorrections
+- 63-bit response BER
+- Distribution of actual bit errors in the 63-bit response
+- Reconstruction outcomes grouped by actual error count
+- Reconstruction latency:
+  - Mean
+  - Median
+  - p95
+  - Maximum
+- Per-device reconstruction performance
 
 # Layer 2 Overview
 
 ## Purpose
-Layer 2 takes the noisy 64 bit response from layer 1 and attempts to reonstruct the same device credential that was established during enrollment.
-The main goal for this layer is to determine if a stable credential can be recovered from a noisy response before the credential is used for layer 3 session authentication.
+Layer 2 takes the noisy 64-bit response from Layer 1 and attempts to reconstruct the same device credential that was established during enrollment.
+The main goal of this layer is to determine whether a stable credential candidate can be recovered from a noisy PUF response.
+Layer 2 does not independently authenticate the returned credential. A valid-format result is passed forward as a candidate credential. In the current authentication-v2 pipeline, Layer 3 independently verifies that candidate against trusted enrollment information before allowing it to reach session-key derivation.
 
 ## Reconstruction Design
 The current design uses a BCH(63,36,t=5) error correcting code,
@@ -73,7 +110,9 @@ During reconstruction,
 - The decoded message is checked for valid zero padding
 - If valid, the first 32 bits are returned as the candidate credential
 
-The reconstruction process does not compare the candidate credential against the enrolled credential. The credential correctness is measured by the experiment evaluator.
+The reconstruction process does not compare the candidate credential against the enrolled credential. 
+During formal Layer 2 experiments, an evaluator compares the returned candidate against enrolled truth only after `reconstruct()` returns so that reconstruction success, decoder failure, invalid padding, and miscorrection can be measured.
+During the current authentication-v2 runtime path, evaluator truth is not used. Instead, a valid-format candidate must pass the independent credential verifier before it can enter Layer 3 session-key derivation.
 
 ## Reconstruction Outcomes
 A reconstruction attempt produces,
@@ -81,31 +120,36 @@ A reconstruction attempt produces,
 - `decoder_failure`; the BCH decoder could not return a usable codeword
 - `invalid_format_or_padding`; BCH returned a message, but the required padding bits were invalid
 
-A valid-format candidate is not automatically known to be the correct credential. The experiment evaluator later determines whether the candidate matches the enrolled credential.
+A valid-format candidate is not automatically known to be the correct credential.
+If a valid-format credential differs from enrolled truth, the formal evaluator classifies it as a miscorrection. The completed formal Layer 2 evaluation observed this behavior when the selected-bit error count exceeded the BCH correction radius.
+In the current runtime authentication path, this distinction is handled by the independent pre-HKDF credential verifier rather than by Layer 2 itself.
 
 ## Metrics Collected
-The results measure:
-    - Total reconstruction attempts
-    - Successful credential reconstructions
-    - Failed credential reconstructions
-    - Reconstructions success rate
-    - False rejection rate (FRR)
-    - Decoder failures
-    - Invalid format or invalid padding outcomes
-    - Miscorrections
-    - 63 bit response BER
-    - Distribution of actual bit errors in the 63 bit response
-    - Reconstruction outcomes grouped by actual error count
-    - Reconstruction latency including,
-        - Mean
-        - Median
-        - p95
-        - Maximum
-    - Per device reconstruction performance
+The results measure,
+- Total reconstruction attempts
+- Successful credential reconstructions
+- Failed credential reconstructions
+- Reconstructions success rate
+- False rejection rate (FRR)
+- Decoder failures
+- Invalid format or invalid padding outcomes
+- Miscorrections
+- 63 bit response BER
+- Distribution of actual bit errors in the 63 bit response
+- Reconstruction outcomes grouped by actual error count
+- Reconstruction latency including,
+    - Mean
+    - Median
+    - p95
+    - Maximum
+- Per device reconstruction performance
 
 ## Current Limitations
 - The PUF responses are simulated rather than collected from a physical PUF
 - Enrollment currently uses an ideal noiseless reference response
 - The 32-bit credential is intended to validate the reconstruction mechanism, not provide production-grade cryptographic strength
-- BCH(63,36,t=5) corrects at most five bit errors by design
-- Reconstruction success alone does not authenticate the device; Layer 3 performs cryptographic key confirmation and session/window authentication
+- BCH(63,36,t=5) guarantees correction of up to five selected-bit errors; beyond that radius, decoder failure, invalid padding, or a valid-format wrong credential can occur
+- Reconstruction success alone does not authenticate the device
+- Layer 2 intentionally returns a credential candidate rather than performing independent credential authentication
+- In the current authentication-v2 pipeline, independent credential verification occurs after reconstruction and before HKDF
+- Session key confirmation and authenticated-window protection remain separate Layer 3 responsibilities

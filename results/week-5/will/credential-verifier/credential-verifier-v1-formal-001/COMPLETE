@@ -1,0 +1,9 @@
+{
+  "attempt_count": 84000,
+  "experiment_version": "credential-verifier-experiment-v1",
+  "manifest_sha256": "984f8aeebcf908e489a8e139155038ec5ccec176d0024355890e1dd35e73c9ed",
+  "output_identity": "credential-verifier-v1-formal-001",
+  "reconciliation_sha256": "bdc69a6d94b50013ddb4f53bbe88d10fe024e9e669e8bd6821cba4849005fb99",
+  "status": "PASS",
+  "verifier_invocations": 56572
+}

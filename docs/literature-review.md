@@ -1,7 +1,8 @@
 # Literature Review and Technical Landscape
 
-**Version:** 0.2  
-**Last updated:** September 11, 2026
+**Owner:** Will Wallace
+**Week:** 1
+**Status:** Complete
 
 ## Review method
 We searched IEEE Xplore, USENIX, SpringerLink, arXiv, Google Scholar, and official Unity/OpenXR documentation and research for publications from 2010 through September 2026. Search phrases included combinations of "XR authentication", "VR tracking attack", "head motion identification", "PUF key derivation", "PUF modeling attack", "spiking neural network motion classification", "SNN anomaly detection", "SNN adversarial robustness", and "XR latency". We included work that informs at least one part of our system: XR sensing or attacks, PUF-based trust, freshness and replay protection, SNN inference, anomaly detection, or latency evaluation. Papers without enough technical detail to affect the design or evaluation of our project, were excluded.

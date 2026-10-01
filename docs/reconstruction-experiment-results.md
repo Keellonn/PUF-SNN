@@ -1,5 +1,9 @@
 # Week 3 Layer 2 experimental results
 
+**Owner:** Will Wallace
+**Week:** 3
+**Status:** Complete
+
 ## Experiment Overview
 Much like the layer 1 baseline I established through experiments, the layer 2 baseline was defined using a 20 seperate seed experiment. I took the 20 runs from the layer 1 baseline and ran the layer 2 simulation and recorded the important stats.
 

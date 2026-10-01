@@ -1,8 +1,8 @@
 # Tier 1 Attacks
 
-**Owner:** Will Wallace  
-**Version:** 0.1  
-**Last updated:** September 23, 2026
+**Owner:** Will Wallace
+**Week:** 4
+**Status:** Complete
 
 # How to run as of Week 4
 
