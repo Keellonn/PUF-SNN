@@ -1590,3 +1590,9 @@ Verified protected reconstruction source hashes
 - Cleaned up Week 5 markdown documents
 - Updated research log and hours
 - Updated slideshow with Week 5 results
+
+## 1:00pm - 2:07pm (1.12 Hours)
+- Weekly Meeting
+- Listened to Sadman's presentation on VR problem solving assesment
+- Listened to Devon's presentation on cyber camp
+- Listened to Colin and Grace's presentation on VSGC Biometric Dual-Authentication project
