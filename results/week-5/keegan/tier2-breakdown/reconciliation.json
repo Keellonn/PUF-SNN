@@ -1,0 +1,513 @@
+{
+  "accepted_test_cases": 14956,
+  "construction": {
+    "test:clean:clean": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:dropped_samples:high": {
+      "construction_failure": 596,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 4
+    },
+    "test:dropped_samples:low": {
+      "construction_failure": 139,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 461
+    },
+    "test:dropped_samples:medium": {
+      "construction_failure": 425,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 175
+    },
+    "test:frozen_pose:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:frozen_pose:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:frozen_pose:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:orientation_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:position_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:timestamp_jitter:high": {
+      "construction_failure": 600,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 0
+    },
+    "test:timestamp_jitter:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "test:timestamp_jitter:medium": {
+      "construction_failure": 84,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 516
+    },
+    "train:clean:clean": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:dropped_samples:high": {
+      "construction_failure": 598,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 2
+    },
+    "train:dropped_samples:low": {
+      "construction_failure": 152,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 448
+    },
+    "train:dropped_samples:medium": {
+      "construction_failure": 409,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 191
+    },
+    "train:frozen_pose:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:frozen_pose:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:frozen_pose:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:orientation_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:position_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:timestamp_jitter:high": {
+      "construction_failure": 600,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 0
+    },
+    "train:timestamp_jitter:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "train:timestamp_jitter:medium": {
+      "construction_failure": 58,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 542
+    },
+    "validation:clean:clean": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:dropped_samples:high": {
+      "construction_failure": 599,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 1
+    },
+    "validation:dropped_samples:low": {
+      "construction_failure": 142,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 458
+    },
+    "validation:dropped_samples:medium": {
+      "construction_failure": 433,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 167
+    },
+    "validation:frozen_pose:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:frozen_pose:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:frozen_pose:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:orientation_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_drift:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_drift:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_drift:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_jump:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_jump:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_jump:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_noise:high": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_noise:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:position_noise:medium": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:timestamp_jitter:high": {
+      "construction_failure": 600,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 0
+    },
+    "validation:timestamp_jitter:low": {
+      "construction_failure": 0,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 600
+    },
+    "validation:timestamp_jitter:medium": {
+      "construction_failure": 66,
+      "planned": 600,
+      "quality_failure": 0,
+      "quality_valid": 534
+    }
+  },
+  "fresh_sessions": 150,
+  "maximum_anomaly_score_difference": 2.6645352591003757e-15,
+  "planned_cases": 50400,
+  "test_source_count": 600
+}

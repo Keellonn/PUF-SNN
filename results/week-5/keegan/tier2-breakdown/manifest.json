@@ -1,0 +1,51 @@
+{
+  "artifacts": {
+    ".gitattributes": "3fd6907a39ba488c39e7a1f249abd03f9868af5211714975e304482d552c1492",
+    "calibration.csv": "373f5fa6c347da84b0ea458c652d044b6ed40f556e54b7ccd46d27a6848bfad5",
+    "construction-breakdown.csv": "2dc638f20377d87d77997dfdb69ed334f587a07ad1d048b41df22f3af63918c6",
+    "detector-breakdown.csv": "08168eef1b16cc567888adb508d70761b7b69f662f80f93b0a3bc9f167275943",
+    "failure-reasons.csv": "9e73f100d7a2289d09f1d605c3c4b4b70eb38fe0f37247edb627ee0c8f9aaa74",
+    "motion-breakdown.csv": "ddf1901a2783815f05b90eca2f54fdc1769eb2e2ed1d89a3061694279723942c",
+    "motion-detail.json": "f11f50d0398eba33e35cd44c04a8d7b82ebbaefb567f0d7e9b02023422f0e05d",
+    "reconciliation.json": "6558bc9d874599d9e44121196d0df15ea54dd5734c182c4849dbdfe266d85e3d",
+    "tier2-breakdown.md": "3b0ef47158571248f56fb03251c1ef3909a1953548816f0c0da717963cba44b3"
+  },
+  "authentication_executed": false,
+  "command": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Scripts\\python.exe src/python/scripts/summarize_stream_evaluation.py --run results/week-5/keegan/stream-evaluation --output results/week-5/keegan/tier2-breakdown",
+  "created_utc": "2026-10-04T20:35:49.819184+00:00",
+  "environment": {
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "historical_complete_sha256": "7f6b319dc09b8d85a9ff47c9c8110ddc96ebf5c8fade134640dd02d0bf5bc4cb",
+  "historical_files_modified": false,
+  "historical_manifest_sha256": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+  "historical_run": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\results\\week-5\\keegan\\stream-evaluation",
+  "historical_source_commit": "40da3a388983030b7b696ce7bf2b801e0ed6903f",
+  "input_artifacts_sha256": {
+    "accepted-delivery-evidence.jsonl": "e06d9e05440d12c61269f7fc10d1d63dae1990d8a45000477d4b676730b5d26d",
+    "attack-config.json": "23e36efd8d37f3fadb6d031bb71ef39f7390cf930cc68321dd4994fbe3de773f",
+    "authenticated-test-predictions.jsonl": "96c09d931c5dd1624222ba615a168bee20e5f8eb873c9e57b78b592101789356",
+    "config.json": "ba88202515d05b2a1e2f2fc345be311c87941be5040adf3999c0247455d88b99",
+    "construction-outcomes.jsonl": "2fc7c263068b9624b6fb22c506b4f2051f8982f02648c19f0c741f9cb2d1f4ab",
+    "construction-summary.json": "81419cf5266b9f0a652193a4a209ba2baf5fbe5fbe87139526bb76e3d3dd6058",
+    "frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "results.json": "b3f8c8ec6338055174b4ef72b3fd1536ec4d4302a0db99d3bf5cf0661fa8dc44",
+    "unauthenticated-test-predictions.jsonl": "42a807491b75881b9943c7e32a26f0f0a23f672703ddf953a9444f86579b1f62"
+  },
+  "models_executed": false,
+  "run_type": "tier2_saved_evidence_reporting_addendum_v1",
+  "settings": {
+    "binomial_ci": "Clopper-Pearson two-sided 95%, per fixed model/condition",
+    "bootstrap_repetitions": 400,
+    "bootstrap_seed": 7017,
+    "paired_accuracy_ci": "source-paired percentile bootstrap 95%"
+  },
+  "source_commit": "4e9f3930e35644c09868432938d65c41717987b7",
+  "source_sha256": {
+    "reporting.py": "7b8234b6a9924184ff8cc9a2298a1126c196d1f18770eedfd3eedd70ca15196e",
+    "summarize_stream_evaluation.py": "5d5280e8abf5b290eb8a538ebc50ffe5543bcb927628dfb6cf54d2245ca0e94f"
+  },
+  "source_worktree_dirty": false
+}
