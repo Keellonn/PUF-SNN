@@ -1,0 +1,32 @@
+test_authenticated_predictions_must_match (test_stream_reporting.StreamReportingTests.test_authenticated_predictions_must_match) ... ok
+test_bootstrap_keeps_pairs_and_is_reproducible (test_stream_reporting.StreamReportingTests.test_bootstrap_keeps_pairs_and_is_reproducible) ... ok
+test_case_metadata_cannot_be_relabelled (test_stream_reporting.StreamReportingTests.test_case_metadata_cannot_be_relabelled) ... ok
+test_changed_historical_hash_stops_reporting (test_stream_reporting.StreamReportingTests.test_changed_historical_hash_stops_reporting) ... ok
+test_clean_row_reports_fpr_not_attack_success (test_stream_reporting.StreamReportingTests.test_clean_row_reports_fpr_not_attack_success) ... ok
+test_complete_evidence_reconciles_without_models (test_stream_reporting.StreamReportingTests.test_complete_evidence_reconciles_without_models) ... ok
+test_duplicate_case_identifier_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_case_identifier_is_rejected) ... ok
+test_duplicate_release_event_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_release_event_is_rejected) ... ok
+test_duplicate_session_sequence_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_session_sequence_is_rejected) ... ok
+test_duplicate_source_condition_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_source_condition_is_rejected) ... ok
+test_empty_condition_has_no_rate_or_confidence_interval (test_stream_reporting.StreamReportingTests.test_empty_condition_has_no_rate_or_confidence_interval) ... ok
+test_exact_interval_has_nonzero_uncertainty_at_endpoints (test_stream_reporting.StreamReportingTests.test_exact_interval_has_nonzero_uncertainty_at_endpoints) ... ok
+test_exact_interval_matches_known_symmetric_case (test_stream_reporting.StreamReportingTests.test_exact_interval_matches_known_symmetric_case) ... ok
+test_failure_is_not_counted_as_detector_miss (test_stream_reporting.StreamReportingTests.test_failure_is_not_counted_as_detector_miss) ... ok
+test_fixed_label_confusion_matrix_includes_absent_classes (test_stream_reporting.StreamReportingTests.test_fixed_label_confusion_matrix_includes_absent_classes) ... ok
+test_flags_must_match_frozen_threshold (test_stream_reporting.StreamReportingTests.test_flags_must_match_frozen_threshold) ... ok
+test_missing_planned_condition_is_rejected (test_stream_reporting.StreamReportingTests.test_missing_planned_condition_is_rejected) ... ok
+test_missing_predicted_case_is_not_silently_dropped (test_stream_reporting.StreamReportingTests.test_missing_predicted_case_is_not_silently_dropped) ... ok
+test_model_call_counts_are_checked (test_stream_reporting.StreamReportingTests.test_model_call_counts_are_checked) ... ok
+test_motion_comparison_uses_same_eligible_sources (test_stream_reporting.StreamReportingTests.test_motion_comparison_uses_same_eligible_sources) ... ok
+test_nonfinite_anomaly_score_is_rejected (test_stream_reporting.StreamReportingTests.test_nonfinite_anomaly_score_is_rejected) ... ok
+test_old_inputs_are_not_modified_or_models_required (test_stream_reporting.StreamReportingTests.test_old_inputs_are_not_modified_or_models_required) ... ok
+test_sequence_must_be_committed_before_models (test_stream_reporting.StreamReportingTests.test_sequence_must_be_committed_before_models) ... ok
+test_source_cannot_cross_splits (test_stream_reporting.StreamReportingTests.test_source_cannot_cross_splits) ... ok
+test_source_trial_cannot_have_multiple_window_clusters (test_stream_reporting.StreamReportingTests.test_source_trial_cannot_have_multiple_window_clusters) ... ok
+test_threshold_must_be_validation_only (test_stream_reporting.StreamReportingTests.test_threshold_must_be_validation_only) ... ok
+test_transformed_labels_must_match_clean_source (test_stream_reporting.StreamReportingTests.test_transformed_labels_must_match_clean_source) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.205s
+
+OK
