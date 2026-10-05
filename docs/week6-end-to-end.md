@@ -93,3 +93,39 @@ Tier-1 trials, reconstruction alternatives, key/trust-specification work and
 durable audit performance remain shared/Will work. Human recording remains
 disabled pending the required approval. Claims stay limited to a trusted
 co-located software prototype with synthetic motion and simulated responses.
+
+## Step 2: Frozen-model functional smoke runner
+
+`configs/week6_smoke.json` pins the three existing model manifests and the
+corrected dataset. `puf_snn/frozen_pipeline.py` verifies all required local
+binaries before deserialization, requires training-only SNN normalization and
+unchanged validation-only anomaly thresholds, and never trains missing models.
+The conventional estimators are the already recorded seed-7 storage refits;
+all three validation-selected SNN-32 checkpoints and all six frozen conventional
+anomaly detectors are loaded. This is not a new architecture/model selection.
+
+`src/python/scripts/run_week6_smoke.py` requires committed, clean source and a
+new output directory. It preselects one validation window for each of six
+synthetic devices and five classes, before observing any inference/admission
+outcome. Each of 30 attempts acquires one fresh nominal-noise RO-PUF simulation
+read, actually reconstructs once and follows current v2 admission/confirmation.
+No retry-until-success, forced correct candidate or discarded admission failure.
+
+The six fixed PUF manufacturing profiles use the existing seed-6767 pilot
+stream; noise reads and simulated 32-bit credentials have separate Week 6 RNG
+domains. Credential-verifier keys and handshake nonces use OS randomness.
+Enrollment/key material and raw responses are not exported. Selected-bit error
+counts are computed after admission for accounting, never for candidate choice.
+
+For every active session, the smoke checks a bad tag, clean acceptance, exact
+replay, one quality-valid pre-tag medium position jump, a 113/120 tracking-valid
+sender refusal, and subsequent valid traffic. Every accepted delivery runs both
+model families on that same accepted payload; refusals preserve calls/state.
+The smoke does not require correct classification or a particular anomaly flag.
+
+Partial attempt records remain under `INCOMPLETE` if the runner stops. Only a
+reconciled run writes `COMPLETE` and artifact hashes. The runner refuses to
+overwrite any existing output directory. Scoped LF rules preserve text hashes.
+This is a small functional check, not new attack success/FRR/accuracy estimates,
+fresh latency measurements, formal Tier-1 evidence or proof of hardware security.
+No historical result files, shared authentication policy or model are modified.
