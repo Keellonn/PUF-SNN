@@ -1,0 +1,27 @@
+test_all_existing_classifier_families_and_conditions_are_retained (test_nod_diagnostics.NodDiagnosticsTests.test_all_existing_classifier_families_and_conditions_are_retained) ... ok
+test_amplitude_change_does_not_change_non_nod_draws (test_nod_diagnostics.NodDiagnosticsTests.test_amplitude_change_does_not_change_non_nod_draws) ... ok
+test_amplitude_one_speed_one_regenerates_original (test_nod_diagnostics.NodDiagnosticsTests.test_amplitude_one_speed_one_regenerates_original) ... ok
+test_attack_metadata_cannot_be_extra_feature_channels (test_nod_diagnostics.NodDiagnosticsTests.test_attack_metadata_cannot_be_extra_feature_channels) ... ok
+test_changed_rates_do_not_override_saved_counts (test_nod_diagnostics.NodDiagnosticsTests.test_changed_rates_do_not_override_saved_counts) ... ok
+test_duplicate_historical_condition_stops_reporting (test_nod_diagnostics.NodDiagnosticsTests.test_duplicate_historical_condition_stops_reporting) ... ok
+test_duplicate_source_does_not_expand_denominator (test_nod_diagnostics.NodDiagnosticsTests.test_duplicate_source_does_not_expand_denominator) ... ok
+test_example_selection_is_order_independent (test_nod_diagnostics.NodDiagnosticsTests.test_example_selection_is_order_independent) ... ok
+test_flag_rates_are_legitimate_variation_not_attack_recall (test_nod_diagnostics.NodDiagnosticsTests.test_flag_rates_are_legitimate_variation_not_attack_recall) ... ok
+test_frozen_scores_use_inclusive_threshold_without_fitting (test_nod_diagnostics.NodDiagnosticsTests.test_frozen_scores_use_inclusive_threshold_without_fitting) ... ok
+test_half_and_tenth_coefficients_have_explicit_units (test_nod_diagnostics.NodDiagnosticsTests.test_half_and_tenth_coefficients_have_explicit_units) ... ok
+test_missing_historical_condition_stops_reporting (test_nod_diagnostics.NodDiagnosticsTests.test_missing_historical_condition_stops_reporting) ... ok
+test_model_hashes_are_checked_before_any_pickle_load (test_nod_diagnostics.NodDiagnosticsTests.test_model_hashes_are_checked_before_any_pickle_load) ... ok
+test_model_metadata_must_match_frozen_threshold (test_nod_diagnostics.NodDiagnosticsTests.test_model_metadata_must_match_frozen_threshold) ... ok
+test_moved_split_is_rejected (test_nod_diagnostics.NodDiagnosticsTests.test_moved_split_is_rejected) ... ok
+test_no_eligible_nod_cases_have_no_rate (test_nod_diagnostics.NodDiagnosticsTests.test_no_eligible_nod_cases_have_no_rate) ... ok
+test_nod_sources_stay_paired_at_every_speed (test_nod_diagnostics.NodDiagnosticsTests.test_nod_sources_stay_paired_at_every_speed) ... ok
+test_nonfinite_or_wrong_shape_scores_stop (test_nod_diagnostics.NodDiagnosticsTests.test_nonfinite_or_wrong_shape_scores_stop) ... ok
+test_other_predictions_are_not_called_still (test_nod_diagnostics.NodDiagnosticsTests.test_other_predictions_are_not_called_still) ... ok
+test_pilot_and_noise_are_not_changed (test_nod_diagnostics.NodDiagnosticsTests.test_pilot_and_noise_are_not_changed) ... ok
+test_timing_changes_are_not_silently_allowed (test_nod_diagnostics.NodDiagnosticsTests.test_timing_changes_are_not_silently_allowed) ... ok
+test_unplanned_amplitude_or_speed_is_rejected (test_nod_diagnostics.NodDiagnosticsTests.test_unplanned_amplitude_or_speed_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.360s
+
+OK
