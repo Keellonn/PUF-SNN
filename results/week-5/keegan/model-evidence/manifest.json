@@ -1,0 +1,93 @@
+{
+  "run_type": "frozen_model_evidence_and_storage_v1",
+  "created_utc": "2026-10-05T01:49:04.679712+00:00",
+  "source_commit": "833a6e8d139bd694cc9ecc2760cb6008a1ad8823",
+  "source_worktree_dirty": false,
+  "command": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Scripts\\python.exe src/python/scripts/summarize_model_evidence.py --output results/week-5/keegan/model-evidence",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "historical_conventional_results_commit": "7cdbd81674740e6ff975542139766fa9e0ddd129",
+  "checked_historical_inputs_sha256": {
+    "results/week-4/keegan/conventional-baselines/baseline-diagnostics.json": "20f2975843721a7283e7af7b0208760524c1bfc4b72f1ba6d68a819587df3389",
+    "results/week-4/keegan/snn-baseline-separate-seeds/manifest.json": "86f45f03fa7bc24643de4e1aba2ca60897a109c3c414f92fea2e2331293c9e6d",
+    "results/week-4/keegan/snn-baseline-separate-seeds/config.json": "f195cf7914f698c5ea9c380d413a1a5b5e4e59e79de0b0f3b2e54fe73742fe8f",
+    "results/week-4/keegan/snn-baseline-separate-seeds/summary.json": "836075ed321574084d9c0a5bf4c9161a2b631843055f8378db54c5a83546ed4c",
+    "results/week-4/keegan/snn-baseline-separate-seeds/normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-7/training-history.json": "3ffff843cfd6147c1f579aefc4932b0172a2b5cc9b79ad8617e191da090db6f2",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-7/validation-metrics.json": "a9c8cd6803f0ca982ff00b80f6f3057891efd042cd2c3d5757b042c162b9464f",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-7/test-metrics.json": "d4b6851becb3449bec27c718398bf0e4d4564550cc45853be04aa6cecf6545b9",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-7/model-state.pt": "9ca1994411465115447988a4162e48834985010764b396f58e13653eac88adec",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-17/training-history.json": "a72ae8c38ccdb96e3a27f487d6cf20f94fddeeff52e926d252da12dbe9c58284",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-17/validation-metrics.json": "7fa4110bae5f3daea65aa4e627df91989e66d8822fef277e7245effa84a005d0",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-17/test-metrics.json": "8951fddde85aa3546154fdf0337713602b37aa0193ddd142890ba05ac3d77b53",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-17/model-state.pt": "c83d3aa0ec40e9bd9b9fcfc3d48d7f1b25e221858076045b1035a35dd1d03f7b",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-27/training-history.json": "c9b6b794df343a241104846b6734d1189eb487e695052a03e891b2a7de73fec9",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-27/validation-metrics.json": "4801bf22767b3d7e96b1c9d65324cdb9d7d82b2895108a45f0a5252345ac6efc",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-27/test-metrics.json": "a07690913150fcaffb1338804e9274534ae04161f0f4092332d1065ceb664bc7",
+    "results/week-4/keegan/snn-baseline-separate-seeds/seed-27/model-state.pt": "2a9c74d0ec05b2e62e9bcdeb0f572917f093c71174b4bfa3f010ac8ca5a61f37",
+    "results/week-4/keegan/snn-architecture-32/manifest.json": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779",
+    "results/week-4/keegan/snn-architecture-32/config.json": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+    "results/week-4/keegan/snn-architecture-32/summary.json": "1b5edc2097541b031dc20609de9831c9d2123183e2556fd389654579c38e1b39",
+    "results/week-4/keegan/snn-architecture-32/normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "results/week-4/keegan/snn-architecture-32/seed-7/training-history.json": "2fe9dc2b4fa995702925b47076f682cc00be5beb32c64e61c974dbad8aefc150",
+    "results/week-4/keegan/snn-architecture-32/seed-7/validation-metrics.json": "75192f7ad10bf0e69f9bd026212ce86b4f8bd4d9d6c318c385f8f0d16c28d9e9",
+    "results/week-4/keegan/snn-architecture-32/seed-7/test-metrics.json": "a891c6d7f63e5a60b8a32093692a0d61189795befb4802377250f11f8d7ed560",
+    "results/week-4/keegan/snn-architecture-32/seed-7/model-state.pt": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6",
+    "results/week-4/keegan/snn-architecture-32/seed-17/training-history.json": "a7e1f2baf15fe96f73bfe90dc60a75cdbdd76f4ea6147947acf0aba8f6fc24ce",
+    "results/week-4/keegan/snn-architecture-32/seed-17/validation-metrics.json": "ef865dfacbed99f249e7035e4341ce1b9c4ac670907ca7a32c5ea0d4ee8dc504",
+    "results/week-4/keegan/snn-architecture-32/seed-17/test-metrics.json": "e1a2641222ce5fced4fc98ac159f2645a1b99ad1acacbea34f05cafbed56cb3a",
+    "results/week-4/keegan/snn-architecture-32/seed-17/model-state.pt": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+    "results/week-4/keegan/snn-architecture-32/seed-27/training-history.json": "2818e7e7e0e7cc963f0bf8acf0ea8a7f6f4ff380996f410bbf8ca56a0522293d",
+    "results/week-4/keegan/snn-architecture-32/seed-27/validation-metrics.json": "64776b94a410beb185a00835bc3e1679a0b929494e02511bfbf9212979704ca1",
+    "results/week-4/keegan/snn-architecture-32/seed-27/test-metrics.json": "05d3b42a97d8998dc77c54a1148a4b15b1cba9975187a03fde00792953a1bc89",
+    "results/week-4/keegan/snn-architecture-32/seed-27/model-state.pt": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830"
+  },
+  "source_sha256": {
+    "src/python/scripts/train_baselines.py": "992e66856117b8bc6066498ee262e2d11bc262212690c789ede136923e6bcdc4",
+    "src/python/scripts/run_baseline_diagnostics.py": "26c0d642d36872d174f3dceefe2dd80f85b0a94300d5f80a1a94f23b4141f909",
+    "src/python/scripts/train_snn.py": "8acf6b17f12b14dd28ca099dbda9786e165082ec3d66af60584a03f71d7fd99d",
+    "src/python/puf_snn/snn/model.py": "e2fc47e596ddd26ef79f0e7e3ee787216f7db85d2f4167704e48b003b0c10556",
+    "src/python/scripts/summarize_model_evidence.py": "9142031f871e3be4cb9a1051908c15a3fef980291d70bcd0ce8faef299a22990",
+    "src/python/puf_snn/model_reporting.py": "3df6c16e01bc43a2b2ba3e10c1ea506aaeb4f0df4f9512a84cb9e729db30ce18"
+  },
+  "snn_training_executed": false,
+  "conventional_storage_refits_executed": 2,
+  "new_architecture_search_executed": false,
+  "authentication_executed": false,
+  "threshold_selection_executed": false,
+  "historical_files_modified": false,
+  "model_record_count": 16,
+  "per_class_rows": 160,
+  "confusion_matrix_count": 32,
+  "training_decision_count": 6,
+  "local_model_artifacts": {
+    "models/logistic_regression-seed-7-storage-refit.joblib": {
+      "sha256": "197fedf4ad93b6ed097485b371db1dd501ebc83e883daaf75049fcf605e21069",
+      "bytes": 55441,
+      "git_ignored": true
+    },
+    "models/random_forest-seed-7-storage-refit.joblib": {
+      "sha256": "36a5bfb68547c2f28a937f1247ef9026a374d7db43225641a11238334c12c69d",
+      "bytes": 4019633,
+      "git_ignored": true
+    }
+  },
+  "environment": {
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "artifacts": {
+    ".gitattributes": "3fd6907a39ba488c39e7a1f249abd03f9868af5211714975e304482d552c1492",
+    "confusion-matrices.json": "bc7cc15c9f40a41f4531221ea7e8c721c75f1469269f7be4f7de4859d1d305b9",
+    "model-evidence.md": "56387eb58be179e8e5884c2aabfca9f9504feeb28bdc60fac737c75eb6fb8c45",
+    "model-storage.csv": "92c8419f04891e0f8be52432d355163504484bd0f389299dc7ffa4c47d0a7e2a",
+    "per-class.csv": "426413fd14986af00cd3a8158e7e85742de18ea34459e3ca0efa3ad3001514bc",
+    "recorded-metrics.json": "3709850f52afb032da61cc75972095ddac4735e86f34c00fe25086f8994c8673",
+    "selection-protocol.json": "cc065144d9a6d41e9f4204360caef4b996b79270aa9f679214422bde7f1f923a",
+    "snn-32-all-seed-curves.png": "fdecf5c453b2cc4cce7445e7306c3152f3b3bd86cb505e09cd70d12b7c3971b9",
+    "snn-64-all-seed-curves.png": "127eb05e9f99272c2e4298cff5edb25db15f8128b203be873d81c5ef3654d9fa",
+    "training-decisions.csv": "7b1ba12448b00842241360d1db4e548e943f33ceeef2fb914f337d11a5618f95"
+  }
+}

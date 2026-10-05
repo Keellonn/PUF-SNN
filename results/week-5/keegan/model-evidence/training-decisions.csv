@@ -1,0 +1,7 @@
+model,initialization_seed,training_seed,selected_epoch,stopping_epoch,best_validation_macro_f1,epochs_without_improvement,stopping_reason,maximum_epochs_reached
+snn_64,7,107,11,19,0.8438783117021084,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False
+snn_64,17,117,26,34,0.8497490782769906,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False
+snn_64,27,127,30,38,0.8617628951276257,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False
+snn_32,7,107,23,31,0.8531071845644727,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False
+snn_32,17,117,31,39,0.8622137533334044,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False
+snn_32,27,127,33,41,0.8654742705493085,8,no validation macro-F1 improvement > 1e-12 for 8 consecutive epochs,False

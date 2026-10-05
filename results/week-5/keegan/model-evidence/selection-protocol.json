@@ -1,0 +1,22 @@
+{
+  "candidate_widths": [
+    32,
+    64
+  ],
+  "fit_split": "train",
+  "selection_split": "validation",
+  "selected_by_mean_validation_macro_f1": 32,
+  "test_used_for_selection": false,
+  "initialization_seeds": [
+    7,
+    17,
+    27
+  ],
+  "training_seeds": [
+    107,
+    117,
+    127
+  ],
+  "new_architecture_search_executed": false,
+  "further_architecture_expansion": "disabled until end-to-end authentication experiment is complete"
+}

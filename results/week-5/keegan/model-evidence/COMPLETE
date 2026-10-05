@@ -1,0 +1,6 @@
+{
+  "manifest_sha256": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed",
+  "per_class_rows": 160,
+  "confusion_matrix_count": 32,
+  "training_decision_count": 6
+}
