@@ -1,0 +1,33 @@
+test_absent_class_metrics_are_zero_not_nan (test_model_reporting.ModelReportingTests.test_absent_class_metrics_are_zero_not_nan) ... ok
+test_bad_confusion_matrices_are_rejected (test_model_reporting.ModelReportingTests.test_bad_confusion_matrices_are_rejected) ... ok
+test_changed_accuracy_or_macro_f1_is_rejected (test_model_reporting.ModelReportingTests.test_changed_accuracy_or_macro_f1_is_rejected) ... ok
+test_changed_class_metric_or_support_is_rejected (test_model_reporting.ModelReportingTests.test_changed_class_metric_or_support_is_rejected) ... ok
+test_changed_selected_epoch_or_stopping_epoch_is_rejected (test_model_reporting.ModelReportingTests.test_changed_selected_epoch_or_stopping_epoch_is_rejected) ... ok
+test_early_stopping_reason_is_reconstructed (test_model_reporting.ModelReportingTests.test_early_stopping_reason_is_reconstructed) ... ok
+test_history_must_stop_when_patience_is_reached (test_model_reporting.ModelReportingTests.test_history_must_stop_when_patience_is_reached) ... ok
+test_improvement_tolerance_matches_training_code (test_model_reporting.ModelReportingTests.test_improvement_tolerance_matches_training_code) ... ok
+test_matrix_axis_order_is_true_then_predicted (test_model_reporting.ModelReportingTests.test_matrix_axis_order_is_true_then_predicted) ... ok
+test_maximum_epoch_stop_is_reported_separately (test_model_reporting.ModelReportingTests.test_maximum_epoch_stop_is_reported_separately) ... ok
+test_metrics_use_exact_counts (test_model_reporting.ModelReportingTests.test_metrics_use_exact_counts) ... ok
+test_missing_epoch_or_nonfinite_history_is_rejected (test_model_reporting.ModelReportingTests.test_missing_epoch_or_nonfinite_history_is_rejected) ... ok
+test_no_new_architecture_is_permitted (test_model_reporting.ModelReportingTests.test_no_new_architecture_is_permitted) ... ok
+test_nonfinite_saved_metric_is_rejected (test_model_reporting.ModelReportingTests.test_nonfinite_saved_metric_is_rejected) ... ok
+test_parameter_count_must_match_configuration (test_model_reporting.ModelReportingTests.test_parameter_count_must_match_configuration) ... ok
+test_per_class_output_keeps_all_five_labels (test_model_reporting.ModelReportingTests.test_per_class_output_keeps_all_five_labels) ... ok
+test_refit_confusion_counts_must_match_without_tuning (test_model_reporting.ModelReportingTests.test_refit_confusion_counts_must_match_without_tuning) ... ok
+test_refit_tree_structure_must_match_not_just_accuracy (test_model_reporting.ModelReportingTests.test_refit_tree_structure_must_match_not_just_accuracy) ... ok
+test_reporting_does_not_mutate_saved_results (test_model_reporting.ModelReportingTests.test_reporting_does_not_mutate_saved_results) ... ok
+test_sample_count_and_class_set_must_match (test_model_reporting.ModelReportingTests.test_sample_count_and_class_set_must_match) ... ok
+test_saved_metrics_are_reconciled (test_model_reporting.ModelReportingTests.test_saved_metrics_are_reconciled) ... ok
+test_selected_validation_score_must_match_history (test_model_reporting.ModelReportingTests.test_selected_validation_score_must_match_history) ... ok
+test_selection_reads_validation_not_test (test_model_reporting.ModelReportingTests.test_selection_reads_validation_not_test) ... ok
+test_selection_retains_both_widths_and_all_three_seeds (test_model_reporting.ModelReportingTests.test_selection_retains_both_widths_and_all_three_seeds) ... ok
+test_snn_parameter_counts_include_bias_and_recurrence (test_model_reporting.ModelReportingTests.test_snn_parameter_counts_include_bias_and_recurrence) ... ok
+test_tied_validation_score_keeps_first_best_epoch (test_model_reporting.ModelReportingTests.test_tied_validation_score_keeps_first_best_epoch) ... ok
+test_training_seed_pair_is_not_relabelled (test_model_reporting.ModelReportingTests.test_training_seed_pair_is_not_relabelled) ... ok
+test_truncated_history_without_stopping_condition_is_rejected (test_model_reporting.ModelReportingTests.test_truncated_history_without_stopping_condition_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.005s
+
+OK
