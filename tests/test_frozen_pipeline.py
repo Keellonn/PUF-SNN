@@ -29,7 +29,7 @@ from puf_snn.integration import processed_record_to_wire_window
 from puf_snn.pipeline_v2 import ModelCallCounts, V2InferencePipeline
 from puf_snn.reconstruction import enroll
 from puf_snn.snn.dataset import LABELS
-from scripts.run_week6_smoke import public_audit, require_clean_source, rng_for, selected_bit_errors
+from scripts.run_week6_smoke import public_audit, require_clean_source, rng_for, selected_bit_errors, write_result_attributes
 
 
 CHANNELS = [f"channel-{index}" for index in range(7)]
@@ -325,6 +325,13 @@ class FrozenPipelineTests(unittest.TestCase):
         self.assertEqual(selected_bit_errors(reference, (0,) * 63 + (1,)), 0)
         with self.assertRaises(ValueError):
             selected_bit_errors(reference, (0,) * 63)
+
+    def test_result_attributes_use_lf_bytes_before_hashing(self):
+        with TemporaryDirectory() as temporary:
+            path = Path(temporary) / ".gitattributes"
+            write_result_attributes(path)
+            self.assertEqual(path.read_bytes(), b"* text eol=lf\n")
+            self.assertEqual(sha256(path), "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9")
 
 
 if __name__ == "__main__":

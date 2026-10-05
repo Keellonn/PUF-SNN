@@ -1,0 +1,242 @@
+[
+  {
+    "device_id": "sim-device-01",
+    "label": "nod",
+    "session_id": "sim-device-01-session-02",
+    "source_trial_id": "sim-device-01-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-01-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-01",
+    "label": "shake",
+    "session_id": "sim-device-01-session-02",
+    "source_trial_id": "sim-device-01-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-01-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-01",
+    "label": "look_left_return",
+    "session_id": "sim-device-01-session-02",
+    "source_trial_id": "sim-device-01-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-01-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-01",
+    "label": "look_right_return",
+    "session_id": "sim-device-01-session-02",
+    "source_trial_id": "sim-device-01-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-01-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-01",
+    "label": "still",
+    "session_id": "sim-device-01-session-02",
+    "source_trial_id": "sim-device-01-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-01-session-02-still-001-window-000"
+  },
+  {
+    "device_id": "sim-device-02",
+    "label": "nod",
+    "session_id": "sim-device-02-session-02",
+    "source_trial_id": "sim-device-02-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-02-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-02",
+    "label": "shake",
+    "session_id": "sim-device-02-session-02",
+    "source_trial_id": "sim-device-02-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-02-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-02",
+    "label": "look_left_return",
+    "session_id": "sim-device-02-session-02",
+    "source_trial_id": "sim-device-02-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-02-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-02",
+    "label": "look_right_return",
+    "session_id": "sim-device-02-session-02",
+    "source_trial_id": "sim-device-02-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-02-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-02",
+    "label": "still",
+    "session_id": "sim-device-02-session-02",
+    "source_trial_id": "sim-device-02-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-02-session-02-still-001-window-000"
+  },
+  {
+    "device_id": "sim-device-03",
+    "label": "nod",
+    "session_id": "sim-device-03-session-02",
+    "source_trial_id": "sim-device-03-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-03-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-03",
+    "label": "shake",
+    "session_id": "sim-device-03-session-02",
+    "source_trial_id": "sim-device-03-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-03-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-03",
+    "label": "look_left_return",
+    "session_id": "sim-device-03-session-02",
+    "source_trial_id": "sim-device-03-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-03-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-03",
+    "label": "look_right_return",
+    "session_id": "sim-device-03-session-02",
+    "source_trial_id": "sim-device-03-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-03-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-03",
+    "label": "still",
+    "session_id": "sim-device-03-session-02",
+    "source_trial_id": "sim-device-03-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-03-session-02-still-001-window-000"
+  },
+  {
+    "device_id": "sim-device-04",
+    "label": "nod",
+    "session_id": "sim-device-04-session-02",
+    "source_trial_id": "sim-device-04-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-04-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-04",
+    "label": "shake",
+    "session_id": "sim-device-04-session-02",
+    "source_trial_id": "sim-device-04-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-04-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-04",
+    "label": "look_left_return",
+    "session_id": "sim-device-04-session-02",
+    "source_trial_id": "sim-device-04-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-04-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-04",
+    "label": "look_right_return",
+    "session_id": "sim-device-04-session-02",
+    "source_trial_id": "sim-device-04-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-04-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-04",
+    "label": "still",
+    "session_id": "sim-device-04-session-02",
+    "source_trial_id": "sim-device-04-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-04-session-02-still-001-window-000"
+  },
+  {
+    "device_id": "sim-device-05",
+    "label": "nod",
+    "session_id": "sim-device-05-session-02",
+    "source_trial_id": "sim-device-05-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-05-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-05",
+    "label": "shake",
+    "session_id": "sim-device-05-session-02",
+    "source_trial_id": "sim-device-05-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-05-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-05",
+    "label": "look_left_return",
+    "session_id": "sim-device-05-session-02",
+    "source_trial_id": "sim-device-05-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-05-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-05",
+    "label": "look_right_return",
+    "session_id": "sim-device-05-session-02",
+    "source_trial_id": "sim-device-05-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-05-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-05",
+    "label": "still",
+    "session_id": "sim-device-05-session-02",
+    "source_trial_id": "sim-device-05-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-05-session-02-still-001-window-000"
+  },
+  {
+    "device_id": "sim-device-06",
+    "label": "nod",
+    "session_id": "sim-device-06-session-02",
+    "source_trial_id": "sim-device-06-session-02-nod-001",
+    "split": "validation",
+    "window_id": "sim-device-06-session-02-nod-001-window-000"
+  },
+  {
+    "device_id": "sim-device-06",
+    "label": "shake",
+    "session_id": "sim-device-06-session-02",
+    "source_trial_id": "sim-device-06-session-02-shake-001",
+    "split": "validation",
+    "window_id": "sim-device-06-session-02-shake-001-window-000"
+  },
+  {
+    "device_id": "sim-device-06",
+    "label": "look_left_return",
+    "session_id": "sim-device-06-session-02",
+    "source_trial_id": "sim-device-06-session-02-look_left_return-001",
+    "split": "validation",
+    "window_id": "sim-device-06-session-02-look_left_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-06",
+    "label": "look_right_return",
+    "session_id": "sim-device-06-session-02",
+    "source_trial_id": "sim-device-06-session-02-look_right_return-001",
+    "split": "validation",
+    "window_id": "sim-device-06-session-02-look_right_return-001-window-000"
+  },
+  {
+    "device_id": "sim-device-06",
+    "label": "still",
+    "session_id": "sim-device-06-session-02",
+    "source_trial_id": "sim-device-06-session-02-still-001",
+    "split": "validation",
+    "window_id": "sim-device-06-session-02-still-001-window-000"
+  }
+]

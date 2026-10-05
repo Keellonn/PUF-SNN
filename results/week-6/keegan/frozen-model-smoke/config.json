@@ -1,0 +1,28 @@
+{
+  "attack_config": "configs/stream_attacks.json",
+  "auth_config": "configs/authentication_v2.json",
+  "bundles": {
+    "anomaly": {
+      "directory": "results/week-5/keegan/stream-evaluation",
+      "manifest_sha256": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e"
+    },
+    "conventional": {
+      "directory": "results/week-5/keegan/model-evidence",
+      "manifest_sha256": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed"
+    },
+    "snn32": {
+      "directory": "results/week-4/keegan/snn-architecture-32",
+      "manifest_sha256": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779"
+    }
+  },
+  "config_version": "week6-frozen-smoke-v1",
+  "device_count": 6,
+  "input_path": "data/generated/synthetic-windows.jsonl",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "puf_config": "configs/puf_baseline.json",
+  "puf_seed": 6767,
+  "semantic_control": "position_jump:medium",
+  "source_selection": "first_sorted_window_per_device_and_label",
+  "source_split": "validation",
+  "torch_threads": 1
+}

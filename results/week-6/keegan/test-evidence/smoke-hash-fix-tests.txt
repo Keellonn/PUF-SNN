@@ -1,0 +1,27 @@
+test_artifact_paths_cannot_escape_directory (test_frozen_pipeline.FrozenPipelineTests.test_artifact_paths_cannot_escape_directory) ... ok
+test_bad_tag_mutation_changes_only_tag (test_frozen_pipeline.FrozenPipelineTests.test_bad_tag_mutation_changes_only_tag) ... ok
+test_bundle_rejects_wrong_model_input_shapes (test_frozen_pipeline.FrozenPipelineTests.test_bundle_rejects_wrong_model_input_shapes) ... ok
+test_cohort_is_validation_only_and_order_independent (test_frozen_pipeline.FrozenPipelineTests.test_cohort_is_validation_only_and_order_independent) ... ok
+test_composite_omission_is_not_a_pass (test_frozen_pipeline.FrozenPipelineTests.test_composite_omission_is_not_a_pass) ... ok
+test_dirty_source_stops_before_an_experiment (test_frozen_pipeline.FrozenPipelineTests.test_dirty_source_stops_before_an_experiment) ... ok
+test_error_accounting_uses_only_frozen_selected_response_bits (test_frozen_pipeline.FrozenPipelineTests.test_error_accounting_uses_only_frozen_selected_response_bits) ... ok
+test_final_binary_hash_failure_precedes_all_deserialization (test_frozen_pipeline.FrozenPipelineTests.test_final_binary_hash_failure_precedes_all_deserialization) ... ok
+test_frozen_loader_restores_all_models_and_exact_thresholds (test_frozen_pipeline.FrozenPipelineTests.test_frozen_loader_restores_all_models_and_exact_thresholds) ... ok
+test_missing_class_does_not_silently_shrink_cohort (test_frozen_pipeline.FrozenPipelineTests.test_missing_class_does_not_silently_shrink_cohort) ... ok
+test_missing_ignored_storage_model_never_triggers_refit (test_frozen_pipeline.FrozenPipelineTests.test_missing_ignored_storage_model_never_triggers_refit) ... ok
+test_no_class_or_flag_expectation_is_imposed_by_smoke (test_frozen_pipeline.FrozenPipelineTests.test_no_class_or_flag_expectation_is_imposed_by_smoke) ... ok
+test_normalization_is_training_only_and_finite (test_frozen_pipeline.FrozenPipelineTests.test_normalization_is_training_only_and_finite) ... ok
+test_pinned_manifest_change_is_rejected (test_frozen_pipeline.FrozenPipelineTests.test_pinned_manifest_change_is_rejected) ... ok
+test_public_audit_filter_drops_any_unknown_secret_field (test_frozen_pipeline.FrozenPipelineTests.test_public_audit_filter_drops_any_unknown_secret_field) ... ok
+test_real_boundary_smoke_has_three_composite_deliveries_and_zero_reject_calls (test_frozen_pipeline.FrozenPipelineTests.test_real_boundary_smoke_has_three_composite_deliveries_and_zero_reject_calls) ... ok
+test_result_attributes_use_lf_bytes_before_hashing (test_frozen_pipeline.FrozenPipelineTests.test_result_attributes_use_lf_bytes_before_hashing) ... ok
+test_separate_seed_domains_do_not_share_read_or_credential_streams (test_frozen_pipeline.FrozenPipelineTests.test_separate_seed_domains_do_not_share_read_or_credential_streams) ... ok
+test_smoke_config_rejects_test_split_or_new_selection (test_frozen_pipeline.FrozenPipelineTests.test_smoke_config_rejects_test_split_or_new_selection) ... ok
+test_smoke_config_requires_every_bundle (test_frozen_pipeline.FrozenPipelineTests.test_smoke_config_requires_every_bundle) ... ok
+test_thresholds_require_validation_selection_and_all_six_models (test_frozen_pipeline.FrozenPipelineTests.test_thresholds_require_validation_selection_and_all_six_models) ... ok
+test_wrong_source_hash_is_rejected (test_frozen_pipeline.FrozenPipelineTests.test_wrong_source_hash_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 6.845s
+
+OK

@@ -65,6 +65,11 @@ def write_json(path: Path, value) -> None:
         handle.write(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n")
 
 
+def write_result_attributes(path: Path) -> None:
+    """Use exact LF bytes BEFORE recording the artifact hash on Windows."""
+    path.write_text("* text eol=lf\n", encoding="utf-8", newline="\n")
+
+
 def require_clean_source(root: Path) -> str:
     state = subprocess.run(["git", "status", "--porcelain"], cwd=root,
                            text=True, capture_output=True, check=True).stdout
@@ -141,7 +146,7 @@ def main() -> None:
 
     output.mkdir(parents=True)
     (output / "INCOMPLETE").write_text("Preserve partial evidence; no automatic retry or overwrite.\n", encoding="utf-8")
-    (output / ".gitattributes").write_text("* text eol=lf\n", encoding="utf-8")
+    write_result_attributes(output / ".gitattributes")
     write_json(output / "config.json", config)
     write_json(output / "frozen-input-hashes.json", bundle.artifact_hashes)
     write_json(output / "source-selection.json", [

@@ -1,0 +1,93 @@
+{
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "attempts.jsonl": "21b8cb42c347477782545ed8cf6448c6851ded90b03e34885672d450e5a17703",
+    "config.json": "080c59b9f50d639c199c5133bab4263fdef09ba5f6788c7aa6d539bb02ae66cf",
+    "frozen-input-hashes.json": "0900f5725b7a50cb3518e87f46faeefc0326a4303f92407b3f9d1f9fef7af95f",
+    "smoke-report.md": "010954d457f1b0ba058dc496743f39efadd8da70383dedac8b5587cbf6b2493e",
+    "source-selection.json": "27276f7a181cbde5276b747aadc19846f7957806367584903e87f7f5adcc2dfa",
+    "summary.json": "afce2833ba1965082918359d4700fcd3a7c54b2532e4ac0d02810578ab22d0a4"
+  },
+  "authentication_executed": true,
+  "completed_utc": "2026-10-05T18:30:07.497618+00:00",
+  "configuration_sha256": "ff10c6b53ce8041f39bf26c99d793fda64a8cbde6cbe4dd6c05e28b3437a100f",
+  "environment": {
+    "galois": "0.4.11",
+    "joblib": "1.6.0",
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.14",
+    "scikit_learn": "1.9.1",
+    "torch": "2.14.0+cpu",
+    "torch_threads": 1
+  },
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "latency_measured": false,
+  "randomness": {
+    "manufacturing_domain": "week2-v1",
+    "puf_seed": 6767,
+    "read_and_credential_domains": "week6-smoke-v1; separate phase-specific streams",
+    "verifier_keys_and_handshake_nonces": "independent unseeded OS randomness"
+  },
+  "run_type": "week6-frozen-model-v2-functional-smoke-v1",
+  "source_commit": "7d07a4f7f2de58b64ae17f98aa9c1478a9803f14",
+  "source_worktree_dirty": false,
+  "summary": {
+    "accepted_sessions": 30,
+    "admission_outcomes": {
+      "active_session:accepted": 30
+    },
+    "consumer_callback_counts": {
+      "anomaly": 90,
+      "motion": 90,
+      "preprocessing": 90
+    },
+    "frozen_detector_count": 6,
+    "frozen_motion_model_count": 5,
+    "individual_detector_forward_calls": 540,
+    "individual_motion_forward_calls": 450,
+    "latency_measured": false,
+    "limitation": "Functional validation cohort: 30 predeclared single-read admission attempts on six fixed simulated PUF profiles, with paired repeated windows and boundary controls. This is not a new held-out accuracy/attack-recall estimate, an FRR study, formal Tier-1 evaluation or latency benchmark. No claim of Quest, cross-device/person generalization, hardware acquisition time or production security.",
+    "planned_admission_attempts": 30,
+    "rejected_sessions": 0,
+    "rejected_window_model_calls": 0,
+    "response_reads": 30,
+    "thresholds_changed": false,
+    "training_executed": false,
+    "window_control_counts": {
+      "113_tracking_valid:reject": 30,
+      "bad_tag:reject": 30,
+      "clean:accept": 30,
+      "exact_replay:reject": 30,
+      "next_valid_after_refusals:accept": 30,
+      "pre_tag_position_jump_medium:accept": 30
+    }
+  },
+  "supporting_configurations": {
+    "attack_config": "a2251e963c00b665eb36a4a865ade1d3e9ae31326016972f1ccb4f845cc31cd9",
+    "auth_config": "b0ee45b8a3ee5cf6c4c25813e876847303ada4209abc4632bce903a331cf0f60",
+    "puf_config": "fb54059dc268ef86300d90a4468fcf200b0c73d13c28fad1402a84a075271cda"
+  },
+  "threshold_selection_executed": false,
+  "training_executed": false,
+  "artifact_amendments": [
+    {
+      "amended_utc": "2026-10-05T18:33:54+00:00",
+      "artifact": ".gitattributes",
+      "kind": "line-ending-only metadata correction",
+      "original_artifact_sha256": "ba3d4e0a92188305f7cb5ff36e521d8e5df81a0cf5bc64028d9c86834e5096c0",
+      "corrected_artifact_sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+      "original_manifest_sha256": "77bffb8609f1154703de251b148a07ab39e94d5fb301102500198f5a41fd9e34",
+      "reason": "Normalize the generated attributes file from CRLF to LF so Git staging and future checkouts preserve its recorded bytes. The smoke runner now requests LF explicitly. No model fitting, inference, threshold selection or authentication was rerun.",
+      "unchanged_experimental_artifacts": [
+        "attempts.jsonl",
+        "config.json",
+        "frozen-input-hashes.json",
+        "smoke-report.md",
+        "source-selection.json",
+        "summary.json"
+      ],
+      "experiment_source_commit_unchanged": "7d07a4f7f2de58b64ae17f98aa9c1478a9803f14"
+    }
+  ]
+}

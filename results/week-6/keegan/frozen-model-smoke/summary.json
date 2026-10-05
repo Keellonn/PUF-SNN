@@ -1,0 +1,31 @@
+{
+  "accepted_sessions": 30,
+  "admission_outcomes": {
+    "active_session:accepted": 30
+  },
+  "consumer_callback_counts": {
+    "anomaly": 90,
+    "motion": 90,
+    "preprocessing": 90
+  },
+  "frozen_detector_count": 6,
+  "frozen_motion_model_count": 5,
+  "individual_detector_forward_calls": 540,
+  "individual_motion_forward_calls": 450,
+  "latency_measured": false,
+  "limitation": "Functional validation cohort: 30 predeclared single-read admission attempts on six fixed simulated PUF profiles, with paired repeated windows and boundary controls. This is not a new held-out accuracy/attack-recall estimate, an FRR study, formal Tier-1 evaluation or latency benchmark. No claim of Quest, cross-device/person generalization, hardware acquisition time or production security.",
+  "planned_admission_attempts": 30,
+  "rejected_sessions": 0,
+  "rejected_window_model_calls": 0,
+  "response_reads": 30,
+  "thresholds_changed": false,
+  "training_executed": false,
+  "window_control_counts": {
+    "113_tracking_valid:reject": 30,
+    "bad_tag:reject": 30,
+    "clean:accept": 30,
+    "exact_replay:reject": 30,
+    "next_valid_after_refusals:accept": 30,
+    "pre_tag_position_jump_medium:accept": 30
+  }
+}
