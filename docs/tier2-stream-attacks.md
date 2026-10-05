@@ -8,7 +8,7 @@ Week 5 evaluates corrupted synthetic sensor input entering a legitimate sender b
 
 Will owns the keyless Tier-1 replay/substitution/post-tag attacks and PUF reconstruction. His confirmation of the existing Wire Protocol 2.0 boundary permits this experiment to reuse the final sender, verifier and accepted-window integration without changing them.
 
-The existing SNN predicts five motion classes. The separate supervised anomaly detector will begin with logistic regression and random forest. A separate SNN anomaly model is not required for the first anomaly experiment.
+The existing SNN predicts five motion classes. The completed separate supervised anomaly experiment uses logistic regression and random forest. The classifiers and detector thresholds remain frozen; no SNN anomaly detector is added before conventional anomaly analysis and end-to-end timing are complete.
 
 ## Source and splits
 
@@ -50,7 +50,7 @@ Outcomes are kept separate:
 
 - `construction_failure`: no processed window was produced.
 - `quality_failure`: a transformed processed window failed final canonical construction/quality checks.
-- `quality_valid`: a constructed window is eligible for legitimate sender sealing; authentication has not yet executed.
+- `quality_valid`: a constructed window is eligible for legitimate sender sealing. This describes the construction stage; later held-out authentication/delivery is recorded separately.
 
 The normal sender refuses to tag invalid-quality input. Valid-tag verifier quality-rejection tests need a separate controlled authentication test harness; this stream generator does not bypass the sender or access its key.
 
@@ -66,11 +66,11 @@ Constant pose bias is not included in this initial nine-transform sweep. A const
 
 ## Shared accepted-window behavior
 
-Authenticated evaluation will use one composite consumer after the existing accepted-event boundary. Both motion classification and anomaly detection consume the same immutable authenticated sensor data. Rejected authentication events invoke neither model. Delivery remains at most once, not a guarantee that a caller invokes it successfully.
+The completed authenticated evaluation used one composite consumer after the existing accepted-event boundary. Both motion classification and anomaly detection consume the same immutable authenticated sensor data. Rejected authentication events invoke neither model. Delivery remains at most once, not a guarantee that a caller invokes it successfully.
 
 An anomaly flag is downstream inference metadata. It does not change an accepted authentication decision, roll back sequence state or permit another delivery. If the consumer fails, its event remains consumed and the verifier's existing incomplete-evidence behavior applies. Authentication audit records are not rewritten to become anomaly decisions.
 
-## Saved evidence and remaining evaluation
+## Saved evidence and evaluation history
 
 The generator saves a compact plan, configuration, source/config hashes, environment, example construction outcomes, summary, manifest and completion marker. Full transformed records are regenerated from the frozen source and case seeds during evaluation rather than duplicating the dataset dozens of times.
 
@@ -117,3 +117,35 @@ The original harness did not write authenticated progress to disk. Its completed
 ## Completed Week 5 status
 
 The completed run constructed 44,899 quality-valid cases from 50,400 planned cases and retained 5,501 construction failures. In the held-out test split, 14,956 quality-valid cases were authenticated and delivered; paired motion predictions and anomaly flags matched the unauthenticated path. The random-forest and logistic-regression detectors reached mean medium/high recall of 87.95% and 82.85%, respectively, so both missed the provisional 90% target. Full metrics, per-condition counts, source-cluster intervals, and limitations are in `results/week-5/keegan/stream-evaluation/` and `results/week-5/keegan/keegan.md`. Detector-inclusive latency was not measured in this run.
+
+## Week 5 revision: reconciled per-condition accounting
+
+`summarize_stream_evaluation.py` reads the completed run without rerunning attacks, fitting models, changing thresholds or invoking authentication. It verifies the used historical inputs and reconciles planned/construction/prediction/delivery rows before reporting. The original results and manifest remain unchanged.
+
+- All splits: 50,400 planned = 44,899 quality-valid + 5,501 construction failures; final post-construction quality failures = 0.
+- Failure reasons: 3,493 `source_gap_exceeds_50_ms` and 2,008 `source_timestamps_not_increasing`. These are logger-style source reconstruction/quality-policy blocks before tagging, not serialization failures, verifier rejections or anomaly detections.
+- Test: 16,800 planned = 14,956 valid/accepted + 1,844 pre-tag blocks (1,160 excessive source gaps; 684 non-increasing timestamps). High timestamp jitter has zero eligible cases; high dropout has only four. Report N/A or the small denominator, never a fabricated detection success.
+
+`results/week-5/keegan/tier2-breakdown/` saves every split/type/severity construction count and failure reason; per-detector-seed eligible, detected and missed counts; clean FPR/calibration; and paired conventional/SNN accuracy and macro-F1 changes with complete class counts. Clean comparison for a condition uses exactly the same eligible source subset, not all 600 controls when only a few changed cases pass.
+
+Each fixed-seed condition's detector recall/FPR has a two-sided 95% Clopper-Pearson interval. Paired accuracy-loss intervals use 400 source-paired bootstrap resamples with reporting seed 7017. Shared synthetic device/session profiles limit the independence assumptions; model seeds reuse the same cases and are not independent datasets. The original pooled source-cluster intervals use bootstrap seed 7007 and remain separate. Do not add pre-tag blocks to detector true positives or pool duplicated seed controls into a larger sample size.
+
+The frozen calibration still selects thresholds on Session 2 under clean validation FPR <= 5%, maximizing source-weighted F1 with the higher threshold as tie-break. LR test F1/FPR/medium-high recall = 0.8424/5.33%/82.85%; RF = 0.9003/2.94%/87.95%. Both miss the unchanged 90% recall target; LR also misses the clean test FPR target. Medium/high orientation drift remains a principal miss. No threshold or severity is revised after looking at test performance.
+
+## Week 5 revision: nod amplitude and temporal ambiguity
+
+`evaluate_nod_diagnostics.py` reuses the 270 saved conventional/SNN motion-condition rows from the fixed Week 4 grid, then scores the six existing anomaly models at their saved validation-only thresholds. It produces 192 detector-condition rows and 3,840 per-source anomaly predictions with zero pre-tag quality blocks. There is no classifier rerun, SNN training, anomaly fitting, threshold selection or authentication in this addendum.
+
+An unscaled nod has a -22-degree x-rotation coefficient and 0.006 m vertical coefficient. Half amplitude uses -11 degrees/0.003 m; one-tenth uses -2.2 degrees/0.0006 m. These are nominal synthetic coefficients before group/trial effects, shaping and nuisance motion, not measured peak angles. Noise, drift, sway and return error stay unchanged; total observed motion does not shrink proportionally. Speed scales duration-range bounds, subject to the generator's existing group effects/clipping, without changing the saved 120-point timestamps.
+
+Treat these variants as legitimate execution variation and an increasingly ambiguous intended nod/still boundary. Another threat scenario could use similar attenuation adversarially, but this experiment does not observe intent. Motion nod recall/still confusion and detector false-alarm frequency are the appropriate separate metrics here, not attack detection success.
+
+At one-tenth amplitude and nominal speed, mean nod recall is 23.33% LR, 13.61% RF and 6.94% SNN-64; still confusion is 71.67%, 85.00% and 90.00%. Frozen LR/RF anomaly flag rates are only 4.17%/3.06%. This shows task ambiguity without automatically making the variation suspicious. Historical classifier aggregates and new anomaly predictions are marginal summaries; they do not establish a joint 'predicted still and flagged' count.
+
+The figures and nominal/observed motion statistics in `results/week-5/keegan/nod-diagnostics/` include both query splits, every fixed model seed and speed, representative paired trajectories, clean still controls, and conditional intervals. No new end-to-end authenticated nod claim follows.
+
+## Historical authentication versus current v2 admission
+
+The original stream evaluation used supplied-correct synthetic candidate material before Will added independent pre-HKDF verification/local authorization. Its 14,956 accepted events and matched predictions remain valid evidence for that recorded boundary, not a fresh noisy-response-through-v2 session experiment. The current admission implementation/results are in `docs/credential-verifier-setup.md` and `docs/credential-verifier-formal-results-week5.md`; noisy reconstruction availability, fresh v2 timing, detector-inclusive latency and durable audit I/O remain separate.
+
+Pre-tag transforms stay in their sources' fixed splits and use varied seeded parameters within the same declared severity ranges. This is not a disjoint attack-family or unseen-parameter-range evaluation. Metadata exclusion and equal canonical/preprocessing paths prevent explicit label cues, but exact freeze patterns and synthetic generator regularities remain possible shortcuts. No artifact-free or real-world robustness claim is made.

@@ -4,15 +4,16 @@
 
 ## Research question
 
-Can a software prototype using a simulated noisy PUF-derived session credential reject replayed, modified, or misattributed Quest 3 head-motion windows before SNN inference while meeting defined targets for attack rejection, macro-F1 loss, and processing latency?
+How do simulated noisy PUF credential reconstruction, independent pre-HKDF verification, authenticated-window enforcement, and downstream motion/anomaly inference interact in a reproducible software prototype, and what reliability, attack-rejection, classification and post-window latency limits do the experiments establish?
 
 ## Project goal
 
 Quest applications continuously process motion data. An attacker could replay old data, change it after collection, claim it came from another device or session, or create unusual motion before the data is authenticated.
 
 Our prototype separates these problems
-- PUF-derived credential reconstruction recovers stable credential material from a noisy simulated response.
-- Session establishment/authentication uses that credential to establish a session and its key.
+- PUF-derived credential reconstruction attempts to recover enrolled credential material from a noisy simulated response.
+- Independent credential verification and trusted local admission reject incorrect candidates before session-key derivation.
+- Session establishment derives keys only after admission, followed by mutual confirmation before an active session.
 - Per-window integrity/authenticity verification checks the protected message and its tag.
 - Replay/freshness/order checking uses verifier-side session and sequence state.
 - Motion classification identifies which head movement occurred.
@@ -20,7 +21,7 @@ Our prototype separates these problems
 
 We will evaluate how these parts work separately and together. Based on our targeted review so far, we have not found a study that evaluates this exact combination of simulated PUF-based credentials, authenticated XR motion windows, SNN inference, anomaly detection, replay and substitution attacks, and per-stage latency in one reproducible experiment.
 
-This is a software prototype and reproducible pilot framework, not yet a demonstrated publishable result. We are not claiming that the Quest 3 gives us access to a physical PUF.
+This is a reproducible software prototype for authenticated XR motion-window processing: a simulated noisy PUF-derived credential supports session establishment; an independent verifier prevents observed BCH miscorrections from reaching key derivation; canonical HMAC-protected windows enforce binding, integrity, freshness and ordering before conventional or spiking inference; and a separate anomaly model evaluates defined pre-tag semantic perturbations. This is not a physical Quest PUF, production fuzzy extractor or demonstrated hardware root of trust.
 
 ## Initial scope
 
@@ -118,27 +119,28 @@ Attacked copies stay in the same split as their clean source. They don't count a
 
 ## System flow
 
+```text
 simulated noisy PUF
-        ↓
-device credential reconstruction
-        ↓
-session key establishment
-        ↓
-Quest data → 2 second window → authentication tag
-                                      ↓
-                              authentication gate
-                                ↓            ↓
-                         reject and log      accept
-                                                ↓
-                              classifier + anomaly detector
-                                                ↓
-                                         audit record
+        -> credential reconstruction
+        -> independent credential verification + local admission
+        -> HKDF + mutual confirmation
+        -> active session
 
-The planned integration uses a separate locally simulated sender/device process and verifier process, even when both run on one computer. The verifier owns session and accepted-sequence state; sender-supplied audit outcomes are not trusted.
+motion -> validated 120-sample window -> Wire 2.0 bytes + window HMAC
+        -> verification of binding, integrity, quality and sequence
+           reject: authentication audit, no model call
+           accept: authentication audit + sequence commit
+                   -> at-most-once release
+                   -> motion classifier + separate anomaly detector
+                   -> downstream inference evidence
+```
 
-The simulated PUF provides noisy, device-specific response bits. A reconstruction method recovers stable credential material, which is then used to derive a session key.
+The current v2 admission gate is documented in `docs/credential-verifier-setup.md`. Its credential-verification HMAC uses an independent verifier key/context; it is not the window HMAC under a derived session key. An incorrect candidate fails before request emission/HKDF. The receiver requires the trusted local admission authorization before allocating a pending session; mutual confirmation is still required before an active session can authorize window processing. This local authorization mechanism is a software-pilot trust assumption, not a remote attestation claim.
+The integration uses separately instantiated software sender/device and verifier endpoints on one computer; the recorded evaluation does not establish process isolation or network deployment. The verifier owns session and accepted-sequence state; sender-supplied audit outcomes are not trusted.
 
-For the pilot, each window will be protected with HMAC-SHA-256. Encryption is not required because the initial study focuses on integrity, device and session binding, freshness, and replay protection.
+The simulated PUF provides noisy, device-specific response bits. Reconstruction can fail or produce a valid-format wrong candidate; the independent verification/admission gate checks the actual candidate before key derivation. Blocking a miscorrection protects integrity but does not repair a failed legitimate reconstruction or improve availability.
+
+The current per-window interface uses HMAC-SHA-256 over the exact canonical big-endian Wire Protocol 2.0 binary bytes (including binary32 motion), not the JSON/base64 transport formatting. Encryption is not required because the initial study focuses on integrity, device and session binding, freshness, and replay protection.
 
 A device ID is a public identifier, not proof of origin by itself. The security property comes from binding the device, session, sequence number, protocol version, and payload to a valid tag under the established session key.
 
@@ -170,14 +172,14 @@ The first classification baselines are
 2. Random forest with 300 trees
 3. A small recurrent LIF SNN
 
-LightGBM may be added after the first two conventional models work reliably. Later experiments may compare velocities, accelerations, derived features, or delta encoding.
+The existing feature ablations are retained as evidence. No further feature variants or SNN architecture expansion are part of this revision; any later change requires a predeclared question and validation-only selection protocol after the end-to-end authentication experiment.
 The anomaly detector answers the question: Does this authenticated window contain a defined suspicious change?
 
-The first anomaly experiment will be supervised and separate from motion classification
+The completed first anomaly experiment is supervised and separate from motion classification
 - normal: unchanged clean window
 - suspicious: a documented sensor change was applied before authentication
 
-Logistic regression and random forest were used in the first separate supervised anomaly experiment. A separate SNN anomaly model may be added afterward. Classification confidence is not treated as an anomaly score. The anomaly labels, transform severities, and artifact controls are documented in `docs/tier2-stream-attacks.md`. The first recurrent SNN remains a motion classifier. The Week 5 Tier 2 attack evaluation and held-out detector results are recorded in `results/week-5/keegan/`. Both detectors missed the provisional 90% medium/high detection target; these synthetic results do not establish detector-inclusive latency, physical Quest performance, or full-system availability.
+Logistic regression and random forest were used in the first separate supervised anomaly experiment. No SNN anomaly detector will be added before the conventional anomaly analysis and end-to-end timing are complete. Classification confidence is not treated as an anomaly score. The anomaly labels, transform severities, and artifact controls are documented in `docs/tier2-stream-attacks.md`. The first recurrent SNN remains a motion classifier. The Week 5 Tier 2 attack evaluation and held-out detector results are recorded in `results/week-5/keegan/`. Both detectors missed the provisional 90% medium/high detection target; these synthetic results do not establish detector-inclusive latency, physical Quest performance, or full-system availability.
 
 ## Threat model and attacks
 
@@ -197,7 +199,7 @@ The gate should also handle duplicate, stale, reordered, delayed, and missing-wi
 
 ### Tier 2: suspicious but authenticated motion
 
-These changes happen before the tag is created, so the authentication gate should accept them
+These changes happen before tag creation. Only successfully constructed, quality-valid windows can be sealed by the legitimate sender and evaluated as authenticated semantic anomalies
 - Added sensor noise
 - Constant bias or gradual drift
 - Timestamp jitter or changed sampling rate
@@ -224,7 +226,7 @@ All four will use the same source windows, splits, preprocessing, attacks, and r
 
 - Target 100% observed rejection across at least 1,000 examples of each Tier-1 attack; report the actual rejection count and trial count, not a claim of universal rejection
 - Valid window false reject rate no higher than 0.5%
-- PUF session false reject rate no higher than 1%, pending reconstruction results
+- Reconstruction/admission false reject rate no higher than 0.5%, as clarified in the latest faculty feedback; retain the earlier 1% provisional wording as historical, not as an achieved target
 - Report false acceptance and false rejection separately
 
 ### Motion classification
@@ -268,7 +270,7 @@ The 2 second recording window is not included in the 20 ms processing target. To
 2,000 ms + post-window decision latency
 
 
-This is a processing measurement, not motion-to-photon latency. Report machine model, operating system, Python version, implementation type, timing method, warm-up procedure, and repetition count alongside median and p95 results. Personal-laptop Python measurements are software-prototype results, not embedded Quest or FPGA performance.
+This is a software-prototype processing target, not motion-to-photon latency or a hard real-time/headset guarantee. Report machine, OS/software, a high-resolution monotonic timer, warm-up/repetition counts, GC state, logging/I/O scope, CPU power/affinity controls (or their absence), p50/p95/p99/max and retained outliers. The existing recurring-window benchmark excludes reconstruction, independent verification, session setup and durable audit I/O. Its LR/SNN-64 accepted p95 is below 20 ms; RF is above 20 ms. Large accepted-path maxima remain unexplained. Fresh accepted/rejected v2 session-to-first-window timing is a separate outstanding measurement; nested stage percentiles must not be added to manufacture an end-to-end total.
 
 ## Experiment records
 
@@ -318,8 +320,20 @@ More detailed information is stored separately
 
 ## Week 4 evaluation clarification
 
-The preliminary CPU SNN is competitive within the predeclared five-point macro-F1 gap but not superior to the conventional models. Preserve historical runs and use Session 2, not Session 3, for selection. The feedback evaluation records separate initialization/training seeds, complete per-class metrics, learning curves, full-window and rotation-aware leakage diagnostics, nod/still analysis, fixed feature/stress comparisons and one 32-versus-64-neuron comparison.
+The original historical SNN met the five-point gap, but the separately seeded SNN-64 follow-up misses it (0.8500 macro-F1; 5.32 points below LR). The validation-selected SNN-32 ablation meets it (0.8619; 4.12 points below LR). Neither outperforms LR or RF. Preserve historical runs and use Session 2, not Session 3, for selection. The feedback evaluation records separate initialization/training seeds, complete per-class metrics, learning curves, full-window and rotation-aware leakage diagnostics, nod/still analysis, fixed feature/stress comparisons and one 32-versus-64-neuron comparison.
 
 Data generation uses seed 7 and retains its original draw sequence. Session-index splits are deterministic and have no random split seed. Role-specific model/training/permutation seeds and pointers to attack/PUF configurations are recorded in configs/pilot.json. OS session randomness remains cryptographic and unseeded. See docs/xr-snn-design.md for exact model and timing boundaries, docs/authenticated-window-interface.md for the current Wire Protocol 2.0 binary contract and rejection policy, and docs/puf-layer3-design.md for Will's Layer 3 implementation overview.
 
 Layer-2 session reconstruction FRR and per-window verifier FRR require separate denominators; do not equate them without an explicit end-to-end mapping. Current reconstruction and key-confirmation limitations remain Will's responsibility. A known-correct-candidate pipeline benchmark excludes reconstruction failures and cannot establish overall legitimate-window availability.
+
+## Week 5 revision evidence and claim boundaries
+
+The revised Tier-2 report reconciles all 50,400 planned cases, including 5,501 pre-tag construction blocks: 3,493 excessive source gaps and 2,008 non-increasing source timestamps. The 14,956 quality-valid held-out cases were accepted in the historical known-correct-credential run; reading those results does not validate the later v2 admission gate. Per-attack/severity detected/missed counts, paired classifier losses and conditional intervals are in `results/week-5/keegan/tier2-breakdown/`.
+
+LR/RF anomaly F1 is 0.8424/0.9003, clean test FPR is 5.33%/2.94%, and medium/high recall is 82.85%/87.95%. Neither meets the unchanged 90% recall criterion; LR also misses the 5% test-FPR target. Thresholds remain frozen from Session 2, not lowered after inspecting Session 3.
+
+Low-amplitude nods are evaluated as legitimate execution variation and an ambiguous intended-class boundary, not automatically as malicious behavior. The original amplitude/speed grid is retained, with conventional/SNN sensitivity and frozen detector flag rates in `results/week-5/keegan/nod-diagnostics/`. Orientation and full 120 x 7 nearest-training metrics, exact processing/alignment rules, and the retained original leakage evidence are in `results/week-5/keegan/sequence-neighbors/`.
+
+Per-class/per-seed metrics, all six SNN learning histories/stopping decisions, exact LIF/readout equations, model storage and the fixed validation-only selection protocol are in `results/week-5/keegan/model-evidence/`. LR's deterministic lbfgs fitting explains its zero descriptive seed SD; five seed labels are not five independent stochastic performance samples. Data generation seed 7 fixes one dataset, separate from model/attack/uncertainty seeds.
+
+Claims remain cross-session synthetic evaluation with six fixed simulated device profiles. No cross-device, cross-person, real Quest, energy or deployed-security claim follows. The paper outline is `docs/paper-outline.md`. The remaining shared evidence is the formal v2 trust/key specification, expanded varied Tier-1 trials with exact intervals and parser/state instrumentation, controlled reconstruction alternatives, and fresh v2 accepted/rejected end-to-end timing. Existing Will-side reports remain separate and unchanged.

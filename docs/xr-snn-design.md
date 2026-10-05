@@ -113,7 +113,7 @@ The conventional baselines and SNN use the same 7 pose channels per time step: 3
 
 The initial fixed-decimal authenticated-window interface and cross-language golden vector established the protected fields, quality boundary, and rejection-before-inference behavior. The final integration uses Will's Wire Protocol 2.0 binary implementation instead of the initial decimal JSON transport.
 
-The final processed-record adapter converts a validated 120-sample record into an immutable binary window. The sender binds the authenticated device, session, and sequence values. The verifier releases only an accepted window through `ExactlyOnceClassifierRelease`.
+The final processed-record adapter converts a validated 120-sample record into an immutable binary window. The sender binds the authenticated device, session, and sequence values. The verifier releases only an accepted window through the existing class named `ExactlyOnceClassifierRelease`. Despite its name, the boundary provides at-most-once consumer invocation, not guaranteed callback completion. The verifier commits acceptance/sequence state before preprocessing; a rejected/duplicate result invokes no consumer, and a consumer failure leaves the event consumed without rolling authentication back.
 
 Rejected, modified, malformed, replayed, low-quality, wrong-device, and wrong-session messages make zero classifier calls. Labels and split identifiers aren't included in the accepted classifier record.
 
@@ -136,7 +136,7 @@ The validator should catch
 - Duplicate windows across splits
 - Normalization being fitted with validation or test data
 
-Cross device testing is a secondary experiment. It won't represent physical headset differences until we have approved data from multiple real devices.
+Cross-device classifier generalization is not established by this fixed-profile cross-session split. Cross-device authentication-substitution tests are a separate security question.
 Cross participant testing requires approved human data.
 
 ## Conventional classifiers
@@ -144,7 +144,6 @@ Cross participant testing requires approved human data.
 Models were implemented in this order
 1. Logistic regression with standardized features
 2. Random forest with 300 trees and one processing thread
-3. LightGBM, if the first two are working
 
 The initial historical run used seed 2026; corrected conventional comparisons use seeds 7, 17, 27, 37 and 47. Logistic regression uses the lbfgs solver and a maximum of 5,000 iterations. Scaling is fitted on training data only.
 
@@ -164,7 +163,7 @@ We'll report
 - Confusion matrix
 - Inference time
 
-## SNN classifier
+## SNN classifier (initial historical run)
 
 The first SNN baseline uses
 - Input shape: `[batch, 120, 7]`
@@ -209,15 +208,13 @@ For the first abnormality experiment
 - `is_anomaly=false` means the clean window wasn't changed
 - `is_anomaly=true` means one Tier-2 change was added before authentication
 
-The first detector will be supervised because the synthetic program tells us which windows were changed.
-We'll start with logistic regression and random forest. A separate SNN abnormality detector comes later.
-Motion classification confidence won't automatically be used as an abnormality score.
+The completed first detector experiment is supervised because the synthetic program labels its defined transformations. It uses separate logistic-regression and random-forest models with 48 relative-motion/timing measurements, not the SNN classifier or its confidence. No SNN abnormality detector is added until conventional anomaly analysis and end-to-end timing are complete.
 
 The detector will return
 - A score between 0 and 1
 - `normal` or `suspicious`
 
-The threshold will be selected with validation data. The starting goal is no more than 5% of clean windows being incorrectly called suspicious.
+Each detector threshold was selected on Session 2 only under clean validation FPR <= 5%, then frozen before Session 3. The corresponding clean test FPR is 5.33% for LR and 2.94% for RF: satisfying validation does not guarantee the test target. The predeclared medium/high recall target remains 90%; both models miss it.
 
 ### Preventing trivial transform detection
 
@@ -225,7 +222,7 @@ The threshold will be selected with validation data. The starting goal is no mor
 - Every transformed copy stays in its source window's split.
 - Metadata identifying the transform is excluded from model inputs.
 - Transform severity is varied within each split instead of using one fixed artifact.
-- Final tests should include parameter values or combinations not used for training.
+- Source-specific attack draws vary across splits within the same declared ranges; this completed run is not evidence for an unseen attack family or disjoint held-out parameter range.
 - Clean and transformed windows use the same serialization and preprocessing path.
 - Results will be reported separately by transform type and severity.
 
@@ -317,3 +314,48 @@ The saved full Python suite passed 322 tests. The reviewed Unity screenshot reco
 
 No measured energy advantage, physical Quest performance, cross-person result or cross-device classifier generalization is established. Reconstruction reliability, independent credential verification and full session setup costs are not established by the recurring-window pipeline benchmark.
 
+
+## Week 5 revision: exact nearest-training metrics
+
+On the existing fixed grid, align each query sample index t with training sample t after removing the absolute timestamp origin. There is no resampling, dynamic time warping, phase/time-shift search or learned alignment in this audit. Quaternions are unit-normalized/sign-continuous and made first-pose-relative before computing the physical orientation distance; learned statistical normalization and Wire binary32 conversion have not yet occurred.
+
+```text
+q_rel[t] = inverse(q[0]) * q[t]          # xyzw; renormalize before dot
+theta[t] = (180/pi)*2*acos(clip(abs(dot(q_rel_query[t],q_rel_train[t])),0,1))
+d_orientation = sqrt(mean_t(theta[t]^2))
+```
+
+This is geodesic rotation RMS in degrees, not mean/max rotation. For the complete seven-channel sequence, fit per-channel means/population SDs across Session-1 windows/time points only (SD <= 1e-12 becomes one), apply the existing float32 SNN input normalization, then promote to float64 for distance accumulation:
+
+```text
+z[t,c] = float32((x_rel[t,c] - training_mean[c]) / training_sd[c])
+d_sequence = sqrt(mean_over_all_840_coordinates((z_query - z_train)^2))
+```
+
+The complete metric is dimensionless and uses SNN channel scaling, not LR's 840-feature scaler or a quaternion-geodesic substitute. Any-label search uses all 600 training windows; same-label search is descriptive stratification over 120 references, not a model feature. Equal-distance ties choose the first sorted training ID; no held-out near/far cutoff is tuned.
+
+The new audit queried 600 validation and 600 test windows and saved both scopes (2,400 rows). All 1,200 historical corrected test/orientation rows reconciled within 1e-5 degrees. Test any-label orientation RMS minimum/median is 2.509239/6.425321 degrees; the retained original dataset had zero minimum/median. Complete normalized-sequence RMS minimum/median/p95 is 0.481008/0.712748/0.977175 for validation and 0.517395/0.710372/1.100239 for test. Full per-class distributions, scaler/source lists and formulas are in `results/week-5/keegan/sequence-neighbors/`. Nonzero distance does not establish physical transfer or prove all leakage absent.
+
+## Week 5 revision: frozen model reporting and selection
+
+`results/week-5/keegan/model-evidence/` reconciles 16 existing model records into 32 validation/test confusion matrices and 160 per-class rows: five conventional seed labels per family and three separated seed pairs per SNN width. Both SNN widths have all-three-seed training-loss/validation-score figures and six verified best/stopping-epoch decisions. Historical training did not save validation loss or training accuracy; those measurements are not invented.
+
+SNN-64 selected/stopping epochs are 11/19, 26/34 and 30/38; SNN-32 uses 23/31, 31/39 and 33/41. These correspond to initialization seeds 7/17/27 and training/shuffle seeds 107/117/127. Every run stopped after eight consecutive epochs without a validation macro-F1 improvement > 1e-12, restoring the selected best state. The exact LIF recurrence/surrogate/subtractive-reset/readout equations and optimizer settings match the frozen code/configurations.
+
+Storage measurements retain all six existing SNN checkpoints (22,981 bytes each for SNN-64; 9,029 each for SNN-32; normalization sidecars separate). The original conventional binaries were not retained, so two explicit seed-7 storage refits use the unchanged recipes and must exactly reproduce saved validation/test confusion counts and fitted complexity before serialization. LR is 55,441 bytes including its scaler; RF is 4,019,633 bytes with 300 trees, 37,410 nodes and 18,855 leaves. Those local joblib files are Git-ignored; hashes/settings are recorded. Different formats/metadata mean these are file-size measurements, not runtime-memory, energy or neuromorphic-efficiency evidence.
+
+Data seed 7 fixes one synthetic dataset; fixed session-index splits have no RNG. Model fitting never regenerates that dataset. LR lbfgs is deterministic here, so its five random_state labels do not represent independent stochastic performance samples and zero descriptive SD is expected. RF seeds affect fitting; SNN initialization/shuffle roles are separate. Model seed repeats still share the same query sources.
+
+Keep the finite 32/64 comparison and all detector thresholds frozen. Any authorized later change must predeclare its question, candidates, data and seed roles, fit on Session 1, select on mean Session-2 macro-F1 with the smaller model as tie-break, and not revise choices using Session 3. Previously inspected Session 3 cannot become a fresh holdout for open-ended future tuning. No SNN architecture expansion is performed before the end-to-end authentication experiment.
+
+The constrained conclusion is: SNN-32 is a viable temporal-inference baseline within the predeclared tolerance, but conventional models remain more accurate in this synthetic CPU evaluation. SNN-64 misses the tolerance and remains the frozen Tier-2 reference. A future SNN motivation requires an independently demonstrated systems, temporal-robustness or neuromorphic-hardware advantage.
+
+## Week 5 revision: ambiguity and Tier-2 outcome reporting
+
+The fixed nod sweep now reports conventional and SNN sensitivity alongside frozen LR/RF anomaly flags in `results/week-5/keegan/nod-diagnostics/`. A nominal nod uses -22 degrees x rotation and 0.006 m vertical coefficient; half uses -11/0.003 and one-tenth -2.2/0.0006. Noise/drift/sway stay fixed, so nominal scaling does not specify the observed peak. Speed changes duration bounds subject to existing group effects/clipping, not capture timestamps.
+
+Interpret low-amplitude nods as legitimate execution variation and intended-class ambiguity in this diagnostic, not automatically as an adversarial success. At one-tenth amplitude/nominal speed, LR/RF/SNN-64 nod recall is 23.33%/13.61%/6.94%, with still confusion 71.67%/85.00%/90.00%; frozen LR/RF anomaly flag frequency is 4.17%/3.06%. The historical classifier sweep stores aggregates, so no joint per-case 'still AND flagged' count is claimed. Paired examples, observed units/statistics and descriptive intervals are retained.
+
+The separate Tier-2 breakdown retains all 5,501 pre-tag failures (3,493 source gaps above 50 ms; 2,008 non-increasing timestamps), per-type/severity detector detected/missed counts and paired motion degradation. It does not count quality/construction blocks as detector successes. Frozen thresholds are selected from validation only; both detectors miss 90% medium/high recall and LR exceeds 5% held-out clean FPR. Synthetic freeze cues and shared parameter ranges remain limitations.
+
+All new addenda preserve the original leakage reports and historical experiment artifacts. The original known-correct-candidate authenticated stream run predates the current pre-HKDF/local-admission gate; retrospective reporting does not validate fresh v2 sessions. Expanded varied Tier-1 evaluation, reconstruction alternatives and fresh accepted/rejected v2 timing/outlier diagnosis remain Will/shared work. Human recording stays disabled until approval.

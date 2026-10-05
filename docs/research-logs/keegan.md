@@ -559,7 +559,27 @@ The first evaluation stopped when an authentication session expired. I traced th
 
 The concise Week 5 account is in `results/week-5/keegan/keegan.md`; the full attack plan, method, per-case outputs, figures, and manifests are in `results/week-5/keegan/stream-attacks/`, `results/week-5/keegan/stream-evaluation/`, and `docs/tier2-stream-attacks.md`. Attack implementation was committed as `604bac8ce7dd191a18e0981daa795563cbf2dd53`; the anomaly/evaluation implementation as `57478f0967d996f7f8764589070e5c8ed63dd396`; session recovery as `40da3a388983030b7b696ce7bf2b801e0ed6903f`; completed results as `ab93d493a4b8db351be19b94e5ccf53426907996`; and stable result-file line endings as `392314314aa19f4393db66772a33a96baff642b5`.
 
-The source windows and attacks are synthetic. Severe changes can make the original motion class ambiguous. No detector-inclusive matched latency, physical Quest performance, cross-person generalization, improved PUF reconstruction, formal Tier-1 rejection rate, or durable audit timing is established here. Human-derived motion collection remains disabled pending approval.
+The source windows and attacks are synthetic. Severe changes can make the original motion class ambiguous. No detector-inclusive matched latency, physical Quest performance, cross-person generalization, improved PUF reconstruction, formal Tier-1 rejection rate, or durable audit timing is established here. Human-derived motion collection remains disabled pending approval.\
+
+## Week 5 revision provenance
+
+| Revision | Implementation/tests | Results |
+|---|---|---|
+| Tier-2 accounting | `4e9f393` | `1f1ba4d` |
+| Nod/still diagnostics | `be316a4` | `2e81255` |
+| Complete-sequence audit | `3f143cd` | `0313709` |
+| Frozen model reporting | `833a6e8` | `57ecf39` |
+
+- Reconciled all 50,400 planned cases, including 5,501 pre-tag construction blocks, without changing the historical experiment or detector thresholds.
+- Evaluated legitimate low-amplitude nod variants with frozen anomaly detectors. At one-tenth amplitude, LR/RF flag rates were 4.17%/3.06%.
+- Saved 2,400 nearest-training rows. Corrected test complete-input RMS had minimum 0.517395, median 0.710372, and p95 1.100239.
+- Packaged 160 per-class rows, 32 confusion matrices, six checkpoint/stopping decisions, all-seed SNN curves, and eight storage measurements. No SNN training occurred. Two fixed conventional storage refits reproduced the frozen counts.
+- Passed the latest full 565-test Python suite. The targeted revision suites are included in that total.
+- Retained data seed 7, the existing model seed roles, frozen validation thresholds, and reporting bootstrap seed 7017.
+
+Evidence folders are `tier2-breakdown`, `nod-diagnostics`, `sequence-neighbors`, and `model-evidence` under `results/week-5/keegan/`. Their manifests/settings retain the exact commands, configurations, seeds, source hashes, and artifact hashes. Full commit IDs and numerical interpretation are recorded in `results/week-5/keegan/keegan.md`.
+
+These revisions remain cross-session synthetic evaluation with fixed device profiles. Fresh v2 end-to-end timing and the remaining shared security/reliability experiments are outstanding.
 
 ---
 
@@ -920,3 +940,31 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Updated the Week 5 results summary and corrected outdated wording in the Tier-2 design and project specification.
 - Corrected the authentication-to-classifier slide to describe at-most-once release.
 - Added two Week 5 slides covering the stream-attack boundary and held-out classifier/anomaly-detector results, with diagrams and speaker notes.
+
+## Sunday, October 4, 2026 - 4.32 hours
+
+### 3:21 PM - 4:50 PM - 1.48 hours
+
+- Reviewed the faculty feedback and separated my Tier-2 reporting revisions from Will’s reconstruction and authentication responsibilities.
+- Implemented reporting that reconciles the attack plan, construction outcomes, saved predictions, and authenticated deliveries without rerunning the original experiment.
+- Accounted for all 50,400 cases, including the 5,501 pre-tag failures caused by excessive timestamp gaps or non-increasing timestamps.
+- Added per-attack and severity tables showing eligible cases, detector detections and misses, clean false positives, and motion-classification degradation.
+- Added confidence intervals and paired bootstrap comparisons while documenting the limitations of shared synthetic sources and repeated model seeds.
+- Verified that anomaly thresholds remained frozen, ran the reporting tests and full Python suite, and committed the implementation and generated breakdown.
+
+### 7:22 PM - 10:12 PM - 2.83 hours
+
+- Implemented nod/still diagnostics using the existing amplitude and speed conditions, reusing conventional and SNN classification results.
+- Defined nominal nod amplitudes in degrees and meters and documented how noise, drift, and other variation affect observed motion.
+- Scored the frozen anomaly detectors without retraining or changing thresholds, examining whether low-amplitude legitimate nods were incorrectly flagged.
+- Saved sensitivity curves, representative trajectories, observed motion statistics, and the interpretation of nod/still ambiguity.
+- Implemented the complete 120 × 7 nearest-training analysis with training-only normalization and precisely defined orientation and sequence-distance metrics.
+- Compared validation and test windows against training references, reconciled historical orientation results, and preserved the original leakage evidence.
+- Added per-class and per-seed model reporting, complete confusion matrices, all-seed SNN training curves, and verified checkpoint-selection and stopping decisions.
+- Documented the LIF equations, surrogate gradient, reset policy, temporal readout, parameter counts, and validation-only selection rules.
+- Measured SNN checkpoint sizes and reproduced the fixed conventional recipes for storage measurements, confirming their saved results and fitted complexity.
+- Verified artifact hashes and completion records, passed the latest 565-test Python suite, and committed the diagnostic implementations and results.
+- Updated the presentation to explain the Tier-2 construction failures, per-condition detector limitations, and unchanged validation-selected thresholds.
+- Added the nod/still sensitivity and complete-sequence similarity findings, using the saved figures and clearly stated units.
+- Updated the model comparison and speaker notes with per-seed evidence, model sizes, and the constrained SNN conclusion.
+- Clarified the historical authentication boundary and separated completed results from outstanding fresh v2 timing and security evaluation.
