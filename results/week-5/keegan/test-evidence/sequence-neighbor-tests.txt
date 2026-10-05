@@ -1,0 +1,30 @@
+test_absolute_timestamp_origin_does_not_change_alignment (test_sequence_neighbors.SequenceNeighborTests.test_absolute_timestamp_origin_does_not_change_alignment) ... ok
+test_any_label_and_same_label_have_separate_references (test_sequence_neighbors.SequenceNeighborTests.test_any_label_and_same_label_have_separate_references) ... ok
+test_bad_scaler_rejected (test_sequence_neighbors.SequenceNeighborTests.test_bad_scaler_rejected) ... ok
+test_bad_shape_and_nonfinite_data_rejected (test_sequence_neighbors.SequenceNeighborTests.test_bad_shape_and_nonfinite_data_rejected) ... ok
+test_complete_metric_uses_all_840_coordinates (test_sequence_neighbors.SequenceNeighborTests.test_complete_metric_uses_all_840_coordinates) ... ok
+test_different_regular_grid_is_not_time_aligned_silently (test_sequence_neighbors.SequenceNeighborTests.test_different_regular_grid_is_not_time_aligned_silently) ... ok
+test_historical_orientation_change_is_not_accepted (test_sequence_neighbors.SequenceNeighborTests.test_historical_orientation_change_is_not_accepted) ... ok
+test_historical_rows_reconciled_completely (test_sequence_neighbors.SequenceNeighborTests.test_historical_rows_reconciled_completely) ... ok
+test_identical_full_inputs_have_exact_zero_distance (test_sequence_neighbors.SequenceNeighborTests.test_identical_full_inputs_have_exact_zero_distance) ... ok
+test_irregular_grid_is_rejected_not_resampled (test_sequence_neighbors.SequenceNeighborTests.test_irregular_grid_is_rejected_not_resampled) ... ok
+test_metadata_never_changes_the_120_by_7_input (test_sequence_neighbors.SequenceNeighborTests.test_metadata_never_changes_the_120_by_7_input) ... ok
+test_missing_same_label_reference_rejected (test_sequence_neighbors.SequenceNeighborTests.test_missing_same_label_reference_rejected) ... ok
+test_normalization_matches_float32_input_rounding (test_sequence_neighbors.SequenceNeighborTests.test_normalization_matches_float32_input_rounding) ... ok
+test_orientation_metric_ignores_quaternion_sign (test_sequence_neighbors.SequenceNeighborTests.test_orientation_metric_ignores_quaternion_sign) ... ok
+test_orientation_rms_is_not_mean_angle (test_sequence_neighbors.SequenceNeighborTests.test_orientation_rms_is_not_mean_angle) ... ok
+test_quaternion_normalization_precedes_rotation_metric (test_sequence_neighbors.SequenceNeighborTests.test_quaternion_normalization_precedes_rotation_metric) ... ok
+test_reference_and_query_splits_are_enforced (test_sequence_neighbors.SequenceNeighborTests.test_reference_and_query_splits_are_enforced) ... ok
+test_rms_not_sum_or_maximum (test_sequence_neighbors.SequenceNeighborTests.test_rms_not_sum_or_maximum) ... ok
+test_sample_index_order_is_enforced (test_sequence_neighbors.SequenceNeighborTests.test_sample_index_order_is_enforced) ... ok
+test_source_trial_and_session_overlap_rejected (test_sequence_neighbors.SequenceNeighborTests.test_source_trial_and_session_overlap_rejected) ... ok
+test_ties_are_deterministic_and_chunk_size_does_not_change_results (test_sequence_neighbors.SequenceNeighborTests.test_ties_are_deterministic_and_chunk_size_does_not_change_results) ... ok
+test_training_scaler_uses_windows_and_time_not_query (test_sequence_neighbors.SequenceNeighborTests.test_training_scaler_uses_windows_and_time_not_query) ... ok
+test_unsorted_reference_is_rejected (test_sequence_neighbors.SequenceNeighborTests.test_unsorted_reference_is_rejected) ... ok
+test_zero_quaternion_rejected (test_sequence_neighbors.SequenceNeighborTests.test_zero_quaternion_rejected) ... ok
+test_zero_variance_sd_matches_existing_model_policy (test_sequence_neighbors.SequenceNeighborTests.test_zero_variance_sd_matches_existing_model_policy) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.015s
+
+OK
