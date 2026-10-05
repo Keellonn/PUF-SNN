@@ -1,0 +1,5 @@
+{
+  "manifest_sha256": "86aa4787ca09f591d2f0592831ee5642a37b2b7eb608354d91d1e43094bfba85",
+  "query_window_count": 1200,
+  "nearest_neighbor_rows": 2400
+}

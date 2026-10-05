@@ -1,0 +1,42 @@
+{
+  "run_type": "fixed_grid_complete_input_neighbors_v1",
+  "created_utc": "2026-10-05T01:19:42.161408+00:00",
+  "source_commit": "3f143cdc070e6af60e592eb73a407f9793d6b854",
+  "source_worktree_dirty": false,
+  "command": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Scripts\\python.exe src/python/scripts/evaluate_sequence_neighbors.py --input data/generated/synthetic-windows.jsonl --pilot configs/pilot.json --reference results/week-4/keegan/data-diagnostics --output results/week-5/keegan/sequence-neighbors",
+  "input_sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+  "current_pilot_sha256": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2",
+  "historical_manifest_sha256": "35b0d7c3e8ab111b2e3385adc73ef823cb678e0cfd51ec0c202b1eff5000f2b5",
+  "historical_inputs_sha256": {
+    "original-nearest-neighbors.json": "30cd9b241287da28e7ce7be69f22af4d615d45476646b48b6161ea4740422266",
+    "corrected-nearest-neighbors.json": "1e10af40943238945d07fe8f8c522538fc68f97aadf12ee2a5c511a7a4e380d5",
+    "data-diagnostics.json": "0c4d84072c6ec9395c49cbd1c0d60287f1886ceb79148957c7f0b5c8f71f6dd4"
+  },
+  "source_sha256": {
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/scripts/evaluate_sequence_neighbors.py": "f3c1059de292571cf31ca89b43b1147fd6d635265030ace7e605ada2790d0bac",
+    "src/python/puf_snn/sequence_neighbors.py": "f081a10389523c645b1858db24eb9fabd42e180673e220a594d141dff7cde627",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b"
+  },
+  "query_window_count": 1200,
+  "nearest_neighbor_rows": 2400,
+  "training_executed": false,
+  "classifier_inference_executed": false,
+  "authentication_executed": false,
+  "threshold_selection_executed": false,
+  "historical_files_modified": false,
+  "environment": {
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.5.3"
+  },
+  "artifacts": {
+    ".gitattributes": "3fd6907a39ba488c39e7a1f249abd03f9868af5211714975e304482d552c1492",
+    "audit-settings.json": "5e633d46cdaab8d583a0eaaf7d91e8d0cf1dbdf5878cbcaa318043c91ee356e4",
+    "nearest-training.csv": "c5bc1c6657312f5b3df614f2cfcafb5a84edf5d57833a5582c9c0fe6f700f387",
+    "sequence-neighbors.md": "96f6563c9d127bb55e977545acfded9a03144641c89070746d988c03936b9a0d",
+    "summary.json": "84e8a9cc067c0ead31f0a3d3799443943ec65d2241b25f6e30ef5c86eb568c92",
+    "training-normalization.json": "67b9c2c2ce70c2d83a188f5132b7f4a62733577ec60ce7b4afeb457a4acd3914"
+  }
+}
