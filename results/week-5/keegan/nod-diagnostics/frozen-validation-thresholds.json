@@ -1,0 +1,68 @@
+{
+  "anomaly_logistic_regression_seed6007": {
+    "comparison": "score >= threshold",
+    "kind": "logistic_regression",
+    "seed": 6007,
+    "selected_from": "validation",
+    "threshold": 0.5431098819766053,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 30,
+    "validation_clean_fpr": 0.05,
+    "validation_source_weighted_f1": 0.8122799109524174
+  },
+  "anomaly_logistic_regression_seed6017": {
+    "comparison": "score >= threshold",
+    "kind": "logistic_regression",
+    "seed": 6017,
+    "selected_from": "validation",
+    "threshold": 0.5431098819766053,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 30,
+    "validation_clean_fpr": 0.05,
+    "validation_source_weighted_f1": 0.8122799109524174
+  },
+  "anomaly_logistic_regression_seed6027": {
+    "comparison": "score >= threshold",
+    "kind": "logistic_regression",
+    "seed": 6027,
+    "selected_from": "validation",
+    "threshold": 0.5431098819766053,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 30,
+    "validation_clean_fpr": 0.05,
+    "validation_source_weighted_f1": 0.8122799109524174
+  },
+  "anomaly_random_forest_seed6007": {
+    "comparison": "score >= threshold",
+    "kind": "random_forest",
+    "seed": 6007,
+    "selected_from": "validation",
+    "threshold": 0.9063113697586315,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 21,
+    "validation_clean_fpr": 0.035,
+    "validation_source_weighted_f1": 0.8839774423692605
+  },
+  "anomaly_random_forest_seed6017": {
+    "comparison": "score >= threshold",
+    "kind": "random_forest",
+    "seed": 6017,
+    "selected_from": "validation",
+    "threshold": 0.9054505494505495,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 24,
+    "validation_clean_fpr": 0.04,
+    "validation_source_weighted_f1": 0.8814484262291189
+  },
+  "anomaly_random_forest_seed6027": {
+    "comparison": "score >= threshold",
+    "kind": "random_forest",
+    "seed": 6027,
+    "selected_from": "validation",
+    "threshold": 0.9077944139194141,
+    "validation_clean_count": 600,
+    "validation_clean_false_positives": 19,
+    "validation_clean_fpr": 0.03166666666666667,
+    "validation_source_weighted_f1": 0.8855630235664753
+  }
+}

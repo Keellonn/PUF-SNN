@@ -1,0 +1,220 @@
+{
+  "anomaly_inference_executed": true,
+  "artifacts": {
+    ".gitattributes": "3fd6907a39ba488c39e7a1f249abd03f9868af5211714975e304482d552c1492",
+    "anomaly-sensitivity.csv": "c84d538e4895b6a1839897d5f95c0eb51f5c6a18b6fc3f0d34cfe00dccbd87ca",
+    "frozen-validation-thresholds.json": "ccb8774610ef95c6ae090eb46e6151afc84bea7dabf815554436c6534be087c9",
+    "motion-sensitivity.csv": "182114ddb63a21ceb209d96cb8ec1debdc056a4acf4f5b90bf855353ec0ac864",
+    "nod-diagnostics.md": "3617cc320aa7524e611e8f0fcd06b7e6fe0dcf356aa29ab7bb4006ca9cd3b1e1",
+    "nominal-conditions.json": "bf430888e02107944c1b5e1520b4f2e361215e02771949869e5c130cee4bc988",
+    "paired-amplitude-trajectories.png": "24469dbdd2205b9e66e590d990df33419fae0fc14b96e9debbe31bc2396cd026",
+    "physical-observations.csv": "53378099db39830946d477efee76904bbdc170c559acd6ab0c4f9926c34c368e",
+    "predictions.jsonl": "ccfd587bb3af592ee71b20eaa80f39d51334759ec500f720856594002a27a72b",
+    "test-anomaly-flags.png": "72b17b19af0972030bca92691c1cf29d3da440fcdc33d242684f34f8f8e1f044",
+    "test-motion-sensitivity.png": "6684f1329518a8d263f2880a5fa82b36e080969e6e429bcf9c22b3f726158d2e",
+    "trajectory-examples.json": "47d4c776e740e4abf4d043415588f76f2d79233442354fa882c78e878844c37b",
+    "validation-anomaly-flags.png": "3e533b846fa31f4ae2dac0fad231749aecbcc37b740c3703fa6e3df2a1fe2951",
+    "validation-motion-sensitivity.png": "df287b78df787d8490b4c98f4941e3427bd1c9eb261fba1b7dc24b271d2289e3"
+  },
+  "authentication_executed": false,
+  "classifier_inference_executed": false,
+  "command": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Scripts\\python.exe src/python/scripts/evaluate_nod_diagnostics.py --output results/week-5/keegan/nod-diagnostics",
+  "environment": {
+    "joblib": "1.6.0",
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+    "sklearn": "1.9.1"
+  },
+  "example_selection": "first sorted source ID in each split and label, before inference",
+  "historical_detector_manifest_sha256": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+  "historical_files_modified": false,
+  "historical_motion_manifest_sha256": "e0b03047f4990c0ee3e1a08ec9e8154b316b28e64b8b3909428707753ccadc09",
+  "input_sha256": {
+    "dataset": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+    "motion-analysis/configuration.json": "ba17d2ffb302f9b0505e68c74db95332e46e3162979ac7f8a64dda7248d398f7",
+    "motion-analysis/nod-still-sweep.json": "57465d0320eac487572940a75cbc7a5ff00de2d1d7e17435bbf3f2dd1befc9d9",
+    "pilot": "9bb4adac0f67bee664409e7af143eb62ca3a3987c181a0ca871a20fdf17492a2",
+    "stream-evaluation/anomaly-feature-names.json": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+    "stream-evaluation/frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396"
+  },
+  "model_artifacts_sha256": {
+    "models/anomaly_logistic_regression_seed6007.joblib": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+    "models/anomaly_logistic_regression_seed6017.joblib": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+    "models/anomaly_logistic_regression_seed6027.joblib": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+    "models/anomaly_random_forest_seed6007.joblib": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+    "models/anomaly_random_forest_seed6017.joblib": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+    "models/anomaly_random_forest_seed6027.joblib": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784"
+  },
+  "nominal_conditions": [
+    {
+      "amplitude_scale": 0.1,
+      "duration_range_before_group_effects_and_clipping_s": [
+        1.0666666666666667,
+        2.533333333333333
+      ],
+      "nominal_rotation_coefficient_deg": -2.2,
+      "nominal_vertical_position_coefficient_m": 0.0006000000000000001,
+      "speed_scale": 0.75
+    },
+    {
+      "amplitude_scale": 0.1,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.8,
+        1.9
+      ],
+      "nominal_rotation_coefficient_deg": -2.2,
+      "nominal_vertical_position_coefficient_m": 0.0006000000000000001,
+      "speed_scale": 1.0
+    },
+    {
+      "amplitude_scale": 0.1,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.64,
+        1.52
+      ],
+      "nominal_rotation_coefficient_deg": -2.2,
+      "nominal_vertical_position_coefficient_m": 0.0006000000000000001,
+      "speed_scale": 1.25
+    },
+    {
+      "amplitude_scale": 0.25,
+      "duration_range_before_group_effects_and_clipping_s": [
+        1.0666666666666667,
+        2.533333333333333
+      ],
+      "nominal_rotation_coefficient_deg": -5.5,
+      "nominal_vertical_position_coefficient_m": 0.0015,
+      "speed_scale": 0.75
+    },
+    {
+      "amplitude_scale": 0.25,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.8,
+        1.9
+      ],
+      "nominal_rotation_coefficient_deg": -5.5,
+      "nominal_vertical_position_coefficient_m": 0.0015,
+      "speed_scale": 1.0
+    },
+    {
+      "amplitude_scale": 0.25,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.64,
+        1.52
+      ],
+      "nominal_rotation_coefficient_deg": -5.5,
+      "nominal_vertical_position_coefficient_m": 0.0015,
+      "speed_scale": 1.25
+    },
+    {
+      "amplitude_scale": 0.5,
+      "duration_range_before_group_effects_and_clipping_s": [
+        1.0666666666666667,
+        2.533333333333333
+      ],
+      "nominal_rotation_coefficient_deg": -11.0,
+      "nominal_vertical_position_coefficient_m": 0.003,
+      "speed_scale": 0.75
+    },
+    {
+      "amplitude_scale": 0.5,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.8,
+        1.9
+      ],
+      "nominal_rotation_coefficient_deg": -11.0,
+      "nominal_vertical_position_coefficient_m": 0.003,
+      "speed_scale": 1.0
+    },
+    {
+      "amplitude_scale": 0.5,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.64,
+        1.52
+      ],
+      "nominal_rotation_coefficient_deg": -11.0,
+      "nominal_vertical_position_coefficient_m": 0.003,
+      "speed_scale": 1.25
+    },
+    {
+      "amplitude_scale": 0.75,
+      "duration_range_before_group_effects_and_clipping_s": [
+        1.0666666666666667,
+        2.533333333333333
+      ],
+      "nominal_rotation_coefficient_deg": -16.5,
+      "nominal_vertical_position_coefficient_m": 0.0045000000000000005,
+      "speed_scale": 0.75
+    },
+    {
+      "amplitude_scale": 0.75,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.8,
+        1.9
+      ],
+      "nominal_rotation_coefficient_deg": -16.5,
+      "nominal_vertical_position_coefficient_m": 0.0045000000000000005,
+      "speed_scale": 1.0
+    },
+    {
+      "amplitude_scale": 0.75,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.64,
+        1.52
+      ],
+      "nominal_rotation_coefficient_deg": -16.5,
+      "nominal_vertical_position_coefficient_m": 0.0045000000000000005,
+      "speed_scale": 1.25
+    },
+    {
+      "amplitude_scale": 1.0,
+      "duration_range_before_group_effects_and_clipping_s": [
+        1.0666666666666667,
+        2.533333333333333
+      ],
+      "nominal_rotation_coefficient_deg": -22.0,
+      "nominal_vertical_position_coefficient_m": 0.006,
+      "speed_scale": 0.75
+    },
+    {
+      "amplitude_scale": 1.0,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.8,
+        1.9
+      ],
+      "nominal_rotation_coefficient_deg": -22.0,
+      "nominal_vertical_position_coefficient_m": 0.006,
+      "speed_scale": 1.0
+    },
+    {
+      "amplitude_scale": 1.0,
+      "duration_range_before_group_effects_and_clipping_s": [
+        0.64,
+        1.52
+      ],
+      "nominal_rotation_coefficient_deg": -22.0,
+      "nominal_vertical_position_coefficient_m": 0.006,
+      "speed_scale": 1.25
+    }
+  ],
+  "pre_tag_quality_blocked_count": 0,
+  "run_type": "paired_legitimate_nod_diagnostics_v1",
+  "source_commit": "be316a415f0df9dff694e12a91c4e70b0477e52d",
+  "source_sha256": {
+    "src/python/puf_snn/anomaly/detector.py": "1e72b52758ba965381c050c2e1b97a2d46c6d0997f6603a5f3ec261124d3db70",
+    "src/python/puf_snn/anomaly/features.py": "00a7c912f3583a29331299178adb5d9b777c181f28dd7be61a0b0c624c8438d0",
+    "src/python/puf_snn/attacks/reporting.py": "7b8234b6a9924184ff8cc9a2298a1126c196d1f18770eedfd3eedd70ca15196e",
+    "src/python/puf_snn/attacks/stream.py": "9920faf0217f8d5a059f0ba0464cccd5ab537252db1ff36a4270f2669c7e0af7",
+    "src/python/puf_snn/auth/binary_window.py": "78159d6a8c8601b40ff0158f7d2ac4b85e2179b72ebeae0ea186bf70f408877e",
+    "src/python/puf_snn/data/generator.py": "aa0ff0cc2a08d0e1f89a8dfac3505e546ab59aef25d39c3956cb865065cc080b",
+    "src/python/puf_snn/integration.py": "7690d3e139163be50a78bf5ed9b5c009f6f0246b305f5bb57cdb4eb87d97e366",
+    "src/python/puf_snn/motion_diagnostics.py": "67f68e123a04d1b997c30f0ce558afe1058e7bb8297a05658680c4ac48bc3e04",
+    "src/python/puf_snn/nod_diagnostics.py": "585bb91d3997c53aca0a956bba4e422d740958df624dc0384bdfa2b6665553bb",
+    "src/python/puf_snn/snn/dataset.py": "3d730211e4366c89c30a0c2b5079e2ca6007fb921a9dc453ccb0384282d6700d",
+    "src/python/scripts/evaluate_nod_diagnostics.py": "c8ad2dffacf57e5ba5b880b83cd893f55c95abbf2a5a49d26ddebc158d428d2c"
+  },
+  "source_worktree_dirty": false,
+  "threshold_selection_executed": false,
+  "training_executed": false
+}
