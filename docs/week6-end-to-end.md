@@ -129,3 +129,69 @@ overwrite any existing output directory. Scoped LF rules preserve text hashes.
 This is a small functional check, not new attack success/FRR/accuracy estimates,
 fresh latency measurements, formal Tier-1 evidence or proof of hardware security.
 No historical result files, shared authentication policy or model are modified.
+
+## Step 3: Fresh v2 composite timing protocol (implementation, not results)
+
+The completed functional smoke is recorded under
+`results/week-6/keegan/frozen-model-smoke`. Its 30 admissions and boundary checks
+are functional evidence, not a timing or reliability estimate. Historical Week 5
+results, the smoke records, all checkpoints and thresholds remain unchanged.
+
+`configs/week6_timing.json`, `puf_snn/pipeline_timing.py` and
+`src/python/scripts/benchmark_week6_v2.py` define a new, serial CPU measurement.
+Six predeclared conditions use one motion model plus one frozen anomaly detector:
+logistic motion/logistic anomaly, logistic motion/forest anomaly, forest
+motion/forest anomaly, and each of the three saved SNN-32 seeds/forest anomaly.
+Detector seeds are fixed at 6007 before measurement. SNN-64 stays historical;
+this is not a model/threshold search or a repeat of the attack evaluation.
+
+Each condition retains 20 validation warmups and 600 measured attempts using
+all held-out test windows in a fixed device/label/window order. The first warmup
+is labeled condition-first-use, not fully cold process startup. Trusted enrollment
+initializes BCH algebra outside the boundary; the first decoder compilation can
+still occur inside that first attempt. Warmup and study response streams are
+separate. Matching per-device study streams are reset for each condition,
+making source/noise comparisons paired, not independent reliability replications.
+
+The directly timed fresh path is one simulated noisy read, one actual reconstruction,
+independent verification/local authorization, current HKDF/mutual confirmation,
+then the first accepted-window composite inference or admission refusal.
+Natural refusals are retained, with no retry-until-success or truth substitution.
+Physical motion capture, hardware PUF acquisition, endpoint construction, loading,
+trusted enrollment, network transport and durable storage are excluded.
+
+Short recurring-window, bad-tag, replay, malformed-JSON, pre-tag tracking-quality
+and subsequent-valid controls use unchanged sequence/TTL policies and verify
+zero model calls on refusals. Their output/assertions/mutations are outside the
+timer. Receiver-only paths are distinguished from complete post-window paths.
+The provisional 20 ms p95 target applies only to complete post-window processing,
+including the anomaly detector here, not fresh admission or hard real-time bounds.
+
+Temporary serial wrappers preserve the underlying implementation and restore
+on error. Stage trees, thread CPU, GC overlaps, native nested HKDF values,
+p50/p95/p99/max and all slow observations are retained. Nested percentiles are
+never added into a total. Authentication includes lock wait, replay checks and
+state commit; those are not claimed as separately isolated timings. Audit spans
+describe in-memory record/prepare/commit only. Model consumer spans include
+normalization, tensor creation, score/label conversion and threshold comparison.
+
+All >20 ms observations, group p99 tails and maxima have retained diagnostic
+records. GC overlap and wall/thread-CPU gaps locate possible contributors, not
+prove causes. Allocation, scheduling, cache and frequency causes remain unresolved
+unless separately measured; the report must not invent a complete outlier diagnosis.
+A no-op instrumentation proxy is disclosed and never subtracted from totals.
+
+GC stays enabled; high-resolution monotonic wall/thread-CPU clocks are recorded.
+Torch intra-op and native thread pools are limited to one; inter-op thread count,
+actual start/end machine and power-plan snapshots, self-reported AC/background
+conditions and uncontrolled hybrid-core/frequency placement are recorded.
+The runner never changes the power plan. LF writers cover every hashed text artifact.
+Condition order is fixed; thermal/background drift is not controlled by source/noise
+pairing. Post-window estimates are conditional on successful admission. Detailed
+timing and outlier JSONL files are separated by condition for manageable artifacts.
+
+Clean committed source and a new scoped result directory are required before the
+actual benchmark. Partial JSONL/INCOMPLETE evidence is preserved on error;
+COMPLETE binds the reconciled manifest. Passing the new tests alone does not
+complete the timing experiment, causal outlier study, expanded Tier-1/reliability
+experiments, Will's formal trust specification, or any Quest validation.

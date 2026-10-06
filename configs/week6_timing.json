@@ -1,0 +1,21 @@
+{
+  "config_version": "week6-fresh-v2-timing-v1",
+  "frozen_config": "configs/week6_smoke.json",
+  "source_split": "test",
+  "source_selection": "all_600_sorted_device_label_window",
+  "warmup_attempts_per_condition": 20,
+  "measured_attempts_per_condition": 600,
+  "batch_size": 1,
+  "native_threads": 1,
+  "gc_enabled": true,
+  "post_window_p95_target_ms": 20,
+  "outlier_absolute_ms": 20,
+  "conditions": [
+    {"name": "logistic_motion_logistic_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_logistic_regression_seed6007"},
+    {"name": "logistic_motion_forest_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "forest_motion_forest_anomaly", "motion": "random_forest_seed_7_storage_refit", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed7_forest_anomaly", "motion": "snn_32_seed_7", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed17_forest_anomaly", "motion": "snn_32_seed_17", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed27_forest_anomaly", "motion": "snn_32_seed_27", "anomaly": "anomaly_random_forest_seed6007"}
+  ]
+}
