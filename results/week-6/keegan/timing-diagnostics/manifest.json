@@ -1,0 +1,46 @@
+{
+  "run_type": "week6-saved-timing-diagnostics-v1",
+  "source_commit": "a238d70d075276f3c3f10f58044fdb4bb90ae585",
+  "source_worktree_dirty": false,
+  "completed_utc": "2026-10-06T05:47:26.201409+00:00",
+  "command": [
+    "src/python/scripts/summarize_week6_timing.py",
+    "--input",
+    "results/week-6/keegan/fresh-v2-timing",
+    "--output",
+    "results/week-6/keegan/timing-diagnostics"
+  ],
+  "input_directory": "results/week-6/keegan/fresh-v2-timing",
+  "input_manifest_sha256": "10135c6e3849015c6afcfb96c91d9bc25bdeabdbdc1da2531b1ec65501403b50",
+  "input_results_commit": "a4a9e2548fd30ee2383923dbd0de6cd5c45c587f",
+  "benchmark_source_commit": "78f499a92f633a4793c776a070058e3a6a9a0b61",
+  "fresh_attempt_count": 3720,
+  "trace_count": 29718,
+  "retained_outlier_count": 12621,
+  "group_maximum_count": 150,
+  "complete_path_rows": 168,
+  "training_executed": false,
+  "threshold_selection_executed": false,
+  "model_loading_executed": false,
+  "model_inference_executed": false,
+  "authentication_executed": false,
+  "new_latency_measurement_executed": false,
+  "historical_files_modified": false,
+  "complete_causal_attribution_established": false,
+  "source_sha256": {
+    "src/python/scripts/summarize_week6_timing.py": "e1bf328e420759f06a5c392c008e98190812b38e040fdcb6d0e8eef011dcbc4f",
+    "src/python/puf_snn/pipeline_timing.py": "ca884543bb501a4c4f390830baa5c0892941d37a6bc95e7eaf499d3ff41d5368",
+    "tests/test_pipeline_timing_reporting.py": "565063a884ce02045c6db0bb8877f626d1cf7090c684deec2273533aa062aea4"
+  },
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "checked-input-hashes.json": "f6448f0d9f63e8d7ff89abb83f04eeb75d4abfda3e9694e7b48b16483646ee89",
+    "complete-path-latency.csv": "c8b59452149f3a31ab709541f5979b3e15034b96b99dac8ad7a9248b996540e4",
+    "group-maxima.csv": "46601a5ec911668aa02c07505d4cf3b90eee4ed087554b9ff4985fced57e8171",
+    "outlier-summary.csv": "902ab9cb34e89e8dc00084b4c2c50913d127a9987a021f74a7903519e1bd5e5a",
+    "reconciliation.json": "d31526a1c4fad08efdcc75b18b132a6388596cb9d54467717124f472bbf94954",
+    "retained-outlier-detail.csv": "2e96619cb46fd6cc53ab7e5065c92fb38e640167b4991c9b0d748fad0a4ab2f2",
+    "thread-cpu-observations.json": "cbf1379c5b7426fa9d6e250bcec2dcd2109b138eeeb7fab0fe3d4f531ef891b9",
+    "timing-diagnostics.md": "bddc45744e1febfc4bc09485a94c3227285061ac65b651eddf6904c8d1c7199d"
+  }
+}

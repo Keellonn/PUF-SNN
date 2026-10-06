@@ -1,0 +1,5 @@
+{
+  "span_count": 449442,
+  "zero_cpu_span_count": 371826,
+  "interpretation": "Zero recorded thread-CPU time in short spans does not establish waiting. The original environment did not record thread-CPU clock resolution; wall/CPU gaps alone do not establish scheduling or allocation causes."
+}
