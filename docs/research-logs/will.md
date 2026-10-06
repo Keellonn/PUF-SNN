@@ -1596,3 +1596,28 @@ Verified protected reconstruction source hashes
 - Listened to Sadman's presentation on VR problem solving assesment
 - Listened to Devon's presentation on cyber camp
 - Listened to Colin and Grace's presentation on VSGC Biometric Dual-Authentication project
+
+# Friday October, 2
+## 1:45pm - 2:36pm ()
+- Second Senior Design PUF Consultation
+- Met with entire senior design group this time
+- Gave informal presentation on the following,
+  - Layer 1 implementation
+  - Layer 1 experiments
+  - Layer 1 analysis
+  - Layer 2 reconstruction design
+  - Layer 2 implementation of reconstruction
+  - Layer 2 experiment
+  - Layer 2 analysis
+- Original presentation took around 15-20 minutes
+- Spent the rest of the time answering design questions
+- Helped them understand many of the decsions we have had to make such as,
+  - Weak vs strong PUF design
+  - Ring oscillator pairing scheme
+  - Layer 1 vs Layer 2 enrollment process
+  - Reconstruction design,
+    - BCH (63, 36, t = 5)
+    - Physical (FPGA) BCH message enrollment vs idealized software enrollment
+    - Using credential for session key derviation NOT the 64 bit PUF response
+- Listened to feedback on presentation, if order and delivery method was effective
+- Updated my delivery plan for next presentation
