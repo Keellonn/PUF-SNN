@@ -4,7 +4,7 @@
 
 **Shared authentication/reconstruction owner:** Will Wallace
 
-**Stage:** Integration implementation; formal evaluation not yet run
+**Stage:** Functional smoke and first instrumented timing run completed; causal profiling and formal shared evaluations remain pending
 
 ## Purpose and historical boundary
 
@@ -195,3 +195,43 @@ actual benchmark. Partial JSONL/INCOMPLETE evidence is preserved on error;
 COMPLETE binds the reconciled manifest. Passing the new tests alone does not
 complete the timing experiment, causal outlier study, expanded Tier-1/reliability
 experiments, Will's formal trust specification, or any Quest validation.
+
+## Step 4: Completed timing evidence and saved-run diagnostic reporting
+
+The first instrumented run is preserved at
+`results/week-6/keegan/fresh-v2-timing`, results commit
+`a4a9e2548fd30ee2383923dbd0de6cd5c45c587f`. Its benchmark source is
+`78f499a92f633a4793c776a070058e3a6a9a0b61`. All 3,720 fresh attempts and
+29,718 root traces reconcile. Each condition accepted 599/600 measured admissions
+and all 20 warmups. The repeated reconstruction refusal is paired across model
+conditions, not six independent failures or a new FRR study. Rejected messages
+produced zero preprocessing or model calls.
+
+Complete recurring motion-plus-anomaly p95 values are 27.7629 ms (logistic/logistic),
+30.3028 ms (logistic/forest), 52.8523 ms (forest/forest), and 51.3985, 50.5355,
+54.1160 ms for SNN-32 seeds 7, 17, 27 with the forest detector. None of these
+instrumented recurring paths meets the provisional 20 ms target. Historical
+motion-only timing has a different boundary and must not replace these results.
+
+`src/python/scripts/summarize_week6_timing.py` adds a separate, read-only report.
+It verifies the completion marker, all original hashes, admission/delivery counts,
+saved quantiles and every retained outlier before generating compact tables.
+No model binaries are deserialized, and no response acquisition, authentication,
+inference, retraining, threshold selection or new timing occurs. Source must be
+committed and clean; a new scoped output is required. This implementation step
+does not claim that the addendum has already been generated.
+
+The report distinguishes first complete post-window processing (directly timed
+inside the fresh root), recurring processing, after-refusal processing and
+receiver-only controls. Target comparisons use the directly measured complete
+post-window span, never sums of overlapping component percentiles.
+
+All 12,621 retained slow/tail observations and each root-group maximum are
+accounted for. GC interval unions are clipped to actual span boundaries to avoid
+double counting. The largest measured delays in each condition coincide with
+substantial recorded GC activity, but causal attribution remains incomplete.
+Collector/retained-tree overhead, application allocation, scheduling, cache and
+power effects have not been isolated. Warmups/first use, natural refusals and
+slow values stay visible. A diagnostic report is not a new benchmark and does
+not complete formal Tier-1, reconstruction alternatives, durable audit timing,
+Will's key/trust specification or physical Quest validation.
