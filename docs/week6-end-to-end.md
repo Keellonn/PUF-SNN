@@ -74,10 +74,11 @@ No official checkpoint inference, detector retraining, threshold selection,
 formal attack evaluation, PUF reliability study, physical Quest run, or latency
 benchmark has occurred merely because these tests pass.
 
-## Frozen-model experiment and timing boundaries
+## Frozen-model experiment and timing boundaries (connector-stage requirements)
 
-The next experiment will load existing validation-selected SNN-32 checkpoints
-and the already frozen conventional/anomaly artifacts without new selection.
+At the connector checkpoint, the follow-up requirement was to load existing
+validation-selected SNN-32 checkpoints and frozen conventional/anomaly artifacts
+without new selection. The completed smoke and timing evidence is recorded below.
 SNN-64 remains a historical/reference model, not an architecture search. The
 source windows and their Session 1/2/3 split remain unchanged.
 
@@ -88,7 +89,7 @@ first-run backend initialization need explicit cold/warm boundaries. Report
 accepted/rejected paths, p50/p95/p99/max, GC/timer/I/O/control conditions and
 retained outliers; do not sum nested component percentiles into a total.
 
-The future timing/evaluation stage is not completed by this connector. Expanded
+Passing the connector tests alone did not complete timing/evaluation. Expanded
 Tier-1 trials, reconstruction alternatives, key/trust-specification work and
 durable audit performance remain shared/Will work. Human recording remains
 disabled pending the required approval. Claims stay limited to a trusted
@@ -218,8 +219,12 @@ It verifies the completion marker, all original hashes, admission/delivery count
 saved quantiles and every retained outlier before generating compact tables.
 No model binaries are deserialized, and no response acquisition, authentication,
 inference, retraining, threshold selection or new timing occurs. Source must be
-committed and clean; a new scoped output is required. This implementation step
-does not claim that the addendum has already been generated.
+committed and clean; a new scoped output is required. The completed addendum is
+`results/week-6/keegan/timing-diagnostics`, reporting source commit
+`a238d70d075276f3c3f10f58044fdb4bb90ae585` and results commit
+`cc8c86c5122ec74d4744ba41a715133b53bf342b`. It reconciles 29,718 root traces,
+12,621 retained observations, 150 root-group maxima and 168 complete-path rows.
+Its manifest records that no new timing, authentication or inference occurred.
 
 The report distinguishes first complete post-window processing (directly timed
 inside the fresh root), recurring processing, after-refusal processing and
@@ -235,3 +240,38 @@ power effects have not been isolated. Warmups/first use, natural refusals and
 slow values stay visible. A diagnostic report is not a new benchmark and does
 not complete formal Tier-1, reconstruction alternatives, durable audit timing,
 Will's key/trust specification or physical Quest validation.
+
+## Current result and handoff summary
+
+The 30-attempt frozen-model smoke is committed as
+`fa8cbf1e958c049c54261b0d5652a90251ef3bae`. All 30 sessions admitted; 90
+accepted composite callbacks and 90 refusal controls reconciled. Five motion
+models and six anomaly detectors were verified and exercised, with zero calls
+on refused windows. The scoped line-ending amendment preserves the experiment's
+original source commit and unchanged experimental records.
+
+In the first instrumented run, none of the six conditions meets the 20 ms p95
+target for any of the three complete measured post-window paths (first,
+recurring or after-refusal). The largest measured root delay per condition has
+90.30-92.33% recorded GC overlap. This locates substantial observed activity,
+not complete causal attribution. The separate 2,729.3209 ms condition-first-use
+fresh path spends 2,704.7969 ms in reconstruction; compilation/cache causes
+were not separately isolated. Do not discard those values, subtract no-op
+overhead, or treat receiver-only timings as complete-path performance.
+
+The concise numerical account and exact recorded commands are in
+`results/week-6/keegan/keegan.md`. The latest saved Python suite passed 666
+tests, including 24 timing-reporting tests. No model training, threshold
+change, architecture expansion or reconstruction-policy change occurred.
+
+The required dataset and 11 model binaries are local/Git-ignored, not supplied
+by a clone of the results tree. An exact 12-file, repository-path-preserving
+bundle and hash-verification/install helper have been prepared for trusted
+transfer to Will. The helper verifies against pinned repository manifests
+before installation or model loading and refuses conflicting existing files.
+This does not establish that Will has received or verified the bundle.
+
+Remaining work is a separately declared causal/observer-effect diagnostic,
+expanded varied Tier-1 evaluation, controlled reconstruction improvements,
+precise v2 trust/key specification, durable audit timing and approved Quest
+logger validation. The current timing evidence does not complete those tasks.

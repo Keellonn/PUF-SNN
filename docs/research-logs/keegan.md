@@ -1,9 +1,9 @@
 # Keegan Hoyne's Research Log
 
 **Owner:** Keegan Hoyne  
-**Current week:** Week 5
+**Current week:** Week 6
 
-**Last updated:** September 29, 2026
+**Last updated:** October 6, 2026
 
 ## Current research question
 
@@ -580,6 +580,83 @@ The source windows and attacks are synthetic. Severe changes can make the origin
 Evidence folders are `tier2-breakdown`, `nod-diagnostics`, `sequence-neighbors`, and `model-evidence` under `results/week-5/keegan/`. Their manifests/settings retain the exact commands, configurations, seeds, source hashes, and artifact hashes. Full commit IDs and numerical interpretation are recorded in `results/week-5/keegan/keegan.md`.
 
 These revisions remain cross-session synthetic evaluation with fixed device profiles. Fresh v2 end-to-end timing and the remaining shared security/reliability experiments are outstanding.
+
+---
+
+# Week 6: Current v2 Integration and First Composite Timing
+
+## October 5: Connector, frozen loader and functional validation
+
+- Connected Will's current admission APIs to one simulated noisy response read and one actual BCH reconstruction, preserving the returned candidate instead of substituting enrollment truth or retrying until success.
+- Connected independent pre-HKDF credential verification, trusted local authorization, HKDF/mutual confirmation and active-session window processing to one composite motion/anomaly consumer.
+- Tested at-most-once accepted-event release, metadata exclusion, refused-window zero-consumer behavior and committed state after consumer failure. The shared protocol, quality, sequence, session and reconstruction policies remained unchanged.
+- Implemented the frozen loader with pinned manifests, dataset/model hash checks before deserialization, training-only normalization and unchanged validation-selected anomaly thresholds. It verified five motion models and six anomaly detectors without fitting or model selection.
+- Ran the predeclared 30-attempt single-read functional smoke across six fixed simulated profiles and five classes. All 30 sessions admitted; 90 accepted composite deliveries and 90 refusal controls reconciled. The run exercised clean and quality-valid pre-tag position-jump inference, bad tags, replay, a 113/120 tracking-valid sender refusal and valid traffic after refusals. Refused windows caused zero model calls.
+- Saved 450 individual motion forwards and 540 detector forwards as functional invocation evidence, not new accuracy/recall or FRR estimates.
+- Corrected the generated attributes file to explicit LF and recorded its line-ending-only manifest amendment. The six experimental record files and original smoke source commit were unchanged; no experiment was rerun for this correction.
+
+## October 6: Fresh timing, saved-run diagnostics and reporting
+
+- Implemented direct monotonic wall/thread-CPU timing and nested stage trees for fresh response-to-first-inference, complete recurring/after-refusal processing and separate rejected receiver/pre-tag controls. Recorded GC overlap, first use/warmups, environment/power conditions and a no-op observer proxy without subtracting it.
+- Ran six predeclared frozen conditions with 20 validation warmups and 600 test-source attempts each. Retained all 3,720 fresh attempts, 3,720 response reads and 29,718 root traces. Each measured condition admitted 599/600 sessions and stopped one attempt at reconstruction failure, with no retries or hidden refusals.
+- Verified paired admission signatures across model conditions. The repeated reconstruction refusal uses the same source/noise streams, so it is not six independent reliability failures. Rejected traffic produced zero preprocessing/model calls.
+- Recorded complete recurring motion-plus-anomaly p95 of 27.7629 ms (LR/LR), 30.3028 ms (LR/RF), 52.8523 ms (RF/RF) and 51.3985/50.5355/54.1160 ms for SNN-32 seeds 7/17/27 with RF. All first, recurring and after-refusal complete measured post-window p95 values exceeded the unchanged 20 ms target.
+- Kept fresh-session totals, receiver-only rejection paths and historical Week 4 motion-only timing separate. Nested stage percentiles were not added; physical acquisition, network and durable audit storage were excluded.
+- Implemented read-only reporting that checked completion/hash bindings, saved quantiles, case/delivery reconciliation and every retained outlier, without model loading, inference, authentication or new timing.
+- Saved 168 complete-path rows, 150 root-group summaries/maxima and all 12,621 retained slow/tail observations. Absolute >20 ms and group-p99 tail counts overlap and were not double-counted; the retained count was not interpreted as a rare-fault rate.
+- Measured 90.30-92.33% recorded GC overlap at the largest measured root per condition, using clipped interval unions. The separate 2,729.3209 ms first-use fresh path spent 2,704.7969 ms in reconstruction. These locate observed activity; they do not establish complete causes or isolate collector/retained-tree overhead, scheduling, allocation, cache or power effects.
+- Passed the latest full 666-test Python suite, including 24 timing-reporting tests, and verified the completed evidence's hashes and completion records before committing and pushing.
+- Prepared an exact repository-path-preserving frozen-input ZIP and verification/install helper for Will: one unchanged generated dataset plus 11 model binaries. Checked the payload against pinned repository manifests; no secret credentials, verifier keys, raw responses or helper material were included.
+
+## Configurations, seeds, commands and evidence
+
+The corrected 1,800-window dataset remains fixed at SHA-256
+`752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`.
+Generation seed 7 and deterministic session splits were unchanged. The smoke
+configuration is `configs/week6_smoke.json`; timing is `configs/week6_timing.json`,
+with existing `configs/puf_baseline.json` and `configs/authentication_v2.json`.
+PUF seed 6767 uses separate manufacturing, credential and phase-specific read
+domains, paired across timing conditions; keys/nonces use independent OS
+randomness. Frozen motion seeds are 7/17/27 (SNN training 107/117/127);
+timing detector seed is 6007, while the smoke exercises 6007/6017/6027.
+
+The instrumented run used an HP Pavilion Plus 16-ab1xxx, Core Ultra 7 155H,
+31.5 GiB RAM and Windows 11 Home 10.0.26200; Python 3.13.14, NumPy 2.5.3,
+scikit-learn 1.9.1 and Torch 2.14.0+cpu. Batch/native/Torch intra-op threads
+were one, GC remained enabled, and QueryPerformanceCounter reported 100 ns
+resolution. AC power/heavy-app closure were self-reported; frequency, core
+placement and fixed-order thermal drift were uncontrolled. Full environment
+and source/configuration hashes are preserved in the manifests.
+
+Completed run/test commands:
+
+```powershell
+python src/python/scripts/run_week6_smoke.py --config configs/week6_smoke.json --output results/week-6/keegan/frozen-model-smoke
+python -u src/python/scripts/benchmark_week6_v2.py --config configs/week6_timing.json --output results/week-6/keegan/fresh-v2-timing --power ac --background heavy_apps_closed
+python src/python/scripts/summarize_week6_timing.py --input results/week-6/keegan/fresh-v2-timing --output results/week-6/keegan/timing-diagnostics
+python -m unittest discover -s tests -p 'test_pipeline_timing_reporting.py' -v
+python -m unittest discover -s tests -v
+```
+
+Evidence is in `results/week-6/keegan/frozen-model-smoke/`,
+`fresh-v2-timing/`, `timing-diagnostics/` and `test-evidence/`. Numerical
+interpretation, manifest hashes and the exact provenance table are in
+`results/week-6/keegan/keegan.md`; methods are in `docs/week6-end-to-end.md`.
+
+| Completed change | Commit |
+|---|---|
+| Current v2 composite connector | `178738f63a7d80379b084cd664d3daa81f431078` |
+| Frozen loader/smoke implementation | `7d07a4f7f2de58b64ae17f98aa9c1478a9803f14` |
+| Smoke evidence and LF/hash amendment | `fa8cbf1e958c049c54261b0d5652a90251ef3bae` |
+| Fresh timing instrumentation | `78f499a92f633a4793c776a070058e3a6a9a0b61` |
+| Completed first timing run | `a4a9e2548fd30ee2383923dbd0de6cd5c45c587f` |
+| Saved-run timing/GC reporting | `a238d70d075276f3c3f10f58044fdb4bb90ae585` |
+| Completed diagnostic addendum | `cc8c86c5122ec74d4744ba41a715133b53bf342b` |
+
+These results are a bounded instrumented software evaluation with simulated
+responses and loaded synthetic windows. No training, threshold change,
+architecture search, reconstruction improvement, formal varied Tier-1 study,
+durable-storage benchmark, human recording or Quest deployment occurred.
 
 ---
 
