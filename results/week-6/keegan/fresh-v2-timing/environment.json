@@ -1,0 +1,130 @@
+{
+  "cpu_frequency_and_core_affinity_controlled": false,
+  "galois": "0.4.11",
+  "joblib": "1.6.0",
+  "machine_end": {
+    "ActivePowerPlan": "Power Scheme GUID: 4d5d23f7-ba0d-4e4f-ae9b-e64971915f86  (VTRL Optimized)",
+    "MachineModel": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "Manufacturer": "HP",
+    "MemoryGiB": 31.5,
+    "Processors": [
+      {
+        "CurrentClockSpeed": 1400,
+        "MaxClockSpeed": 3800,
+        "Name": "Intel(R) Core(TM) Ultra 7 155H",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 22
+      }
+    ],
+    "Windows": "Microsoft Windows 11 Home",
+    "WindowsVersion": "10.0.26200",
+    "clock_speed_is_snapshot_not_fixed_frequency": true,
+    "collection_status": "collected",
+    "cpu_frequency_controlled": false
+  },
+  "machine_start": {
+    "ActivePowerPlan": "Power Scheme GUID: 4d5d23f7-ba0d-4e4f-ae9b-e64971915f86  (VTRL Optimized)",
+    "MachineModel": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "Manufacturer": "HP",
+    "MemoryGiB": 31.5,
+    "Processors": [
+      {
+        "CurrentClockSpeed": 1400,
+        "MaxClockSpeed": 3800,
+        "Name": "Intel(R) Core(TM) Ultra 7 155H",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 22
+      }
+    ],
+    "Windows": "Microsoft Windows 11 Home",
+    "WindowsVersion": "10.0.26200",
+    "clock_speed_is_snapshot_not_fixed_frequency": true,
+    "collection_status": "collected",
+    "cpu_frequency_controlled": false
+  },
+  "model_condition_order": "fixed predeclared order; thermal/background drift not controlled",
+  "native_threadpools_during_run": [
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.34.106.0"
+    },
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.31.dev"
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "vcomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiomp5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiompstubs5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    }
+  ],
+  "numpy": "2.5.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "power_plan_changed": false,
+  "python": "3.13.14",
+  "scikit_learn": "1.9.1",
+  "self_reported_background": "heavy_apps_closed",
+  "self_reported_power": "ac",
+  "timers": {
+    "adjustable": false,
+    "cpu_timer": "GetThreadTimes()",
+    "gc_callbacks": "overlap instrumentation; no forced collection or disabling",
+    "gc_enabled": true,
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "monotonic": true,
+    "resolution_seconds": 1e-07,
+    "wall_timer": "QueryPerformanceCounter()"
+  },
+  "timers_end": {
+    "adjustable": false,
+    "cpu_timer": "GetThreadTimes()",
+    "gc_callbacks": "overlap instrumentation; no forced collection or disabling",
+    "gc_enabled": true,
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "monotonic": true,
+    "resolution_seconds": 1e-07,
+    "wall_timer": "QueryPerformanceCounter()"
+  },
+  "torch": "2.14.0+cpu",
+  "torch_interop_threads": 16,
+  "torch_intraop_threads": 1
+}

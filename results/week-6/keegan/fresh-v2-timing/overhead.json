@@ -1,0 +1,10 @@
+{
+  "method": "1000 no-op roots; not an estimate of all per-trial overhead; no subtraction",
+  "noop_outer_one_nested_span": {
+    "count": 1000,
+    "max_ms": 0.0328,
+    "p50_ms": 0.0023,
+    "p95_ms": 0.0031,
+    "p99_ms": 0.0037
+  }
+}
