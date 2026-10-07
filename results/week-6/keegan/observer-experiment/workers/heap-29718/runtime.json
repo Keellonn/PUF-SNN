@@ -1,0 +1,70 @@
+{
+  "after": {
+    "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+    "automatic_gc_enabled": true,
+    "gc_counts": [
+      46,
+      0,
+      0
+    ],
+    "gc_stats": [
+      {
+        "collected": 8339,
+        "collections": 817,
+        "uncollectable": 0
+      },
+      {
+        "collected": 1168,
+        "collections": 74,
+        "uncollectable": 0
+      },
+      {
+        "collected": 72,
+        "collections": 10,
+        "uncollectable": 0
+      }
+    ],
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "python_allocated_blocks": 9450310
+  },
+  "before": {
+    "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+    "automatic_gc_enabled": true,
+    "gc_counts": [
+      1283,
+      3,
+      4
+    ],
+    "gc_stats": [
+      {
+        "collected": 8339,
+        "collections": 817,
+        "uncollectable": 0
+      },
+      {
+        "collected": 1168,
+        "collections": 74,
+        "uncollectable": 0
+      },
+      {
+        "collected": 72,
+        "collections": 5,
+        "uncollectable": 0
+      }
+    ],
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "python_allocated_blocks": 9450139
+  },
+  "frozen_models_and_complete_dataset_resident": true,
+  "replay_is_metadata_not_original_application_heap": true,
+  "retained_span_count": 449442,
+  "retained_trace_count": 29718
+}

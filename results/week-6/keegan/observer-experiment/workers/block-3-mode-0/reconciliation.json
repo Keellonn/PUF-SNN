@@ -1,0 +1,143 @@
+{
+  "accepted_by_condition_phase": [
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 59,
+      "phase": "measured"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    }
+  ],
+  "fresh_attempt_count": 540,
+  "paired_admission_signatures_match": true,
+  "refused_by_condition_phase_reason": [
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    }
+  ],
+  "rejected_window_model_calls": 0,
+  "response_read_count": 540,
+  "trace_count": 4278
+}

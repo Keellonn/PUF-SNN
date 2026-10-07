@@ -1,0 +1,187 @@
+[
+  {
+    "clock_end_ns": 46609826442600,
+    "clock_start_ns": 46609673430400,
+    "collected_objects": 0,
+    "elapsed_ns": 153012200,
+    "gc_events": [
+      {
+        "collected": 0,
+        "end_ns": 152996700,
+        "generation": 2,
+        "start_ns": 8300,
+        "uncollectable": 0
+      }
+    ],
+    "gc_spanning_trace_end": [],
+    "native_thread_id": 13212,
+    "observer": "outer_only",
+    "path": "explicit_full_gc_probe",
+    "phase": "first_full_collection",
+    "probe_index": 0,
+    "process_id": 23636,
+    "retained_span_count": 75614,
+    "retained_trace_count": 5000,
+    "spans": [
+      {
+        "exception": false,
+        "id": 0,
+        "parent_id": null,
+        "stage": "explicit_full_gc_probe",
+        "start_ns": 1900,
+        "thread_cpu_ns": 140625000,
+        "wall_minus_thread_cpu_ns": 12387200,
+        "wall_ns": 153012200
+      }
+    ],
+    "thread_cpu_ns": 140625000
+  },
+  {
+    "clock_end_ns": 46609983674500,
+    "clock_start_ns": 46609826486700,
+    "collected_objects": 0,
+    "elapsed_ns": 157187800,
+    "gc_events": [
+      {
+        "collected": 0,
+        "end_ns": 157173400,
+        "generation": 2,
+        "start_ns": 3900,
+        "uncollectable": 0
+      }
+    ],
+    "gc_spanning_trace_end": [],
+    "native_thread_id": 13212,
+    "observer": "outer_only",
+    "path": "explicit_full_gc_probe",
+    "phase": "repeat_full_collection",
+    "probe_index": 1,
+    "process_id": 23636,
+    "retained_span_count": 75614,
+    "retained_trace_count": 5000,
+    "spans": [
+      {
+        "exception": false,
+        "id": 0,
+        "parent_id": null,
+        "stage": "explicit_full_gc_probe",
+        "start_ns": 1700,
+        "thread_cpu_ns": 156250000,
+        "wall_minus_thread_cpu_ns": 937800,
+        "wall_ns": 157187800
+      }
+    ],
+    "thread_cpu_ns": 156250000
+  },
+  {
+    "clock_end_ns": 46610138709900,
+    "clock_start_ns": 46609983702100,
+    "collected_objects": 0,
+    "elapsed_ns": 155007800,
+    "gc_events": [
+      {
+        "collected": 0,
+        "end_ns": 154996300,
+        "generation": 2,
+        "start_ns": 2800,
+        "uncollectable": 0
+      }
+    ],
+    "gc_spanning_trace_end": [],
+    "native_thread_id": 13212,
+    "observer": "outer_only",
+    "path": "explicit_full_gc_probe",
+    "phase": "repeat_full_collection",
+    "probe_index": 2,
+    "process_id": 23636,
+    "retained_span_count": 75614,
+    "retained_trace_count": 5000,
+    "spans": [
+      {
+        "exception": false,
+        "id": 0,
+        "parent_id": null,
+        "stage": "explicit_full_gc_probe",
+        "start_ns": 400,
+        "thread_cpu_ns": 156250000,
+        "wall_minus_thread_cpu_ns": 0,
+        "wall_ns": 155007800
+      }
+    ],
+    "thread_cpu_ns": 156250000
+  },
+  {
+    "clock_end_ns": 46610295817600,
+    "clock_start_ns": 46610138735200,
+    "collected_objects": 0,
+    "elapsed_ns": 157082400,
+    "gc_events": [
+      {
+        "collected": 0,
+        "end_ns": 157069200,
+        "generation": 2,
+        "start_ns": 3400,
+        "uncollectable": 0
+      }
+    ],
+    "gc_spanning_trace_end": [],
+    "native_thread_id": 13212,
+    "observer": "outer_only",
+    "path": "explicit_full_gc_probe",
+    "phase": "repeat_full_collection",
+    "probe_index": 3,
+    "process_id": 23636,
+    "retained_span_count": 75614,
+    "retained_trace_count": 5000,
+    "spans": [
+      {
+        "exception": false,
+        "id": 0,
+        "parent_id": null,
+        "stage": "explicit_full_gc_probe",
+        "start_ns": 400,
+        "thread_cpu_ns": 156250000,
+        "wall_minus_thread_cpu_ns": 832400,
+        "wall_ns": 157082400
+      }
+    ],
+    "thread_cpu_ns": 156250000
+  },
+  {
+    "clock_end_ns": 46610450241900,
+    "clock_start_ns": 46610295843600,
+    "collected_objects": 0,
+    "elapsed_ns": 154398300,
+    "gc_events": [
+      {
+        "collected": 0,
+        "end_ns": 154385600,
+        "generation": 2,
+        "start_ns": 3200,
+        "uncollectable": 0
+      }
+    ],
+    "gc_spanning_trace_end": [],
+    "native_thread_id": 13212,
+    "observer": "outer_only",
+    "path": "explicit_full_gc_probe",
+    "phase": "repeat_full_collection",
+    "probe_index": 4,
+    "process_id": 23636,
+    "retained_span_count": 75614,
+    "retained_trace_count": 5000,
+    "spans": [
+      {
+        "exception": false,
+        "id": 0,
+        "parent_id": null,
+        "stage": "explicit_full_gc_probe",
+        "start_ns": 900,
+        "thread_cpu_ns": 156250000,
+        "wall_minus_thread_cpu_ns": 0,
+        "wall_ns": 154398300
+      }
+    ],
+    "thread_cpu_ns": 156250000
+  }
+]

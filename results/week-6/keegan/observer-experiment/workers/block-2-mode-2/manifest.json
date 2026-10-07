@@ -1,0 +1,97 @@
+{
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "environment-start.json": "9417a90835d1fb12e37662aa93862f1d92eacad010e2d5828a6922c4198a05e2",
+    "environment.json": "aaae84619c97d36666a8b98c29bdb73e58755cb64ef10244ee9fd73b07b2d72e",
+    "job.json": "47e852cebadbaa5281048cfb330849430015cd7eda49530736a38005b1f2a675",
+    "path-latency.csv": "800f16af8fd440982cf82ac93087654bcdb707da4ab230d922399ca3e1c49eda",
+    "reconciliation.json": "dd0e45bcfe13adaaefd09818bc7c53d676f848000b13d89eff415ce9b3239bfc",
+    "retained-outliers.jsonl": "a750b9360b3b5c6fc820b77762becbde2c8d6f44eed2ef6964235dc14d31e1d3",
+    "runtime-and-cleanup.json": "b32691b5880dea0232e46133e724733620287ccbe1bbd65dcfe187f1b51db9d4",
+    "summary.json": "ac933c9cfc88a9dc5affc3f78707511d5906ad015d8aee7156d2dbb8b884405c",
+    "timings-forest_motion_forest_anomaly.jsonl": "27d17a5467ce5e13c5a4b8ce0800c52e2b2fb262c9c5911a813d7b4643808ca7",
+    "timings-logistic_motion_forest_anomaly.jsonl": "bdd6fe316e201f429178df9f9801088573000eb354edb16c5b5d4331fa595ce1",
+    "timings-logistic_motion_logistic_anomaly.jsonl": "84978fcc859da2976b9ed091aa15aaab0dd0fa059c60a6964b831d9a2de55f0e",
+    "timings-snn32_seed17_forest_anomaly.jsonl": "cbd85d64a215fe3905c89302e5739218904cb64b8ae2e3d19d4cb825db31db7f",
+    "timings-snn32_seed27_forest_anomaly.jsonl": "54e5f5f1f994c77583491e03205379514bce7b400920a71310f7dc557f5e0ef8",
+    "timings-snn32_seed7_forest_anomaly.jsonl": "62f5cdb8367754244c95e4d49e9d5c3b8f86d723989d7593bfe53dd181768493"
+  },
+  "authentication_executed": true,
+  "complete_causal_attribution_established": false,
+  "completed_utc": "2026-10-07T06:10:41.769834+00:00",
+  "configuration_sha256": "60f27cdca6807ed42f25cdeea36bef93185c11fd66417bc28082f1a09dfec24b",
+  "durable_audit_measured": false,
+  "fresh_attempt_count": 540,
+  "frozen_input_hashes": {
+    "anomaly/anomaly-feature-names.json": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+    "anomaly/frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "anomaly/manifest.json": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+    "anomaly/models/anomaly_logistic_regression_seed6007.joblib": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+    "anomaly/models/anomaly_logistic_regression_seed6017.joblib": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+    "anomaly/models/anomaly_logistic_regression_seed6027.joblib": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+    "anomaly/models/anomaly_random_forest_seed6007.joblib": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+    "anomaly/models/anomaly_random_forest_seed6017.joblib": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+    "anomaly/models/anomaly_random_forest_seed6027.joblib": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784",
+    "conventional/manifest.json": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed",
+    "conventional/models/logistic_regression-seed-7-storage-refit.joblib": "197fedf4ad93b6ed097485b371db1dd501ebc83e883daaf75049fcf605e21069",
+    "conventional/models/random_forest-seed-7-storage-refit.joblib": "36a5bfb68547c2f28a937f1247ef9026a374d7db43225641a11238334c12c69d",
+    "snn32/config.json": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+    "snn32/manifest.json": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779",
+    "snn32/normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "snn32/seed-17/model-state.pt": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+    "snn32/seed-27/model-state.pt": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830",
+    "snn32/seed-7/model-state.pt": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6"
+  },
+  "historical_files_modified": false,
+  "historical_trace_replay_executed": false,
+  "job": {
+    "block": 2,
+    "condition_order": [
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "random_forest_seed_7_storage_refit",
+        "name": "forest_motion_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "snn_32_seed_7",
+        "name": "snn32_seed7_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "snn_32_seed_17",
+        "name": "snn32_seed17_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "snn_32_seed_27",
+        "name": "snn32_seed27_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_logistic_regression_seed6007",
+        "motion": "logistic_regression_seed_7_storage_refit",
+        "name": "logistic_motion_logistic_anomaly"
+      },
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "logistic_regression_seed_7_storage_refit",
+        "name": "logistic_motion_forest_anomaly"
+      }
+    ],
+    "job_id": "block-2-mode-2",
+    "kind": "timing",
+    "mode": "outer_stream_gc_on",
+    "position": 0
+  },
+  "latency_measured": true,
+  "limitation": "Diagnostic contrasts on sixty preselected test sources, repeated in four paired noise blocks, not a replacement held-out performance/FRR/security study. Normal-GC modes are references; GC deferral is a counterfactual with separately reported cleanup. All clocks/callbacks and orchestration impose observer costs. Windows scheduling, native allocation, cache, power/core placement and historical single-event root causes remain unresolved without additional evidence. No target-passing, hardware acquisition, Quest, network or durable-audit claim.",
+  "model_inference_executed": true,
+  "performance_target_claim": false,
+  "rejected_window_model_calls": 0,
+  "run_type": "week6-observer-experiment-v1",
+  "source_commit": "f3efeebafc5f5d4f173d7086a84f3e7cbc796ea2",
+  "source_worktree_dirty": false,
+  "threshold_selection_executed": false,
+  "trace_count": 4320,
+  "training_executed": false
+}

@@ -1,0 +1,695 @@
+{
+  "final_retention_before_release": {
+    "counts_are_metadata_nodes_not_memory_bytes": true,
+    "mode": "nested_stream_gc_deferred",
+    "observed_span_count": 65340,
+    "observed_trace_count": 4320,
+    "retained_span_count": 0,
+    "retained_trace_count": 0
+  },
+  "native_threadpools": [
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.34.106.0"
+    },
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.31.dev"
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "vcomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiomp5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiompstubs5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    }
+  ],
+  "policy": {
+    "after_work": {
+      "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+      "automatic_gc_enabled": false,
+      "gc_counts": [
+        2919630,
+        0,
+        15
+      ],
+      "gc_stats": [
+        {
+          "collected": 59487,
+          "collections": 649,
+          "uncollectable": 0
+        },
+        {
+          "collected": 89868,
+          "collections": 59,
+          "uncollectable": 0
+        },
+        {
+          "collected": 72,
+          "collections": 4,
+          "uncollectable": 0
+        }
+      ],
+      "gc_thresholds": [
+        2000,
+        10,
+        10
+      ],
+      "python_allocated_blocks": 10519179
+    },
+    "automatic_gc_requested": false,
+    "cleanup": {
+      "collected_objects": 2886340,
+      "generation": 2,
+      "includes_full_collection_and_builtin_free_list_effects": true,
+      "outside_root_timers": true,
+      "thread_cpu_ns": 703125000,
+      "wall_ns": 695907400
+    },
+    "entry": {
+      "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+      "automatic_gc_enabled": true,
+      "gc_counts": [
+        1842,
+        0,
+        15
+      ],
+      "gc_stats": [
+        {
+          "collected": 59487,
+          "collections": 649,
+          "uncollectable": 0
+        },
+        {
+          "collected": 89868,
+          "collections": 59,
+          "uncollectable": 0
+        },
+        {
+          "collected": 72,
+          "collections": 4,
+          "uncollectable": 0
+        }
+      ],
+      "gc_thresholds": [
+        2000,
+        10,
+        10
+      ],
+      "python_allocated_blocks": 5233083
+    },
+    "mode": "nested_stream_gc_deferred",
+    "policy_consistent": true,
+    "restored": {
+      "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+      "automatic_gc_enabled": true,
+      "gc_counts": [
+        1,
+        0,
+        0
+      ],
+      "gc_stats": [
+        {
+          "collected": 59487,
+          "collections": 649,
+          "uncollectable": 0
+        },
+        {
+          "collected": 89868,
+          "collections": 59,
+          "uncollectable": 0
+        },
+        {
+          "collected": 2886412,
+          "collections": 5,
+          "uncollectable": 0
+        }
+      ],
+      "gc_thresholds": [
+        2000,
+        10,
+        10
+      ],
+      "python_allocated_blocks": 5164404
+    }
+  },
+  "snapshots": [
+    {
+      "cohort": "warmup",
+      "condition": "logistic_motion_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 3630,
+        "observed_trace_count": 240,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          354318,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 5862758
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "logistic_motion_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 10890,
+        "observed_trace_count": 720,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          656259,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 6410617
+      }
+    },
+    {
+      "cohort": "warmup",
+      "condition": "forest_motion_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 14520,
+        "observed_trace_count": 960,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          810029,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 6689044
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "forest_motion_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 21780,
+        "observed_trace_count": 1440,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          1117538,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 7245912
+      }
+    },
+    {
+      "cohort": "warmup",
+      "condition": "snn32_seed7_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 25410,
+        "observed_trace_count": 1680,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          1268421,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 7519775
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "snn32_seed7_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 32670,
+        "observed_trace_count": 2160,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          1570170,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 8067382
+      }
+    },
+    {
+      "cohort": "warmup",
+      "condition": "snn32_seed17_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 36300,
+        "observed_trace_count": 2400,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          1721052,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 8341152
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "snn32_seed17_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 43560,
+        "observed_trace_count": 2880,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          2022801,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 8888690
+      }
+    },
+    {
+      "cohort": "warmup",
+      "condition": "snn32_seed27_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 47190,
+        "observed_trace_count": 3120,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          2173683,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 9162464
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "snn32_seed27_forest_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 54450,
+        "observed_trace_count": 3600,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          2475432,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 9709974
+      }
+    },
+    {
+      "cohort": "warmup",
+      "condition": "logistic_motion_logistic_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 58080,
+        "observed_trace_count": 3840,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          2623674,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 9979926
+      }
+    },
+    {
+      "cohort": "measured",
+      "condition": "logistic_motion_logistic_anomaly",
+      "retention": {
+        "counts_are_metadata_nodes_not_memory_bytes": true,
+        "mode": "nested_stream_gc_deferred",
+        "observed_span_count": 65340,
+        "observed_trace_count": 4320,
+        "retained_span_count": 0,
+        "retained_trace_count": 0
+      },
+      "runtime": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": false,
+        "gc_counts": [
+          2919973,
+          0,
+          15
+        ],
+        "gc_stats": [
+          {
+            "collected": 59487,
+            "collections": 649,
+            "uncollectable": 0
+          },
+          {
+            "collected": 89868,
+            "collections": 59,
+            "uncollectable": 0
+          },
+          {
+            "collected": 72,
+            "collections": 4,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 10519583
+      }
+    }
+  ]
+}

@@ -1,0 +1,705 @@
+{
+  "background": "heavy_apps_closed",
+  "configuration_sha256": "60f27cdca6807ed42f25cdeea36bef93185c11fd66417bc28082f1a09dfec24b",
+  "frozen_configuration_sha256": "ff10c6b53ce8041f39bf26c99d793fda64a8cbde6cbe4dd6c05e28b3437a100f",
+  "frozen_input_hashes": {
+    "anomaly/anomaly-feature-names.json": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+    "anomaly/frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "anomaly/manifest.json": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+    "anomaly/models/anomaly_logistic_regression_seed6007.joblib": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+    "anomaly/models/anomaly_logistic_regression_seed6017.joblib": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+    "anomaly/models/anomaly_logistic_regression_seed6027.joblib": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+    "anomaly/models/anomaly_random_forest_seed6007.joblib": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+    "anomaly/models/anomaly_random_forest_seed6017.joblib": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+    "anomaly/models/anomaly_random_forest_seed6027.joblib": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784",
+    "conventional/manifest.json": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed",
+    "conventional/models/logistic_regression-seed-7-storage-refit.joblib": "197fedf4ad93b6ed097485b371db1dd501ebc83e883daaf75049fcf605e21069",
+    "conventional/models/random_forest-seed-7-storage-refit.joblib": "36a5bfb68547c2f28a937f1247ef9026a374d7db43225641a11238334c12c69d",
+    "snn32/config.json": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+    "snn32/manifest.json": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779",
+    "snn32/normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "snn32/seed-17/model-state.pt": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+    "snn32/seed-27/model-state.pt": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830",
+    "snn32/seed-7/model-state.pt": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6"
+  },
+  "historical_hashes": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "COMPLETE": "ecd4039952c0e39633ae31c14d359a29d3b85d8934b245837b2def3a4ded701c",
+    "config.json": "894a44304af23f116107a7383ce1b736f85c312c19c73468566f23f9fd0399dd",
+    "environment-start.json": "b49ec0e7f07718f2dd9ff012883feef5618b8c40e1cfecc559e0b5b0415a99f2",
+    "environment.json": "5b95a61edb928d7befc2d3836ea33776cd44f0f53f9ae53b71fc61d4bf39978f",
+    "frozen-input-hashes.json": "0900f5725b7a50cb3518e87f46faeefc0326a4303f92407b3f9d1f9fef7af95f",
+    "manifest.json": "10135c6e3849015c6afcfb96c91d9bc25bdeabdbdc1da2531b1ec65501403b50",
+    "nested-stage-latency.csv": "99cf9d3c8a8591a464c7724012fa02765a7648e63f275dd535bbbfc0ef235c5e",
+    "outliers-forest_motion_forest_anomaly.jsonl": "dbc33ac8676af4f80452d895b39005cef1bd7847f6bbbeedecbd9da17cef12d6",
+    "outliers-logistic_motion_forest_anomaly.jsonl": "3f4dda20f2557cc3c44102f608fbf904cd3d49ae9e2ce6fb265b863a6a504cad",
+    "outliers-logistic_motion_logistic_anomaly.jsonl": "66f937293e144f0fbe6cbaaaa4195361a44eb6d4c8fe99014ab214bc401114c7",
+    "outliers-snn32_seed17_forest_anomaly.jsonl": "42ab6b9270dc8935a68ce92fc1d5d92005f1595037fe29e0774738679cdcf912",
+    "outliers-snn32_seed27_forest_anomaly.jsonl": "708b6a7ac7d6974ccbf18694c90b3dc437639e6192857e0411f5c2eb579b72bc",
+    "outliers-snn32_seed7_forest_anomaly.jsonl": "b50789d6b33145e8742ab47fc4999dc8ee282f9d8ba1838bab2b5f34029dfef6",
+    "overhead.json": "542f750cee6673c14baf9846364551a60d8ddcf3641409bacb894e9a63710e57",
+    "path-latency.csv": "fbacd137cbcac7c5707e97c5369c36a9c5ef9433b8b882ee8df633702af0dea5",
+    "reconciliation.json": "d31526a1c4fad08efdcc75b18b132a6388596cb9d54467717124f472bbf94954",
+    "source-selection.json": "2c4846714f8d565f01daafd83669f2d88dd76f1064d223a3c880706e239456d5",
+    "summary.json": "cbf5ea58437087047ae6c8c300b64ce26f1d51d7c6b5491d28a5014597e1e1ee",
+    "timing-report.md": "38bb78bac899151c3439265567cd9301c4af2d9e5f54cceb495c9e0c95d8a03a",
+    "timings-forest_motion_forest_anomaly.jsonl": "edfabf6c9ef4889dfa8ac502b23b4fc919c8052941047ed87aa6e55aa0e15125",
+    "timings-logistic_motion_forest_anomaly.jsonl": "273d91ac9287cfa50af0cb150487df4920657169e0a91ed7b6d2e5971c36180c",
+    "timings-logistic_motion_logistic_anomaly.jsonl": "850a857e55628fcb36e16c3d33023db4c037bc10fa85a02dca955ee7363dd075",
+    "timings-snn32_seed17_forest_anomaly.jsonl": "ae8f0ac0b67a3ef59afaa8766f3ae88ebb6e16fcf06974175e7c0d46310b458c",
+    "timings-snn32_seed27_forest_anomaly.jsonl": "db0104226228a9b8fad4f05eb243c9867f0d564615fd6caf9de5ef805698f49c",
+    "timings-snn32_seed7_forest_anomaly.jsonl": "57903a745a93c45a6a41d12b0b1e945aec6b3aec3057b8b95c3526a12f68bcd5"
+  },
+  "jobs": [
+    {
+      "block": 0,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        }
+      ],
+      "job_id": "block-0-mode-0",
+      "kind": "timing",
+      "mode": "nested_retained_gc_on",
+      "position": 0
+    },
+    {
+      "block": 0,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        }
+      ],
+      "job_id": "block-0-mode-1",
+      "kind": "timing",
+      "mode": "nested_stream_gc_on",
+      "position": 1
+    },
+    {
+      "block": 0,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-0-mode-3",
+      "kind": "timing",
+      "mode": "nested_stream_gc_deferred",
+      "position": 2
+    },
+    {
+      "block": 0,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-0-mode-2",
+      "kind": "timing",
+      "mode": "outer_stream_gc_on",
+      "position": 3
+    },
+    {
+      "block": 1,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        }
+      ],
+      "job_id": "block-1-mode-1",
+      "kind": "timing",
+      "mode": "nested_stream_gc_on",
+      "position": 0
+    },
+    {
+      "block": 1,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        }
+      ],
+      "job_id": "block-1-mode-2",
+      "kind": "timing",
+      "mode": "outer_stream_gc_on",
+      "position": 1
+    },
+    {
+      "block": 1,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        }
+      ],
+      "job_id": "block-1-mode-0",
+      "kind": "timing",
+      "mode": "nested_retained_gc_on",
+      "position": 2
+    },
+    {
+      "block": 1,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        }
+      ],
+      "job_id": "block-1-mode-3",
+      "kind": "timing",
+      "mode": "nested_stream_gc_deferred",
+      "position": 3
+    },
+    {
+      "block": 2,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-2-mode-2",
+      "kind": "timing",
+      "mode": "outer_stream_gc_on",
+      "position": 0
+    },
+    {
+      "block": 2,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-2-mode-3",
+      "kind": "timing",
+      "mode": "nested_stream_gc_deferred",
+      "position": 1
+    },
+    {
+      "block": 2,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        }
+      ],
+      "job_id": "block-2-mode-1",
+      "kind": "timing",
+      "mode": "nested_stream_gc_on",
+      "position": 2
+    },
+    {
+      "block": 2,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        }
+      ],
+      "job_id": "block-2-mode-0",
+      "kind": "timing",
+      "mode": "nested_retained_gc_on",
+      "position": 3
+    },
+    {
+      "block": 3,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        }
+      ],
+      "job_id": "block-3-mode-3",
+      "kind": "timing",
+      "mode": "nested_stream_gc_deferred",
+      "position": 0
+    },
+    {
+      "block": 3,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        }
+      ],
+      "job_id": "block-3-mode-0",
+      "kind": "timing",
+      "mode": "nested_retained_gc_on",
+      "position": 1
+    },
+    {
+      "block": 3,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-3-mode-2",
+      "kind": "timing",
+      "mode": "outer_stream_gc_on",
+      "position": 2
+    },
+    {
+      "block": 3,
+      "condition_order": [
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_7",
+          "name": "snn32_seed7_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_17",
+          "name": "snn32_seed17_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "snn_32_seed_27",
+          "name": "snn32_seed27_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_logistic_regression_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_logistic_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "logistic_regression_seed_7_storage_refit",
+          "name": "logistic_motion_forest_anomaly"
+        },
+        {
+          "anomaly": "anomaly_random_forest_seed6007",
+          "motion": "random_forest_seed_7_storage_refit",
+          "name": "forest_motion_forest_anomaly"
+        }
+      ],
+      "job_id": "block-3-mode-1",
+      "kind": "timing",
+      "mode": "nested_stream_gc_on",
+      "position": 3
+    },
+    {
+      "job_id": "heap-0",
+      "kind": "historical_heap_probe",
+      "retained_trace_count": 0
+    },
+    {
+      "job_id": "heap-5000",
+      "kind": "historical_heap_probe",
+      "retained_trace_count": 5000
+    },
+    {
+      "job_id": "heap-15000",
+      "kind": "historical_heap_probe",
+      "retained_trace_count": 15000
+    },
+    {
+      "job_id": "heap-29718",
+      "kind": "historical_heap_probe",
+      "retained_trace_count": 29718
+    }
+  ],
+  "power": "ac",
+  "source_commit": "f3efeebafc5f5d4f173d7086a84f3e7cbc796ea2",
+  "supporting_configurations": {
+    "configs/authentication_v2.json": "b0ee45b8a3ee5cf6c4c25813e876847303ada4209abc4632bce903a331cf0f60",
+    "configs/puf_baseline.json": "fb54059dc268ef86300d90a4468fcf200b0c73d13c28fad1402a84a075271cda"
+  }
+}

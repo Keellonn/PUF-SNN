@@ -1,0 +1,5 @@
+{
+  "job_id": "heap-5000",
+  "kind": "historical_heap_probe",
+  "retained_trace_count": 5000
+}
