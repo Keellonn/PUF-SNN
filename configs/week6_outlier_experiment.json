@@ -1,0 +1,26 @@
+{
+  "config_version": "week6-observer-experiment-v1",
+  "frozen_config": "configs/week6_smoke.json",
+  "historical_directory": "results/week-6/keegan/fresh-v2-timing",
+  "historical_manifest_sha256": "10135c6e3849015c6afcfb96c91d9bc25bdeabdbdc1da2531b1ec65501403b50",
+  "source_selection": "first_two_sorted_test_windows_per_device_class",
+  "warmup_selection": "first_sorted_validation_window_per_device_class",
+  "measured_attempts_per_condition": 60,
+  "warmup_attempts_per_condition": 30,
+  "blocks": 4,
+  "native_threads": 1,
+  "batch_size": 1,
+  "gc_thresholds": [2000, 10, 10],
+  "modes": ["nested_retained_gc_on", "nested_stream_gc_on", "outer_stream_gc_on", "nested_stream_gc_deferred"],
+  "conditions": [
+    {"name": "logistic_motion_logistic_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_logistic_regression_seed6007"},
+    {"name": "logistic_motion_forest_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "forest_motion_forest_anomaly", "motion": "random_forest_seed_7_storage_refit", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed7_forest_anomaly", "motion": "snn_32_seed_7", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed17_forest_anomaly", "motion": "snn_32_seed_17", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed27_forest_anomaly", "motion": "snn_32_seed_27", "anomaly": "anomaly_random_forest_seed6007"}
+  ],
+  "historical_heap_trace_counts": [0, 5000, 15000, 29718],
+  "full_gc_probes_per_heap": 5,
+  "read_domain": "week6-diagnostic-v1:6767:{block}:{device_index}:{cohort}:measurement"
+}

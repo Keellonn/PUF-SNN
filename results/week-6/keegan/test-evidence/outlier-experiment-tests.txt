@@ -1,0 +1,96 @@
+test_changed_counts_models_gc_and_extra_fields_refused (test_outlier_experiment.OutlierExperimentTests.test_changed_counts_models_gc_and_extra_fields_refused) ... ok
+test_completion_marker_and_artifact_hashes_and_inventory (test_outlier_experiment.OutlierExperimentTests.test_completion_marker_and_artifact_hashes_and_inventory) ... ok
+test_completion_never_overwrites_marker_and_exact_lf (test_outlier_experiment.OutlierExperimentTests.test_completion_never_overwrites_marker_and_exact_lf) ... ok
+Verifying frozen inputs and the original completed timing inventory
+Starting fresh worker 1/20: block-0-mode-0
+Starting fresh worker 2/20: block-0-mode-1
+Starting fresh worker 3/20: block-0-mode-3
+Starting fresh worker 4/20: block-0-mode-2
+Starting fresh worker 5/20: block-1-mode-1
+Starting fresh worker 6/20: block-1-mode-2
+Starting fresh worker 7/20: block-1-mode-0
+Starting fresh worker 8/20: block-1-mode-3
+Starting fresh worker 9/20: block-2-mode-2
+Starting fresh worker 10/20: block-2-mode-3
+Starting fresh worker 11/20: block-2-mode-1
+Starting fresh worker 12/20: block-2-mode-0
+Starting fresh worker 13/20: block-3-mode-3
+Starting fresh worker 14/20: block-3-mode-0
+Starting fresh worker 15/20: block-3-mode-2
+Starting fresh worker 16/20: block-3-mode-1
+Starting fresh worker 17/20: heap-0
+Starting fresh worker 18/20: heap-5000
+Starting fresh worker 19/20: heap-15000
+Starting fresh worker 20/20: heap-29718
+PASS: all workers, paired functional evidence, natural refusals and cleanup reconciled
+{
+  "worker_count": 20,
+  "timing_worker_count": 16,
+  "historical_heap_worker_count": 4,
+  "fresh_attempt_count": 8640,
+  "rejected_window_model_calls": 0,
+  "paired_functional_signatures_match": true,
+  "explicit_full_gc_probe_count": 1,
+  "worker_manifest_hashes": {
+    "block-0-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-5000": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-15000": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-29718": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b"
+  }
+}
+Saved separate diagnostic results to C:\Users\datbo\AppData\Local\Temp\tmpt5a_re92\results\week-6\keegan\controller-fixture
+test_controller_launches_twenty_serial_hashed_jobs_and_binds_manifests (test_outlier_experiment.OutlierExperimentTests.test_controller_launches_twenty_serial_hashed_jobs_and_binds_manifests) ... ok
+Verifying frozen inputs and the original completed timing inventory
+Starting fresh worker 1/20: block-0-mode-0
+test_controller_worker_failure_preserves_incomplete_no_retry (test_outlier_experiment.OutlierExperimentTests.test_controller_worker_failure_preserves_incomplete_no_retry) ... ok
+test_each_job_keeps_all_models_and_rotates_without_selection (test_outlier_experiment.OutlierExperimentTests.test_each_job_keeps_all_models_and_rotates_without_selection) ... ok
+test_existing_outside_or_scope_root_outputs_refused (test_outlier_experiment.OutlierExperimentTests.test_existing_outside_or_scope_root_outputs_refused) ... ok
+test_fixed_configuration_matches_all_six_conditions_and_four_modes (test_outlier_experiment.OutlierExperimentTests.test_fixed_configuration_matches_all_six_conditions_and_four_modes) ... ok
+test_frozen_post_checks_verify_bytes_without_deserialization (test_outlier_experiment.OutlierExperimentTests.test_frozen_post_checks_verify_bytes_without_deserialization) ... ok
+test_heap_prefix_zero_reads_no_metadata_and_short_prefix_refused (test_outlier_experiment.OutlierExperimentTests.test_heap_prefix_zero_reads_no_metadata_and_short_prefix_refused) ... ok
+test_heap_worker_records_five_collections_and_never_authenticates (test_outlier_experiment.OutlierExperimentTests.test_heap_worker_records_five_collections_and_never_authenticates) ... ok
+test_historical_incomplete_or_marker_mismatch_refused (test_outlier_experiment.OutlierExperimentTests.test_historical_incomplete_or_marker_mismatch_refused) ... ok
+test_historical_input_checks_bytes_without_retaining_trees (test_outlier_experiment.OutlierExperimentTests.test_historical_input_checks_bytes_without_retaining_trees) ... ok
+test_historical_stream_checks_condition_and_root_exception (test_outlier_experiment.OutlierExperimentTests.test_historical_stream_checks_condition_and_root_exception) ... ok
+test_job_plan_has_fresh_mode_workers_and_separate_heap_workers (test_outlier_experiment.OutlierExperimentTests.test_job_plan_has_fresh_mode_workers_and_separate_heap_workers) ... ok
+test_lightweight_worker_refuses_hidden_nested_span (test_outlier_experiment.OutlierExperimentTests.test_lightweight_worker_refuses_hidden_nested_span) ... ok
+test_missing_complete_source_inventory_refused (test_outlier_experiment.OutlierExperimentTests.test_missing_complete_source_inventory_refused) ... ok
+test_mode_order_balances_positions_and_every_directed_predecessor (test_outlier_experiment.OutlierExperimentTests.test_mode_order_balances_positions_and_every_directed_predecessor) ... ok
+test_pairing_ignores_volatile_event_ids_and_observer_timing (test_outlier_experiment.OutlierExperimentTests.test_pairing_ignores_volatile_event_ids_and_observer_timing) ... ok
+test_pairing_rejects_duplicates_and_missing_refusal (test_outlier_experiment.OutlierExperimentTests.test_pairing_rejects_duplicates_and_missing_refusal) ... ok
+test_pairing_requires_matching_sources_noise_sequences_and_callbacks (test_outlier_experiment.OutlierExperimentTests.test_pairing_requires_matching_sources_noise_sequences_and_callbacks) ... ok
+test_pairing_separates_first_use_warmup_and_rejection_groups (test_outlier_experiment.OutlierExperimentTests.test_pairing_separates_first_use_warmup_and_rejection_groups) ... ok
+test_read_streams_pair_across_model_and_mode_but_blocks_are_distinct (test_outlier_experiment.OutlierExperimentTests.test_read_streams_pair_across_model_and_mode_but_blocks_are_distinct) ... ok
+test_report_no_target_claim_no_complete_causal_claim_and_cleanup_disclosed (test_outlier_experiment.OutlierExperimentTests.test_report_no_target_claim_no_complete_causal_claim_and_cleanup_disclosed) ... ok
+test_run_condition_real_decoder_single_read_and_all_controls_outside_io (test_outlier_experiment.OutlierExperimentTests.test_run_condition_real_decoder_single_read_and_all_controls_outside_io) ... ok
+test_run_condition_records_admission_failure_without_retry (test_outlier_experiment.OutlierExperimentTests.test_run_condition_records_admission_failure_without_retry) ... ok
+test_signed_deltas_preserve_negative_values_not_percentile_subtraction (test_outlier_experiment.OutlierExperimentTests.test_signed_deltas_preserve_negative_values_not_percentile_subtraction) ... ok
+test_source_guard_allows_only_current_output_untracked_paths (test_outlier_experiment.OutlierExperimentTests.test_source_guard_allows_only_current_output_untracked_paths) ... ok
+test_source_guard_refuses_changed_head_and_unrelated_untracked_file (test_outlier_experiment.OutlierExperimentTests.test_source_guard_refuses_changed_head_and_unrelated_untracked_file) ... ok
+test_source_selection_is_group_complete_and_outcome_independent (test_outlier_experiment.OutlierExperimentTests.test_source_selection_is_group_complete_and_outcome_independent) ... ok
+test_timer_checks_do_not_tune_thresholds_or_enable_disabled_gc (test_outlier_experiment.OutlierExperimentTests.test_timer_checks_do_not_tune_thresholds_or_enable_disabled_gc) ... ok
+fixture logistic_motion_logistic_anomaly warmup: 2 attempts retained
+fixture logistic_motion_logistic_anomaly measured: 1 attempts retained
+test_timing_worker_streams_before_analysis_and_records_deferred_cleanup (test_outlier_experiment.OutlierExperimentTests.test_timing_worker_streams_before_analysis_and_records_deferred_cleanup) ... ok
+test_worker_traces_reconcile_and_reject_observer_clock_or_mode_drift (test_outlier_experiment.OutlierExperimentTests.test_worker_traces_reconcile_and_reject_observer_clock_or_mode_drift) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 7.734s
+
+OK

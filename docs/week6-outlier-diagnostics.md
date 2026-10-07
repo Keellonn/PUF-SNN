@@ -2,7 +2,7 @@
 
 Owner: Keegan Hoyne
 
-Status: Diagnostic machinery and boundary tests; no new experiment results.
+Status: Diagnostic machinery and fixed runner implemented; no new experiment results.
 
 ## Question and preserved evidence
 
@@ -56,18 +56,67 @@ stack evidence. Trace/span counts are metadata-node counts, not heap sizes.
 No runtime threshold tuning, forced per-window collection, `gc.freeze()`,
 power-plan adjustment or automatic retry occurs in this machinery.
 
-## Follow-up experiment requirements
+## Fixed runner and cohort (implementation, not results)
 
-The runner/cohort is a separate checkpoint, not implemented or executed by
-these tests. It must predeclare source selection, sample sizes, repeats and
-counterbalanced mode/model order before collecting new timings. It must reuse
-the pinned dataset, all frozen artifacts and the unchanged admission code;
-pair source/noise streams across modes and keep all natural refusals visible.
-Independent worker processes should separate mode heap/GC history, while
-startup, loading, enrollment, first decoder/model use and warmup boundaries
-remain explicitly recorded. A short retained cohort is not a reproduction
-of the original 29,718-tree heap; any historical-heap replay/probe needs its
-own verified input and clearly disclosed scope.
+`configs/week6_outlier_experiment.json`, `puf_snn/outlier_experiment.py` and
+`scripts/run_week6_outlier_experiment.py` declare a separate experiment.
+No new measurement has occurred merely because its tests pass.
+
+Each of four blocks runs all four modes in fresh, sequential Python workers.
+The mode orders are `[0,1,3,2]`, `[1,2,0,3]`, `[2,3,1,0]`, `[3,0,2,1]`:
+each mode occupies every position once and every directed adjacent-mode pair
+appears once within the four blocks. Model order is rotated through all six
+existing conditions; it is not completely position-balanced. Frequency,
+hybrid-core placement, thermal drift, OS contention and cache state remain
+uncontrolled, so order controls are not proof of a causal hardware advantage.
+
+For each worker/model, select the first two sorted test windows from every
+device/class group: 60 sources, including six fixed devices and five classes.
+Thirty disjoint validation warmups use the first window of each group. Each
+worker/model performs one natural nominal-noise read and real reconstruction
+per attempt, with no retry, truth substitution, outcome filtering or new
+training. There are 16 timing workers and 8,640 total fresh attempts, not
+8,640 independent reliability/security trials. Post-window estimates remain
+conditional on successful admission. The first validation attempt of each
+condition is retained separately as condition-first-use; it is not fully cold
+system startup. Loading and trusted enrollment precede the root timers.
+
+Manufacturing/enrollment and simulated credential policy remain the existing
+baseline. Read streams use
+`week6-diagnostic-v1:6767:{block}:{device_index}:{cohort}:measurement`, reset
+per model/mode. Matching source/noise decisions, refusal paths, consumer-call
+counts and sequence transitions must reconcile across modes within each
+block. Blocks have separate noise streams; repeated sources and six model
+conditions remain paired. Verifier keys/nonces continue to use OS randomness.
+Both consumers run once per accepted delivery and never on refusals.
+
+The retained mode owns full metadata trees across its six conditions; streamed
+modes write every trace before releasing it. Analysis reloads full worker
+evidence only after measurement and cleanup. This shorter 4,320-root maximum
+cohort is not a reproduction of the original 29,718-tree history.
+
+Four additional fresh processes load the same frozen models and complete
+dataset, then retain 0, 5,000, 15,000 or 29,718 verified historical trace rows.
+Each measures five explicit generation-2 collections, separating the first
+from the other four. These replay public metadata, not the old application
+heap, authenticated traffic, responses or credentials. They perform no
+admission/inference. This is a mechanistic retained-metadata probe, not a
+new application latency estimate or proof of every historical pause's cause.
+Full collections may also clear free lists. Heap doses run in fixed increasing
+order in separate processes; OS/cache/thermal history is not eliminated.
+
+All 11 frozen binaries and the original completed result inventory are
+hash-checked. Source must be clean and committed before the controller runs;
+only its scoped output may appear while workers execute. New directories,
+LF text writers, worker manifests and a master completion marker preserve
+provenance. Incomplete work remains intact on error. No automatic resumption,
+overwrite or removal occurs. Post-run byte checks bind ignored artifacts too.
+
+Root-only mode has no separately timed nested first-post-window span. Use
+matched root boundaries for observer comparisons, not a missing span or a
+sum of component percentiles. Paired differences are right minus left, kept
+by block/condition/phase/path/decision/reason. Their quantiles are not
+differences of path percentiles; no no-op overhead is subtracted.
 
 Every raw root trace must be written before release. Output/progress,
 diagnostic snapshots, trace retention bookkeeping and cleanup stay outside
@@ -76,6 +125,11 @@ by subtracting a no-op estimate. Accepted/rejected paths, first use, warmup,
 measured observations, p50/p95/p99/max and deferred cleanup stay separate.
 Both consumers must run once on accepted events and never on refusals.
 Anomaly flags must not rewrite authentication or sequence state.
+
+The experiment does not start WPR, alter registry flags, change power plans,
+clear caches, write durable authentication audits or implement a new model.
+GC deferral restores the normal policy and records full cleanup separately.
+No diagnostic mode receives a target-passing production-performance claim.
 
 ## OS tracing and attribution requirements
 
