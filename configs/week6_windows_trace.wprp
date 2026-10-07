@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WindowsPerformanceRecorder Version="1.0" Author="PUF-SNN research prototype">
+  <Profiles>
+    <SystemCollector Id="Week6SystemCollector" Name="NT Kernel Logger">
+      <BufferSize Value="1024" />
+      <Buffers Value="60" />
+    </SystemCollector>
+    <EventCollector Id="Week6MarkerCollector" Name="PUF-SNN clock markers">
+      <BufferSize Value="64" />
+      <Buffers Value="16" />
+    </EventCollector>
+    <SystemProvider Id="Week6SystemProvider">
+      <Keywords>
+        <Keyword Value="CpuConfig" />
+        <Keyword Value="ProcessThread" />
+        <Keyword Value="Loader" />
+        <Keyword Value="CSwitch" />
+        <Keyword Value="ReadyThread" />
+        <Keyword Value="SampledProfile" />
+        <Keyword Value="DiskIO" />
+        <Keyword Value="DiskIOInit" />
+        <Keyword Value="FileIO" />
+        <Keyword Value="FileIOInit" />
+        <Keyword Value="HardFaults" />
+        <Keyword Value="DPC" />
+        <Keyword Value="Interrupt" />
+      </Keywords>
+      <Stacks>
+        <Stack Value="SampledProfile" />
+        <Stack Value="CSwitch" />
+        <Stack Value="ReadyThread" />
+        <Stack Value="DiskReadInit" />
+        <Stack Value="DiskWriteInit" />
+        <Stack Value="FileRead" />
+        <Stack Value="FileWrite" />
+        <Stack Value="FileOpEnd" />
+      </Stacks>
+    </SystemProvider>
+    <EventProvider Id="Week6MarkerProvider" Name="90553497-2ec7-49fa-a284-ade0159054fe" Level="4">
+      <Keywords><Keyword Value="0x1" /></Keywords>
+    </EventProvider>
+    <Profile Id="Week6Trace.Verbose.File" Name="Week6Trace" Description="Private CPU, scheduling, I/O and public clock markers" LoggingMode="File" DetailLevel="Verbose">
+      <Collectors>
+        <SystemCollectorId Value="Week6SystemCollector">
+          <SystemProviderId Value="Week6SystemProvider" />
+        </SystemCollectorId>
+        <EventCollectorId Value="Week6MarkerCollector">
+          <EventProviders><EventProviderId Value="Week6MarkerProvider" /></EventProviders>
+        </EventCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+</WindowsPerformanceRecorder>
