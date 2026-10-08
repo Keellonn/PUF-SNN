@@ -1,0 +1,23 @@
+{
+  "block": 0,
+  "condition_order": [
+    {
+      "anomaly": "anomaly_logistic_regression_seed6007",
+      "motion": "logistic_regression_seed_7_storage_refit",
+      "name": "logistic_motion_logistic_anomaly"
+    },
+    {
+      "anomaly": "anomaly_random_forest_seed6007",
+      "motion": "logistic_regression_seed_7_storage_refit",
+      "name": "logistic_motion_forest_anomaly"
+    },
+    {
+      "anomaly": "anomaly_random_forest_seed6007",
+      "motion": "snn_32_seed_7",
+      "name": "snn32_seed7_forest_anomaly"
+    }
+  ],
+  "job_id": "block-0-candidate_dyadic",
+  "mode": "candidate_dyadic",
+  "position": 1
+}

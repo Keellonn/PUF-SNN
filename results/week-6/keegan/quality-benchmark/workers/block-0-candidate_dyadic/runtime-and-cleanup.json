@@ -1,0 +1,654 @@
+{
+  "before": {
+    "process_memory": {
+      "peak_commit_bytes": 2043588608,
+      "peak_working_set_bytes": 662253568,
+      "private_commit_bytes": 2043588608,
+      "process_lifetime_peaks_not_stage_peaks": true,
+      "status": "collected",
+      "working_set_bytes": 662253568
+    },
+    "python": {
+      "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+      "automatic_gc_enabled": true,
+      "gc_counts": [
+        1561,
+        1,
+        15
+      ],
+      "gc_stats": [
+        {
+          "collected": 62838,
+          "collections": 650,
+          "uncollectable": 0
+        },
+        {
+          "collected": 77595,
+          "collections": 59,
+          "uncollectable": 0
+        },
+        {
+          "collected": 30,
+          "collections": 4,
+          "uncollectable": 0
+        }
+      ],
+      "gc_thresholds": [
+        2000,
+        10,
+        10
+      ],
+      "python_allocated_blocks": 5252506
+    }
+  },
+  "final": {
+    "after": {
+      "process_memory": {
+        "peak_commit_bytes": 2129317888,
+        "peak_working_set_bytes": 716447744,
+        "private_commit_bytes": 2096181248,
+        "process_lifetime_peaks_not_stage_peaks": true,
+        "status": "collected",
+        "working_set_bytes": 716386304
+      },
+      "python": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": true,
+        "gc_counts": [
+          1,
+          0,
+          0
+        ],
+        "gc_stats": [
+          {
+            "collected": 117609,
+            "collections": 2560,
+            "uncollectable": 0
+          },
+          {
+            "collected": 1569489,
+            "collections": 232,
+            "uncollectable": 0
+          },
+          {
+            "collected": 1039585,
+            "collections": 10,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 5314173
+      }
+    },
+    "before": {
+      "process_memory": {
+        "peak_commit_bytes": 2129317888,
+        "peak_working_set_bytes": 716447744,
+        "private_commit_bytes": 2096181248,
+        "process_lifetime_peaks_not_stage_peaks": true,
+        "status": "collected",
+        "working_set_bytes": 716386304
+      },
+      "python": {
+        "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+        "automatic_gc_enabled": true,
+        "gc_counts": [
+          0,
+          8,
+          25
+        ],
+        "gc_stats": [
+          {
+            "collected": 117609,
+            "collections": 2560,
+            "uncollectable": 0
+          },
+          {
+            "collected": 1569489,
+            "collections": 232,
+            "uncollectable": 0
+          },
+          {
+            "collected": 936428,
+            "collections": 9,
+            "uncollectable": 0
+          }
+        ],
+        "gc_thresholds": [
+          2000,
+          10,
+          10
+        ],
+        "python_allocated_blocks": 5512221
+      }
+    },
+    "cleanup": {
+      "automatic_collection_was_not_deferred": true,
+      "collected_objects": 103157,
+      "generation": 2,
+      "includes_free_list_effects": true,
+      "outside_window_timers": true,
+      "thread_cpu_ns": 234375000,
+      "wall_ns": 245814500
+    }
+  },
+  "model_loading_and_enrollment_excluded": true,
+  "native_threadpools": [
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.34.106.0"
+    },
+    {
+      "architecture": "Haswell",
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libscipy_openblas",
+      "threading_layer": "pthreads",
+      "user_api": "blas",
+      "version": "0.3.31.dev"
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "vcomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiomp5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    },
+    {
+      "filepath": "C:\\Users\\datbo\\VSCode\\PUF-SNN\\.venv\\Lib\\site-packages\\torch\\lib\\libiompstubs5md.dll",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "user_api": "openmp",
+      "version": null
+    }
+  ],
+  "normal_automatic_gc": true,
+  "snapshots": [
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "before_condition",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2043588608,
+          "peak_working_set_bytes": 662372352,
+          "private_commit_bytes": 2043588608,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 662372352
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            133,
+            2,
+            15
+          ],
+          "gc_stats": [
+            {
+              "collected": 64119,
+              "collections": 651,
+              "uncollectable": 0
+            },
+            {
+              "collected": 77595,
+              "collections": 59,
+              "uncollectable": 0
+            },
+            {
+              "collected": 30,
+              "collections": 4,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5251562
+        }
+      }
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "warmup",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2119860224,
+          "peak_working_set_bytes": 704458752,
+          "private_commit_bytes": 2119860224,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 704458752
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            0,
+            0,
+            17
+          ],
+          "gc_stats": [
+            {
+              "collected": 89779,
+              "collections": 847,
+              "uncollectable": 0
+            },
+            {
+              "collected": 203116,
+              "collections": 77,
+              "uncollectable": 0
+            },
+            {
+              "collected": 56344,
+              "collections": 5,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5460939
+        }
+      }
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "measured",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2128265216,
+          "peak_working_set_bytes": 712720384,
+          "private_commit_bytes": 2128265216,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 712720384
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            0,
+            3,
+            30
+          ],
+          "gc_stats": [
+            {
+              "collected": 89802,
+              "collections": 1345,
+              "uncollectable": 0
+            },
+            {
+              "collected": 590611,
+              "collections": 122,
+              "uncollectable": 0
+            },
+            {
+              "collected": 266963,
+              "collections": 6,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5548335
+        }
+      }
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "before_condition",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2128265216,
+          "peak_working_set_bytes": 712720384,
+          "private_commit_bytes": 2128265216,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 712720384
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            38,
+            3,
+            30
+          ],
+          "gc_stats": [
+            {
+              "collected": 89802,
+              "collections": 1345,
+              "uncollectable": 0
+            },
+            {
+              "collected": 590611,
+              "collections": 122,
+              "uncollectable": 0
+            },
+            {
+              "collected": 266963,
+              "collections": 6,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5548382
+        }
+      }
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "warmup",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2129317888,
+          "peak_working_set_bytes": 714469376,
+          "private_commit_bytes": 2129317888,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 714469376
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            3,
+            2,
+            5
+          ],
+          "gc_stats": [
+            {
+              "collected": 92332,
+              "collections": 1454,
+              "uncollectable": 0
+            },
+            {
+              "collected": 688941,
+              "collections": 132,
+              "uncollectable": 0
+            },
+            {
+              "collected": 491322,
+              "collections": 7,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5226156
+        }
+      }
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "measured",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2129317888,
+          "peak_working_set_bytes": 714801152,
+          "private_commit_bytes": 2128269312,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 713752576
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            4,
+            5,
+            6
+          ],
+          "gc_stats": [
+            {
+              "collected": 103763,
+              "collections": 1952,
+              "uncollectable": 0
+            },
+            {
+              "collected": 1082399,
+              "collections": 177,
+              "uncollectable": 0
+            },
+            {
+              "collected": 707187,
+              "collections": 8,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5330547
+        }
+      }
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "before_condition",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2129317888,
+          "peak_working_set_bytes": 714801152,
+          "private_commit_bytes": 2128269312,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 713752576
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            42,
+            5,
+            6
+          ],
+          "gc_stats": [
+            {
+              "collected": 103763,
+              "collections": 1952,
+              "uncollectable": 0
+            },
+            {
+              "collected": 1082399,
+              "collections": 177,
+              "uncollectable": 0
+            },
+            {
+              "collected": 707187,
+              "collections": 8,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5330586
+        }
+      }
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "warmup",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2129317888,
+          "peak_working_set_bytes": 715390976,
+          "private_commit_bytes": 2128269312,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 715390976
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            0,
+            5,
+            16
+          ],
+          "gc_stats": [
+            {
+              "collected": 106109,
+              "collections": 2062,
+              "uncollectable": 0
+            },
+            {
+              "collected": 1176054,
+              "collections": 187,
+              "uncollectable": 0
+            },
+            {
+              "collected": 707187,
+              "collections": 8,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5431342
+        }
+      }
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "measured",
+      "resource": {
+        "process_memory": {
+          "peak_commit_bytes": 2129317888,
+          "peak_working_set_bytes": 716447744,
+          "private_commit_bytes": 2096181248,
+          "process_lifetime_peaks_not_stage_peaks": true,
+          "status": "collected",
+          "working_set_bytes": 716386304
+        },
+        "python": {
+          "allocated_blocks_are_not_bytes_or_total_native_memory": true,
+          "automatic_gc_enabled": true,
+          "gc_counts": [
+            0,
+            8,
+            25
+          ],
+          "gc_stats": [
+            {
+              "collected": 117609,
+              "collections": 2560,
+              "uncollectable": 0
+            },
+            {
+              "collected": 1569489,
+              "collections": 232,
+              "uncollectable": 0
+            },
+            {
+              "collected": 936428,
+              "collections": 9,
+              "uncollectable": 0
+            }
+          ],
+          "gc_thresholds": [
+            2000,
+            10,
+            10
+          ],
+          "python_allocated_blocks": 5512666
+        }
+      }
+    }
+  ],
+  "sustained": [
+    {
+      "admission_included": false,
+      "block": 0,
+      "cleanup_included": false,
+      "closed_loop_wall_ns": 642362400,
+      "completed_windows": 64,
+      "condition": "logistic_motion_logistic_anomaly",
+      "evidence_io_assertions_and_observers_included": true,
+      "mode": "candidate_dyadic",
+      "planned_windows": 64,
+      "session_end_last_accepted": 67,
+      "session_start_last_accepted": 3,
+      "source_windows_distinct": 64,
+      "windows_per_second": 99.63223252170425
+    },
+    {
+      "admission_included": false,
+      "block": 0,
+      "cleanup_included": false,
+      "closed_loop_wall_ns": 771420500,
+      "completed_windows": 64,
+      "condition": "logistic_motion_forest_anomaly",
+      "evidence_io_assertions_and_observers_included": true,
+      "mode": "candidate_dyadic",
+      "planned_windows": 64,
+      "session_end_last_accepted": 67,
+      "session_start_last_accepted": 3,
+      "source_windows_distinct": 64,
+      "windows_per_second": 82.96383101045409
+    },
+    {
+      "admission_included": false,
+      "block": 0,
+      "cleanup_included": false,
+      "closed_loop_wall_ns": 1485323200,
+      "completed_windows": 64,
+      "condition": "snn32_seed7_forest_anomaly",
+      "evidence_io_assertions_and_observers_included": true,
+      "mode": "candidate_dyadic",
+      "planned_windows": 64,
+      "session_end_last_accepted": 67,
+      "session_start_last_accepted": 3,
+      "source_windows_distinct": 64,
+      "windows_per_second": 43.08826523412547
+    }
+  ],
+  "throughput_interpretation": "unpaced serial software capacity, not sensor arrival rate",
+  "workload_before_cleanup_wall_ns": 48949511100,
+  "workload_including_cleanup_wall_ns": 49196408800,
+  "workload_wall_includes_endpoint_creation_assertions_evidence_io_and_resource_snapshots": true
+}

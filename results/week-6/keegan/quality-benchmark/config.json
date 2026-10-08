@@ -1,0 +1,49 @@
+{
+  "batch_size": 1,
+  "blocks": 2,
+  "conditions": [
+    {
+      "anomaly": "anomaly_logistic_regression_seed6007",
+      "motion": "logistic_regression_seed_7_storage_refit",
+      "name": "logistic_motion_logistic_anomaly"
+    },
+    {
+      "anomaly": "anomaly_random_forest_seed6007",
+      "motion": "logistic_regression_seed_7_storage_refit",
+      "name": "logistic_motion_forest_anomaly"
+    },
+    {
+      "anomaly": "anomaly_random_forest_seed6007",
+      "motion": "snn_32_seed_7",
+      "name": "snn32_seed7_forest_anomaly"
+    }
+  ],
+  "config_version": "week6-quality-benchmark-v1",
+  "frozen_config": "configs/week6_smoke.json",
+  "gc_enabled": true,
+  "gc_thresholds": [
+    2000,
+    10,
+    10
+  ],
+  "measured_attempts_per_condition": 120,
+  "modes": [
+    "reference_fraction",
+    "candidate_dyadic"
+  ],
+  "native_threads": 1,
+  "post_window_p95_target_ms": 20,
+  "read_domain": "week6-quality-v1:6767:{block}:{device_index}:{cohort}:measurement",
+  "reconstruction": "baseline_BCH_63_36_t5_32bit_pilot",
+  "reference_source_hashes": {
+    "src/python/puf_snn/auth/binary_window.py": "78159d6a8c8601b40ff0158f7d2ac4b85e2179b72ebeae0ea186bf70f408877e",
+    "src/python/puf_snn/auth/verifier.py": "49f4e0946d4a54569be2746a7a0fa2c0feee587ee75351df9bd1c2062177944e",
+    "src/python/puf_snn/quality_dyadic.py": "a3f71a79ab48941807a0ba75e99b67f7cebdaa0b81ba75d9f2ae9d8171a12947"
+  },
+  "response_reads_per_admission": 1,
+  "source_selection": "first_four_sorted_test_windows_per_device_class",
+  "sustained_selection": "first_64_test_windows_of_final_planned_device",
+  "sustained_windows_per_condition": 64,
+  "warmup_attempts_per_condition": 30,
+  "warmup_selection": "first_sorted_validation_window_per_device_class"
+}

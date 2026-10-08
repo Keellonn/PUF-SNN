@@ -1,0 +1,14 @@
+{
+  "fresh_attempt_count": 1800,
+  "paired_public_input_output_and_state_signatures_match": true,
+  "rejected_window_model_calls": 0,
+  "sustained_window_count": 768,
+  "trace_count": 15126,
+  "worker_count": 4,
+  "worker_manifest_hashes": {
+    "block-0-candidate_dyadic": "70fc67265396cfc5b4e2720e4ac02d6709fe07e0962798db746ee6c9608cc470",
+    "block-0-reference_fraction": "f2c00797849a9ba9d9dc59f0441ca6948a216b5f606f161c545ac80e354883d8",
+    "block-1-candidate_dyadic": "adc2838e8099d808ea8a672b325ad5d620676f3bc768162620b54f520afd1f56",
+    "block-1-reference_fraction": "46fbc7c4a3676c33d3f5002ec1ee9c05f6e8208b69741880349c0a296434f0ee"
+  }
+}

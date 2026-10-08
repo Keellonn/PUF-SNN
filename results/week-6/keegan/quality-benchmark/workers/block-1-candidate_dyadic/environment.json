@@ -1,0 +1,80 @@
+{
+  "automatic_gc_not_deferred": true,
+  "background": "heavy_apps_closed",
+  "cpu_frequency_core_affinity_and_thermal_state_controlled": false,
+  "galois": "0.4.11",
+  "joblib": "1.6.0",
+  "machine_end": {
+    "ActivePowerPlan": "Power Scheme GUID: 4d5d23f7-ba0d-4e4f-ae9b-e64971915f86  (VTRL Optimized)",
+    "MachineModel": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "Manufacturer": "HP",
+    "MemoryGiB": 31.5,
+    "Processors": [
+      {
+        "CurrentClockSpeed": 1400,
+        "MaxClockSpeed": 3800,
+        "Name": "Intel(R) Core(TM) Ultra 7 155H",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 22
+      }
+    ],
+    "Windows": "Microsoft Windows 11 Home",
+    "WindowsVersion": "10.0.26200",
+    "clock_speed_is_snapshot_not_fixed_frequency": true,
+    "collection_status": "collected",
+    "cpu_frequency_controlled": false
+  },
+  "machine_start": {
+    "ActivePowerPlan": "Power Scheme GUID: 4d5d23f7-ba0d-4e4f-ae9b-e64971915f86  (VTRL Optimized)",
+    "MachineModel": "HP Pavilion Plus Laptop 16-ab1xxx",
+    "Manufacturer": "HP",
+    "MemoryGiB": 31.5,
+    "Processors": [
+      {
+        "CurrentClockSpeed": 1400,
+        "MaxClockSpeed": 3800,
+        "Name": "Intel(R) Core(TM) Ultra 7 155H",
+        "NumberOfCores": 16,
+        "NumberOfLogicalProcessors": 22
+      }
+    ],
+    "Windows": "Microsoft Windows 11 Home",
+    "WindowsVersion": "10.0.26200",
+    "clock_speed_is_snapshot_not_fixed_frequency": true,
+    "collection_status": "collected",
+    "cpu_frequency_controlled": false
+  },
+  "numpy": "2.5.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "power": "ac",
+  "power_plan_changed": false,
+  "python": "3.13.14",
+  "sklearn": "1.9.1",
+  "timers": {
+    "frequency_and_core_placement_controlled": false,
+    "gc_enabled": true,
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "thread_cpu_timer": "GetThreadTimes()",
+    "wall_resolution_seconds": 1e-07,
+    "wall_timer": "QueryPerformanceCounter()"
+  },
+  "timers_end": {
+    "frequency_and_core_placement_controlled": false,
+    "gc_enabled": true,
+    "gc_thresholds": [
+      2000,
+      10,
+      10
+    ],
+    "thread_cpu_timer": "GetThreadTimes()",
+    "wall_resolution_seconds": 1e-07,
+    "wall_timer": "QueryPerformanceCounter()"
+  },
+  "torch": "2.14.0+cpu",
+  "torch_interop_threads": 16,
+  "torch_threads": 1
+}

@@ -1,0 +1,155 @@
+{
+  "accepted_by_condition_phase": [
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 119,
+      "phase": "measured"
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 119,
+      "phase": "measured"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 1,
+      "phase": "condition_first_use"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 119,
+      "phase": "measured"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 29,
+      "phase": "warmup"
+    }
+  ],
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "direct-path-latency.csv": "c55adf8c6b86a0e420af4a201743cb6fa465ff4c995028d983c50e5a6781d31c",
+    "environment-start.json": "7fd05e97ad03a81ed5b4415604d0646d0071266749249d5df19ade04fe9d4015",
+    "environment.json": "11ba45e274b4d7600f363e99bd30288a01fe1b11ab64f18b3db1d6cc1ed33921",
+    "exclusive-stage-accounting.csv": "03987da73d9c70c114dcc9511dc0fea9357243a4b798f2a8786365f3d603d9b7",
+    "inclusive-stage-latency.csv": "47d1a178533d0e4dd6f94534e30de178fa6759c4b5322b142df44b0e14ff1e0d",
+    "job.json": "fad2f781485ffee217bd50dcfce3441a5a200cfa25c3b82f52d324d96457c122",
+    "mixed-workload-capacity.json": "823a001f2b595d4206243e5d57717eb36fb57b5ad770cee3976734737c398030",
+    "per-observation-accounting.csv": "878af57e32e5bd57f36f4b61f8f5fa240186e9e19ad25b7493431b5ba87a9135",
+    "reconciliation.json": "cf59cd0d56d2daf37af097364f0b6ad127ffb17b10e30278b98c88ee152b010e",
+    "retained-outliers.jsonl": "e49705180d8ace18a8d35081c803a8091ba7c25e608642b8aac3e0dd9a53328a",
+    "runtime-and-cleanup.json": "af7bfc3837b32f10ad9f07a1c081284c0b0b3b850c66b17c70f2f6aee7a3f41f",
+    "summary.json": "1913dd83ef8664c153dbcb380c1fc09acd52de74bfb7f3ce1ad35791bd394a57",
+    "timings-logistic_motion_forest_anomaly.jsonl": "ca34013de3d8f654f8487d96bf3141476f9a9a91e0cbcc67b2d88b6c88ab73ab",
+    "timings-logistic_motion_logistic_anomaly.jsonl": "6ff82b19bd487f905c69aed5d829f141b4f7c6ceedcf7e8393380c2b05198a8b",
+    "timings-snn32_seed7_forest_anomaly.jsonl": "40b252c89c1a09ea570aa258e0c504c73f9ad90b9171f6e53261b76026f76350"
+  },
+  "authentication_executed": true,
+  "completed_utc": "2026-10-08T23:13:50.360886+00:00",
+  "configuration_sha256": "3e7de27dc6cefd39768165be544990605cda0f697bea0c46d6341279806c6856",
+  "default_pipeline_modified": false,
+  "durable_audit_measured": false,
+  "exclusive_partition_reconciled": true,
+  "fresh_attempt_count": 450,
+  "frozen_input_hashes": {
+    "anomaly/anomaly-feature-names.json": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+    "anomaly/frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "anomaly/manifest.json": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+    "anomaly/models/anomaly_logistic_regression_seed6007.joblib": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+    "anomaly/models/anomaly_logistic_regression_seed6017.joblib": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+    "anomaly/models/anomaly_logistic_regression_seed6027.joblib": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+    "anomaly/models/anomaly_random_forest_seed6007.joblib": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+    "anomaly/models/anomaly_random_forest_seed6017.joblib": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+    "anomaly/models/anomaly_random_forest_seed6027.joblib": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784",
+    "conventional/manifest.json": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed",
+    "conventional/models/logistic_regression-seed-7-storage-refit.joblib": "197fedf4ad93b6ed097485b371db1dd501ebc83e883daaf75049fcf605e21069",
+    "conventional/models/random_forest-seed-7-storage-refit.joblib": "36a5bfb68547c2f28a937f1247ef9026a374d7db43225641a11238334c12c69d",
+    "snn32/config.json": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+    "snn32/manifest.json": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779",
+    "snn32/normalization.json": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+    "snn32/seed-17/model-state.pt": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+    "snn32/seed-27/model-state.pt": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830",
+    "snn32/seed-7/model-state.pt": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6"
+  },
+  "job": {
+    "block": 1,
+    "condition_order": [
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "snn_32_seed_7",
+        "name": "snn32_seed7_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_random_forest_seed6007",
+        "motion": "logistic_regression_seed_7_storage_refit",
+        "name": "logistic_motion_forest_anomaly"
+      },
+      {
+        "anomaly": "anomaly_logistic_regression_seed6007",
+        "motion": "logistic_regression_seed_7_storage_refit",
+        "name": "logistic_motion_logistic_anomaly"
+      }
+    ],
+    "job_id": "block-1-candidate_dyadic",
+    "mode": "candidate_dyadic",
+    "position": 0
+  },
+  "latency_measured": true,
+  "limitation": "Paired bounded software arithmetic comparison, not a new independent held-out accuracy/FRR/security study or production adoption. Two blocks reuse 120 test sources across modes/models and 64 further preselected same-profile windows for unpaced closed-loop session reuse. Single-read baseline BCH(63,36,t=5), 32-bit pilot credential; NOT integrated majority-3. GC remains enabled. All roots include observer costs; streamed evidence is outside root timers but inside closed-loop throughput. Physical PUF/sensor acquisition, the two-second motion acquisition window, network, durable audit, enrollment/loading and evidence I/O are excluded from root latency. No hard deadline, Quest, cross-device/person generalization or isolated Windows/cache/power causality claim.",
+  "model_inference_executed": true,
+  "paired_admission_signatures_match": true,
+  "public_input_output_inventory_reconciled": true,
+  "recording_executed": false,
+  "refused_by_condition_phase_reason": [
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "count": 1,
+      "phase": "measured",
+      "reason": "failed_reconstruction",
+      "stage": "reconstruction"
+    }
+  ],
+  "rejected_window_model_calls": 0,
+  "response_read_count": 450,
+  "run_type": "week6-quality-benchmark-v1",
+  "source_commit": "bddce50198d68b851f648d45638aa06d9eea152c",
+  "source_worktree_dirty": false,
+  "sustained_window_count": 192,
+  "threshold_selection_executed": false,
+  "trace_count": 3771,
+  "training_executed": false
+}
