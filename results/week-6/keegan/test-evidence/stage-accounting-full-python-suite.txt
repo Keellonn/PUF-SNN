@@ -1,0 +1,977 @@
+Verifying frozen inputs and the original completed timing inventory
+Starting fresh worker 1/20: block-0-mode-0
+Starting fresh worker 2/20: block-0-mode-1
+Starting fresh worker 3/20: block-0-mode-3
+Starting fresh worker 4/20: block-0-mode-2
+Starting fresh worker 5/20: block-1-mode-1
+Starting fresh worker 6/20: block-1-mode-2
+Starting fresh worker 7/20: block-1-mode-0
+Starting fresh worker 8/20: block-1-mode-3
+Starting fresh worker 9/20: block-2-mode-2
+Starting fresh worker 10/20: block-2-mode-3
+Starting fresh worker 11/20: block-2-mode-1
+Starting fresh worker 12/20: block-2-mode-0
+Starting fresh worker 13/20: block-3-mode-3
+Starting fresh worker 14/20: block-3-mode-0
+Starting fresh worker 15/20: block-3-mode-2
+Starting fresh worker 16/20: block-3-mode-1
+Starting fresh worker 17/20: heap-0
+Starting fresh worker 18/20: heap-5000
+Starting fresh worker 19/20: heap-15000
+Starting fresh worker 20/20: heap-29718
+PASS: all workers, paired functional evidence, natural refusals and cleanup reconciled
+{
+  "worker_count": 20,
+  "timing_worker_count": 16,
+  "historical_heap_worker_count": 4,
+  "fresh_attempt_count": 8640,
+  "rejected_window_model_calls": 0,
+  "paired_functional_signatures_match": true,
+  "explicit_full_gc_probe_count": 1,
+  "worker_manifest_hashes": {
+    "block-0-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-0-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-1-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-2-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-3": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-2": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "block-3-mode-1": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-0": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-5000": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-15000": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b",
+    "heap-29718": "7717520110454c6532689344cdf5a63dddf8235f8d968feec83d1f1c6019600b"
+  }
+}
+Saved separate diagnostic results to C:\Users\datbo\AppData\Local\Temp\tmpbiyi6kmt\results\week-6\keegan\controller-fixture
+Verifying frozen inputs and the original completed timing inventory
+Starting fresh worker 1/20: block-0-mode-0
+fixture logistic_motion_logistic_anomaly warmup: 2 attempts retained
+fixture logistic_motion_logistic_anomaly measured: 1 attempts retained
+test_config_exact_keys_and_bounds (auth.test_audit.AuditTests.test_config_exact_keys_and_bounds) ... ok
+test_disk_failure_after_acceptance_stops_without_rollback (auth.test_audit.AuditTests.test_disk_failure_after_acceptance_stops_without_rollback) ... ok
+test_disk_flush_separate_and_append_once (auth.test_audit.AuditTests.test_disk_flush_separate_and_append_once) ... ok
+test_disk_io_does_not_hold_decision_lock (auth.test_audit.AuditTests.test_disk_io_does_not_hold_decision_lock) ... ok
+test_empty_summary (auth.test_audit.AuditTests.test_empty_summary) ... ok
+test_envelope_schema (auth.test_audit.AuditTests.test_envelope_schema) ... ok
+test_p95_exact_hand_computed_outlier_retained (auth.test_audit.AuditTests.test_p95_exact_hand_computed_outlier_retained) ... ok
+test_paired_totals_not_summed_percentiles_and_rejects_retained (auth.test_audit.AuditTests.test_paired_totals_not_summed_percentiles_and_rejects_retained) ... ok
+test_public_audit_snapshot_cannot_change_committed_records (auth.test_audit.AuditTests.test_public_audit_snapshot_cannot_change_committed_records) ... ok
+test_schema_all_decisions_nullable_fields_and_ids (auth.test_audit.AuditTests.test_schema_all_decisions_nullable_fields_and_ids) ... ok
+test_schema_rejects_unknown_missing_and_invalid_fields (auth.test_audit.AuditTests.test_schema_rejects_unknown_missing_and_invalid_fields) ... ok
+test_secret_hygiene (auth.test_audit.AuditTests.test_secret_hygiene) ... ok
+test_verifier_timer_includes_lock_wait (auth.test_audit.AuditTests.test_verifier_timer_includes_lock_wait) ... ok
+test_complete_literal_vectors (auth.test_binary_window.BinaryTests.test_complete_literal_vectors) ... ok
+test_envelope_transport (auth.test_binary_window.BinaryTests.test_envelope_transport) ... ok
+test_float_adapter_rejects_rounding_and_nonfinite (auth.test_binary_window.BinaryTests.test_float_adapter_rejects_rounding_and_nonfinite) ... ok
+test_integer_bounds_and_identifiers (auth.test_binary_window.BinaryTests.test_integer_bounds_and_identifiers) ... ok
+test_quality_is_separate_from_parser (auth.test_binary_window.BinaryTests.test_quality_is_separate_from_parser) ... ok
+test_scalar_literals (auth.test_binary_window.BinaryTests.test_scalar_literals) ... ok
+test_structural_rejection_offsets (auth.test_binary_window.BinaryTests.test_structural_rejection_offsets) ... ok
+test_classifier_record_matches_current_120_by_7_preprocessing (auth.test_classifier_integration.AdapterTests.test_classifier_record_matches_current_120_by_7_preprocessing) ... ok
+test_numeric_policy_rejects_invalid_values (auth.test_classifier_integration.AdapterTests.test_numeric_policy_rejects_invalid_values) ... ok
+test_processed_record_rounds_once_and_leaves_binding_to_sender (auth.test_classifier_integration.AdapterTests.test_processed_record_rounds_once_and_leaves_binding_to_sender) ... ok
+test_exact_replay_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_exact_replay_is_rejected_without_delivery_or_state_change) ... ok
+test_future_gap_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_future_gap_is_rejected_without_delivery_or_state_change) ... ok
+test_invalid_hmac_is_rejected_without_delivery (auth.test_classifier_integration.SharedEndToEndTests.test_invalid_hmac_is_rejected_without_delivery) ... ok
+test_low_quality_valid_tag_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_low_quality_valid_tag_is_rejected_without_delivery_or_state_change) ... ok
+test_malformed_window_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_malformed_window_is_rejected_without_delivery_or_state_change) ... ok
+test_modified_payload_is_rejected_without_delivery (auth.test_classifier_integration.SharedEndToEndTests.test_modified_payload_is_rejected_without_delivery) ... ok
+test_valid_window_delivers_exact_authenticated_payload_once (auth.test_classifier_integration.SharedEndToEndTests.test_valid_window_delivers_exact_authenticated_payload_once) ... ok
+test_wrong_device_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_wrong_device_is_rejected_without_delivery_or_state_change) ... ok
+test_wrong_session_is_rejected_without_delivery_or_state_change (auth.test_classifier_integration.SharedEndToEndTests.test_wrong_session_is_rejected_without_delivery_or_state_change) ... ok
+test_authorization_device_swap_at_receiver (auth.test_credential_admission.CredentialAdmissionTests.test_authorization_device_swap_at_receiver) ... ok
+test_authorization_replay_across_receivers (auth.test_credential_admission.CredentialAdmissionTests.test_authorization_replay_across_receivers) ... ok
+test_candidate_swap_detected_before_sender_hkdf (auth.test_credential_admission.CredentialAdmissionTests.test_candidate_swap_detected_before_sender_hkdf) ... ok
+test_challenge_session_context_swap (auth.test_credential_admission.CredentialAdmissionTests.test_challenge_session_context_swap) ... ok
+test_client_confirmation_tamper_still_rejected (auth.test_credential_admission.CredentialAdmissionTests.test_client_confirmation_tamper_still_rejected) ... ok
+test_correct_base_endpoints_use_common_derivation_twice (auth.test_credential_admission.CredentialAdmissionTests.test_correct_base_endpoints_use_common_derivation_twice) ... ok
+test_correct_reconstructed_candidate_one_derivation_each_and_window (auth.test_credential_admission.CredentialAdmissionTests.test_correct_reconstructed_candidate_one_derivation_each_and_window) ... ok
+test_decoder_failure_never_invokes_verifier (auth.test_credential_admission.CredentialAdmissionTests.test_decoder_failure_never_invokes_verifier) ... ok
+test_device_binding_mismatch (auth.test_credential_admission.CredentialAdmissionTests.test_device_binding_mismatch) ... ok
+test_disabled_record (auth.test_credential_admission.CredentialAdmissionTests.test_disabled_record) ... ok
+test_enrollment_binding_mismatch (auth.test_credential_admission.CredentialAdmissionTests.test_enrollment_binding_mismatch) ... ok
+test_existing_active_session_survives_failed_new_candidate (auth.test_credential_admission.CredentialAdmissionTests.test_existing_active_session_survives_failed_new_candidate) ... ok
+test_foreign_service_authorization (auth.test_credential_admission.CredentialAdmissionTests.test_foreign_service_authorization) ... ok
+test_forged_authorization_and_boolean (auth.test_credential_admission.CredentialAdmissionTests.test_forged_authorization_and_boolean) ... ok
+test_handle_repr_serialization_and_no_wire_addition (auth.test_credential_admission.CredentialAdmissionTests.test_handle_repr_serialization_and_no_wire_addition) ... ok
+test_missing_record (auth.test_credential_admission.CredentialAdmissionTests.test_missing_record) ... ok
+test_missing_service_cannot_create_supported_endpoint (auth.test_credential_admission.CredentialAdmissionTests.test_missing_service_cannot_create_supported_endpoint) ... ok
+test_nominal_seed_2222_device_3_attempt_88 (auth.test_credential_admission.CredentialAdmissionTests.test_nominal_seed_2222_device_3_attempt_88) ... ok
+test_nominal_seed_6543_device_1_attempt_75 (auth.test_credential_admission.CredentialAdmissionTests.test_nominal_seed_6543_device_1_attempt_75) ... ok
+test_padding_failure_never_invokes_verifier (auth.test_credential_admission.CredentialAdmissionTests.test_padding_failure_never_invokes_verifier) ... ok
+test_receiver_enrollment_generation_changed (auth.test_credential_admission.CredentialAdmissionTests.test_receiver_enrollment_generation_changed) ... ok
+test_receiver_missing_authorization_base_and_audited (auth.test_credential_admission.CredentialAdmissionTests.test_receiver_missing_authorization_base_and_audited) ... ok
+test_reconstruction_binding_mismatch (auth.test_credential_admission.CredentialAdmissionTests.test_reconstruction_binding_mismatch) ... ok
+test_request_construction_failure_clears_base_admission (auth.test_credential_admission.CredentialAdmissionTests.test_request_construction_failure_clears_base_admission) ... ok
+test_request_swap (auth.test_credential_admission.CredentialAdmissionTests.test_request_swap) ... ok
+test_revoked_authorization (auth.test_credential_admission.CredentialAdmissionTests.test_revoked_authorization) ... ok
+test_revoked_enrollment_rejects_handle_and_future_candidates (auth.test_credential_admission.CredentialAdmissionTests.test_revoked_enrollment_rejects_handle_and_future_candidates) ... ok
+test_revoked_record (auth.test_credential_admission.CredentialAdmissionTests.test_revoked_record) ... ok
+test_sender_attempt_identity_swap (auth.test_credential_admission.CredentialAdmissionTests.test_sender_attempt_identity_swap) ... ok
+test_sender_audit_failure_revokes_unemitted_authorization (auth.test_credential_admission.CredentialAdmissionTests.test_sender_audit_failure_revokes_unemitted_authorization) ... ok
+test_sender_cannot_derive_before_receiver_consumption (auth.test_credential_admission.CredentialAdmissionTests.test_sender_cannot_derive_before_receiver_consumption) ... ok
+test_server_confirmation_tamper_still_rejected (auth.test_credential_admission.CredentialAdmissionTests.test_server_confirmation_tamper_still_rejected) ... ok
+test_stale_authorization (auth.test_credential_admission.CredentialAdmissionTests.test_stale_authorization) ... ok
+test_wrong_valid_format_zero_work_base_and_audited (auth.test_credential_admission.CredentialAdmissionTests.test_wrong_valid_format_zero_work_base_and_audited) ... ok
+test_wrong_verifier_key (auth.test_credential_admission.CredentialAdmissionTests.test_wrong_verifier_key) ... ok
+test_compare_digest_checks_full_tags_on_pass_and_failure (auth.test_credential_verifier.CredentialVerifierTests.test_compare_digest_checks_full_tags_on_pass_and_failure) ... ok
+test_completely_different_credential (auth.test_credential_verifier.CredentialVerifierTests.test_completely_different_credential) ... ok
+test_correct_credential (auth.test_credential_verifier.CredentialVerifierTests.test_correct_credential) ... ok
+test_corrupted_tag (auth.test_credential_verifier.CredentialVerifierTests.test_corrupted_tag) ... ok
+test_device_binding_uses_distinct_device_record (auth.test_credential_verifier.CredentialVerifierTests.test_device_binding_uses_distinct_device_record) ... ok
+test_disabled_and_revoked_records (auth.test_credential_verifier.CredentialVerifierTests.test_disabled_and_revoked_records) ... ok
+test_duplicate_bindings_rejected_even_if_disabled_or_other_profile (auth.test_credential_verifier.CredentialVerifierTests.test_duplicate_bindings_rejected_even_if_disabled_or_other_profile) ... ok
+test_enrollment_id_binding_and_lookup (auth.test_credential_verifier.CredentialVerifierTests.test_enrollment_id_binding_and_lookup) ... ok
+test_exports_do_not_replace_existing_window_verification_result (auth.test_credential_verifier.CredentialVerifierTests.test_exports_do_not_replace_existing_window_verification_result) ... ok
+test_fixed_independent_vector_and_full_tag (auth.test_credential_verifier.CredentialVerifierTests.test_fixed_independent_vector_and_full_tag) ... ok
+test_generate_failure_has_no_fallback_or_secret_exception (auth.test_credential_verifier.CredentialVerifierTests.test_generate_failure_has_no_fallback_or_secret_exception) ... ok
+test_generate_rejects_invalid_id_before_random_access (auth.test_credential_verifier.CredentialVerifierTests.test_generate_rejects_invalid_id_before_random_access) ... ok
+test_generate_uses_os_random_exactly_once_without_credential_input (auth.test_credential_verifier.CredentialVerifierTests.test_generate_uses_os_random_exactly_once_without_credential_input) ... ok
+test_identical_credentials_across_devices_are_not_origin_proof (auth.test_credential_verifier.CredentialVerifierTests.test_identical_credentials_across_devices_are_not_origin_proof) ... ok
+test_identifier_length_boundary_and_unsigned_big_endian_framing (auth.test_credential_verifier.CredentialVerifierTests.test_identifier_length_boundary_and_unsigned_big_endian_framing) ... ok
+test_internal_store_and_crypto_errors_are_redacted (auth.test_credential_verifier.CredentialVerifierTests.test_internal_store_and_crypto_errors_are_redacted) ... ok
+test_invalid_identifier_syntax_and_types (auth.test_credential_verifier.CredentialVerifierTests.test_invalid_identifier_syntax_and_types) ... ok
+test_invalid_store_inputs_and_service_store (auth.test_credential_verifier.CredentialVerifierTests.test_invalid_store_inputs_and_service_store) ... ok
+test_key_id_is_in_mac_even_when_key_bytes_match (auth.test_credential_verifier.CredentialVerifierTests.test_key_id_is_in_mac_even_when_key_bytes_match) ... ok
+test_leading_zero_and_all_zero_credentials (auth.test_credential_verifier.CredentialVerifierTests.test_leading_zero_and_all_zero_credentials) ... ok
+test_length_prefix_prevents_concatenation_ambiguity (auth.test_credential_verifier.CredentialVerifierTests.test_length_prefix_prevents_concatenation_ambiguity) ... ok
+test_lifecycle_flags_must_be_exact_bools (auth.test_credential_verifier.CredentialVerifierTests.test_lifecycle_flags_must_be_exact_bools) ... ok
+test_malformed_record_identifiers (auth.test_credential_verifier.CredentialVerifierTests.test_malformed_record_identifiers) ... ok
+test_missing_record_no_provider_access_or_auto_enrollment (auth.test_credential_verifier.CredentialVerifierTests.test_missing_record_no_provider_access_or_auto_enrollment) ... ok
+test_no_retry_or_key_search_on_mismatch (auth.test_credential_verifier.CredentialVerifierTests.test_no_retry_or_key_search_on_mismatch) ... ok
+test_non_ascii_identifiers_are_rejected_without_normalization (auth.test_credential_verifier.CredentialVerifierTests.test_non_ascii_identifiers_are_rejected_without_normalization) ... ok
+test_nonbytes_credentials_and_bytes_subclass (auth.test_credential_verifier.CredentialVerifierTests.test_nonbytes_credentials_and_bytes_subclass) ... ok
+test_normal_representations_hide_credentials_keys_and_tags (auth.test_credential_verifier.CredentialVerifierTests.test_normal_representations_hide_credentials_keys_and_tags) ... ok
+test_one_bit_wrong_credential (auth.test_credential_verifier.CredentialVerifierTests.test_one_bit_wrong_credential) ... ok
+test_provider_exact_key_length_and_type (auth.test_credential_verifier.CredentialVerifierTests.test_provider_exact_key_length_and_type) ... ok
+test_provider_exception_is_redacted (auth.test_credential_verifier.CredentialVerifierTests.test_provider_exception_is_redacted) ... ok
+test_reconstruction_profile_binding (auth.test_credential_verifier.CredentialVerifierTests.test_reconstruction_profile_binding) ... ok
+test_record_fields_have_no_plaintext_or_public_credential_hash (auth.test_credential_verifier.CredentialVerifierTests.test_record_fields_have_no_plaintext_or_public_credential_hash) ... ok
+test_relabeled_device_record_fails (auth.test_credential_verifier.CredentialVerifierTests.test_relabeled_device_record_fails) ... ok
+test_result_cannot_hold_arbitrary_exception_text (auth.test_credential_verifier.CredentialVerifierTests.test_result_cannot_hold_arbitrary_exception_text) ... ok
+test_standalone_primitive_never_calls_session_derivation (auth.test_credential_verifier.CredentialVerifierTests.test_standalone_primitive_never_calls_session_derivation) ... ok
+test_store_returning_wrong_binding_fails (auth.test_credential_verifier.CredentialVerifierTests.test_store_returning_wrong_binding_fails) ... ok
+test_store_snapshot_and_distinct_enrollment_lookup (auth.test_credential_verifier.CredentialVerifierTests.test_store_snapshot_and_distinct_enrollment_lookup) ... ok
+test_truncated_extended_and_nonbytes_tags (auth.test_credential_verifier.CredentialVerifierTests.test_truncated_extended_and_nonbytes_tags) ... ok
+test_unavailable_or_malformed_provider_key (auth.test_credential_verifier.CredentialVerifierTests.test_unavailable_or_malformed_provider_key) ... ok
+test_unexpected_store_record_fails_closed (auth.test_credential_verifier.CredentialVerifierTests.test_unexpected_store_record_fails_closed) ... ok
+test_unknown_key_id (auth.test_credential_verifier.CredentialVerifierTests.test_unknown_key_id) ... ok
+test_unsupported_algorithm_and_schema (auth.test_credential_verifier.CredentialVerifierTests.test_unsupported_algorithm_and_schema) ... ok
+test_valid_identifier_punctuation_and_case_sensitivity (auth.test_credential_verifier.CredentialVerifierTests.test_valid_identifier_punctuation_and_case_sensitivity) ... ok
+test_verification_and_enrollment_write_no_console_output (auth.test_credential_verifier.CredentialVerifierTests.test_verification_and_enrollment_write_no_console_output) ... ok
+test_verify_api_has_no_evaluator_truth_or_key_parameter (auth.test_credential_verifier.CredentialVerifierTests.test_verify_api_has_no_evaluator_truth_or_key_parameter) ... ok
+test_wrong_credential_lengths (auth.test_credential_verifier.CredentialVerifierTests.test_wrong_credential_lengths) ... ok
+test_wrong_verifier_key (auth.test_credential_verifier.CredentialVerifierTests.test_wrong_verifier_key) ... ok
+test_audit_failure_never_returns_unaudited_envelope_or_reuses_sequence (auth.test_finalization.FinalizationTests.test_audit_failure_never_returns_unaudited_envelope_or_reuses_sequence) ... ok
+test_backend_exception_is_incomplete_not_frr (auth.test_finalization.FinalizationTests.test_backend_exception_is_incomplete_not_frr) ... ok
+test_busy_attempt_does_not_finalize_pending (auth.test_finalization.FinalizationTests.test_busy_attempt_does_not_finalize_pending) ... ok
+test_candidate_admission_is_not_authentication (auth.test_finalization.FinalizationTests.test_candidate_admission_is_not_authentication) ... ok
+test_decoder_failure (auth.test_finalization.FinalizationTests.test_decoder_failure) ... ok
+test_demo_keeps_endpoint_audits_distinct (auth.test_finalization.FinalizationTests.test_demo_keeps_endpoint_audits_distinct) ... ok
+test_expiration (auth.test_finalization.FinalizationTests.test_expiration) ... ok
+test_handshake_failure_audits (auth.test_finalization.FinalizationTests.test_handshake_failure_audits) ... ok
+test_inactive (auth.test_finalization.FinalizationTests.test_inactive) ... ok
+test_invalid_padding (auth.test_finalization.FinalizationTests.test_invalid_padding) ... ok
+test_invalid_schema_no_sequence_consumed (auth.test_finalization.FinalizationTests.test_invalid_schema_no_sequence_consumed) ... ok
+test_malformed_identifier_not_copied_to_audit (auth.test_finalization.FinalizationTests.test_malformed_identifier_not_copied_to_audit) ... ok
+test_malformed_result_marks_incomplete (auth.test_finalization.FinalizationTests.test_malformed_result_marks_incomplete) ... ok
+test_max_window_audits_close_then_inactive (auth.test_finalization.FinalizationTests.test_max_window_audits_close_then_inactive) ... ok
+test_missing_delivery_does_not_reuse_sequence (auth.test_finalization.FinalizationTests.test_missing_delivery_does_not_reuse_sequence) ... ok
+test_quality_failure_no_sequence_consumed (auth.test_finalization.FinalizationTests.test_quality_failure_no_sequence_consumed) ... ok
+test_reconstruction_audit_failure_blocks_handshake (auth.test_finalization.FinalizationTests.test_reconstruction_audit_failure_blocks_handshake) ... ok
+test_reconstruction_timing_and_provenance (auth.test_finalization.FinalizationTests.test_reconstruction_timing_and_provenance) ... ok
+test_reused_attempt_id_stops_with_actual_audited_state (auth.test_finalization.FinalizationTests.test_reused_attempt_id_stops_with_actual_audited_state) ... ok
+test_sealing_backend_exception_stops_without_secret_dump (auth.test_finalization.FinalizationTests.test_sealing_backend_exception_stops_without_secret_dump) ... ok
+test_secret_hygiene_serialization (auth.test_finalization.FinalizationTests.test_secret_hygiene_serialization) ... ok
+test_sender_disk_failure_stops (auth.test_finalization.FinalizationTests.test_sender_disk_failure_stops) ... ok
+test_sender_prepare_excludes_audit_work (auth.test_finalization.FinalizationTests.test_sender_prepare_excludes_audit_work) ... ok
+test_sender_recorder_random_failure_fails_closed (auth.test_finalization.FinalizationTests.test_sender_recorder_random_failure_fails_closed) ... ok
+test_sender_snapshot_is_independent (auth.test_finalization.FinalizationTests.test_sender_snapshot_is_independent) ... ok
+test_shutdown_all_active_and_pending_preserves_tombstones (auth.test_finalization.FinalizationTests.test_shutdown_all_active_and_pending_preserves_tombstones) ... ok
+test_shutdown_audit_failure_stops_without_reset (auth.test_finalization.FinalizationTests.test_shutdown_audit_failure_stops_without_reset) ... ok
+test_terminal_handshake_success_once (auth.test_finalization.FinalizationTests.test_terminal_handshake_success_once) ... ok
+test_terminal_refusal_not_inferred_verifier_reason (auth.test_finalization.FinalizationTests.test_terminal_refusal_not_inferred_verifier_reason) ... ok
+test_terminal_timeout (auth.test_finalization.FinalizationTests.test_terminal_timeout) ... ok
+test_window_success_is_seal_only (auth.test_finalization.FinalizationTests.test_window_success_is_seal_only) ... ok
+test_rfc_a1 (auth.test_hkdf.HKDFTests.test_rfc_a1) ... ok
+test_rfc_a2 (auth.test_hkdf.HKDFTests.test_rfc_a2) ... ok
+test_rfc_a3 (auth.test_hkdf.HKDFTests.test_rfc_a3) ... ok
+test_actual_reconstruction_and_seal_verify_release (auth.test_layer3_integration.IntegrationTests.test_actual_reconstruction_and_seal_verify_release) ... ok
+test_demo_complete_exclusive_evidence (auth.test_layer3_integration.IntegrationTests.test_demo_complete_exclusive_evidence) ... ok
+test_demo_failure_incomplete_preserves_partial_evidence (auth.test_layer3_integration.IntegrationTests.test_demo_failure_incomplete_preserves_partial_evidence) ... ok
+test_sender_consumes_sequence_even_without_delivery (auth.test_layer3_integration.IntegrationTests.test_sender_consumes_sequence_even_without_delivery) ... ok
+test_sender_deadline (auth.test_layer3_integration.IntegrationTests.test_sender_deadline) ... ok
+test_sender_max_window_removes_key (auth.test_layer3_integration.IntegrationTests.test_sender_max_window_removes_key) ... ok
+test_sender_quality_failure_does_not_consume_sequence (auth.test_layer3_integration.IntegrationTests.test_sender_quality_failure_does_not_consume_sequence) ... ok
+test_wrong_candidate_rejected_no_active_session (auth.test_layer3_integration.IntegrationTests.test_wrong_candidate_rejected_no_active_session) ... ok
+test_activation_audit_failure_does_not_replace_old (auth.test_lifecycle_audit.LifecycleAuditTests.test_activation_audit_failure_does_not_replace_old) ... ok
+test_activation_once_duplicate_confirmation_message (auth.test_lifecycle_audit.LifecycleAuditTests.test_activation_once_duplicate_confirmation_message) ... ok
+test_close_audit_failure_preserves_active_state (auth.test_lifecycle_audit.LifecycleAuditTests.test_close_audit_failure_preserves_active_state) ... ok
+test_invalid_proof_and_pending_window (auth.test_lifecycle_audit.LifecycleAuditTests.test_invalid_proof_and_pending_window) ... ok
+test_pending_busy_does_not_finalize_original (auth.test_lifecycle_audit.LifecycleAuditTests.test_pending_busy_does_not_finalize_original) ... ok
+test_pending_expiry_one_terminal_record (auth.test_lifecycle_audit.LifecycleAuditTests.test_pending_expiry_one_terminal_record) ... ok
+test_rejected_requests_and_unmatched_confirmations (auth.test_lifecycle_audit.LifecycleAuditTests.test_rejected_requests_and_unmatched_confirmations) ... ok
+test_utc_does_not_control_admission (auth.test_lifecycle_audit.LifecycleAuditTests.test_utc_does_not_control_admission) ... ok
+test_binary_mutations_reject_without_poisoning_next_window (auth.test_protocol_rejection.ProtocolRejectionTests.test_binary_mutations_reject_without_poisoning_next_window) ... ok
+test_invalid_tag_with_high_sequence_does_not_poison_valid_sequence (auth.test_protocol_rejection.ProtocolRejectionTests.test_invalid_tag_with_high_sequence_does_not_poison_valid_sequence) ... ok
+test_outer_json_key_order_is_not_binary_field_order (auth.test_protocol_rejection.ProtocolRejectionTests.test_outer_json_key_order_is_not_binary_field_order) ... ok
+test_duration_minus_120 (auth.test_quality.QualityTests.test_duration_minus_120) ... ok
+test_duration_minus_121 (auth.test_quality.QualityTests.test_duration_minus_121) ... ok
+test_duration_plus_120 (auth.test_quality.QualityTests.test_duration_plus_120) ... ok
+test_duration_plus_121 (auth.test_quality.QualityTests.test_duration_plus_121) ... ok
+test_end_before_start (auth.test_quality.QualityTests.test_end_before_start) ... ok
+test_excessive_gap (auth.test_quality.QualityTests.test_excessive_gap) ... ok
+test_ppm_mismatch (auth.test_quality.QualityTests.test_ppm_mismatch) ... ok
+test_quaternion_component_inside (auth.test_quality.QualityTests.test_quaternion_component_inside) ... ok
+test_quaternion_component_outside (auth.test_quality.QualityTests.test_quaternion_component_outside) ... ok
+test_quaternion_norm_lower_inside (auth.test_quality.QualityTests.test_quaternion_norm_lower_inside) ... ok
+test_quaternion_norm_lower_outside (auth.test_quality.QualityTests.test_quaternion_norm_lower_outside) ... ok
+test_quaternion_norm_upper_inside (auth.test_quality.QualityTests.test_quaternion_norm_upper_inside) ... ok
+test_quaternion_norm_upper_outside (auth.test_quality.QualityTests.test_quaternion_norm_upper_outside) ... ok
+test_quaternion_sign_continuity (auth.test_quality.QualityTests.test_quaternion_sign_continuity) ... ok
+test_sample_index_representation (auth.test_quality.QualityTests.test_sample_index_representation) ... ok
+test_structural_negative_zero (auth.test_quality.QualityTests.test_structural_negative_zero) ... ok
+test_timestamp_equal_end (auth.test_quality.QualityTests.test_timestamp_equal_end) ... ok
+test_timestamp_nonmonotonic (auth.test_quality.QualityTests.test_timestamp_nonmonotonic) ... ok
+test_timestamp_outside (auth.test_quality.QualityTests.test_timestamp_outside) ... ok
+test_tracking_113 (auth.test_quality.QualityTests.test_tracking_113) ... ok
+test_tracking_114 (auth.test_quality.QualityTests.test_tracking_114) ... ok
+test_tracking_120 (auth.test_quality.QualityTests.test_tracking_120) ... ok
+test_tracking_summary_mismatch (auth.test_quality.QualityTests.test_tracking_summary_mismatch) ... ok
+test_tracking_summary_width_only_before_hmac (auth.test_quality.QualityTests.test_tracking_summary_width_only_before_hmac) ... ok
+test_altered_challenge_and_transcript (auth.test_session.SessionTests.test_altered_challenge_and_transcript) ... ok
+test_api_boundaries_and_random_failure (auth.test_session.SessionTests.test_api_boundaries_and_random_failure) ... ok
+test_context_and_kdf_validation (auth.test_session.SessionTests.test_context_and_kdf_validation) ... ok
+test_correct_candidate_independent_keys_and_activation (auth.test_session.SessionTests.test_correct_candidate_independent_keys_and_activation) ... ok
+test_deadlines_busy_limits_and_replacement (auth.test_session.SessionTests.test_deadlines_busy_limits_and_replacement) ... ok
+test_framing_and_version_rejection (auth.test_session.SessionTests.test_framing_and_version_rejection) ... ok
+test_h0_literals (auth.test_session.SessionTests.test_h0_literals) ... ok
+test_old_proofs_fail_fresh_context (auth.test_session.SessionTests.test_old_proofs_fail_fresh_context) ... ok
+test_real_six_error_miscorrection_no_retry_or_active_state (auth.test_session.SessionTests.test_real_six_error_miscorrection_no_retry_or_active_state) ... ok
+test_reconstruction_failure_and_malformed_results (auth.test_session.SessionTests.test_reconstruction_failure_and_malformed_results) ... ok
+test_reflection_unknown_sessions_and_no_sender_key_api (auth.test_session.SessionTests.test_reflection_unknown_sessions_and_no_sender_key_api) ... ok
+test_resource_limits_collision_and_ttl_equality (auth.test_session.SessionTests.test_resource_limits_collision_and_ttl_equality) ... ok
+test_wrong_length_proofs_and_reflection (auth.test_session.SessionTests.test_wrong_length_proofs_and_reflection) ... ok
+test_audit_allocation_failure_no_acceptance (auth.test_verifier.VerifierTests.test_audit_allocation_failure_no_acceptance) ... ok
+test_binary_float_representation_precedes_tag (auth.test_verifier.VerifierTests.test_binary_float_representation_precedes_tag) ... ok
+test_concurrent_duplicate_barrier (auth.test_verifier.VerifierTests.test_concurrent_duplicate_barrier) ... ok
+test_consumer_failure_keeps_commit_and_stops (auth.test_verifier.VerifierTests.test_consumer_failure_keeps_commit_and_stops) ... ok
+test_deadline_rechecked_after_audit_allocation (auth.test_verifier.VerifierTests.test_deadline_rechecked_after_audit_allocation) ... ok
+test_deadline_rechecked_after_quality (auth.test_verifier.VerifierTests.test_deadline_rechecked_after_quality) ... ok
+test_device_mutation_precedence (auth.test_verifier.VerifierTests.test_device_mutation_precedence) ... ok
+test_disabled_device (auth.test_verifier.VerifierTests.test_disabled_device) ... ok
+test_duplicate (auth.test_verifier.VerifierTests.test_duplicate) ... ok
+test_enrollment_binding (auth.test_verifier.VerifierTests.test_enrollment_binding) ... ok
+test_expire_control_removes_key_and_retains_tombstone (auth.test_verifier.VerifierTests.test_expire_control_removes_key_and_retains_tombstone) ... ok
+test_gap_and_late_missing_no_automatic_reconsideration (auth.test_verifier.VerifierTests.test_gap_and_late_missing_no_automatic_reconsideration) ... ok
+test_immutable_exact_bytes_and_payload (auth.test_verifier.VerifierTests.test_immutable_exact_bytes_and_payload) ... ok
+test_invalid_tag_high_sequence_cannot_poison (auth.test_verifier.VerifierTests.test_invalid_tag_high_sequence_cannot_poison) ... ok
+test_invariant_violation_fails_closed (auth.test_verifier.VerifierTests.test_invariant_violation_fails_closed) ... ok
+test_key_id_never_selects_key (auth.test_verifier.VerifierTests.test_key_id_never_selects_key) ... ok
+test_local_close (auth.test_verifier.VerifierTests.test_local_close) ... ok
+test_malformed_inputs_leave_state (auth.test_verifier.VerifierTests.test_malformed_inputs_leave_state) ... ok
+test_max_windows_last_accept_once (auth.test_verifier.VerifierTests.test_max_windows_last_accept_once) ... ok
+test_protocol_precedes_lookup (auth.test_verifier.VerifierTests.test_protocol_precedes_lookup) ... ok
+test_replacement_new_sequence_zero_old_cannot_reset (auth.test_verifier.VerifierTests.test_replacement_new_sequence_zero_old_cannot_reset) ... ok
+test_restart (auth.test_verifier.VerifierTests.test_restart) ... ok
+test_result_allocation_failure_no_acceptance (auth.test_verifier.VerifierTests.test_result_allocation_failure_no_acceptance) ... ok
+test_session_mutation_precedence (auth.test_verifier.VerifierTests.test_session_mutation_precedence) ... ok
+test_stale (auth.test_verifier.VerifierTests.test_stale) ... ok
+test_stale_tag_on_protected_mutations (auth.test_verifier.VerifierTests.test_stale_tag_on_protected_mutations) ... ok
+test_substituted_payload_and_legacy_gate_cannot_release (auth.test_verifier.VerifierTests.test_substituted_payload_and_legacy_gate_cannot_release) ... ok
+test_traffic_never_refreshes_ttl (auth.test_verifier.VerifierTests.test_traffic_never_refreshes_ttl) ... ok
+test_ttl_equality_rejection_does_not_expire_as_side_effect (auth.test_verifier.VerifierTests.test_ttl_equality_rejection_does_not_expire_as_side_effect) ... ok
+test_u64_max_is_gap_without_wrap (auth.test_verifier.VerifierTests.test_u64_max_is_gap_without_wrap) ... ok
+test_valid_consecutive_zero_one_two (auth.test_verifier.VerifierTests.test_valid_consecutive_zero_one_two) ... ok
+test_valid_tag_wrong_owner (auth.test_verifier.VerifierTests.test_valid_tag_wrong_owner) ... ok
+test_devices_are_distinct_and_reproducible (puf.test_device.DeviceTests.test_devices_are_distinct_and_reproducible) ... ok
+test_invalid_manufacturing_inputs (puf.test_device.DeviceTests.test_invalid_manufacturing_inputs) ... ok
+test_invalid_state_is_rejected (puf.test_device.DeviceTests.test_invalid_state_is_rejected) ... ok
+test_manufacturing_persists_across_noisy_measurements (puf.test_device.DeviceTests.test_manufacturing_persists_across_noisy_measurements) ... ok
+test_optional_aging_state (puf.test_device.DeviceTests.test_optional_aging_state) ... ok
+test_state_is_immutable (puf.test_device.DeviceTests.test_state_is_immutable) ... ok
+test_zero_manufacturing_spread_uses_no_draws (puf.test_device.DeviceTests.test_zero_manufacturing_spread_uses_no_draws) ... ok
+test_all_pairs_response_length (puf.test_experiment.ExperimentTests.test_all_pairs_response_length) ... ok
+test_corrected_six_device_baseline_csvs_match_exactly (puf.test_experiment.ExperimentTests.test_corrected_six_device_baseline_csvs_match_exactly) ... ok
+test_counts_aggregation_and_zero_noise (puf.test_experiment.ExperimentTests.test_counts_aggregation_and_zero_noise) ... ok
+test_failed_plotting_does_not_mark_complete (puf.test_experiment.ExperimentTests.test_failed_plotting_does_not_mark_complete) ... ok
+test_noisy_reference_and_sweep_persistence (puf.test_experiment.ExperimentTests.test_noisy_reference_and_sweep_persistence) ... ok
+test_outputs_reproduce_without_overwriting (puf.test_experiment.ExperimentTests.test_outputs_reproduce_without_overwriting) ... ok
+test_private_repo_baseline_csvs_match_exactly (puf.test_experiment.ExperimentTests.test_private_repo_baseline_csvs_match_exactly) ... ok
+test_reproducibility_and_seed_sensitivity (puf.test_experiment.ExperimentTests.test_reproducibility_and_seed_sensitivity) ... ok
+test_script_defaults_work_outside_repository (puf.test_experiment.ExperimentTests.test_script_defaults_work_outside_repository) ... ok
+test_script_preserves_explicit_relative_paths (puf.test_experiment.ExperimentTests.test_script_preserves_explicit_relative_paths) ... ok
+test_boundaries (puf.test_metrics.MetricTests.test_boundaries) ... ok
+test_hand_calculated_read (puf.test_metrics.MetricTests.test_hand_calculated_read) ... ok
+test_invalid_responses (puf.test_metrics.MetricTests.test_invalid_responses) ... ok
+test_unique_pairs_and_duplicate_patterns (puf.test_metrics.MetricTests.test_unique_pairs_and_duplicate_patterns) ... ok
+test_configuration_rejects_schema_errors (puf.test_puf.ConfigurationTests.test_configuration_rejects_schema_errors) ... ok
+test_default_configuration (puf.test_puf.ConfigurationTests.test_default_configuration) ... ok
+test_duplicate_keys_are_rejected (puf.test_puf.ConfigurationTests.test_duplicate_keys_are_rejected) ... ok
+test_invalid_parameters (puf.test_puf.ConfigurationTests.test_invalid_parameters) ... ok
+test_read_conditions (puf.test_puf.ConfigurationTests.test_read_conditions) ... ok
+test_additive_environment_and_zero_aging (puf.test_puf.FrequencyModelTests.test_additive_environment_and_zero_aging) ... ok
+test_invalid_frequency_arguments (puf.test_puf.FrequencyModelTests.test_invalid_frequency_arguments) ... ok
+test_invalid_response_pairs_do_not_consume_noise (puf.test_puf.FrequencyModelTests.test_invalid_response_pairs_do_not_consume_noise) ... ok
+test_noise_changes_frequencies_and_responses (puf.test_puf.FrequencyModelTests.test_noise_changes_frequencies_and_responses) ... ok
+test_noise_scale_and_environment_are_separate_terms (puf.test_puf.FrequencyModelTests.test_noise_scale_and_environment_are_separate_terms) ... ok
+test_noiseless_reads_match_reference_without_rng_draws (puf.test_puf.FrequencyModelTests.test_noiseless_reads_match_reference_without_rng_draws) ... ok
+test_nonzero_aging_rejected_without_consuming_noise (puf.test_puf.FrequencyModelTests.test_nonzero_aging_rejected_without_consuming_noise) ... ok
+test_overflow_and_negative_abstract_values (puf.test_puf.FrequencyModelTests.test_overflow_and_negative_abstract_values) ... ok
+test_reference_conditions_honor_nonzero_noise (puf.test_puf.FrequencyModelTests.test_reference_conditions_honor_nonzero_noise) ... ok
+test_seed_reproduces_devices_enrollment_and_read_sequence (puf.test_puf.FrequencyModelTests.test_seed_reproduces_devices_enrollment_and_read_sequence) ... ok
+test_adjacent_pair_order_and_response_length (puf.test_puf.PairingTests.test_adjacent_pair_order_and_response_length) ... ok
+test_all_pairs_order_and_count (puf.test_puf.PairingTests.test_all_pairs_order_and_count) ... ok
+test_comparison_rule_ties_and_custom_reuse (puf.test_puf.PairingTests.test_comparison_rule_ties_and_custom_reuse) ... ok
+test_invalid_frequencies (puf.test_puf.PairingTests.test_invalid_frequencies) ... ok
+test_invalid_indices_and_pair_shapes (puf.test_puf.PairingTests.test_invalid_indices_and_pair_shapes) ... ok
+test_invalid_pair_configuration (puf.test_puf.PairingTests.test_invalid_pair_configuration) ... ok
+test_devices_and_phases_have_distinct_streams (puf.test_puf.RandomnessTests.test_devices_and_phases_have_distinct_streams) ... ok
+test_invalid_stream_labels (puf.test_puf.RandomnessTests.test_invalid_stream_labels) ... ok
+test_measurement_consumption_does_not_change_manufacturing (puf.test_puf.RandomnessTests.test_measurement_consumption_does_not_change_manufacturing) ... ok
+test_no_global_random_state_is_consumed (puf.test_puf.RandomnessTests.test_no_global_random_state_is_consumed) ... ok
+test_streams_reproduce_and_advance (puf.test_puf.RandomnessTests.test_streams_reproduce_and_advance) ... ok
+test_adapter_does_not_impose_credential_padding (reconstruction.test_bch.BCHTests.test_adapter_does_not_impose_credential_padding) ... ok
+test_all_message_basis_vectors_against_independent_encoder (reconstruction.test_bch.BCHTests.test_all_message_basis_vectors_against_independent_encoder) ... ok
+test_backend_must_return_a_codeword_at_reported_distance (reconstruction.test_bch.BCHTests.test_backend_must_return_a_codeword_at_reported_distance) ... ok
+test_changed_backend_parameters_refused (reconstruction.test_bch.BCHTests.test_changed_backend_parameters_refused) ... ok
+test_checkpoint_vectors_and_leading_zeros (reconstruction.test_bch.BCHTests.test_checkpoint_vectors_and_leading_zeros) ... ok
+test_declared_failure_discards_backend_payload (reconstruction.test_bch.BCHTests.test_declared_failure_discards_backend_payload) ... ok
+test_encoder_must_preserve_message_and_return_valid_codeword (reconstruction.test_bch.BCHTests.test_encoder_must_preserve_message_and_return_valid_codeword) ... ok
+test_exact_parameters (reconstruction.test_bch.BCHTests.test_exact_parameters) ... ok
+test_impossible_correction_counts_raise (reconstruction.test_bch.BCHTests.test_impossible_correction_counts_raise) ... ok
+test_independent_generator_from_roots (reconstruction.test_bch.BCHTests.test_independent_generator_from_roots) ... ok
+test_invalid_messages_rejected_before_backend (reconstruction.test_bch.BCHTests.test_invalid_messages_rejected_before_backend) ... ok
+test_invalid_received_words_rejected_before_backend (reconstruction.test_bch.BCHTests.test_invalid_received_words_rejected_before_backend) ... ok
+test_nonbinary_or_misshaped_backend_output_raises (reconstruction.test_bch.BCHTests.test_nonbinary_or_misshaped_backend_output_raises) ... ok
+test_unexpected_backend_exceptions_propagate (reconstruction.test_bch.BCHTests.test_unexpected_backend_exceptions_propagate) ... ok
+test_wrong_backend_version_refused (reconstruction.test_bch.BCHTests.test_wrong_backend_version_refused) ... ok
+test_actual_layer1_zero_noise_path (reconstruction.test_credential.CredentialTests.test_actual_layer1_zero_noise_path) ... ok
+test_all_1953_two_bit_patterns (reconstruction.test_credential.CredentialTests.test_all_1953_two_bit_patterns) ... ok
+test_configuration_types_are_strict (reconstruction.test_credential.CredentialTests.test_configuration_types_are_strict) ... ok
+test_declared_failure_is_a_single_attempt_without_candidate (reconstruction.test_credential.CredentialTests.test_declared_failure_is_a_single_attempt_without_candidate) ... ok
+test_enrollment_matches_independent_code_offset (reconstruction.test_credential.CredentialTests.test_enrollment_matches_independent_code_offset) ... ok
+test_every_configuration_field_is_fixed (reconstruction.test_credential.CredentialTests.test_every_configuration_field_is_fixed) ... ok
+test_every_single_bit_position_across_five_credentials (reconstruction.test_credential.CredentialTests.test_every_single_bit_position_across_five_credentials) ... ok
+test_fixed_subset_and_omitted_bit (reconstruction.test_credential.CredentialTests.test_fixed_subset_and_omitted_bit) ... ok
+test_fresh_process_reconstructs_using_only_public_material (reconstruction.test_credential.CredentialTests.test_fresh_process_reconstructs_using_only_public_material) ... ok
+test_identical_response_preserves_credential_patterns (reconstruction.test_credential.CredentialTests.test_identical_response_preserves_credential_patterns) ... ok
+test_immutable_helper_config_and_result (reconstruction.test_credential.CredentialTests.test_immutable_helper_config_and_result) ... ok
+test_invalid_credentials_rejected (reconstruction.test_credential.CredentialTests.test_invalid_credentials_rejected) ... ok
+test_invalid_enrollment_identifiers_rejected_before_encoding (reconstruction.test_credential.CredentialTests.test_invalid_enrollment_identifiers_rejected_before_encoding) ... ok
+test_invalid_helper_bits_rejected (reconstruction.test_credential.CredentialTests.test_invalid_helper_bits_rejected) ... ok
+test_layer1_device_and_rng_streams_are_unchanged (reconstruction.test_credential.CredentialTests.test_layer1_device_and_rng_streams_are_unchanged) ... ok
+test_modified_helper_bit_is_correctable_not_integrity_protected (reconstruction.test_credential.CredentialTests.test_modified_helper_bit_is_correctable_not_integrity_protected) ... ok
+test_nonzero_padding_rejected_even_for_valid_codewords (reconstruction.test_credential.CredentialTests.test_nonzero_padding_rejected_even_for_valid_codewords) ... ok
+test_public_helper_and_result_have_no_ground_truth_fields (reconstruction.test_credential.CredentialTests.test_public_helper_and_result_have_no_ground_truth_fields) ... ok
+test_reproducible_outputs_and_explicit_config (reconstruction.test_credential.CredentialTests.test_reproducible_outputs_and_explicit_config) ... ok
+test_response_validation_for_both_apis (reconstruction.test_credential.CredentialTests.test_response_validation_for_both_apis) ... ok
+test_routing_identity_is_not_authentication (reconstruction.test_credential.CredentialTests.test_routing_identity_is_not_authentication) ... ok
+test_seeded_three_four_five_bit_errors_across_credentials (reconstruction.test_credential.CredentialTests.test_seeded_three_four_five_bit_errors_across_credentials) ... ok
+test_six_error_miscorrection_with_invalid_padding (reconstruction.test_credential.CredentialTests.test_six_error_miscorrection_with_invalid_padding) ... ok
+test_six_error_valid_padding_miscorrection_fixture (reconstruction.test_credential.CredentialTests.test_six_error_valid_padding_miscorrection_fixture) ... ok
+test_stale_config_identity_revalidated_at_api_boundary (reconstruction.test_credential.CredentialTests.test_stale_config_identity_revalidated_at_api_boundary) ... ok
+test_unexpected_backend_failure_is_not_false_rejection (reconstruction.test_credential.CredentialTests.test_unexpected_backend_failure_is_not_false_rejection) ... ok
+test_wrong_config_or_helper_object_rejected (reconstruction.test_credential.CredentialTests.test_wrong_config_or_helper_object_rejected) ... ok
+test_wrong_helper_can_still_produce_matching_credential (reconstruction.test_credential.CredentialTests.test_wrong_helper_can_still_produce_matching_credential) ... ok
+test_all_majority_truth_tables (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_all_majority_truth_tables) ... ok
+test_backend_count_shape_and_consistency_checks (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_backend_count_shape_and_consistency_checks) ... ok
+test_backend_declared_failure_payload_discarded (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_backend_declared_failure_payload_discarded) ... ok
+test_beyond_radius_declared_failure (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_beyond_radius_declared_failure) ... ok
+test_beyond_radius_wrong_candidate (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_beyond_radius_wrong_candidate) ... ok
+test_changed_parameters_and_foreign_helpers_refused (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_changed_parameters_and_foreign_helpers_refused) ... ok
+test_credential_representation (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_credential_representation) ... ok
+test_encoder_consistency_and_exceptions (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_encoder_consistency_and_exceptions) ... ok
+test_enrollment_and_omitted_position (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_enrollment_and_omitted_position) ... ok
+test_every_single_position_and_fixed_boundaries (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_every_single_position_and_fixed_boundaries) ... ok
+test_exact_algebra (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_exact_algebra) ... ok
+test_independent_generator_and_basis (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_independent_generator_and_basis) ... ok
+test_known_six_error_fixture (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_known_six_error_fixture) ... ok
+test_production_identity_unchanged (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_production_identity_unchanged) ... ok
+test_vote_input_validation (reconstruction.test_reconstruction_alternatives.AlternativesTests.test_vote_input_validation) ... ok
+test_all_synthetic_attempts_are_retained (reconstruction.test_validation.ValidationTests.test_all_synthetic_attempts_are_retained) ... ok
+test_cli_refuses_to_overwrite_existing_evidence (reconstruction.test_validation.ValidationTests.test_cli_refuses_to_overwrite_existing_evidence) ... ok
+test_invalid_diagnostic_settings_rejected (reconstruction.test_validation.ValidationTests.test_invalid_diagnostic_settings_rejected) ... ok
+test_non_timing_report_is_reproducible_and_json_serializable (reconstruction.test_validation.ValidationTests.test_non_timing_report_is_reproducible_and_json_serializable) ... ok
+test_outcome_categories_remain_separate (reconstruction.test_validation.ValidationTests.test_outcome_categories_remain_separate) ... ok
+test_six_error_boundary_examples_are_preserved (reconstruction.test_validation.ValidationTests.test_six_error_boundary_examples_are_preserved) ... ok
+test_wrong_device_and_helper_controls_are_recorded_without_universal_rejection (reconstruction.test_validation.ValidationTests.test_wrong_device_and_helper_controls_are_recorded_without_universal_rejection) ... ok
+test_configuration_matches_final_contract (snn.test_snn_data.SnnDataTests.test_configuration_matches_final_contract) ... ok
+test_existing_splits_stay_separate (snn.test_snn_data.SnnDataTests.test_existing_splits_stay_separate) ... ok
+test_input_shape_is_120_by_7 (snn.test_snn_data.SnnDataTests.test_input_shape_is_120_by_7) ... ok
+test_metadata_does_not_change_input (snn.test_snn_data.SnnDataTests.test_metadata_does_not_change_input) ... ok
+test_normalization_is_fit_from_training_only (snn.test_snn_data.SnnDataTests.test_normalization_is_fit_from_training_only) ... ok
+test_seeded_behavior_is_reproducible (snn.test_snn_data.SnnDataTests.test_seeded_behavior_is_reproducible) ... ok
+test_sequence_matches_conventional_preprocessing (snn.test_snn_data.SnnDataTests.test_sequence_matches_conventional_preprocessing) ... ok
+test_split_overlap_is_rejected (snn.test_snn_data.SnnDataTests.test_split_overlap_is_rejected) ... ok
+test_accepted_window_reaches_snn_input_once (snn.test_snn_integration.SnnIntegrationTests.test_accepted_window_reaches_snn_input_once) ... ok
+test_backward_pass_has_finite_gradients (snn.test_snn_model.SnnModelTests.test_backward_pass_has_finite_gradients) ... ok
+test_evaluation_outputs (snn.test_snn_model.SnnModelTests.test_evaluation_outputs) ... ok
+test_model_initialization_is_reproducible (snn.test_snn_model.SnnModelTests.test_model_initialization_is_reproducible) ... ok
+test_model_rejects_wrong_input_shape (snn.test_snn_model.SnnModelTests.test_model_rejects_wrong_input_shape) ... ok
+test_output_shape (snn.test_snn_model.SnnModelTests.test_output_shape) ... ok
+test_initialization_and_training_seeds_are_separate (snn.test_snn_reporting.SnnReportingTests.test_initialization_and_training_seeds_are_separate) ... ok
+test_latency_identifies_its_exclusions_and_batch_size (snn.test_snn_reporting.SnnReportingTests.test_latency_identifies_its_exclusions_and_batch_size) ... ok
+test_model_parameter_counts (snn.test_snn_reporting.SnnReportingTests.test_model_parameter_counts) ... ok
+test_shared_seed_role_is_rejected_when_explicit (snn.test_snn_reporting.SnnReportingTests.test_shared_seed_role_is_rejected_when_explicit) ... ok
+test_binary_metrics_use_counts_not_average_percentages (test_anomaly.AnomalyTests.test_binary_metrics_use_counts_not_average_percentages) ... ok
+test_bootstrap_resamples_sources_reproducibly_not_individual_copies (test_anomaly.AnomalyTests.test_bootstrap_resamples_sources_reproducibly_not_individual_copies) ... ok
+test_configuration_has_distinct_seed_roles_and_frozen_reference (test_anomaly.AnomalyTests.test_configuration_has_distinct_seed_roles_and_frozen_reference) ... ok
+test_constant_pose_has_visible_repeat_features (test_anomaly.AnomalyTests.test_constant_pose_has_visible_repeat_features) ... ok
+test_equivalent_quaternion_signs_do_not_change_features (test_anomaly.AnomalyTests.test_equivalent_quaternion_signs_do_not_change_features) ... ok
+test_feature_names_and_finite_shape (test_anomaly.AnomalyTests.test_feature_names_and_finite_shape) ... ok
+test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail (test_anomaly.AnomalyTests.test_invalid_shape_nonfinite_motion_or_bad_timestamps_fail) ... ok
+test_model_features_exclude_all_supervision_and_quality_metadata (test_anomaly.AnomalyTests.test_model_features_exclude_all_supervision_and_quality_metadata) ... ok
+test_position_and_large_time_origin_do_not_change_features (test_anomaly.AnomalyTests.test_position_and_large_time_origin_do_not_change_features) ... ok
+test_source_weights_balance_sources_and_clean_transformed_mass (test_anomaly.AnomalyTests.test_source_weights_balance_sources_and_clean_transformed_mass) ... ok
+test_source_weights_reject_missing_or_duplicate_clean_control (test_anomaly.AnomalyTests.test_source_weights_reject_missing_or_duplicate_clean_control) ... ok
+test_threshold_cannot_be_selected_from_train_or_test (test_anomaly.AnomalyTests.test_threshold_cannot_be_selected_from_train_or_test) ... ok
+test_threshold_meets_validation_fpr_and_keeps_score_ties_together (test_anomaly.AnomalyTests.test_threshold_meets_validation_fpr_and_keeps_score_ties_together) ... ok
+test_training_is_reproducible_and_fits_scaler_from_weighted_train_only (test_anomaly.AnomalyTests.test_training_is_reproducible_and_fits_scaler_from_weighted_train_only) ... ok
+test_velocity_uses_actual_timestamp_intervals (test_anomaly.AnomalyTests.test_velocity_uses_actual_timestamp_intervals) ... ok
+test_build_datasets_keeps_splits_separate (test_baselines.BaselineFeatureTests.test_build_datasets_keeps_splits_separate) ... ok
+test_feature_shape_and_relative_pose (test_baselines.BaselineFeatureTests.test_feature_shape_and_relative_pose) ... ok
+test_logistic_scaler_is_fit_from_training_only (test_baselines.BaselineFeatureTests.test_logistic_scaler_is_fit_from_training_only) ... ok
+test_metadata_does_not_change_features (test_baselines.BaselineFeatureTests.test_metadata_does_not_change_features) ... ok
+test_quaternion_sign_continuity (test_baselines.BaselineFeatureTests.test_quaternion_sign_continuity) ... ok
+test_short_window_is_rejected (test_baselines.BaselineFeatureTests.test_short_window_is_rejected) ... ok
+test_active_classes_use_multiple_orientation_trajectories (test_data.DataTests.test_active_classes_use_multiple_orientation_trajectories)
+active classes vary instead of copying one orientation template ... ok
+test_generated_identifiers_match_their_records (test_data.DataTests.test_generated_identifiers_match_their_records)
+device, session, trial, label, source, and window ids agree ... ok
+test_generated_quaternions_are_normalized_and_continuous (test_data.DataTests.test_generated_quaternions_are_normalized_and_continuous)
+all generated quaternions have unit norm and continuous signs ... ok
+test_generated_records_pass_validation (test_data.DataTests.test_generated_records_pass_validation)
+clean records pass the schema, quality rules, and configured identifier checks ... ok
+test_generated_windows_have_120_ordered_samples (test_data.DataTests.test_generated_windows_have_120_ordered_samples)
+every fixed-grid window has 120 consecutive indexes and increasing times ... ok
+test_generator_is_deterministic_and_balanced (test_data.DataTests.test_generator_is_deterministic_and_balanced)
+same seed reproduces records and every device-session has balanced class counts ... ok
+test_schema_rejects_wrong_types_and_extra_fields (test_data.DataTests.test_schema_rejects_wrong_types_and_extra_fields)
+schema types, required fields, enums, and extra-field rules are enforced ... ok
+test_still_contains_small_nonzero_variable_motion (test_data.DataTests.test_still_contains_small_nonzero_variable_motion)
+still is not an exact zero-motion shortcut ... ok
+test_tracking_threshold_accepts_114_and_rejects_113 (test_data.DataTests.test_tracking_threshold_accepts_114_and_rejects_113)
+exactly 95 percent tracking passes and a lower fraction fails ... ok
+test_validator_catches_bad_quaternion (test_data.DataTests.test_validator_catches_bad_quaternion)
+an invalid zero quaternion is rejected ... ok
+test_validator_catches_id_mismatch (test_data.DataTests.test_validator_catches_id_mismatch)
+changing a device without its session and trial relationships fails ... ok
+test_validator_catches_missing_group (test_data.DataTests.test_validator_catches_missing_group)
+removing a whole session cannot pass just because the remaining records are valid ... ok
+test_validator_catches_quaternion_sign_flip (test_data.DataTests.test_validator_catches_quaternion_sign_flip)
+an isolated equivalent quaternion sign flip is rejected ... ok
+test_validator_catches_timestamp_gap_and_order (test_data.DataTests.test_validator_catches_timestamp_gap_and_order)
+large gaps and repeated timestamps are rejected ... ok
+test_validator_rejects_nonfinite_position (test_data.DataTests.test_validator_rejects_nonfinite_position)
+nan and infinity cannot pass as valid position values ... ok
+test_validator_rejects_short_window (test_data.DataTests.test_validator_rejects_short_window)
+a saved window with only 119 samples fails the schema ... ok
+test_artifact_paths_cannot_escape_directory (test_frozen_pipeline.FrozenPipelineTests.test_artifact_paths_cannot_escape_directory) ... ok
+test_bad_tag_mutation_changes_only_tag (test_frozen_pipeline.FrozenPipelineTests.test_bad_tag_mutation_changes_only_tag) ... ok
+test_bundle_rejects_wrong_model_input_shapes (test_frozen_pipeline.FrozenPipelineTests.test_bundle_rejects_wrong_model_input_shapes) ... ok
+test_cohort_is_validation_only_and_order_independent (test_frozen_pipeline.FrozenPipelineTests.test_cohort_is_validation_only_and_order_independent) ... ok
+test_composite_omission_is_not_a_pass (test_frozen_pipeline.FrozenPipelineTests.test_composite_omission_is_not_a_pass) ... ok
+test_dirty_source_stops_before_an_experiment (test_frozen_pipeline.FrozenPipelineTests.test_dirty_source_stops_before_an_experiment) ... ok
+test_error_accounting_uses_only_frozen_selected_response_bits (test_frozen_pipeline.FrozenPipelineTests.test_error_accounting_uses_only_frozen_selected_response_bits) ... ok
+test_final_binary_hash_failure_precedes_all_deserialization (test_frozen_pipeline.FrozenPipelineTests.test_final_binary_hash_failure_precedes_all_deserialization) ... ok
+test_frozen_loader_restores_all_models_and_exact_thresholds (test_frozen_pipeline.FrozenPipelineTests.test_frozen_loader_restores_all_models_and_exact_thresholds) ... ok
+test_missing_class_does_not_silently_shrink_cohort (test_frozen_pipeline.FrozenPipelineTests.test_missing_class_does_not_silently_shrink_cohort) ... ok
+test_missing_ignored_storage_model_never_triggers_refit (test_frozen_pipeline.FrozenPipelineTests.test_missing_ignored_storage_model_never_triggers_refit) ... ok
+test_no_class_or_flag_expectation_is_imposed_by_smoke (test_frozen_pipeline.FrozenPipelineTests.test_no_class_or_flag_expectation_is_imposed_by_smoke) ... ok
+test_normalization_is_training_only_and_finite (test_frozen_pipeline.FrozenPipelineTests.test_normalization_is_training_only_and_finite) ... ok
+test_pinned_manifest_change_is_rejected (test_frozen_pipeline.FrozenPipelineTests.test_pinned_manifest_change_is_rejected) ... ok
+test_public_audit_filter_drops_any_unknown_secret_field (test_frozen_pipeline.FrozenPipelineTests.test_public_audit_filter_drops_any_unknown_secret_field) ... ok
+test_real_boundary_smoke_has_three_composite_deliveries_and_zero_reject_calls (test_frozen_pipeline.FrozenPipelineTests.test_real_boundary_smoke_has_three_composite_deliveries_and_zero_reject_calls) ... ok
+test_result_attributes_use_lf_bytes_before_hashing (test_frozen_pipeline.FrozenPipelineTests.test_result_attributes_use_lf_bytes_before_hashing) ... ok
+test_separate_seed_domains_do_not_share_read_or_credential_streams (test_frozen_pipeline.FrozenPipelineTests.test_separate_seed_domains_do_not_share_read_or_credential_streams) ... ok
+test_smoke_config_rejects_test_split_or_new_selection (test_frozen_pipeline.FrozenPipelineTests.test_smoke_config_rejects_test_split_or_new_selection) ... ok
+test_smoke_config_requires_every_bundle (test_frozen_pipeline.FrozenPipelineTests.test_smoke_config_requires_every_bundle) ... ok
+test_thresholds_require_validation_selection_and_all_six_models (test_frozen_pipeline.FrozenPipelineTests.test_thresholds_require_validation_selection_and_all_six_models) ... ok
+test_wrong_source_hash_is_rejected (test_frozen_pipeline.FrozenPipelineTests.test_wrong_source_hash_is_rejected) ... ok
+test_accepted_window_keeps_identical_classifier_features (test_inference_gate.InferenceGateTests.test_accepted_window_keeps_identical_classifier_features)
+canonical fixed-decimal transport does not change the conventional feature vector ... ok
+test_inconsistent_result_and_reason_is_rejected (test_inference_gate.InferenceGateTests.test_inconsistent_result_and_reason_is_rejected)
+accept and reject decisions must use consistent reason values ... ok
+test_mismatched_verifier_result_is_rejected (test_inference_gate.InferenceGateTests.test_mismatched_verifier_result_is_rejected)
+an acceptance for another window cannot unlock this payload ... ok
+test_rejected_window_never_reaches_consumer (test_inference_gate.InferenceGateTests.test_rejected_window_never_reaches_consumer)
+a rejected verifier result stops before feature processing or inference ... ok
+test_absent_class_metrics_are_zero_not_nan (test_model_reporting.ModelReportingTests.test_absent_class_metrics_are_zero_not_nan) ... ok
+test_bad_confusion_matrices_are_rejected (test_model_reporting.ModelReportingTests.test_bad_confusion_matrices_are_rejected) ... ok
+test_changed_accuracy_or_macro_f1_is_rejected (test_model_reporting.ModelReportingTests.test_changed_accuracy_or_macro_f1_is_rejected) ... ok
+test_changed_class_metric_or_support_is_rejected (test_model_reporting.ModelReportingTests.test_changed_class_metric_or_support_is_rejected) ... ok
+test_changed_selected_epoch_or_stopping_epoch_is_rejected (test_model_reporting.ModelReportingTests.test_changed_selected_epoch_or_stopping_epoch_is_rejected) ... ok
+test_early_stopping_reason_is_reconstructed (test_model_reporting.ModelReportingTests.test_early_stopping_reason_is_reconstructed) ... ok
+test_history_must_stop_when_patience_is_reached (test_model_reporting.ModelReportingTests.test_history_must_stop_when_patience_is_reached) ... ok
+test_improvement_tolerance_matches_training_code (test_model_reporting.ModelReportingTests.test_improvement_tolerance_matches_training_code) ... ok
+test_matrix_axis_order_is_true_then_predicted (test_model_reporting.ModelReportingTests.test_matrix_axis_order_is_true_then_predicted) ... ok
+test_maximum_epoch_stop_is_reported_separately (test_model_reporting.ModelReportingTests.test_maximum_epoch_stop_is_reported_separately) ... ok
+test_metrics_use_exact_counts (test_model_reporting.ModelReportingTests.test_metrics_use_exact_counts) ... ok
+test_missing_epoch_or_nonfinite_history_is_rejected (test_model_reporting.ModelReportingTests.test_missing_epoch_or_nonfinite_history_is_rejected) ... ok
+test_no_new_architecture_is_permitted (test_model_reporting.ModelReportingTests.test_no_new_architecture_is_permitted) ... ok
+test_nonfinite_saved_metric_is_rejected (test_model_reporting.ModelReportingTests.test_nonfinite_saved_metric_is_rejected) ... ok
+test_parameter_count_must_match_configuration (test_model_reporting.ModelReportingTests.test_parameter_count_must_match_configuration) ... ok
+test_per_class_output_keeps_all_five_labels (test_model_reporting.ModelReportingTests.test_per_class_output_keeps_all_five_labels) ... ok
+test_refit_confusion_counts_must_match_without_tuning (test_model_reporting.ModelReportingTests.test_refit_confusion_counts_must_match_without_tuning) ... ok
+test_refit_tree_structure_must_match_not_just_accuracy (test_model_reporting.ModelReportingTests.test_refit_tree_structure_must_match_not_just_accuracy) ... ok
+test_reporting_does_not_mutate_saved_results (test_model_reporting.ModelReportingTests.test_reporting_does_not_mutate_saved_results) ... ok
+test_sample_count_and_class_set_must_match (test_model_reporting.ModelReportingTests.test_sample_count_and_class_set_must_match) ... ok
+test_saved_metrics_are_reconciled (test_model_reporting.ModelReportingTests.test_saved_metrics_are_reconciled) ... ok
+test_selected_validation_score_must_match_history (test_model_reporting.ModelReportingTests.test_selected_validation_score_must_match_history) ... ok
+test_selection_reads_validation_not_test (test_model_reporting.ModelReportingTests.test_selection_reads_validation_not_test) ... ok
+test_selection_retains_both_widths_and_all_three_seeds (test_model_reporting.ModelReportingTests.test_selection_retains_both_widths_and_all_three_seeds) ... ok
+test_snn_parameter_counts_include_bias_and_recurrence (test_model_reporting.ModelReportingTests.test_snn_parameter_counts_include_bias_and_recurrence) ... ok
+test_tied_validation_score_keeps_first_best_epoch (test_model_reporting.ModelReportingTests.test_tied_validation_score_keeps_first_best_epoch) ... ok
+test_training_seed_pair_is_not_relabelled (test_model_reporting.ModelReportingTests.test_training_seed_pair_is_not_relabelled) ... ok
+test_truncated_history_without_stopping_condition_is_rejected (test_model_reporting.ModelReportingTests.test_truncated_history_without_stopping_condition_is_rejected) ... ok
+test_absolute_time_offset_does_not_hide_a_copy (test_motion_diagnostics.MotionDiagnosticsTests.test_absolute_time_offset_does_not_hide_a_copy) ... ok
+test_angular_velocity_uses_timestamp_intervals (test_motion_diagnostics.MotionDiagnosticsTests.test_angular_velocity_uses_timestamp_intervals) ... ok
+test_clean_windows_have_no_full_content_overlap (test_motion_diagnostics.MotionDiagnosticsTests.test_clean_windows_have_no_full_content_overlap) ... ok
+test_copy_with_different_identifiers_and_label_fails_each_split_pair (test_motion_diagnostics.MotionDiagnosticsTests.test_copy_with_different_identifiers_and_label_fails_each_split_pair) ... ok
+test_data_seed_changes_motion_without_changing_split_mapping (test_motion_diagnostics.MotionDiagnosticsTests.test_data_seed_changes_motion_without_changing_split_mapping) ... ok
+test_feature_group_shapes_and_metadata_exclusion (test_motion_diagnostics.MotionDiagnosticsTests.test_feature_group_shapes_and_metadata_exclusion) ... ok
+test_initial_orientation_shift_is_relative_pose_invariant (test_motion_diagnostics.MotionDiagnosticsTests.test_initial_orientation_shift_is_relative_pose_invariant) ... ok
+test_model_seed_changes_do_not_change_generated_motion (test_motion_diagnostics.MotionDiagnosticsTests.test_model_seed_changes_do_not_change_generated_motion) ... ok
+test_pooled_metrics_are_calculated_from_counts (test_motion_diagnostics.MotionDiagnosticsTests.test_pooled_metrics_are_calculated_from_counts) ... ok
+test_rotation_distance_ignores_equivalent_quaternion_signs (test_motion_diagnostics.MotionDiagnosticsTests.test_rotation_distance_ignores_equivalent_quaternion_signs) ... ok
+test_small_jitter_is_not_exact_but_is_detected_as_near (test_motion_diagnostics.MotionDiagnosticsTests.test_small_jitter_is_not_exact_but_is_detected_as_near) ... ok
+test_time_warp_preserves_unit_quaternions_and_source_split (test_motion_diagnostics.MotionDiagnosticsTests.test_time_warp_preserves_unit_quaternions_and_source_split) ... ok
+test_tracking_and_relative_timestamps_are_part_of_full_content (test_motion_diagnostics.MotionDiagnosticsTests.test_tracking_and_relative_timestamps_are_part_of_full_content) ... ok
+test_all_existing_classifier_families_and_conditions_are_retained (test_nod_diagnostics.NodDiagnosticsTests.test_all_existing_classifier_families_and_conditions_are_retained) ... ok
+test_amplitude_change_does_not_change_non_nod_draws (test_nod_diagnostics.NodDiagnosticsTests.test_amplitude_change_does_not_change_non_nod_draws) ... ok
+test_amplitude_one_speed_one_regenerates_original (test_nod_diagnostics.NodDiagnosticsTests.test_amplitude_one_speed_one_regenerates_original) ... ok
+test_attack_metadata_cannot_be_extra_feature_channels (test_nod_diagnostics.NodDiagnosticsTests.test_attack_metadata_cannot_be_extra_feature_channels) ... ok
+test_changed_rates_do_not_override_saved_counts (test_nod_diagnostics.NodDiagnosticsTests.test_changed_rates_do_not_override_saved_counts) ... ok
+test_duplicate_historical_condition_stops_reporting (test_nod_diagnostics.NodDiagnosticsTests.test_duplicate_historical_condition_stops_reporting) ... ok
+test_duplicate_source_does_not_expand_denominator (test_nod_diagnostics.NodDiagnosticsTests.test_duplicate_source_does_not_expand_denominator) ... ok
+test_example_selection_is_order_independent (test_nod_diagnostics.NodDiagnosticsTests.test_example_selection_is_order_independent) ... ok
+test_flag_rates_are_legitimate_variation_not_attack_recall (test_nod_diagnostics.NodDiagnosticsTests.test_flag_rates_are_legitimate_variation_not_attack_recall) ... ok
+test_frozen_scores_use_inclusive_threshold_without_fitting (test_nod_diagnostics.NodDiagnosticsTests.test_frozen_scores_use_inclusive_threshold_without_fitting) ... ok
+test_half_and_tenth_coefficients_have_explicit_units (test_nod_diagnostics.NodDiagnosticsTests.test_half_and_tenth_coefficients_have_explicit_units) ... ok
+test_missing_historical_condition_stops_reporting (test_nod_diagnostics.NodDiagnosticsTests.test_missing_historical_condition_stops_reporting) ... ok
+test_model_hashes_are_checked_before_any_pickle_load (test_nod_diagnostics.NodDiagnosticsTests.test_model_hashes_are_checked_before_any_pickle_load) ... ok
+test_model_metadata_must_match_frozen_threshold (test_nod_diagnostics.NodDiagnosticsTests.test_model_metadata_must_match_frozen_threshold) ... ok
+test_moved_split_is_rejected (test_nod_diagnostics.NodDiagnosticsTests.test_moved_split_is_rejected) ... ok
+test_no_eligible_nod_cases_have_no_rate (test_nod_diagnostics.NodDiagnosticsTests.test_no_eligible_nod_cases_have_no_rate) ... ok
+test_nod_sources_stay_paired_at_every_speed (test_nod_diagnostics.NodDiagnosticsTests.test_nod_sources_stay_paired_at_every_speed) ... ok
+test_nonfinite_or_wrong_shape_scores_stop (test_nod_diagnostics.NodDiagnosticsTests.test_nonfinite_or_wrong_shape_scores_stop) ... ok
+test_other_predictions_are_not_called_still (test_nod_diagnostics.NodDiagnosticsTests.test_other_predictions_are_not_called_still) ... ok
+test_pilot_and_noise_are_not_changed (test_nod_diagnostics.NodDiagnosticsTests.test_pilot_and_noise_are_not_changed) ... ok
+test_timing_changes_are_not_silently_allowed (test_nod_diagnostics.NodDiagnosticsTests.test_timing_changes_are_not_silently_allowed) ... ok
+test_unplanned_amplitude_or_speed_is_rejected (test_nod_diagnostics.NodDiagnosticsTests.test_unplanned_amplitude_or_speed_is_rejected) ... ok
+test_changed_counts_models_gc_and_extra_fields_refused (test_outlier_experiment.OutlierExperimentTests.test_changed_counts_models_gc_and_extra_fields_refused) ... ok
+test_completion_marker_and_artifact_hashes_and_inventory (test_outlier_experiment.OutlierExperimentTests.test_completion_marker_and_artifact_hashes_and_inventory) ... ok
+test_completion_never_overwrites_marker_and_exact_lf (test_outlier_experiment.OutlierExperimentTests.test_completion_never_overwrites_marker_and_exact_lf) ... ok
+test_controller_launches_twenty_serial_hashed_jobs_and_binds_manifests (test_outlier_experiment.OutlierExperimentTests.test_controller_launches_twenty_serial_hashed_jobs_and_binds_manifests) ... ok
+test_controller_worker_failure_preserves_incomplete_no_retry (test_outlier_experiment.OutlierExperimentTests.test_controller_worker_failure_preserves_incomplete_no_retry) ... ok
+test_each_job_keeps_all_models_and_rotates_without_selection (test_outlier_experiment.OutlierExperimentTests.test_each_job_keeps_all_models_and_rotates_without_selection) ... ok
+test_existing_outside_or_scope_root_outputs_refused (test_outlier_experiment.OutlierExperimentTests.test_existing_outside_or_scope_root_outputs_refused) ... ok
+test_fixed_configuration_matches_all_six_conditions_and_four_modes (test_outlier_experiment.OutlierExperimentTests.test_fixed_configuration_matches_all_six_conditions_and_four_modes) ... ok
+test_frozen_post_checks_verify_bytes_without_deserialization (test_outlier_experiment.OutlierExperimentTests.test_frozen_post_checks_verify_bytes_without_deserialization) ... ok
+test_heap_prefix_zero_reads_no_metadata_and_short_prefix_refused (test_outlier_experiment.OutlierExperimentTests.test_heap_prefix_zero_reads_no_metadata_and_short_prefix_refused) ... ok
+test_heap_worker_records_five_collections_and_never_authenticates (test_outlier_experiment.OutlierExperimentTests.test_heap_worker_records_five_collections_and_never_authenticates) ... ok
+test_historical_incomplete_or_marker_mismatch_refused (test_outlier_experiment.OutlierExperimentTests.test_historical_incomplete_or_marker_mismatch_refused) ... ok
+test_historical_input_checks_bytes_without_retaining_trees (test_outlier_experiment.OutlierExperimentTests.test_historical_input_checks_bytes_without_retaining_trees) ... ok
+test_historical_stream_checks_condition_and_root_exception (test_outlier_experiment.OutlierExperimentTests.test_historical_stream_checks_condition_and_root_exception) ... ok
+test_job_plan_has_fresh_mode_workers_and_separate_heap_workers (test_outlier_experiment.OutlierExperimentTests.test_job_plan_has_fresh_mode_workers_and_separate_heap_workers) ... ok
+test_lightweight_worker_refuses_hidden_nested_span (test_outlier_experiment.OutlierExperimentTests.test_lightweight_worker_refuses_hidden_nested_span) ... ok
+test_missing_complete_source_inventory_refused (test_outlier_experiment.OutlierExperimentTests.test_missing_complete_source_inventory_refused) ... ok
+test_mode_order_balances_positions_and_every_directed_predecessor (test_outlier_experiment.OutlierExperimentTests.test_mode_order_balances_positions_and_every_directed_predecessor) ... ok
+test_pairing_ignores_volatile_event_ids_and_observer_timing (test_outlier_experiment.OutlierExperimentTests.test_pairing_ignores_volatile_event_ids_and_observer_timing) ... ok
+test_pairing_rejects_duplicates_and_missing_refusal (test_outlier_experiment.OutlierExperimentTests.test_pairing_rejects_duplicates_and_missing_refusal) ... ok
+test_pairing_requires_matching_sources_noise_sequences_and_callbacks (test_outlier_experiment.OutlierExperimentTests.test_pairing_requires_matching_sources_noise_sequences_and_callbacks) ... ok
+test_pairing_separates_first_use_warmup_and_rejection_groups (test_outlier_experiment.OutlierExperimentTests.test_pairing_separates_first_use_warmup_and_rejection_groups) ... ok
+test_read_streams_pair_across_model_and_mode_but_blocks_are_distinct (test_outlier_experiment.OutlierExperimentTests.test_read_streams_pair_across_model_and_mode_but_blocks_are_distinct) ... ok
+test_report_no_target_claim_no_complete_causal_claim_and_cleanup_disclosed (test_outlier_experiment.OutlierExperimentTests.test_report_no_target_claim_no_complete_causal_claim_and_cleanup_disclosed) ... ok
+test_run_condition_real_decoder_single_read_and_all_controls_outside_io (test_outlier_experiment.OutlierExperimentTests.test_run_condition_real_decoder_single_read_and_all_controls_outside_io) ... ok
+test_run_condition_records_admission_failure_without_retry (test_outlier_experiment.OutlierExperimentTests.test_run_condition_records_admission_failure_without_retry) ... ok
+test_signed_deltas_preserve_negative_values_not_percentile_subtraction (test_outlier_experiment.OutlierExperimentTests.test_signed_deltas_preserve_negative_values_not_percentile_subtraction) ... ok
+test_source_guard_allows_only_current_output_untracked_paths (test_outlier_experiment.OutlierExperimentTests.test_source_guard_allows_only_current_output_untracked_paths) ... ok
+test_source_guard_refuses_changed_head_and_unrelated_untracked_file (test_outlier_experiment.OutlierExperimentTests.test_source_guard_refuses_changed_head_and_unrelated_untracked_file) ... ok
+test_source_selection_is_group_complete_and_outcome_independent (test_outlier_experiment.OutlierExperimentTests.test_source_selection_is_group_complete_and_outcome_independent) ... ok
+test_timer_checks_do_not_tune_thresholds_or_enable_disabled_gc (test_outlier_experiment.OutlierExperimentTests.test_timer_checks_do_not_tune_thresholds_or_enable_disabled_gc) ... ok
+test_timing_worker_streams_before_analysis_and_records_deferred_cleanup (test_outlier_experiment.OutlierExperimentTests.test_timing_worker_streams_before_analysis_and_records_deferred_cleanup) ... ok
+test_worker_traces_reconcile_and_reject_observer_clock_or_mode_drift (test_outlier_experiment.OutlierExperimentTests.test_worker_traces_reconcile_and_reject_observer_clock_or_mode_drift) ... ok
+test_all_modes_keep_admission_refusal_with_no_retry_or_model_calls (test_pipeline_diagnostics.PipelineDiagnosticTests.test_all_modes_keep_admission_refusal_with_no_retry_or_model_calls) ... ok
+test_all_modes_preserve_real_one_read_and_accepted_rejected_state_controls (test_pipeline_diagnostics.PipelineDiagnosticTests.test_all_modes_preserve_real_one_read_and_accepted_rejected_state_controls) ... ok
+test_deferred_gc_restores_even_on_action_exception (test_pipeline_diagnostics.PipelineDiagnosticTests.test_deferred_gc_restores_even_on_action_exception) ... ok
+test_deferred_gc_restores_policy_and_accounts_cleanup (test_pipeline_diagnostics.PipelineDiagnosticTests.test_deferred_gc_restores_policy_and_accounts_cleanup) ... ok
+test_disabled_gc_on_entry_refused_not_silently_changed (test_pipeline_diagnostics.PipelineDiagnosticTests.test_disabled_gc_on_entry_refused_not_silently_changed) ... ok
+test_enabled_reference_does_not_force_collection_on_exit (test_pipeline_diagnostics.PipelineDiagnosticTests.test_enabled_reference_does_not_force_collection_on_exit) ... ok
+test_exception_propagates_without_secret_export_and_callbacks_restore (test_pipeline_diagnostics.PipelineDiagnosticTests.test_exception_propagates_without_secret_export_and_callbacks_restore) ... ok
+test_explicit_collection_still_works_when_automatic_gc_deferred (test_pipeline_diagnostics.PipelineDiagnosticTests.test_explicit_collection_still_works_when_automatic_gc_deferred) ... ok
+test_factories_choose_nested_and_outer_collectors (test_pipeline_diagnostics.PipelineDiagnosticTests.test_factories_choose_nested_and_outer_collectors) ... ok
+test_four_fixed_modes_and_conditional_contrasts (test_pipeline_diagnostics.PipelineDiagnosticTests.test_four_fixed_modes_and_conditional_contrasts) ... ok
+test_housekeeping_refused_inside_root (test_pipeline_diagnostics.PipelineDiagnosticTests.test_housekeeping_refused_inside_root) ... ok
+test_mismatched_collector_and_mode_refused (test_pipeline_diagnostics.PipelineDiagnosticTests.test_mismatched_collector_and_mode_refused) ... ok
+test_modes_are_immutable (test_pipeline_diagnostics.PipelineDiagnosticTests.test_modes_are_immutable) ... ok
+test_monotonic_bounds_and_public_native_identifiers (test_pipeline_diagnostics.PipelineDiagnosticTests.test_monotonic_bounds_and_public_native_identifiers) ... ok
+test_nested_collector_preserves_stage_tree (test_pipeline_diagnostics.PipelineDiagnosticTests.test_nested_collector_preserves_stage_tree) ... ok
+test_nested_patches_restore_after_failure (test_pipeline_diagnostics.PipelineDiagnosticTests.test_nested_patches_restore_after_failure) ... ok
+test_outer_gc_overlap_has_same_interval_fields (test_pipeline_diagnostics.PipelineDiagnosticTests.test_outer_gc_overlap_has_same_interval_fields) ... ok
+test_outer_mode_does_not_patch_underlying_authentication_functions (test_pipeline_diagnostics.PipelineDiagnosticTests.test_outer_mode_does_not_patch_underlying_authentication_functions) ... ok
+test_outer_wrap_is_original_callable_and_records_only_root (test_pipeline_diagnostics.PipelineDiagnosticTests.test_outer_wrap_is_original_callable_and_records_only_root) ... ok
+test_overlapping_roots_refused (test_pipeline_diagnostics.PipelineDiagnosticTests.test_overlapping_roots_refused) ... ok
+test_policy_restores_even_if_after_work_snapshot_fails (test_pipeline_diagnostics.PipelineDiagnosticTests.test_policy_restores_even_if_after_work_snapshot_fails) ... ok
+test_retention_changes_ownership_not_trace_contents_or_counts (test_pipeline_diagnostics.PipelineDiagnosticTests.test_retention_changes_ownership_not_trace_contents_or_counts) ... ok
+test_retention_record_refused_inside_timer_or_without_root (test_pipeline_diagnostics.PipelineDiagnosticTests.test_retention_record_refused_inside_timer_or_without_root) ... ok
+test_runtime_snapshot_is_coarse_not_allocation_bytes_or_peak_memory (test_pipeline_diagnostics.PipelineDiagnosticTests.test_runtime_snapshot_is_coarse_not_allocation_bytes_or_peak_memory) ... ok
+test_secret_arguments_and_return_values_are_not_recorded (test_pipeline_diagnostics.PipelineDiagnosticTests.test_secret_arguments_and_return_values_are_not_recorded) ... ok
+test_threshold_change_detected_and_original_thresholds_restored (test_pipeline_diagnostics.PipelineDiagnosticTests.test_threshold_change_detected_and_original_thresholds_restored) ... ok
+test_unknown_or_silently_changed_mode_refused (test_pipeline_diagnostics.PipelineDiagnosticTests.test_unknown_or_silently_changed_mode_refused) ... ok
+test_all_absolute_outliers_and_group_maxima_retained (test_pipeline_timing.PipelineTimingTests.test_all_absolute_outliers_and_group_maxima_retained) ... ok
+test_all_test_sources_selected_without_outcome_filter (test_pipeline_timing.PipelineTimingTests.test_all_test_sources_selected_without_outcome_filter) ... ok
+test_changed_threshold_choice_or_sample_count_is_refused (test_pipeline_timing.PipelineTimingTests.test_changed_threshold_choice_or_sample_count_is_refused) ... ok
+test_disabled_gc_refused_without_changing_runtime_setting (test_pipeline_timing.PipelineTimingTests.test_disabled_gc_refused_without_changing_runtime_setting) ... ok
+test_exact_quantile_and_empty_statistics (test_pipeline_timing.PipelineTimingTests.test_exact_quantile_and_empty_statistics) ... ok
+test_failed_admission_retained_without_retry_or_inference (test_pipeline_timing.PipelineTimingTests.test_failed_admission_retained_without_retry_or_inference) ... ok
+test_first_use_warmup_and_rejections_not_pooled (test_pipeline_timing.PipelineTimingTests.test_first_use_warmup_and_rejections_not_pooled) ... ok
+test_fixed_timing_matrix_and_counts (test_pipeline_timing.PipelineTimingTests.test_fixed_timing_matrix_and_counts) ... ok
+test_gc_overlap_records_generation_not_collected_objects (test_pipeline_timing.PipelineTimingTests.test_gc_overlap_records_generation_not_collected_objects) ... ok
+test_inactive_wrapper_does_not_record_housekeeping (test_pipeline_timing.PipelineTimingTests.test_inactive_wrapper_does_not_record_housekeeping) ... ok
+test_io_emission_and_assertions_are_outside_timing (test_pipeline_timing.PipelineTimingTests.test_io_emission_and_assertions_are_outside_timing) ... ok
+test_measured_admission_refusal_is_not_discarded (test_pipeline_timing.PipelineTimingTests.test_measured_admission_refusal_is_not_discarded) ... ok
+test_missing_or_duplicate_source_refused (test_pipeline_timing.PipelineTimingTests.test_missing_or_duplicate_source_refused) ... ok
+test_nested_percentiles_are_not_added_into_outer_total (test_pipeline_timing.PipelineTimingTests.test_nested_percentiles_are_not_added_into_outer_total) ... ok
+test_nested_spans_record_hierarchy_not_arguments_or_returns (test_pipeline_timing.PipelineTimingTests.test_nested_spans_record_hierarchy_not_arguments_or_returns) ... ok
+test_one_model_bundle_uses_existing_objects_and_thresholds (test_pipeline_timing.PipelineTimingTests.test_one_model_bundle_uses_existing_objects_and_thresholds) ... ok
+test_original_exception_propagates_without_message_in_evidence (test_pipeline_timing.PipelineTimingTests.test_original_exception_propagates_without_message_in_evidence) ... ok
+test_outlier_diagnostics_do_not_claim_causal_os_or_gc_explanation (test_pipeline_timing.PipelineTimingTests.test_outlier_diagnostics_do_not_claim_causal_os_or_gc_explanation) ... ok
+test_outlier_gc_overlap_is_clipped_to_actual_root_bounds (test_pipeline_timing.PipelineTimingTests.test_outlier_gc_overlap_is_clipped_to_actual_root_bounds) ... ok
+test_overlapping_outer_measurements_refused (test_pipeline_timing.PipelineTimingTests.test_overlapping_outer_measurements_refused) ... ok
+test_real_admission_first_window_and_all_rejection_controls (test_pipeline_timing.PipelineTimingTests.test_real_admission_first_window_and_all_rejection_controls) ... ok
+test_reconciliation_detects_orphan_window_traces (test_pipeline_timing.PipelineTimingTests.test_reconciliation_detects_orphan_window_traces) ... ok
+test_reconciliation_rejects_calls_on_refused_messages (test_pipeline_timing.PipelineTimingTests.test_reconciliation_rejects_calls_on_refused_messages) ... ok
+test_reconciliation_requires_all_attempts_and_controls (test_pipeline_timing.PipelineTimingTests.test_reconciliation_requires_all_attempts_and_controls) ... ok
+test_repeated_stage_calls_sum_only_within_each_trace (test_pipeline_timing.PipelineTimingTests.test_repeated_stage_calls_sum_only_within_each_trace) ... ok
+test_report_does_not_claim_durability_or_invent_outlier_causes (test_pipeline_timing.PipelineTimingTests.test_report_does_not_claim_durability_or_invent_outlier_causes) ... ok
+test_text_csv_and_attributes_have_exact_lf_bytes (test_pipeline_timing.PipelineTimingTests.test_text_csv_and_attributes_have_exact_lf_bytes) ... ok
+test_wrappers_and_gc_callbacks_restore_after_error (test_pipeline_timing.PipelineTimingTests.test_wrappers_and_gc_callbacks_restore_after_error) ... ok
+test_absolute_and_tail_overlap_counts_are_not_summed (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_absolute_and_tail_overlap_counts_are_not_summed) ... ok
+test_artifact_writers_use_lf_and_refuse_empty_csv (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_artifact_writers_use_lf_and_refuse_empty_csv) ... ok
+test_caught_parser_or_quality_exception_is_a_completed_refusal (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_caught_parser_or_quality_exception_is_a_completed_refusal) ... ok
+test_child_span_cannot_escape_parent (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_child_span_cannot_escape_parent) ... ok
+test_completed_input_hashes_and_saved_metrics_reconcile (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_completed_input_hashes_and_saved_metrics_reconcile) ... ok
+test_completion_binding_and_incomplete_marker_rejected (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_completion_binding_and_incomplete_marker_rejected) ... ok
+test_cpu_exceeding_wall_is_not_silently_called_negative_delay (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_cpu_exceeding_wall_is_not_silently_called_negative_delay) ... ok
+test_disjoint_and_touching_gc_intervals (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_disjoint_and_touching_gc_intervals) ... ok
+test_duplicate_and_nested_gc_intervals_are_not_added (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_duplicate_and_nested_gc_intervals_are_not_added) ... ok
+test_empty_or_duplicate_evidence_is_rejected (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_empty_or_duplicate_evidence_is_rejected) ... ok
+test_fast_small_group_maximum_is_still_retained (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_fast_small_group_maximum_is_still_retained) ... ok
+test_first_post_window_is_measured_span_not_sum_of_percentiles (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_first_post_window_is_measured_span_not_sum_of_percentiles) ... ok
+test_gc_outside_root_and_empty_intervals_do_not_count (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_gc_outside_root_and_empty_intervals_do_not_count) ... ok
+test_gc_overlap_clips_to_actual_root_start_and_end (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_gc_overlap_clips_to_actual_root_start_and_end) ... ok
+test_generation_two_overlap_is_subset_not_added_to_total (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_generation_two_overlap_is_subset_not_added_to_total) ... ok
+test_invalid_or_boolean_gc_intervals_rejected (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_invalid_or_boolean_gc_intervals_rejected) ... ok
+test_missing_or_modified_source_artifact_stops_analysis (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_missing_or_modified_source_artifact_stops_analysis) ... ok
+test_missing_parent_or_duplicate_span_rejected (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_missing_parent_or_duplicate_span_rejected) ... ok
+test_operational_threshold_is_strictly_greater_than_twenty (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_operational_threshold_is_strictly_greater_than_twenty) ... ok
+test_phase_and_rejection_groups_remain_separate (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_phase_and_rejection_groups_remain_separate) ... ok
+test_scoped_paths_reject_parent_or_absolute_escape (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_scoped_paths_reject_parent_or_absolute_escape) ... ok
+test_target_only_applies_to_complete_measured_post_window_paths (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_target_only_applies_to_complete_measured_post_window_paths) ... ok
+test_trace_outer_span_and_elapsed_must_agree (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_trace_outer_span_and_elapsed_must_agree) ... ok
+test_uncaught_outer_exception_is_not_a_completed_observation (test_pipeline_timing_reporting.PipelineTimingReportingTests.test_uncaught_outer_exception_is_not_a_completed_observation) ... ok
+test_accepted_record_runs_both_consumers_once (test_pipeline_v2.PipelineV2Tests.test_accepted_record_runs_both_consumers_once) ... ok
+test_acquisition_exception_is_error_not_false_rejection (test_pipeline_v2.PipelineV2Tests.test_acquisition_exception_is_error_not_false_rejection) ... ok
+test_actual_snn_forward_path_and_real_anomaly_features (test_pipeline_v2.PipelineV2Tests.test_actual_snn_forward_path_and_real_anomaly_features) ... ok
+test_anomaly_callback_failure_is_consumed_without_retry (test_pipeline_v2.PipelineV2Tests.test_anomaly_callback_failure_is_consumed_without_retry) ... ok
+test_anomaly_flag_does_not_rewrite_authentication (test_pipeline_v2.PipelineV2Tests.test_anomaly_flag_does_not_rewrite_authentication) ... ok
+test_bad_tag_calls_neither_model_and_next_valid_packet_still_accepts (test_pipeline_v2.PipelineV2Tests.test_bad_tag_calls_neither_model_and_next_valid_packet_still_accepts) ... ok
+test_copied_accepted_result_is_not_authority (test_pipeline_v2.PipelineV2Tests.test_copied_accepted_result_is_not_authority) ... ok
+test_decoder_failure_does_not_attempt_verification_or_hkdf (test_pipeline_v2.PipelineV2Tests.test_decoder_failure_does_not_attempt_verification_or_hkdf) ... ok
+test_invalid_source_shape_is_adapter_failure_not_model_detection (test_pipeline_v2.PipelineV2Tests.test_invalid_source_shape_is_adapter_failure_not_model_detection) ... ok
+test_labels_splits_and_dataset_binding_do_not_reach_preprocessing (test_pipeline_v2.PipelineV2Tests.test_labels_splits_and_dataset_binding_do_not_reach_preprocessing) ... ok
+test_low_tracking_is_sender_quality_failure_before_tag (test_pipeline_v2.PipelineV2Tests.test_low_tracking_is_sender_quality_failure_before_tag) ... ok
+test_malformed_packet_never_preprocesses (test_pipeline_v2.PipelineV2Tests.test_malformed_packet_never_preprocesses) ... ok
+test_metadata_changes_do_not_change_model_inputs (test_pipeline_v2.PipelineV2Tests.test_metadata_changes_do_not_change_model_inputs) ... ok
+test_missing_verifier_record_fails_closed (test_pipeline_v2.PipelineV2Tests.test_missing_verifier_record_fails_closed) ... ok
+test_models_run_after_sequence_commit (test_pipeline_v2.PipelineV2Tests.test_models_run_after_sequence_commit) ... ok
+test_motion_callback_failure_is_consumed_without_anomaly_or_rollback (test_pipeline_v2.PipelineV2Tests.test_motion_callback_failure_is_consumed_without_anomaly_or_rollback) ... ok
+test_mutual_confirmation_failure_does_not_authorize_models (test_pipeline_v2.PipelineV2Tests.test_mutual_confirmation_failure_does_not_authorize_models) ... ok
+test_no_implicit_reconstruction_retry (test_pipeline_v2.PipelineV2Tests.test_no_implicit_reconstruction_retry) ... ok
+test_padding_failure_does_not_emit_request (test_pipeline_v2.PipelineV2Tests.test_padding_failure_does_not_emit_request) ... ok
+test_public_attempt_summary_has_no_candidate_or_response_material (test_pipeline_v2.PipelineV2Tests.test_public_attempt_summary_has_no_candidate_or_response_material) ... ok
+test_real_noisy_response_is_acquired_and_reconstructed_once (test_pipeline_v2.PipelineV2Tests.test_real_noisy_response_is_acquired_and_reconstructed_once) ... ok
+test_real_wrong_valid_format_reconstruction_is_blocked_before_hkdf (test_pipeline_v2.PipelineV2Tests.test_real_wrong_valid_format_reconstruction_is_blocked_before_hkdf) ... ok
+test_receiver_refusal_without_authorization_invokes_no_models (test_pipeline_v2.PipelineV2Tests.test_receiver_refusal_without_authorization_invokes_no_models) ... ok
+test_reconstruction_exception_is_error_without_retry_or_secret_text (test_pipeline_v2.PipelineV2Tests.test_reconstruction_exception_is_error_without_retry_or_secret_text) ... ok
+test_replayed_packet_does_not_repeat_either_consumer (test_pipeline_v2.PipelineV2Tests.test_replayed_packet_does_not_repeat_either_consumer) ... ok
+test_same_accepted_result_cannot_be_released_twice (test_pipeline_v2.PipelineV2Tests.test_same_accepted_result_cannot_be_released_twice) ... ok
+test_zero_through_five_selected_bit_errors_admit (test_pipeline_v2.PipelineV2Tests.test_zero_through_five_selected_bit_errors_admit) ... ok
+test_absolute_timestamp_origin_does_not_change_alignment (test_sequence_neighbors.SequenceNeighborTests.test_absolute_timestamp_origin_does_not_change_alignment) ... ok
+test_any_label_and_same_label_have_separate_references (test_sequence_neighbors.SequenceNeighborTests.test_any_label_and_same_label_have_separate_references) ... ok
+test_bad_scaler_rejected (test_sequence_neighbors.SequenceNeighborTests.test_bad_scaler_rejected) ... ok
+test_bad_shape_and_nonfinite_data_rejected (test_sequence_neighbors.SequenceNeighborTests.test_bad_shape_and_nonfinite_data_rejected) ... ok
+test_complete_metric_uses_all_840_coordinates (test_sequence_neighbors.SequenceNeighborTests.test_complete_metric_uses_all_840_coordinates) ... ok
+test_different_regular_grid_is_not_time_aligned_silently (test_sequence_neighbors.SequenceNeighborTests.test_different_regular_grid_is_not_time_aligned_silently) ... ok
+test_historical_orientation_change_is_not_accepted (test_sequence_neighbors.SequenceNeighborTests.test_historical_orientation_change_is_not_accepted) ... ok
+test_historical_rows_reconciled_completely (test_sequence_neighbors.SequenceNeighborTests.test_historical_rows_reconciled_completely) ... ok
+test_identical_full_inputs_have_exact_zero_distance (test_sequence_neighbors.SequenceNeighborTests.test_identical_full_inputs_have_exact_zero_distance) ... ok
+test_irregular_grid_is_rejected_not_resampled (test_sequence_neighbors.SequenceNeighborTests.test_irregular_grid_is_rejected_not_resampled) ... ok
+test_metadata_never_changes_the_120_by_7_input (test_sequence_neighbors.SequenceNeighborTests.test_metadata_never_changes_the_120_by_7_input) ... ok
+test_missing_same_label_reference_rejected (test_sequence_neighbors.SequenceNeighborTests.test_missing_same_label_reference_rejected) ... ok
+test_normalization_matches_float32_input_rounding (test_sequence_neighbors.SequenceNeighborTests.test_normalization_matches_float32_input_rounding) ... ok
+test_orientation_metric_ignores_quaternion_sign (test_sequence_neighbors.SequenceNeighborTests.test_orientation_metric_ignores_quaternion_sign) ... ok
+test_orientation_rms_is_not_mean_angle (test_sequence_neighbors.SequenceNeighborTests.test_orientation_rms_is_not_mean_angle) ... ok
+test_quaternion_normalization_precedes_rotation_metric (test_sequence_neighbors.SequenceNeighborTests.test_quaternion_normalization_precedes_rotation_metric) ... ok
+test_reference_and_query_splits_are_enforced (test_sequence_neighbors.SequenceNeighborTests.test_reference_and_query_splits_are_enforced) ... ok
+test_rms_not_sum_or_maximum (test_sequence_neighbors.SequenceNeighborTests.test_rms_not_sum_or_maximum) ... ok
+test_sample_index_order_is_enforced (test_sequence_neighbors.SequenceNeighborTests.test_sample_index_order_is_enforced) ... ok
+test_source_trial_and_session_overlap_rejected (test_sequence_neighbors.SequenceNeighborTests.test_source_trial_and_session_overlap_rejected) ... ok
+test_ties_are_deterministic_and_chunk_size_does_not_change_results (test_sequence_neighbors.SequenceNeighborTests.test_ties_are_deterministic_and_chunk_size_does_not_change_results) ... ok
+test_training_scaler_uses_windows_and_time_not_query (test_sequence_neighbors.SequenceNeighborTests.test_training_scaler_uses_windows_and_time_not_query) ... ok
+test_unsorted_reference_is_rejected (test_sequence_neighbors.SequenceNeighborTests.test_unsorted_reference_is_rejected) ... ok
+test_zero_quaternion_rejected (test_sequence_neighbors.SequenceNeighborTests.test_zero_quaternion_rejected) ... ok
+test_zero_variance_sd_matches_existing_model_policy (test_sequence_neighbors.SequenceNeighborTests.test_zero_variance_sd_matches_existing_model_policy) ... ok
+test_clean_dataset_has_no_prohibited_split_overlap (test_splits.SplitTests.test_clean_dataset_has_no_prohibited_split_overlap)
+window, trial, source-trial, and session ids are disjoint between splits ... ok
+test_validator_catches_duplicate_window (test_splits.SplitTests.test_validator_catches_duplicate_window)
+reusing a window id across records is rejected ... ok
+test_validator_catches_sequence_gap (test_splits.SplitTests.test_validator_catches_sequence_gap)
+a missing sequence number in the saved clean session is rejected ... ok
+test_validator_catches_session_split_leakage (test_splits.SplitTests.test_validator_catches_session_split_leakage)
+placing part of a session in another split is rejected ... ok
+test_validator_catches_source_trial_leakage (test_splits.SplitTests.test_validator_catches_source_trial_leakage)
+a source-trial id shared between training and testing is rejected ... ok
+test_validator_catches_whole_session_in_wrong_split (test_splits.SplitTests.test_validator_catches_whole_session_in_wrong_split)
+moving a complete session to the wrong configured split is rejected ... ok
+test_artifact_paths_cannot_escape_directory (test_stage_accounting.StageAccountingTests.test_artifact_paths_cannot_escape_directory) ... ok
+test_bad_parent_duplicate_id_and_multiple_roots_rejected (test_stage_accounting.StageAccountingTests.test_bad_parent_duplicate_id_and_multiple_roots_rejected) ... ok
+test_boolean_negative_or_float_times_rejected (test_stage_accounting.StageAccountingTests.test_boolean_negative_or_float_times_rejected) ... ok
+test_boolean_response_read_count_rejected (test_stage_accounting.StageAccountingTests.test_boolean_response_read_count_rejected) ... ok
+test_changed_source_within_attempt_rejected (test_stage_accounting.StageAccountingTests.test_changed_source_within_attempt_rejected) ... ok
+test_child_outside_parent_rejected (test_stage_accounting.StageAccountingTests.test_child_outside_parent_rejected) ... ok
+test_denominators_keep_refusals_separate_from_accepted_quantiles (test_stage_accounting.StageAccountingTests.test_denominators_keep_refusals_separate_from_accepted_quantiles) ... ok
+test_duplicate_observation_rejected (test_stage_accounting.StageAccountingTests.test_duplicate_observation_rejected) ... ok
+test_empty_noninteger_or_negative_statistics_rejected (test_stage_accounting.StageAccountingTests.test_empty_noninteger_or_negative_statistics_rejected) ... ok
+test_first_window_span_required_only_after_success (test_stage_accounting.StageAccountingTests.test_first_window_span_required_only_after_success) ... ok
+test_fresh_admission_decision_mismatch_rejected (test_stage_accounting.StageAccountingTests.test_fresh_admission_decision_mismatch_rejected) ... ok
+test_linear_quantiles_match_original_method (test_stage_accounting.StageAccountingTests.test_linear_quantiles_match_original_method) ... ok
+test_missing_control_missing_admission_and_wrong_split_rejected (test_stage_accounting.StageAccountingTests.test_missing_control_missing_admission_and_wrong_split_rejected) ... ok
+test_nested_credential_verification_is_not_counted_twice (test_stage_accounting.StageAccountingTests.test_nested_credential_verification_is_not_counted_twice) ... ok
+test_nested_intervals_are_partitioned_not_double_counted (test_stage_accounting.StageAccountingTests.test_nested_intervals_are_partitioned_not_double_counted) ... ok
+test_new_output_must_not_overlap_input_or_overwrite (test_stage_accounting.StageAccountingTests.test_new_output_must_not_overlap_input_or_overwrite) ... ok
+test_outer_time_disagreement_rejected (test_stage_accounting.StageAccountingTests.test_outer_time_disagreement_rejected) ... ok
+test_overlapping_siblings_rejected (test_stage_accounting.StageAccountingTests.test_overlapping_siblings_rejected) ... ok
+test_pairing_mismatch_across_conditions_rejected (test_stage_accounting.StageAccountingTests.test_pairing_mismatch_across_conditions_rejected) ... ok
+test_recurring_path_cannot_hide_new_reconstruction (test_stage_accounting.StageAccountingTests.test_recurring_path_cannot_hide_new_reconstruction) ... ok
+test_rejected_window_cannot_have_consumer_calls (test_stage_accounting.StageAccountingTests.test_rejected_window_cannot_have_consumer_calls) ... ok
+test_repeated_audit_spans_sum_within_observation (test_stage_accounting.StageAccountingTests.test_repeated_audit_spans_sum_within_observation) ... ok
+test_reporting_has_no_model_or_authentication_imports (test_stage_accounting.StageAccountingTests.test_reporting_has_no_model_or_authentication_imports) ... ok
+test_root_exception_rejected_but_nested_exception_retained (test_stage_accounting.StageAccountingTests.test_root_exception_rejected_but_nested_exception_retained) ... ok
+test_saved_file_tampering_and_incomplete_marker_rejected (test_stage_accounting.StageAccountingTests.test_saved_file_tampering_and_incomplete_marker_rejected) ... ok
+test_stage_percentiles_are_not_summed_to_make_total (test_stage_accounting.StageAccountingTests.test_stage_percentiles_are_not_summed_to_make_total) ... ok
+test_touching_siblings_and_zero_length_are_valid (test_stage_accounting.StageAccountingTests.test_touching_siblings_and_zero_length_are_valid) ... ok
+test_unknown_stage_fails_instead_of_disappearing (test_stage_accounting.StageAccountingTests.test_unknown_stage_fails_instead_of_disappearing) ... ok
+test_writers_preserve_lf_bytes_and_refuse_overwrite (test_stage_accounting.StageAccountingTests.test_writers_preserve_lf_bytes_and_refuse_overwrite) ... ok
+test_wrong_control_decision_and_bool_counter_rejected (test_stage_accounting.StageAccountingTests.test_wrong_control_decision_and_bool_counter_rejected) ... ok
+test_wrong_pinned_manifest_or_completion_rejected (test_stage_accounting.StageAccountingTests.test_wrong_pinned_manifest_or_completion_rejected) ... ok
+test_bad_tag_invokes_neither_model_and_preserves_sequence (test_stream_attacks.StreamAttackIntegrationTests.test_bad_tag_invokes_neither_model_and_preserves_sequence) ... ok
+test_consumer_failure_does_not_allow_retry_or_roll_back_authentication (test_stream_attacks.StreamAttackIntegrationTests.test_consumer_failure_does_not_allow_retry_or_roll_back_authentication) ... ok
+test_quality_valid_change_authenticates_and_composite_consumer_runs_once (test_stream_attacks.StreamAttackIntegrationTests.test_quality_valid_change_authenticates_and_composite_consumer_runs_once) ... ok
+test_all_quality_valid_outputs_match_schema_and_wire_quality (test_stream_attacks.StreamAttackTests.test_all_quality_valid_outputs_match_schema_and_wire_quality) ... ok
+test_attack_metadata_never_enters_sensor_record_or_pose_input (test_stream_attacks.StreamAttackTests.test_attack_metadata_never_enters_sensor_record_or_pose_input) ... ok
+test_attack_seed_changes_cases_without_changing_splits (test_stream_attacks.StreamAttackTests.test_attack_seed_changes_cases_without_changing_splits) ... ok
+test_case_cannot_be_applied_to_wrong_source_or_split (test_stream_attacks.StreamAttackTests.test_case_cannot_be_applied_to_wrong_source_or_split) ... ok
+test_clean_control_uses_the_same_binary32_conversion (test_stream_attacks.StreamAttackTests.test_clean_control_uses_the_same_binary32_conversion) ... ok
+test_configuration_has_all_documented_attacks_and_distinct_seed (test_stream_attacks.StreamAttackTests.test_configuration_has_all_documented_attacks_and_distinct_seed) ... ok
+test_configuration_rejects_unknown_duplicate_or_invalid_settings (test_stream_attacks.StreamAttackTests.test_configuration_rejects_unknown_duplicate_or_invalid_settings) ... ok
+test_drop_retains_source_boundaries_and_reports_realized_fraction (test_stream_attacks.StreamAttackTests.test_drop_retains_source_boundaries_and_reports_realized_fraction) ... ok
+test_duplicate_sources_and_cross_split_source_or_session_reuse_fail (test_stream_attacks.StreamAttackTests.test_duplicate_sources_and_cross_split_source_or_session_reuse_fail) ... ok
+test_freeze_repeats_pose_but_not_timestamp_or_tracking (test_stream_attacks.StreamAttackTests.test_freeze_repeats_pose_but_not_timestamp_or_tracking) ... ok
+test_invalid_case_units_seed_or_supervision_fail (test_stream_attacks.StreamAttackTests.test_invalid_case_units_seed_or_supervision_fail) ... ok
+test_invalid_source_quality_is_not_repaired_or_called_anomaly_detection (test_stream_attacks.StreamAttackTests.test_invalid_source_quality_is_not_repaired_or_called_anomaly_detection) ... ok
+test_jitter_resamples_onto_original_grid_or_reports_failure (test_stream_attacks.StreamAttackTests.test_jitter_resamples_onto_original_grid_or_reports_failure) ... ok
+test_jump_is_persistent_after_random_onset (test_stream_attacks.StreamAttackTests.test_jump_is_persistent_after_random_onset) ... ok
+test_magnitudes_vary_within_predeclared_ranges (test_stream_attacks.StreamAttackTests.test_magnitudes_vary_within_predeclared_ranges) ... ok
+test_orientation_drift_reaches_recorded_rotation_angle (test_stream_attacks.StreamAttackTests.test_orientation_drift_reaches_recorded_rotation_angle) ... ok
+test_plan_has_one_clean_and_twenty_seven_transformed_cases_per_source (test_stream_attacks.StreamAttackTests.test_plan_has_one_clean_and_twenty_seven_transformed_cases_per_source) ... ok
+test_position_drift_reaches_recorded_magnitude (test_stream_attacks.StreamAttackTests.test_position_drift_reaches_recorded_magnitude) ... ok
+test_resampling_does_not_interpolate_across_legacy_50_ms_rounding_gap (test_stream_attacks.StreamAttackTests.test_resampling_does_not_interpolate_across_legacy_50_ms_rounding_gap) ... ok
+test_rotations_remain_normalized_and_sign_continuous (test_stream_attacks.StreamAttackTests.test_rotations_remain_normalized_and_sign_continuous) ... ok
+test_source_motion_change_invalidates_saved_plan_binding (test_stream_attacks.StreamAttackTests.test_source_motion_change_invalidates_saved_plan_binding) ... ok
+test_source_order_does_not_change_seeded_cases (test_stream_attacks.StreamAttackTests.test_source_order_does_not_change_seeded_cases) ... ok
+test_transform_is_reproducible_and_does_not_mutate_source (test_stream_attacks.StreamAttackTests.test_transform_is_reproducible_and_does_not_mutate_source) ... ok
+test_anomaly_flag_does_not_roll_back_accepted_sequence (test_stream_evaluation.StreamEvaluationTests.test_anomaly_flag_does_not_roll_back_accepted_sequence) ... ok
+test_artifact_check_rejects_modified_files_and_directory_traversal (test_stream_evaluation.StreamEvaluationTests.test_artifact_check_rejects_modified_files_and_directory_traversal) ... ok
+test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions (test_stream_evaluation.StreamEvaluationTests.test_authenticated_evaluation_reconciles_inputs_and_rotates_short_sessions) ... ok
+test_checkpoint_context_rejects_changed_models_or_inputs (test_stream_evaluation.StreamEvaluationTests.test_checkpoint_context_rejects_changed_models_or_inputs) ... ok
+test_checkpoint_resume_skips_already_completed_model_calls (test_stream_evaluation.StreamEvaluationTests.test_checkpoint_resume_skips_already_completed_model_calls) ... ok
+test_checkpoint_tampering_stops_before_model_execution (test_stream_evaluation.StreamEvaluationTests.test_checkpoint_tampering_stops_before_model_execution) ... ok
+test_composite_callback_runs_both_models_from_one_input (test_stream_evaluation.StreamEvaluationTests.test_composite_callback_runs_both_models_from_one_input) ... ok
+test_full_construction_keeps_failures_and_split_denominators (test_stream_evaluation.StreamEvaluationTests.test_full_construction_keeps_failures_and_split_denominators) ... ok
+test_heatmap_marks_unconstructable_conditions_as_unavailable (test_stream_evaluation.StreamEvaluationTests.test_heatmap_marks_unconstructable_conditions_as_unavailable) ... ok
+test_other_sender_failures_are_not_hidden_by_session_retries (test_stream_evaluation.StreamEvaluationTests.test_other_sender_failures_are_not_hidden_by_session_retries) ... ok
+test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers (test_stream_evaluation.StreamEvaluationTests.test_rejected_tag_calls_neither_model_and_valid_next_window_still_delivers) ... ok
+test_result_finalization_reuses_identical_files_but_never_overwrites_different_results (test_stream_evaluation.StreamEvaluationTests.test_result_finalization_reuses_identical_files_but_never_overwrites_different_results) ... ok
+test_saved_plan_must_match_every_reproducible_case (test_stream_evaluation.StreamEvaluationTests.test_saved_plan_must_match_every_reproducible_case) ... ok
+test_sender_expiry_race_uses_a_new_session_without_duplicate_model_calls (test_stream_evaluation.StreamEvaluationTests.test_sender_expiry_race_uses_a_new_session_without_duplicate_model_calls) ... ok
+test_session_renews_by_elapsed_time_before_the_case_limit (test_stream_evaluation.StreamEvaluationTests.test_session_renews_by_elapsed_time_before_the_case_limit) ... ok
+test_source_split_leakage_and_duplicate_cases_are_rejected (test_stream_evaluation.StreamEvaluationTests.test_source_split_leakage_and_duplicate_cases_are_rejected) ... ok
+test_verifier_expiry_race_retags_in_a_fresh_session_before_delivery (test_stream_evaluation.StreamEvaluationTests.test_verifier_expiry_race_retags_in_a_fresh_session_before_delivery) ... ok
+test_authenticated_predictions_must_match (test_stream_reporting.StreamReportingTests.test_authenticated_predictions_must_match) ... ok
+test_bootstrap_keeps_pairs_and_is_reproducible (test_stream_reporting.StreamReportingTests.test_bootstrap_keeps_pairs_and_is_reproducible) ... ok
+test_case_metadata_cannot_be_relabelled (test_stream_reporting.StreamReportingTests.test_case_metadata_cannot_be_relabelled) ... ok
+test_changed_historical_hash_stops_reporting (test_stream_reporting.StreamReportingTests.test_changed_historical_hash_stops_reporting) ... ok
+test_clean_row_reports_fpr_not_attack_success (test_stream_reporting.StreamReportingTests.test_clean_row_reports_fpr_not_attack_success) ... ok
+test_complete_evidence_reconciles_without_models (test_stream_reporting.StreamReportingTests.test_complete_evidence_reconciles_without_models) ... ok
+test_duplicate_case_identifier_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_case_identifier_is_rejected) ... ok
+test_duplicate_release_event_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_release_event_is_rejected) ... ok
+test_duplicate_session_sequence_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_session_sequence_is_rejected) ... ok
+test_duplicate_source_condition_is_rejected (test_stream_reporting.StreamReportingTests.test_duplicate_source_condition_is_rejected) ... ok
+test_empty_condition_has_no_rate_or_confidence_interval (test_stream_reporting.StreamReportingTests.test_empty_condition_has_no_rate_or_confidence_interval) ... ok
+test_exact_interval_has_nonzero_uncertainty_at_endpoints (test_stream_reporting.StreamReportingTests.test_exact_interval_has_nonzero_uncertainty_at_endpoints) ... ok
+test_exact_interval_matches_known_symmetric_case (test_stream_reporting.StreamReportingTests.test_exact_interval_matches_known_symmetric_case) ... ok
+test_failure_is_not_counted_as_detector_miss (test_stream_reporting.StreamReportingTests.test_failure_is_not_counted_as_detector_miss) ... ok
+test_fixed_label_confusion_matrix_includes_absent_classes (test_stream_reporting.StreamReportingTests.test_fixed_label_confusion_matrix_includes_absent_classes) ... ok
+test_flags_must_match_frozen_threshold (test_stream_reporting.StreamReportingTests.test_flags_must_match_frozen_threshold) ... ok
+test_missing_planned_condition_is_rejected (test_stream_reporting.StreamReportingTests.test_missing_planned_condition_is_rejected) ... ok
+test_missing_predicted_case_is_not_silently_dropped (test_stream_reporting.StreamReportingTests.test_missing_predicted_case_is_not_silently_dropped) ... ok
+test_model_call_counts_are_checked (test_stream_reporting.StreamReportingTests.test_model_call_counts_are_checked) ... ok
+test_motion_comparison_uses_same_eligible_sources (test_stream_reporting.StreamReportingTests.test_motion_comparison_uses_same_eligible_sources) ... ok
+test_nonfinite_anomaly_score_is_rejected (test_stream_reporting.StreamReportingTests.test_nonfinite_anomaly_score_is_rejected) ... ok
+test_old_inputs_are_not_modified_or_models_required (test_stream_reporting.StreamReportingTests.test_old_inputs_are_not_modified_or_models_required) ... ok
+test_sequence_must_be_committed_before_models (test_stream_reporting.StreamReportingTests.test_sequence_must_be_committed_before_models) ... ok
+test_source_cannot_cross_splits (test_stream_reporting.StreamReportingTests.test_source_cannot_cross_splits) ... ok
+test_source_trial_cannot_have_multiple_window_clusters (test_stream_reporting.StreamReportingTests.test_source_trial_cannot_have_multiple_window_clusters) ... ok
+test_threshold_must_be_validation_only (test_stream_reporting.StreamReportingTests.test_threshold_must_be_validation_only) ... ok
+test_transformed_labels_must_match_clean_source (test_stream_reporting.StreamReportingTests.test_transformed_labels_must_match_clean_source) ... ok
+test_builder_accepts_exactly_114_tracking_valid_samples (test_window_message.WindowMessageTests.test_builder_accepts_exactly_114_tracking_valid_samples)
+the protected message accepts the existing 95 percent quality boundary ... ok
+test_builder_creates_expected_versioned_message (test_window_message.WindowMessageTests.test_builder_creates_expected_versioned_message)
+the builder includes the required protected metadata, quality, and payload ... ok
+test_builder_rejects_bad_input_before_authentication (test_window_message.WindowMessageTests.test_builder_rejects_bad_input_before_authentication)
+short, low-quality, and nonfinite windows cannot enter the authentication layer ... ok
+test_canonical_bytes_are_deterministic (test_window_message.WindowMessageTests.test_canonical_bytes_are_deterministic)
+equivalent protected objects always produce the same compact UTF-8 bytes ... ok
+test_each_protected_section_changes_the_tag (test_window_message.WindowMessageTests.test_each_protected_section_changes_the_tag)
+changing protected metadata, quality, or motion data invalidates the original tag ... ok
+test_envelope_keeps_tag_outside_the_protected_object (test_window_message.WindowMessageTests.test_envelope_keeps_tag_outside_the_protected_object)
+the final envelope separates protected sender data from authentication output ... ok
+test_motion_values_use_fixed_eight_decimal_strings (test_window_message.WindowMessageTests.test_motion_values_use_fixed_eight_decimal_strings)
+motion values have one language-independent decimal representation ... ok
+test_python_canonical_bytes_match_shared_golden_vector (test_window_message_golden.GoldenWindowMessageTests.test_python_canonical_bytes_match_shared_golden_vector)
+Python produces the fixed byte count, SHA-256, and test-only HMAC ... ok
+test_half_open_clipping (test_windows_os_accounting.IntervalTests.test_half_open_clipping) ... ok
+test_intersection_excludes_touching_boundaries (test_windows_os_accounting.IntervalTests.test_intersection_excludes_touching_boundaries) ... ok
+test_invalid_intervals_fail (test_windows_os_accounting.IntervalTests.test_invalid_intervals_fail) ... ok
+test_randomized_interval_duration_matches_integer_grid_oracle (test_windows_os_accounting.IntervalTests.test_randomized_interval_duration_matches_integer_grid_oracle) ... ok
+test_record_index_preserves_cpu_metadata (test_windows_os_accounting.IntervalTests.test_record_index_preserves_cpu_metadata) ... ok
+test_union_merges_nested_overlapping_adjacent_and_zero_intervals (test_windows_os_accounting.IntervalTests.test_union_merges_nested_overlapping_adjacent_and_zero_intervals) ... ok
+test_tokens_pair_without_inferring_blocked_time (test_windows_os_accounting.OperationTests.test_tokens_pair_without_inferring_blocked_time) ... ok
+test_unmatched_reused_wrong_family_or_invalid_token_fails (test_windows_os_accounting.OperationTests.test_unmatched_reused_wrong_family_or_invalid_token_fails) ... ok
+test_zero_duration_operation_is_kept (test_windows_os_accounting.OperationTests.test_zero_duration_operation_is_kept) ... ok
+test_bad_gc_root_and_parent_bounds_fail (test_windows_os_accounting.RootAccountingTests.test_bad_gc_root_and_parent_bounds_fail) ... ok
+test_expected_caught_rejection_exception_is_preserved (test_windows_os_accounting.RootAccountingTests.test_expected_caught_rejection_exception_is_preserved) ... ok
+test_gc_origin_offset_and_half_open_clipping (test_windows_os_accounting.RootAccountingTests.test_gc_origin_offset_and_half_open_clipping) ... ok
+test_io_and_faults_are_nonadditive_overlays (test_windows_os_accounting.RootAccountingTests.test_io_and_faults_are_nonadditive_overlays) ... ok
+test_missing_boundary_coverage_is_explicit_not_extrapolated (test_windows_os_accounting.RootAccountingTests.test_missing_boundary_coverage_is_explicit_not_extrapolated) ... ok
+test_nested_spans_are_unioned_by_stage_not_added_across_stages (test_windows_os_accounting.RootAccountingTests.test_nested_spans_are_unioned_by_stage_not_added_across_stages) ... ok
+test_only_same_cpu_interrupts_join_and_union_is_not_sum (test_windows_os_accounting.RootAccountingTests.test_only_same_cpu_interrupts_join_and_union_is_not_sum) ... ok
+test_p99_absolute_and_maximum_retention_overlap_not_duplicate (test_windows_os_accounting.RootAccountingTests.test_p99_absolute_and_maximum_retention_overlap_not_duplicate) ... ok
+test_root_and_input_gc_are_not_mutated (test_windows_os_accounting.RootAccountingTests.test_root_and_input_gc_are_not_mutated) ... ok
+test_tied_maxima_and_singletons_are_retained (test_windows_os_accounting.RootAccountingTests.test_tied_maxima_and_singletons_are_retained) ... ok
+test_union_masks_do_not_double_count_gc_or_interrupts (test_windows_os_accounting.RootAccountingTests.test_union_masks_do_not_double_count_gc_or_interrupts) ... ok
+test_initial_ready_state_does_not_double_count_later_ready_events (test_windows_os_accounting.ScheduleTests.test_initial_ready_state_does_not_double_count_later_ready_events) ... ok
+test_no_ready_event_preserves_unresolved_state (test_windows_os_accounting.ScheduleTests.test_no_ready_event_preserves_unresolved_state) ... ok
+test_same_tick_self_switch_is_ordered_out_then_in (test_windows_os_accounting.ScheduleTests.test_same_tick_self_switch_is_ordered_out_then_in) ... ok
+test_switch_pairs_migrations_and_ready_tail (test_windows_os_accounting.ScheduleTests.test_switch_pairs_migrations_and_ready_tail) ... ok
+test_unpaired_duplicate_cpu_mismatch_or_open_end_fails (test_windows_os_accounting.ScheduleTests.test_unpaired_duplicate_cpu_mismatch_or_open_end_fails) ... ok
+test_added_sensitive_or_unknown_root_columns_fail (test_windows_os_reporting.WindowsOsReportingTests.test_added_sensitive_or_unknown_root_columns_fail) ... ok
+test_bad_histogram_or_cpu_inventory_fails (test_windows_os_reporting.WindowsOsReportingTests.test_bad_histogram_or_cpu_inventory_fails) ... ok
+test_changed_quantile_or_false_overhead_claim_fails (test_windows_os_reporting.WindowsOsReportingTests.test_changed_quantile_or_false_overhead_claim_fails) ... ok
+test_coarse_thread_cpu_timer_is_not_forced_to_equal_residency (test_windows_os_reporting.WindowsOsReportingTests.test_coarse_thread_cpu_timer_is_not_forced_to_equal_residency) ... ok
+test_csv_representation_roundtrips_without_type_coercion (test_windows_os_reporting.WindowsOsReportingTests.test_csv_representation_roundtrips_without_type_coercion) ... ok
+test_detail_accounting_must_match_root (test_windows_os_reporting.WindowsOsReportingTests.test_detail_accounting_must_match_root) ... ok
+test_detail_excludes_raw_clocks_and_arbitrary_observation_text (test_windows_os_reporting.WindowsOsReportingTests.test_detail_excludes_raw_clocks_and_arbitrary_observation_text) ... ok
+test_exact_numeric_and_boolean_types_required (test_windows_os_reporting.WindowsOsReportingTests.test_exact_numeric_and_boolean_types_required) ... ok
+test_extra_detail_or_nested_fields_fail (test_windows_os_reporting.WindowsOsReportingTests.test_extra_detail_or_nested_fields_fail) ... ok
+test_group_maximum_flag_cannot_be_omitted (test_windows_os_reporting.WindowsOsReportingTests.test_group_maximum_flag_cannot_be_omitted) ... ok
+test_groups_quantiles_counts_and_retained_singleton_reconcile (test_windows_os_reporting.WindowsOsReportingTests.test_groups_quantiles_counts_and_retained_singleton_reconcile) ... ok
+test_missing_duplicate_details_or_omitted_groups_fail (test_windows_os_reporting.WindowsOsReportingTests.test_missing_duplicate_details_or_omitted_groups_fail) ... ok
+test_partition_and_overlay_mismatches_fail (test_windows_os_reporting.WindowsOsReportingTests.test_partition_and_overlay_mismatches_fail) ... ok
+test_raw_unknown_state_reason_are_retained_without_guessed_semantics (test_windows_os_reporting.WindowsOsReportingTests.test_raw_unknown_state_reason_are_retained_without_guessed_semantics) ... ok
+test_retention_flags_whitelist_and_duplicates (test_windows_os_reporting.WindowsOsReportingTests.test_retention_flags_whitelist_and_duplicates) ... ok
+test_unapproved_labels_fail (test_windows_os_reporting.WindowsOsReportingTests.test_unapproved_labels_fail) ... ok
+test_unknown_stage_or_mismatched_detail_duration_fails (test_windows_os_reporting.WindowsOsReportingTests.test_unknown_stage_or_mismatched_detail_duration_fails) ... ok
+test_valid_numeric_root_is_sanitized_without_mutation (test_windows_os_reporting.WindowsOsReportingTests.test_valid_numeric_root_is_sanitized_without_mutation) ... ok
+test_alignment_intersects_all_quantization_bounds (test_windows_trace.WindowsTraceTests.test_alignment_intersects_all_quantization_bounds) ... ok
+test_alignment_rejects_inconsistent_offsets_and_backward_time (test_windows_trace.WindowsTraceTests.test_alignment_rejects_inconsistent_offsets_and_backward_time) ... ok
+test_alignment_rejects_missing_duplicate_and_wrong_identity_events (test_windows_trace.WindowsTraceTests.test_alignment_rejects_missing_duplicate_and_wrong_identity_events) ... ok
+test_alignment_rejects_wide_brackets_instead_of_fitting_them_away (test_windows_trace.WindowsTraceTests.test_alignment_rejects_wide_brackets_instead_of_fitting_them_away) ... ok
+test_backward_marker_bracket_rejected (test_windows_trace.WindowsTraceTests.test_backward_marker_bracket_rejected) ... ok
+test_bracket_uses_absolute_clocks_and_fixed_identities (test_windows_trace.WindowsTraceTests.test_bracket_uses_absolute_clocks_and_fixed_identities) ... ok
+test_disabled_provider_cannot_be_mistaken_for_a_successful_event (test_windows_trace.WindowsTraceTests.test_disabled_provider_cannot_be_mistaken_for_a_successful_event) ... ok
+test_failed_marker_not_added_to_successful_inventory (test_windows_trace.WindowsTraceTests.test_failed_marker_not_added_to_successful_inventory) ... ok
+test_marker_layout_and_all_phase_round_trips (test_windows_trace.WindowsTraceTests.test_marker_layout_and_all_phase_round_trips) ... ok
+test_marker_rejected_inside_active_root (test_windows_trace.WindowsTraceTests.test_marker_rejected_inside_active_root) ... ok
+test_marker_rejects_arbitrary_labels_and_boolean_ids (test_windows_trace.WindowsTraceTests.test_marker_rejects_arbitrary_labels_and_boolean_ids) ... ok
+test_marker_rejects_length_magic_zero_and_unknown_phase (test_windows_trace.WindowsTraceTests.test_marker_rejects_length_magic_zero_and_unknown_phase) ... ok
+test_mocked_native_write_checks_descriptor_and_unregistration (test_windows_trace.WindowsTraceTests.test_mocked_native_write_checks_descriptor_and_unregistration) ... ok
+test_native_structure_sizes_and_little_endian_guid (test_windows_trace.WindowsTraceTests.test_native_structure_sizes_and_little_endian_guid) ... ok
+test_nested_registration_rejected_and_original_handle_closed (test_windows_trace.WindowsTraceTests.test_nested_registration_rejected_and_original_handle_closed) ... ok
+test_profile_has_only_system_and_public_marker_providers (test_windows_trace.WindowsTraceTests.test_profile_has_only_system_and_public_marker_providers) ... ok
+test_registration_failure_blocks_write (test_windows_trace.WindowsTraceTests.test_registration_failure_blocks_write) ... ok
+test_setup_keeps_decoder_warnings_without_exporting_private_strings (test_windows_trace.WindowsTraceTests.test_setup_keeps_decoder_warnings_without_exporting_private_strings) ... ok
+test_setup_marker_text_in_command_line_is_not_a_marker (test_windows_trace.WindowsTraceTests.test_setup_marker_text_in_command_line_is_not_a_marker) ... ok
+test_setup_rejects_duplicate_or_backward_actual_markers (test_windows_trace.WindowsTraceTests.test_setup_rejects_duplicate_or_backward_actual_markers) ... ok
+test_setup_rejects_missing_schema_field_or_cpu_events (test_windows_trace.WindowsTraceTests.test_setup_rejects_missing_schema_field_or_cpu_events) ... ok
+test_setup_rejects_nonzero_or_absent_final_loss_counts (test_windows_trace.WindowsTraceTests.test_setup_rejects_nonzero_or_absent_final_loss_counts) ... ok
+test_setup_review_uses_actual_marker_events_and_final_loss_metadata (test_windows_trace.WindowsTraceTests.test_setup_review_uses_actual_marker_events_and_final_loss_metadata) ... ok
+test_unregister_failure_recorded_without_masking_existing_failure (test_windows_trace.WindowsTraceTests.test_unregister_failure_recorded_without_masking_existing_failure) ... ok
+test_unregistered_and_arbitrary_payload_writes_rejected (test_windows_trace.WindowsTraceTests.test_unregistered_and_arbitrary_payload_writes_rejected) ... ok
+test_write_failure_still_unregisters (test_windows_trace.WindowsTraceTests.test_write_failure_still_unregisters) ... ok
+test_actual_native_timestamp_must_be_in_own_bracket (test_windows_trace_reader.CorrelationTests.test_actual_native_timestamp_must_be_in_own_bracket) ... ok
+test_actual_payload_qpc_and_relative_export_reconcile (test_windows_trace_reader.CorrelationTests.test_actual_payload_qpc_and_relative_export_reconcile) ... ok
+test_duplicate_missing_or_reordered_actual_markers_fail (test_windows_trace_reader.CorrelationTests.test_duplicate_missing_or_reordered_actual_markers_fail) ... ok
+test_export_header_pid_and_quantization_must_match (test_windows_trace_reader.CorrelationTests.test_export_header_pid_and_quantization_must_match) ... ok
+test_export_requires_matching_raw_line (test_windows_trace_reader.CorrelationTests.test_export_requires_matching_raw_line) ... ok
+test_extra_export_and_duplicate_raw_timestamp_fail (test_windows_trace_reader.CorrelationTests.test_extra_export_and_duplicate_raw_timestamp_fail) ... ok
+test_final_header_validation_requires_exact_types_and_zero_loss (test_windows_trace_reader.CorrelationTests.test_final_header_validation_requires_exact_types_and_zero_loss) ... ok
+test_missing_export_is_not_inferred_from_order (test_windows_trace_reader.CorrelationTests.test_missing_export_is_not_inferred_from_order) ... ok
+test_mixed_matched_identities_still_fail (test_windows_trace_reader.CorrelationTests.test_mixed_matched_identities_still_fail) ... ok
+test_sanitized_result_has_no_process_name_or_raw_rows (test_windows_trace_reader.CorrelationTests.test_sanitized_result_has_no_process_name_or_raw_rows) ... ok
+test_wrong_native_descriptor_or_identity_fails (test_windows_trace_reader.CorrelationTests.test_wrong_native_descriptor_or_identity_fails) ... ok
+test_abi_sizes_and_offsets (test_windows_trace_reader.NativeReaderTests.test_abi_sizes_and_offsets) ... ok
+test_final_loss_fields_fail_closed (test_windows_trace_reader.NativeReaderTests.test_final_loss_fields_fail_closed) ... ok
+test_marker_bound_fails_without_silently_truncating (test_windows_trace_reader.NativeReaderTests.test_marker_bound_fails_without_silently_truncating) ... ok
+test_missing_file_and_bad_inventory_bound (test_windows_trace_reader.NativeReaderTests.test_missing_file_and_bad_inventory_bound) ... ok
+test_open_failure_does_not_close_invalid_handle (test_windows_trace_reader.NativeReaderTests.test_open_failure_does_not_close_invalid_handle) ... ok
+test_payload_length_and_header_identity_fail (test_windows_trace_reader.NativeReaderTests.test_payload_length_and_header_identity_fail) ... ok
+test_processing_failure_always_closes_own_handle (test_windows_trace_reader.NativeReaderTests.test_processing_failure_always_closes_own_handle) ... ok
+test_saved_file_mode_and_actual_payload (test_windows_trace_reader.NativeReaderTests.test_saved_file_mode_and_actual_payload) ... ok
+test_unknown_own_version_fails_and_closes (test_windows_trace_reader.NativeReaderTests.test_unknown_own_version_fails_and_closes) ... ok
+test_unrelated_provider_skipped_before_payload_access (test_windows_trace_reader.NativeReaderTests.test_unrelated_provider_skipped_before_payload_access) ... ok
+test_active_timer_blocks_native_write_and_journal (test_windows_trace_workload.WorkloadTests.test_active_timer_blocks_native_write_and_journal) ... ok
+test_all_twelve_cohorts_use_original_callback_and_restore (test_windows_trace_workload.WorkloadTests.test_all_twelve_cohorts_use_original_callback_and_restore) ... ok
+test_bad_context_rejected_before_marker_write (test_windows_trace_workload.WorkloadTests.test_bad_context_rejected_before_marker_write) ... ok
+test_complete_root_coverage_does_not_claim_os_cause (test_windows_trace_workload.WorkloadTests.test_complete_root_coverage_does_not_claim_os_cause) ... ok
+test_error_restores_original_and_does_not_forge_end_marker (test_windows_trace_workload.WorkloadTests.test_error_restores_original_and_does_not_forge_end_marker) ... ok
+test_every_marker_context_and_root_identity_must_match (test_windows_trace_workload.WorkloadTests.test_every_marker_context_and_root_identity_must_match) ... ok
+test_first_use_maps_only_to_validation_warmup (test_windows_trace_workload.WorkloadTests.test_first_use_maps_only_to_validation_warmup) ... ok
+test_fixed_design_rejects_tuning_unknown_keys_and_bool_block (test_windows_trace_workload.WorkloadTests.test_fixed_design_rejects_tuning_unknown_keys_and_bool_block) ... ok
+test_missing_cohort_does_not_complete_bridge (test_windows_trace_workload.WorkloadTests.test_missing_cohort_does_not_complete_bridge) ... ok
+test_missing_cohort_or_overlapping_roots_fail (test_windows_trace_workload.WorkloadTests.test_missing_cohort_or_overlapping_roots_fail) ... ok
+test_missing_excess_or_reordered_marker_blocks_coverage (test_windows_trace_workload.WorkloadTests.test_missing_excess_or_reordered_marker_blocks_coverage) ... ok
+test_nested_bridge_rejected_without_mutating_original (test_windows_trace_workload.WorkloadTests.test_nested_bridge_rejected_without_mutating_original) ... ok
+test_power_requires_confirmed_ac_and_no_system_mutation (test_windows_trace_workload.WorkloadTests.test_power_requires_confirmed_ac_and_no_system_mutation) ... ok
+test_private_destination_scope_and_no_overwrite (test_windows_trace_workload.WorkloadTests.test_private_destination_scope_and_no_overwrite) ... ok
+test_public_journal_context_only_and_sequential_payloads (test_windows_trace_workload.WorkloadTests.test_public_journal_context_only_and_sequential_payloads) ... ok
+test_reference_bridge_emits_no_etw_events (test_windows_trace_workload.WorkloadTests.test_reference_bridge_emits_no_etw_events) ... ok
+test_selected_original_job_is_only_block_zero_stream_gc_on (test_windows_trace_workload.WorkloadTests.test_selected_original_job_is_only_block_zero_stream_gc_on) ... ok
+test_wrong_order_or_active_root_fails_and_restores (test_windows_trace_workload.WorkloadTests.test_wrong_order_or_active_root_fails_and_restores) ... ok
+
+----------------------------------------------------------------------
+Ran 880 tests in 68.599s
+
+OK
