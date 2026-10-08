@@ -1,0 +1,16 @@
+{
+  "config_version": "week6-windows-traced-workload-v1",
+  "base_config": "configs/week6_outlier_experiment.json",
+  "base_config_sha256": "60f27cdca6807ed42f25cdeea36bef93185c11fd66417bc28082f1a09dfec24b",
+  "base_runner": "src/python/scripts/run_week6_outlier_experiment.py",
+  "base_runner_sha256": "964943c63765f2f738e3b270bb4622e8e53c9d67a32ba60383328f6fb7321d57",
+  "profile": "configs/week6_windows_trace.wprp",
+  "profile_sha256": "ecffd956fb720706aa965dd6e94c63bd33470fe63d643c7037c2f56088a9eb21",
+  "block": 0,
+  "mode": "nested_stream_gc_on",
+  "worker_order": ["reference", "traced"],
+  "planned_attempts_per_worker": 540,
+  "planned_marker_count": 27,
+  "power_requirement": "ac",
+  "maximum_clock_uncertainty_ns": 100000
+}
