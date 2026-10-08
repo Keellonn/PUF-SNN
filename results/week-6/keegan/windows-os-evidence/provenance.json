@@ -1,0 +1,24 @@
+{
+  "absolute_clocks_exported": false,
+  "capture_source_commit": "624807b9095b7be41f7c3bbe7d18a31d50f95478",
+  "original_decoder_review_sha256": "23bf4679405621f620dcf876355ddcca7a8fb35fe04382ebc5ec29695f0bd43e",
+  "original_etl_bytes": 11848908800,
+  "original_etl_sha256": "ed8fcef567d3522448f4222b4e77e2b118df062e4e8be5e83b3e3c3207c97268",
+  "os_process_thread_ids_exported": false,
+  "private_accounting_helper_sha256": "3e9f9dfd2fa88bec2b928948eb0f31993bdf0ee3734c52054aff18c8b579553b",
+  "private_interval_module_sha256": "17dba7f60a1964f59a483175b9a9455a104013225a411a5b952c2344f97f2540",
+  "private_review_manifest_sha256": "1515d91aa9462d6d25cc18a410b0cf54ffd2e234404b8b665782e4fa9668e667",
+  "raw_addresses_or_irp_tokens_exported": false,
+  "raw_content_copied": false,
+  "raw_paths_exported": false,
+  "reviewed_private_artifact_hashes": {
+    "INCOMPLETE": "750f212e2d5fffabfb23e82e8da9bf4cc4be83579dc0955b48a663e6cd0f2661",
+    "accounting-review.md": "e8824ff3040c33c82847ea4d6a247de2cc8790f1e727f2cc89ee9fb3cb5abfa9",
+    "checked-input-hashes.json": "01185d5aae43871b9d6955692418094ba8ddd2eccebb35ff028432ec4c5741da",
+    "group-observations.csv": "1d960fe625cf41051e9cd08ef97f3d101609884e6d71f456ba6f7be472c3578b",
+    "io-boundaries.csv": "bcbc83bf68030cbe0d5440f3e80c98ff95b623dfa0c1236961987b0b7d736a64",
+    "retained-root-detail.jsonl": "b574ec35596ab043784efcf09532f7125f0f89946b3efa01a09791d53ee56d55",
+    "root-accounting.csv": "366756ed22e40ab4fdf1ee22c3c7493464685419e6c472e2e1ff65f27a7499d7",
+    "summary.json": "d2c03ab846e504168433fee06ea5c3eba87025b733852f2f5c11a8ca85fb0bbf"
+  }
+}

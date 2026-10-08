@@ -1,0 +1,39 @@
+{
+  "application_root_count": 4320,
+  "artifacts": {
+    ".gitattributes": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+    "group-observations.csv": "1d960fe625cf41051e9cd08ef97f3d101609884e6d71f456ba6f7be472c3578b",
+    "large-root-detail.json": "d00f08c47c9e6ca8e1b20dceb032dea0ce5599749595d1e3af6e82d7291589a6",
+    "provenance.json": "273d7a6138e6fe0df00a741e7d31b22383b6dc98e47c44965fddd7aa7e3b8f86",
+    "retained-root-detail.jsonl": "3b60c67d9507a5528cd32edacc316d788cbfb1eeb7b2c44153759533ad25163b",
+    "root-accounting.csv": "3df132a7c0e5e2a54913eea6da4fba48e8d27346c253fc6952bf38825cf93ef3",
+    "summary.json": "3d034fdde260e9328edc003a0c9f513af2d30dfdd14b15d482a6f1ebaa604371",
+    "windows-os-evidence.md": "b06658f2d632fc376390b7c0ea691fa04a09715b6320608a16c12fffc570a164"
+  },
+  "capture_source_commit": "624807b9095b7be41f7c3bbe7d18a31d50f95478",
+  "command": "python src/python/scripts/summarize_week6_os_evidence.py --private-accounting <private-accounting-directory>",
+  "complete_causal_attribution_established": false,
+  "completed_utc": "2026-10-08T03:48:18.527700+00:00",
+  "durable_audit_measured": false,
+  "etl_rescanned": false,
+  "group_count": 144,
+  "historical_files_modified": false,
+  "large_root_count_above_100ms": 8,
+  "model_calls": 0,
+  "new_timing_executed": false,
+  "performance_target_claim": false,
+  "privacy_filter_applied": true,
+  "recording_executed": false,
+  "report_version": "week6-sanitized-windows-os-evidence-v1",
+  "retained_root_count": 2106,
+  "source_commit": "8ba6a711e205fe962a125cffea92c1909725cb94",
+  "source_file_hashes": {
+    "src/python/puf_snn/windows_os_accounting.py": "17dba7f60a1964f59a483175b9a9455a104013225a411a5b952c2344f97f2540",
+    "src/python/puf_snn/windows_os_reporting.py": "6c80ef13c128470bf7f27b052aad01ef6e3f804a177d1c615e3034a1922fe77e",
+    "src/python/scripts/summarize_week6_os_evidence.py": "25d47222147d8b2e78d0d2e892b85114b66b779f18ba54adfe1534af70553a91"
+  },
+  "source_worktree_dirty": false,
+  "threshold_selection_executed": false,
+  "tracing_overhead_isolated": false,
+  "training_executed": false
+}
