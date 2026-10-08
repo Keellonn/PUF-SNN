@@ -1,0 +1,143 @@
+{
+  "fresh_attempt_count": 3720,
+  "response_read_count": 3720,
+  "trace_count": 29718,
+  "accepted_by_condition_phase": [
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "phase": "warmup",
+      "count": 19
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "warmup",
+      "count": 19
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "warmup",
+      "count": 19
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "phase": "warmup",
+      "count": 19
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "phase": "warmup",
+      "count": 19
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "condition_first_use",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "measured",
+      "count": 599
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "warmup",
+      "count": 19
+    }
+  ],
+  "refused_by_condition_phase_reason": [
+    {
+      "condition": "forest_motion_forest_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    },
+    {
+      "condition": "logistic_motion_forest_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    },
+    {
+      "condition": "logistic_motion_logistic_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed17_forest_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed27_forest_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    },
+    {
+      "condition": "snn32_seed7_forest_anomaly",
+      "phase": "measured",
+      "stage": "reconstruction",
+      "reason": "failed_reconstruction",
+      "count": 1
+    }
+  ],
+  "rejected_window_model_calls": 0,
+  "paired_admission_signatures_match": true
+}

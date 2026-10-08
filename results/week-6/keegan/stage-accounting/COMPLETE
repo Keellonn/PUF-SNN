@@ -1,0 +1,6 @@
+{
+  "manifest_sha256": "6c9691ef4a07b8f6ced4de96f7aec798046ebd743254aa3041b4d5941dd2bd48",
+  "trace_count": 29718,
+  "fresh_attempt_count": 3720,
+  "partition_reconciled_for_every_observation": true
+}

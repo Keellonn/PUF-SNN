@@ -1,0 +1,22 @@
+{
+  "simulated_response_read": "Modeled response generation, not physical acquisition.",
+  "reconstruction": "Actual recorded BCH reconstruction; includes any observer/GC delay.",
+  "credential_verification": "Recorded independent credential-verification call(s).",
+  "local_admission_checks": "Measured local authorization/binding/consumption calls, excluding nested credential verification.",
+  "session_establishment_unisolated": "Handshake/request/activation remainder, including unseparated HKDF/confirmation work and observer cost.",
+  "admission_orchestration_unisolated": "Admission orchestration remainder not covered by named children.",
+  "binary32_adapter": "Canonical binary32 input adaptation before sender sealing.",
+  "sender_serialization_and_quality": "Sender serialization including its quality validation; not separately timed.",
+  "sender_window_hmac": "Recorded window-tag generation call.",
+  "sender_binding_unisolated": "Sender seal remainder: binding/state/orchestration/observer work not separately timed.",
+  "receiver_parsing": "Envelope and binary parser call.",
+  "receiver_window_hmac": "Recorded verifier window-tag calculation, not complete authentication.",
+  "receiver_quality_check": "Verifier quality-check call.",
+  "receiver_binding_sequence_state_unisolated": "Verifier remainder including binding, sequence checks, locks/state publication and observer work; NOT isolated sequence latency.",
+  "model_input_preprocessing": "Shared model-input preparation; model-specific normalization remains in consumer timing.",
+  "motion_consumer": "Motion consumer including normalization/tensor preparation/prediction decoding.",
+  "anomaly_consumer": "Anomaly consumer including feature scaling and frozen-threshold decision.",
+  "release_conversion_unisolated": "Accepted release remainder including conversion/dispatch/observer work outside consumer children.",
+  "in_memory_audit_measured": "Recorded audit record/prepare/commit spans, exclusive of their children; not all audit-related overhead and not durable storage.",
+  "outer_orchestration_unisolated": "Direct root/first-post-window remainder outside named child spans."
+}

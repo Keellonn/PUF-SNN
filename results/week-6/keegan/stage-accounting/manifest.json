@@ -1,0 +1,61 @@
+{
+  "run_type": "week6-saved-stage-accounting-v1",
+  "source_commit": "7921261fc6ff690b9c8e1b9f66907d3424e2ae4a",
+  "source_worktree_dirty": false,
+  "completed_utc": "2026-10-08T19:57:27.029553+00:00",
+  "command": [
+    "src/python/scripts/summarize_week6_stages.py",
+    "--input",
+    "results/week-6/keegan/fresh-v2-timing",
+    "--output",
+    "results/week-6/keegan/stage-accounting"
+  ],
+  "benchmark_source_commit": "78f499a92f633a4793c776a070058e3a6a9a0b61",
+  "historical_results_commit": "a4a9e2548fd30ee2383923dbd0de6cd5c45c587f",
+  "input_directory": "results/week-6/keegan/fresh-v2-timing",
+  "input_manifest_sha256": "10135c6e3849015c6afcfb96c91d9bc25bdeabdbdc1da2531b1ec65501403b50",
+  "trace_count": 29718,
+  "fresh_attempt_count": 3720,
+  "partition_reconciled_for_every_observation": true,
+  "original_quantiles_reconciled": true,
+  "sequence_checks_individually_isolated": false,
+  "complete_causal_attribution_established": false,
+  "primary_conditions": [
+    "logistic_motion_logistic_anomaly",
+    "logistic_motion_forest_anomaly",
+    "snn32_seed7_forest_anomaly"
+  ],
+  "source_sha256": {
+    "src/python/puf_snn/stage_accounting.py": "002c04e38fc693333991c8b4c89022b5f18459b51a8f59990b8935623bd6fb9c",
+    "src/python/scripts/summarize_week6_stages.py": "882d4fbd225affc5160c96744853520ad28996d9fc912e155dbe301e60a9abc1",
+    "tests/test_stage_accounting.py": "c87f93f174fc774ccca52528f5e99a111950c10878dc432509dcb0e8deb4d608",
+    "docs/week6-stage-accounting.md": "d406a48159dfa61fab0f7818ca369150e595c08943c682aa672699c4fb521974"
+  },
+  "context_sha256": {
+    "docs/week6-tier1-v2-experiment.md": "381a457c7b37dd348ddd42bbd56af37ef8ae1aa24ea69d7c73ab9214451a5257",
+    "src/python/puf_snn/auth/verifier.py": "49f4e0946d4a54569be2746a7a0fa2c0feee587ee75351df9bd1c2062177944e",
+    "src/python/puf_snn/pipeline_timing.py": "e204b6c5fb2607714aaf713a224ece5230d17737450e4b096c6472f66b446228"
+  },
+  "new_latency_measurement_executed": false,
+  "response_reads_executed": false,
+  "authentication_executed": false,
+  "model_loading_executed": false,
+  "model_inference_executed": false,
+  "training_executed": false,
+  "threshold_selection_executed": false,
+  "recording_executed": false,
+  "etl_rescanned": false,
+  "historical_files_modified": false,
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "admission-accounting.csv": "207e8ef4769bcec9c384228eea85333d4b0812bf08e6926494afa3a5610230e4",
+    "checked-input-hashes.json": "f6448f0d9f63e8d7ff89abb83f04eeb75d4abfda3e9694e7b48b16483646ee89",
+    "direct-path-latency.csv": "fbacd137cbcac7c5707e97c5369c36a9c5ef9433b8b882ee8df633702af0dea5",
+    "inclusive-stage-latency.csv": "99cf9d3c8a8591a464c7724012fa02765a7648e63f275dd535bbbfc0ef235c5e",
+    "per-observation-accounting.csv": "329f059ce2c2965f4377ce8a79c8daf51936e21940bb04371f6a60a4aecb1617",
+    "reconciliation.json": "e901abe2bda3ca85a73c600c74029d3b434260fa89c7d049547c9de6c3b99473",
+    "stage-accounting.csv": "516aff70836f53ad83e91b3ef2ce9bf54cfc6abb06e74f6cfbf9057aa24f8274",
+    "stage-accounting.md": "7cfc2968a971c247d5721d3384d9bf26508f69320e6599f56f93cc1cd52088ec",
+    "stage-definitions.json": "3fb4206e9f4c6a4d9d64f92b9ef3f3381ff7897f8792db7125d20eb465ca4793"
+  }
+}
