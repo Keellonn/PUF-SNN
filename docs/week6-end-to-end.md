@@ -4,7 +4,7 @@
 
 **Shared authentication/reconstruction owner:** Will Wallace
 
-**Stage:** Functional smoke and first instrumented timing run completed; causal profiling and formal shared evaluations remain pending
+**Stage:** Smoke, first instrumented timing, paired GC/observer controls and bounded Windows OS accounting completed; complete causal isolation and formal shared evaluations remain unresolved
 
 ## Purpose and historical boundary
 
@@ -241,6 +241,57 @@ slow values stay visible. A diagnostic report is not a new benchmark and does
 not complete formal Tier-1, reconstruction alternatives, durable audit timing,
 Will's key/trust specification or physical Quest validation.
 
+## Step 5: Completed paired observer/GC controls
+
+The separately declared controls are complete in
+`results/week-6/keegan/observer-experiment/`, results commit `9f7b737`.
+Four paired noise blocks and four predeclared observer/GC modes used six
+unchanged model conditions: 16 timing workers, 8,640 fresh one-read admissions
+and 68,952 roots. Four additional fresh processes ran 20 explicit generation-2
+metadata-dose probes. Paired functional signatures matched and refused windows
+produced zero model calls. Models, thresholds, the baseline reconstruction and
+authentication policies stayed fixed.
+
+The GC-deferred counterfactual records 676.0642–695.9074 ms full cleanup outside
+root timers and restores normal GC. Historical-metadata probes at 29,718 rows
+take 212.5651–229.4958 ms per full collection, versus 143.3500–157.1152 ms at
+zero retained rows. These support a collector/retention mechanism, not a
+complete factorial attribution, reproduction of the original application heap,
+deployment optimization or permission to hide cleanup/subtract overhead.
+
+## Step 6: Completed bounded Windows OS accounting
+
+The separate reference/traced capture used source `624807b`: 540 fresh
+attempts and 4,320 roots per process, unchanged inference and matching functional
+signatures. All 27 saved native markers, exact QPC brackets, final zero-loss header
+and scoped lifetimes were reviewed. Raw ETL/decoded evidence stay private.
+
+The sanitized result `results/week-6/keegan/windows-os-evidence/` is committed
+as `b91088a`, generated from clean reporting source `8ba6a71`. It verifies
+the saved review without new timing, models, ETL scans or recording, and retains
+all 4,320 numeric roots, 2,106 slow/tail/maxima details, 144 groups and all eight
+roots above 100 ms. Every traced root has complete schedule coverage and an
+exact disjoint wall partition; GC/I/O/interrupt/nested-stage overlays are not
+summed as independent causes.
+
+Four long pauses have about 90–98% GC overlap. The 142.4030 ms forest/forest case
+instead has 56.1910 ms ready-but-not-dispatched time and 0.3193 ms GC. The
+3,735.7236 ms first-use root contains 3,690.2300 ms reconstruction, but its
+remaining initialization/allocation/cache cause is not isolated. Two roughly
+102–107 ms SNN cases also retain unexplained execution. One root overlaps scoped
+file operations; zero disk/hard-fault overlaps do not rule out all other I/O.
+
+The initial byte13 decoding mismatch and its recovery are retained as evidence:
+24,495 prefix events were cross-checked, but full CSwitch-v5 TDH schema and native
+wait-mode semantics remain unvalidated. Opaque byte13 is not used for accounting.
+See `docs/week6-windows-os-evidence.md` for partition/decoder/privacy rules.
+
+Fixed reference-then-traced order does not isolate recorder/marker overhead.
+Allocation stacks, cache/power/thermal effects, dependency waits and other-thread
+activity remain unresolved. Public COMPLETE denotes completed filtered export,
+not complete causal attribution or a new 20 ms passing claim. The original
+fresh-v2 run and its addendum remain unchanged.
+
 ## Current result and handoff summary
 
 The 30-attempt frozen-model smoke is committed as
@@ -260,8 +311,9 @@ were not separately isolated. Do not discard those values, subtract no-op
 overhead, or treat receiver-only timings as complete-path performance.
 
 The concise numerical account and exact recorded commands are in
-`results/week-6/keegan/keegan.md`. The latest saved Python suite passed 666
-tests, including 24 timing-reporting tests. No model training, threshold
+`results/week-6/keegan/keegan.md`. The latest saved Python suite passed 834
+tests, including 43 Windows OS accounting/reporting tests. The earlier 666-test
+suite and its 24 timing-reporting tests remain a historical checkpoint. No model training, threshold
 change, architecture expansion or reconstruction-policy change occurred.
 
 The required dataset and 11 model binaries are local/Git-ignored, not supplied
@@ -271,7 +323,9 @@ transfer to Will. The helper verifies against pinned repository manifests
 before installation or model loading and refuses conflicting existing files.
 This does not establish that Will has received or verified the bundle.
 
-Remaining work is a separately declared causal/observer-effect diagnostic,
-expanded varied Tier-1 evaluation, controlled reconstruction improvements,
+The separately declared observer controls and bounded Windows accounting are
+now recorded; complete causal attribution and isolated tracing overhead are not.
+Allocation/cache/power effects and dependency waits remain explicit unknowns.
+Expanded varied Tier-1 evaluation, controlled reconstruction improvements,
 precise v2 trust/key specification, durable audit timing and approved Quest
-logger validation. The current timing evidence does not complete those tasks.
+logger validation remain separate/shared work, not completed by these diagnostics.

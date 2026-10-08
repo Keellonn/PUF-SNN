@@ -336,7 +336,7 @@ Low-amplitude nods are evaluated as legitimate execution variation and an ambigu
 
 Per-class/per-seed metrics, all six SNN learning histories/stopping decisions, exact LIF/readout equations, model storage and the fixed validation-only selection protocol are in `results/week-5/keegan/model-evidence/`. LR's deterministic lbfgs fitting explains its zero descriptive seed SD; five seed labels are not five independent stochastic performance samples. Data generation seed 7 fixes one dataset, separate from model/attack/uncertainty seeds.
 
-Claims remain cross-session synthetic evaluation with six fixed simulated device profiles. No cross-device, cross-person, real Quest, energy or deployed-security claim follows. The paper outline is `docs/paper-outline.md`. The first fresh v2 accepted/refused timing and frozen-model functional evidence are now recorded separately in Week 6. Remaining shared evidence includes the formal v2 trust/key specification, expanded varied Tier-1 trials with exact intervals and parser/state instrumentation, controlled reconstruction alternatives, causal timing/observer-effect diagnosis and durable audit performance. Existing Will-side reports remain separate and unchanged.
+Claims remain cross-session synthetic evaluation with six fixed simulated device profiles. No cross-device, cross-person, real Quest, energy or deployed-security claim follows. The paper outline is `docs/paper-outline.md`. The first fresh v2 accepted/refused timing and frozen-model functional evidence are now recorded separately in Week 6. Remaining shared evidence includes the formal v2 trust/key specification, expanded varied Tier-1 trials with exact intervals and parser/state instrumentation, controlled reconstruction alternatives and durable audit performance. Separate GC/observer controls and bounded Windows accounting are now recorded; complete outlier attribution and isolated tracing overhead remain unresolved. Existing Will-side reports remain separate and unchanged.
 
 ## Week 6 integration and first instrumented timing evidence
 
@@ -347,3 +347,23 @@ The 30-attempt frozen-model smoke passed all admission and boundary controls. Th
 Recurring complete-path p95 is 27.7629 ms for logistic motion/logistic anomaly, 30.3028 ms for logistic/forest, 52.8523 ms for forest/forest and 51.3985/50.5355/54.1160 ms for SNN-32 seeds 7/17/27 with the forest detector. First and after-refusal complete-path p95 values also exceed 20 ms. This is instrumented CPU evidence, not uninstrumented deployment performance or a causal ranking across model conditions.
 
 `configs/week6_smoke.json` pins the unchanged dataset and all 11 frozen model binaries; `configs/week6_timing.json` fixes model conditions and attempt counts. No fitting or threshold selection occurred. Methods and exclusions are in `docs/week6-end-to-end.md`; the raw run is `results/week-6/keegan/fresh-v2-timing/` and its read-only diagnostic addendum is `results/week-6/keegan/timing-diagnostics/`. The latter reconciles all retained observations without rerunning the benchmark or establishing complete causal attribution.
+
+## Week 6 follow-up: bounded outlier diagnosis
+
+The separately declared `observer-experiment/` result retains 8,640 fresh
+admissions across 16 paired timing workers and 20 full-GC metadata probes in four
+additional processes. Normal-GC controls, streamed/root-only observers and a
+GC-deferred counterfactual preserve refusals, first use and separately reported
+cleanup. Deferred cleanup takes 676.0642–695.9074 ms; it is not a production fix
+or grounds to replace the original p95 result.
+
+The sanitized `results/week-6/keegan/windows-os-evidence/` result (`b91088a`)
+accounts for 4,320 traced roots, 2,106 retained details, 144 groups and all eight
+roots over 100 ms. Scheduling coverage and disjoint wall partitions reconcile;
+GC-heavy, ready-delay and reconstruction-first-use cases are distinguished.
+Raw ETL/OS payloads remain private. Limited CSwitch-prefix validation and fixed
+reference-before-traced order do not establish full schema semantics or isolated
+tracing overhead. Allocation/cache/power effects and dependency waits remain
+explicit unknowns. The original targets, timing table, models and thresholds are
+unchanged; complete causal attribution remains false. See
+`docs/week6-windows-os-evidence.md` and the updated Week 6 summary.

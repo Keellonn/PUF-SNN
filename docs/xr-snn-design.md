@@ -358,7 +358,7 @@ Interpret low-amplitude nods as legitimate execution variation and intended-clas
 
 The separate Tier-2 breakdown retains all 5,501 pre-tag failures (3,493 source gaps above 50 ms; 2,008 non-increasing timestamps), per-type/severity detector detected/missed counts and paired motion degradation. It does not count quality/construction blocks as detector successes. Frozen thresholds are selected from validation only; both detectors miss 90% medium/high recall and LR exceeds 5% held-out clean FPR. Synthetic freeze cues and shared parameter ranges remain limitations.
 
-All new addenda preserve the original leakage reports and historical experiment artifacts. The original known-correct-candidate authenticated stream run predates the current pre-HKDF/local-admission gate; retrospective reporting does not validate fresh v2 sessions. The separate Week 6 connector, frozen-model smoke and first instrumented timing run now exercise actual one-read/one-decode v2 admission without changing those historical results. Expanded varied Tier-1 evaluation, reconstruction alternatives, causal/observer-effect timing diagnosis and durable audit performance remain separate/shared work. Human recording stays disabled until approval.
+All new addenda preserve the original leakage reports and historical experiment artifacts. The original known-correct-candidate authenticated stream run predates the current pre-HKDF/local-admission gate; retrospective reporting does not validate fresh v2 sessions. The separate Week 6 connector, frozen-model smoke and first instrumented timing run now exercise actual one-read/one-decode v2 admission without changing those historical results. Expanded varied Tier-1 evaluation, reconstruction alternatives and durable audit performance remain separate/shared work. GC/observer controls and bounded Windows accounting are now recorded; complete causal isolation remains unresolved. Human recording stays disabled until approval.
 
 ## Week 6: frozen composite inference and timing
 
@@ -368,6 +368,28 @@ Current v2 admission uses the candidate returned by one actual reconstruction, f
 
 The first instrumented timing run retains 20 validation warmups and 600 test-source single-read attempts for each of six paired conditions. Each measured condition has 599 admitted sessions and one reconstruction refusal; the repeated refusal is paired, not six independent failures. Direct recurring motion-plus-anomaly p95 is 27.7629 ms (LR/LR), 30.3028 ms (LR/RF), 52.8523 ms (RF/RF) and 51.3985/50.5355/54.1160 ms (SNN-32 seeds 7/17/27 with RF). First and after-refusal complete post-window p95 also exceed 20 ms. These results cannot be replaced by historical motion-only timings or used to infer an SNN hardware/energy advantage.
 
-The saved-run addendum reconciles 29,718 root traces, 12,621 retained slow/tail observations and every root-group maximum. The largest measured root per condition has 90.30-92.33% recorded GC overlap; this is observed activity, not a complete causal explanation. Collectors/retained trees, allocation, scheduling, cache and power effects remain unresolved. Nested durations overlap; component percentiles are not added. Capture, hardware acquisition, network and durable audit are excluded.
+The saved-run addendum reconciles 29,718 root traces, 12,621 retained slow/tail observations and every root-group maximum. The largest measured root per condition has 90.30-92.33% recorded GC overlap; this is observed activity, not a complete causal explanation. The later paired controls support a collector/retention contribution and scoped Windows accounting measures ready delays; allocation/cache/power causes and all residuals are not fully isolated. Nested durations overlap; component percentiles are not added. Capture, hardware acquisition, network and durable audit are excluded.
 
 Exact commands, seed roles, hardware/timer conditions and artifact/commit pointers are in `results/week-6/keegan/keegan.md` and `docs/week6-end-to-end.md`. Keep architectures, preprocessing and thresholds frozen; these first timing results do not authorize a new architecture search or SNN anomaly detector.
+
+### Recorded observer controls and Windows follow-up
+
+The separate `observer-experiment/` result compares four predefined observer/GC
+modes across four paired noise blocks and six frozen conditions: 8,640 admissions
+and 68,952 roots, plus 20 explicit full-GC metadata probes. GC-deferred cleanup
+is recorded outside window timers and the normal policy is restored; disabling
+GC is not a deployment recommendation or a replacement target result.
+
+The public `windows-os-evidence/` report retains all 4,320 traced roots,
+2,106 slow/tail/maxima details, 144 groups and eight roots over 100 ms. Four large
+pauses have about 90–98% GC overlap; a different 142.4030 ms case has 56.1910 ms
+ready delay but only 0.3193 ms GC. The 3,735.7236 ms first-use case spends
+3,690.2300 ms in reconstruction, without isolating its remaining initialization
+cause. Tracing order/overhead, allocation/cache/power effects and dependency waits
+remain unresolved. No model training, threshold change, SNN architecture/anomaly
+expansion, revised p95 claim or new held-out accuracy estimate occurred.
+
+Methods, decoder limits and privacy rules are in
+`docs/week6-outlier-diagnostics.md` and `docs/week6-windows-os-evidence.md`.
+The raw trace and failed/recovered decoding evidence remain private; the public
+completion marker confirms filtered export, not complete causal attribution.

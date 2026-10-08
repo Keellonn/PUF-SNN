@@ -1,12 +1,12 @@
-# Week 6: Current v2 Integration, Frozen-Model Smoke and Composite Timing
+# Week 6: Current v2 Integration, Composite Timing and Outlier Diagnostics
 
 **Owner:** Keegan Hoyne
-**Evidence recorded:** October 5-6, 2026
+**Evidence recorded:** October 5-7, 2026
 **Shared reconstruction/authentication owner:** Will Wallace
 
 ## Scope and conclusion
 
-This week connected the current independent pre-HKDF admission path to unchanged, frozen motion and anomaly models, then recorded the first instrumented fresh-session and composite post-window CPU timing. Functional boundary checks passed and the saved run reconciles. None of the six complete motion-plus-anomaly conditions meets the provisional 20 ms post-window p95 target in this instrumented environment. Large maxima coincide with substantial GC activity, but complete causal attribution and observer effects are not established.
+This week connected the current independent pre-HKDF admission path to unchanged, frozen motion and anomaly models, then recorded the first instrumented fresh-session and composite post-window CPU timing. Functional boundary checks passed and the saved run reconciles. None of the six complete motion-plus-anomaly conditions meets the provisional 20 ms post-window p95 target in this instrumented environment. Subsequent paired GC/observer controls and bounded Windows scheduling/I/O accounting support collector and ready-delay contributions. Complete causal attribution and isolated tracing overhead remain unestablished; no diagnostic replaces the original target result.
 
 The Week 4/5 datasets, weights, thresholds, accuracy/recall findings and historical known-correct-candidate experiments remain unchanged. These new results do not improve reconstruction reliability, detector recall or SNN accuracy, and are not Quest deployment evidence.
 
@@ -79,9 +79,88 @@ The largest measured root per condition has 90.30-92.33% recorded GC overlap. GC
 
 These observations locate activity, not all causes. Benchmark collectors/retained trees and temporary wrappers may themselves affect allocation/heap scanning. Wall/thread-CPU gaps do not prove OS descheduling, and short spans often have zero recorded CPU time. The 1,000 no-op proxy roots had p95 0.0031 ms and max 0.0328 ms, but are not a calibrated overhead correction and were never subtracted. Slow values, admission refusals, first use and maxima remain preserved.
 
+## Completed paired GC and observer controls
+
+The separate `observer-experiment/` result was recorded at
+`9f7b737079281f72d183dba2867040c28ec01413`, using source
+`f3efeebafc5f5d4f173d7086a84f3e7cbc796ea2` and
+`configs/week6_outlier_experiment.json`. Four paired noise blocks compared
+nested retained trees, nested streamed trees, root-only streamed observation and
+nested streaming with automatic GC temporarily deferred. Six unchanged model
+conditions ran in each mode. The 16 fresh timing workers retained all 8,640
+one-read admission attempts and 68,952 root records; paired functional signatures
+matched and refused windows produced zero model calls.
+
+Four additional fresh processes performed 20 explicit full-GC probes at
+0/5,000/15,000/29,718 retained historical metadata rows. Full collection took
+143.3500–157.1152 ms at zero rows and 212.5651–229.4958 ms at 29,718 rows.
+These are metadata-dose observations, not a reconstruction of the original
+application heap or an attribution of every historical pause. Full GC also
+has free-list effects; fixed dose order and OS/cache history remain limitations.
+
+GC-deferred workers restored the normal policy and recorded full cleanup outside
+window timers: 676.0642–695.9074 ms, collecting 2,856,736–2,886,340 objects.
+That delayed work is not free and must not be hidden. The controls support a
+collector/measurement contribution, not disabling GC as a production fix,
+subtracting overhead from the original results or declaring a passing 20 ms p95.
+The matched contrasts and all path distributions are preserved in the diagnostic
+report, `paired-deltas.csv`, `path-latency.csv` and each worker's cleanup record.
+
+## Completed Windows scheduling and I/O evidence
+
+A separate reference process and Windows-traced process each retained 540 fresh
+attempts and 4,320 application-root timings. Their functional signatures matched,
+with zero model calls on rejected windows and no training or threshold selection.
+Capture source was `624807b9095b7be41f7c3bbe7d18a31d50f95478`.
+All 27 saved native markers, clock brackets, zero final-header event/buffer-loss
+counts and scoped process/thread lifetimes were checked. Export-relative clock
+uncertainty was 31.1 microseconds; native accounting uses exact validated QPC ticks.
+
+The public evidence at `windows-os-evidence/` was recorded at
+`b91088a60cd88e7cea66bf01ceb297efce23543f`, with reporting source
+`8ba6a711e205fe962a125cffea92c1909725cb94`. Its manifest SHA-256 is
+`058507ddc3166abc7bd9a87065a1f8b9a7e5f97162fedd39ddb2561c95110b4a`.
+All 4,320 traced roots have complete scheduling coverage and reconciled disjoint
+wall-time partitions. The report retains 2,106 distinct slow/tail/maxima records,
+144 groups and all eight roots above 100 ms. GC overlaps 2,160 roots; measured
+ready-but-not-dispatched time occurs in 2,639. One root overlaps scoped main-thread
+file operations; none overlaps the scoped disk or hard-fault intervals. This is
+scoped observation, not proof of no cached/metadata/other-thread I/O or blocking.
+
+Four long cases have 286.4601–432.8645 ms GC overlap, about 90–98% of those roots.
+A different 142.4030 ms case has only 0.3193 ms GC but 56.1910 ms ready delay.
+The largest root is a 3,735.7236 ms first-condition-use admission/first-window
+path, including 3,690.2300 ms reconstruction and 274.7025 ms GC inside that stage.
+Two roughly 102–107 ms SNN cases have less than 1 ms GC and about 9.6–12.5 ms
+ready delay; their remaining execution is not fully explained. The eight-case
+table and all nested-stage records preserve these distinctions rather than
+assigning every outlier to GC.
+
+The CSwitch v5 full native schema remains unavailable. A 24,495-event prefix
+cross-check exposed an erroneous 0/1 interpretation of opaque byte13 in the
+initial review. Its actual zero/nonzero export rendering was checked, the failed
+review/extraction preserved, and byte13 excluded from accounting; its native
+wait-mode meaning was not claimed. Known scheduling fields, validated lifetimes
+and same-CPU ISR/DPC intervals support the bounded accounting, not complete
+schema or causal validation.
+
+The sanitized export verifies eight artifact hashes and the completion binding.
+It contains numeric durations/counts and approved project labels, not raw ETL,
+kernel payloads, absolute clocks, OS IDs, addresses, private paths or IRP tokens.
+The saved ETL and recovery evidence remain private; exporting the report required
+no new recording, ETL scan, model loading or timing. COMPLETE means the filtered
+accounting export finished, not that every causal question is resolved.
+
+Reference precedes traced in fixed order, so their observed differences do not
+isolate tracing overhead. Allocation stacks, cache/frequency/thermal effects,
+dependency-specific waits and other-thread activity remain unresolved. New
+tracing cannot retroactively prove OS causes for earlier untraced roots.
+`complete_causal_attribution_established` and `tracing_overhead_isolated` remain
+false. No original timing, refusal, first-use observation or target was replaced.
+
 ## Tests, evidence and provenance
 
-The latest saved full Python suite passed 666 tests, including 24 timing-reporting tests. Separate earlier suites validate the connector, frozen loader, smoke hash fix and timing instrumentation; they are not summed into independent test counts.
+The latest saved full Python suite passed 834 tests, including 43 Windows OS accounting/privacy-reporting tests. The earlier 666-test timing-reporting checkpoint included 24 reporting tests. Earlier suites are historical checkpoints, not additional independent test samples.
 
 | Change | Commit |
 |---|---|
@@ -92,8 +171,15 @@ The latest saved full Python suite passed 666 tests, including 24 timing-reporti
 | First instrumented timing evidence | `a4a9e2548fd30ee2383923dbd0de6cd5c45c587f` |
 | Read-only timing/GC reporting implementation | `a238d70d075276f3c3f10f58044fdb4bb90ae585` |
 | Reconciled timing diagnostic evidence | `cc8c86c5122ec74d4744ba41a715133b53bf342b` |
+| GC/observer controls | `fb7a99563b559f3f182122ed35a4916b5501880d` |
+| Paired diagnostic runner | `f3efeebafc5f5d4f173d7086a84f3e7cbc796ea2` |
+| Paired controls and cleanup evidence | `9f7b737079281f72d183dba2867040c28ec01413` |
+| Windows profile and clock support | `ec5db19aafcf95362c620bee6a6bd88c404dcaa0` |
+| Fixed traced workload and native reader | `624807b9095b7be41f7c3bbe7d18a31d50f95478` |
+| Sanitized OS accounting/reporting and tests | `8ba6a711e205fe962a125cffea92c1909725cb94` |
+| Sanitized Windows evidence | `b91088a60cd88e7cea66bf01ceb297efce23543f` |
 
-Evidence is under `results/week-6/keegan/frozen-model-smoke/`, `fresh-v2-timing/`, `timing-diagnostics/` and `test-evidence/`. Methods are in `docs/week6-end-to-end.md`. Run manifests retain source/configuration/input hashes, environment, commands, seed domains and execution flags; COMPLETE binds each manifest.
+Evidence is under `results/week-6/keegan/frozen-model-smoke/`, `fresh-v2-timing/`, `timing-diagnostics/`, `observer-experiment/`, `windows-os-evidence/` and `test-evidence/`. Methods are in `docs/week6-end-to-end.md`, `docs/week6-outlier-diagnostics.md` and `docs/week6-windows-os-evidence.md`. Run manifests retain source/configuration/input hashes, environment, commands, seed domains and execution flags; COMPLETE binds each manifest.
 
 - Dataset SHA-256: `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`.
 - Corrected smoke manifest SHA-256: `36d472679416943a332f16c6349911e803c57c911165ecb19321a84f69175ec0`.
@@ -107,6 +193,8 @@ python src/python/scripts/run_week6_smoke.py --config configs/week6_smoke.json -
 python -u src/python/scripts/benchmark_week6_v2.py --config configs/week6_timing.json --output results/week-6/keegan/fresh-v2-timing --power ac --background heavy_apps_closed
 python src/python/scripts/summarize_week6_timing.py --input results/week-6/keegan/fresh-v2-timing --output results/week-6/keegan/timing-diagnostics
 python -m unittest discover -s tests -p 'test_pipeline_timing_reporting.py' -v
+python src/python/scripts/summarize_week6_os_evidence.py --private-accounting <private-accounting-directory>
+python -m unittest discover -s tests -p 'test_windows_os_*.py' -v
 python -m unittest discover -s tests -v
 ```
 
@@ -116,6 +204,6 @@ An exact ZIP containing the generated dataset and 11 frozen binaries, with origi
 
 ## Remaining work and limitations
 
-The first timing experiment is complete, but causal isolation of GC/collector effects and other outlier causes is not. A separately declared diagnostic must preserve this run, fixed models/thresholds and refusals; disabling GC or dropping slow values solely to pass a target is not a result.
+The original timing experiment, separately declared paired GC/observer controls and bounded Windows evidence review are complete and preserved. Every new large root has an evidence-qualified account, including explicit unknown residuals; this is not complete causal isolation. Tracing overhead, allocation/cache/power causes and dependency-level waits are not fully established. Disabling GC, hiding cleanup or dropping slow values solely to pass a target is not a result.
 
 Formal v2 trust/key/enrollment specification, expanded varied Tier-1 trials, controlled reconstruction-reliability alternatives, durable audit performance and approved Quest logger validation remain separate/shared tasks. Baseline nominal FRR, anomaly targets and constrained SNN conclusions stay unchanged. No SNN architecture/anomaly expansion, physical transfer, cross-person/device generalization, production security or hard real-time claim follows.

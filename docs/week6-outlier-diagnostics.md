@@ -2,7 +2,7 @@
 
 Owner: Keegan Hoyne
 
-Status: Diagnostic machinery and fixed runner implemented; no new experiment results.
+Status: Paired observer/GC controls and bounded Windows OS accounting completed; original benchmark preserved and complete causal attribution still unresolved.
 
 ## Question and preserved evidence
 
@@ -133,10 +133,11 @@ No diagnostic mode receives a target-passing production-performance claim.
 
 ## OS tracing and attribution requirements
 
-Absolute monotonic start/end timestamps, process ID and native thread ID are
-public correlation fields, not OS scheduling evidence by themselves. A later
-Windows tracing checkpoint will inspect context switches/ready time, CPU
-sampling and I/O for the diagnostic process. Availability of WPR/WPA does
+Absolute monotonic start/end timestamps, process ID and native thread ID in the
+application observer are correlation fields, not OS scheduling evidence by themselves.
+The separate Windows checkpoint now supplies scoped context-switch/ready-time,
+CPU-sample and I/O accounting. Native OS IDs and raw clocks are excluded from its
+new public export. Availability of WPR/WPA does
 not establish that the available WPA build supports every captured event.
 Capture configuration, dropped events and clock alignment must be checked.
 
@@ -152,6 +153,85 @@ contributors may coexist. New controlled results can support a mechanism,
 but cannot retroactively prove scheduling, allocation or cache causes for a
 historical observation lacking that instrumentation. Do not label unexplained
 residual time as OS scheduling or invent a complete causal attribution.
+
+## Completed paired GC and observer controls
+
+The separate `results/week-6/keegan/observer-experiment/` result was recorded at
+`9f7b737079281f72d183dba2867040c28ec01413`, using source
+`f3efeebafc5f5d4f173d7086a84f3e7cbc796ea2` and
+`configs/week6_outlier_experiment.json`. Four paired noise blocks compared
+nested retained trees, nested streamed trees, root-only streamed observation and
+nested streaming with automatic GC temporarily deferred. Six unchanged model
+conditions ran in each mode. The 16 fresh timing workers retained all 8,640
+one-read admission attempts and 68,952 root records; paired functional signatures
+matched and refused windows produced zero model calls.
+
+Four additional fresh processes performed 20 explicit full-GC probes at
+0/5,000/15,000/29,718 retained historical metadata rows. Full collection took
+143.3500–157.1152 ms at zero rows and 212.5651–229.4958 ms at 29,718 rows.
+These are metadata-dose observations, not a reconstruction of the original
+application heap or an attribution of every historical pause. Full GC also
+has free-list effects; fixed dose order and OS/cache history remain limitations.
+
+GC-deferred workers restored the normal policy and recorded full cleanup outside
+window timers: 676.0642–695.9074 ms, collecting 2,856,736–2,886,340 objects.
+That delayed work is not free and must not be hidden. The controls support a
+collector/measurement contribution, not disabling GC as a production fix,
+subtracting overhead from the original results or declaring a passing 20 ms p95.
+The matched contrasts and all path distributions are preserved in the diagnostic
+report, `paired-deltas.csv`, `path-latency.csv` and each worker's cleanup record.
+
+## Completed Windows scheduling and I/O evidence
+
+A separate reference process and Windows-traced process each retained 540 fresh
+attempts and 4,320 application-root timings. Their functional signatures matched,
+with zero model calls on rejected windows and no training or threshold selection.
+Capture source was `624807b9095b7be41f7c3bbe7d18a31d50f95478`.
+All 27 saved native markers, clock brackets, zero final-header event/buffer-loss
+counts and scoped process/thread lifetimes were checked. Export-relative clock
+uncertainty was 31.1 microseconds; native accounting uses exact validated QPC ticks.
+
+The public evidence at `results/week-6/keegan/windows-os-evidence/` was recorded at
+`b91088a60cd88e7cea66bf01ceb297efce23543f`, with reporting source
+`8ba6a711e205fe962a125cffea92c1909725cb94`. Its manifest SHA-256 is
+`058507ddc3166abc7bd9a87065a1f8b9a7e5f97162fedd39ddb2561c95110b4a`.
+All 4,320 traced roots have complete scheduling coverage and reconciled disjoint
+wall-time partitions. The report retains 2,106 distinct slow/tail/maxima records,
+144 groups and all eight roots above 100 ms. GC overlaps 2,160 roots; measured
+ready-but-not-dispatched time occurs in 2,639. One root overlaps scoped main-thread
+file operations; none overlaps the scoped disk or hard-fault intervals. This is
+scoped observation, not proof of no cached/metadata/other-thread I/O or blocking.
+
+Four long cases have 286.4601–432.8645 ms GC overlap, about 90–98% of those roots.
+A different 142.4030 ms case has only 0.3193 ms GC but 56.1910 ms ready delay.
+The largest root is a 3,735.7236 ms first-condition-use admission/first-window
+path, including 3,690.2300 ms reconstruction and 274.7025 ms GC inside that stage.
+Two roughly 102–107 ms SNN cases have less than 1 ms GC and about 9.6–12.5 ms
+ready delay; their remaining execution is not fully explained. The eight-case
+table and all nested-stage records preserve these distinctions rather than
+assigning every outlier to GC.
+
+The CSwitch v5 full native schema remains unavailable. A 24,495-event prefix
+cross-check exposed an erroneous 0/1 interpretation of opaque byte13 in the
+initial review. Its actual zero/nonzero export rendering was checked, the failed
+review/extraction preserved, and byte13 excluded from accounting; its native
+wait-mode meaning was not claimed. Known scheduling fields, validated lifetimes
+and same-CPU ISR/DPC intervals support the bounded accounting, not complete
+schema or causal validation.
+
+The sanitized export verifies eight artifact hashes and the completion binding.
+It contains numeric durations/counts and approved project labels, not raw ETL,
+kernel payloads, absolute clocks, OS IDs, addresses, private paths or IRP tokens.
+The saved ETL and recovery evidence remain private; exporting the report required
+no new recording, ETL scan, model loading or timing. COMPLETE means the filtered
+accounting export finished, not that every causal question is resolved.
+
+Reference precedes traced in fixed order, so their observed differences do not
+isolate tracing overhead. Allocation stacks, cache/frequency/thermal effects,
+dependency-specific waits and other-thread activity remain unresolved. New
+tracing cannot retroactively prove OS causes for earlier untraced roots.
+`complete_causal_attribution_established` and `tracing_overhead_isolated` remain
+false. No original timing, refusal, first-use observation or target was replaced.
 
 ## Instruction sources
 
