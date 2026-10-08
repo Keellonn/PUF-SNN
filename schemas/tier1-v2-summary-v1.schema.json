@@ -1,0 +1,540 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "run_id",
+    "validation_label",
+    "execution_source_commit",
+    "config_sha256",
+    "trial_plan_sha256",
+    "evidence_complete",
+    "expected_behavior_observed",
+    "counts",
+    "reasons",
+    "coverage",
+    "latencies",
+    "violations",
+    "recovery",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "puf-snn-tier1-v2-summary-v1"
+    },
+    "experiment_id": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "run_id": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "validation_label": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "execution_source_commit": {
+      "anyOf": [
+        {
+          "type": "string",
+          "maxLength": 512
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "trial_plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evidence_complete": {
+      "type": "boolean"
+    },
+    "expected_behavior_observed": {
+      "type": "boolean"
+    },
+    "counts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "phase",
+          "role",
+          "group",
+          "variant",
+          "scheduled",
+          "submitted",
+          "A",
+          "R",
+          "F",
+          "U",
+          "submitted_failures",
+          "authentication_accept",
+          "authentication_reject",
+          "estimand",
+          "interval"
+        ],
+        "properties": {
+          "phase": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "group": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "variant": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheduled": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "submitted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "A": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "R": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "F": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "U": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "submitted_failures": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authentication_accept": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authentication_reject": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "estimand": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "interval": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method",
+                  "confidence",
+                  "alpha",
+                  "sides",
+                  "tails",
+                  "n",
+                  "x",
+                  "rate",
+                  "lower",
+                  "upper"
+                ],
+                "properties": {
+                  "method": {
+                    "const": "clopper_pearson"
+                  },
+                  "confidence": {
+                    "const": 0.95
+                  },
+                  "alpha": {
+                    "const": 0.05
+                  },
+                  "sides": {
+                    "const": 2
+                  },
+                  "tails": {
+                    "const": "equal"
+                  },
+                  "n": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "x": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "rate": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "lower": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "upper": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "phase",
+          "role",
+          "group",
+          "variant",
+          "expected",
+          "observed",
+          "count"
+        ],
+        "properties": {
+          "phase": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "group": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "variant": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "expected": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "observed": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "group",
+          "dimension",
+          "value",
+          "count"
+        ],
+        "properties": {
+          "group": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "dimension": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "latencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "phase",
+          "role",
+          "group",
+          "variant",
+          "result",
+          "reason",
+          "clock_mode",
+          "metric",
+          "count",
+          "mean_ms",
+          "p50_ms",
+          "p95_ms",
+          "p99_ms",
+          "max_ms",
+          "p99_status"
+        ],
+        "properties": {
+          "phase": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "group": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "variant": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "result": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "clock_mode": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "metric": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mean_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "p50_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "p95_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "p99_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "max_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "p99_status": {
+            "type": "string",
+            "maxLength": 512
+          }
+        }
+      }
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "trial_id",
+          "checks"
+        ],
+        "properties": {
+          "trial_id": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 512
+            }
+          }
+        }
+      }
+    },
+    "recovery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "parent_trial_id",
+          "required",
+          "attempted",
+          "accepted",
+          "rejected",
+          "failed",
+          "not_submitted",
+          "complete"
+        ],
+        "properties": {
+          "parent_trial_id": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "required": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "attempted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "accepted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rejected": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "not_submitted": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "complete": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 512
+      }
+    }
+  }
+}

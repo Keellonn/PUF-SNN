@@ -1,20 +1,24 @@
 # William's Research Log
 
 **Owner:** William Wallace
-**Current week:** Week 5
-**Last updated:** October 1, 2026
+**Current week:** Week 6
+**Last updated:** October 8, 2026
 
 # Current research question
+
 Can a software prototype using a simulated noisy PUF-derived session credential reject replayed, modified, or misattributed Quest 3 head-motion windows before SNN inference while meeting our attack-rejection, macro-F1-loss, and latency targets?
 
 # My Portion of the Project
+
 I am responsible for, the simulated PUF, PUF measurements, credential reconstruction, session authentication, protecting and verifying each window, and Authentication attacks and results
 Together we will complete the window format, threat model, integration, review of literature, presentation, and the final evaluation.
 
 # Week 1: Project Onboarding and PUF / Authentication Planning
 
 ## Week 1 summary
+
 During Week 1, I
+
 - Joined the project and took ownership of the PUF / authentication side
 - Reviewed the initial research specification, presentation, and project architecture
 - Learned the role of PUFs within the proposed authentication pipeline
@@ -30,7 +34,9 @@ The main goal of Week 1 was to understand how my part of the project connected t
 The most important distinction was that the PUF is used to establish device/session trust, while the authentication gate protects individual sensor windows. The SNN does not perform cryptographic authentication.
 
 ## Initial PUF / authentication plan
+
 I devided my portion of the initial system into three stages,
+
 1. Simulate device-specific PUF behavior
 2. Reconstruct stable credential material from noisy PUF responses
 3. Use the reconstructed credential for session and window authentication
@@ -40,7 +46,9 @@ Simulated PUF → credential reconstruction → session authentication → prote
 At this stage, these were design concepts rather than implemented components.
 
 ## Initial authentication threat model
+
 The authentication side of the project was intended to detect
+
 - Replayed windows
 - Windows from the wrong session
 - Windows from the wrong device
@@ -55,7 +63,9 @@ Authentication should determine whether a window has the expected source, integr
 A separate abnormality detector determines whether an authenticated motion pattern itself appears suspicious.
 
 ## Initial PUF questions
+
 Before implementation, I needed to determine
+
 - What type of PUF should be simulated
 - How simulated devices should differ from each other
 - How noise should affect repeated PUF measurements
@@ -65,6 +75,7 @@ Before implementation, I needed to determine
 - How PUF behavior would eventually connect to credential reconstruction
 
 ## Week 1 deliverables
+
 - Defined my PUF / authentication responsibilities
 - Initial PUF and authentication architecture
 - Initial authentication threat model
@@ -75,8 +86,10 @@ Before implementation, I needed to determine
 - Contributions to the first presentation
 
 ## Feedback going into Week 2
+
 Dr. Garcia's feedback showed that the project needed to move from a high-level plan toward an implementation-ready specification.
 The main changes affecting my portion were
+
 - Clearly label the PUF as simulated
 - Simplify the initial PUF design
 - Separate PUF behavior, credential reconstruction, and authentication into distinct layers
@@ -89,7 +102,9 @@ The main changes affecting my portion were
 # Week 2: Simulated PUF Implementation and Evaluation
 
 ## Week 2 summary
+
 During Week 2, I
+
 - Read and organized Dr. Garcia's feedback for the PUF / authentication portion
 - Reduced the PUF design into three clearly separated layers
 - Studied ring-oscillator PUF behavior and the measurements needed for the pilot
@@ -108,28 +123,35 @@ During Week 2, I
 The main Week 2 result is a working Layer 1 PUF behavior model.
 
 ## Three-layer PUF / authentication design
+
 I separated my portion of the system into three layers.
 
 ### Layer 1 - Simulated PUF behavior
+
 Simulated PUF behavior → device-specific noisy response bits → BER / reliability / uniqueness / uniformity
 This is the part implemented during Week 2.
 
 ### Layer 2 - Credential reconstruction
+
 Noisy PUF response → helper data / error correction → stable secret
 This will be designed using the behavior measured in Layer 1 rather than assuming an error-correction method in advance.
 
 ### Layer 3 - Session and window authentication
+
 Stable secret → session authentication → session key → HMAC-protected Quest windows → authentication gate → SNN
 This comes after credential reconstruction works reliably.
 
 ## Simulated RO-PUF design
+
 The simulator models a ring-oscillator PUF.
 Each simulated device contains a set of ring oscillators with persistent manufacturing variation.
 Two oscillators are compared to generate one response bit:
+
 - If RO A is faster than RO B, the response bit is 1
 - Otherwise, the response bit is 0
 
 The current baseline uses
+
 - 6 simulated devices
 - 128 ring oscillators per device
 - Adjacent oscillator pairing
@@ -142,35 +164,44 @@ Manufacturing variation is generated once when the device is created and remains
 Measurement noise is generated again during each reading so that the simulator can model unstable response bits.
 
 ## How to Run
+
 Instructions on how to run and setup the simulation are given in the file: puf-auth-design.md
 Within that markdown are exact instructions on how to configure and run the simulation.
 
 ## Enrollment reference
+
 Each simulated device is measured under reference conditions to create an enrollment reference response.
 The enrollment response acts as the baseline response for that device.
 Later noisy readings are compared against the enrollment response to measure how much the PUF changes between readings.
 This is not yet the final cryptographic enrollment protocol. It only provides the reference needed to characterize PUF behavior.
 
 ## PUF measurements
+
 The simulator currently measures four primary properties.
 
 ### Raw bit error rate
+
 BER measures the fraction of response bits that differ between a later noisy reading and the enrollment reference.
 
 ### Reliability
+
 Reliability measures how consistently the same device reproduces its enrolled response.
 Lower BER corresponds to higher reliability.
 
 ### Uniqueness
+
 Uniqueness compares enrollment responses from different simulated devices.
 The goal is for different devices to produce meaningfully different responses.
 
 ### Uniformity
+
 Uniformity measures the fraction of response bits that are 1.
 This is used to check whether responses contain a reasonable balance of 1s and 0s.
 
 ## Experiment pipeline
+
 The implemented experiment follows this process,
+
 1. Load one experiment configuration
 2. Create simulated devices
 3. Generate persistent manufacturing characteristics
@@ -185,7 +216,9 @@ The implemented experiment follows this process,
 12. Generate plots
 
 ## Plots produced
+
 The simulator produces plots for
+
 - Same-device versus different-device Hamming-distance behavior
 - BER versus measurement-noise level
 - Response uniformity across devices
@@ -193,9 +226,11 @@ The simulator produces plots for
 These plots provide a visual check that the simulator behaves in the expected direction.
 
 ## Reproducibility and testing
+
 The simulator is configuration driven so that one configuration controls an experiment.
 Random seeds are used so that the same configuration and seed can reproduce the same simulated devices and measurements.
 I also added automated tests for
+
 - Device creation
 - Persistent manufacturing variation
 - RO pairing and response generation
@@ -211,7 +246,9 @@ The simulator was integrated into the shared repository and successfully run on 
 This helped verify that the project was not only working on my original development environment.
 
 ## Software and documentation work
+
 I also completed
+
 - A PowerShell simulation launcher
 - Requirements and environment setup
 - Configuration documentation
@@ -223,6 +260,7 @@ I also completed
 The simulator can now be cloned, configured, and run from the shared repository without relying on my original local development environment.
 
 ## What I learned
+
 The biggest lesson from Week 2 was that a PUF response should not immediately be treated as a cryptographic key.
 The first step is to measure how the simulated PUF actually behaves.
 Manufacturing variation creates the differences between devices, while measurement noise can cause the same device to produce slightly different responses across readings.
@@ -230,7 +268,9 @@ This is why BER, reliability, uniqueness, and uniformity need to be measured bef
 I also learned that enrollment at this layer is simply the creation of a reference response. The more complicated helper-data and key-reconstruction process belongs to the next layer.
 
 ## Current limitations
+
 The current implementation
+
 - Is a software simulation rather than a physical Quest PUF
 - Does not yet perform credential reconstruction
 - Does not yet implement helper data or error correction
@@ -242,6 +282,7 @@ The current implementation
 These limitations are intentional because Week 2 focuses only on measuring PUF behavior before moving into authentication.
 
 ## Week 2 deliverables
+
 - Configurable simulated RO-PUF
 - Enrollment reference generation
 - Repeated noisy PUF measurements
@@ -260,6 +301,7 @@ These limitations are intentional because Week 2 focuses only on measuring PUF b
 - Updated Week 2 presentation material
 
 ## Pairing design choice
+
 Adjacent disjoint pairing was selected as a simple and reproducible preliminary construct for the software pilot. There is no need to introduce more complexity such as random pairing tables or having oscillators being depended on for multiple bits. Anyone who runs the simulator will understand immediately which oscillators form the response bits.
 128 ROs -> 64 fixed comparisons -> 64-Bit response (This is very basic and easy to understand)
 Since the pairs are disjoint, an oscillator does not influence multiple response bits. This makes the interpretation much cleaner, if bit 12 were to become unstable it will be very easy to find the specific pair rather than a large connection of shared comparisons.
@@ -271,6 +313,7 @@ Can the noisy response reconstruct a stable credential?
 
 Other pairing options I looked at,
 Fixed randomized disjoint pairing,
+
 - Would introduce another random variable
 - Does not provide any real benefit that adjacent pairing does not already have
 - Would require storing the pairing map to understand data
@@ -289,18 +332,22 @@ This simulator does not yet model physical oscillator placement so conclusions r
 ## Metric Definitions
 
 ### Raw Bit Error Rate (BER)
+
 For device d, let R_d be the 64-bit enrollment/reference response and X_d,t be a later noisy reading.
 BER_d,t = H(R_d, X_d,t) / 64
 Thus, the implemented raw BER is the normalized Hamming distance between a device's reference response and a later reading from the same device.
 The simulator reports the BER,
+
 - per read in metrics.csv
 - per device in devices.csv
 - per run in summary.csv
 - per noise sweep point in noise_sweep_summary.csv
 
 ## Enrollment / Reference-Response Procedure
+
 Each simulated device is created using persistent manufacturing variation which is fixed across the measurements.
 For the baseline experiment, the enrollment/reference response is generated using:
+
 - environmental offset = 0.0
 - measurement noise standard deviation = 0.0
 - aging disabled
@@ -310,17 +357,20 @@ The response is not averaged or majority-voted.
 That same stored reference response is used when calculating BER and reliability for all later noisy measurements of that device.
 
 ## Enrollment limitation
+
 The current enrollment procedure is idealized since the reference response is generated with zero measurement noise.
 This simplifies the Week 2 behavioral evaluation however, it does not yet measure the effect of noisy enrollment on later credential reconstruction. The layer 2 reconstruction experiments should test if stable credential recovery remains possible with more realistic enrollment conditions.
 
 ## Generated Plots
 
 ### Plot 1, Same-device vs different-device Hamming distance
+
 The same-device measurements compare the noisy baseline reading against the enrollment/reference response of the same simulated device. Different-device measurements compare the enrollment responses of every unordered pair of simulated devices.
 In this six-device run, the same device distances are concentrated close to zero and the large majority below 0.10. In contrast, the 15 inter-device reference comparisons are concentrated between around 0.40 and 0.60. No visible overlap occurs between the two distributions in this run.
 The behavior is consistent with the intention of the simulator, repeated measurements of the same simulated device remains closely to its reference response where as different simulated devices differ in around half of their response bits. The seperation shows evidence that the simulated manufacuring variation creates device specific response while the noise produces substantially slammer within device variation.
 
 ### Plot 2, BER vs Measurement Noise
+
 This experiment varies measurement-noise standard deviation while retaining the same simulated devices and fixed enrollment responses. The tested noise levels are 0.0, 0.05,
 0.10, 0.25, 0.50, and 1.0.
 Raw BER increases as the measurement noise increases. At zero noise, the repeated response matches the noiseless enrollment reference. As the noise rises, the BER follows and rises with it.
@@ -328,14 +378,17 @@ The result demonstrates that the simulator responds in the expected direction wi
 The nominal 0.10 noise operating point produces the raw BER of around 3% in this representative run, which is consistent with the baseline 20 run experiment. This error level appears low enough to justify investigating a credential reconstruction, error-correcting mechanism although, BER alone does not demonstrate that reconstruction will succeed. Layer 2 needs to measure actual reconstruction-success and false-rejection rates for the selected code.
 
 ### Plot 3, Uniformity by Device
+
 Uniformity is calculated from taking the fraction of bits in an enrollment/reference response that are equal to 1. The dashed line indicates 0.5 meaning a perfect balance of zeros and ones.
 The six devices in this run produce reference response unifomities from around 0.41 to 0.55. Five of the six devices are very close to that 0.5 reference while one is much lower at around 0.41.
 These results show that the current response are not dominated by either zeros or ones in their response. The 20 run experiment also confirms this.
 It is important to understand that uniformity near 0.5 does not establish cryptographic entropy, independence between response bits, or key strength. It only measures the balance of zeros and ones of these responses.
 
 ## Response Bit bias and Stability
+
 To determine if individual PUF response positions exhibited systematic bias or unusually high instability, the corrected set of 20 six-device baseline simulations was pooled.
 The analysis included,
+
 - 20 independent seeded runs
 - 6 devices per run
 - 120 total enrollment/reference responses
@@ -345,14 +398,17 @@ The analysis included,
 - 768,000 total bit comparisons
 
 ### Response bit balance
+
 Across the 64 response positions, the fraction of enrollment responses equal to 1 ranged from 39.17% to 60.83%, with an average of 50.07%.
 Bit 56 had the lowest observed fraction of ones at 39.17% where as bit 15 has the highest at 60.83%.
 No response position approached an all-zero or all-one population. These results thus do not indicate a fixed bit-position bias in the current sample. However, it is not established that the bit positions are statisically unbiased across future simulated or physical devices.
 
 ### Response bit instability
+
 The per-bit repeated-read flip rates ranged across 1.53% - 5.31%.
 The most unstable observed bit was bit 61 which had a 5.31% flip rate.
 The highest 5 observed flip rates occured at bits,
+
 - Bit 61, 5.31%
 - Bit 23, 5.03%
 - Bit 47, 4.54%
@@ -363,14 +419,17 @@ The mean per-bit flip was 3.207552% which perfectly matches the raw BER calculat
 The results show an overall measureable variation in stability between bit positions however, the do not establish that specific positions are intrinsically unstable. More device samples would be needed to determine if these patterns are to persist.
 
 ## Testing Reliability and Uniqueness Change when Measurement Noise and Device Variation are Changed Independantly
+
 Manufacturing standard deviation was varied from 0.25 to 2.0 within a fixed environment. The raw BER decreased from 11.31% at manufacturing std at 0.25 to roughly 1.45% at 2.0. And reliability went from 88.69% to 98.55%. Meaning that larger device-specific oscillator offesets will increase the comparison margin between paired oscillators and making noise less likely to reverse a response bit.
 The inter-device uniqueness stayed constant throughout the experiment. It held 47.71%. Under the current model, manufacturing variation scales zero-mean per-oscillator offsets, while response bits only depend on which oscillator in each pair has a larger frequency. Then, positive rescaling changes the magnitude of pairwise differences but it does not change the ordering for the same seeded devices. Thus, the enrollment responses remain unchanged as the manufacturing standard deviation changes.
 The result of this identifies a limitation of the current behavioral model, manufacturing_std controls the seperation margin and thus reliability under measurement noise, but it will not alter the expected response ordering or uniqueness. Maybe a future physical or more detailed process could include process effects that may cause a change in uniqueness with changes in manufacturing conditions.
 
 ## Next step for Week 3
+
 The next step is Layer 2: credential reconstruction.
 I will use the measured PUF behavior to determine how a noisy PUF response can be converted into a repeatable stable secret.
 This will include
+
 - Selecting a justified helper-data / error-correction approach
 - Measuring reconstruction success
 - Measuring failed reconstruction / session false-rejection behavior
@@ -383,6 +442,7 @@ After stable reconstruction works, the next step will be session and window auth
 Layer 2 will begin from the frozen Week 2 PUF simulator.
 
 PUF configuration:
+
 - Devices: 6
 - Ring Oscillators: 128
 - Pairing Scheme: Adjacent
@@ -395,24 +455,28 @@ PUF configuration:
 
 Week 2 simulation measurements (20 Different Simulations):
 Mean:
+
 - Raw BER: 3.2075521%
 - Reliability: 96.7924479%
 - Uniqueness: 49.578125%
 - Uniformity: 50.0651042%
 
 Standard Deviation:
+
 - Raw BER: 0.4237424%
 - Reliability: 0.4237424%
 - Uniqueness: 1.6093045%
 - Uniformity: 2.785459%
 
 Min:
+
 - Raw BER: 2.2630208%
 - Reliability: 95.7682292%
 - Uniqueness: 45.625%
 - Uniformity: 45.0520833%
 
 Max:
+
 - Raw BER: 4.2317708%
 - Reliability: 97.7369792%
 - Uniqueness: 52.6041667%
@@ -429,6 +493,7 @@ These measurements and readings are the Layer 1 Baseline for selecting the layer
 ## PUF Response and Measured Error Behavior
 
 ### Available PUF Response Length
+
 The current simulated design contains 128 ring oscillators with fixed adjacent disjoint pairing. The pairs follow this structure:
 (RO0, RO1), (RO2, RO3), ... , (RO126, RO127)
 
@@ -443,6 +508,7 @@ Credential reconstruction must operate on the 64 response bits that are currentl
 
 My baseline configuration is as follows:
 PUF configuration:
+
 - Devices: 6
 - Ring Oscillators: 128
 - Pairing Scheme: Adjacent
@@ -509,6 +575,7 @@ BCH (63,36,t=5) can represent a 36-bit message in a 63-bit codeword and will all
 Binary BCH construction was selected since the observed PUF errors occur directly as binary response-bit flips. BCH codes provide a configurable bit-error correction capability and can be matched very closely to the available 64-bit PUF response.
 
 Several alternatives were considered,
+
 - A repetition code could be simple however, it would consume a large amount of the available response bits just to protect a small credential meaning it would be inefficient.
 - A Hamming code would only bring limited correction capability compared to the error distribution measured.
 - The previously proposed BCH(255,63,t=30) construction was rejected for the current design because the validated PUF produces only 64 response bits. Selecting a 255-bit code would require changing the PUF response rather than designing around the behavior that was actually measured.
@@ -528,6 +595,7 @@ This value is only an analytical plan. The Week 2 results show that response-bit
 ### Stored Material
 
 Device side material:
+
 - BCH/helper data value W
 - Reconstruction configuration
 - Credential verification information
@@ -535,6 +603,7 @@ Device side material:
 The device will not persistently store the reconstructed credential itself within the initial design. The credential will be reconstructed from the PUF reading.
 
 Trusted verifier:
+
 - Device enrollment identifier
 - Corresponding credential or derived secret needed for later session-key establishment
 
@@ -546,6 +615,7 @@ The current threat model treats the verifier and enrollment database as trusted.
 
 In the layer 2 experiment each device will have a known credential that is established during enrollment.
 For each reconstruction attempt:
+
 - Generate a noisy PUF response from the device
 - Combine noisy response with the stored helper data
 - Apply the BCH decoding to recover a credential
@@ -562,6 +632,7 @@ For layer 2, a false rejection happens when a real reading from the correct devi
 FRR = real reconstruction failures / total real reconstruction attempts
 
 A real attempt uses:
+
 - The correct simulated device
 - That device's correct helper fata
 - The intented operating condition
@@ -573,6 +644,7 @@ Reconstruction success rate = 1 - FRR.
 ### Reconstruction Experiment Outputs
 
 Every reconstruction attempt will record:
+
 - Device ID
 - Random seed
 - PUF BER for the reading
@@ -584,9 +656,11 @@ Every reconstruction attempt will record:
 - Reconstruction latency
 
 ### Transition to Session Authentication
+
 After successful reconstruction the credential that is recovered will not be directly used for the per-window HMAC key. It will rather be used to serve as an input to a session key-derivation step.
 
 The anticipated flow will go as follows:
+
 - PUF response
 - Credential Reconstruction
 - Reconstructed credential
@@ -599,6 +673,7 @@ The needed layer 3 session message and key derivation details will be implemente
 ## Limitation of Reconstruction Design
 
 The current limiations are:
+
 - The PUF response is made from a synthetic simulator
 - Enrollment is idealized and noiseless
 - The current response length is only 64 bits
@@ -609,11 +684,14 @@ The current limiations are:
 # Layer 2, Credential Reconstruction Implementation
 
 ## Purpose
+
 Layer 2 takes the noisy 64 bit response from layer 1 and attempts to reonstruct the same device credential that was established during enrollment.
 The main goal for this layer is to determine if a stable credential can be recovered from a noisy response before the credential is used for layer 3 session authentication.
 
 ## Reconstruction Design
+
 The current design uses a BCH(63,36,t=5) error correcting code,
+
 - Layer 1 produces a 64-bit PUF response
 - Layer 2 uses response bits 0 through 62
 - Bit 63 is omitted because the selected BCH code operates on 63-bit codewords
@@ -622,7 +700,9 @@ The current design uses a BCH(63,36,t=5) error correcting code,
 - BCH can correct up to five bit errors in the selected 63-bit response
 
 ## Enrollment Process
+
 Within the enrollment process,
+
 - A trusted 64-bit reference PUF response is provided
 - A 32-bit credential is generated for the simulated device
 - Four zero padding bits are appended to the credential
@@ -631,7 +711,9 @@ Within the enrollment process,
 - The resulting 63-bit value is stored as public helper data
 
 ## Reconstruction Process
+
 During reconstruction,
+
 - A noisy 64-bit PUF response is received
 - Bits 0 through 62 are selected
 - The noisy response is XORed with the stored helper data
@@ -642,7 +724,9 @@ During reconstruction,
 The reconstruction process does not compare the candidate credential against the enrolled credential. The credential correctness is measured by the experiment evaluator.
 
 ## Reconstruction Outcomes
+
 A reconstruction attempt produces,
+
 - `candidate_valid_format`; BCH returned a candidate credential with valid padding
 - `decoder_failure`; the BCH decoder could not return a usable codeword
 - `invalid_format_or_padding`; BCH returned a message, but the required padding bits were invalid
@@ -650,6 +734,7 @@ A reconstruction attempt produces,
 A valid-format candidate is not automatically known to be the correct credential. The experiment evaluator later determines whether the candidate matches the enrolled credential.
 
 ## Metrics Collected
+
 The results measure:
     - Total reconstruction attempts
     - Successful credential reconstructions
@@ -670,6 +755,7 @@ The results measure:
     - Per device reconstruction performance
 
 ## Current Limitations
+
 - The PUF responses are simulated rather than collected from a physical PUF
 - Enrollment currently uses an ideal noiseless reference response
 - The 32-bit credential is intended to validate the reconstruction mechanism, not provide production-grade cryptographic strength
@@ -679,13 +765,16 @@ The results measure:
 # Layer 2, Experiment Results
 
 ## Experiment Overview
+
 Much like the layer 1 baseline I established through experiments, the layer 2 baseline was defined using a 20 seperate seed experiment. I took the 20 runs from the layer 1 baseline and ran the layer 2 simulation and recorded the important stats.
 
 ## Results
+
 Seed-specific statistics and data is stored in,
 \results\week3\will\layer2baseline.csv
 
 Overall statistics,
+
 - Attempt total: 12000
 - Success Count: 11805
 - Success Rate: 98.375%
@@ -697,15 +786,18 @@ Overall statistics,
 - Mean Latency: 4865066.308 ns
 
 ## Important Takeaways Before Layer 3
+
 Across the 20 seeded Layer 2 runs, the reconstruction system successfully recovered the enrolled credential in 11,805 of 12,000 attempts, giving an observed reconstruction success rate of 98.375%. The observed false rejection rate (FRR) was 1.625%. This is above the current provisional 1% target, so the present BCH(63,36,t=5) construction should be treated as a working baseline rather than a final optimized reconstruction design. Most reconstruction failures were BCH decoder failures. Of the 195 total failures, 186 were decoder failures and 7 produced invalid-format or invalid-padding results. The remaining 2 failures were valid-format wrong-credential reconstructions, or miscorrections. These cases are especially important because Layer 2 can return a structurally valid credential without knowing whether it is the originally enrolled credential. The miscorrection cases justify the Layer 3 key-confirmation step. Layer 3 must independently verify possession of the expected credential-derived key rather than assuming that every valid-format Layer 2 result is correct. Reconstruction performance varied across the 20 simulated PUF populations. The pooled 98.375% success rate therefore does not imply that every simulated device or seed has the same reconstruction reliability. The results demonstrate that BCH-based reconstruction is generally successful under the nominal Layer 1 noise conditions, but the observed failure rate shows that reconstruction reliability remains an important limitation of the current pilot. The recorded mean reconstruction latency was approximately 4.87 ms across these single-run experiments. The maximum recorded latency of approximately 2.39 seconds is dominated by the first cold BCH decode/JIT initialization and should not be interpreted as normal steady-state reconstruction latency. Layer 2 establishes a candidate credential only. It does not authenticate sensor windows or provide replay, freshness, ordering, or payload-integrity protection. Those responsibilities are handled by Layer 3. These results support proceeding to Layer 3 with the current reconstruction design as the frozen pilot baseline while clearly documenting the observed 1.625% FRR and the existence of rare valid-format miscorrections.
 
 # Layer 3 Implementation
 
 ## Purpose
+
 Layer 3 takes a credential candidate produced by Layer 2 and uses it to establish an authenticated session.
 Once the session is established, Layer 3 protects each motion window before it is released to the inference pipeline.
 
 Layer 3 includes,
+
 - Device and session binding
 - Credential possession confirmation
 - Payload integrity
@@ -716,10 +808,12 @@ Layer 3 includes,
 - Session lifecycle enforcement
 
 ## Session Establishment
+
 Layer 3 begins with a ReconstructionResult produced by Layer 2.
 A valid-format reconstructed credential allows a session attempt to begin, but it does not prove that the reconstructed credential is correct.
 
 The session establishment process follows,
+
 - The sender begins a session attempt using the reconstructed credential
 - The sender generates a fresh client nonce
 - The verifier returns fresh session information and a server nonce
@@ -732,9 +826,11 @@ The session establishment process follows,
 - The session becomes active only if both sides demonstrate possession of matching credential-derived key material
 
 ## Session Key Derivation
+
 The current implementation derives the Layer 3 session key with HKDF-SHA-256.
 
 The session key is derived from,
+
 - The reconstructed credential
 - Fresh session randomness
 - The session transcript
@@ -743,10 +839,12 @@ The verifier does not accept a sender-supplied session key. It independently der
 The current 32-bit credential is used only as a pilot credential to validate the mechanism. It is not intended to provide production-grade cryptographic strength.
 
 ## Wire Protocol 2.0
+
 Layer 3 uses Wire Protocol 2.0 for authenticated motion windows.
 Each motion window is converted into a deterministic fixed-width binary representation before authentication.
 
 Protected information is as follows,
+
 - Protocol information
 - Device identifier
 - Session identifier
@@ -763,7 +861,9 @@ Protected information is as follows,
 The serialized binary window is the data protected by the HMAC.
 
 ## Window Authentication
+
 For each window, the sender,
+
 - Assigns the current device identifier.
 - Assigns the active session identifier.
 - Assigns the next sequence number.
@@ -772,6 +872,7 @@ For each window, the sender,
 - Creates the transport envelope containing the authenticated bytes and tag.
 
 Afterwards the verifier,
+
 - Parses the message.
 - Looks up the device.
 - Looks up and validates the session.
@@ -782,9 +883,11 @@ Afterwards the verifier,
 - Commits the final decision and audit information.
 
 ## Sequence and Replay Protection
+
 The current implementation uses strict consecutive sequence numbers.
 The first accepted window uses sequence number 0.
 The later windows follow,
+
 - The expected next sequence number is accepted
 - A repeated sequence number is treated as a duplicate
 - A lower sequence number is treated as stale
@@ -795,12 +898,15 @@ HMAC protects the sequence number and other protected metadata from modification
 Replay protection itself comes from verifier-side session and sequence tracking.
 
 ## Accepted Payload Release
+
 Inference is only allowed to receive a window after successful verification.
 Verifier.release_accepted() releases the immutable window that was actually authenticated.
 This prevents one window from being authenticated while a different window is passed into inference.
 
 ## Latency Measurements
+
 The Layer 3 runner is able to measure,
+
 - Session establishment latency
 - Sender preparation latency
 - HMAC latency
@@ -809,6 +915,7 @@ The Layer 3 runner is able to measure,
 - Audit I/O latency
 
 ## Current Limitations
+
 - The current implementation is a software prototype
 - Timing measurements are workstation/Python measurements rather than Quest, FPGA, or embedded timing measurements
 - The Layer 3 demonstration uses a fixed synthetic valid credential instead of a noisy Layer 2 reconstruction
@@ -818,6 +925,7 @@ The Layer 3 runner is able to measure,
 - Formal attack evaluation is performed separately using the Tier 1 experiment
 
 ## Important Takeaways Before Tier 1 Attacks
+
 - Layer 3 establishes an authenticated session using credential-derived key material
 - Motion windows are protected for integrity, device/session binding, freshness, and ordering before inference
 - Layer 3 provides the credential confirmation that Layer 2 cannot provide by itself
@@ -828,8 +936,10 @@ The Layer 3 runner is able to measure,
 # Tier 1 Attack Implementation
 
 ## Purpose
+
 The Tier 1 experiment evaluates attacks that should be rejected by the Layer 3 authentication gate before motion data is allowed to reach inference.
 The attacks focus,
+
 - Replay protection
 - Session binding
 - Device binding
@@ -841,9 +951,11 @@ Tier 1 does not evaluate whether an authenticated motion pattern is semantically
 Noise, drift, freezes, pose jumps, and other correctly authenticated motion changes all belong to Tier 2 experiments which are not yet implemented.
 
 ## Threat Model
+
 The Tier 1 attacker can observe and manipulate transmitted authenticated traffic but does not possess the session key.
 
 The attacker may,
+
 - Replay a previously valid message
 - Change protected device information
 - Change protected session information
@@ -855,9 +967,11 @@ The attacker does not have access to the credential-derived authentication key.
 An attack is considered successful only if manipulated or replayed traffic is incorrectly accepted by the verifier.
 
 ## Legitimate Control
+
 The legitimate-control trials provide the positive baseline.
 
 A correctly generated window with,
+
 - The correct device
 - The correct active session
 - A valid HMAC
@@ -866,6 +980,7 @@ A correctly generated window with,
   shall be accepted
 
 ## Same-Session Replay
+
 The attacker resubmits a previously accepted authenticated window in the same active session.
 The original message and HMAC remain unchanged.
 Since the message was previously accepted, the sequence number has already been consumed.
@@ -874,6 +989,7 @@ The expected rejection reason,
 duplicate_sequence
 
 ## Prior-Session Replay
+
 The attacker captures a legitimate authenticated window from one session.
 A new valid session is later established and the previous session becomes inactive.
 The attacker then replays the old window.
@@ -882,6 +998,7 @@ The expected rejection reason,
 inactive_session
 
 ## Cross-Device Substitution
+
 The attacker takes a valid authenticated message for one device and changes the protected device identity while retaining the original authentication tag.
 Changing the protected device identifier changes the authenticated data.
 Because the attacker cannot generate a new valid tag, verification should fail.
@@ -890,6 +1007,7 @@ The expected rejection reason,
 invalid_tag
 
 ## Payload Modification
+
 The attacker modifies part of the motion payload after the sender has generated the HMAC.
 The original authentication tag is retained.
 Because the sensor payload is included in the authenticated Wire-2 representation, the modified payload should fail HMAC verification.
@@ -898,6 +1016,7 @@ The expected rejection reason,
 invalid_tag
 
 ## Metadata Modification
+
 The attacker modifies protected metadata after authentication.
 The Tier 1 experiment modifies protected sequence information while retaining the original HMAC.
 Because the sequence number is part of the authenticated data, the modified message should fail authentication.
@@ -906,6 +1025,7 @@ The expected rejection reason,
 invalid_tag
 
 ## Supporting Cross-Session Substitution
+
 The attacker changes the protected session identifier to another active session while retaining the original authentication tag.
 The message no longer matches the session context under which the tag was generated.
 
@@ -913,10 +1033,12 @@ The expected rejection reason,
 invalid_tag
 
 ## State-Safety Checks
+
 Rejecting the attack is not enough by itself.
 The experiment also checks that rejected traffic does not incorrectly change trusted verifier state.
 
 That means it checks for,
+
 - Unexpected sequence advancement
 - Unexpected accepted-window count changes
 - Unexpected session-state mutation
@@ -925,11 +1047,13 @@ That means it checks for,
 A rejected attack should leave trusted accepted-window state unchanged.
 
 ## Payload-Release Checks
+
 Rejected traffic must not reach the accepted-payload callback.
 Only windows associated with a successful accepted verification result should be released to the inference pipeline.
 Payload-release violations are therefore recorded separately from the verifier's accept/reject decision.
 
 ## Attack Rejection Metric
+
 The primary attack metric is,
 
 Observed Rejection Rate = Rejected Attack Trials / Total Attack Trials
@@ -939,20 +1063,25 @@ For example: 100/100 observed rejection
 This should not be treated as proof that the attack can never succeed.
 
 ## Latency Measurements
+
 Tier 1 measures authentication timing during both legitimate and attack traffic.
 The primary timing measurements are,
+
 - Sender preparation latency
 - HMAC latency
 - Verifier authentication latency
 - Total Layer 3 latency
 
 For each window,
+
 - Total Layer 3 = Sender Preparation + Verifier Authentication
 - HMAC timing is already included inside sender preparation and should not be added separately
 - Percentiles should be calculated from the total per-window measurements rather than by adding independently calculated percentile values
 
 ## Reproducibility
+
 The Tier 1 experiment records the following,
+
 - Experiment configuration
 - Experiment seed
 - Trial plan
@@ -968,6 +1097,7 @@ The Tier 1 experiment records the following,
 - Completion marker
 
 ## Current Limitations
+
 - The experiment evaluates a software authentication prototype
 - The experiment does not evaluate a physical Quest PUF
 - Tier 1 does not evaluate semantic abnormalities in authenticated motion data
@@ -978,6 +1108,7 @@ The Tier 1 experiment records the following,
 - More advanced semantic and adaptive attacks remain outside the current Tier 1 scope
 
 ## Important Takeaways
+
 - Tier 1 evaluates whether replayed, modified, or misattributed traffic is rejected before inference
 - Legitimate controls are included to verify that valid traffic continues to be accepted
 - Replay protection depends on session and sequence tracking in addition to HMAC verification
@@ -988,7 +1119,9 @@ The Tier 1 experiment records the following,
 - The smaller Layer 3 synthetic runner is primarily used to demonstrate the successful authentication path
 
 # Plans for next week
+
 Complete formal analysis of the Tier 1 authentication attack experiment
+
 - Measure observed rejection rate for each attack
 - Verify expected rejection reasons
 - Check trusted-state mutation and payload-release behavior
@@ -1004,8 +1137,11 @@ Complete formal analysis of the Tier 1 authentication attack experiment
 # Week 5, Formal Evaluation and Reconstruction Refinement
 
 ## Tier 1 Authentication Results
+
 The Tier-1 authentication experiment was run last week however, for week 5 I audited and preserved the evidence, analyze the raw results, and converted the experiment into a formal report.
+
 ### Experiment Configuration
+
 - 5 primary attacks * 100 trials = 500 attack trials
 - 100 legitimate controls
 - 100 supporting cross-session subsitutions
@@ -1016,27 +1152,35 @@ The Tier-1 authentication experiment was run last week however, for week 5 I aud
 - Finite software experiment
 
 ### Same-session Replay
+
 A previous accepted sequence-0 packet was retransmitted within the same active session. All 100/100 attempts were rejected with duplicate_sequence. The HMAC was still valid, however, the ordering check rejected the duplicate. No rejected replay advanced the sequence state that was accepted.
 
 ### Prior-Session Replay
+
 A valid packet from a previous replaced session was replayed after a new session was active. All 100/100 attempts were rejected with inactive_session.
 
 ### Cross-Device Substitution
+
 The protected device identifier was changed after tagging while the original authentication tag was retained. All 100/100 attempts were rejected with invalid_tag which showed that the protected device identity was covered by message authentication.
 
 ### Payload Modification
+
 One authenticated motion-data value was modified after tag generation. All 100/100 attempts were rejected with invalid_tag. The verifier rejected the modified packet before it could be released downstream.
 
 ### Protected-Metadata Modification
+
 The protected sequence field was modified from its authenticated value while retaining the original tag. All 100/100 attempts were rejected with invalid_tag. Showing that the authenticated metadata is protected.
 
 ### Legitimate Control
+
 All 100/100 valid control windows were accepted. The observed Tier-1 valid message false-rejection rate was 0% for this experiment. The result does not include Layer-2 PUF reconstruction failures and should not be confused with the layer 2 FRR.
 
 ## State-Safety Checks
+
 Across 500 primary attacks and 100 supporting substitutions, all rejected formal attempts preserved the verifier state and produced no payload release. The formal runner used a release callback rather than an actual classifier so this experiment shows that there was blocking at the accepted-payload release boundary rather than direct SNN/classifier execution.
 
 ## Latency Results
+
 | Case                      | Median (ms) | Max (ms) | p95 (ms) |
 | ------------------------- | ----------- | -------- | -------- |
 | Same-session replay       | 2.8259      | 3.3563   | 3.0851   |
@@ -1046,14 +1190,16 @@ Across 500 primary attacks and 100 supporting substitutions, all rejected formal
 | Metadata Modification     | 0.9130      | 2.2502   | 1.0883   |
 | Legitimate Control        | 2.8281      | 3.1934   | 3.1197   |
 
-
 ## Interpretation and Limitations
+
 The preserved Tier-1 experiment showed that the implemented historical verifier rejected all tested replay, protected-field substitution, and post-tag modification attacks in the finite 100-trial groups while accepting all legitimate controls. These results support the correctness of the implemented authentication and replay checks under the tested software fixtures, but they do not prove universal security. The experiment used synthetic software data, 100 trials per group, no physical PUF or real Quest traffic, and no actual classifier inference in the formal attack runner. The current authentication-v2 implementation also differs from the historical Tier-1 source baseline, so these results must remain attributed to the preserved v1 experiment.
 
 ## Formal Layer 2 Reconstruction Evaluation
 
 ### Baseline Configuration
+
 The formal Layer 2 evaluation used the frozen BCH reconstruction baseline,
+
 - BCH(63,36,t=5)
 - Fixed response bits 0 through 62
 - 32-bit credential
@@ -1067,43 +1213,52 @@ The formal Layer 2 evaluation used the frozen BCH reconstruction baseline,
 - 120 total simulated devices
 
 ### Nominal Results
+
 The formal nominal reconstruction condition evaluated 12,000 attempts.
 Of these,
+
 - 11,805 reconstructed the correct credential
 - 195 failed
 - Reconstruction success rate: 98.375%
 - Reconstruction FRR: 1.625%
 
 The 195 failures consisted of,
+
 - 186 decoder failures
 - 7 invalid-padding outcomes
 - 2 valid-format wrong credentials
 
 Mean selected-bit BER was 3.19709%.
 The 95% run-cluster bootstrap interval for nominal FRR was,
+
 - 1.241667% to 2.016667%
 
 ### Noise Sweep
+
 The formal noise sweep evaluated six measurement-noise levels with 12,000 reconstruction attempts per condition,
-| Noise SD | BER63 | Success | FRR | Miscorrections |
-|---|---:|---:|---:|---:|
-| 0.0 | 0.000% | 100.000% | 0.000% | 0 |
-| 0.05 | 1.605% | 99.975% | 0.025% | 0 |
-| 0.1 | 3.172% | 98.458% | 1.542% | 5 |
-| 0.25 | 7.815% | 63.417% | 36.583% | 69 |
-| 0.5 | 14.863% | 7.600% | 92.400% | 194 |
-| 1.0 | 25.158% | 0.025% | 99.975% | 160 |
+
+| Noise SD |   BER63 |  Success |     FRR | Miscorrections |
+| -------- | ------: | -------: | ------: | -------------: |
+| 0.0      |  0.000% | 100.000% |  0.000% |              0 |
+| 0.05     |  1.605% |  99.975% |  0.025% |              0 |
+| 0.1      |  3.172% |  98.458% |  1.542% |              5 |
+| 0.25     |  7.815% |  63.417% | 36.583% |             69 |
+| 0.5      | 14.863% |   7.600% | 92.400% |            194 |
+| 1.0      | 25.158% |   0.025% | 99.975% |            160 |
 
 The results show a clear decline in reconstruction reliability as measurement noise and BER increase.
 At low noise levels, reconstruction remains highly reliable. As the selected-bit error count moves beyond the BCH correction radius, decoder failures, invalid-padding outcomes, and valid-format wrong credentials become increasingly common.
 
 ### Miscorrection Analysis
+
 Across all 84,000 formal reconstruction attempts, I observed 430 valid-format wrong credentials.
 These consisted of,
+
 - 2 nominal miscorrections
 - 428 noise-sweep miscorrections
 
 The two nominal cases were,
+
 - Seed 2222, device 3, attempt 88
 - Seed 6543, device 1, attempt 75
 
@@ -1113,7 +1268,9 @@ The observed reconstruction failures occurred only when the selected-bit error c
 This result also showed that valid padding alone is not enough to determine whether the returned credential is actually correct.
 
 ### Reconstruction Latency
+
 Nominal warmed `reconstruct()` latency was,
+
 - Mean: 1.1700 ms
 - Median: 1.0378 ms
 - p95: 2.2624 ms
@@ -1125,13 +1282,16 @@ They do not include PUF acquisition, session authentication, network transport, 
 ## Independent Pre-HKDF Credential Verification
 
 ### Motivation
+
 The formal Layer 2 experiment demonstrated that BCH can occasionally return a syntactically valid but incorrect credential when the selected-bit error count exceeds the correction radius.
 Padding validation only confirms that the decoder returned a 36-bit message with the expected four zero padding bits.
 It does not determine whether the reconstructed 32-bit credential is actually the enrolled credential.
 Because 430 valid-format wrong credentials were observed in the formal reconstruction population, I added an independent credential-authenticity check before session-key derivation.
 
 ### Verifier Design
+
 The independent credential verifier uses,
+
 - HMAC-SHA-256
 - An independent 32-byte verifier key
 - Device identity binding
@@ -1141,36 +1301,39 @@ The independent credential verifier uses,
 - Tag-only verifier records
 - No plaintext credential stored in the verifier record
 - Constant-time comparison using `hmac.compare_digest`
-A public unkeyed credential hash was deliberately avoided because the credential is only 32 bits.
-A public hash would provide an offline predicate for brute-forcing the entire `2^32` credential space.
-The independent HMAC verifier instead requires access to the separate verifier key.
+  A public unkeyed credential hash was deliberately avoided because the credential is only 32 bits.
+  A public hash would provide an offline predicate for brute-forcing the entire `2^32` credential space.
+  The independent HMAC verifier instead requires access to the separate verifier key.
 
 ### Pre-HKDF Integration
+
 The current authentication-v2 flow is,
-`PUF reconstruction`  
-`-> candidate coherence checks`  
-`-> independent credential verification`  
-`-> local admission authorization`  
-`-> receiver authorization check`  
-`-> HKDF`  
-`-> mutual confirmation`  
+`PUF reconstruction`
+`-> candidate coherence checks`
+`-> independent credential verification`
+`-> local admission authorization`
+`-> receiver authorization check`
+`-> HKDF`
+`-> mutual confirmation`
 `-> authenticated windows`
 
 For a wrong valid-format candidate, the failure path is,
-`wrong valid-format candidate`  
-`-> credential_verification_failed`  
-`-> no P3RQ`  
-`-> no receiver pending session`  
-`-> zero sender HKDF`  
-`-> zero receiver HKDF`  
-`-> no confirmation`  
+`wrong valid-format candidate`
+`-> credential_verification_failed`
+`-> no P3RQ`
+`-> no receiver pending session`
+`-> zero sender HKDF`
+`-> zero receiver HKDF`
+`-> no confirmation`
 `-> no new session`
 The same candidate that passes credential verification must also be the candidate later used by the sender for session-key derivation.
 The verifier therefore prevents the system from silently replacing an incorrect reconstructed candidate with trusted enrollment truth.
 
 ### Formal Credential-Verifier Evaluation
+
 The formal credential-verifier evaluation reused all 84,000 saved Layer 2 results without rerunning reconstruction.
 The saved population contained,
+
 - 56,142 correct valid-format credentials
 - 430 wrong valid-format credentials
 - 26,447 decoder failures
@@ -1179,6 +1342,7 @@ The saved population contained,
 Only valid-format credentials invoked the credential verifier.
 
 This produced,
+
 - 56,572 formal verifier invocations
 - 56,142 correct credentials admitted
 - 0 correct credentials rejected
@@ -1188,6 +1352,7 @@ This produced,
 Decoder failures and invalid-format reconstruction outcomes did not invoke the verifier.
 All 430 saved miscorrections were also evaluated through the integrated session-admission path.
 For all 430 cases,
+
 - P3RQ emitted: 0
 - Receiver admission reached: 0
 - Sender HKDF calls: 0
@@ -1198,16 +1363,18 @@ For all 430 cases,
 As a positive control, 120 out of 120 correct saved candidates completed full authenticated session establishment.
 
 ### Verifier Latency
+
 Credential-verifier latency was measured separately from reconstruction.
 Correct candidates,
+
 - Median: 10.2 microseconds
-Wrong candidates,
+  Wrong candidates,
 - Median: 27.8 microseconds
-All verifier invocations,
+  All verifier invocations,
 - Median: 10.2 microseconds
 - p95: 25.9 microseconds
-The archived reconstruction timing was also paired with the newly measured verifier timing to estimate the combined reconstruction-plus-verification cost.
-Archived reconstruction plus current verification,
+  The archived reconstruction timing was also paired with the newly measured verifier timing to estimate the combined reconstruction-plus-verification cost.
+  Archived reconstruction plus current verification,
 - Median: 0.9485 ms
 - p95: 2.0569 ms
 
@@ -1215,6 +1382,7 @@ This is a paired composite estimate.
 It is not a freshly measured end-to-end authentication latency.
 
 ## Key Results
+
 - Formalized the historical Tier 1 authentication experiment and preserved its attack and control results
 - Formally characterized 84,000 Layer 2 reconstruction attempts across nominal and noise-sweep conditions
 - Identified 430 valid-format wrong credentials that could not be detected by padding validation alone
@@ -1226,7 +1394,9 @@ It is not a freshly measured end-to-end authentication latency.
 - 120/120 positive session controls completed successfully
 
 ## Remaining Work / Next Steps
+
 Remaining work includes,
+
 - Run a current authentication-v2 combined benchmark with the credential verifier in the full authentication and inference path
 - Finish general authentication-v2 documentation and presentation updates
 - Decide whether an expanded audit-v2 event/schema design is needed
@@ -1235,10 +1405,164 @@ Remaining work includes,
 - Decide whether the Tier 1 attack populations should be expanded beyond 100 trials per attack group
 - Continue toward future validation using real Quest data and, eventually, physical PUF hardware
 
+# Week 6, Tier 1 v2 and Reconstruction Evaluation
+
+## Authentication v2 Protocol Specification
+- Reviewed the implemented end-to-end trust path, from simulated RO-PUF measurement and BCH(63,36,t=5) reconstruction through independent credential verification, local authorization, session establishment, protected Wire2 windows, and accepted-window release to inference.
+- Organized the markdown document into a specification with technical appendices covering exact handshake message formats, HKDF and HMAC formulas, binary serialization, receiver verification order, and failure behavior.
+- Documented the importance of verifying valid-format reconstruction candidates **before HKDF**, rather than treating successful BCH decoding as proof of device identity.
+- Clarified device/session binding, strict exact-next sequence enforcement, HMAC coverage, audit behavior, and the division between verifier-issued acceptance and at-most-once inference delivery.
+- Recorded important limitations: co-located Python trust boundary, simulated rather than physical PUF, 32-bit pilot credential susceptible to offline guessing, no payload encryption or forward secrecy, no automatic retransmission, and no guaranteed successful exactly-once inference.
+- Kept the specification descriptive of the existing implementation; no protocol change or new production security claim resulted from the documentation work.
+
+**Deliverable:** `docs/authentication-v2-protocol-spec.md`
+
+## Reconstruction Evaluation
+
+### Temporal majority voting
+
+This method takes the existing BCH(63, 36, t=5) reconstruction but takes multiple noisy PUF readings and performs bitwise majority voting before decoding.
+My plan is to implement 3 and 5 noisy reads against my current Layer 2 reconstruction baseline.
+
+Pros,
+
+- Straightforward to implement
+- Supported by PUF research
+- Requires no change to existing reconstruction
+
+Cons,
+
+- Additional readings will increase the latency
+- Voting may not correct persistent environmental errors
+
+### BCH(63, 30, t=6)
+
+This method will keep the 63 PUF response but uses a stronger BCH code which can correct 6 errors instead of 5.
+
+This method strengthens the decoder error tolerance rather than reducing the noise from repeated measurements
+
+Cons,
+
+- This configuration only supports 30 information bits instead of the existing 32 bit credential
+- Reducing the entropy of the overall reconstruction design
+
+### Method Comparisons
+
+| Config            | PUF Reads | BCH         | Credential Bit Size |
+| ----------------- | --------- | ----------- | ------------------- |
+| Existing Baseline | 1         | (63, 36, 5) | 32 Bits             |
+| Majority 3        | 3         | (63, 36, 5) | 32 Bits             |
+| Majority 5        | 5         | (63, 36, 5) | 32 Bits             |
+| Stronger BCH      | 1         | (63, 30, 6) | 30 Bits             |
+
+Stable bit selection was considered for this step however, my existing PUF response is only 64 bits long. The existing BCH code leaves only 1 bit unused. In order for this design to make stable bit selection actually meaningful, I would probably have to update my pairing scheme
+
+### Experiment 
+- Implemented four matched reconstruction policies: B0 single-read BCH(63,36,t=5), A1 three-read majority voting, A2 five-read majority voting, and B1 single-read BCH(63,30,t=6).
+- Isolated the experimental implementations from the production Authentication-v2 path. Verified stronger-BCH construction, majority voting, credential formats, deterministic trial allocation, and independent candidate verification.
+- Validated the implementation with an 80-attempt NONFORMAL smoke run; the subsequent formal-readiness suite reached **221 passing automated tests** and a successful dry preflight.
+- Completed one formal reconstruction experiment across **20 populations, 120 simulated devices, two noise conditions, and 48,000 attempts** (6,000 per group/condition), with **120,000 timed PUF readings**.
+- Evaluated FRR, raw and effective BER, software processing latency, 95% confidence intervals, population variation, and credential-verifier behavior.
+
+| Reconstruction | Nominal FRR | Stress FRR | Nominal median software latency |
+|---|---:|---:|---:|
+| B0 — BCH(63,36,t=5), one read | 0.9833% | 35.5500% | 1.1312 ms |
+| A1 — Majority-3 | 0.1000% | 9.6500% | 1.4547 ms |
+| A2 — Majority-5 | 0.0000% observed | 4.1667% | 1.7722 ms |
+| B1 — BCH(63,30,t=6), one read | 0.2500% | 20.3833% | 1.1333 ms |
+
+All three alternatives met the observed 0.5% nominal FRR target, but none met the target under stress noise. Majority-5 had no nominal failures in 6,000 attempts; this is not a claim of zero future failure probability. The independent verifier rejected **60/60 observed wrong credential candidates**. Majority-3 is the preferred follow-up candidate because it substantially improved nominal FRR while retaining the baseline 32-bit credential and requiring fewer additional reads than majority-5. Stronger BCH reduces the credential to 30 variable bits.
+
+The formal results and read-only evidence audit were recorded separately. These measurements are from a simulated PUF and local software path, not physical Quest 3 PUF timings or an end-to-end Authentication-v2 benchmark. No alternative has been integrated into the production authentication protocol.
+
+**Deliverable:** `docs/week6-reconstruction-alternatives-experiment.md`  
+**Formal evidence:** `results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001/`
+
+## Tier 1 v2
+
+### Experiment Objective and Design
+
+During Week 6, I expanded the original Tier-1 authentication experiment to evaluate the current Authentication-v2 implementation.
+The previous experiment evaluated an earlier version of the authentication system with 100 attempts per primary attack. The new experiment increases the attack populations, introduces additional protocol-state and parser testing, and integrates the actual frozen SNN and anomaly-detection models.
+The main objective is to verify that replayed, modified, or improperly authenticated sensor windows are rejected before reaching inference. I also wanted to verify that rejected traffic cannot incorrectly advance sequence numbers, modify trusted session state, or interfere with subsequent legitimate communication.
+
+The planned formal experiment includes,
+- 6,000 primary attack attempts
+- 1,200 legitimate authentication controls
+- 1,080 protocol-state negative submissions
+- 1,680 parser-negative submissions
+- 9,960 total scored or negative submissions
+
+### Expanded Tier-1 Attack Implementation
+
+I implemented the five primary attack categories against the current Authentication-v2 protocol,
+1. **A1 — Same-Session Replay:** Resubmit an already accepted packet within its original active session to verify duplicate-sequence rejection.
+2. **A2 — Prior/Expired-Session Replay:** Replay previously valid packets after session replacement or expiration to test session lifecycle enforcement.
+3. **A3 — Cross-Device Substitution:** Change the protected device identifier while retaining the original HMAC to verify device-binding integrity.
+4. **A4 — Motion-Payload Modification:** Modify individual binary32 position or quaternion bits after authentication to test payload integrity.
+5. **A5 — Protected-Metadata Modification:** Alter authenticated sequence numbers, timestamps, window identifiers, or tracking-quality metadata while preserving the original HMAC.
+
+Each attack category contains 1,200 planned attempts.
+The experiment uses six simulated PUF devices with two separate enrollment generations per device. This allows the attack populations to cover different device identities, credentials, sessions, and motion-window inputs.
+Attack generation operates on public packet bytes without giving the attacker access to the secret credential or session key.
+
+### Protocol-State and Inference-Gating Validation
+
+In addition to the primary attacks, I implemented eight protocol-state testing groups and 28 parser-negative cases.
+The state-machine tests cover situations such as invalid future packets, sequence gaps, stale messages, malformed packets, cross-session traffic, and legitimate recovery after rejection.
+The parser tests evaluate malformed JSON, invalid binary representations, incorrect protocol versions, truncated messages, and other representation failures.
+
+For each rejected submission, the experiment checks that,
+- The receiver's accepted-window count does not incorrectly advance
+- The last accepted sequence number remains unchanged
+- Protected session state is preserved
+- Rejected packets are not released to inference
+- Preprocessing, SNN inference, and anomaly-detection callbacks are not invoked
+- Legitimate traffic can continue when the protocol permits recovery
+I also added independent inference callback counters so that the experiment measures actual model invocation rather than relying only on the verifier's rejection decision.
+
+### Implementation Testing and Real-Artifact Validation
+
+I developed the separate Tier-1 v2 experiment harness, runner, configuration, and evidence schemas without changing the existing Authentication-v2 security behavior.
+The implementation supports deterministic trial planning, attack generation, protocol-state observation, latency collection, and evidence reconciliation.
+After restoring the frozen SNN and anomaly-model artifacts, I validated their integrity and confirmed that the existing model loader could successfully load the selected inference condition.
+
+The latest targeted validation completed,
+- 126 automated tests passed
+- Zero test failures or errors
+- 75 nonformal real-artifact scenarios
+- 360 measured operation rows
+- 120 accepted windows successfully processed through all four inference boundaries
+- 70 rejected window submissions blocked from all four inference boundaries
+- 30/30 evidence reconciliation checks passed
+
+The real-artifact feasibility test covered all five primary attack groups, eight state-machine groups, and 28 parser-negative cases.
+These results demonstrate that the experimental harness and authenticated inference boundary behaved as expected during the smaller nonformal validation population.
+They do not represent the results of the full formal Tier-1 experiment.
+
+### Formal Experiment
+
+I completed the full registered Authentication-v2 Tier-1 experiment on October 8 using a clean isolated execution clone. Its local provenance commit was 0d088079d025e50411c8a752b32507bbb87d5d5b; my original main branch stayed at 9384644a182700afa8f180a81f495acf278185af, and the four restored supporting documents stayed untracked and unchanged. Before execution, all 428 regression tests passed, all 66 frozen-artifact hashes verified, and the real SNN/anomaly pair loaded successfully.
+
+The formal run completed 9,840 measured scenarios and all 66,920 measured operation rows, plus 20 separate warmup scenarios. Each A1–A5 group rejected 1,200/1,200 attacks with zero acceptances; all 1,200 legitimate controls were accepted. The 1,080 state negatives and 1,680 parser negatives matched their expected reasons without changing protected receiver state. All 10,200 recovery windows were accepted and all 1,040 recovery handshakes completed. No execution errors or unsubmitted operations occurred.
+
+I independently checked the retained evidence rather than relying only on COMPLETE. The formal package passed 31/31 reconciliation checks, and a separate process reproduced its summary/CSVs and verified source-window hashes and assignments, state preservation, accepted-result authority, and callback counters. The 34,920 measured accepted windows each invoked release, preprocessing, SNN inference, and anomaly inference once; the 8,520 rejected windows and 240 malformed handshakes invoked none. The 20 warmup windows were recorded separately.
+
+For the 1,200 controls, native authentication mean/p50/p95/p99/maximum were 4.9431 / 5.1700 / 5.9924 / 7.3466 / 176.2541 ms. Full receiver-to-return processing was 19.1071 / 19.4579 / 23.1507 / 40.7158 / 189.5738 ms. These are formal local software measurements; setup, recovery, rejection and simulated-expiry timing populations are reported separately in the Tier-1 report. I retained every outlier and did not add nested timing percentiles.
+
+Each attack group's 0/1,200 acceptances and the controls' 0/1,200 rejections have two-sided 95% Clopper–Pearson intervals of 0–0.3069346%. Zero observed failures do not establish zero future risk. Reused simulated devices, enrollment fixtures, source windows, fixed models and one machine limit independence and generalization. Noiseless admission does not measure noisy reconstruction FRR, and these timings are not Quest 3 or FPGA results. The 32-bit credential and trusted-process limitations remain; I did not integrate either reconstruction alternative.
+
+I preserved the verified evidence, its source manifest, a recoverable Git bundle and an exact-byte source archive at results/week-6/will/authentication/tier1-v2-formal-001/. The formal plan digest is cd2c26dd87689e4c1192843cded2166ba7e7c0692e24843387ef462fc302cd96. The original evidence hashes matched after transfer, and I completed the existing Tier-1 report without committing or pushing the documentation.
+
+**Deliverable:** [Tier-1 v2 report](../week6-tier1-v2-experiment.md)
+**Formal evidence:** [reconciliation](../../results/week-6/will/authentication/tier1-v2-formal-001/reconciliation.json) and [independent analysis](../../results/week-6/will/authentication/tier1-v2-formal-001/verification/independent-analysis.json).
+
 # Hours and Work:
 
 # Tuesday September, 9
+
 ## 11:07am - 4:34pm (5.45 Hours)
+
 - Continued RO-PUF simulation development
 - Implemented device model:
   - Persistent manufacturuing variation
@@ -1268,7 +1592,9 @@ Remaining work includes,
 - Tested reproducibility with the random seed generation
 
 # Wednesday September, 10
+
 ## 4:28pm - 7:16pm (2.80 Hours)
+
 - Created PowerShell script, 'run_simulation.ps1' that runs a script to run simulation after setup.
 - Created step by step instructions on how to run the PUF simulator
 - Explained the overview of the simulator and how it works
@@ -1276,7 +1602,9 @@ Remaining work includes,
 - Had to fix path/directory issues within the new shared repo
 - Tested the simulation in a different environment from start to finish to validate the design
 - Validated that the simulation reproduces the same results with the same configuration and seed.
+
 ## 8:43pm - 9:59pm (1.27 Hours)
+
 - Worked on slideshow:
   - Updated existing slides towards Dr. Garcia's feedback
   - Narrowed scope of the project
@@ -1284,17 +1612,23 @@ Remaining work includes,
   - Showed a clear seperation in work between Keegan and I
 
 # Thursday September, 11
+
 ## 12:02am - 12:36am (0.57 Hours)
+
 - Finalized slideshow, and prepared for presenting in meeting
 - Added speaker notes to ensure I hit the correct topics in the presentation
 - Added my week 2 progress into the slideshow
+
 ## 1:00pm - 2:12pm (1.20 Hours)
+
 - Weekly team meeting:
   - Listened to Amruth's presentation on the work he did for Zeeshawn
   - Listened to Ayush's presentation on the work he did for Sadman
   - Presented with Keegan our week 1 and week 2 progress
   - Answered PUF related questions
+
 ## 4:12pm - 5:18pm (1.10 Hours)
+
 - Cleaned up literature landscape comparison matrix
 - Added information to literature-review markdown including:
   - Review method
@@ -1307,7 +1641,9 @@ Remaining work includes,
 - Organized a few more files into the repository to maintain cleanliness and organization
 
 # Monday September, 14
+
 ## 8:46pm - 10:19pm (1.55 Hours)
+
 - Measured and sorted the baseline layer 1 PUF simulator
 - Created a spreadsheet, layer1baseline.csv
 - Used it to sort statistics of the PUF simulator before reconstruction
@@ -1320,7 +1656,9 @@ Remaining work includes,
 - Then I found the mean, standard deviation, min, and max for each metric
 
 # Tuesday September, 15
+
 ## 5:16pm - 6:52pm (1.60 Hours)
+
 - Organized Week 2 evidence of the design based off of Dr. Garcia's feedback:
   - Repo/commit
   - Highlighted in research log where to find the commands
@@ -1329,7 +1667,9 @@ Remaining work includes,
 - Added a deep analysis of why I picked adjacent pairing and the other options I could have chosen.
 
 # Wednesday September, 16
+
 ## 8:31pm - 11:59pm (3.47 Hours)
+
 - Corrected week 2 baseline dataset so that all 20 simulations used 6 devices
 - Recalculated layer 1 baseline stats under that corrected dataset
 - Established corrected mean raw BER of 3.207552%
@@ -1341,7 +1681,9 @@ Remaining work includes,
 - Validated per-bit flip-rate calculations against the raw BER
 
 # Thursday September, 17
+
 ## 12:00am - 1:12am (1.20 Hours)
+
 - Identified the most and least stable response bit positions
 - Generated those response bit plots
 - Tested the sensitivity of the metrics when changing the manufacturing variation with noise fixed
@@ -1349,6 +1691,7 @@ Remaining work includes,
 - Created the layer 2 credential-reconstruction design memo
 
 ## 1:51 - 4:32am (2.68 Hours)
+
 - Selected a 32 Bit pilot reconstructed credential target
 - Proposed a BCH(63,36,t=5) code offset
 - Justified the BCH candidate using the measured 64 Bit response length and BER
@@ -1361,13 +1704,16 @@ Remaining work includes,
 - Added my Week 3 work into Keegan and I's presentation
 
 # 1:04pm - 1:50pm (0.77 Hours)
+
 - Weekly meeting
   - Listened to Zane's presentation on Kirchhoff Law Johnson Noise Key exchange systems
   - Listened to Shreyas's presentation on digital twins
 - Listened to presentation feedback to try and improve upon my own presentations
 
 # Friday September, 18
+
 ## 2:00pm - 2:18pm (0.30 Hours)
+
 - Senior Design PUF Consultation
   - Met with a senior design student, Jayden Jones, who is working on FPGA-based PUF application
   - Discussed my simulated PUF architecture
@@ -1392,7 +1738,9 @@ Remaining work includes,
   - Jayden indicated that major gaps in his research were about statistics and effictiveness testing and that my testing model was very useful for his team's design
 
 # Monday September, 21
+
 ## 9:22pm - 11:47pm (2.42 Hours)
+
 - Began implementing layer 2 reconstruction
 - Defined the code-offset construction using the 64 bit simulated PUF response
   - Fixed 63 bit subset for BCH(63, 36, t = 5)
@@ -1404,7 +1752,9 @@ Remaining work includes,
   - Valid format miscorrection
 
 # Tuesday September, 22
+
 ## 1:04pm - 4:17pm (3.22 Hours)
+
 - Continued implementation for layer 2
 - Completed the main enrollment and reconstruction flow:
   - Helper data generation
@@ -1425,6 +1775,7 @@ Remaining work includes,
     - 2 valid format wrong credentials
 
 ## 5:48pm - 7:45pm (1.95 Hours)
+
 - Finalized layer 2
 - Began implementation for a basic layer 3 design
 - Defined the session establishment flow using,
@@ -1438,6 +1789,7 @@ Remaining work includes,
 - Replaced the earlier decimal-serialization concept with an exact binary32/fixed-width representation to support Python/C# authentication
 
 ## 10:37pm - 11:59pm (1.37 Hours)
+
 - Continued implementation for layer 3
 - Developed the sender flow for,
   - Canonical window serialization
@@ -1462,7 +1814,9 @@ Remaining work includes,
 - Added verifier audit behavior and began validating that rejected messages cannot modify trusted replay state or reach the accepted boundary
 
 # Wednesday September, 23
+
 ## 12:00am - 12:36am (0.60 Hours)
+
 - Continued layer 3 implemenation
 - Finalized the authentication design
 - Completed session establishment
@@ -1482,6 +1836,7 @@ Remaining work includes,
 - Added layer 3 latency and audit measurements
 
 ## 3:46pm - 6:22pm (2.60 Hours)
+
 - Added Tier 1 authentication attack implementation
 - Implemented the primary Tier 1 Attacks,
   - Same session replay
@@ -1493,6 +1848,7 @@ Remaining work includes,
 - Added legitimate control trials to verify that vlaid traffic is still being accepted
 
 ## 9:30pm - 11:59pm (2.48 Hours)
+
 - Continued Tier 1 attack implementation
 - Added expected rejection reason checks for each attack type
 - Added checks that rejected traffic doesn't
@@ -1505,18 +1861,24 @@ Remaining work includes,
 - Began polishing research log/documentation of this week's progress
 
 # Thursday September, 24
+
 ## 12:00am - 1:03am (1.05 Hours)
+
 - Continued polishing research log/documentation of layer 2, 3, and tier 1 attacks
 - Updated slideshow for this week
 
 ## 1:00pm - 2:10pm (1.17 Hours)
+
 - Weekly meeting
 - Listened to Yahia's presentation on credential coursework design
 - Listened to Warren's presentation on moving target IPv6 defense in industrial control systems
 
 # Tuesday September, 29
+
 ## 12:15pm - 3:51pm (3.60 Hours)
+
 Audited the preserved Tier 1 authentication experiment
+
 - Formally analyzed the Tier 1 results,
   - Same-session replay
   - Prior-session replay
@@ -1524,7 +1886,7 @@ Audited the preserved Tier 1 authentication experiment
   - Payload modification
   - Protected-metadata modification
   - Legitimate controls
-   Verified attack rejection reasons, state-safety behavior, and payload-release behavior
+    Verified attack rejection reasons, state-safety behavior, and payload-release behavior
 - Reviewed Tier 1 authentication latency results
 - Began formalizing the Layer 2 reconstruction experiment,
   - Frozen BCH(63,36,t=5) baseline
@@ -1535,17 +1897,22 @@ Audited the preserved Tier 1 authentication experiment
 - Verified the 20-seed, 120-device input cohort
 
 ## 10:34pm - 11:59pm (1.42 Hours)
+
 Verified protected reconstruction source hashes
+
 - Ran reconstruction and experiment test suites:
   - 50 reconstruction tests passed
   - 22 experiment tests passed
 
 # Wednesday September, 30
+
 ## 12:00am - 12:24am (0.40 Hours)
+
 - Executed the formal Layer 2 reconstruction experiment
 - Generated the 84,000-attempt nominal and noise-sweep evidence
 
 ## 1:12pm - 2:29pm (1.28 Hours)
+
 - Analyzed the formal Layer 2 reconstruction results
 - Recorded:
   - 98.375% nominal reconstruction success
@@ -1561,6 +1928,7 @@ Verified protected reconstruction source hashes
 - Selected a keyed HMAC-SHA-256 verifier with an independent 32-byte verifier key
 
 ## 5:06pm - 5:49pm (0.72 Hours)
+
 - Implemented the standalone credential-verifier primitive
 - Added verifier records, key-provider behavior, binding validation, and fail-closed result categories
 - Added 48 credential-verifier unit tests
@@ -1568,6 +1936,7 @@ Verified protected reconstruction source hashes
 - Began integrating credential admission into Layer 3 before HKDF
 
 ## 11:13pm - 11:59pm (0.77 Hours)
+
 - Completed pre-HKDF credential-verifier session integration
 - Added local admission authorization between credential verification and session establishment
 - Added receiver-side authorization checks before HKDF
@@ -1581,7 +1950,9 @@ Verified protected reconstruction source hashes
 - Added and ran credential-admission integration tests
 
 # Thursday October, 1
+
 ## 12:00am - 1:49am (1.82 Hours)
+
 - Verified both saved nominal miscorrection regressions are rejected before HKDF
 - Ran the formal credential-verifier evaluation using saved Layer 2 evidence
 - Evaluated all 56,142 correct valid-format candidates and all 430 miscorrections
@@ -1592,13 +1963,16 @@ Verified protected reconstruction source hashes
 - Updated slideshow with Week 5 results
 
 ## 1:00pm - 2:07pm (1.12 Hours)
+
 - Weekly Meeting
 - Listened to Sadman's presentation on VR problem solving assesment
 - Listened to Devon's presentation on cyber camp
 - Listened to Colin and Grace's presentation on VSGC Biometric Dual-Authentication project
 
 # Friday October, 2
-## 1:45pm - 2:36pm ()
+
+## 1:45pm - 2:36pm (0.85 Hours)
+
 - Second Senior Design PUF Consultation
 - Met with entire senior design group this time
 - Gave informal presentation on the following,
@@ -1621,3 +1995,167 @@ Verified protected reconstruction source hashes
     - Using credential for session key derviation NOT the 64 bit PUF response
 - Listened to feedback on presentation, if order and delivery method was effective
 - Updated my delivery plan for next presentation
+
+# Monday October, 5
+
+## 7:04pm - 9:41pm (2.62 Hours)
+- Began formalizing the Authentication-v2 protocol specification
+- Reviewed the current implementation and organized the protocol into its major stages
+- Documented the complete authentication architecture:
+  - Simulated PUF credential reconstruction
+  - Independent pre-HKDF credential verification
+  - Local admission authorization
+  - Authenticated session establishment
+  - HMAC-protected Wire2 sensor windows
+  - Authenticated SNN inference gating
+- Documented the system's trust boundaries and component responsibilities
+- Reviewed credential storage, verifier records, and session-key custody
+- Documented exact handshake behavior and cryptographic key derivation
+- Distinguished implemented security mechanisms from limitations of the research prototype
+
+## 11:34pm - 11:59pm (0.42 Hours)
+- Continued Authentication-v2 technical documentation
+- Documented session lifecycle, message verification, and replay protection
+- Added exact protocol parameters and implementation references
+- Reviewed the accepted-window release mechanism and inference boundary
+
+# Tuesday October, 6
+
+## 12:00am - 12:32am (0.53 Hours)
+- Completed the Authentication-v2 specification review and cleanup
+- Reorganized the document for improved readability
+- Preserved exact handshake formats, cryptographic formulas, and verification requirements
+- Consolidated protocol limitations and future research directions
+- Finalized the Authentication-v2 Protocol and Trust Specification
+
+## 11:32am - 1:33pm (2.02 Hours)
+- Began implementation and evaluation of reconstruction alternatives
+- Reviewed the existing BCH(63,36,t=5) reconstruction baseline
+- Developed two alternative reconstruction approaches:
+  - Temporal majority voting using three or five noisy PUF readings
+  - Stronger BCH(63,30,t=6) error correction
+- Implemented majority-voting logic and the experimental stronger-BCH adapter
+- Defined the comparison methodology for reconstruction FRR, BER, and latency
+- Preserved the existing Authentication-v2 reconstruction implementation without modification
+
+## 3:00pm - 6:12pm (3.20 Hours)
+- Continued reconstruction-alternatives testing and formal evaluation
+- Validated BCH correction behavior and majority-voting implementation
+- Executed and reviewed the 48,000-attempt formal reconstruction experiment
+- Analyzed reconstruction results:
+  - Baseline nominal FRR: 0.9833%
+  - Majority-3 nominal FRR: 0.1000%
+  - Majority-5 nominal FRR: 0.0000% observed
+  - Stronger BCH nominal FRR: 0.2500%
+- Compared reconstruction latency and credential-length tradeoffs
+- Identified majority-3 as the leading candidate for further investigation
+- Transitioned to planning the expanded Authentication-v2 Tier-1 experiment
+- Reviewed the previous Tier-1 attack categories and current protocol changes
+- Began defining expanded attack populations and validation requirements
+
+## 9:05pm - 11:57pm (2.87 Hours)
+- Continued developing the Tier-1 v2 experimental framework
+- Expanded the five primary attack categories:
+  - Same-session replay
+  - Prior-session and expired-session replay
+  - Cross-device substitution
+  - Motion-payload modification
+  - Protected-metadata modification
+- Increased the planned attack populations to 1,200 attempts per category
+- Added legitimate authentication controls
+- Developed protocol-state and parser-negative testing scenarios
+- Began implementing deterministic trial planning and attack-generation logic
+- Added receiver-state preservation and recovery requirements
+- Designed the experiment to measure actual inference callback invocation
+
+# Wednesday October, 7
+
+## 4:11pm - 5:34pm (1.38 Hours)
+- Continued implementation of the Tier-1 v2 experiment harness
+- Completed attack-generation and protocol-state testing functionality
+- Integrated the five primary attack categories into the experiment runner
+- Added eight state-machine negative-case groups
+- Added 28 parser-boundary negative cases
+- Implemented tracking for authentication decisions and expected rejection reasons
+- Added checks that rejected traffic does not advance trusted sequence state
+
+## 7:02pm - 8:06pm (1.07 Hours)
+- Continued Tier-1 v2 implementation and automated testing
+- Integrated the existing Authentication-v2 sender and verifier APIs
+- Added legitimate recovery operations after rejected attack submissions
+- Added instrumentation for:
+  - Authenticated-window release
+  - Preprocessing
+  - SNN motion inference
+  - Anomaly-detector inference
+- Verified that rejected messages cannot create unauthorized inference invocations
+- Reviewed the experiment's configuration and evidence schemas
+
+
+## 8:24pm - 9:32pm (1.13 Hours)
+- Performed real-artifact validation for the Tier-1 v2 experiment
+- Restored and verified the frozen dataset and model artifacts
+- Successfully loaded the selected frozen SNN and anomaly-detector models
+- Completed targeted automated testing:
+  - 126 tests passed
+  - Zero failures or errors
+- Executed the nonformal real-artifact feasibility experiment:
+  - 75 scenarios
+  - 360 operation rows
+  - 120 accepted windows processed through inference
+  - 70 rejected windows blocked from inference
+- Verified that all 30 evidence reconciliation checks passed
+
+## 11:01pm - 11:59pm (0.97 Hours)
+- Completed Tier-1 v2 implementation validation and local review
+- Compiled the complete formal experiment trial plan
+- Verified the planned 9,960 scored/control/negative submissions
+- Reviewed experiment reproducibility and evidence requirements
+- Verified attack coverage, state-machine scenarios, and parser-negative cases
+- Documented completed nonformal validation results
+- Reviewed remaining formal-execution requirements:
+  - Clean committed source revision
+  - Source manifest and integrity verification
+  - Frozen configuration and trial-plan provenance
+  - Formal results directory and evidence reconciliation
+- Updated the Tier-1 v2 experiment documentation
+- Prepared the experiment for the formal execution stage
+
+# Thursday October, 8
+
+## 12:00am - 2:39am (2.65 Hours)
+- Finalized the Tier-1 v2 formal experiment execution environment,
+  - Verified the restored original experiment plan and supporting documentation
+  - Prepared the clean isolated source snapshot and execution provenance
+  - Resolved formal source manifest and configuration requirements
+  - Verified all 185 source files and 66 frozen artifacts
+  - Completed formal preflight and 428 passing regression tests
+- Executed the full Authentication-v2 Tier-1 formal experiment,
+  - 9,840 measured scenarios
+  - 66,920 measured operation rows
+  - 20 separate warmup scenarios
+  - Five primary attacks with 1,200 attempts each
+  - 1,200 legitimate controls
+  - 1,080 protocol-state negatives and 1,680 parser negatives
+- Analyzed the formal authentication results,
+  - All 6,000 primary attacks rejected
+  - All 1,200 legitimate controls accepted
+  - All 2,760 protocol-state and parser negatives rejected
+  - Zero unexpected receiver-state or authentication violations
+  - All 10,200 recovery windows and 1,040 recovery handshakes successful
+- Verified authenticated inference gating with the real frozen models,
+  - 34,920 accepted windows processed through all four inference boundaries
+  - 8,520 rejected windows blocked from downstream inference
+  - Zero unauthorized preprocessing, SNN, or anomaly-detector invocations
+- Completed formal evidence verification and statistical analysis,
+  - 31/31 reconciliation checks passed
+  - Independent raw-evidence verification completed
+  - Calculated attack acceptance rates and 95% confidence intervals
+  - Analyzed native authentication and receiver-processing latency
+  - Preserved source manifests, artifact hashes, and recoverable execution-source bundle
+- Finalized the Tier-1 v2 research report,
+  - Completed Experimental Results and Security Analysis
+  - Documented statistical limitations and security implications
+  - Completed Conclusions, Recommendations, and Reproducibility sections
+  - Updated the Week 6 research log with verified formal results
+- Updated slideshow and finalized hours for Week 6

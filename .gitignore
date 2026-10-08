@@ -144,4 +144,7 @@ results/week-2/
 results/week-4/will/reconstruction
 
 #layer 3 PUF simulation runs
-results/week-4/will/authentication
+results/week-4/will/authentication/
+
+results/week-6/will/authentication
+results/week-6/will/reconstruction-alternatives

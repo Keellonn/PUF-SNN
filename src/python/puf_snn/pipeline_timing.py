@@ -25,7 +25,6 @@ from puf_snn.auth.credential_verifier import CredentialAdmissionService
 from puf_snn.auth.sender import Sender
 from puf_snn.auth.session import Failure
 from puf_snn.auth.verifier import Verifier
-from puf_snn.frozen_pipeline import bad_tag_packet, FrozenModelBundle
 from puf_snn.integration import processed_record_to_wire_window
 from puf_snn.pipeline_v2 import ModelCallCounts
 
@@ -77,6 +76,7 @@ def select_timing_sources(records):
 
 def one_model_bundle(bundle, condition):
     """Reference saved models; no fit, copy of weights, or threshold change."""
+    from puf_snn.frozen_pipeline import FrozenModelBundle
     return FrozenModelBundle({condition["motion"]: bundle.motion[condition["motion"]]},
                              {condition["anomaly"]: bundle.detectors[condition["anomaly"]]},
                              bundle.artifact_hashes)
@@ -203,6 +203,8 @@ def run_timed_attempt(pipeline, source, read_response, attempt_id, capture, emit
     control and housekeeping are outside each outer timing span. The first
     full-window call is INSIDE the fresh outer measurement, not separately run.
     """
+    from puf_snn.frozen_pipeline import bad_tag_packet
+
     def fresh():
         attempt = capture.wrap("admission_total", pipeline.establish)(
             capture.wrap("response_generation_simulator", read_response), attempt_id)

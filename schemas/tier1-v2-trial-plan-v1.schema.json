@@ -1,0 +1,494 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "validation_label",
+    "config_sha256",
+    "python_version",
+    "scenarios",
+    "counts",
+    "plan_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "puf-snn-tier1-v2-trial-plan-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "validation_label": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "python_version": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenario_id",
+          "phase",
+          "group",
+          "variant",
+          "device_index",
+          "enrollment_generation",
+          "session_trial_index",
+          "sequence_position",
+          "source_window_index",
+          "window_permutation",
+          "second_device_index",
+          "second_window_index",
+          "replacement_device_index",
+          "mutation",
+          "seed_ids",
+          "clock_mode",
+          "withheld_disposition",
+          "packet_plan",
+          "operations"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "phase": {
+            "enum": [
+              "measured",
+              "warmup"
+            ]
+          },
+          "group": {
+            "enum": [
+              "A1",
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6",
+              "S7",
+              "S8",
+              "P01",
+              "P02",
+              "P03",
+              "P04",
+              "P05",
+              "P06",
+              "P07",
+              "P08",
+              "P09",
+              "P10",
+              "P11",
+              "P12",
+              "P13",
+              "P14",
+              "P15",
+              "P16",
+              "P17",
+              "P18",
+              "P19",
+              "P20",
+              "P21",
+              "P22",
+              "P23",
+              "P24",
+              "P25",
+              "P26",
+              "P27",
+              "P28",
+              "control",
+              null
+            ]
+          },
+          "variant": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "device_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "enrollment_generation": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "session_trial_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sequence_position": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 18446744073709551615
+          },
+          "source_window_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "window_permutation": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "second_device_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "second_window_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "replacement_device_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mutation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sample_index",
+              "component",
+              "bit",
+              "tag_bit",
+              "cut",
+              "selector"
+            ],
+            "properties": {
+              "sample_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "component": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "bit": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "tag_bit": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "cut": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "selector": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "seed_ids": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "trial",
+              "mutation",
+              "window",
+              "controlled_read"
+            ],
+            "properties": {
+              "trial": {
+                "type": "string",
+                "maxLength": 512
+              },
+              "mutation": {
+                "type": "string",
+                "maxLength": 512
+              },
+              "window": {
+                "type": "string",
+                "maxLength": 512
+              },
+              "controlled_read": {
+                "type": "string",
+                "maxLength": 512
+              }
+            }
+          },
+          "clock_mode": {
+            "enum": [
+              "real",
+              "expiry_equality",
+              "expiry_plus_1ms"
+            ]
+          },
+          "withheld_disposition": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "packet_plan": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "sender_alias",
+                "sequence_number",
+                "source_window_index",
+                "disposition"
+              ],
+              "properties": {
+                "sender_alias": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "sequence_number": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 18446744073709551615
+                },
+                "source_window_index": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "disposition": {
+                  "type": "string",
+                  "maxLength": 512
+                }
+              }
+            }
+          },
+          "operations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "operation_id",
+                "step_index",
+                "role",
+                "action",
+                "sequence_number",
+                "sender_alias",
+                "session_alias",
+                "source_window_index",
+                "boundary",
+                "expected",
+                "parent_attack_trial_id",
+                "recovery_step_ids",
+                "execution_index"
+              ],
+              "properties": {
+                "operation_id": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "step_index": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "role": {
+                  "enum": [
+                    "primary_attack",
+                    "legitimate_control",
+                    "state_negative",
+                    "parser_negative",
+                    "setup_window",
+                    "recovery_window",
+                    "setup_handshake",
+                    "recovery_handshake",
+                    "lifecycle"
+                  ]
+                },
+                "action": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "sequence_number": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 18446744073709551615
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "sender_alias": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "session_alias": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "source_window_index": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "boundary": {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                "expected": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "result",
+                    "reason",
+                    "hmac",
+                    "identity_authenticated",
+                    "order",
+                    "replay_state_change",
+                    "release",
+                    "preprocessing",
+                    "motion",
+                    "anomaly"
+                  ],
+                  "properties": {
+                    "result": {
+                      "enum": [
+                        "accept",
+                        "reject"
+                      ]
+                    },
+                    "reason": {
+                      "type": "string",
+                      "maxLength": 512
+                    },
+                    "hmac": {
+                      "anyOf": [
+                        {
+                          "enum": [
+                            "pass",
+                            "fail",
+                            "not_checked"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "identity_authenticated": {
+                      "anyOf": [
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "order": {
+                      "anyOf": [
+                        {
+                          "enum": [
+                            "pass",
+                            "duplicate",
+                            "stale",
+                            "gap",
+                            "not_checked"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "replay_state_change": {
+                      "type": "boolean"
+                    },
+                    "release": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "preprocessing": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "motion": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "anomaly": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  }
+                },
+                "parent_attack_trial_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 512
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "recovery_step_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 512
+                  }
+                },
+                "execution_index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "count"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
