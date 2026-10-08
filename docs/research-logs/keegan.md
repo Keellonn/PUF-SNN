@@ -1045,3 +1045,88 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Added the nod/still sensitivity and complete-sequence similarity findings, using the saved figures and clearly stated units.
 - Updated the model comparison and speaker notes with per-seed evidence, model sizes, and the constrained SNN conclusion.
 - Clarified the historical authentication boundary and separated completed results from outstanding fresh v2 timing and security evaluation.
+
+## Monday, October 5, 2026 - 1.62 hours
+
+### 1:32 PM - 3:09 PM - 1.62 hours
+
+- Connected the existing v2 credential-admission process to authenticated motion classification and anomaly detection through one composite consumer.
+- Added integration checks for fail-closed behavior, at-most-once delivery, and prevention of inference after rejected authentication.
+- Implemented frozen-model loading with artifact-hash, training-only normalization, and validation-threshold checks.
+- Completed the functional smoke experiment with 30 fresh admission attempts and 90 accepted composite deliveries using five motion models and six anomaly detectors.
+- Checked bad-tag rejection, replay rejection, tracking-quality refusal, authenticated pre-tag position changes, and acceptance of subsequent valid traffic.
+- Corrected result-hash and line-ending handling without changing the experimental records.
+- Passed 27 pipeline tests, 21 frozen-pipeline tests, and the latest 614-test full Python suite.
+- Saved the configuration, documentation, test evidence, and smoke results, then committed and pushed the three checkpoints: `178738f`, `7d07a4f`, and `fa8cbf1`.
+- Kept the experiment limited to functional validation; no retraining, threshold selection, formal attack evaluation, or latency benchmark occurred.
+
+## Tuesday, October 6, 2026 - 2.37 hours
+
+### 12:17 AM - 1:58 AM - 1.68 hours
+
+- Implemented and tested fresh v2 timing across credential reconstruction, independent verification, session establishment, authentication, and composite inference.
+- Ran the six frozen model combinations without retraining or changing anomaly thresholds.
+- Reconciled 3,720 fresh admission attempts and 29,718 timing records, retaining refusals and confirming zero model calls on rejected windows.
+- Reviewed complete-path latency results and saved the configurations, environment, hashes, and reproducibility evidence.
+- Implemented reporting for complete-path p50, p95, p99, and maximum latency, with accepted and rejected paths kept separate.
+- Reconciled 12,621 retained outlier observations and preserved every group maximum without double-counting overlapping categories.
+- Examined garbage-collection overlap and first-use reconstruction delays while distinguishing measured observations from unproven causes.
+- Ran reporting tests and the full Python suite, then committed and pushed the reporting implementation and evidence.
+
+### 3:34 PM - 4:15 PM - 0.68 hours
+
+- Updated the Week 6 results summary and end-to-end methods with the completed integration and timing findings.
+- Revised the project specification, XR/SNN design, and paper outline to distinguish fresh-session costs from recurring-window processing.
+- Documented excluded acquisition, network, and durable-audit costs, along with the failed complete-path latency target and remaining shared requirements.
+- Reviewed the Markdown changes and committed and pushed the documentation checkpoint.
+
+## Wednesday, October 7, 2026 - 5.08 hours
+
+### 12:52 AM - 2:31 AM - 1.65 hours
+
+- Implemented and tested paired controls for retained timing records, streamed records, root-only timing, and temporarily deferred automatic garbage collection.
+- Built the reproducible experiment runner with paired inputs, separate worker processes, and checks for unchanged functional outcomes.
+- Completed four paired blocks across six fixed model conditions, preserving 8,640 admission attempts and 68,952 timing records.
+- Reviewed 20 explicit full-GC probes and recorded deferred cleanup costs separately from window timings.
+- Preserved all refusals and slow observations and documented why deferred collection was a diagnostic control rather than a production performance fix.
+- Added Week 6 slides covering the v2 admission-to-inference workflow, frozen-model smoke results, and fresh-session/composite timing.
+- Added the latency percentiles, missed 20 ms target, timing exclusions, and historical motion-only comparison to the slides and speaker notes.
+
+### 6:52 PM - 8:26 PM - 1.57 hours
+
+- Prepared the Windows tracing profile and checked tool availability, administrator access, storage, and recording readiness.
+- Implemented native Python event markers and clock-correlation support.
+- Ran compatibility and marker checks while keeping raw Windows traces outside the public repository.
+- Tested the tracing support and documented the distinction between a saved capture and validated timing evidence.
+- Implemented and tested the fixed traced workload and native ETL reader using the existing frozen dataset and model binaries.
+- Ran separate reference and Windows-traced processes with 540 fresh admission attempts each.
+- Reconciled functional outcomes and confirmed zero model calls on rejected messages.
+
+### 9:23 PM - 10:34 PM - 1.18 hours
+
+- Checked all 27 saved native markers, clock alignment, and zero reported event/buffer loss, retaining the private capture for further analysis.
+- Reviewed native event metadata and extracted scoped numeric scheduling, process/thread lifetime, I/O, and interrupt evidence.
+- Investigated the native/exported context-switch mismatch, corrected the unsupported byte interpretation, and preserved the original failure evidence.
+- Reconciled scheduling coverage and disjoint wall-time accounting for all 4,320 traced timing records.
+- Examined all eight cases above 100 ms, distinguishing GC overlap, ready-but-not-dispatched delay, reconstruction-stage time, and unresolved residuals.
+- Retained the limitations of incomplete schema validation and unisolated tracing overhead instead of attributing every pause to GC or scheduling.
+
+### 11:16 PM - 11:57 - 0.68 hours
+
+- Implemented sanitized OS reporting and privacy checks excluding raw traces, private paths, OS identifiers, and sensitive kernel fields.
+- Ran the focused accounting/reporting tests and the full 834-test Python suite.
+- Verified artifact hashes and reconciled 2,106 retained observations across 144 groups, including all eight large cases.
+- Committed and pushed the numeric evidence with explicit limitations on causal attribution, tracing overhead, and remaining allocation/cache/power effects.
+- Committed the reporting implementation and the result evidence
+
+## Thursday, October 8, 2026 - 0.72 hours
+
+### 12:00 AM - 12:43 AM - 0.72 hours
+
+- Updated the results summary and methods documents with the completed GC controls and Windows evidence.
+- Preserved the original benchmark results and clarified unresolved causes, privacy boundaries, and remaining requirements..
+- Updated the validation slide with the latest 834-test Python result.
+- Revised the latency-outlier slide to include completed GC controls and the cleanup costs recorded outside window timers.
+- Added the Windows evidence slide with representative GC, scheduling-delay, and reconstruction observations.
+- Updated speaker notes to explain the separate diagnostic workload, evidence checks, privacy protections, and unresolved causal limitations.
+- Revised the next-steps slide while retaining the original timing table and qualified conclusions.
