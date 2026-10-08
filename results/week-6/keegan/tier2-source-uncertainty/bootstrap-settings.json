@@ -1,0 +1,15 @@
+{
+  "repetitions": 2000,
+  "seed": 7027,
+  "bit_generator": "PCG64",
+  "unit": "source_window (one window per trial verified)",
+  "strata": "fixed synthetic profile / source session / motion class",
+  "interval": "95% percentile; quantile method linear",
+  "undefined_draw_policy": "count, do not redraw",
+  "shared_weights_for_all_derivatives_and_fits": true,
+  "source_weight_sha256": "109b5501c09756b541e22fd8b58716b0387926a0c491d39b1a8b9e988a210fee",
+  "weight_hash_encoding": "uint16 little-endian C-order; CSV mapping in source-cohort.csv",
+  "numpy_version": "2.5.3",
+  "seed_fits_are_independent_source_trials": false,
+  "uncertainty_is_conditional_on_fixed_profiles_session_and_class_counts": true
+}

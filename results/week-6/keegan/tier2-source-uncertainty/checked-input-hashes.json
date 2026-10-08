@@ -1,0 +1,13 @@
+{
+  "manifest.json": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+  "COMPLETE": "7f6b319dc09b8d85a9ff47c9c8110ddc96ebf5c8fade134640dd02d0bf5bc4cb",
+  "config.json": "ba88202515d05b2a1e2f2fc345be311c87941be5040adf3999c0247455d88b99",
+  "attack-config.json": "23e36efd8d37f3fadb6d031bb71ef39f7390cf930cc68321dd4994fbe3de773f",
+  "construction-summary.json": "81419cf5266b9f0a652193a4a209ba2baf5fbe5fbe87139526bb76e3d3dd6058",
+  "construction-outcomes.jsonl": "2fc7c263068b9624b6fb22c506b4f2051f8982f02648c19f0c741f9cb2d1f4ab",
+  "frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+  "unauthenticated-test-predictions.jsonl": "42a807491b75881b9943c7e32a26f0f0a23f672703ddf953a9444f86579b1f62",
+  "authenticated-test-predictions.jsonl": "96c09d931c5dd1624222ba615a168bee20e5f8eb873c9e57b78b592101789356",
+  "accepted-delivery-evidence.jsonl": "e06d9e05440d12c61269f7fc10d1d63dae1990d8a45000477d4b676730b5d26d",
+  "results.json": "b3f8c8ec6338055174b4ef72b3fd1536ec4d4302a0db99d3bf5cf0661fa8dc44"
+}

@@ -1,0 +1,7 @@
+{
+  "manifest_sha256": "dc234b0bbccbc56dacd6009b5bd444ff202ad09720fbf46443e1c87b97f41952",
+  "test_source_count": 600,
+  "detector_condition_rows": 168,
+  "motion_condition_rows": 252,
+  "historical_points_reconciled": true
+}
