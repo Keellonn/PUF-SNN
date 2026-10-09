@@ -1,6 +1,6 @@
 # SNN + PUF Research Specification
 
-**Researchers:** Keegan Hoyne and Will Wallace  
+**Researchers:** Keegan Hoyne and Will Wallace
 
 ## Research question
 
@@ -97,7 +97,7 @@ Each window includes
 
 Each sample includes its index, capture time, head position, quaternion orientation, and tracking-valid value.
 
-The complete machine readable format is stored in schemas/quest-window.schema.json. The filename is unversioned, but each record retains schema_version for compatibility and reproducibility. This is the motion-data schema, not the complete authenticated-message interface; that shared interface will also define protocol version, serialization, tag, and verifier-generated audit fields.
+The complete machine readable format is stored in schemas/quest-window.schema.json. The filename is unversioned, but each record retains schema_version for compatibility and reproducibility. This is the motion-data schema, not the complete authenticated-message interface; the current authenticated interface is specified in docs/authentication-v2-protocol-spec.md, including protocol version, serialization, tags and verifier-generated audit fields.
 
 The scripted pilot will create
 - 6 simulated device profiles
@@ -336,7 +336,7 @@ Low-amplitude nods are evaluated as legitimate execution variation and an ambigu
 
 Per-class/per-seed metrics, all six SNN learning histories/stopping decisions, exact LIF/readout equations, model storage and the fixed validation-only selection protocol are in `results/week-5/keegan/model-evidence/`. LR's deterministic lbfgs fitting explains its zero descriptive seed SD; five seed labels are not five independent stochastic performance samples. Data generation seed 7 fixes one dataset, separate from model/attack/uncertainty seeds.
 
-Claims remain cross-session synthetic evaluation with six fixed simulated device profiles. No cross-device, cross-person, real Quest, energy or deployed-security claim follows. The paper outline is `docs/paper-outline.md`. The first fresh v2 accepted/refused timing and frozen-model functional evidence are now recorded separately in Week 6. Remaining shared evidence includes the formal v2 trust/key specification, expanded varied Tier-1 trials with exact intervals and parser/state instrumentation, controlled reconstruction alternatives and durable audit performance. Separate GC/observer controls and bounded Windows accounting are now recorded; complete outlier attribution and isolated tracing overhead remain unresolved. Existing Will-side reports remain separate and unchanged.
+Claims remain cross-session synthetic evaluation with six fixed simulated device profiles. No cross-device, cross-person, real Quest, energy or deployed-security claim follows. The paper outline is `docs/paper-outline.md`. The first fresh v2 accepted/refused timing and frozen-model functional evidence are now recorded separately in Week 6. The actual v2 specification, expanded Tier-1 report and standalone reconstruction-alternatives report are now present. Remaining shared evidence is baseline reconciliation, fresh majority-3/correlated-noise integration, the provisioned-credential control, complete Tier-1 metadata/raw-evidence release closure and durable audit performance. Separate GC/observer controls and bounded Windows accounting are now recorded; complete outlier attribution and isolated tracing overhead remain unresolved. Existing Will-side reports remain separate and unchanged.
 
 ## Week 6 integration and first instrumented timing evidence
 
@@ -367,3 +367,19 @@ tracing overhead. Allocation/cache/power effects and dependency waits remain
 explicit unknowns. The original targets, timing table, models and thresholds are
 unchanged; complete causal attribution remains false. See
 `docs/week6-windows-os-evidence.md` and the updated Week 6 summary.
+
+
+
+## October 8 feedback revision: contribution and measured target
+
+The evaluated software prototype enforces the tested authentication and inference-release policies and offers improved nominal reconstruction reliability in a separate alternatives experiment, but the original released complete motion-plus-anomaly paths do not meet the provisional 20 ms p95 target. Window integrity/replay protection comes primarily from HMAC and verifier state; simulated-PUF reconstruction is a separate admission mechanism with an availability and custody cost. HKDF/HMAC do not increase a 32-bit pilot credential into a production-strength secret.
+
+The [actual v2 specification](authentication-v2-protocol-spec.md) includes the enrollment, credential-verifier/admission and session trust boundaries. The receiver registry also retains the enrolled credential; it is not a tag-only architecture. Trusted-process/key-provider compromise is outside scope. No production keystore or secure erasure is implemented. The exact-next-sequence policy blocks subsequent traffic if a window is lost: the application must retain/retransmit missing traffic or start a new authorized session; automatic resynchronization, buffering and DoS availability are not established.
+
+The [saved stage accounting](week6-stage-accounting.md) separates admission from recurring processing and reconciles all original roots. The [bounded exact-quality comparison](week6-quality-benchmark.md) evaluates one semantics-preserving arithmetic candidate, not a weaker quality policy. In two AB/BA blocks, opt-in LR/LR recurring p95 is 14.2551/15.3827 ms, versus matched reference 27.4285/25.1534 ms. Candidate LR/LR fresh p95 remains 22.2278/23.4115 ms; LR/RF and SNN/RF candidates also remain above 20 ms. The default implementation remains unchanged. No all-path latency or deployment claim is justified.
+
+GC remains enabled in this comparison, explicit final cleanup and unpaced sustained rates are reported, and resource snapshots are retained. Physical acquisition, the additional two-second window, network and durable storage remain outside post-window totals. Inclusive stage percentiles are not summed.
+
+Tier-2 uncertainty now resamples source windows jointly with all derivatives and frozen fits, rather than assuming transformed cases are independent. Point results/thresholds remain unchanged. Low-amplitude legitimate nods are primarily intended-motion ambiguity, not automatically malicious streams or required anomaly alerts.
+
+See [feedback consolidation](week6-feedback-consolidation.md) for the status/test/claim tables and specific faculty decisions, and [release evidence](week6-release-evidence.md) for verified local evidence and the missing shared release components. The next work is bounded consolidation and the declared Will/shared controls, not another architecture search or broad Windows tracing campaign.

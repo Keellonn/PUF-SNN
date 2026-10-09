@@ -1,0 +1,316 @@
+{
+  "index_version": "week6-feedback-evidence-index-v1",
+  "scope": "Pinned Keegan experimental snapshot plus documented Will reports; not a declaration of a fully verified shared release.",
+  "experimental_snapshot": {
+    "commit": "2c84cf8394bd444188291e254bbf1ddde3cc8661",
+    "tree": "f8f400fabf89943301be3adc4dc7683a306717a4",
+    "default_quality_mode": "reference_fraction",
+    "majority_3_integrated": false,
+    "documentation_revision_commit": "assigned by the later documentation commit; intentionally not self-referential"
+  },
+  "critical_source_and_config_files": [
+    {
+      "path": "configs/authentication_v2.json",
+      "sha256": "b0ee45b8a3ee5cf6c4c25813e876847303ada4209abc4632bce903a331cf0f60",
+      "bytes": 305
+    },
+    {
+      "path": "configs/puf_baseline.json",
+      "sha256": "fb54059dc268ef86300d90a4468fcf200b0c73d13c28fad1402a84a075271cda",
+      "bytes": 480
+    },
+    {
+      "path": "configs/week6_timing.json",
+      "sha256": "bdea3308de4b90ca2e14f57286cf1df6e9dd1cf89d169a1d5528da2e8f57e3cb",
+      "bytes": 1208
+    },
+    {
+      "path": "configs/stream_attacks.json",
+      "sha256": "a2251e963c00b665eb36a4a865ade1d3e9ae31326016972f1ccb4f845cc31cd9",
+      "bytes": 1325
+    },
+    {
+      "path": "src/python/puf_snn/pipeline_v2.py",
+      "sha256": "0d9b482164f5e6da45ccd9ed4815ee1bc31f6d71ea66662bb15f0222e375be21",
+      "bytes": 9953
+    },
+    {
+      "path": "src/python/puf_snn/pipeline_timing.py",
+      "sha256": "e204b6c5fb2607714aaf713a224ece5230d17737450e4b096c6472f66b446228",
+      "bytes": 23215
+    },
+    {
+      "path": "src/python/puf_snn/frozen_pipeline.py",
+      "sha256": "6a6bc7f432b79ee4bca554a2cdaa758dd5efac58bad994bf7a6174136766443e",
+      "bytes": 15383
+    },
+    {
+      "path": "src/python/puf_snn/quality_dyadic.py",
+      "sha256": "a3f71a79ab48941807a0ba75e99b67f7cebdaa0b81ba75d9f2ae9d8171a12947",
+      "bytes": 4290
+    },
+    {
+      "path": "src/python/puf_snn/quality_benchmark.py",
+      "sha256": "c412a221440fe474de28ce66d0d6dc15f7e1f6911a89f33802adb8d4ac0737f4",
+      "bytes": 15987
+    },
+    {
+      "path": "src/python/puf_snn/stage_accounting.py",
+      "sha256": "002c04e38fc693333991c8b4c89022b5f18459b51a8f59990b8935623bd6fb9c",
+      "bytes": 20265
+    },
+    {
+      "path": "src/python/puf_snn/tier2_source_uncertainty.py",
+      "sha256": "aebddf9cfba33a906280dd0c510bc73fb84999a59864405b667f28594668322b",
+      "bytes": 23606
+    },
+    {
+      "path": "src/python/scripts/benchmark_week6_quality.py",
+      "sha256": "a15d303fbb82261958c618b2b1e6a63491d1c1e0c4e24bf04bbd72930eb6d966",
+      "bytes": 25252
+    },
+    {
+      "path": "src/python/scripts/summarize_week6_stages.py",
+      "sha256": "882d4fbd225affc5160c96744853520ad28996d9fc912e155dbe301e60a9abc1",
+      "bytes": 19055
+    },
+    {
+      "path": "src/python/scripts/summarize_tier2_source_uncertainty.py",
+      "sha256": "0cbfb68472c81000aeaa301d0913738f0dd872c7c399e0a9ffb3cdcdd1fc4dc3",
+      "bytes": 22040
+    },
+    {
+      "path": "configs/week6_quality_benchmark.json",
+      "bytes": 1640,
+      "sha256": "3e7de27dc6cefd39768165be544990605cda0f697bea0c46d6341279806c6856"
+    },
+    {
+      "path": "configs/week6_smoke.json",
+      "bytes": 1100,
+      "sha256": "ff10c6b53ce8041f39bf26c99d793fda64a8cbde6cbe4dd6c05e28b3437a100f"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 118,
+      "sha256": "8ac62cb0c763fc93c3869df8c6af814a76f8444423cb8d7a17e367f0a677ffee"
+    }
+  ],
+  "runs": [
+    {
+      "name": "fresh-v2-timing",
+      "directory": "results/week-6/keegan/fresh-v2-timing",
+      "source_commit": "78f499a92f633a4793c776a070058e3a6a9a0b61",
+      "evidence_commit": "a4a9e2548fd30ee2383923dbd0de6cd5c45c587f",
+      "manifest": {
+        "path": "results/week-6/keegan/fresh-v2-timing/manifest.json",
+        "bytes": 8423,
+        "sha256": "10135c6e3849015c6afcfb96c91d9bc25bdeabdbdc1da2531b1ec65501403b50"
+      },
+      "fresh_attempts": 3720,
+      "root_records": 29718,
+      "original_record_files_modified": false
+    },
+    {
+      "name": "stage-accounting",
+      "directory": "results/week-6/keegan/stage-accounting",
+      "source_commit": "7921261fc6ff690b9c8e1b9f66907d3424e2ae4a",
+      "evidence_commit": "f11f491b92f48b21ea4541911a6100ba96c09f4e",
+      "manifest": {
+        "path": "results/week-6/keegan/stage-accounting/manifest.json",
+        "bytes": 3285,
+        "sha256": "6c9691ef4a07b8f6ced4de96f7aec798046ebd743254aa3041b4d5941dd2bd48"
+      },
+      "fresh_attempts": 3720,
+      "root_records": 29718,
+      "original_record_files_modified": false,
+      "new_model_inference_executed": false,
+      "new_latency_measurement_executed": false
+    },
+    {
+      "name": "tier2-source-uncertainty",
+      "directory": "results/week-6/keegan/tier2-source-uncertainty",
+      "source_commit": "c5e982baef8f892e42c4719c695d22c3b9dc4a63",
+      "evidence_commit": "2b1d2100bd6aa1ca0e3121657e4e657f2ee93a46",
+      "manifest": {
+        "path": "results/week-6/keegan/tier2-source-uncertainty/manifest.json",
+        "bytes": 3949,
+        "sha256": "dc234b0bbccbc56dacd6009b5bd444ff202ad09720fbf46443e1c87b97f41952"
+      },
+      "planned_cases": 50400,
+      "test_sources": 600,
+      "bootstrap_repetitions": 2000,
+      "bootstrap_seed": 7027,
+      "original_record_files_modified": false,
+      "new_model_inference_executed": false,
+      "new_latency_measurement_executed": false
+    },
+    {
+      "name": "quality-benchmark",
+      "directory": "results/week-6/keegan/quality-benchmark",
+      "source_commit": "bddce50198d68b851f648d45638aa06d9eea152c",
+      "evidence_commit": "2c84cf8394bd444188291e254bbf1ddde3cc8661",
+      "manifest": {
+        "path": "results/week-6/keegan/quality-benchmark/manifest.json",
+        "bytes": 5066,
+        "sha256": "a978cec8d4df41617b7db4616109b8e7b6a522c276efe73243de3c01ef6d9045"
+      },
+      "fresh_attempts": 1800,
+      "root_records": 15126,
+      "original_record_files_modified": false,
+      "default_modified": false,
+      "gc_deferred": false,
+      "blocks": 2,
+      "worker_manifests": {
+        "block-0-reference_fraction": "f2c00797849a9ba9d9dc59f0441ca6948a216b5f606f161c545ac80e354883d8",
+        "block-0-candidate_dyadic": "70fc67265396cfc5b4e2720e4ac02d6709fe07e0962798db746ee6c9608cc470",
+        "block-1-candidate_dyadic": "adc2838e8099d808ea8a672b325ad5d620676f3bc768162620b54f520afd1f56",
+        "block-1-reference_fraction": "46fbc7c4a3676c33d3f5002ec1ee9c05f6e8208b69741880349c0a296434f0ee"
+      }
+    }
+  ],
+  "frozen_payloads": [
+    {
+      "path": "data/generated/synthetic-windows.jsonl",
+      "sha256": "752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661",
+      "bytes": 45311234
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/anomaly-feature-names.json",
+      "sha256": "c9174ed0cf2abbf0af3465ede0d7bf10468a9e36ca36a3c9cd6ed627280b041f",
+      "bytes": 1861
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/frozen-validation-thresholds.json",
+      "sha256": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+      "bytes": 2281
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/manifest.json",
+      "sha256": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+      "bytes": 12438
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_logistic_regression_seed6007.joblib",
+      "sha256": "c316e1e09f56ef6209b10a384ed05fd75f26047aef079a2ab1eae42092deaa47",
+      "bytes": 2892
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_logistic_regression_seed6017.joblib",
+      "sha256": "e4ca5eeddc6b1d1e61b625c15e1d317df3067b370a14550eb604a43a3b2dd5c6",
+      "bytes": 2893
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_logistic_regression_seed6027.joblib",
+      "sha256": "7c35c805d38f53787ad32fe921a1d73b31374b63977842d154ee6322430da74d",
+      "bytes": 2893
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_random_forest_seed6007.joblib",
+      "sha256": "441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b",
+      "bytes": 2434648
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_random_forest_seed6017.joblib",
+      "sha256": "c938ae90ab8e96619354b5c1abe48c0f925de187ffcd25283ccaf30c93bf31ea",
+      "bytes": 2432067
+    },
+    {
+      "path": "results/week-5/keegan/stream-evaluation/models/anomaly_random_forest_seed6027.joblib",
+      "sha256": "6c6120175fd19e5e2402d08f2af38602962e49ff31bada3009a6085afa95a784",
+      "bytes": 2436025
+    },
+    {
+      "path": "results/week-5/keegan/model-evidence/manifest.json",
+      "sha256": "456b21cf1c4ed74dbc52294857b2d9c607d9cdd6efeb753b2679b95b9df100ed",
+      "bytes": 8108
+    },
+    {
+      "path": "results/week-5/keegan/model-evidence/models/logistic_regression-seed-7-storage-refit.joblib",
+      "sha256": "197fedf4ad93b6ed097485b371db1dd501ebc83e883daaf75049fcf605e21069",
+      "bytes": 55441
+    },
+    {
+      "path": "results/week-5/keegan/model-evidence/models/random_forest-seed-7-storage-refit.joblib",
+      "sha256": "36a5bfb68547c2f28a937f1247ef9026a374d7db43225641a11238334c12c69d",
+      "bytes": 4019633
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/config.json",
+      "sha256": "534732e0a40c27295c426cd25e6f6c6d173683e8e3532104f343e0f7ab4407e4",
+      "bytes": 1853
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/manifest.json",
+      "sha256": "ccf13e7d7c3b199676e8a847394cc1d5a1c4d70939fa2f94d8efd84ab0470779",
+      "bytes": 3906
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/normalization.json",
+      "sha256": "ee12dbf23b3f2756e9104862036c04966adfbd3bd72e32bfc1dd6a113e9e1766",
+      "bytes": 695
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/seed-17/model-state.pt",
+      "sha256": "ca99ebad0e1c54042030c53fd38838d97fdaf69fd1f28eec378e267ffe8effaf",
+      "bytes": 9029
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/seed-27/model-state.pt",
+      "sha256": "a898494efaea7581b6423b6e70acedb66e7ec48d2c81cab627b92c84885c4830",
+      "bytes": 9029
+    },
+    {
+      "path": "results/week-4/keegan/snn-architecture-32/seed-7/model-state.pt",
+      "sha256": "112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6",
+      "bytes": 9029
+    }
+  ],
+  "frozen_payload_policy": "Dataset and 11 model binaries are Git-ignored. Obtain exact trusted payloads and verify these hashes plus original bundle manifests before any deserialization. Do not regenerate/refit or silently overwrite conflicts.",
+  "latest_full_suite": {
+    "path": "results/week-6/keegan/test-evidence/quality-benchmark-full-python-suite.txt",
+    "bytes": 148390,
+    "sha256": "f73c9aad0d4044fd8441f13072487b6d8afd294638c63cade2fb524bca91c41b",
+    "source_commit": "bddce50198d68b851f648d45638aa06d9eea152c",
+    "tests": 964,
+    "seconds": 100.599,
+    "new_suite_executed_for_this_documentation": false
+  },
+  "documented_shared_reports": [
+    {
+      "path": "docs/authentication-v2-protocol-spec.md",
+      "bytes": 68196,
+      "sha256": "81d48649db98812f2d62592e3bc4bf0e60419ff0434e39f3888d9b7247a918e7"
+    },
+    {
+      "path": "docs/week6-tier1-v2-experiment.md",
+      "bytes": 61103,
+      "sha256": "381a457c7b37dd348ddd42bbd56af37ef8ae1aa24ea69d7c73ab9214451a5257"
+    },
+    {
+      "path": "docs/week6-reconstruction-alternatives-experiment.md",
+      "bytes": 29679,
+      "sha256": "9b3a09f3bc7d67cac3d852e9b456174c9f0e1ace93714c354d1c198160da81e0"
+    }
+  ],
+  "shared_evidence": {
+    "independently_recomputed_in_this_checkout": false,
+    "tier1_raw_directory": "results/week-6/will/authentication/tier1-v2-formal-001",
+    "tier1_raw_directory_present": false,
+    "reported_tier1_execution_commit": "0d088079d025e50411c8a752b32507bbb87d5d5b",
+    "reported_tier1_original_manifest_sha256": "098ebcf6488e7d2b5c2054200bab289e5428c859904108059d0437612c137177",
+    "reported_tier1_source_manifest_sha256": "d1367398222037dc9f6bc92c1b5d4610f68a6e0513b02b61bbb74e6ba31892b3",
+    "reconstruction_raw_directory": "results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001",
+    "reconstruction_raw_directory_present": false,
+    "reported_reconstruction_execution_main_head": "acc46478dcde2ecffe706d8eab355b453b94fa30",
+    "reported_reconstruction_plan_sha256": "0206983264278f1485b36bdbff29463afe2dc153aa003954506e68e75b9ced2d",
+    "limitations": [
+      "Formal execution snapshots differ from later public main; recover exact retained source and verify its manifest.",
+      "Will raw evidence is documented but not locally rechecked here.",
+      "requirements.txt is not a full inference dependency lock; recorded per-run environments remain authoritative.",
+      "No majority-3 integrated/correlated-noise or provisioned-random-credential control result is asserted."
+    ]
+  },
+  "private_os_trace_policy": "Raw ETL, kernel payloads and private recovery evidence are excluded from public release. Only existing sanitized numeric reports are public; no tracing, rescan, deletion or upload is authorized by this index.",
+  "shared_release_complete": false,
+  "hardware_or_human_validation_complete": false
+}

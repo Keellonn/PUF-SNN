@@ -1,5 +1,5 @@
 # XR, Data, and SNN Design
-**Owner:** Keegan Hoyne  
+**Owner:** Keegan Hoyne
 
 ## Purpose
 This document describes my part of the project
@@ -358,7 +358,7 @@ Interpret low-amplitude nods as legitimate execution variation and intended-clas
 
 The separate Tier-2 breakdown retains all 5,501 pre-tag failures (3,493 source gaps above 50 ms; 2,008 non-increasing timestamps), per-type/severity detector detected/missed counts and paired motion degradation. It does not count quality/construction blocks as detector successes. Frozen thresholds are selected from validation only; both detectors miss 90% medium/high recall and LR exceeds 5% held-out clean FPR. Synthetic freeze cues and shared parameter ranges remain limitations.
 
-All new addenda preserve the original leakage reports and historical experiment artifacts. The original known-correct-candidate authenticated stream run predates the current pre-HKDF/local-admission gate; retrospective reporting does not validate fresh v2 sessions. The separate Week 6 connector, frozen-model smoke and first instrumented timing run now exercise actual one-read/one-decode v2 admission without changing those historical results. Expanded varied Tier-1 evaluation, reconstruction alternatives and durable audit performance remain separate/shared work. GC/observer controls and bounded Windows accounting are now recorded; complete causal isolation remains unresolved. Human recording stays disabled until approval.
+All new addenda preserve the original leakage reports and historical experiment artifacts. The original known-correct-candidate authenticated stream run predates the current pre-HKDF/local-admission gate; retrospective reporting does not validate fresh v2 sessions. The separate Week 6 connector, frozen-model smoke and first instrumented timing run now exercise actual one-read/one-decode v2 admission without changing those historical results. Will's expanded Tier-1 and standalone reconstruction-alternatives reports and actual v2 specification are now present. Baseline reconciliation, fresh majority-3/correlated-noise integration, a provisioned-credential control, shared formal evidence closure and durable audit performance remain separate/shared work. GC/observer controls and bounded Windows accounting are now recorded; complete causal isolation remains unresolved. Human recording stays disabled until approval.
 
 ## Week 6: frozen composite inference and timing
 
@@ -393,3 +393,19 @@ Methods, decoder limits and privacy rules are in
 `docs/week6-outlier-diagnostics.md` and `docs/week6-windows-os-evidence.md`.
 The raw trace and failed/recovered decoding evidence remain private; the public
 completion marker confirms filtered export, not complete causal attribution.
+
+
+
+## October 8 consolidation: source dependence and one bounded optimization
+
+The [source-aware Tier-2 addendum](../results/week-6/keegan/tier2-source-uncertainty/tier2-source-uncertainty.md) retains the original points and frozen thresholds while resampling each held-out source jointly with its clean and altered derivatives across all fitted seeds. The 2,000 stratified draws over 600 sources are conditional on fixed device/class composition and the held-out synthetic session; they do not estimate new-person/device/session generalization.
+
+Motion classification decides intended motion; an anomaly alert indicates a defined abnormal-stream condition. A misclassified small legitimate nod can trigger a wrong motion action without warranting an anomaly alert. Neither low-amplitude ambiguity nor authentication correctness should be substituted for anomaly recall. Neither SNN outperforms the conventional baselines, and anomaly recall targets remain unmet.
+
+[Original stage accounting](../results/week-6/keegan/stage-accounting/stage-accounting.md) identified repeated exact quaternion-quality arithmetic as one shared application cost. [The matched comparison](../results/week-6/keegan/quality-benchmark/quality-benchmark.md) changes that arithmetic only, using exact dyadic integers while preserving binary32 bounds/continuity and authenticated state policy. No motion/anomaly fitting or model search occurred.
+
+Opt-in LR/LR recurring p95 is 14.2551/15.3827 ms in two bounded blocks, but fresh p95 remains 22.2278/23.4115 ms. LR/RF recurring is 25.0066/28.9934 ms and SNN-32 seed-7/RF is 32.1141/40.8279 ms. The default v2 remains unchanged. Reduced quality cost does not remove forest/SNN inference cost or establish a hardware/energy advantage.
+
+Reported totals include timing observers and in-memory audit, while excluding physical acquisition, the additional two-second recording window, network and durable storage. GC remains enabled; cleanup, sustained capacity and coarse resource behavior are reported separately. Historical motion-only timings belong in comparison/appendix material, never as evidence that the complete default architecture meets 20 ms.
+
+The [feedback/status/claim tables](week6-feedback-consolidation.md), [evaluation draft](paper-evaluation-draft.md) and [release index](week6-release-evidence.md) are the current reporting entry points. Logger validation remains pending explicit faculty/lab/institutional decisions; no human recording or real-Quest transfer claim is added.

@@ -311,8 +311,9 @@ were not separately isolated. Do not discard those values, subtract no-op
 overhead, or treat receiver-only timings as complete-path performance.
 
 The concise numerical account and exact recorded commands are in
-`results/week-6/keegan/keegan.md`. The latest saved Python suite passed 834
-tests, including 43 Windows OS accounting/reporting tests. The earlier 666-test
+`results/week-6/keegan/keegan.md`. The historical Windows-evidence suite passed 834
+tests, including 43 Windows OS accounting/reporting tests. The latest saved
+quality-benchmark source checkpoint passed 964 tests in 100.599 seconds. The earlier 666-test
 suite and its 24 timing-reporting tests remain a historical checkpoint. No model training, threshold
 change, architecture expansion or reconstruction-policy change occurred.
 
@@ -326,6 +327,39 @@ This does not establish that Will has received or verified the bundle.
 The separately declared observer controls and bounded Windows accounting are
 now recorded; complete causal attribution and isolated tracing overhead are not.
 Allocation/cache/power effects and dependency waits remain explicit unknowns.
-Expanded varied Tier-1 evaluation, controlled reconstruction improvements,
-precise v2 trust/key specification, durable audit timing and approved Quest
-logger validation remain separate/shared work, not completed by these diagnostics.
+The expanded Tier-1 report, standalone reconstruction-alternatives report and
+actual v2 specification are now present in the repository. They are separate
+Will-side evidence, not completed by these diagnostics. Majority-3 integration,
+correlated-noise evaluation, baseline reconciliation, the provisioned-credential
+control, shared raw-evidence closure, durable audit timing and approved Quest
+logger validation remain outstanding.
+
+
+
+## Step 7: October 8 saved stage accounting and source-aware outcomes
+
+The [stage report](../results/week-6/keegan/stage-accounting/stage-accounting.md) reconciles 29,718 original roots and all exclusive partitions without new timing or inference. Use its direct totals for p50/p95/p99/max, its nested-stage tables for locations, and its labeled remainders for unisolated binding/sequence/state and session/HKDF/confirmation work. A zero for an absent category is not a measured zero-cost operation.
+
+Original measured admission uses one read, BCH(63,36,t=5), a 32-bit pilot credential and six PUF profiles, seed 6767. The 599/600 accepted measured attempts per configuration are paired. Successful-window/fresh quantiles are conditional on admission; failure quantiles and denominators remain separate. No majority-3 result is attributed to these runs.
+
+The 5.17 ms median in Will's Tier-1 report is accepted native-verifier time including parsing, HMAC, quality, sequence/audit/state and lock acquisition; it excludes downstream release/inference. Historical bad-tag rejection returns earlier and uses a different instrumentation boundary. These are not matched measurements.
+
+The [source-aware Tier-2 report](../results/week-6/keegan/tier2-source-uncertainty/tier2-source-uncertainty.md) preserves 50,400 planned cases and unchanged predictions/thresholds, using 2,000 shared source-window bootstrap draws over 600 test sources. It is statistical reporting of historical Tier-2 traffic, not fresh v2 execution.
+
+## Step 8: Completed bounded exact-quality comparison
+
+One quality-arithmetic bottleneck was tested with exact dyadic integers in place of Fraction operations. Four fresh workers in two AB/BA blocks used the same predeclared LR/LR, LR/RF and SNN-32 seed-7/RF configurations, paired source/noise streams and timer protocol. Each configuration/mode/block has 30 validation warmups and 120 measured attempts. Single-read baseline reconstruction, wire/HMAC format, quality bounds, state policy, weights and thresholds are unchanged.
+
+The [comparison report](../results/week-6/keegan/quality-benchmark/quality-benchmark.md) retains 1,800 attempts, 15,126 roots and 768 same-session burst windows. Input/output/state signatures match; rejected records cause zero model calls. Every measured condition admitted 120/120 in block 0 and 119/120 in block 1. There is no retry to supply a more favorable final session.
+
+| Condition | Matched reference recurring p95, blocks 0 / 1 ms | Candidate recurring p95, blocks 0 / 1 ms | Candidate fresh p95, blocks 0 / 1 ms |
+|---|---:|---:|---:|
+| LR/LR | 27.4285 / 25.1534 | 14.2551 / 15.3827 | 22.2278 / 23.4115 |
+| LR/RF | 40.9905 / 41.3853 | 25.0066 / 28.9934 | 31.0356 / 35.0740 |
+| SNN-32 seed 7/RF | 46.5381 / 48.6062 | 32.1141 / 40.8279 | 37.7728 / 49.9577 |
+
+All values are directly measured accepted totals with n=120/119, not sums of percentiles. Only LR/LR recurring candidate meets 20 ms in both bounded blocks. Default adoption is not performed; the original target misses remain visible. Two reused-source blocks do not justify a population timing interval or a deployment claim.
+
+Automatic GC remains enabled. Explicit final cleanup costs 231.3012-261.7698 ms across workers and is retained separately, not presented as free. The 64-distinct-window bursts report unpaced closed-loop capacity including assertion/signature/evidence-write work but excluding admission/loading/final cleanup; separate worker-wide mixed capacity includes cleanup. Resource snapshots are coarse, and frequency/core/thermal effects are uncontrolled.
+
+No new tracing, training, threshold selection, majority-3 integration or provisioned-key control was performed. [Feedback consolidation](week6-feedback-consolidation.md) and [release evidence](week6-release-evidence.md) distinguish completed Keegan work from the remaining shared study.
