@@ -1,0 +1,25 @@
+{
+  "capture_version": "week7-user-dependency-metadata-selected-fields-v1",
+  "origin": "Selected fields transcribed from the user's terminal output for Inspect-Week7Dependencies.ps1; not a second run or a full original output artifact.",
+  "check_version": "week7-project-dependency-metadata-v1",
+  "python": "3.13.14",
+  "python_range": ">=3.12,<3.14",
+  "python_range_satisfied": true,
+  "puf_snn_metadata_record_count": 2,
+  "project_metadata_declarations_equivalent": true,
+  "project_metadata_sha256_for_both_records": "cbf5b38530a26064cb18190f4d044b2d2b32be2ea9ef0e38f91492a243d00b1d",
+  "metadata_locations": [
+    {"scope": "project_source_tree", "format": "PKG_INFO_without_record_file_list", "direct_origin_metadata_present": false},
+    {"scope": "project_virtual_environment", "format": "dist-info", "direct_origin_metadata_present": true}
+  ],
+  "pyproject_sha256": "4388921be04c897c8f13327c4ad911bc2831d4eb8f0bfbecb689eea1d174e0f0",
+  "requirements_txt_sha256": "8ac62cb0c763fc93c3869df8c6af814a76f8444423cb8d7a17e367f0a677ffee",
+  "declared_dependencies_satisfied": true,
+  "requirements_txt_matches_observed_environment": false,
+  "mismatch": {"requirement": "matplotlib==3.10.6", "observed_version": "3.11.2", "broad_pyproject_constraint_satisfied": true},
+  "urls_and_absolute_paths_exported": false,
+  "installation_or_metadata_deletion_executed": false,
+  "model_imports_executed": false,
+  "clean_environment_validated": false,
+  "checkout_status_observed": "main...origin/main; no changed files"
+}

@@ -1,0 +1,627 @@
+{
+  "checkout_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "archive_sha256": "63a1c9137bc79e41e622461ceec19c9179e3bb2f2d5489877ec46bff2580c0c0",
+  "files": [
+    {
+      "file": "README.md",
+      "git_blob": "00cd811cb9a77524343db217a4c0d8c999ae0a85",
+      "sha256": "fd484e9a7d357f3781d687fc9a1a3b9c3dd7e06147346bc27ca1962267e476ee",
+      "bytes": 3348
+    },
+    {
+      "file": "pyproject.toml",
+      "git_blob": "b2b19e9025aaecce5cbe4fede405d7e5b878ce1c",
+      "sha256": "7b5233acbda41ec6893ffb6e8a8c9b080262ce92a30eceb7b6bc54599bbd70c0",
+      "bytes": 660
+    },
+    {
+      "file": "src/python/puf_snn/__init__.py",
+      "git_blob": "a94c13fc0c9e0cd98600737422fe2fc95107c516",
+      "sha256": "66b1b6e76cadb4f1434545eb78123affeae4f493df7ea2714ab763f70269ba5d",
+      "bytes": 53
+    },
+    {
+      "file": "src/python/puf_snn/anomaly/__init__.py",
+      "git_blob": "2f4c2383884b3736e6778cc1aafaba35a2fcdaea",
+      "sha256": "4fd86deef367b233622d693574b762fd039e4cef8373f6b22d497d8366871d30",
+      "bytes": 202
+    },
+    {
+      "file": "src/python/puf_snn/anomaly/detector.py",
+      "git_blob": "2d3c984221d4c3c85cdab04e0573a703585374bb",
+      "sha256": "a7fc761a38880942cf8d7041f320bd343407ce87f767f37d8a6816a755328a30",
+      "bytes": 10622
+    },
+    {
+      "file": "src/python/puf_snn/anomaly/features.py",
+      "git_blob": "47ab429e1549e7bc63030a8b17714ee756deefab",
+      "sha256": "bb9c06c2a9be8df3d00ee92d6dd95e6a3122aadd9d647416a065897f7b7ad395",
+      "bytes": 3849
+    },
+    {
+      "file": "src/python/puf_snn/attacks/__init__.py",
+      "git_blob": "4c742a667b9daff4b2535a305f514b26b7d5f1ff",
+      "sha256": "28fa375059c33363fae5875c4da336c0d4abbe897abb5c43e517c68788088f2e",
+      "bytes": 294
+    },
+    {
+      "file": "src/python/puf_snn/attacks/evaluation.py",
+      "git_blob": "a045f774b0a52ad226ab5352696c109dfb591bd9",
+      "sha256": "9c3d547edc37e8f1504ed40599bc610e90f849a5e321403875f672a7c92134c4",
+      "bytes": 19321
+    },
+    {
+      "file": "src/python/puf_snn/attacks/reporting.py",
+      "git_blob": "8c458aedc70ea2fdb158be8213461c84784d89dd",
+      "sha256": "7b8234b6a9924184ff8cc9a2298a1126c196d1f18770eedfd3eedd70ca15196e",
+      "bytes": 22165
+    },
+    {
+      "file": "src/python/puf_snn/attacks/stream.py",
+      "git_blob": "fa2f261ea572468d45a4adbcbaf83cb5222114e6",
+      "sha256": "26a5d38d281ff584662676b73a9f95c63a0af4fd10292291b85693cf9e594fa3",
+      "bytes": 17007
+    },
+    {
+      "file": "src/python/puf_snn/auth/__init__.py",
+      "git_blob": "29169a88b66d15767bf4bf06901357e3fbc11ac9",
+      "sha256": "7300041888c4a642ab4a0f63acb0e9436249bede8c09fd533ad09792d7d6f5d8",
+      "bytes": 1317
+    },
+    {
+      "file": "src/python/puf_snn/auth/audit.py",
+      "git_blob": "3c56ece4b1df067ce625a555bfd31a83e22c3f8f",
+      "sha256": "b2fce9fc2d4f90864552767dfb2184fed12caef66ec3938e7d96461b05988111",
+      "bytes": 7664
+    },
+    {
+      "file": "src/python/puf_snn/auth/binary_window.py",
+      "git_blob": "51342acfc9824b27a299d8903ebc365aba8a94e7",
+      "sha256": "1a5f9013ca5bcf77be08f3541faecd496a4f4de23419790778724616704326ec",
+      "bytes": 10939
+    },
+    {
+      "file": "src/python/puf_snn/auth/config.py",
+      "git_blob": "08ebb87f9da654f12cf79fa3a464cbeca2f1fe85",
+      "sha256": "6a319d323cb07098fe70a8838fe78a98e2aa9cb0fa5ebb2bddfef8d97a74b05a",
+      "bytes": 1876
+    },
+    {
+      "file": "src/python/puf_snn/auth/credential_verifier.py",
+      "git_blob": "9d29c872c6d7ecdf71da812f0acc6ecf00b5734f",
+      "sha256": "8513d1d962f18fc35ac3f5b84861fad80f3cb7cbf28817528022283ee451a4a5",
+      "bytes": 17070
+    },
+    {
+      "file": "src/python/puf_snn/auth/inference_gate.py",
+      "git_blob": "a07908fe9401b20737f02d530a8f9a9ddd2b3e9e",
+      "sha256": "2590cfc058057650dbd7b91cb16fd0fd55372804813b9d170d23f4f3770f9cef",
+      "bytes": 3799
+    },
+    {
+      "file": "src/python/puf_snn/auth/sender.py",
+      "git_blob": "c2eb1be81caa2ebdbcba0a0a954ebceee237d75a",
+      "sha256": "591a9023c5a6e757aa3eaf0fc8b1eb70351ba9fe7d3dcdb0614344f276e03387",
+      "bytes": 12786
+    },
+    {
+      "file": "src/python/puf_snn/auth/session.py",
+      "git_blob": "a676ab0f40a88520e8c3406474c54d2a16d960f6",
+      "sha256": "3d14a154ea31fdff5f76ba5cbfd586e89b0c2dfbc40961e83911a92688ddc07b",
+      "bytes": 23488
+    },
+    {
+      "file": "src/python/puf_snn/auth/verifier.py",
+      "git_blob": "fb0f66f96efe4e31280e1c163bafac1f20ff1be3",
+      "sha256": "7a2f04e5e62efde330930e4eb55127a813226211de258ac7823a1b3033e11082",
+      "bytes": 20324
+    },
+    {
+      "file": "src/python/puf_snn/auth/window_message.py",
+      "git_blob": "bac8b983e5bce29ba405a8c95b995ddab63a1957",
+      "sha256": "656cd3f2aedc32622960cd13513a260541bf8dda96bd1ed201b7030705db2db7",
+      "bytes": 6190
+    },
+    {
+      "file": "src/python/puf_snn/data/__init__.py",
+      "git_blob": "16017095a4cf624041fcef677279a62605e17809",
+      "sha256": "e1c962ed65098f433672fef0c65947dba5151202cddf2a9ff81ecc9be7baf55a",
+      "bytes": 65
+    },
+    {
+      "file": "src/python/puf_snn/data/generator.py",
+      "git_blob": "f945b7a5afb2624f2dac2ef3bdcb2246683a0f97",
+      "sha256": "bb247629bc225e091b56eb9041a9940daa8ab46f4cec26b47d4c4bfd9388d176",
+      "bytes": 18592
+    },
+    {
+      "file": "src/python/puf_snn/data/validation.py",
+      "git_blob": "bec0b1492f4cf662c5a7c930991358c5fbde6841",
+      "sha256": "93e704f362fc1c1a04810f4cc268fd0a11728161d069bf732b7406b651bf69b2",
+      "bytes": 19225
+    },
+    {
+      "file": "src/python/puf_snn/frozen_pipeline.py",
+      "git_blob": "47a5c0ff3c0d61a2c6f53c7c4a57a09a7eca0f95",
+      "sha256": "6a6bc7f432b79ee4bca554a2cdaa758dd5efac58bad994bf7a6174136766443e",
+      "bytes": 15383
+    },
+    {
+      "file": "src/python/puf_snn/integration.py",
+      "git_blob": "4364506b23b4cfe689e66091dee3b24dac8e41dd",
+      "sha256": "b28e1b51b943a748395551d04add61cd40969ea7001ec31946d1154d847b885d",
+      "bytes": 8692
+    },
+    {
+      "file": "src/python/puf_snn/model_reporting.py",
+      "git_blob": "125a09898b858728ec27967439c04e1558dc9aaf",
+      "sha256": "3df6c16e01bc43a2b2ba3e10c1ea506aaeb4f0df4f9512a84cb9e729db30ce18",
+      "bytes": 6910
+    },
+    {
+      "file": "src/python/puf_snn/motion_diagnostics.py",
+      "git_blob": "faff3a91e2a4af6032be9fbafb1bb650f81d3cbe",
+      "sha256": "5e016e3e1b9e384805e40b506412c13a3c896134bd6d695e89c4315f35571797",
+      "bytes": 11308
+    },
+    {
+      "file": "src/python/puf_snn/nod_diagnostics.py",
+      "git_blob": "10d5f179a1173b5754a48065cfc0d7de32168a39",
+      "sha256": "585bb91d3997c53aca0a956bba4e422d740958df624dc0384bdfa2b6665553bb",
+      "bytes": 9453
+    },
+    {
+      "file": "src/python/puf_snn/outlier_experiment.py",
+      "git_blob": "bb92ca2cca17a8b3f46b1977b2ffbca5289e1808",
+      "sha256": "a898fb6a57d7a6b5c2097c3d2ecd866c059e458c445642724bcda4b284537540",
+      "bytes": 11548
+    },
+    {
+      "file": "src/python/puf_snn/pipeline_diagnostics.py",
+      "git_blob": "cd0c79b0faabb4ad70309774572797c55e48d665",
+      "sha256": "a232c2af926903e99d720393db77ace0814972582089688bbc87f6ff5a521880",
+      "bytes": 10654
+    },
+    {
+      "file": "src/python/puf_snn/pipeline_timing.py",
+      "git_blob": "eeb22bc689942a4cb5e3fab13b0ad10f5623f958",
+      "sha256": "1f0e23de9a17c9e44ee643c70417aa2452f218c016f2eb234ba78ddcc19e80d9",
+      "bytes": 22797
+    },
+    {
+      "file": "src/python/puf_snn/pipeline_v2.py",
+      "git_blob": "fe3139dfbc192aa89d2aafb8831a437d346910a9",
+      "sha256": "0d9b482164f5e6da45ccd9ed4815ee1bc31f6d71ea66662bb15f0222e375be21",
+      "bytes": 9953
+    },
+    {
+      "file": "src/python/puf_snn/puf/__init__.py",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "src/python/puf_snn/puf/device.py",
+      "git_blob": "b350b3bdfacefb424abe86cfd1892b8b4f5b7a97",
+      "sha256": "a38b12228652bda17395c980cae641177bbe2e0ec459a92f8454a19b7137a8ad",
+      "bytes": 2861
+    },
+    {
+      "file": "src/python/puf_snn/puf/metrics.py",
+      "git_blob": "1f0f751cce342db732f5cb043dc5e7e5577ed052",
+      "sha256": "df4edffb657052e9fc5cd542d1ac2617c2c68c6e38cc89d667a9108b9e42ba7d",
+      "bytes": 3031
+    },
+    {
+      "file": "src/python/puf_snn/puf/ro_puf.py",
+      "git_blob": "0621916f8a765a9e39bb94e09cb9e2f9aba761e7",
+      "sha256": "7ae811a35773082e980de4354e3678a9d14a3b01c4b5c8ff831fef70a36ca1c4",
+      "bytes": 6261
+    },
+    {
+      "file": "src/python/puf_snn/puf/variables.py",
+      "git_blob": "8759430e0da4207d504dcb8a5d4d0174dc2f841e",
+      "sha256": "e7d4beb8c652ac676a9097afa040872784ef0f8e5e59528d2beb6cf2d7e75c89",
+      "bytes": 4644
+    },
+    {
+      "file": "src/python/puf_snn/quality_benchmark.py",
+      "git_blob": "3a8e23f46497e14b9607629d4f962d97d7d8aabd",
+      "sha256": "c412a221440fe474de28ce66d0d6dc15f7e1f6911a89f33802adb8d4ac0737f4",
+      "bytes": 15987
+    },
+    {
+      "file": "src/python/puf_snn/quality_dyadic.py",
+      "git_blob": "d726afad3cea4cbe32e232148953bc0a44003af3",
+      "sha256": "a3f71a79ab48941807a0ba75e99b67f7cebdaa0b81ba75d9f2ae9d8171a12947",
+      "bytes": 4290
+    },
+    {
+      "file": "src/python/puf_snn/reconstruction/__init__.py",
+      "git_blob": "81ced728a1f46a9b40c1a8d137fe1b11d8e4272f",
+      "sha256": "83051b37b18ecfbdf6cb57ad3c9ee6ae34c1cee3042ad1e809c4e1d6e140ab92",
+      "bytes": 400
+    },
+    {
+      "file": "src/python/puf_snn/reconstruction/bch.py",
+      "git_blob": "1171dcb821434e4787facd68624c25725e167b83",
+      "sha256": "4b17daf39a97698a368d817a765c2bc8a7e5804468396573329428c01d3f44a6",
+      "bytes": 6171
+    },
+    {
+      "file": "src/python/puf_snn/reconstruction/credential.py",
+      "git_blob": "2c1bc90edf2759a8b261fd62f97eded633c20e51",
+      "sha256": "14463ca853ac5a54f326d18537e5ae76008ffde7240433ad52afa8acf2ae08ef",
+      "bytes": 6559
+    },
+    {
+      "file": "src/python/puf_snn/reconstruction_alternatives.py",
+      "git_blob": "4e2da5f1f0c69ad161565260408c599c67796ef9",
+      "sha256": "86245db2f4f7e81177a32a373f23cbfe9b03218c2dfc41c49ae9e4c9b06ef596",
+      "bytes": 7201
+    },
+    {
+      "file": "src/python/puf_snn/sequence_neighbors.py",
+      "git_blob": "6fd9b8c5ffe4909459cc41932a9431c1160cc96a",
+      "sha256": "f081a10389523c645b1858db24eb9fabd42e180673e220a594d141dff7cde627",
+      "bytes": 8931
+    },
+    {
+      "file": "src/python/puf_snn/snn/__init__.py",
+      "git_blob": "b835682ca2b51202b1043c8e5cdaa543e00fd267",
+      "sha256": "299d418af506394863a0e156aca8372b021fb855de756807c0362e1ff89c6a9b",
+      "bytes": 563
+    },
+    {
+      "file": "src/python/puf_snn/snn/configuration.py",
+      "git_blob": "aa120bad3f46ea2881fdacae28da3766a0ce9c1d",
+      "sha256": "6bd800d968ec3819dfa74d4f35c9b2436928fc038e266da5dc94f5a10ce49d4f",
+      "bytes": 5768
+    },
+    {
+      "file": "src/python/puf_snn/snn/dataset.py",
+      "git_blob": "2192269ccfb205603acfc27258767efafad7dba6",
+      "sha256": "dbb6d88ae8084dddb79845ac08a6431eea46564eab29b6e95d0e0d60e5f739fa",
+      "bytes": 10348
+    },
+    {
+      "file": "src/python/puf_snn/snn/evaluation.py",
+      "git_blob": "b31fa81406f8733c728ced11fb1d6b22d3d07d34",
+      "sha256": "63d5dd8179047fa0af350816a365ef1b8a6a31064ab2295a4b45c68696122f9e",
+      "bytes": 5394
+    },
+    {
+      "file": "src/python/puf_snn/snn/model.py",
+      "git_blob": "8992ca7d8cde581bb770052bc736e80dd4a9ad3d",
+      "sha256": "2ba96b68fbc03f8c9191acf0d245f05134763dbc52bfeaa2b78c2d6be8741334",
+      "bytes": 3722
+    },
+    {
+      "file": "src/python/puf_snn/stage_accounting.py",
+      "git_blob": "cf801596322ab6865745d17e97fd6f5bda42ea19",
+      "sha256": "002c04e38fc693333991c8b4c89022b5f18459b51a8f59990b8935623bd6fb9c",
+      "bytes": 20265
+    },
+    {
+      "file": "src/python/puf_snn/tier1_v2.py",
+      "git_blob": "6c69a9cb191d1c5b34b6f344cf79150717bb92f2",
+      "sha256": "66338a0b7cd38931fad20eb8d2a6771744705f360a6e8804ea61a0968722e2a9",
+      "bytes": 100524
+    },
+    {
+      "file": "src/python/puf_snn/tier2_source_uncertainty.py",
+      "git_blob": "ee94eed55a918e7a7d08bc7f06213ae53e106b62",
+      "sha256": "aebddf9cfba33a906280dd0c510bc73fb84999a59864405b667f28594668322b",
+      "bytes": 23606
+    },
+    {
+      "file": "src/python/puf_snn/windows_os_accounting.py",
+      "git_blob": "64f029b1e2986e37267e8c378e437f84405be72d",
+      "sha256": "17dba7f60a1964f59a483175b9a9455a104013225a411a5b952c2344f97f2540",
+      "bytes": 17136
+    },
+    {
+      "file": "src/python/puf_snn/windows_os_reporting.py",
+      "git_blob": "613a1ec3784f24e93b4e5a07d5041927a5b945cb",
+      "sha256": "6c80ef13c128470bf7f27b052aad01ef6e3f804a177d1c615e3034a1922fe77e",
+      "bytes": 14691
+    },
+    {
+      "file": "src/python/puf_snn/windows_trace.py",
+      "git_blob": "53abdba63db0b3875135e22cfbb649e28b88d7ae",
+      "sha256": "7e1fd660a5698ed7ee6bf8415b8b0553631abd360e3d4cd3592aa6af2ff9f386",
+      "bytes": 14496
+    },
+    {
+      "file": "src/python/puf_snn/windows_trace_reader.py",
+      "git_blob": "1ae101af768059bffd67722723da1f8015f528be",
+      "sha256": "f79c523b26ee042a43a92618a2425731ebf3092af1ca3d1d21cb5a99e4c2d5ea",
+      "bytes": 12318
+    },
+    {
+      "file": "src/python/puf_snn/windows_trace_workload.py",
+      "git_blob": "06855664a36faa5aa9e0ffa2d48831cd1637d41b",
+      "sha256": "bf984f7b67efe30ed58fdda850285fb819b9638dbaf6c14505625b1d42d4dcef",
+      "bytes": 10274
+    }
+  ],
+  "package_source_files": [
+    {
+      "source_file": "src/python/puf_snn/__init__.py",
+      "installed_relative_path": "puf_snn/__init__.py",
+      "sha256": "66b1b6e76cadb4f1434545eb78123affeae4f493df7ea2714ab763f70269ba5d"
+    },
+    {
+      "source_file": "src/python/puf_snn/anomaly/__init__.py",
+      "installed_relative_path": "puf_snn/anomaly/__init__.py",
+      "sha256": "4fd86deef367b233622d693574b762fd039e4cef8373f6b22d497d8366871d30"
+    },
+    {
+      "source_file": "src/python/puf_snn/anomaly/detector.py",
+      "installed_relative_path": "puf_snn/anomaly/detector.py",
+      "sha256": "a7fc761a38880942cf8d7041f320bd343407ce87f767f37d8a6816a755328a30"
+    },
+    {
+      "source_file": "src/python/puf_snn/anomaly/features.py",
+      "installed_relative_path": "puf_snn/anomaly/features.py",
+      "sha256": "bb9c06c2a9be8df3d00ee92d6dd95e6a3122aadd9d647416a065897f7b7ad395"
+    },
+    {
+      "source_file": "src/python/puf_snn/attacks/__init__.py",
+      "installed_relative_path": "puf_snn/attacks/__init__.py",
+      "sha256": "28fa375059c33363fae5875c4da336c0d4abbe897abb5c43e517c68788088f2e"
+    },
+    {
+      "source_file": "src/python/puf_snn/attacks/evaluation.py",
+      "installed_relative_path": "puf_snn/attacks/evaluation.py",
+      "sha256": "9c3d547edc37e8f1504ed40599bc610e90f849a5e321403875f672a7c92134c4"
+    },
+    {
+      "source_file": "src/python/puf_snn/attacks/reporting.py",
+      "installed_relative_path": "puf_snn/attacks/reporting.py",
+      "sha256": "7b8234b6a9924184ff8cc9a2298a1126c196d1f18770eedfd3eedd70ca15196e"
+    },
+    {
+      "source_file": "src/python/puf_snn/attacks/stream.py",
+      "installed_relative_path": "puf_snn/attacks/stream.py",
+      "sha256": "26a5d38d281ff584662676b73a9f95c63a0af4fd10292291b85693cf9e594fa3"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/__init__.py",
+      "installed_relative_path": "puf_snn/auth/__init__.py",
+      "sha256": "7300041888c4a642ab4a0f63acb0e9436249bede8c09fd533ad09792d7d6f5d8"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/audit.py",
+      "installed_relative_path": "puf_snn/auth/audit.py",
+      "sha256": "b2fce9fc2d4f90864552767dfb2184fed12caef66ec3938e7d96461b05988111"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/binary_window.py",
+      "installed_relative_path": "puf_snn/auth/binary_window.py",
+      "sha256": "1a5f9013ca5bcf77be08f3541faecd496a4f4de23419790778724616704326ec"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/config.py",
+      "installed_relative_path": "puf_snn/auth/config.py",
+      "sha256": "6a319d323cb07098fe70a8838fe78a98e2aa9cb0fa5ebb2bddfef8d97a74b05a"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/credential_verifier.py",
+      "installed_relative_path": "puf_snn/auth/credential_verifier.py",
+      "sha256": "8513d1d962f18fc35ac3f5b84861fad80f3cb7cbf28817528022283ee451a4a5"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/inference_gate.py",
+      "installed_relative_path": "puf_snn/auth/inference_gate.py",
+      "sha256": "2590cfc058057650dbd7b91cb16fd0fd55372804813b9d170d23f4f3770f9cef"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/sender.py",
+      "installed_relative_path": "puf_snn/auth/sender.py",
+      "sha256": "591a9023c5a6e757aa3eaf0fc8b1eb70351ba9fe7d3dcdb0614344f276e03387"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/session.py",
+      "installed_relative_path": "puf_snn/auth/session.py",
+      "sha256": "3d14a154ea31fdff5f76ba5cbfd586e89b0c2dfbc40961e83911a92688ddc07b"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/verifier.py",
+      "installed_relative_path": "puf_snn/auth/verifier.py",
+      "sha256": "7a2f04e5e62efde330930e4eb55127a813226211de258ac7823a1b3033e11082"
+    },
+    {
+      "source_file": "src/python/puf_snn/auth/window_message.py",
+      "installed_relative_path": "puf_snn/auth/window_message.py",
+      "sha256": "656cd3f2aedc32622960cd13513a260541bf8dda96bd1ed201b7030705db2db7"
+    },
+    {
+      "source_file": "src/python/puf_snn/data/__init__.py",
+      "installed_relative_path": "puf_snn/data/__init__.py",
+      "sha256": "e1c962ed65098f433672fef0c65947dba5151202cddf2a9ff81ecc9be7baf55a"
+    },
+    {
+      "source_file": "src/python/puf_snn/data/generator.py",
+      "installed_relative_path": "puf_snn/data/generator.py",
+      "sha256": "bb247629bc225e091b56eb9041a9940daa8ab46f4cec26b47d4c4bfd9388d176"
+    },
+    {
+      "source_file": "src/python/puf_snn/data/validation.py",
+      "installed_relative_path": "puf_snn/data/validation.py",
+      "sha256": "93e704f362fc1c1a04810f4cc268fd0a11728161d069bf732b7406b651bf69b2"
+    },
+    {
+      "source_file": "src/python/puf_snn/frozen_pipeline.py",
+      "installed_relative_path": "puf_snn/frozen_pipeline.py",
+      "sha256": "6a6bc7f432b79ee4bca554a2cdaa758dd5efac58bad994bf7a6174136766443e"
+    },
+    {
+      "source_file": "src/python/puf_snn/integration.py",
+      "installed_relative_path": "puf_snn/integration.py",
+      "sha256": "b28e1b51b943a748395551d04add61cd40969ea7001ec31946d1154d847b885d"
+    },
+    {
+      "source_file": "src/python/puf_snn/model_reporting.py",
+      "installed_relative_path": "puf_snn/model_reporting.py",
+      "sha256": "3df6c16e01bc43a2b2ba3e10c1ea506aaeb4f0df4f9512a84cb9e729db30ce18"
+    },
+    {
+      "source_file": "src/python/puf_snn/motion_diagnostics.py",
+      "installed_relative_path": "puf_snn/motion_diagnostics.py",
+      "sha256": "5e016e3e1b9e384805e40b506412c13a3c896134bd6d695e89c4315f35571797"
+    },
+    {
+      "source_file": "src/python/puf_snn/nod_diagnostics.py",
+      "installed_relative_path": "puf_snn/nod_diagnostics.py",
+      "sha256": "585bb91d3997c53aca0a956bba4e422d740958df624dc0384bdfa2b6665553bb"
+    },
+    {
+      "source_file": "src/python/puf_snn/outlier_experiment.py",
+      "installed_relative_path": "puf_snn/outlier_experiment.py",
+      "sha256": "a898fb6a57d7a6b5c2097c3d2ecd866c059e458c445642724bcda4b284537540"
+    },
+    {
+      "source_file": "src/python/puf_snn/pipeline_diagnostics.py",
+      "installed_relative_path": "puf_snn/pipeline_diagnostics.py",
+      "sha256": "a232c2af926903e99d720393db77ace0814972582089688bbc87f6ff5a521880"
+    },
+    {
+      "source_file": "src/python/puf_snn/pipeline_timing.py",
+      "installed_relative_path": "puf_snn/pipeline_timing.py",
+      "sha256": "1f0e23de9a17c9e44ee643c70417aa2452f218c016f2eb234ba78ddcc19e80d9"
+    },
+    {
+      "source_file": "src/python/puf_snn/pipeline_v2.py",
+      "installed_relative_path": "puf_snn/pipeline_v2.py",
+      "sha256": "0d9b482164f5e6da45ccd9ed4815ee1bc31f6d71ea66662bb15f0222e375be21"
+    },
+    {
+      "source_file": "src/python/puf_snn/puf/__init__.py",
+      "installed_relative_path": "puf_snn/puf/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source_file": "src/python/puf_snn/puf/device.py",
+      "installed_relative_path": "puf_snn/puf/device.py",
+      "sha256": "a38b12228652bda17395c980cae641177bbe2e0ec459a92f8454a19b7137a8ad"
+    },
+    {
+      "source_file": "src/python/puf_snn/puf/metrics.py",
+      "installed_relative_path": "puf_snn/puf/metrics.py",
+      "sha256": "df4edffb657052e9fc5cd542d1ac2617c2c68c6e38cc89d667a9108b9e42ba7d"
+    },
+    {
+      "source_file": "src/python/puf_snn/puf/ro_puf.py",
+      "installed_relative_path": "puf_snn/puf/ro_puf.py",
+      "sha256": "7ae811a35773082e980de4354e3678a9d14a3b01c4b5c8ff831fef70a36ca1c4"
+    },
+    {
+      "source_file": "src/python/puf_snn/puf/variables.py",
+      "installed_relative_path": "puf_snn/puf/variables.py",
+      "sha256": "e7d4beb8c652ac676a9097afa040872784ef0f8e5e59528d2beb6cf2d7e75c89"
+    },
+    {
+      "source_file": "src/python/puf_snn/quality_benchmark.py",
+      "installed_relative_path": "puf_snn/quality_benchmark.py",
+      "sha256": "c412a221440fe474de28ce66d0d6dc15f7e1f6911a89f33802adb8d4ac0737f4"
+    },
+    {
+      "source_file": "src/python/puf_snn/quality_dyadic.py",
+      "installed_relative_path": "puf_snn/quality_dyadic.py",
+      "sha256": "a3f71a79ab48941807a0ba75e99b67f7cebdaa0b81ba75d9f2ae9d8171a12947"
+    },
+    {
+      "source_file": "src/python/puf_snn/reconstruction/__init__.py",
+      "installed_relative_path": "puf_snn/reconstruction/__init__.py",
+      "sha256": "83051b37b18ecfbdf6cb57ad3c9ee6ae34c1cee3042ad1e809c4e1d6e140ab92"
+    },
+    {
+      "source_file": "src/python/puf_snn/reconstruction/bch.py",
+      "installed_relative_path": "puf_snn/reconstruction/bch.py",
+      "sha256": "4b17daf39a97698a368d817a765c2bc8a7e5804468396573329428c01d3f44a6"
+    },
+    {
+      "source_file": "src/python/puf_snn/reconstruction/credential.py",
+      "installed_relative_path": "puf_snn/reconstruction/credential.py",
+      "sha256": "14463ca853ac5a54f326d18537e5ae76008ffde7240433ad52afa8acf2ae08ef"
+    },
+    {
+      "source_file": "src/python/puf_snn/reconstruction_alternatives.py",
+      "installed_relative_path": "puf_snn/reconstruction_alternatives.py",
+      "sha256": "86245db2f4f7e81177a32a373f23cbfe9b03218c2dfc41c49ae9e4c9b06ef596"
+    },
+    {
+      "source_file": "src/python/puf_snn/sequence_neighbors.py",
+      "installed_relative_path": "puf_snn/sequence_neighbors.py",
+      "sha256": "f081a10389523c645b1858db24eb9fabd42e180673e220a594d141dff7cde627"
+    },
+    {
+      "source_file": "src/python/puf_snn/snn/__init__.py",
+      "installed_relative_path": "puf_snn/snn/__init__.py",
+      "sha256": "299d418af506394863a0e156aca8372b021fb855de756807c0362e1ff89c6a9b"
+    },
+    {
+      "source_file": "src/python/puf_snn/snn/configuration.py",
+      "installed_relative_path": "puf_snn/snn/configuration.py",
+      "sha256": "6bd800d968ec3819dfa74d4f35c9b2436928fc038e266da5dc94f5a10ce49d4f"
+    },
+    {
+      "source_file": "src/python/puf_snn/snn/dataset.py",
+      "installed_relative_path": "puf_snn/snn/dataset.py",
+      "sha256": "dbb6d88ae8084dddb79845ac08a6431eea46564eab29b6e95d0e0d60e5f739fa"
+    },
+    {
+      "source_file": "src/python/puf_snn/snn/evaluation.py",
+      "installed_relative_path": "puf_snn/snn/evaluation.py",
+      "sha256": "63d5dd8179047fa0af350816a365ef1b8a6a31064ab2295a4b45c68696122f9e"
+    },
+    {
+      "source_file": "src/python/puf_snn/snn/model.py",
+      "installed_relative_path": "puf_snn/snn/model.py",
+      "sha256": "2ba96b68fbc03f8c9191acf0d245f05134763dbc52bfeaa2b78c2d6be8741334"
+    },
+    {
+      "source_file": "src/python/puf_snn/stage_accounting.py",
+      "installed_relative_path": "puf_snn/stage_accounting.py",
+      "sha256": "002c04e38fc693333991c8b4c89022b5f18459b51a8f59990b8935623bd6fb9c"
+    },
+    {
+      "source_file": "src/python/puf_snn/tier1_v2.py",
+      "installed_relative_path": "puf_snn/tier1_v2.py",
+      "sha256": "66338a0b7cd38931fad20eb8d2a6771744705f360a6e8804ea61a0968722e2a9"
+    },
+    {
+      "source_file": "src/python/puf_snn/tier2_source_uncertainty.py",
+      "installed_relative_path": "puf_snn/tier2_source_uncertainty.py",
+      "sha256": "aebddf9cfba33a906280dd0c510bc73fb84999a59864405b667f28594668322b"
+    },
+    {
+      "source_file": "src/python/puf_snn/windows_os_accounting.py",
+      "installed_relative_path": "puf_snn/windows_os_accounting.py",
+      "sha256": "17dba7f60a1964f59a483175b9a9455a104013225a411a5b952c2344f97f2540"
+    },
+    {
+      "source_file": "src/python/puf_snn/windows_os_reporting.py",
+      "installed_relative_path": "puf_snn/windows_os_reporting.py",
+      "sha256": "6c80ef13c128470bf7f27b052aad01ef6e3f804a177d1c615e3034a1922fe77e"
+    },
+    {
+      "source_file": "src/python/puf_snn/windows_trace.py",
+      "installed_relative_path": "puf_snn/windows_trace.py",
+      "sha256": "7e1fd660a5698ed7ee6bf8415b8b0553631abd360e3d4cd3592aa6af2ff9f386"
+    },
+    {
+      "source_file": "src/python/puf_snn/windows_trace_reader.py",
+      "installed_relative_path": "puf_snn/windows_trace_reader.py",
+      "sha256": "f79c523b26ee042a43a92618a2425731ebf3092af1ca3d1d21cb5a99e4c2d5ea"
+    },
+    {
+      "source_file": "src/python/puf_snn/windows_trace_workload.py",
+      "installed_relative_path": "puf_snn/windows_trace_workload.py",
+      "sha256": "bf984f7b67efe30ed58fdda850285fb819b9638dbaf6c14505625b1d42d4dcef"
+    }
+  ],
+  "export_method": "git-cat-file-blob-without-filters",
+  "scope": "Canonical Git blob bytes, not platform-converted working-tree line endings; no tests, ignored models or private traces copied."
+}

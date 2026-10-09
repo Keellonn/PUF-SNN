@@ -1,0 +1,21 @@
+{
+  "tests_run": 964,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "expected_failures": 0,
+  "unexpected_successes": 0,
+  "elapsed_seconds": 119.15993660000095,
+  "was_successful": true,
+  "loaded_project_modules_resolve_to_test_checkout": true,
+  "scope_passed_without_skips": true,
+  "runtime_project_source": "new_local_test_checkout_at_pinned_commit",
+  "standalone_installed_wheel_runtime_validated": false,
+  "fixture_model_fitting_inference_and_authentication_may_execute": true,
+  "historical_models_retrained": false,
+  "formal_experiments_recomputed": false,
+  "formal_latency_benchmark_executed": false,
+  "windows_recording_executed": false,
+  "all_repository_test_folders_validated": false,
+  "shared_release_complete": false
+}

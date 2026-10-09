@@ -1,0 +1,30 @@
+{
+  "manifest_version": "week7-clean-root-discovery-files-v1",
+  "checkout_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "clean_setup_manifest_sha256": "78b1934024e7068c53292329f80fba192bc197c5d1f89c83b14e0f535b8d4736",
+  "files": [
+    {
+      "file": "test-input-hashes.json",
+      "bytes": 35357,
+      "sha256": "f8698a0b0aa4531f8f696d10eb93f67d0b7e3ba1907a5270c45ec3147640cb59"
+    },
+    {
+      "file": "test-inventory.json",
+      "bytes": 99684,
+      "sha256": "dab9c74155c0c098927b30f906c2fa166de6b4cf2a9263fe7333d72f2b25f625"
+    },
+    {
+      "file": "test-result.json",
+      "bytes": 746,
+      "sha256": "5958e53018e989aef2139e0cd4fea2ea2ffc081e25fd92a7902c54d6b680ebfa"
+    },
+    {
+      "file": "clean-tests-status.json",
+      "bytes": 1733,
+      "sha256": "c37ef120bb7a80ceee926623035660d6adf50789d63ecd9dd7cf7713745d2c44"
+    }
+  ],
+  "local_checkout_caches_and_raw_test_logs_excluded": true,
+  "all_repository_test_folders_validated": false,
+  "shared_release_complete": false
+}

@@ -1,0 +1,45 @@
+{
+  "manifest_version": "week7-clean-setup-files-v1",
+  "checkout_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "wheelhouse_manifest_sha256": "32943bc34c8b6807cee67c4e463215377289a62f75b5c38309fb24949d0fa7ee",
+  "files": [
+    {
+      "file": "source-snapshot.json",
+      "bytes": 25952,
+      "sha256": "a1611d35baea91521994498d1374c11f4c762c6310e41eee9734477d433dde31"
+    },
+    {
+      "file": "built-project-metadata.json",
+      "bytes": 505,
+      "sha256": "1f0ca97bcc5febc023e3f4113bac1f925568b39e8851cc35d0d9c1eff184eecc"
+    },
+    {
+      "file": "project-wheel-hashed.txt",
+      "bytes": 94,
+      "sha256": "21290ea7ce5fbcffb3a083a19aef5309bc42baa5e6fd05648e85c1de07aff10b"
+    },
+    {
+      "file": "installed-environment.json",
+      "bytes": 4637,
+      "sha256": "c768fa790047acf1294a296c2f1ba78a23a22d5b2b476d92c4505180e670a6d2"
+    },
+    {
+      "file": "built-project/puf_snn-0.1.0-py3-none-any.whl",
+      "bytes": 194134,
+      "sha256": "cc6d19a18c6802098ef442fdbfef1fdbb4ff67ff36025d693c42d65a06b9c8f3"
+    },
+    {
+      "file": "source-archive.zip",
+      "bytes": 641527,
+      "sha256": "63a1c9137bc79e41e622461ceec19c9179e3bb2f2d5489877ec46bff2580c0c0"
+    },
+    {
+      "file": "clean-setup-status.json",
+      "bytes": 1863,
+      "sha256": "f9d066dd79907f63c1c0d3486c0be5f0052e077edda1608bc20de218192f146e"
+    }
+  ],
+  "environment_directory_build_tree_and_local_logs_excluded": true,
+  "repository_tests_executed": false,
+  "shared_release_complete": false
+}

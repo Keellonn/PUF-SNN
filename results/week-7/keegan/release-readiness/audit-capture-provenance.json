@@ -1,0 +1,12 @@
+{
+  "record_version": "week7-user-terminal-audit-capture-v1",
+  "evidence_origin": "Exact structured JSON transcribed from the user's supplied terminal output; not a second audit execution.",
+  "original_audit_script": "deliverables/week-7-kickoff/Invoke-Week7ReleaseAudit.ps1",
+  "script_sha256": "a6267be032e5f5d01409e517a552ab34394b3d6405f03cf6f2239f950fa5ada6",
+  "reported_invocation": "Invoke-Week7ReleaseAudit.ps1 from the local deliverables directory; absolute user-specific invocation path omitted from this public capture.",
+  "raw_result": "release-audit-terminal.json",
+  "meaning": "audit_report_files_written=false describes the original read-only script; this separate transcription subsequently preserves the terminal result.",
+  "repository_modified_by_capture": false,
+  "new_experiment_executed": false,
+  "shared_release_complete": false
+}

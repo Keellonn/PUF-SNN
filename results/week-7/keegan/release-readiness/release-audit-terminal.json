@@ -1,0 +1,42 @@
+{
+  "audit_version": "week7-release-readiness-readonly-v1",
+  "started_utc": "2026-10-09T01:31:47.4747979Z",
+  "completed_utc": "2026-10-09T01:31:48.2933347Z",
+  "checkout_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "experimental_commit": "2c84cf8394bd444188291e254bbf1ddde3cc8661",
+  "experimental_tree_matches": true,
+  "index_sha256": "e3947e389222183c983f131a4d112b37c8748f4ebab6027c0fe01f7737098dc3",
+  "critical_source_config_files": 17,
+  "frozen_payload_support_files": 19,
+  "documented_shared_reports": 3,
+  "total_file_pin_checks": 170,
+  "completed_bundles_verified": 8,
+  "manifest_artifact_entries_verified": 121,
+  "shared_formal_evidence": [
+    {
+      "directory": "results/week-6/will/authentication/tier1-v2-formal-001",
+      "manifest_present": false,
+      "independently_verified": false,
+      "status": "missing_expected_formal_evidence"
+    },
+    {
+      "directory": "results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001",
+      "manifest_present": false,
+      "independently_verified": false,
+      "status": "missing_expected_formal_evidence"
+    }
+  ],
+  "shared_release_complete": false,
+  "dependency_lock_and_clean_environment_setup_verified": false,
+  "experiment_semantics_independently_recomputed": false,
+  "model_deserialization_executed": false,
+  "model_inference_executed": false,
+  "training_executed": false,
+  "threshold_selection_executed": false,
+  "authentication_executed": false,
+  "latency_measured": false,
+  "private_traces_read": false,
+  "repository_files_modified": false,
+  "audit_report_files_written": false,
+  "interpretation": "Local pinned identity/artifact/completion checks passed; missing shared formal evidence and setup validation prevent a fully verified shared-release claim. This does not recompute experiments or prove security."
+}

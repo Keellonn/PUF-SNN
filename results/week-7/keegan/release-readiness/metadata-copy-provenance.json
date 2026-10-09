@@ -1,0 +1,86 @@
+{
+  "record_version": "week7-selected-original-metadata-copies-v1",
+  "copies": [
+    {
+      "original_attempt_identifier": "wheelhouse-61f8ce07f17f4d288005f953b256e5a5",
+      "original_file": "requirements-win-cp313-observed-hashed.txt",
+      "published_file": "requirements/week7/win-amd64-cp313-observed-hashed.txt",
+      "sha256": "f699256c0ec5892067088f47ff5b044985a907adf11069be0a152236d149780d",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "wheelhouse-61f8ce07f17f4d288005f953b256e5a5",
+      "original_file": "download-requirements.txt",
+      "published_file": "requirements/week7/download-wheels-hashed.txt",
+      "sha256": "e935822f1459217d19de399deb9be1676715e00eafcee6261b0e42588e688049",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "wheelhouse-61f8ce07f17f4d288005f953b256e5a5",
+      "original_file": "wheelhouse-manifest.json",
+      "published_file": "results/week-7/keegan/release-readiness/observed-external-wheelhouse-manifest.json",
+      "sha256": "32943bc34c8b6807cee67c4e463215377289a62f75b5c38309fb24949d0fa7ee",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "setup-8dd51e87823f4238bee0bbcd0e9f2ce7",
+      "original_file": "clean-setup-manifest.json",
+      "published_file": "results/week-7/keegan/release-readiness/observed-external-clean-setup-manifest.json",
+      "sha256": "78b1934024e7068c53292329f80fba192bc197c5d1f89c83b14e0f535b8d4736",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "setup-8dd51e87823f4238bee0bbcd0e9f2ce7",
+      "original_file": "source-snapshot.json",
+      "published_file": "results/week-7/keegan/release-readiness/setup-source-snapshot.json",
+      "sha256": "a1611d35baea91521994498d1374c11f4c762c6310e41eee9734477d433dde31",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "setup-8dd51e87823f4238bee0bbcd0e9f2ce7",
+      "original_file": "built-project-metadata.json",
+      "published_file": "results/week-7/keegan/release-readiness/built-project-metadata.json",
+      "sha256": "1f0ca97bcc5febc023e3f4113bac1f925568b39e8851cc35d0d9c1eff184eecc",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "setup-8dd51e87823f4238bee0bbcd0e9f2ce7",
+      "original_file": "installed-environment.json",
+      "published_file": "results/week-7/keegan/release-readiness/installed-environment.json",
+      "sha256": "c768fa790047acf1294a296c2f1ba78a23a22d5b2b476d92c4505180e670a6d2",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "tests-4029e597c8b44fd1add61cfc8e69439b",
+      "original_file": "clean-tests-manifest.json",
+      "published_file": "results/week-7/keegan/release-readiness/observed-clean-tests-manifest.json",
+      "sha256": "e29fd71d20cffa306020cea3b9b5bf87f89f8271f529e762ffa11c187e8d630d",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "tests-4029e597c8b44fd1add61cfc8e69439b",
+      "original_file": "test-input-hashes.json",
+      "published_file": "results/week-7/keegan/release-readiness/test-input-hashes.json",
+      "sha256": "f8698a0b0aa4531f8f696d10eb93f67d0b7e3ba1907a5270c45ec3147640cb59",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "tests-4029e597c8b44fd1add61cfc8e69439b",
+      "original_file": "test-inventory.json",
+      "published_file": "results/week-7/keegan/release-readiness/test-inventory.json",
+      "sha256": "dab9c74155c0c098927b30f906c2fa166de6b4cf2a9263fe7333d72f2b25f625",
+      "byte_identical": true
+    },
+    {
+      "original_attempt_identifier": "tests-4029e597c8b44fd1add61cfc8e69439b",
+      "original_file": "test-result.json",
+      "published_file": "results/week-7/keegan/release-readiness/test-result.json",
+      "sha256": "5958e53018e989aef2139e0cd4fea2ea2ffc081e25fd92a7902c54d6b680ebfa",
+      "byte_identical": true
+    }
+  ],
+  "original_runtime_records_modified": false,
+  "new_installation_or_tests_executed": false,
+  "external_manifest_payloads_not_all_published": true,
+  "local_paths_logs_environments_wheels_and_private_traces_not_published": true
+}

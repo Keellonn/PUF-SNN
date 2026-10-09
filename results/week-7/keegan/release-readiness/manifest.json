@@ -1,0 +1,148 @@
+{
+  "manifest_version": "week7-local-setup-and-root-discovery-checkpoint-v1",
+  "source_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "experimental_commit": "2c84cf8394bd444188291e254bbf1ddde3cc8661",
+  "scope": "Public documentation, observed Windows dependency pins and setup/root-discovery evidence only",
+  "clean_environment_installation_validated": true,
+  "clean_root_discovery_scope_validated": true,
+  "tests_run": 964,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "standalone_installed_wheel_runtime_validated": false,
+  "all_repository_test_folders_validated": false,
+  "independent_experiment_semantic_recomputation_validated": false,
+  "shared_release_complete": false,
+  "artifacts": [
+    {
+      "file": "docs/.gitattributes",
+      "bytes": 66,
+      "sha256": "48b54867613dcaea1793a68ada2e61d7cb6b750df38251627a67321d2062260c"
+    },
+    {
+      "file": "docs/week7-release-readiness.md",
+      "bytes": 10942,
+      "sha256": "fe1ced79baec42ef374fe9735bd66f5c7d7558104653e688937f756fa9320669"
+    },
+    {
+      "file": "requirements/week7/.gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "file": "requirements/week7/download-wheels-hashed.txt",
+      "bytes": 8379,
+      "sha256": "e935822f1459217d19de399deb9be1676715e00eafcee6261b0e42588e688049"
+    },
+    {
+      "file": "requirements/week7/win-amd64-cp313-observed-hashed.txt",
+      "bytes": 3668,
+      "sha256": "f699256c0ec5892067088f47ff5b044985a907adf11069be0a152236d149780d"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/.gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/audit-capture-provenance.json",
+      "bytes": 860,
+      "sha256": "b75e85a36f4b17175f8922d6891a0926e164dde561e24f420066f9c8bc215edd"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/built-project-metadata.json",
+      "bytes": 505,
+      "sha256": "1f0ca97bcc5febc023e3f4113bac1f925568b39e8851cc35d0d9c1eff184eecc"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/clean-setup-source-recovery.json",
+      "bytes": 1884,
+      "sha256": "648ece61ecaa8ba86a6fbc524490933b8cec625fbedffbce8e2e6141dd6f3a27"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/clean-setup-terminal-summary.json",
+      "bytes": 1820,
+      "sha256": "cef56211572f334f94ab7325eff483b3851bed3034052a63e1f6eab02ab7f41f"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/clean-tests-terminal-summary.json",
+      "bytes": 1750,
+      "sha256": "c843057c0b280a6fd2ebc59f807993062341f017018fa2a84e0936d8017d4d4a"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/dependency-capture-provenance.json",
+      "bytes": 869,
+      "sha256": "fb895f507652cd82fcf5f384b476c1e8baec5ca26ef55480e151f837713f044e"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/dependency-inventory-terminal.json",
+      "bytes": 1268,
+      "sha256": "73dcb06464833ae75e84ecb37160b07edd3a9f9ecab85222c79fe4dc25615ad0"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/dependency-metadata-terminal-summary.json",
+      "bytes": 1521,
+      "sha256": "cd989504f690669e7d44265aecb4eab7c13ad36bf42ae4e65c30835669e81a7e"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/installed-environment.json",
+      "bytes": 4637,
+      "sha256": "c768fa790047acf1294a296c2f1ba78a23a22d5b2b476d92c4505180e670a6d2"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/metadata-copy-provenance.json",
+      "bytes": 4177,
+      "sha256": "8fe1e78a7f5f4dbe5fe62dcc4c6e00df63b82ef5056286fce24e1512e6d2016e"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/observed-clean-tests-manifest.json",
+      "bytes": 1014,
+      "sha256": "e29fd71d20cffa306020cea3b9b5bf87f89f8271f529e762ffa11c187e8d630d"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/observed-external-clean-setup-manifest.json",
+      "bytes": 1508,
+      "sha256": "78b1934024e7068c53292329f80fba192bc197c5d1f89c83b14e0f535b8d4736"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/observed-external-wheelhouse-manifest.json",
+      "bytes": 9132,
+      "sha256": "32943bc34c8b6807cee67c4e463215377289a62f75b5c38309fb24949d0fa7ee"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/release-audit-terminal.json",
+      "bytes": 1859,
+      "sha256": "0c36ecf36322bbcfb4c798fccef758961ee836a22744c01bab6aabc74e1df55d"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/setup-source-snapshot.json",
+      "bytes": 25952,
+      "sha256": "a1611d35baea91521994498d1374c11f4c762c6310e41eee9734477d433dde31"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/test-input-hashes.json",
+      "bytes": 35357,
+      "sha256": "f8698a0b0aa4531f8f696d10eb93f67d0b7e3ba1907a5270c45ec3147640cb59"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/test-inventory.json",
+      "bytes": 99684,
+      "sha256": "dab9c74155c0c098927b30f906c2fa166de6b4cf2a9263fe7333d72f2b25f625"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/test-result.json",
+      "bytes": 746,
+      "sha256": "5958e53018e989aef2139e0cd4fea2ea2ffc081e25fd92a7902c54d6b680ebfa"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/wheel-preflight-terminal-summary.json",
+      "bytes": 1350,
+      "sha256": "0efcfcfcc1f1e95d68480dfac913ca76ea2f63f205dec22f193de92865e9c13e"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/wheelhouse-terminal-summary.json",
+      "bytes": 1691,
+      "sha256": "18b0aeb57e785afdad4aaed61f28012dc9a40d73c71df222f1db9c30d26fe2b4"
+    }
+  ]
+}

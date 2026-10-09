@@ -1,0 +1,16 @@
+{
+  "capture_version": "week7-user-dependency-inventory-capture-v1",
+  "origin": "User-supplied terminal JSON and pip-check stdout; original duplicate puf-snn entries are retained.",
+  "inventory_file": "dependency-inventory-terminal.json",
+  "pip_check_stdout": "No broken requirements found.",
+  "pip_check_success_observed": true,
+  "checkout_status_observed": "main...origin/main; no changed files",
+  "model_inference_executed": false,
+  "installation_executed": false,
+  "lock_or_clean_environment_validated": false,
+  "pending_checks": [
+    "Classify the two puf-snn metadata records before deduplicating a prospective environment profile.",
+    "Compare installed dependencies with pyproject.toml and requirements.txt; pip check does not validate the latter file.",
+    "The observed environment is not automatically an exact historic environment lock."
+  ]
+}
