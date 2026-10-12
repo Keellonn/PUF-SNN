@@ -1,0 +1,166 @@
+{
+  "index_version": "week7-documentation-reporting-pass-v1",
+  "reporting_base_commit": "0895f920e29e16e6fd280f9c4b5cd3bcfb584ac3",
+  "reporting_date": "2026-10-12",
+  "files": [
+    {
+      "file": "docs/week7/.gitattributes",
+      "bytes": 44,
+      "sha256": "748d1e7648e38b77d9cc3bf1234dd82072b7214f2e1b9f89108e29ee95a19d1e"
+    },
+    {
+      "file": "docs/week7/study-status.md",
+      "bytes": 6447,
+      "sha256": "9357f5bc0d9fd0061026e4006405b9f8c0fa2aa1d629689c73877c1019f29e3c"
+    },
+    {
+      "file": "docs/week7/release-status.md",
+      "bytes": 6737,
+      "sha256": "fbe2465ee5eba99ceaeb5d883263c6139a3f0a1c141d869bdba3c650bceaba09"
+    },
+    {
+      "file": "docs/week7/evaluation-draft.md",
+      "bytes": 23843,
+      "sha256": "493894f0ba2a04d223075da026ed24335c89fc38e64c5e3f99b1279faeb6cfc6"
+    },
+    {
+      "file": "docs/week7/preliminary-results-brief.md",
+      "bytes": 3665,
+      "sha256": "c7370f6f4c41fca1064ba68ae73a977a57d3de58d6cf987c18bf4452d447183a"
+    },
+    {
+      "file": "results/week-7/keegan/.gitattributes",
+      "bytes": 82,
+      "sha256": "b3ff0d17b87f3c2b74fd258e5f1dd156eb1b5bbeaa4ee53ce092fce9fd3a3126"
+    },
+    {
+      "file": "results/week-7/keegan/keegan.md",
+      "bytes": 4907,
+      "sha256": "e5a807b843ca67d0de9d5f6e82c770782bc3757f7e8ba6bf3bdc581c02921ad2"
+    }
+  ],
+  "evidence_references": [
+    {
+      "file": "results/week-7/keegan/release-readiness/manifest.json",
+      "bytes": 5875,
+      "sha256": "2ea350079e2be5ec057ba40250d43f21deed783896e929a0627af5c6c796d4d4",
+      "context": "archival publication at f0fbfb1; do not reinterpret cross-folder pins as latest HEAD",
+      "checked_scope": "historical_manifest_identity_only"
+    },
+    {
+      "file": "results/week-7/keegan/release-readiness/observed-external-clean-setup-manifest.json",
+      "bytes": 1508,
+      "sha256": "78b1934024e7068c53292329f80fba192bc197c5d1f89c83b14e0f535b8d4736",
+      "context": "c62ff15 build/setup source",
+      "checked_scope": "retained_upstream_manifest_identity_only"
+    },
+    {
+      "file": "requirements/week7/win-amd64-cp313-observed-hashed.txt",
+      "bytes": 3668,
+      "sha256": "f699256c0ec5892067088f47ff5b044985a907adf11069be0a152236d149780d",
+      "context": "observed Windows x64 / CPython 3.13.14 profile",
+      "checked_scope": "public_pin_file_identity"
+    },
+    {
+      "file": "requirements/week7/download-wheels-hashed.txt",
+      "bytes": 8379,
+      "sha256": "e935822f1459217d19de399deb9be1676715e00eafcee6261b0e42588e688049",
+      "context": "verified official wheel artifact identities",
+      "checked_scope": "public_pin_file_identity"
+    },
+    {
+      "file": "results/week-7/keegan/shared-handoff-receipt/receipt.json",
+      "bytes": 4878,
+      "sha256": "950aec81cb30f37da80ccfb92e77e53e12cb877cac247f0983125b482ac847fa",
+      "context": "3bb91b2 partial handoff receipt",
+      "checked_scope": "receipt_identity_and_declared_omissions"
+    },
+    {
+      "file": "results/week-7/keegan/expanded-test-validation/manifest.json",
+      "bytes": 2121,
+      "sha256": "8223cf4c88732e2762285f49902129b83ebd85fed2da82695528c25b5ca38921",
+      "context": "e7c04a1 publication; 3bb91b2 selected test source",
+      "checked_scope": "scoped_public_bundle_closure"
+    },
+    {
+      "file": "results/week-7/keegan/expanded-test-validation/observed-expanded-tests-manifest.json",
+      "bytes": 1007,
+      "sha256": "4b240ef9d9637b01c0e1fed224e8a1a24bfbd11cd5f692803c7071979426667b",
+      "context": "retained 1035-test execution record",
+      "checked_scope": "scoped_observation_closure"
+    },
+    {
+      "file": "results/week-7/keegan/reconstruction-compatibility/manifest.json",
+      "bytes": 1504,
+      "sha256": "c4a996fa49ee8002a153518ad121fcc078487c33fa8825d317b71cc3d2840da7",
+      "context": "0895f92 partial-diagnostic publication",
+      "checked_scope": "scoped_public_bundle_closure"
+    },
+    {
+      "file": "results/week-7/keegan/reconstruction-compatibility/observed-diagnostic-manifest.json",
+      "bytes": 832,
+      "sha256": "4a62e86de41fae13055d76fb74bf68524060da8b0c020e781e0972489de2bf88",
+      "context": "retained 27-test execution; 24 passes and three nonpassing cases",
+      "checked_scope": "scoped_observation_closure"
+    },
+    {
+      "file": "results/week-6/keegan/revision-evidence-index.json",
+      "bytes": 13384,
+      "sha256": "e3947e389222183c983f131a4d112b37c8748f4ebab6027c0fe01f7737098dc3",
+      "context": "2c84cf8 experimental snapshot and historical payload pins",
+      "checked_scope": "historical_index_identity_only"
+    },
+    {
+      "file": "docs/authentication-v2-protocol-spec.md",
+      "bytes": 68196,
+      "sha256": "81d48649db98812f2d62592e3bc4bf0e60419ff0434e39f3888d9b7247a918e7",
+      "context": "actual protocol/key-custody specification",
+      "checked_scope": "document_identity_only"
+    },
+    {
+      "file": "docs/week6-tier1-v2-experiment.md",
+      "bytes": 74084,
+      "sha256": "63f1eb2c71262a32e8d7bbd9a6e20959a082e0cadcc4f1725eaa433679a2495f",
+      "context": "Will-reported current-v2 formal findings",
+      "checked_scope": "report_identity_not_new_raw_recomputation"
+    },
+    {
+      "file": "docs/week6-reconstruction-alternatives-experiment.md",
+      "bytes": 40973,
+      "sha256": "118a6c30ad49d89859e67e28fe81fdff6433ea75c451149ce9dd7c8211a6874e",
+      "context": "Will-reported standalone alternatives findings",
+      "checked_scope": "report_identity_not_new_raw_recomputation"
+    }
+  ],
+  "selected_tests": {
+    "source_commit": "3bb91b204fb1fae717bce5aca789dfcf8b698cc8",
+    "tests_run": 1035,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "additional_diagnostic": {
+    "tests_run": 27,
+    "passing_tests": 24,
+    "failures": 2,
+    "errors": 1,
+    "skipped": 0,
+    "complete_compatibility_pass": false,
+    "historical_version_guard_unchanged": true,
+    "repeated_scope_not_additive": true
+  },
+  "shared_evidence": {
+    "tier1_included_primary_entries": 12,
+    "tier1_omitted_primary_entries": 12,
+    "alternatives_included_primary_entries": 43,
+    "alternatives_omitted_primary_entries": 6
+  },
+  "new_tests_or_experiments_executed": false,
+  "old_manifests_or_checkpoint_documents_changed": false,
+  "models_thresholds_or_protocol_defaults_changed": false,
+  "research_log_or_slides_changed": false,
+  "private_paths_or_payloads_exported": false,
+  "scientific_raw_outcomes_independently_recomputed": false,
+  "shared_release_complete": false,
+  "interpretation": "Current versioned documentation only. Numerical studies and original evidence boundaries are preserved; selected passing tests and partial diagnostics are not merged into an all-tests-passed claim."
+}
