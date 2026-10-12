@@ -1,2 +1,8 @@
 .gitattributes text eol=lf
 week7-release-readiness.md text eol=lf
+
+# Frozen compatibility documents: preserve upstream bytes and Markdown breaks.
+week6-tier1-v2-experiment-plan.md -text whitespace=-blank-at-eol
+week6-reconstruction-alternatives-experiment-plan.md -text whitespace=-blank-at-eol
+week6-reconstruction-alternatives-implementation-validation.md -text whitespace=-blank-at-eol
+week6-reconstruction-alternatives-formal-readiness.md -text whitespace=-blank-at-eol

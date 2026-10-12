@@ -1,0 +1,106 @@
+{
+  "receipt_version": "week7-shareable-handoff-integrity-v1",
+  "scope": "Included bytes and restored historical compatibility documents only; partial original-evidence subsets",
+  "reviewed_report_commit": "0fb5168427475af55b562eef0e1d747fa550c03e",
+  "received_archive": {
+    "name": "week6-keegan-handoff-20261011.zip",
+    "bytes": 2205234,
+    "sha256": "e2abfb56756ba8c275e05d73840aef92ce432f0e2d03e7af323cdbe74302d9c1",
+    "entry_count": 98,
+    "declared_uncompressed_bytes": 6035134,
+    "bounded_path_type_and_crc_checks_passed": true,
+    "nested_subset_zip_size_hash_checks_passed": true,
+    "nested_and_outer_subset_bytes_match": true
+  },
+  "tier1_v2": {
+    "run_id": "tier1-v2-formal-001",
+    "received_subset_zip_sha256": "f14f38b73e29eed754792438f515bd7f1350a043a94244025f21ff718935d605",
+    "original_manifest_sha256": "098ebcf6488e7d2b5c2054200bab289e5428c859904108059d0437612c137177",
+    "original_complete_manifest_anchor_matches": true,
+    "inventoried_original_files_verified": 27,
+    "included_primary_manifest_entries_verified": 12,
+    "primary_manifest_entries_omitted": [
+      "attempts.jsonl",
+      "audit.jsonl",
+      "controls.jsonl",
+      "metadata.json",
+      "parser_negative.jsonl",
+      "recovery.jsonl",
+      "setup.jsonl",
+      "state_safety.jsonl",
+      "timing_traces.jsonl",
+      "traffic.jsonl",
+      "trial-plan.json",
+      "warmup.jsonl"
+    ],
+    "omissions_match_package_notice": true,
+    "execution_source_commit_recorded_by_upstream": "0d088079d025e50411c8a752b32507bbb87d5d5b",
+    "execution_source_zip_sha256": "a9af23d5fa0129b05c4d8b77d6f6c57ffa1428bc75934d674e77687d8d16eca1",
+    "exact_byte_source_zip_files_verified": 188,
+    "primary_execution_source_entries_verified": 185,
+    "source_git_history_recovery_validated": false,
+    "full_primary_manifest_closure": false,
+    "full_supplemental_manifest_closure": false,
+    "independent_raw_reconciliation_executed": false
+  },
+  "reconstruction_alternatives": {
+    "run_id": "week6-reconstruction-alternatives-v1-formal-001",
+    "received_subset_zip_sha256": "88a01d261043894291ddebb7b359b08fcbf5b8f6b445c8c858c6e34f5f2b8cb8",
+    "original_manifest_sha256": "f4aba0ba218c87d329a37970f3d34e543b29c4fbc7962eeb84ffd88c01992ca4",
+    "original_complete_manifest_anchor_matches": true,
+    "inventoried_original_files_verified": 45,
+    "included_primary_manifest_entries_verified": 43,
+    "primary_manifest_entries_omitted": [
+      "attempts.jsonl",
+      "enrollments.json",
+      "metadata.json",
+      "per_device_summary.csv",
+      "post_run.json",
+      "trial_plan.json"
+    ],
+    "omissions_match_package_notice": true,
+    "source_snapshot_id": "dc75fbc339ff107e0286cc892c5b672125f594425c0ba2fcba2f6b98928c293d",
+    "source_snapshot_manifest_sha256": "113189d2ceff732dd2b3ce9cb83b8a6eac5443dd5ccbc979728758e4269e62b0",
+    "source_snapshot_files_verified": 31,
+    "full_primary_manifest_closure": false,
+    "independent_raw_reconciliation_executed": false
+  },
+  "restored_documents": [
+    {
+      "file": "docs/week6-tier1-v2-experiment-plan.md",
+      "bytes": 89130,
+      "sha256": "a8bb71144f8a07056cd1326d755b5e8c7599ae417e3f96445a94fdf08f9a4851",
+      "authority": "Received exact-byte execution-source inventory and original primary evidence manifest"
+    },
+    {
+      "file": "docs/week6-reconstruction-alternatives-experiment-plan.md",
+      "bytes": 35995,
+      "sha256": "0206983264278f1485b36bdbff29463afe2dc153aa003954506e68e75b9ced2d",
+      "authority": "Received original source-snapshot and evidence manifests; existing runner PLAN_SHA256"
+    },
+    {
+      "file": "docs/week6-reconstruction-alternatives-implementation-validation.md",
+      "bytes": 18298,
+      "sha256": "b1b54be54455871072dfbe74ee7be04c627ebb96f2b14d5f691a759ae1239e0c",
+      "authority": "Received original source-snapshot and evidence manifests"
+    },
+    {
+      "file": "docs/week6-reconstruction-alternatives-formal-readiness.md",
+      "bytes": 16837,
+      "sha256": "b5ae462b5ec1d6eb083f6d8fe37039028ceaf7cf4803fe059ec1d4048dd3170e",
+      "authority": "Received original source-snapshot and evidence manifests"
+    }
+  ],
+  "supplementary_repository_tests_executed": false,
+  "received_code_executed": false,
+  "model_deserialization_executed": false,
+  "model_inference_executed": false,
+  "training_executed": false,
+  "authentication_experiment_executed": false,
+  "new_latency_experiment_executed": false,
+  "shared_release_complete": false,
+  "raw_private_payloads_published": false,
+  "public_receipt_contains_absolute_local_paths": false,
+  "unchanged_historical_documents_retain_original_provenance_text": true,
+  "interpretation": "Original identities and included bytes match. Omitted evidence remains absent; this receipt is neither a full formal-run closure nor an independently recomputed scientific result."
+}
