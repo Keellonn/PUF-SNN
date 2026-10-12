@@ -1,0 +1,30 @@
+{
+  "source_context_commit": "3bb91b204fb1fae717bce5aca789dfcf8b698cc8",
+  "source_snapshot_id": "dc75fbc339ff107e0286cc892c5b672125f594425c0ba2fcba2f6b98928c293d",
+  "original_preparation_sha256": "2abad4fe97702a4056adff053aff9d7d313d7d146c6bc55a7770bb570b05a2fe",
+  "tracked_checkout_files_present": 1234,
+  "exact_recorded_source_files_checked": 370,
+  "private_fixture_files_checked": 18,
+  "native_application_git_head_validated": true,
+  "git_content_diff_empty": true,
+  "git_staged_diff_empty": true,
+  "git_status_verified_eol_only_paths": [
+    "requirements.txt",
+    "src/python/puf_snn/auth/audit.py",
+    "src/python/puf_snn/auth/binary_window.py",
+    "src/python/puf_snn/reconstruction/__init__.py",
+    "src/python/puf_snn/reconstruction/bch.py",
+    "src/python/puf_snn/reconstruction/credential.py",
+    "src/python/puf_snn/reconstruction_alternatives.py",
+    "tests/reconstruction/test_reconstruction_alternatives.py"
+  ],
+  "git_status_is_clean": false,
+  "historical_python_3_12_4_guard_unchanged": true,
+  "previous_diagnostic_manifest_sha256": "582dabc0ac5dfe0a4af39ba4254001ef50024484b73543538987b7618a537dff",
+  "previous_preparation_evidence_files_sha256": {
+    "short-preparation-status.json": "1699bf70a21a20c66bf28584f18cc9b52166cd5d4c24188a9928621c33f4d0ec",
+    "local-short-context-checkout.log": "3d230d0bfb13a1debce765ca5d1efc4befa18968dd04be7e3e18cb67ade52552",
+    "local-short-context-clone.log": "f4a52ae5d4829e89eb352bf2b10128df76898a85d66fb7f7962b990d14f32b0d"
+  },
+  "interpretation": "Real isolated Git checkout with original source byte recovery. Any listed status entries are exactly hash-verified EOL representations, not content edits. It is not relabeled as a pristine/clean worktree."
+}

@@ -1,0 +1,12 @@
+{
+  "mode": "SCOPED_NUMERIC_EVIDENCE_EXPORT_ONLY",
+  "manifest_sha256": "c4a996fa49ee8002a153518ad121fcc078487c33fa8825d317b71cc3d2840da7",
+  "export_completed": true,
+  "tests_run": 27,
+  "passing_tests": 24,
+  "failures": 2,
+  "errors": 1,
+  "scope_passed_without_skips": false,
+  "private_path_scan_passed": true,
+  "shared_release_complete": false
+}

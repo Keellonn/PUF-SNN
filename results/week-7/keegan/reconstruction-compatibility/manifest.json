@@ -1,0 +1,48 @@
+{
+  "manifest_version": "week7-reconstruction-compatibility-public-files-v1",
+  "original_diagnostic_manifest_sha256": "4a62e86de41fae13055d76fb74bf68524060da8b0c020e781e0972489de2bf88",
+  "files": [
+    {
+      "file": ".gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 5017,
+      "sha256": "f221a2ac94f90ba5db6b6a6f4c57675278de6a057cae5c0133d9591e1d8d07b7"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 1281,
+      "sha256": "b49ed93e69940ae8d5e6b5100dc49aca137ab3d73fbe5b7baf7f683bcd8b4851"
+    },
+    {
+      "file": "diagnostic-status.json",
+      "bytes": 3097,
+      "sha256": "87c8ec57b7997f549092d14a97310da73067b53dc96a1c91ca341cb4d883f9ad"
+    },
+    {
+      "file": "input-identity.json",
+      "bytes": 1738,
+      "sha256": "2030ca209b8f901d0c7befca1f2132ad7c543729f7092662fef35e6f8ddca4fd"
+    },
+    {
+      "file": "observed-diagnostic-manifest.json",
+      "bytes": 832,
+      "sha256": "4a62e86de41fae13055d76fb74bf68524060da8b0c020e781e0972489de2bf88"
+    },
+    {
+      "file": "test-inventory.json",
+      "bytes": 3595,
+      "sha256": "8219208910eb153b125e305f96db9b174bcb2e90f5a1102d280032d2f6b1ae27"
+    },
+    {
+      "file": "test-result.json",
+      "bytes": 1930,
+      "sha256": "e4cb49cd05c13f2cfa4773be04780e4e0a8325fc81bc0561d1676a188f65195d"
+    }
+  ],
+  "scope_passed_without_skips": false,
+  "shared_release_complete": false
+}

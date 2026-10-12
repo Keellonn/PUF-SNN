@@ -1,0 +1,39 @@
+{
+  "module": "tests/experiments/test_reconstruction_alternatives_formal.py",
+  "expected_tests": 27,
+  "test_identifiers": [
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_cli_dispatch_without_running_formal",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_csv_all_fields_and_latency_readback",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_dummy_runtime_callback_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_exact_compiled_counts_and_unchanged_digests",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_failed_preflight_creates_nothing",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_failed_smoke_prerequisite_refused",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_formal_first_attempt_error_retained_without_retry",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_formal_interruption_creates_incomplete_before_any_measurement",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_formal_record_schema_acceptance_and_mode_separation",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_incomplete_or_changed_source_prevents_seal",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_independent_enrollment_readback_rejects_tampered_helper",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_invalid_credential_representation_rejected_in_preflight",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_loaded_source_change_rejected_before_output",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_missing_packages_and_wrong_code_parameters_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_missing_source_dependency_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_nonformal_schedule_cannot_reconcile_formal_record",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_output_path_existing_and_historical_refused",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_prerequisites_missing_failed_stale_and_log_hash_refused",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_readonly_preflight_checks_optional_snapshot",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_readonly_preflight_never_enters_measurement_or_provisioning",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_reduced_evidence_never_reaches_complete",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_reduced_population_and_rehashed_schedule_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_seal_binds_snapshot_manifest_with_mocked_audit_receipt",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_seed_order_and_parameter_changes_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_snapshot_exact_bytes_allowlist_and_tamper_rejection",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_snapshot_manifest_extra_files_and_source_change_rejected",
+    "test_reconstruction_alternatives_formal.FormalReadinessTests.test_wrong_plan_hash_stops_preflight"
+  ],
+  "actually_imported_test_files": [
+    "tests/experiments/test_reconstruction_alternatives_formal.py"
+  ],
+  "overlap_with_previous_1035_test_identifiers": 0,
+  "overlap_with_first_27_test_diagnostic": 27,
+  "repeated_scope_not_additive": true
+}

@@ -1,0 +1,49 @@
+{
+  "python": "3.13.14",
+  "required_dependency_versions": {
+    "galois": "0.4.11",
+    "numpy": "2.5.3",
+    "numba": "0.67.0",
+    "llvmlite": "0.49.0",
+    "scipy": "1.18.1",
+    "jsonschema": "4.26.0"
+  },
+  "expected_tests": 27,
+  "tests_run": 27,
+  "tests_with_no_recorded_adverse_outcome": 24,
+  "failures": 2,
+  "errors": 1,
+  "skipped": 0,
+  "expected_failures": 0,
+  "unexpected_successes": 0,
+  "elapsed_seconds": 12.77590870000131,
+  "adverse_results": [
+    {
+      "test": "test_reconstruction_alternatives_formal.FormalReadinessTests.test_invalid_credential_representation_rejected_in_preflight",
+      "outcome": "failure",
+      "traceback_mentions_historical_python_guard": true,
+      "other_causes_ruled_out": false
+    },
+    {
+      "test": "test_reconstruction_alternatives_formal.FormalReadinessTests.test_missing_packages_and_wrong_code_parameters_rejected",
+      "outcome": "failure",
+      "traceback_mentions_historical_python_guard": true,
+      "other_causes_ruled_out": false
+    },
+    {
+      "test": "test_reconstruction_alternatives_formal.FormalReadinessTests.test_readonly_preflight_never_enters_measurement_or_provisioning",
+      "outcome": "error",
+      "traceback_mentions_historical_python_guard": true,
+      "other_causes_ruled_out": false
+    }
+  ],
+  "adverse_results_mentioning_python_guard": 3,
+  "loaded_project_modules_resolve_to_test_source": true,
+  "historical_python_3_12_4_guard_unchanged": true,
+  "formal_experiment_executed": false,
+  "historical_models_retrained": false,
+  "test_fixtures_may_provision_synthetic_enrollments_and_exercise_authentication": true,
+  "shared_release_complete": false,
+  "interpretation": "Repeated unchanged 27-test diagnostic with corrected Git context. Do not add its count to the first attempt. Version-policy refusal is not proof of algorithm incompatibility or a complete compatibility pass.",
+  "scope_passed_without_skips": false
+}

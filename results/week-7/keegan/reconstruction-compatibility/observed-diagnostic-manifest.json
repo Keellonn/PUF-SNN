@@ -1,0 +1,28 @@
+{
+  "version": "week7-real-git-compatibility-execution-record-v4",
+  "files": [
+    {
+      "file": "input-identity.json",
+      "sha256": "2030ca209b8f901d0c7befca1f2132ad7c543729f7092662fef35e6f8ddca4fd",
+      "bytes": 1738
+    },
+    {
+      "file": "test-inventory.json",
+      "sha256": "8219208910eb153b125e305f96db9b174bcb2e90f5a1102d280032d2f6b1ae27",
+      "bytes": 3595
+    },
+    {
+      "file": "test-result.json",
+      "sha256": "e4cb49cd05c13f2cfa4773be04780e4e0a8325fc81bc0561d1676a188f65195d",
+      "bytes": 1930
+    },
+    {
+      "file": "diagnostic-status.json",
+      "sha256": "87c8ec57b7997f549092d14a97310da73067b53dc96a1c91ca341cb4d883f9ad",
+      "bytes": 3097
+    }
+  ],
+  "scope_passed_without_skips": false,
+  "raw_logs_and_private_fixture_not_publishable": true,
+  "shared_release_complete": false
+}
