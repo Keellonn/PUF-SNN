@@ -571,3 +571,147 @@ Formal execution command,
 ```powershell
 $env:PYTHONPATH='src/python'
 .venv/Scripts/python.exe -B src/python/scripts/run_reconstruction_alternatives.py formal --output results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001
+```
+
+### Historical Consolidation and Original Source Identity
+
+The registered design, implementation-validation, readiness, and formal-results records were audited into this report. Their continuing scientific content is represented above: the exact BCH identities and 30-bit representation; deterministic SHA-256 stream labels; enrollment/evaluation separation; matched read-prefix and counterbalanced execution rules; outcome, verifier, latency, and uncertainty equations; warmup and schema rules; formal readiness gates; complete formal accounting; device/population heterogeneity; and the distinction between evidence completeness and research-target attainment. Preliminary statements that implementation or formal execution had not yet occurred are superseded by the sealed formal evidence and are not current status.
+
+The original repository HEAD `acc46478dcde2ecffe706d8eab355b453b94fa30` is only contextual provenance. The evaluated implementation included uncommitted research files and is identified by the preserved 31-file source snapshot in the formal evidence directory:
+
+- source ID: `dc75fbc339ff107e0286cc892c5b672125f594425c0ba2fcba2f6b98928c293d`
+- snapshot manifest SHA-256: `113189d2ceff732dd2b3ce9cb83b8a6eac5443dd5ccbc979728758e4269e62b0`
+- approved plan SHA-256: `0206983264278f1485b36bdbff29463afe2dc153aa003954506e68e75b9ced2d`
+- frozen configuration SHA-256: `3b7caa56bf296aaa02bca8fea69d545d6f1395c9811770c6e4d19ad8ea94c18b`
+- formal trial-plan digest: `d22e5eebe6ec55c9f890e02b4f010833e4f32ff9d64b5c777b22e9f794a26f10`
+
+The snapshot contains the exact runner, experimental module, production dependencies, schemas, tests, configuration, and three historical compatibility documents hashed by the original runner. Those compatibility documents are frozen inputs to the original source identity, not current public documentation authorities. Do not replace them with this report inside the snapshot or reinterpret this report as the preregistration.
+
+The original artifact manifest SHA-256 is `f4aba0ba218c87d329a37970f3d34e543b29c4fbc7962eeb84ffd88c01992ca4`; the formal `COMPLETE` SHA-256 is `51f97ddbb4d2348f3795d2934b607f39f2b85e1814fc99ef2571f483e68f738e`. The runner's reconciliation passed the exact 48,000-row, 240-enrollment, 120,000-read, 60,000-measurement, schema, summary, latency, source-snapshot, manifest, and completion checks. The post-run independent audit verified every manifested artifact and every snapshot file without replaying measurements.
+
+## Independent Reproduction Instructions
+
+These instructions distinguish an integrity check of the completed evidence from a new execution. Never write into, rename, or reuse the original evidence directory. A fresh execution will have new verifier keys, timings, process metadata, and artifact hashes; it is not expected to be byte-identical.
+
+### 1. Environment setup
+
+Use Windows, CPython 3.12.4, and the versions actually validated for the original run. The project metadata permits a wider range, so an unconstrained `pip install` is not an exact environment reconstruction.
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install numpy==2.5.3 scipy==1.18.1 numba==0.67.0 llvmlite==0.49.0 jsonschema==4.26.0 galois==0.4.11 matplotlib==3.10.6
+.venv\Scripts\python.exe -m pip check
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe --version
+```
+
+Expected Python is `3.12.4`. The formal preflight also requires the six package versions listed above exactly. The original backend recorded GF2 `jit-calculate`, extension-field `jit-lookup`, and 20 Numba threads; record any difference in a new run's provenance.
+
+### 2. Recover and verify the evaluated source
+
+The shared branch alone is insufficient. Start from a separate checkout, then overlay the exact files from the preserved snapshot. `$SourceRepo` below is the repository containing the untouched original evidence; `$ReplayRoot` must be a new directory.
+
+```powershell
+$SourceRepo=(Resolve-Path '.').Path
+$ReplayRoot=Join-Path (Split-Path $SourceRepo -Parent) ('PUF-SNN-reconstruction-replay-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+git clone --no-hardlinks $SourceRepo $ReplayRoot
+$Snapshot=Join-Path $SourceRepo 'results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001/source_snapshot'
+Copy-Item -Path (Join-Path $Snapshot 'files\*') -Destination $ReplayRoot -Recurse -Force
+Set-Location $ReplayRoot
+$env:PYTHONPATH='src/python'
+```
+
+Verify the preserved snapshot itself before using it:
+
+```powershell
+$Snapshot=Join-Path $SourceRepo 'results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001/source_snapshot'
+$VerifyScript=@'
+import json
+from pathlib import Path
+from scripts import run_reconstruction_alternatives as r
+p = Path(r"REPLACE_WITH_SNAPSHOT_PATH")
+m = json.loads((p / "manifest.json").read_text())
+assert r.verify_source_snapshot(p, m["files"]) == "113189d2ceff732dd2b3ce9cb83b8a6eac5443dd5ccbc979728758e4269e62b0"
+print("source snapshot PASS", m["source_id"], len(m["files"]))
+'@
+$VerifyScript.Replace('REPLACE_WITH_SNAPSHOT_PATH',$Snapshot) | .venv\Scripts\python.exe -B -
+```
+
+The expected output identifies source ID `dc75fbc339ff107e0286cc892c5b672125f594425c0ba2fcba2f6b98928c293d` and 31 files.
+
+### 3. Regression tests and trial-plan compilation
+
+Run all six registered suites; expected counts are 65, 83, 22, 7, 17, and 27 tests, for 221 total.
+
+```powershell
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe -B -m unittest discover -s tests/reconstruction -p 'test*.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/auth -p 'test_credential*.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/experiments -p 'test_reconstruction_experiment.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/experiments -p 'test_credential_verifier_experiment.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/experiments -p 'test_reconstruction_alternatives_experiment.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/experiments -p 'test_reconstruction_alternatives_formal.py' -v
+
+$PlanOnly='tmp/reproduction-reconstruction-plan'
+.venv\Scripts\python.exe -B src/python/scripts/run_reconstruction_alternatives.py compile --output $PlanOnly
+(Get-FileHash -Algorithm SHA256 "$PlanOnly/trial_plan.json").Hash.ToLower()
+```
+
+The compiler must report 48,000 attempts and trial-plan digest `d22e5eebe6ec55c9f890e02b4f010833e4f32ff9d64b5c777b22e9f794a26f10`. The raw file hash of `trial_plan.json` is a different byte-level identity; the registered digest is the embedded canonical-object digest.
+
+### 4. Formal dry-preflight and execution constraint
+
+The original runner requires the retained 80-attempt nonformal smoke, its manifest `91b90a2de1df3aa8652dbaa1bb7a0a73527454014a915501b2f93497b7a6bc26`, and a fresh Stage 3A test certificate whose log paths and hashes are valid on the executing machine. These ignored prerequisite artifacts are not all in Git and the smoke includes synthetic enrollment/helper truth, so they are intentionally excluded from the public shareable subset. Obtain them through an approved private transfer or create a reviewed new execution-source version that replaces this machine-local prerequisite mechanism; do not bypass it.
+
+With those prerequisites restored and an absent formal output in the isolated checkout, the supported read-only preflight is:
+
+```powershell
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe -B src/python/scripts/run_reconstruction_alternatives.py preflight --output results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001
+```
+
+It must report `FORMAL_DRY_PREFLIGHT`, zero executed attempts, 48,000 planned attempts, 120 devices, 240 enrollments, 120,000 reads, 60,000 unique measurement identities, and the registered plan/config/schedule identities.
+
+`--source-snapshot` is optional and verifies a rehearsal snapshot whose embedded prerequisite certificate must match the executing machine. Do not pass the historical rehearsal snapshot after creating a fresh local Stage 3A certificate; verify the preserved formal snapshot separately with the command in step 2. The formal execution always creates and verifies a new live source snapshot.
+
+The only supported formal command in this frozen source version is:
+
+```powershell
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe -B src/python/scripts/run_reconstruction_alternatives.py formal --output results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001
+```
+
+Run it only in the isolated checkout, where that path is fresh. The runner hard-codes the original internal run ID and rejects any other path. Therefore a genuinely new run ID requires an explicitly reviewed, versioned runner/config change and a new source identity; the current shared repository cannot honestly provide that feature without changing the evaluated source. Do not run this command in the shared repository, where the original evidence already exists.
+
+### 5. Evidence verification
+
+Verify the original completed evidence without measurement replay:
+
+```powershell
+$env:PYTHONPATH='src/python'
+@'
+import json
+from pathlib import Path
+from scripts import run_reconstruction_alternatives as r
+d = Path('results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001')
+metadata = json.loads((d / 'metadata.json').read_text())
+print(r.audit_formal_evidence(d, metadata['source_sha256']))
+manifest = json.loads((d / 'manifest.json').read_text())
+seal = json.loads((d / 'COMPLETE').read_text())
+assert seal['status'] == 'PASS' and seal['attempt_count'] == 48000
+assert seal['trial_plan_sha256'] == r.FORMAL_SCHEDULE_SHA256
+assert seal['manifest_sha256'] == r.digest(d / 'manifest.json')
+assert all(r.digest(d / name) == sha for name, sha in manifest.items())
+print('manifest and COMPLETE PASS', len(manifest))
+'@ | .venv\Scripts\python.exe -B -
+```
+
+A fresh complete run should generate `config.json`, `trial_plan.json`, `metadata.json`, `warm_up.json`, `enrollments.json`, `attempts.jsonl`, `summary.json`, six CSV summaries, runtime/preflight/post-run records, `source_snapshot/`, `reconciliation.json`, `manifest.json`, and `COMPLETE`. Compare the new summary with the eight formal cells and confidence intervals reported above; do not require matching latency samples, verifier material, byte hashes, or raw evidence.
+
+### 6. Exact-reproduction limitations
+
+- The public shareable subset omits raw attempts, enrollment/helper truth, and machine-local prerequisite evidence.
+- The source snapshot, not repository HEAD alone, is the evaluated source authority.
+- Synthetic inputs and non-timing outcomes are deterministic only under the frozen source and environment; OS-random verifier keys and timing are not byte-reproducible.
+- The frozen runner has no supported new-run-ID option. An independently named future run requires a new source version, new manifest, new trial-plan identity where applicable, and fresh validation before execution.

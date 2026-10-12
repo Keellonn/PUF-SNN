@@ -828,11 +828,158 @@ The formal package contains 26 original files. Its original evidence manifest an
 
 COMPLETE records methodological completion, not universal security. All raw decisions, public wire traffic, native audits, timing traces and recovery rows remain retained. No historical evidence, registered parameter, protocol behavior, model, or dataset was changed. The two finalized research documents remain uncommitted for review; nothing was pushed.
 
-Historical supporting documents remain unchanged and untracked in the original repository:
+The historical design, implementation-validation, artifact-preflight, and final-review records have been consolidated here. Their still-valid content includes the exact A1–A5, S1–S8, and P01–P28 construction rules; deterministic plan allocation and native-random session boundary; controlled one-read credential admission fixture; state/authority/callback instrumentation; exact timing and Clopper–Pearson methods; complete-bundle artifact checks; source-freeze requirements; nonformal validation history; and formal safety guards. Earlier statements that PyTorch or frozen artifacts were absent, that formal pins were unresolved, or that the formal run had not occurred correctly describe earlier checkpoints but are superseded as current status by the later verified formal evidence.
 
-- docs/week6-tier1-v2-experiment-plan.md
-- docs/week6-tier1-v2-implementation-validation.md
-- docs/week6-tier1-v2-real-artifact-preflight.md
-- docs/week6-tier1-v2-final-local-review.md
+The original runner still names `docs/week6-tier1-v2-experiment-plan.md` in its frozen source allowlist and configuration. Its preserved copy in the formal evidence (`plan.md`) is byte-identical: both are 89,130 bytes with SHA-256 `a8bb71144f8a07056cd1326d755b5e8c7599ae417e3f96445a94fdf08f9a4851`. This is an original-execution compatibility dependency and preregistration anchor, not a second current report. The Authentication-v2 behavioral authority remains `docs/authentication-v2-protocol-spec.md` at the source-manifest hash `81d48649db98812f2d62592e3bc4bf0e60419ff0434e39f3888d9b7247a918e7`. The completed Reconstruction Alternatives Experiment and prior evidence remain separate and unchanged.
 
-The Authentication-v2 specification remains at docs/authentication-v2-protocol-spec.md. The completed Reconstruction Alternatives Experiment and prior research hours were preserved.
+## Independent Reproduction Instructions
+
+These instructions separate three activities: verifying the completed original evidence, recovering its exact evaluated source, and executing a new isolated replay. Do not edit or reuse the original evidence directory. Native OS randomness generates different credentials, nonces, session identifiers, keys, tags, and public traffic in a new run; local timings and resulting hashes will also differ.
+
+### 1. Required source and frozen inputs
+
+The shared branch by itself is not the original execution source. Recover commit `0d088079d025e50411c8a752b32507bbb87d5d5b` from the complete-history bundle, then overlay the exact-byte ZIP because Git line-ending conversion may not reproduce every source-manifest hash.
+
+```powershell
+$SharedRepo=(Resolve-Path '.').Path
+$Evidence=Join-Path $SharedRepo 'results/week-6/will/authentication/tier1-v2-formal-001'
+$ReplayRoot=Join-Path (Split-Path $SharedRepo -Parent) ('PUF-SNN-tier1-replay-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
+git clone (Join-Path $Evidence 'verification/execution-source.bundle') $ReplayRoot
+git -C $ReplayRoot checkout 0d088079d025e50411c8a752b32507bbb87d5d5b
+Expand-Archive -LiteralPath (Join-Path $Evidence 'verification/execution-source-bytes.zip') -DestinationPath $ReplayRoot -Force
+git -C $ReplayRoot status --porcelain
+Set-Location $ReplayRoot
+```
+
+The status command must be empty. Verify the recovery files before use:
+
+```powershell
+(Get-FileHash -Algorithm SHA256 (Join-Path $Evidence 'verification/execution-source.bundle')).Hash.ToLower()
+(Get-FileHash -Algorithm SHA256 (Join-Path $Evidence 'verification/execution-source-bytes.zip')).Hash.ToLower()
+git bundle verify (Join-Path $Evidence 'verification/execution-source.bundle')
+git bundle list-heads (Join-Path $Evidence 'verification/execution-source.bundle')
+```
+
+Expected hashes are `7abdfe2cb8f4e32c980a848b29c926ebd55830938cb704b384f331fa2f3a8314` for the bundle and `a9af23d5fa0129b05c4d8b77d6f6c57ffa1428bc75934d674e77687d8d16eca1` for the 188-file exact-byte ZIP. The bundle must expose the execution commit as `HEAD`.
+
+The frozen loader requires all 66 files in `artifact_manifest.json`, not only the selected model pair. Twelve large/ignored payloads are not distributed by Git: `data/generated/synthetic-windows.jsonl`; three SNN `model-state.pt` files; two conventional `.joblib` files; and six anomaly `.joblib` files. Obtain the trusted `sim_results/Week6-Frozen-Inputs` handoff and verify it before installation:
+
+```powershell
+$PayloadRoot=Join-Path $SharedRepo 'sim_results/Week6-Frozen-Inputs'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PayloadRoot 'Verify-FrozenInputs.ps1') -RepoRoot $ReplayRoot -PayloadRoot $PayloadRoot
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PayloadRoot 'Verify-FrozenInputs.ps1') -RepoRoot $ReplayRoot -PayloadRoot $PayloadRoot -Install
+```
+
+The first command must report 12 matching files and no installation. The second must refuse differing destinations and report all 12 installed and verified. The complete inventory must then match all 66 entries, including the dataset SHA-256 `752b009588f3e721a8bf2f8f8fcd1cdf0f7e998446b60953dd34dd5e9e54d661`, SNN seed-7 hash `112f434cc79817da8c254947fb68a23e69a0d8734199c7f3166b681c11028fe6`, and anomaly random-forest seed-6007 hash `441572d3500737df9bb1bf38031b64fc4a9f4a490094e6bf652bbefc92cd717b`.
+
+### 2. Environment setup
+
+The original formal host used CPython 3.12.4 and the exact versions below. The repository has no complete lock file, so pin them explicitly and record any platform/build difference.
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install --upgrade pip
+.venv\Scripts\python.exe -m pip install numpy==2.5.3 scipy==1.18.1 galois==0.4.11 numba==0.67.0 llvmlite==0.49.0 scikit-learn==1.9.1 joblib==1.6.0 jsonschema==4.26.0 threadpoolctl==3.7.0 matplotlib==3.10.6
+.venv\Scripts\python.exe -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.14.0+cpu
+.venv\Scripts\python.exe -m pip install --no-deps -e .
+.venv\Scripts\python.exe -m pip check
+$env:PYTHONPATH='src/python'
+```
+
+The original run was serial CPU/eval, batch size one, torch and native pools limited to one thread, and GC enabled. PyTorch `2.14.0+cpu` is the recorded build. Python 3.13 satisfies the project range but is not the original formal interpreter.
+
+### 3. Regression tests and plan validation
+
+Run the seven formal regression suites. The original certificate records 237 authentication, 65 reconstruction, 27 pipeline-v2, 28 pipeline-timing, 22 frozen-pipeline, 24 timing-reporting, and 25 Tier-1-v2 tests: 428 total, with zero failures, errors, or skips.
+
+```powershell
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe -B -m unittest discover -s tests/auth -p 'test_*.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/reconstruction -p 'test_*.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests -p 'test_pipeline_v2.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests -p 'test_pipeline_timing.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests -p 'test_frozen_pipeline.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests -p 'test_pipeline_timing_reporting.py' -v
+.venv\Scripts\python.exe -B -m unittest discover -s tests/tier1 -p 'test_tier1_v2.py' -v
+
+.venv\Scripts\python.exe -B src/python/scripts/run_tier1_v2.py --validate-plan --config configs/tier1_v2_experiment_v1.json
+```
+
+The unresolved checked-in configuration compiles the registered scientific population but has null execution-source pins; its historical preregistration-stage plan digest was `ba576999164cbe2be8b618dc3bb2381941cefc2afe10ded20f29868e9aff6e28`. The original resolved formal plan digest was `cd2c26dd87689e4c1192843cded2166ba7e7c0692e24843387ef462fc302cd96`. A new absolute source-manifest path changes the resolved configuration and plan digest without changing the scientific populations, so retain the new digest as the new run's provenance rather than forcing the old value.
+
+### 4. Source manifest and formal dry-preflight
+
+Create the run-specific manifest and config outside tracked source, then call the runner's read-only preflight before any allocation or model deserialization:
+
+```powershell
+$env:PYTHONPATH='src/python'
+New-Item -ItemType Directory -Path 'tmp/tier1-reproduction-provenance' -ErrorAction Stop | Out-Null
+@'
+from pathlib import Path
+from puf_snn import tier1_v2 as h
+
+root = h.ROOT
+base = root / 'tmp/tier1-reproduction-provenance'
+commit = h.git(root, 'rev-parse', 'HEAD')
+assert commit == '0d088079d025e50411c8a752b32507bbb87d5d5b'
+assert not h.git(root, 'status', '--porcelain')
+
+manifest = {'execution_source_commit': commit,
+            'files': {p: h.file_hash(root / p) for p in h.source_files()}}
+h.write_json(base / 'source_manifest.json', manifest)
+
+config = h.strict_json((root / 'configs/tier1_v2_experiment_v1.json').read_text())
+config['execution_source_commit'] = commit
+config['source_manifest_path'] = (base / 'source_manifest.json').as_posix()
+h.write_json(base / 'formal-config.json', config)
+
+sources, artifacts, plan = h.formal_preflight(config, h.FORMAL_ROOT)
+assert len(sources['files']) == 185
+assert len(artifacts['files']) == 66
+assert sum(plan['counts'][i]['count'] for i in range(len(plan['counts']))) == 66920
+print({'status': 'PASS', 'plan_sha256': plan['plan_sha256'],
+       'source_files': len(sources['files']), 'artifacts': len(artifacts['files'])})
+'@ | .venv\Scripts\python.exe -B -
+```
+
+Preflight must reject a dirty tree, a wrong commit, protocol drift, a missing/extra/mismatched source entry, any of the 66 artifact mismatches, dummy callbacks, or an existing/wrong output. It must compile 9,840 measured scenarios, 20 warmups, and 66,920 measured operation rows with the registered role counts.
+
+### 5. Formal execution
+
+After preflight passes, the exact supported command is:
+
+```powershell
+$env:PYTHONPATH='src/python'
+.venv\Scripts\python.exe -B src/python/scripts/run_tier1_v2.py --formal --config tmp/tier1-reproduction-provenance/formal-config.json --output results/week-6/will/authentication/tier1-v2-formal-001
+```
+
+Run this only in the isolated checkout. The frozen v1 runner requires the registered internal run ID and output path and refuses an existing directory. A separately named independent run is not supported without changing the config contract and runner, which creates a new execution-source version requiring review, tests, a new source manifest, and new provenance. No such source change is made by this documentation consolidation.
+
+Expected generated files include the resolved config and plan, source/artifact manifests, seven routed operation streams, public deduplicated traffic and native audit streams, timing traces, summary JSON, five CSV summaries, metadata, reconciliation, manifest, and `COMPLETE`. The expected measured outcomes for comparison are 6,000 primary rejections, 1,200 control acceptances, 1,080 state-negative rejections, 1,680 parser-negative rejections, 10,200 accepted recovery windows, 1,040 successful recovery handshakes, 34,920 accepted measured windows with exactly one call at each inference boundary, zero rejected-window inference calls, 31/31 reconciliation checks, and 66,920 measured operation rows. Compare statistical outcomes, reasons, counts, and interval methods; do not require byte-identical traffic, hashes, or latency distributions.
+
+### 6. Verify original or new evidence
+
+For a quick read-only integrity check of the original package:
+
+```powershell
+$Evidence='results/week-6/will/authentication/tier1-v2-formal-001'
+$Manifest=Get-Content -Raw "$Evidence/manifest.json" | ConvertFrom-Json
+$Manifest.files.PSObject.Properties | ForEach-Object {
+  $Actual=(Get-FileHash -Algorithm SHA256 (Join-Path $Evidence $_.Name)).Hash.ToLower()
+  if($Actual -ne $_.Value){ throw "hash mismatch: $($_.Name)" }
+}
+$Complete=Get-Content -Raw "$Evidence/COMPLETE" | ConvertFrom-Json
+if($Complete.manifest_sha256 -ne (Get-FileHash -Algorithm SHA256 "$Evidence/manifest.json").Hash.ToLower()){ throw 'COMPLETE mismatch' }
+Get-Content -Raw "$Evidence/reconciliation.json" | ConvertFrom-Json | Select-Object evidence_complete,expected_behavior_observed
+```
+
+This verifies the original manifest closure but does not recompute the raw scientific analysis. The retained independent reconciliation and raw analysis did that already. A complete new run performs reconciliation before sealing; retain its source/artifact manifests and `COMPLETE` together.
+
+### 7. Distribution and exact-reproduction limitations
+
+- The compact shareable subset excludes raw authenticated traffic, native audit/trace streams, setup/session material, large raw operation streams, and the full-history Git bundle.
+- The exact-byte source ZIP was inspected: it contains only 188 source/config/schema/test/document files and no evidence traffic, model/dataset payload, private-key file, or credential record. Files with words such as `credential` or `trace` are implementation/tests, not captured secrets.
+- The full-history Git bundle is retained locally and hash-verified but is not included in the compact package because complete repository history has not been cleared for distribution.
+- Twelve required frozen payloads are ignored/untracked and therefore absent from an ordinary GitHub clone. They must be supplied through the verified frozen-input handoff.
+- The original resolved config contains a machine-specific temporary source-manifest path. A reproduction must create its own run-specific manifest/config and preserve the resulting new digest.
+- The original protocol's native randomness and all local timing prevent byte-identical replay even when source and frozen artifacts match.
