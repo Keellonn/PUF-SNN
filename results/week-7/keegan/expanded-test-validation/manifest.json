@@ -1,0 +1,62 @@
+{
+  "manifest_version": "week7-expanded-selected-test-publication-v1",
+  "source_commit": "3bb91b204fb1fae717bce5aca789dfcf8b698cc8",
+  "installed_build_source_commit": "c62ff15812c9f7bbf3aff56be3f38ba0f225f6f1",
+  "upstream_test_manifest_sha256": "4b240ef9d9637b01c0e1fed224e8a1a24bfbd11cd5f692803c7071979426667b",
+  "scope": "Public metadata for 1035 selected tests in 58 modules; two modules unrun",
+  "tests_run": 1035,
+  "root_tests_run": 964,
+  "supplemental_tests_run": 71,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "blocked_module_count": 2,
+  "export_completed": true,
+  "all_repository_test_modules_validated": false,
+  "standalone_installed_wheel_runtime_validated": false,
+  "shared_release_complete": false,
+  "files": [
+    {
+      "file": ".gitattributes",
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 5524,
+      "sha256": "02a80b7b173806d3d4c056ee8bfaef211137ed11b190819860fc809a13e0971c"
+    },
+    {
+      "file": "provenance.json",
+      "bytes": 1621,
+      "sha256": "2b6b4374b8500b879c3131ee1a91d8dd434c795f1588672109a9883fcd90d9d6"
+    },
+    {
+      "file": "observed-expanded-tests-manifest.json",
+      "bytes": 1007,
+      "sha256": "4b240ef9d9637b01c0e1fed224e8a1a24bfbd11cd5f692803c7071979426667b"
+    },
+    {
+      "file": "test-input-hashes.json",
+      "bytes": 60059,
+      "sha256": "d1849e185fceab569d430aa858d99712e068347695e8c3930f748c09205c6e0f"
+    },
+    {
+      "file": "test-inventory.json",
+      "bytes": 117463,
+      "sha256": "8fc48acbc8aa72fa17226bac2ee9af3a894ceed967b14931f47695b461819aef"
+    },
+    {
+      "file": "test-result.json",
+      "bytes": 2800,
+      "sha256": "abddb17682174da7a4a636cef00a56c3651b8aac9c4996821a4923726af0a99f"
+    },
+    {
+      "file": "expanded-tests-status.json",
+      "bytes": 1903,
+      "sha256": "be6daf19924b2121c3ff0523788449fdff94ea97cc551f4ec998dcd42abd1fe2"
+    }
+  ],
+  "new_repository_tests_executed_for_publication": false,
+  "raw_logs_test_checkout_environments_and_private_inputs_published": false
+}

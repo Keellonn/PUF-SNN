@@ -1,0 +1,8 @@
+{
+  "scope": "Scoped selected-test public metadata export only",
+  "manifest_sha256": "8223cf4c88732e2762285f49902129b83ebd85fed2da82695528c25b5ca38921",
+  "tests_run": 1035,
+  "blocked_module_count": 2,
+  "all_repository_test_modules_validated": false,
+  "shared_release_complete": false
+}

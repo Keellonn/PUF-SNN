@@ -1,0 +1,30 @@
+{
+  "manifest_version": "week7-selected-test-evidence-v1",
+  "checkout_commit": "3bb91b204fb1fae717bce5aca789dfcf8b698cc8",
+  "clean_setup_manifest_sha256": "78b1934024e7068c53292329f80fba192bc197c5d1f89c83b14e0f535b8d4736",
+  "files": [
+    {
+      "file": "test-input-hashes.json",
+      "bytes": 60059,
+      "sha256": "d1849e185fceab569d430aa858d99712e068347695e8c3930f748c09205c6e0f"
+    },
+    {
+      "file": "test-inventory.json",
+      "bytes": 117463,
+      "sha256": "8fc48acbc8aa72fa17226bac2ee9af3a894ceed967b14931f47695b461819aef"
+    },
+    {
+      "file": "test-result.json",
+      "bytes": 2800,
+      "sha256": "abddb17682174da7a4a636cef00a56c3651b8aac9c4996821a4923726af0a99f"
+    },
+    {
+      "file": "expanded-tests-status.json",
+      "bytes": 1903,
+      "sha256": "be6daf19924b2121c3ff0523788449fdff94ea97cc551f4ec998dcd42abd1fe2"
+    }
+  ],
+  "raw_logs_and_test_checkout_not_published": true,
+  "all_repository_test_modules_validated": false,
+  "shared_release_complete": false
+}
