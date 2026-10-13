@@ -1,13 +1,13 @@
 # Keegan Hoyne's Research Log
 
 **Owner:** Keegan Hoyne  
-**Current week:** Week 6
+**Current week:** Week 7
 
-**Last updated:** October 6, 2026
+**Last updated:** October 12, 2026
 
 ## Current research question
 
-Can a software prototype using a simulated noisy PUF-derived session credential reject replayed, modified, or misattributed Quest 3 head-motion windows before SNN inference while meeting our attack-rejection, macro-F1-loss, and latency targets?
+What does simulated-PUF credential reconstruction contribute beyond a provisioned credential under the same authenticated session/window policies, and can the frozen motion-plus-anomaly pipeline meet the stated reliability, inference-release and complete-processing latency targets?
 
 ## My part of the project
 
@@ -40,6 +40,18 @@ A simulated noisy PUF helps reconstruct credential material for session establis
 Accepted windows go to a motion classifier. A separate abnormality detector checks for unusual sensor patterns.
 
 We'll use the same data, splits, attacks, and timing methods when comparing the different system versions.
+
+The independent credential-verification key and admission authorization remain separate trust dependencies; the simulated PUF is not the only source of trust. The 32-bit pilot credential is a proof-of-mechanism choice, not a production-strength secret. Modified/replayed-window rejection primarily follows from message authentication and verifier state. A matched provisioned-credential control is still needed to isolate the PUF component's additional role and admission cost.
+
+## Current conclusion and reporting boundary
+
+The evaluated software prototype enforces the tested authentication and inference-release policies and offers improved nominal reconstruction reliability, but its original/default complete motion-plus-anomaly processing paths do not meet the provisional 20 ms p95 target.
+
+The reliability improvement belongs to Will's standalone reconstruction comparison, not an integrated majority-3 v2 result. Original recurring p95 values are 27.76 ms for logistic motion/logistic anomaly, 30.30 ms for logistic motion/forest anomaly and approximately 50-54 ms for SNN-32/forest anomaly. Fresh-session setup is separate and adds startup/recovery cost. The two-second motion acquisition window is additional; physical acquisition, network transmission and durable audit storage are excluded from post-window processing times.
+
+Only the separate opt-in exact-quality candidate's logistic/logistic recurring path meets the numerical 20 ms target in both bounded comparison blocks; its fresh path and the forest-anomaly paths still miss. Neither SNN outperforms the conventional baselines. Frozen anomaly thresholds still miss the 90% medium/high recall target, and logistic also exceeds the 5% clean-FPR criterion. Small legitimate nods becoming ambiguous with still are not automatically abnormal sensor corruption.
+
+Current evidence and unresolved decisions are consolidated in [the Week 7 study status](../week7/study-status.md) and [release status](../week7/release-status.md), published at `509a0ce6e54f2567300b4ac00de80158946e6eaa`. Earlier weekly sections retain their historical timing boundaries and then-outstanding tasks; they are not current claims of complete-path target attainment. No real Quest/human-data validation, production-security proof or complete shared release is claimed.
 
 ---
 
@@ -658,6 +670,61 @@ responses and loaded synthetic windows. No training, threshold change,
 architecture search, reconstruction improvement, formal varied Tier-1 study,
 durable-storage benchmark, human recording or Quest deployment occurred.
 
+## Later Week 6 diagnostics and feedback revisions
+
+The following is a narrative addendum for completed work already evidenced in the repository. It does not rerun the studies or change their original numerical results, configurations or provenance.
+
+- Completed the paired observer/GC diagnostic across four noise blocks, four observer/collector modes and six frozen model conditions. Retained 8,640 fresh admission attempts and 68,952 timing records. Reported 20 explicit full-GC probes and deferred cleanup separately; moving collection outside a window timer did not eliminate its system cost.
+- Completed the separate reference/Windows-traced workload with 540 fresh admission attempts per process. Checked all 27 saved markers, clock alignment and zero reported event/buffer loss. Reconciled scheduling coverage and disjoint accounting for all 4,320 traced roots, retaining 2,106 observations across 144 groups and all eight roots above 100 ms.
+- Examined GC overlap, ready-but-not-dispatched delay and reconstruction-stage time. All eight large traced roots overlap GC, but overlap is not proof of a sole cause. Preserved incomplete context-switch schema validation, unisolated tracing overhead and unresolved allocation/cache/power effects. Published sanitized numeric evidence, not raw private traces or sensitive OS payloads.
+- Produced saved-data stage accounting for all 29,718 original roots. Kept directly measured fresh and recurring totals separate instead of summing stage percentiles. Clarified the single-read BCH(63,36,t=5), 32-bit pilot configuration behind the 599/600 measured admissions per condition; successful-path quantiles are conditional on admission, and the paired refusal is not six independent FRR observations.
+- Completed source-aware Tier-2 outcome reporting without refitting, retuning, inference or authentication. Reconciled 50,400 planned cases as 44,899 quality-valid and 5,501 pre-tag blocks: 3,493 timestamp-gap and 2,008 non-increasing-timestamp blocks. Retained 14,956 accepted test cases from 600 source windows and 2,000 shared source-bootstrap draws; derivatives of a source stay together rather than being counted as independent recordings.
+- Reported frozen medium/high recall of 82.85% for logistic anomaly and 87.95% for forest anomaly, with source-aware intervals and per-attack/severity misses. Clean FPR remained 5.33% and 2.94%. Uncertainty reporting changed, not the historical point estimates or thresholds.
+- Used stage accounting to identify exact quality-check arithmetic as one shared application bottleneck. Implemented and tested an opt-in dyadic-arithmetic candidate that preserves the reference decisions, then measured a bounded AB/BA comparison with unchanged data, models, thresholds and observer boundaries. The protocol default stayed unchanged.
+- Reconciled four workers, 1,800 fresh attempts, 15,126 timing roots and 768 sustained same-session windows. Paired public input/output/state signatures matched; rejected windows made zero model calls. Logistic/logistic candidate recurring p95 was 14.2551/15.3827 ms, versus its matched reference's 27.4285/25.1534 ms. Candidate fresh p95 remained 22.2278/23.4115 ms; forest-anomaly configurations still missed the target.
+- Reported cleanup, closed-loop capacity and coarse resource observations alongside the candidate timings. GC stayed enabled. The two reused-source blocks do not establish a population confidence interval, deployment throughput, memory advantage, hard deadline or general removal of latency outliers.
+- Consolidated the faculty-feedback response, evaluation draft, one-page brief, claim/evidence/limitation mapping and release-evidence index. Preserved historical partial benchmarks as comparisons and separated my completed timing/Tier-2 work from Will's remaining reconstruction/protocol experiments and shared access decisions.
+
+Evidence: [observer/GC diagnostic](../../results/week-6/keegan/observer-experiment/diagnostic-report.md), [sanitized OS accounting](../../results/week-6/keegan/windows-os-evidence/windows-os-evidence.md), [stage accounting](../../results/week-6/keegan/stage-accounting/stage-accounting.md), [source-aware Tier-2](../../results/week-6/keegan/tier2-source-uncertainty/tier2-source-uncertainty.md) and [bounded exact-quality comparison](../../results/week-6/keegan/quality-benchmark/quality-benchmark.md). Their manifests retain the commands, seeds, configurations and hashes; this addendum is not a fresh experiment.
+
+---
+
+# Week 7: Reproducible Setup, Evidence Receipt and Scoped Validation
+
+## Completed local work
+
+- Audited pinned public evidence, critical source/configuration identities and frozen model bytes without deserialization or inference. Kept local identity/completion checks distinct from a complete shared-release or independent experiment-recomputation claim.
+- Recorded the observed Windows x64 / CPython 3.13.14 dependency profile. Verified 36 exact external wheel hashes and static dependency closure, then checked an offline project build/install in a separate environment: 57 source/build inputs, 55 installed project files and 37 distributions. Preserved the working environment and historical requirements; the observed Matplotlib 3.11.2 differs from the historical 3.10.6 pin.
+- Validated the supported source-checkout workflow, while leaving standalone installed-wheel application operation unvalidated. A clone does not supply the generated dataset or 11 frozen model binaries; trusted originals still require hash verification before loading.
+- Recorded the original clean root scope of 964 passing tests in 54 modules. Expanded explicit discovery to 1,035 selected tests in 58 modules at source `3bb91b2`, with zero failures, errors or skips. The additional 71 were credential-verifier harness 7, reconstruction harness 22, alternatives harness 17 and current-v2 Tier-1 harness 25. The earlier 964 are included, not added again.
+- Verified Will's compact formal-evidence handoff and exact source snapshots, and restored four original compatibility documents with byte-preserving line-ending rules. Tier-1's primary manifest has 12 included entries verified and 12 omitted; reconstruction alternatives has 43 included and six omitted. The manifests were received, but full raw-artifact closure and my independent raw-outcome recomputation remain incomplete.
+- Verified the separately supplied original 18-file, 80-attempt NONFORMAL reconstruction fixture and prepared exact historical source inputs. Kept fixture truth and raw logs private; did not regenerate missing historical inputs, retrain models or change the original Python 3.12.4 version guard.
+- Executed the unchanged 27-test formal-readiness module under the separate clean 3.13.14 profile. The corrected real-Git diagnostic recorded 24 passes, two failures and one error, with no skips. All three nonpassing cases stop at the historical version guard; that is not proof of algorithm incompatibility, but operations behind the guard are not validated as compatible either.
+- Preserved the first diagnostic and intermediate setup failures. Two first-run errors came from missing Git provenance and passed after correcting the context; path-length and overstrict status checks stopped before tests. Repeated executions cover the same 27 identities and are not additive. Legacy Tier-1-v1's 48 tests remain Will-reported historical evidence, not newly executed current-v2 validation.
+- Published sanitized result/count/provenance metadata with explicit incomplete/negative status instead of calling the diagnostic a full pass. Updated the current study/release status, evaluation draft, preliminary brief and Week 7 results summary without altering historical checkpoint documents or manifests.
+
+## Evidence and publication checkpoints
+
+| Checkpoint | Publication commit | Scope / evidence |
+| --- | --- | --- |
+| Observed setup and original clean tests | `f0fbfb1` | [Setup evidence](../../results/week-7/keegan/release-readiness/manifest.json); setup/test source `c62ff15` |
+| Exact document restoration and partial handoff | `3bb91b2` | [Receipt](../../results/week-7/keegan/shared-handoff-receipt/README.md); received subset, not full raw closure |
+| Expanded selected test validation | `e7c04a1` | [1,035-test scope](../../results/week-7/keegan/expanded-test-validation/README.md); execution source `3bb91b2` |
+| Partial interpreter diagnostic | `0895f92` | [27-test record](../../results/week-7/keegan/reconstruction-compatibility/README.md); original guard/source/fixture retained |
+| Current documentation/reporting pass | `509a0ce` | [Reporting index](../../results/week-7/keegan/reporting-index.json); documentation only, no new tests or experiments |
+
+A publication commit is not automatically an experiment's execution source. Retained upstream manifests identify their original boundaries, not an assertion that every later working-tree file remains unchanged. Test counts describe tested categories/properties, not security completeness. Durations of tests or automated runs are not a record of my working hours.
+
+Current narrative reports: [Week 7 results](../../results/week-7/keegan/keegan.md), [study status](../week7/study-status.md), [release status](../week7/release-status.md), [evaluation draft](../week7/evaluation-draft.md) and [preliminary brief](../week7/preliminary-results-brief.md). The reporting pass is complete locally; this narrative update does not claim new slide work or add time entries.
+
+## Remaining ownership and decisions
+
+- **Will:** reconcile the old 1.625% nominal FRR and the alternatives baseline's 59/6,000 (0.9833%) as different studies; integrate provisional majority-3 and evaluate independent/shared noise with denominators, uncertainty, wrong candidates, verification refusals, credential format and latency together. Standalone majority-3's 6/6,000 (0.10%) is not an integrated-v2 result.
+- **Will/shared:** provide the actual [protocol/key-custody specification](../authentication-v2-protocol-spec.md) with the submission and complete the same-policy provisioned-random-credential control. Hold data, message format, HMAC, models and verifier policy fixed; acknowledge the separate verifier/admission secrets and exact-next-sequence availability limitation.
+- **Shared:** close remaining original-evidence access/verification decisions and review the draft evaluation and one-page brief. The partial 3.13 diagnostic requires a separately versioned support decision or continued use of the original historical interpreter; it must not be converted into a pass by weakening the guard.
+- **Faculty/lab/institution:** specify headset custody/access, logger-validation permission, human-data authorization and allowed fields/storage/access/retention/transfer before recording. No human recording, Quest deployment or complete shared release is claimed.
+- **My remaining wrap-up:** update the presentation and prepare the dated hours log separately. No further tracing or architecture search is implied by this narrative update.
+
 ---
 
 # Hours and Work Log
@@ -1119,7 +1186,7 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Committed and pushed the numeric evidence with explicit limitations on causal attribution, tracing overhead, and remaining allocation/cache/power effects.
 - Committed the reporting implementation and the result evidence
 
-## Thursday, October 8, 2026 - 0.72 hours
+## Thursday, October 8, 2026 - 6.35 hours
 
 ### 12:00 AM - 12:43 AM - 0.72 hours
 
@@ -1130,3 +1197,98 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Added the Windows evidence slide with representative GC, scheduling-delay, and reconstruction observations.
 - Updated speaker notes to explain the separate diagnostic workload, evidence checks, privacy protections, and unresolved causal limitations.
 - Revised the next-steps slide while retaining the original timing table and qualified conclusions.
+
+### 12:48 PM - 1:47 PM - 0.98 hours
+
+- Attended the lab meeting for Amruth’s and Sriram’s presentations.
+
+### 3:42 PM - 4:37 PM - 0.92 hours
+
+- Reviewed Dr. Garcia’s feedback and prioritized stage-level timing, source-aware Tier-2 reporting, and one bounded optimization.
+- Implemented stage accounting using the saved benchmark evidence, keeping session establishment separate from recurring-window processing.
+- Reconciled all 29,718 timing records and preserved directly measured totals instead of adding stage percentiles.
+- Clarified the reconstruction configuration, admission refusals, successful-path latency denominators, and excluded acquisition, network, and durable-storage costs.
+- Implemented per-attack and severity reporting that separates pre-tag quality blocks from authenticated detector detections and misses.
+- Reconciled all 50,400 planned cases and generated 2,000 shared source-bootstrap draws across 600 held-out source windows.
+- Verified unchanged predictions, point estimates, and validation-selected thresholds, then saved the tested implementations and reporting evidence.
+
+### 6:06 PM - 8:02 PM - 1.93 hours
+
+- Identified exact quality-check arithmetic as one shared application-level processing bottleneck.
+- Implemented and tested an opt-in dyadic-arithmetic candidate that preserves the reference quality decisions.
+- Built the paired benchmark with unchanged frozen inputs, models, thresholds, and timing boundaries.
+- Completed four isolated workers across two comparison blocks, retaining 1,800 fresh admission attempts, 15,126 timing records, and 768 sustained same-session windows.
+- Confirmed matching paired inputs, predictions, and state signatures, with zero model calls on rejected windows.
+- Reviewed the improved logistic/logistic recurring p95 results while retaining the unmet fresh-path and forest-anomaly targets.
+- Reported cleanup costs, sustained processing capacity, and resource limitations without changing the default protocol or disabling automatic garbage collection.
+- Consolidated the faculty-feedback revisions into the results summary, methods, project specification, XR/SNN design, and paper outline.
+- Drafted the paper’s evaluation section and a one-page preliminary-results brief.
+- Added requirement-status and claim–evidence–limitation summaries.
+- Distinguished the original/default latency results from the separate opt-in optimization and historical partial benchmarks.
+- Prepared the scoped release-evidence index and documented remaining reconstruction, credential-control, hardware-access, and authorization requirements.
+- Reviewed and saved the documentation without changing historical experiments, models, thresholds, or slides.
+
+### 9:30 PM - 9:47 PM - 0.28 hours
+
+- Audited the pinned local evidence and identified missing shared formal-evidence and environment-validation requirements.
+- Checked the installed dependency versions and distinguished the project’s supported Python range from historical environment pins.
+- Recorded the observed Windows and Python dependency profile without modifying the working environment.
+- Preserved the historical requirements rather than silently replacing them with the observed environment.
+
+### 10:02 PM - 10:21 PM - 0.32 hours
+
+- Checked public wheel availability, downloaded the 36 exact external wheels, and verified their hashes and static dependency closure.
+
+### 10:40 PM - 11:52 PM - 1.20 hours
+
+- Investigated the failed clean-setup preparation and traced the source mismatch to line-ending conversion.
+- Recovered the exact pinned source bytes without changing global Git settings or overwriting the failed attempt.
+- Built and installed the project offline in a separate environment while preserving the working environment.
+- Verified the installed project files, dependency metadata, and recorded source inputs.
+- Completed the clean root-discovery validation with 964 passing tests in 54 modules.
+- Documented that this scope did not establish all-module coverage, standalone installed-wheel operation, or a complete shared release.
+- Packaged the sanitized dependency, setup, source-recovery, and test evidence.
+- Checked the artifact hashes, completion records, and privacy exclusions.
+- Saved and published the scoped release-readiness checkpoint.
+- Kept private environments, local logs, models, historical results, research hours, and slides unchanged.
+
+## Sunday, October 11, 2026 - 0.78 hours
+
+### 11:12 PM - 11:59 PM - 0.78 hours
+
+- Reviewed Will’s updated reconstruction and current-v2 authentication documentation.
+- Verified the received compact evidence subsets and exact source snapshots against their recorded hashes.
+- Restored four original compatibility documents with byte-preserving line-ending rules.
+- Recorded the included and omitted artifacts instead of treating the partial handoff as a complete formal release.
+- Prepared an isolated source checkout using the previously validated dependency environment.
+- Began explicit root and supplemental-test discovery while preserving the original repository, environments, models, and historical results.
+
+## Monday, October 12, 2026 - 1.97 hours
+
+### 12:06 AM - 12:33 AM - 0.45 hours
+
+- Reviewed the completed root and supplemental validation, confirming 1,035 passing tests across 58 modules with no failures, errors, or skips.
+- Reconciled the 964 root cases and 71 supplemental cases without double-counting the earlier validation.
+- Recorded the two historical-input modules that were not covered by the passing scope.
+- Verified unchanged test inputs and environment metadata, then published the scoped validation evidence.
+- Prepared the remaining reconstruction-readiness handoff while keeping historical Tier-1 results separate from current-v2 validation.
+
+### 1:36 AM - 2:40 AM - 1.07 hours
+
+- Reviewed why the historical formal runner pins Python 3.12.4 and distinguished that policy from a demonstrated Python 3.13 incompatibility.
+- Verified the original 80-attempt reconstruction smoke fixture and exact historical source inputs without regenerating or publishing private fixture data.
+- Ran the unchanged 27-test formal-readiness module under the clean Python 3.13.14 environment.
+- Investigated missing Git provenance, Windows path-length problems, and overly strict status checks while preserving every earlier attempt.
+- Corrected the diagnostic context without changing the original tests, source policy, or Python-version guard.
+- Recorded the corrected result of 24 passes, two failures, and one error; the remaining three cases stopped at the historical version guard.
+- Published sanitized partial-diagnostic evidence without claiming full compatibility or rerunning the formal experiment.
+
+### 5:40 PM - 6:07 PM - 0.45 hours
+
+- Updated the Week 7 study status, release scope, evaluation draft, preliminary-results brief, and results summary.
+- Distinguished the 1,035-test passing scope from the separate partially passing 27-test diagnostic.
+- Clarified the verified compact handoff, omitted raw evidence, and remaining Will/shared requirements.
+- Preserved the historical scientific results and checkpoint documents while adding a separate current reporting index.
+- Checked report links, artifact hashes, whitespace, and private-content exclusions, then saved and published the reporting pass.
+- Updated the research-log narrative with the later Week 6 revisions and Week 7 validation results.
+- Preserved every existing dated hours entry byte-for-byte and left the presentation unchanged.
