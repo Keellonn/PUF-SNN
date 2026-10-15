@@ -1,7 +1,7 @@
 """Current v2 reconstruction/admission flow and one composite model consumer.
 
 This connector uses the existing owners' APIs; it is not another authenticator.
-It performs one response acquisition and one reconstruction per isolated attempt.
+It defaults to one read; opt-in Majority-3 still reconstructs once per attempt.
 It neither provisions enrollment records nor substitutes evaluator credentials.
 """
 
@@ -16,6 +16,7 @@ from puf_snn.auth.sender import Sender
 from puf_snn.auth.session import Failure, REFUSAL
 from puf_snn.auth.verifier import VerificationResult, Verifier
 from puf_snn.integration import ExactlyOnceClassifierRelease, processed_record_to_wire_window
+from puf_snn.puf.acquisition import AcquisitionConfig, SINGLE_READ, acquire_response
 from puf_snn.reconstruction import reconstruct
 
 
@@ -77,7 +78,12 @@ class V2InferencePipeline:
         prepare_inputs: Callable[[dict], tuple[Any, Any]],
         motion_model: Callable[[Any], Any],
         anomaly_model: Callable[[Any], Any],
+        *,
+        acquisition_config: AcquisitionConfig = SINGLE_READ,
     ) -> None:
+        if type(acquisition_config) is not AcquisitionConfig:
+            raise ValueError("acquisition_config must be an AcquisitionConfig")
+        acquisition_config.validate()
         if type(sender) is not Sender or type(verifier) is not Verifier:
             raise ValueError("audited v2 Sender and Verifier endpoints are required")
         if not all(callable(value) for value in (prepare_inputs, motion_model, anomaly_model)):
@@ -91,8 +97,14 @@ class V2InferencePipeline:
         self._motion = motion_model
         self._anomaly = anomaly_model
         self._attempted = False
+        self._acquisition_config = acquisition_config
         self._preprocessing_calls = self._motion_calls = self._anomaly_calls = 0
         self._gate = ExactlyOnceClassifierRelease(verifier, self._prepare_counted, self._consume)
+
+    @property
+    def acquisition_config(self) -> AcquisitionConfig:
+        """Immutable local profile; export to_dict() in experiment provenance."""
+        return self._acquisition_config
 
     @property
     def calls(self) -> ModelCallCounts:
@@ -124,9 +136,12 @@ class V2InferencePipeline:
 
     def establish(self, read_response: Callable[[], tuple[int, ...]], attempt_id: str,
                   *, local_provenance=None) -> SessionAttempt:
-        """Acquire once, decode once, admit the exact candidate, then confirm.
+        """Acquire by the selected policy, decode once, admit, then confirm.
 
-        ``read_response`` supplies a fresh simulated read in the eventual study.
+        Each ``read_response`` call must supply a fresh reading of the same
+        persistent simulated device using its continuing measurement RNG.
+        Default single-read calls once; opt-in Majority-3 calls exactly three
+        times unless a malformed/failed acquisition aborts the attempt early.
         The hook does not receive enrollment truth from this connector. Fixed or
         explicitly corrupted responses used in tests are only integration controls.
         Enrollment and endpoint construction happen BEFORE this method.
@@ -138,7 +153,7 @@ class V2InferencePipeline:
             raise ValueError("one attempt per pipeline; create fresh endpoints for another attempt")
         self._attempted = True
         try:
-            noisy_response = read_response()
+            noisy_response = acquire_response(read_response, self.acquisition_config)
         except Exception:
             self.sender.record_reconstruction_exception(attempt_id, local_provenance=local_provenance)
             raise PipelineExecutionError("response_acquisition: internal_error; no retry") from None

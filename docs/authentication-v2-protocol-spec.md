@@ -176,10 +176,12 @@ The relevant parameters are,
 | Credential length | 32 bits |
 | Fixed padding | 4 zero bits |
 | Selected response bits | Indices 0–62 |
-| Readings per attempt | 1 |
+| Readings per attempt | 1 by default; 3 for the explicit Majority-3 candidate |
 | Decoder attempts | 1 |
 
-At authentication time, the simulated device generates one new PUF response.
+At authentication time, the baseline generates one new PUF response. The opt-in
+Majority-3 acquisition candidate described below produces one effective response
+from three fresh readings before entering this same reconstruction function.
 The selected response bits are combined with the stored helper data to produce the received BCH codeword estimate.
 The BCH decoder attempts to correct the noisy codeword and recover the original message.
 Three runtime outcomes are possible,
@@ -193,8 +195,88 @@ The four padding bits allow the implementation to reject some invalid decoded me
 However, padding validation does not guarantee credential correctness.
 If sufficiently many response bits change, BCH decoding may produce an incorrect credential that still contains valid padding.
 This is why the reconstruction result must be independently verified before it can authorize session establishment.
-The current Authentication-v2 implementation does not perform reconstruction retries, temporal majority voting, stable-bit selection, or adaptive error-correction changes.
-Those techniques are evaluated separately in the Reconstruction Alternatives Experiment and have not been integrated into this version of the authentication protocol.
+Neither acquisition mode performs reconstruction retries, stable-bit selection, or
+adaptive error-correction changes. The original reconstruction identity and helper
+data remain `puf-snn-reconstruction-v1`; acquisition is versioned separately.
+
+### Opt-in Majority-3 Acquisition Candidate
+
+The default `single-read-v1` policy acquires one 64-bit response. The Week 7
+`majority-3-v1` candidate acquires exactly three fresh 64-bit responses, validates
+each as a tuple of Python integer bits (0 or 1; booleans are rejected), and votes:
+
+```text
+effective[i] = 1 if read1[i] + read2[i] + read3[i] >= 2 else 0
+```
+
+This applies to every position 0–63. `V2InferencePipeline.establish` calls
+`puf_snn.puf.acquisition.acquire_response` in place of its original single callback
+invocation, then calls the unchanged `reconstruct` exactly once. Reconstruction
+still selects positions 0–62, uses BCH(63,36,t=5), and returns a four-byte credential
+candidate with four zero padding bits. The existing sender then performs one
+independent credential-verification/local-admission sequence before emitting a
+handshake request. Handshake messages, HKDF, Wire2, window HMAC, session binding,
+exact-next sequence checks, and verifier-issued at-most-once inference release are
+unchanged. The acquisition policy is local configuration, not a wire negotiation.
+
+`SimulatedResponseReader` binds one persistent 128-RO `Device`, adjacent disjoint
+pairs, fixed read conditions, nominal frequency, and the caller's continuing
+measurement `random.Random` stream. Each callback invokes `generate_response`
+afresh. Manufacturing characteristics are never regenerated. Existing independent
+Gaussian per-oscillator/per-read noise sampling is retained; zero noise consumes
+no RNG draws. The adapter creates or reseeds no RNG. Manufacturing, enrollment,
+and measurement streams remain the caller's separate, reproducible responsibility.
+Custom callbacks remain trusted integration hooks: they must read that same device
+afresh each time and cannot provide remote proof of physical device identity.
+
+The separate strict `AcquisitionConfig` schema is `puf-snn-acquisition-v1`.
+Only (`single-read-v1`, 1) and (`majority-3-v1`, 3) policy/read-count combinations
+are accepted. Unknown, missing, duplicate, or inconsistent settings are rejected.
+`configs/authentication_v2.json` and the strict `AuthConfig` schema are unchanged.
+To opt in, load `configs/authentication_v2_majority3_acquisition.json` and pass it
+as the keyword-only `acquisition_config` when constructing the pipeline:
+
+```python
+from puf_snn.puf.acquisition import AcquisitionConfig, SimulatedResponseReader
+
+acquisition = AcquisitionConfig.load("configs/authentication_v2_majority3_acquisition.json")
+pipeline = V2InferencePipeline(sender, verifier, prepare_inputs, motion_model,
+                               anomaly_model, acquisition_config=acquisition)
+reader = SimulatedResponseReader(device, nominal_frequency, read_conditions, measurement_rng)
+attempt = pipeline.establish(reader, attempt_id)
+# Include this secret-free identity in the future experiment's configuration:
+acquisition_provenance = pipeline.acquisition_config.to_dict()
+```
+
+Omitting the keyword preserves the original single-read default. The pipeline's
+existing attempt-summary and audit schemas are unchanged; future evaluations must
+save the acquisition configuration plus new development-source hashes separately.
+Historical source manifests and frozen configurations must not be rewritten to
+match this candidate. The Week 6 experimental `majority_vote` (three/five inputs)
+remains untouched; `majority_vote3` uses the same rule with a three-input-only
+interface and does not import the experimental module.
+
+Any failed or malformed acquisition aborts immediately, without replacement reads
+or decoding partial input. Thus an aborted attempt can contain fewer than three
+reads; a completed Majority-3 acquisition always contains exactly three, never a
+fourth. Acquisition/decoder exceptions retain the existing `PipelineExecutionError`
+and incomplete-evidence path and are not ordinary FRR observations. Decoder or
+padding rejection and independently rejected valid-format candidates retain their
+existing rejection behavior. These failures emit no handshake request, derive no
+session key, create no pending/active verifier session or release authority, and
+invoke no preprocessing, motion, or anomaly callback. There is no retry within an
+attempt; another attempt requires fresh endpoints.
+
+The known acquisition cost is two additional simulator reads (three times the
+read count), validation, and a 64-position vote, followed by one BCH decode.
+End-to-end latency and integrated nominal FRR have not been measured for this
+candidate. The **0.1000% Majority-3 nominal FRR** belongs to the standalone Week 6
+reconstruction experiment, not this integrated implementation. Week 5's 1.625%
+and Week 6's 0.9833% baseline FRRs used unmatched populations/noise streams; their
+difference is not an implementation improvement. Functional tests establish no
+reliability improvement. Correlated-noise behavior, conventional-credential
+comparisons, physical hardware behavior, and integrated reliability require
+separate controlled evaluations; no correlated-noise model is added here.
 
 ### Independent Credential Verification
 
@@ -581,6 +663,7 @@ The principal source components are:
 |---|---|
 | Simulated PUF | `src/python/puf_snn/puf/ro_puf.py` |
 | PUF device model | `src/python/puf_snn/puf/device.py` |
+| Versioned single-read/Majority-3 acquisition | `src/python/puf_snn/puf/acquisition.py` |
 | BCH reconstruction | `src/python/puf_snn/reconstruction/bch.py` |
 | Credential reconstruction | `src/python/puf_snn/reconstruction/credential.py` |
 | Independent credential verification | `src/python/puf_snn/auth/credential_verifier.py` |
@@ -644,6 +727,10 @@ The authenticated session, credential-admission, binary-window, replay, lifecycl
 The combined authentication-to-inference pathway is tested through,
 - `tests/test_pipeline_v2.py`
 - `tests/test_frozen_pipeline.py`
+- `tests/test_majority3_pipeline.py` (deterministic candidate and baseline controls)
+
+Acquisition validation, voting, configuration, and simulator RNG behavior are
+tested in `tests/puf/test_acquisition.py`.
 
 The expanded Tier-1 experimental harness is implemented separately through,
 - `src/python/puf_snn/tier1_v2.py`
@@ -666,7 +753,7 @@ The resulting architecture establishes a clear separation between credential rec
 However, the current prototype is not a production security system.
 Its simulated PUF behavior, 32-bit credential, co-located trust assumptions, and lack of secure key custody impose important limitations.
 Future work may investigate,
-- Integration of a validated reconstruction-reliability improvement
+- Controlled reliability evaluation of the opt-in Majority-3 acquisition candidate
 - Stronger credential entropy and production-appropriate key material
 - More realistic PUF noise and environmental variation
 - Authentication across separate device and verifier processes

@@ -1,8 +1,8 @@
 # William's Research Log
 
 **Owner:** William Wallace
-**Current week:** Week 6
-**Last updated:** October 8, 2026
+**Current week:** Week 7
+**Last updated:** October 14, 2026
 
 # Current research question
 
@@ -1408,6 +1408,7 @@ Remaining work includes,
 # Week 6, Tier 1 v2 and Reconstruction Evaluation
 
 ## Authentication v2 Protocol Specification
+
 - Reviewed the implemented end-to-end trust path, from simulated RO-PUF measurement and BCH(63,36,t=5) reconstruction through independent credential verification, local authorization, session establishment, protected Wire2 windows, and accepted-window release to inference.
 - Organized the markdown document into a specification with technical appendices covering exact handshake message formats, HKDF and HMAC formulas, binary serialization, receiver verification order, and failure behavior.
 - Documented the importance of verifying valid-format reconstruction candidates **before HKDF**, rather than treating successful BCH decoding as proof of device identity.
@@ -1457,25 +1458,26 @@ Cons,
 
 Stable bit selection was considered for this step however, my existing PUF response is only 64 bits long. The existing BCH code leaves only 1 bit unused. In order for this design to make stable bit selection actually meaningful, I would probably have to update my pairing scheme
 
-### Experiment 
+### Experiment
+
 - Implemented four matched reconstruction policies: B0 single-read BCH(63,36,t=5), A1 three-read majority voting, A2 five-read majority voting, and B1 single-read BCH(63,30,t=6).
 - Isolated the experimental implementations from the production Authentication-v2 path. Verified stronger-BCH construction, majority voting, credential formats, deterministic trial allocation, and independent candidate verification.
 - Validated the implementation with an 80-attempt NONFORMAL smoke run; the subsequent formal-readiness suite reached **221 passing automated tests** and a successful dry preflight.
 - Completed one formal reconstruction experiment across **20 populations, 120 simulated devices, two noise conditions, and 48,000 attempts** (6,000 per group/condition), with **120,000 timed PUF readings**.
 - Evaluated FRR, raw and effective BER, software processing latency, 95% confidence intervals, population variation, and credential-verifier behavior.
 
-| Reconstruction | Nominal FRR | Stress FRR | Nominal median software latency |
-|---|---:|---:|---:|
-| B0 — BCH(63,36,t=5), one read | 0.9833% | 35.5500% | 1.1312 ms |
-| A1 — Majority-3 | 0.1000% | 9.6500% | 1.4547 ms |
-| A2 — Majority-5 | 0.0000% observed | 4.1667% | 1.7722 ms |
-| B1 — BCH(63,30,t=6), one read | 0.2500% | 20.3833% | 1.1333 ms |
+| Reconstruction                 |      Nominal FRR | Stress FRR | Nominal median software latency |
+| ------------------------------ | ---------------: | ---------: | ------------------------------: |
+| B0 — BCH(63,36,t=5), one read |          0.9833% |   35.5500% |                       1.1312 ms |
+| A1 — Majority-3               |          0.1000% |    9.6500% |                       1.4547 ms |
+| A2 — Majority-5               | 0.0000% observed |    4.1667% |                       1.7722 ms |
+| B1 — BCH(63,30,t=6), one read |          0.2500% |   20.3833% |                       1.1333 ms |
 
 All three alternatives met the observed 0.5% nominal FRR target, but none met the target under stress noise. Majority-5 had no nominal failures in 6,000 attempts; this is not a claim of zero future failure probability. The independent verifier rejected **60/60 observed wrong credential candidates**. Majority-3 is the preferred follow-up candidate because it substantially improved nominal FRR while retaining the baseline 32-bit credential and requiring fewer additional reads than majority-5. Stronger BCH reduces the credential to 30 variable bits.
 
 The formal results and read-only evidence audit were recorded separately. These measurements are from a simulated PUF and local software path, not physical Quest 3 PUF timings or an end-to-end Authentication-v2 benchmark. No alternative has been integrated into the production authentication protocol.
 
-**Deliverable:** `docs/week6-reconstruction-alternatives-experiment.md`  
+**Deliverable:** `docs/week6-reconstruction-alternatives-experiment.md`
 **Formal evidence:** `results/week-6/will/reconstruction-alternatives/week6-reconstruction-alternatives-v1-formal-001/`
 
 ## Tier 1 v2
@@ -1487,6 +1489,7 @@ The previous experiment evaluated an earlier version of the authentication syste
 The main objective is to verify that replayed, modified, or improperly authenticated sensor windows are rejected before reaching inference. I also wanted to verify that rejected traffic cannot incorrectly advance sequence numbers, modify trusted session state, or interfere with subsequent legitimate communication.
 
 The planned formal experiment includes,
+
 - 6,000 primary attack attempts
 - 1,200 legitimate authentication controls
 - 1,080 protocol-state negative submissions
@@ -1496,6 +1499,7 @@ The planned formal experiment includes,
 ### Expanded Tier-1 Attack Implementation
 
 I implemented the five primary attack categories against the current Authentication-v2 protocol,
+
 1. **A1 — Same-Session Replay:** Resubmit an already accepted packet within its original active session to verify duplicate-sequence rejection.
 2. **A2 — Prior/Expired-Session Replay:** Replay previously valid packets after session replacement or expiration to test session lifecycle enforcement.
 3. **A3 — Cross-Device Substitution:** Change the protected device identifier while retaining the original HMAC to verify device-binding integrity.
@@ -1513,13 +1517,14 @@ The state-machine tests cover situations such as invalid future packets, sequenc
 The parser tests evaluate malformed JSON, invalid binary representations, incorrect protocol versions, truncated messages, and other representation failures.
 
 For each rejected submission, the experiment checks that,
+
 - The receiver's accepted-window count does not incorrectly advance
 - The last accepted sequence number remains unchanged
 - Protected session state is preserved
 - Rejected packets are not released to inference
 - Preprocessing, SNN inference, and anomaly-detection callbacks are not invoked
 - Legitimate traffic can continue when the protocol permits recovery
-I also added independent inference callback counters so that the experiment measures actual model invocation rather than relying only on the verifier's rejection decision.
+  I also added independent inference callback counters so that the experiment measures actual model invocation rather than relying only on the verifier's rejection decision.
 
 ### Implementation Testing and Real-Artifact Validation
 
@@ -1528,6 +1533,7 @@ The implementation supports deterministic trial planning, attack generation, pro
 After restoring the frozen SNN and anomaly-model artifacts, I validated their integrity and confirmed that the existing model loader could successfully load the selected inference condition.
 
 The latest targeted validation completed,
+
 - 126 automated tests passed
 - Zero test failures or errors
 - 75 nonformal real-artifact scenarios
@@ -1556,6 +1562,254 @@ I preserved the verified evidence, its source manifest, a recoverable Git bundle
 
 **Deliverable:** [Tier-1 v2 report](../week6-tier1-v2-experiment.md)
 **Formal evidence:** [reconciliation](../../results/week-6/will/authentication/tier1-v2-formal-001/reconciliation.json) and [independent analysis](../../results/week-6/will/authentication/tier1-v2-formal-001/verification/independent-analysis.json).
+
+# Week 7, Majority-3 Integration and Correlated-Noise Evaluation
+
+## Week 7 Objective
+
+The main objective of Week 7 was to integrate the Majority-3 reconstruction method identified during Week 6 into the current Authentication-v2 pipeline and develop a controlled experiment for evaluating its reliability under independent and correlated PUF measurement noise.
+
+## Majority-3 Integration
+
+### Implementation
+
+During Week 6, the standalone reconstruction experiment demonstrated that Majority-3 reduced observed nominal reconstruction FRR from 0.9833% to 0.1000% while retaining the existing BCH(63,36,t=5) construction and 32-bit pilot credential.
+Based on those results, I selected Majority-3 as the first reconstruction alternative to integrate into the authentication pipeline.
+The new acquisition process follows,
+
+- Generate three fresh noisy PUF readings from the same persistent simulated device
+- Apply bitwise majority voting across the three 64-bit responses
+- Produce one effective 64-bit response
+- Select the original response bits 0–62
+- Perform one BCH(63,36,t=5) reconstruction
+- Independently verify the reconstructed credential
+- Continue through local authorization, HKDF-based session establishment, and authenticated-window processing
+
+A response bit is set to 1 when at least two of the three readings contain a 1 at that position.
+
+### Implementation Decisions
+
+- The existing single-read acquisition method remains the default
+- Majority-3 is enabled through an explicit acquisition configuration
+- Each completed Majority-3 attempt performs exactly three fresh readings, with no hidden retries
+- The same simulated device and persistent manufacturing characteristics are retained throughout acquisition
+- Majority voting occurs before BCH decoding; the decoder itself is unchanged
+- Authentication, HMAC protection, session binding, and inference-release security rules remain unchanged
+- Failed acquisition or reconstruction does not produce an authenticated session or authorize inference
+- The primary implementation involved puf/acquisition.py, pipeline_v2.py, the Majority-3 acquisition configuration, and new integration tests
+
+### Validation
+
+The initial Majority-3 integration passed 419 automated tests, with zero reported failures, errors, or skips.
+
+Testing covered acquisition counts, majority-voting correctness, persistent simulated-device behavior, reconstruction, credential verification, handshake compatibility, authentication failures, replay enforcement, and authorized inference release.
+
+**Deliverable**: [Majority-3 Validation](docs/authentication-v2-majority3-validation.md).
+
+## Correlated-Noise Model Development
+
+### Motivation
+The Week 6 Majority-3 experiment demonstrated improved reconstruction reliability under independently generated measurement noise.
+However, repeated PUF readings may experience shared disturbances. If the same disturbance affects all three readings, majority voting may provide less improvement because the errors are no longer independent.
+To investigate this limitation, I developed a correlated-noise model that separates independent measurement noise from disturbances shared across readings within the same authentication attempt.
+
+### Mathematical Model
+The modeled oscillator frequency is:
+`f(d,a,i,r) = 100 + M(d,i) + C(d,a) + sigma*sqrt(rho)*Z(d,a,i) + sigma*sqrt(1-rho)*E(d,a,i,r)`
+
+Where:
+- **M:** Persistent device-specific manufacturing variation
+- **C:** Uniform common-mode offset
+- **Z:** Oscillator-specific disturbance shared across readings in the same attempt
+- **E:** Independent noise generated for each reading
+- **sigma:** Overall measurement-noise standard deviation
+- **rho:** Fraction of measurement-noise variance shared between readings
+
+The model preserves marginal oscillator-noise variance while changing temporal correlation. This allows Majority-3 performance to be compared without simply increasing the total modeled noise as correlation rises.
+
+At `rho = 0`, readings contain independent measurement noise. At `rho = 1`, the modeled differential disturbance is entirely shared across repeated readings, so majority voting cannot remove it.
+
+### Implementation and Reproducibility
+I implemented,
+- An immutable correlated-noise configuration
+- A reader that generates fresh indexed measurements
+- Session-shared disturbance generation
+- Independent per-reading noise generation
+- Deterministic SHA-256-derived random-seed identities
+- Matched reading streams across single-read and Majority-3 policies
+- Common-mode cancellation controls
+- Strict measurement-count limits and fail-closed handling of invalid measurements
+
+A major design requirement was ensuring that both acquisition policies receive the same first noisy reading for every matched trial. Majority-3 then receives two additional readings.
+This ensures that comparisons between policies are based on matched experimental inputs rather than unrelated random measurements.
+
+### Validation
+The correlated-noise implementation passed **263 automated tests**, including tests for mathematical variance/covariance relationships, matching, deterministic reproduction, common-mode behavior, device persistence, and compatibility with Authentication-v2.
+These tests validated the modeled behavior and software implementation. They did not establish empirical reliability improvements or physical PUF noise characteristics.
+
+**Deliverable:** [Correlated-Noise Model Validation](docs/week7-correlated-noise-model-validation.md).
+
+## Integrated Majority-3 Authentication Experiment Harness
+After completing the acquisition integration and correlated-noise model, I developed a separate experimental harness to evaluate the full authentication pathway.
+The harness connects,
+**Simulated PUF → Acquisition Policy → BCH Reconstruction → Independent Credential Verification → Admission Authorization → Mutual Session Establishment → Protected Motion Window → Verifier-Controlled Inference Release**
+
+### Experimental Design
+The proposed formal study compares,
+- Single-read BCH reconstruction
+- Majority-3 BCH reconstruction
+
+Across five noise conditions,
+1. Independent nominal noise (`sigma = 0.10`, `rho = 0`)
+2. Independent elevated/stress noise (`sigma = 0.25`, `rho = 0`)
+3. Uniform common-mode control
+4. Moderately correlated differential noise (`rho = 0.50`)
+5. Strongly correlated differential noise (`rho = 0.90`)
+
+The experimental design preserves matched devices, enrollment references, helper data, designated random streams, and initial readings between acquisition policies.
+The planned formal study includes,
+- 20 simulated populations
+- Six devices per population
+- 50 matched attempts per device and condition
+- Five noise conditions
+- Two acquisition policies
+- 30,000 matched trial identities
+- 60,000 total policy attempts
+
+### Experiment Infrastructure
+
+The implementation includes,
+- Deterministic trial planning and acquisition-policy balancing
+- Real Authentication-v2 execution rather than simulated success decisions
+- Reconstruction and full-session outcome classification
+- Raw/effective BER and false-rejection calculations
+- Population-cluster bootstrap analysis for reliability comparisons
+- Stage-level acquisition, reconstruction, authentication, and protected-window timing
+- Attempt-level results and summary generation
+- Source/configuration manifests and provenance hashes
+- Validation replay and evidence reconciliation
+- Strict output-directory and historical-evidence protection
+- Separate nonformal and formal execution controls
+
+The formal runner remains disabled until its execution methodology and controls are separately reviewed.
+
+## Independent Code Audits and Corrective Validation
+
+The integrated harness underwent independent source review before experimental execution.
+The initial audit identified several evidence-validity and reproducibility issues. I completed a corrective implementation cycle addressing seven findings (F1–F7).
+The corrections included,
+- **Session evidence integrity:** Prevented contradictory handshake, session, window, and inference-release outcomes from passing reconciliation
+- **Authorization fault classification:** Distinguished legitimate credential rejection from unexpected authorization infrastructure failures
+- **Resource accounting:** Separated measured PUF readings, validation-replay readings, and enrollment/reference measurements
+- **Historical evidence protection:** Strengthened output-directory restrictions to prevent accidental reuse or modification of previous experiment evidence
+- **Synthetic credential disclosure:** Clarified that deterministic research inputs can reproduce synthetic pilot credentials and do not provide confidentiality
+- **Statistical reporting:** Suppressed population-bootstrap confidence intervals for one-population smoke experiments
+- **Paired statistical validation:** Added tests verifying shared population resampling across acquisition policies and noise conditions
+
+The corrected implementation passed **449 scoped automated tests**, with zero failures or skips.
+A subsequent independent read-only re-audit returned **PASS**, verifying all seven corrections and finding no remaining issue that blocked the nonformal smoke.
+Historical Week 5 and Week 6 evidence was preserved without modification during the reviewed implementation and audit work.
+The 419-test, 263-test, and 449-test figures represent validation at different development checkpoints with overlapping test coverage; they are not additive counts of unique tests.
+
+**Deliverable:** [Integrated Majority-3 Authentication Harness Validation](docs/week7-majority3-auth-correlated-harness-validation.md).
+
+## Nonformal Integrated Smoke Experiment
+
+### Experiment Execution
+
+On October 14, I completed the first controlled nonformal smoke using the integrated Majority-3 correlated-noise authentication harness.
+The experiment successfully completed,
+- 50 matched trial identities
+- 100 policy attempts
+- 50 single-read attempts
+- 50 Majority-3 attempts
+- 200 measured PUF readings
+- Five noise conditions
+- Two successful evidence-reconciliation passes
+
+The run exited successfully and generated a valid `NONFORMAL_VALIDATED.json` completion marker.
+
+### Reconstruction Results
+
+| Outcome | Single-Read | Majority-3 |
+|---|---:|---:|
+| Completed attempts | 50 | 50 |
+| Correct credential reconstructions | 47 | 50 |
+| Decoder failures | 3 | 0 |
+| Sessions established | 47 | 50 |
+| Protected windows accepted | 47 | 50 |
+| Authorized inference releases | 47 | 50 |
+
+All three reconstruction failures occurred under the independent-stress condition using the single-read policy.
+No invalid-format or valid-format wrong-credential outcomes were observed.
+These results are preliminary functional observations. The sample contains only one population and one device, so the apparent reliability difference cannot be treated as a statistically established improvement.
+
+### Authentication and Inference-Gating Results
+
+Across the 100 attempts,
+- 97 authenticated sessions were successfully established
+- All 97 eligible protected windows were accepted
+- All 97 accepted windows produced an authorized inference release
+- Zero unauthorized inference releases occurred
+- Preprocessing, motion, and anomaly recording callbacks each executed exactly 97 times
+- The three failed reconstruction attempts were rejected before session establishment and downstream processing
+These results demonstrate that the integrated acquisition policies, reconstruction, authentication, and inference-release boundary executed consistently under the tested conditions.
+The smoke used recording consumers rather than actual motion-classification and anomaly-model inference, so it does not measure real SNN accuracy or inference latency.
+
+### Evidence and Reproducibility
+
+Both built-in evidence-reconciliation passes succeeded.
+The execution accounted for,
+- 200 measured acquisition readings
+- 400 validation-replay readings
+- Three enrollment/reference readings
+- **603 total simulator measurement invocations.**
+
+Validation replay produced no additional statistical observations.
+The recorded source, experiment configuration, and plan identities matched the reviewed checkpoint. The completed evidence package included attempt records, summaries, validation receipts, source snapshots, manifests, and the nonformal completion marker.
+
+## Preliminary Latency Observations
+
+The smoke recorded the following median software timings,
+| Stage | Single-Read | Majority-3 |
+|---|---:|---:|
+| Acquisition | 0.352 ms | 1.024 ms |
+| Reconstruction | 1.194 ms | 1.077 ms |
+| Session establishment | 2.069 ms | 2.606 ms |
+| First protected window | 8.736 ms | 8.746 ms |
+
+Majority-3 required additional acquisition time because three fresh readings were generated instead of one.
+The first recorded BCH decode took approximately 2.343 seconds, consistent with first-use compilation overhead. Subsequent decodes were substantially faster.
+These timing values are nonformal diagnostics rather than a controlled performance benchmark. The experiment did not use a dedicated warmup protocol, and instrumentation overhead was not independently isolated.
+Nested timing stages should not be summed. The recording consumers also mean these measurements do not represent complete motion-classification and anomaly-detection processing latency.
+
+## Week 7 Key Results and Takeaways
+The most important accomplishment was successfully integrating Majority-3 into the existing Authentication-v2 pipeline while preserving the original security behavior.
+I also developed the correlated-noise modeling and evaluation infrastructure needed to investigate whether Majority-3 continues to provide a reliability advantage when repeated measurements share persistent disturbances.
+The nonformal experiment demonstrated that both acquisition policies can execute through the real authentication pathway, that failed reconstruction blocks session establishment, and that accepted protected windows are released only through the authorized inference boundary.
+
+At the end of Week 7,
+- Majority-3 is implemented and functionally validated
+- The correlated-noise model is implemented and deterministically tested
+- The integrated experiment harness is implemented and independently reviewed
+- The 100-attempt nonformal smoke completed successfully
+- Formal integrated reliability and latency comparisons are not yet completed
+
+The work remains a software simulation using a synthetic PUF and a 32-bit pilot credential. The correlated-noise model is not calibrated against physical Quest or FPGA measurements, and no production-strength hardware security claim is made.
+
+## Remaining Work / Next Steps
+The next stage is preparing the full correlated-noise reliability experiment.
+Planned work includes,
+- Review and approve the formal experimental design and statistical analysis protocol
+- Finalize the timing methodology, including Numba/JIT warmup and cold-start handling
+- Review resource requirements for the 60,000-attempt formal experiment
+- Implement and independently audit the formal execution controls
+- Freeze and verify source, configuration, plan, and environment identities
+- Execute the formal study following separate authorization
+- Analyze Majority-3 reconstruction FRR, full-session FRR, correlated-noise effects, and reliability-versus-latency tradeoffs
+- Document formal results and compare them with the Week 6 standalone reconstruction findings
+
+The central research question moving forward is whether the reliability improvement observed for Majority-3 under independent noise remains significant when consecutive PUF measurements contain correlated errors, and whether its additional measurement cost is justified.
 
 # Hours and Work:
 
@@ -1999,6 +2253,7 @@ Verified protected reconstruction source hashes
 # Monday October, 5
 
 ## 7:04pm - 9:41pm (2.62 Hours)
+
 - Began formalizing the Authentication-v2 protocol specification
 - Reviewed the current implementation and organized the protocol into its major stages
 - Documented the complete authentication architecture:
@@ -2014,6 +2269,7 @@ Verified protected reconstruction source hashes
 - Distinguished implemented security mechanisms from limitations of the research prototype
 
 ## 11:34pm - 11:59pm (0.42 Hours)
+
 - Continued Authentication-v2 technical documentation
 - Documented session lifecycle, message verification, and replay protection
 - Added exact protocol parameters and implementation references
@@ -2022,6 +2278,7 @@ Verified protected reconstruction source hashes
 # Tuesday October, 6
 
 ## 12:00am - 12:32am (0.53 Hours)
+
 - Completed the Authentication-v2 specification review and cleanup
 - Reorganized the document for improved readability
 - Preserved exact handshake formats, cryptographic formulas, and verification requirements
@@ -2029,6 +2286,7 @@ Verified protected reconstruction source hashes
 - Finalized the Authentication-v2 Protocol and Trust Specification
 
 ## 11:32am - 1:33pm (2.02 Hours)
+
 - Began implementation and evaluation of reconstruction alternatives
 - Reviewed the existing BCH(63,36,t=5) reconstruction baseline
 - Developed two alternative reconstruction approaches:
@@ -2039,6 +2297,7 @@ Verified protected reconstruction source hashes
 - Preserved the existing Authentication-v2 reconstruction implementation without modification
 
 ## 3:00pm - 6:12pm (3.20 Hours)
+
 - Continued reconstruction-alternatives testing and formal evaluation
 - Validated BCH correction behavior and majority-voting implementation
 - Executed and reviewed the 48,000-attempt formal reconstruction experiment
@@ -2054,6 +2313,7 @@ Verified protected reconstruction source hashes
 - Began defining expanded attack populations and validation requirements
 
 ## 9:05pm - 11:57pm (2.87 Hours)
+
 - Continued developing the Tier-1 v2 experimental framework
 - Expanded the five primary attack categories:
   - Same-session replay
@@ -2071,6 +2331,7 @@ Verified protected reconstruction source hashes
 # Wednesday October, 7
 
 ## 4:11pm - 5:34pm (1.38 Hours)
+
 - Continued implementation of the Tier-1 v2 experiment harness
 - Completed attack-generation and protocol-state testing functionality
 - Integrated the five primary attack categories into the experiment runner
@@ -2080,6 +2341,7 @@ Verified protected reconstruction source hashes
 - Added checks that rejected traffic does not advance trusted sequence state
 
 ## 7:02pm - 8:06pm (1.07 Hours)
+
 - Continued Tier-1 v2 implementation and automated testing
 - Integrated the existing Authentication-v2 sender and verifier APIs
 - Added legitimate recovery operations after rejected attack submissions
@@ -2091,8 +2353,8 @@ Verified protected reconstruction source hashes
 - Verified that rejected messages cannot create unauthorized inference invocations
 - Reviewed the experiment's configuration and evidence schemas
 
-
 ## 8:24pm - 9:32pm (1.13 Hours)
+
 - Performed real-artifact validation for the Tier-1 v2 experiment
 - Restored and verified the frozen dataset and model artifacts
 - Successfully loaded the selected frozen SNN and anomaly-detector models
@@ -2107,6 +2369,7 @@ Verified protected reconstruction source hashes
 - Verified that all 30 evidence reconciliation checks passed
 
 ## 11:01pm - 11:59pm (0.97 Hours)
+
 - Completed Tier-1 v2 implementation validation and local review
 - Compiled the complete formal experiment trial plan
 - Verified the planned 9,960 scored/control/negative submissions
@@ -2124,6 +2387,7 @@ Verified protected reconstruction source hashes
 # Thursday October, 8
 
 ## 12:00am - 2:39am (2.65 Hours)
+
 - Finalized the Tier-1 v2 formal experiment execution environment,
   - Verified the restored original experiment plan and supporting documentation
   - Prepared the clean isolated source snapshot and execution provenance
@@ -2159,3 +2423,103 @@ Verified protected reconstruction source hashes
   - Completed Conclusions, Recommendations, and Reproducibility sections
   - Updated the Week 6 research log with verified formal results
 - Updated slideshow and finalized hours for Week 6
+
+## 1:00pm - 1:47pm (0.78 Hours)
+- Weekly meeting
+- Listened to Amruth and Sriram's Presentation
+
+# Monday October, 12
+
+## 1:15pm - 2:24pm (1.15 Hours)
+- Implemented Majority-3 acquisition within the Authentication-v2 pipeline,
+  - Added three fresh simulated PUF readings
+  - Implemented bitwise majority voting before BCH reconstruction
+  - Preserved single-read acquisition as the default
+  - Preserved the existing credential verification, HKDF, session authentication, and inference-release behavior
+## 9:10pm - 11:59pm (2.82 Hours)
+- Validated the Majority-3 integration,
+  - 419 automated tests passed
+  - Verified acquisition counts, reconstruction, handshake compatibility, and failure handling
+  - Verified that failed reconstruction cannot authorize downstream inference
+- Developed the correlated-noise simulation model,
+  - Added independent per-reading and shared per-attempt disturbances
+  - Preserved marginal noise variance while varying temporal correlation
+  - Implemented deterministic seed derivation and matched reading streams
+  - Added common-mode controls and strict measurement handling
+
+# Tuesday October, 13
+
+## 12:00am - 12:29am (0.48 Hours)
+- Validated the correlated-noise implementation,
+  - 263 automated tests passed
+  - Verified mathematical relationships, deterministic behavior, and Authentication-v2 compatibility
+
+## 12:15pm - 2:01pm (1.77 Hours)
+- Continued development and validation of the integrated Majority-3 correlated-noise authentication experiment harness.
+- Implemented experimental infrastructure for,
+  - Matched single-read and Majority-3 policy comparisons
+  - Five independent/common-mode/correlated-noise conditions
+  - Reconstruction and session false-rejection measurements
+  - Stage-level acquisition, reconstruction, and authentication timing
+  - Statistical analysis and population-cluster bootstrapping
+  - Deterministic trial planning and evidence generation
+- Addressed the seven independent-audit findings (F1-F7),
+  - Strengthened handshake/session/window evidence reconciliation
+  - Distinguished authorization faults from legitimate credential rejection
+  - Corrected measured-reading and validation-replay resource accounting
+  - Strengthened output-directory and historical-evidence protection
+  - Clarified disclosure of reproducible synthetic credentials
+  - Suppressed misleading one-population confidence intervals
+  - Improved paired-bootstrap and CLI validation tests
+
+## 3:58pm - 5:10pm (1.20 Hours)
+- In lab with Keegan
+- Decided the direction of our presentation
+- Planned out presentation content and delivery plan
+- Updated slides with all relevant content from all weeks of work thus far
+
+## 9:01pm - 10:04pm (1.05 Hours)
+- Updated the experiment evidence format to revision 2.
+- Completed corrective regression validation,
+  - 449 scoped tests passed
+  - Zero reported failures, errors, or skips
+  - Six experiment schemas validated
+- Finalized my portion of presentation
+- Completed the October 13 corrective implementation report
+
+# Wednesday October, 14
+
+## 2:20pm - 6:15pm (3.92 Hours)
+- Received and reviewed the independent re-audit of the corrected experiment harness,
+  - All seven corrective findings verified
+  - Independent review returned PASS
+  - No remaining blockers identified for the nonformal smoke
+- Completed the nonformal experiment preflight,
+  - Verified source, configuration, and trial-plan hashes
+  - Verified Python environment and dependency versions
+  - Confirmed the expected 100-attempt experiment allocation
+  - Confirmed historical evidence protection and fresh output directory
+- Completed the first nonformal integrated Majority-3 authentication smoke,
+  - 50 matched trials completed
+  - 100 policy attempts completed
+  - 200 measured PUF readings
+  - Single-read: 47/50 correct reconstructions
+  - Majority-3: 50/50 correct reconstructions
+  - Three decoder failures, all under independent stress
+  - 97 authenticated sessions established
+  - 97 protected windows accepted
+  - 97 authorized inference releases
+  - Zero unauthorized inference releases
+
+## 7:17pm - 8:20pm(1.05 Hours)
+- Verified experimental evidence,
+  - Two built-in reconciliation passes passed
+  - 400 validation-replay readings
+  - Three reference/setup readings
+  - 603 total simulator measurement invocations
+- Reviewed nonformal timing diagnostics,
+  - Compared acquisition, reconstruction, establishment, and first-window timing
+  - Identified first-use BCH/Numba compilation overhead
+  - Documented limitations of the recording-consumer timing measurements
+- Updated and reorganized all three Week 7 technical documents.
+- Updated the Week 7 research log
