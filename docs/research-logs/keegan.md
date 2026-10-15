@@ -1292,3 +1292,50 @@ Hours below don't include pre employment work. Those were my test trial hours.
 - Checked report links, artifact hashes, whitespace, and private-content exclusions, then saved and published the reporting pass.
 - Updated the research-log narrative with the later Week 6 revisions and Week 7 validation results.
 - Preserved every existing dated hours entry byte-for-byte and left the presentation unchanged.
+
+## Tuesday, October 13, 2026 - 3.78 hours
+
+### 2:40 PM - 5:34 PM - 2.90 hours
+
+- Worked in the lab on simplifying and shortening the second project presentation.
+- Organized the presentation around the project’s problem, overall approach, recent progress, main findings, and remaining work.
+Read and used Dr. Garcia's advice on the presentation format, what it must include, etc.
+- Reduced unnecessary technical detail and repeated background so the audience could follow the project without needing every implementation detail.
+- Selected the results that best supported the presentation’s main points, including the model comparison, anomaly-detection weaknesses, processing bottlenecks, and faster quality checks.
+- Worked with Will to combine his PUF reconstruction and authentication work with my motion-classification, anomaly-detection, and processing-time results.
+- Checked that the presentation distinguished completed work from pending evaluation and did not describe synthetic results as real-headset validation.
+- Coordinated the division of content with William and checked that both sides of the project were represented.
+- Developed presentation diagrams and a color-coded status summary showing tested behavior, missed targets, and remaining work.
+
+### 9:53 PM - 10:46 PM - 0.88 hours
+
+- Added and revised speaker notes to explain the slide content in simpler language and support speaking naturally rather than reading technical descriptions of stuff.
+- Reviewed the distinction between identifying a head movement and detecting abnormal sensor data.
+- Studied the relationship between PUF credential recovery, session establishment, message authentication, quality checks, and release of accepted data to the models.
+- Reviewed how the logistic, forest, and SNN configurations relate to the reported accuracy and processing-time results.
+- Reviewed the difference between individual-stage timing and complete processing, including median versus p95 measurements.
+- Studied the optional exact-quality arithmetic optimization and how its results differ from the unchanged default implementation.
+
+## Wednesday, October 14, 2026 - 1.12 hours
+
+### 10:35 PM - 11:42 PM - 1.12 hours
+
+- Completed several joint presentation practice runs with William.
+- Practiced the speaking order and transitions between the authentication/reconstruction work and the motion-model, anomaly, and timing results.
+- Revised speaker notes where explanations were too long, overly technical, or difficult to say naturally.
+- Focused on explaining the project in my own words instead of reading directly from the slides.
+- Practiced describing what the figures show, what the targets mean, and which conclusions the current evidence supports.
+- Reviewed explanations of authentication versus anomaly detection, normal synthetic variation versus added sensor corruption, and the limitations of the laptop measurements.
+- Checked that the spoken explanations separated implementation progress, small functional checks, and larger reliability studies.
+
+## Thursday, October 15, 2026 - 2.52 hours
+
+### 12:50 PM - 3:21 PM - 2.52 hours
+
+- Presented our second project update with William during the lab meeting.
+- Explained my motion-classification and anomaly-detection results, including the conventional-model comparison, detection and false-alert rates, and remaining orientation-drift weakness.
+- Walked through the complete processing-time results, selected processing bottlenecks, and the optional faster quality-check calculations.
+- Explained the clean-environment validation and selected-test results while retaining the limits of the shared evidence and pending headset evaluation.
+- Presented the project’s remaining priorities and distinguished current software results from future physical-headset and human-motion validation.
+- Attended the Zeeshawns presentation during the meeting.
+- Participated as a test participant in Sadman’s separate astronaut anomaly research activity.
