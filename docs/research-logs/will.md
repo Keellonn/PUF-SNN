@@ -2511,7 +2511,7 @@ Verified protected reconstruction source hashes
   - 97 authorized inference releases
   - Zero unauthorized inference releases
 
-## 7:17pm - 8:20pm(1.05 Hours)
+## 7:17pm - 8:20pm (1.05 Hours)
 - Verified experimental evidence,
   - Two built-in reconciliation passes passed
   - 400 validation-replay readings
@@ -2523,3 +2523,19 @@ Verified protected reconstruction source hashes
   - Documented limitations of the recording-consumer timing measurements
 - Updated and reorganized all three Week 7 technical documents.
 - Updated the Week 7 research log
+
+## 10:35pm - 11:42pm (1.12 Hours)
+- Practiced presentation with Keegan in-person
+
+# Thursday October, 15
+
+## 1:00pm - 2:40pm (1.67 Hours)
+- Weekly meeting
+- Presented with Keegan 
+  - Listened to feedback from Dr. Garcia
+  - I need to be more directive and planned out in what I am going to and not going to talk about
+  - Struggled with "ums"
+  - Need to check back in with Dr. Garcia in what information she thinks I should be explaining deeper and which is not as much important for presentation
+- Listened to Zeeshawn's presentation
+- Stayed after in the lab for roughly 30 mins debriefing with Keegan and planning our next steps
+- Next presentation I need to make sure that my direction for each slide and topic is direct and chosen and to NOT deviate from it
