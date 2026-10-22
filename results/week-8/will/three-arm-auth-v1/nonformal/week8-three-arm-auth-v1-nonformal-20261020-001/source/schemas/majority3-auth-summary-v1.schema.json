@@ -1,0 +1,1236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://puf-snn.local/schemas/majority3-auth-summary-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "run_id",
+    "source_id",
+    "config_sha256",
+    "plan_sha256",
+    "analysis"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week7-majority3-auth-correlated-v1:summary"
+    },
+    "experiment_id": {
+      "const": "week7-majority3-auth-correlated-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completed_attempts",
+        "groups",
+        "device_groups",
+        "population_groups",
+        "timing",
+        "comparisons",
+        "bootstrap"
+      ],
+      "properties": {
+        "completed_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "attempts",
+              "actual_reads",
+              "reconstruction_failures",
+              "session_successes",
+              "raw_bit_errors",
+              "first_bit_errors",
+              "effective_bit_errors",
+              "verification_invocations",
+              "correct_candidate_acceptances",
+              "wrong_candidate_refusals",
+              "authorization_successes",
+              "authorization_failures",
+              "window_successes",
+              "window_failures",
+              "authorized_releases",
+              "unauthorized_releases",
+              "reconstruction_frr",
+              "session_frr",
+              "raw_ber",
+              "first_ber",
+              "effective_ber",
+              "raw_outside_radius",
+              "effective_outside_radius",
+              "wrong_refusal_rate",
+              "outcomes",
+              "raw_error_histogram",
+              "effective_error_histogram",
+              "wrong_refusal_observation",
+              "session_failure_stages"
+            ],
+            "properties": {
+              "attempts": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actual_reads": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "session_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "raw_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "first_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effective_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "verification_invocations": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "correct_candidate_acceptances": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "wrong_candidate_refusals": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "unauthorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "session_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "first_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "wrong_refusal_rate": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "outcomes": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "C",
+                  "D",
+                  "I",
+                  "W"
+                ],
+                "properties": {
+                  "C": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "D": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "I": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "W": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "raw_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "effective_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "wrong_refusal_observation": {
+                "enum": [
+                  "observed",
+                  "not_observed"
+                ]
+              },
+              "session_failure_stages": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "device_groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "attempts",
+              "actual_reads",
+              "reconstruction_failures",
+              "session_successes",
+              "raw_bit_errors",
+              "first_bit_errors",
+              "effective_bit_errors",
+              "verification_invocations",
+              "correct_candidate_acceptances",
+              "wrong_candidate_refusals",
+              "authorization_successes",
+              "authorization_failures",
+              "window_successes",
+              "window_failures",
+              "authorized_releases",
+              "unauthorized_releases",
+              "reconstruction_frr",
+              "session_frr",
+              "raw_ber",
+              "first_ber",
+              "effective_ber",
+              "raw_outside_radius",
+              "effective_outside_radius",
+              "wrong_refusal_rate",
+              "outcomes",
+              "raw_error_histogram",
+              "effective_error_histogram",
+              "wrong_refusal_observation",
+              "session_failure_stages"
+            ],
+            "properties": {
+              "attempts": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actual_reads": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "session_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "raw_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "first_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effective_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "verification_invocations": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "correct_candidate_acceptances": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "wrong_candidate_refusals": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "unauthorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "session_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "first_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "wrong_refusal_rate": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "outcomes": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "C",
+                  "D",
+                  "I",
+                  "W"
+                ],
+                "properties": {
+                  "C": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "D": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "I": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "W": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "raw_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "effective_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "wrong_refusal_observation": {
+                "enum": [
+                  "observed",
+                  "not_observed"
+                ]
+              },
+              "session_failure_stages": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "population_groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "attempts",
+              "actual_reads",
+              "reconstruction_failures",
+              "session_successes",
+              "raw_bit_errors",
+              "first_bit_errors",
+              "effective_bit_errors",
+              "verification_invocations",
+              "correct_candidate_acceptances",
+              "wrong_candidate_refusals",
+              "authorization_successes",
+              "authorization_failures",
+              "window_successes",
+              "window_failures",
+              "authorized_releases",
+              "unauthorized_releases",
+              "reconstruction_frr",
+              "session_frr",
+              "raw_ber",
+              "first_ber",
+              "effective_ber",
+              "raw_outside_radius",
+              "effective_outside_radius",
+              "wrong_refusal_rate",
+              "outcomes",
+              "raw_error_histogram",
+              "effective_error_histogram",
+              "wrong_refusal_observation",
+              "session_failure_stages"
+            ],
+            "properties": {
+              "attempts": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actual_reads": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "session_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "raw_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "first_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "effective_bit_errors": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "verification_invocations": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "correct_candidate_acceptances": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "wrong_candidate_refusals": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorization_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_successes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "window_failures": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "authorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "unauthorized_releases": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reconstruction_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "session_frr": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "first_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_ber": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "raw_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "effective_outside_radius": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "wrong_refusal_rate": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "outcomes": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "C",
+                  "D",
+                  "I",
+                  "W"
+                ],
+                "properties": {
+                  "C": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "D": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "I": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "W": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "raw_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "effective_error_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 64,
+                "maxItems": 64
+              },
+              "wrong_refusal_observation": {
+                "enum": [
+                  "observed",
+                  "not_observed"
+                ]
+              },
+              "session_failure_stages": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "timing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "inclusive",
+            "exclusive",
+            "outcome_stratified",
+            "paired_majority_minus_single"
+          ],
+          "properties": {
+            "inclusive": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "mean_ns",
+                  "median_ns",
+                  "p95_ns",
+                  "p99_ns",
+                  "maximum_ns"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "mean_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "median_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p95_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p99_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "maximum_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "exclusive": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "mean_ns",
+                  "median_ns",
+                  "p95_ns",
+                  "p99_ns",
+                  "maximum_ns"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "mean_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "median_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p95_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p99_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "maximum_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "outcome_stratified": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "mean_ns",
+                  "median_ns",
+                  "p95_ns",
+                  "p99_ns",
+                  "maximum_ns"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "mean_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "median_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p95_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p99_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "maximum_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "paired_majority_minus_single": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "count",
+                  "mean_ns",
+                  "median_ns",
+                  "p95_ns",
+                  "p99_ns",
+                  "maximum_ns"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "mean_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "median_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p95_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "p99_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "maximum_ns": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "comparisons": {
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "bootstrap": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "resamples",
+            "seed",
+            "cluster_unit",
+            "confidence_level",
+            "interval_scope",
+            "primary_rho",
+            "secondary_rho",
+            "zero_observed_failures_is_not_zero_probability",
+            "intervals"
+          ],
+          "properties": {
+            "resamples": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "seed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "cluster_unit": {
+              "const": "whole_population"
+            },
+            "confidence_level": {
+              "const": 0.95
+            },
+            "interval_scope": {
+              "const": "pointwise"
+            },
+            "primary_rho": {
+              "const": 0.9
+            },
+            "secondary_rho": {
+              "const": 0.5
+            },
+            "zero_observed_failures_is_not_zero_probability": {
+              "const": true
+            },
+            "intervals": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "estimate",
+                  "lower",
+                  "upper",
+                  "defined_resamples"
+                ],
+                "properties": {
+                  "estimate": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "lower": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "upper": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "defined_resamples": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

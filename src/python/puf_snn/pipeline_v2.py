@@ -14,6 +14,7 @@ from typing import Any
 from puf_snn.auth.binary_window import identifier
 from puf_snn.auth.sender import Sender
 from puf_snn.auth.session import Failure, REFUSAL
+from puf_snn.auth.stored_credential import StoredCredentialProvider, StoredCredentialStatus
 from puf_snn.auth.verifier import VerificationResult, Verifier
 from puf_snn.integration import ExactlyOnceClassifierRelease, processed_record_to_wire_window
 from puf_snn.puf.acquisition import AcquisitionConfig, SINGLE_READ, acquire_response
@@ -29,9 +30,16 @@ class SessionAttempt:
     decision: str
     stage: str
     reason: str
-    reconstruction_outcome: str
+    reconstruction_outcome: str | None
     request_emitted: bool
     session_active: bool
+
+
+@dataclass(frozen=True)
+class StoredSessionAttempt(SessionAttempt):
+    """Stored source observation; reconstruction_outcome is explicitly None."""
+
+    credential_status: StoredCredentialStatus
 
 
 @dataclass(frozen=True)
@@ -129,7 +137,7 @@ class V2InferencePipeline:
         anomaly = self._anomaly(anomaly_input)
         return InferenceOutput(motion, anomaly)
 
-    def _failure(self, stage: str, failure: Failure, outcome: str, emitted: bool) -> SessionAttempt:
+    def _failure(self, stage: str, failure: Failure, outcome: str | None, emitted: bool) -> SessionAttempt:
         if failure.reason == "internal_error" or self.sender.incomplete or self.verifier.incomplete:
             raise PipelineExecutionError(f"{stage}: internal_error; preserve incomplete evidence")
         return SessionAttempt("reject", stage, failure.reason, outcome, emitted, False)
@@ -163,24 +171,53 @@ class V2InferencePipeline:
             self.sender.record_reconstruction_exception(attempt_id, local_provenance=local_provenance)
             raise PipelineExecutionError("reconstruction: internal_error; no retry") from None
         request = self.sender.begin_attempt(result, attempt_id, local_provenance=local_provenance)
+        return self._finish_establishment(request, result.outcome, local_provenance)
+
+    def establish_stored(self, provider: StoredCredentialProvider, attempt_id: str,
+                         *, local_provenance=None) -> StoredSessionAttempt:
+        """Research control: one stored lookup, real admission, unchanged handshake.
+
+        Provision the provider and endpoints beforehand. No acquisition, helper
+        reconstruction, or BCH operation occurs here, and failures never fall
+        back to PUF. Missing/malformed stored credentials return ordinary
+        rejections; incorrect credentials cause authentication/admission refusal.
+        Provider exceptions, verifier infrastructure failures, key-provider
+        failures, and capability issuance faults raise PipelineExecutionError
+        and can leave incomplete evidence rather than an ordinary FRR result.
+        """
+        identifier(attempt_id)
+        if self._attempted:
+            raise ValueError("one attempt per pipeline; create fresh endpoints for another attempt")
+        self._attempted = True
+        request = self.sender.begin_stored_attempt(provider, attempt_id, local_provenance=local_provenance)
+        status = self.sender.stored_credential_status
+        if isinstance(request, Failure) and status.retrieval_outcome != "success":
+            result = self._failure("credential_retrieval", request, None, False)
+        else:
+            result = self._finish_establishment(request, None, local_provenance)
+        return StoredSessionAttempt(result.decision, result.stage, result.reason, None,
+                                    result.request_emitted, result.session_active, status)
+
+    def _finish_establishment(self, request, outcome: str | None, local_provenance) -> SessionAttempt:
+        """Shared admission result/handshake path; no credential-source decisions."""
         if isinstance(request, Failure):
             stage = "reconstruction" if request.reason == "failed_reconstruction" else "credential_admission"
-            return self._failure(stage, request, result.outcome, False)
+            return self._failure(stage, request, outcome, False)
         challenge = self.verifier.begin_session(request, local_provenance, admission=self.sender.admission)
         confirmation = self.sender.answer_challenge(challenge)
         if isinstance(confirmation, Failure):
             reason = self.verifier.last_reason if challenge == REFUSAL else confirmation.reason
             stage = "receiver_admission" if challenge == REFUSAL else "sender_confirmation"
-            return self._failure(stage, Failure(reason), result.outcome, True)
+            return self._failure(stage, Failure(reason), outcome, True)
         response = self.verifier.confirm_session(confirmation)
         active = self.sender.finish_session(response)
         if isinstance(active, Failure):
             reason = self.verifier.last_reason if response == REFUSAL else active.reason
-            return self._failure("mutual_confirmation", Failure(reason), result.outcome, True)
+            return self._failure("mutual_confirmation", Failure(reason), outcome, True)
         if (active is not self.sender or self.sender.session_id is None
                 or self.sender.session_id not in self.verifier.active_session_ids):
             raise PipelineExecutionError("mutual_confirmation: incoherent activation")
-        return SessionAttempt("accept", "active_session", "accepted", result.outcome, True, True)
+        return SessionAttempt("accept", "active_session", "accepted", outcome, True, True)
 
     def release(self, result: VerificationResult) -> InferenceOutput:
         """At-most-once composite consumption, NOT guaranteed callback completion.

@@ -1,0 +1,5 @@
+{
+  "config_version": "puf-snn-acquisition-v1",
+  "policy": "majority-3-v1",
+  "read_count": 3
+}

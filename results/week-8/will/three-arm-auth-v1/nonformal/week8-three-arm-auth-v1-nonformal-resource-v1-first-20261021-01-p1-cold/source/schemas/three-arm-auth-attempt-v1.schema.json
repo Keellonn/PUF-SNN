@@ -1,0 +1,1318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://puf-snn.local/schemas/three-arm-auth-attempt-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "run_id",
+    "source_id",
+    "config_sha256",
+    "plan_sha256",
+    "trial_id",
+    "policy_attempt_id",
+    "execution_index",
+    "population_id",
+    "device_id",
+    "enrollment_id",
+    "enrollment_sha256",
+    "condition",
+    "attempt_index",
+    "policy",
+    "expected_reads",
+    "actual_reads",
+    "observations",
+    "effective_response",
+    "effective_sha256",
+    "effective_error_positions",
+    "reconstruction",
+    "verification_outcomes",
+    "authorization_outcomes",
+    "handshake",
+    "establishment",
+    "endpoint_state",
+    "window",
+    "release_count",
+    "authorized_release_count",
+    "unauthorized_release_count",
+    "model_calls",
+    "timing",
+    "execution_status",
+    "fault_code",
+    "authorization_diagnostics",
+    "window_verifications",
+    "noise_shared_seed_sha256",
+    "credential_source",
+    "retrieval",
+    "admission_outcomes",
+    "operation_counts",
+    "stage_duration_ns",
+    "release_attempts",
+    "release_completions",
+    "callbacks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week8-three-arm-auth-v1:evidence-v1:attempt"
+    },
+    "experiment_id": {
+      "const": "week8-three-arm-auth-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "trial_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "policy_attempt_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "execution_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "population_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "device_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "enrollment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "enrollment_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "condition": {
+      "enum": [
+        "independent_nominal",
+        "independent_stress",
+        "common_control",
+        "differential_rho50",
+        "differential_rho90"
+      ]
+    },
+    "attempt_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "policy": {
+      "enum": [
+        "single-read-v1",
+        "majority-3-v1",
+        "stored-provisioned-v1"
+      ]
+    },
+    "expected_reads": {
+      "enum": [
+        0,
+        1,
+        3
+      ]
+    },
+    "actual_reads": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "response",
+          "response_sha256",
+          "error_positions",
+          "input_seed_sha256"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          },
+          "response": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "minItems": 64,
+            "maxItems": 64
+          },
+          "response_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "error_positions": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 62
+            },
+            "minItems": 0,
+            "maxItems": 63,
+            "uniqueItems": true
+          },
+          "input_seed_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 3
+    },
+    "effective_response": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "minItems": 64,
+          "maxItems": 64
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "effective_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "effective_error_positions": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 62
+          },
+          "minItems": 0,
+          "maxItems": 63,
+          "uniqueItems": true
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reconstruction": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "outcome",
+            "decoder_status",
+            "corrections",
+            "classification"
+          ],
+          "properties": {
+            "outcome": {
+              "enum": [
+                "decoder_failure",
+                "invalid_format_or_padding",
+                "candidate_valid_format"
+              ]
+            },
+            "decoder_status": {
+              "enum": [
+                "decoded",
+                "uncorrectable"
+              ]
+            },
+            "corrections": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 5
+            },
+            "classification": {
+              "enum": [
+                "C",
+                "D",
+                "I",
+                "W"
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verification_outcomes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "verified",
+          "credential_mismatch",
+          "record_missing",
+          "record_disabled",
+          "unsupported_record",
+          "key_unavailable",
+          "binding_mismatch",
+          "invalid_input",
+          "internal_error"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 1
+    },
+    "authorization_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "minItems": 0,
+      "maxItems": 1
+    },
+    "handshake": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage",
+          "result",
+          "reason"
+        ],
+        "properties": {
+          "stage": {
+            "enum": [
+              "receiver_challenge",
+              "sender_confirmation",
+              "receiver_confirmation",
+              "sender_activation"
+            ]
+          },
+          "result": {
+            "enum": [
+              "accept",
+              "reject"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 4
+    },
+    "establishment": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision",
+            "stage",
+            "reason",
+            "reconstruction_outcome",
+            "request_emitted",
+            "session_active"
+          ],
+          "properties": {
+            "decision": {
+              "enum": [
+                "accept",
+                "reject"
+              ]
+            },
+            "stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reconstruction_outcome": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "request_emitted": {
+              "type": "boolean"
+            },
+            "session_active": {
+              "type": "boolean"
+            },
+            "credential_status": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "retrieval_outcome",
+                "verification_outcome",
+                "admission_outcome",
+                "credential_source",
+                "attempt_id",
+                "preparation_failure"
+              ],
+              "properties": {
+                "retrieval_outcome": {
+                  "enum": [
+                    "not_attempted",
+                    "success",
+                    "unavailable",
+                    "malformed",
+                    "infrastructure_error"
+                  ]
+                },
+                "verification_outcome": {
+                  "anyOf": [
+                    {
+                      "enum": [
+                        "verified",
+                        "credential_mismatch",
+                        "record_missing",
+                        "record_disabled",
+                        "unsupported_record",
+                        "key_unavailable",
+                        "binding_mismatch",
+                        "invalid_input",
+                        "internal_error"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "admission_outcome": {
+                  "enum": [
+                    "not_invoked",
+                    "authorized",
+                    "refused",
+                    "infrastructure_error"
+                  ]
+                },
+                "credential_source": {
+                  "const": "stored-provisioned-v1"
+                },
+                "attempt_id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "preparation_failure": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "endpoint_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sender_active",
+        "receiver_active"
+      ],
+      "properties": {
+        "sender_active": {
+          "type": "boolean"
+        },
+        "receiver_active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "window": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage",
+            "decision",
+            "reason",
+            "sequence_number"
+          ],
+          "properties": {
+            "stage": {
+              "enum": [
+                "sender_sealing",
+                "window_verification"
+              ]
+            },
+            "decision": {
+              "enum": [
+                "accept",
+                "reject"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sequence_number": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "authorized_release_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "unauthorized_release_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "model_calls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preprocessing",
+        "motion",
+        "anomaly"
+      ],
+      "properties": {
+        "preprocessing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "motion": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "anomaly": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "timing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "parent_id",
+          "stage",
+          "start_ns",
+          "duration_ns",
+          "exception"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stage": {
+            "enum": [
+              "establishment",
+              "acquisition",
+              "reading",
+              "voting",
+              "reconstruction",
+              "bch_decode",
+              "verification",
+              "authorization",
+              "admission_request",
+              "mutual_handshake",
+              "receiver_challenge",
+              "sender_confirmation",
+              "receiver_confirmation",
+              "sender_activation",
+              "sender_hkdf",
+              "receiver_hkdf",
+              "first_window",
+              "window_seal",
+              "window_verify",
+              "release",
+              "retrieval",
+              "measurement"
+            ]
+          },
+          "start_ns": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duration_ns": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "exception": {
+            "type": "boolean"
+          }
+        }
+      },
+      "minItems": 0
+    },
+    "execution_status": {
+      "enum": [
+        "completed",
+        "fault"
+      ]
+    },
+    "fault_code": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authorization_diagnostics": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 1,
+      "items": {
+        "enum": [
+          "issued",
+          "credential_mismatch",
+          "policy_refusal",
+          "configuration_fault",
+          "issuance_fault",
+          "verification_fault"
+        ]
+      }
+    },
+    "window_verifications": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "decision",
+          "reason",
+          "sequence_number",
+          "authenticated"
+        ],
+        "properties": {
+          "decision": {
+            "enum": [
+              "accept",
+              "reject"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sequence_number": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "authenticated": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "noise_shared_seed_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "credential_source": {
+      "enum": [
+        "single-read-v1",
+        "majority-3-v1",
+        "stored-provisioned-v1"
+      ]
+    },
+    "retrieval": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "retrieval_outcome",
+            "verification_outcome",
+            "admission_outcome",
+            "credential_source",
+            "attempt_id",
+            "preparation_failure"
+          ],
+          "properties": {
+            "retrieval_outcome": {
+              "enum": [
+                "not_attempted",
+                "success",
+                "unavailable",
+                "malformed",
+                "infrastructure_error"
+              ]
+            },
+            "verification_outcome": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "verified",
+                    "credential_mismatch",
+                    "record_missing",
+                    "record_disabled",
+                    "unsupported_record",
+                    "key_unavailable",
+                    "binding_mismatch",
+                    "invalid_input",
+                    "internal_error"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "admission_outcome": {
+              "enum": [
+                "not_invoked",
+                "authorized",
+                "refused",
+                "infrastructure_error"
+              ]
+            },
+            "credential_source": {
+              "const": "stored-provisioned-v1"
+            },
+            "attempt_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "preparation_failure": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "admission_outcomes": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "enum": [
+          "authorized",
+          "refused",
+          "infrastructure_error"
+        ]
+      }
+    },
+    "operation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "establishment",
+        "acquisition",
+        "reading",
+        "voting",
+        "reconstruction",
+        "bch_decode",
+        "verification",
+        "authorization",
+        "admission_request",
+        "mutual_handshake",
+        "receiver_challenge",
+        "sender_confirmation",
+        "receiver_confirmation",
+        "sender_activation",
+        "sender_hkdf",
+        "receiver_hkdf",
+        "first_window",
+        "window_seal",
+        "window_verify",
+        "release",
+        "retrieval",
+        "measurement"
+      ],
+      "properties": {
+        "establishment": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "acquisition": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reading": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "voting": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reconstruction": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bch_decode": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verification": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "authorization": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "admission_request": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mutual_handshake": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "receiver_challenge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sender_confirmation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "receiver_confirmation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sender_activation": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sender_hkdf": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "receiver_hkdf": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "first_window": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "window_seal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "window_verify": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "release": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retrieval": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "measurement": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "stage_duration_ns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "establishment",
+        "acquisition",
+        "reading",
+        "voting",
+        "reconstruction",
+        "bch_decode",
+        "verification",
+        "authorization",
+        "admission_request",
+        "mutual_handshake",
+        "receiver_challenge",
+        "sender_confirmation",
+        "receiver_confirmation",
+        "sender_activation",
+        "sender_hkdf",
+        "receiver_hkdf",
+        "first_window",
+        "window_seal",
+        "window_verify",
+        "release",
+        "retrieval",
+        "measurement"
+      ],
+      "properties": {
+        "establishment": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "acquisition": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reading": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "voting": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reconstruction": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bch_decode": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verification": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authorization": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "admission_request": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mutual_handshake": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receiver_challenge": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sender_confirmation": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receiver_confirmation": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sender_activation": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sender_hkdf": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "receiver_hkdf": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "first_window": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "window_seal": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "window_verify": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "release": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retrieval": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "release_attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "release_completions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "callbacks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preprocessing",
+        "motion",
+        "anomaly"
+      ],
+      "properties": {
+        "preprocessing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "invocations",
+            "completions"
+          ],
+          "properties": {
+            "invocations": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completions": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "motion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "invocations",
+            "completions"
+          ],
+          "properties": {
+            "invocations": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completions": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "anomaly": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "invocations",
+            "completions"
+          ],
+          "properties": {
+            "invocations": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completions": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "policy": {
+            "const": "stored-provisioned-v1"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reconstruction": {
+            "type": "null"
+          },
+          "effective_response": {
+            "type": "null"
+          },
+          "effective_sha256": {
+            "type": "null"
+          },
+          "effective_error_positions": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "retrieval": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

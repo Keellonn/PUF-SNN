@@ -1,0 +1,124 @@
+{
+  "schema_version": "week8-three-arm-auth-v1:config",
+  "experiment_id": "week8-three-arm-auth-v1",
+  "noise_model_id": "puf-snn-correlated-noise-v1",
+  "mode": "planned-formal",
+  "master_seed": 2026101901,
+  "schedule_seed": 2026101902,
+  "bootstrap_seed": 2026101903,
+  "allocation": {
+    "populations": 20,
+    "devices_per_population": 6,
+    "attempts_per_device_condition": 50
+  },
+  "conditions": [
+    {
+      "name": "independent_nominal",
+      "sigma": 0.1,
+      "rho": 0.0,
+      "common_offsets": [
+        0
+      ]
+    },
+    {
+      "name": "independent_stress",
+      "sigma": 0.25,
+      "rho": 0.0,
+      "common_offsets": [
+        0
+      ]
+    },
+    {
+      "name": "common_control",
+      "sigma": 0.1,
+      "rho": 0.0,
+      "common_offsets": [
+        -1,
+        1
+      ]
+    },
+    {
+      "name": "differential_rho50",
+      "sigma": 0.1,
+      "rho": 0.5,
+      "common_offsets": [
+        0
+      ]
+    },
+    {
+      "name": "differential_rho90",
+      "sigma": 0.1,
+      "rho": 0.9,
+      "common_offsets": [
+        0
+      ]
+    }
+  ],
+  "policies": [
+    "single-read-v1",
+    "majority-3-v1",
+    "stored-provisioned-v1"
+  ],
+  "manufacturing_std": 1.0,
+  "enrollment_noise_std": 0.0,
+  "bootstrap_resamples": 10000,
+  "confidence_level": 0.95,
+  "interval_scope": "pointwise",
+  "primary_rho": 0.9,
+  "secondary_rho": 0.5,
+  "authentication": {
+    "config_version": "puf-snn-auth-config-v2",
+    "protocol_profile": "puf-snn-l3-credential-admission-v1-wire2",
+    "handshake_timeout_ms": 10000,
+    "session_ttl_ms": 300000,
+    "max_windows": 10000,
+    "max_pending_sessions": 128,
+    "max_sessions_per_process": 10000,
+    "warmup_iterations": 0
+  },
+  "window_id": "week7-fixed-window-v1",
+  "consumer_id": "recording-consumer-v1",
+  "source_configuration": {
+    "single-read-v1": {
+      "acquisition_config_version": "puf-snn-acquisition-v1",
+      "reads": 1,
+      "runtime_decodes": 1
+    },
+    "majority-3-v1": {
+      "acquisition_config_version": "puf-snn-acquisition-v1",
+      "reads": 3,
+      "runtime_decodes": 1
+    },
+    "stored-provisioned-v1": {
+      "provider": "trusted-in-memory-v1",
+      "provisioning": "same-enrolled-credential-before-timing",
+      "reads": 0,
+      "runtime_decodes": 0,
+      "fallback": false
+    }
+  },
+  "stored_schedule": "one-per-matched-trial-noise-cell-repeated-control",
+  "execution_limits": {
+    "formal_execution_enabled": false,
+    "nonformal_max_matched_trials": 50,
+    "nonformal_max_arm_attempts": 150,
+    "retries": 0
+  },
+  "timing_methodology": {
+    "profile": "cold-process-no-harness-warmup-v1",
+    "clock": "perf_counter_ns",
+    "warmup_attempts": 0,
+    "recurring_windows": false,
+    "handshake_entropy": "os-random-unmatched",
+    "excluded_work": [
+      "enrollment",
+      "provisioning",
+      "endpoint-setup",
+      "shared-noise-vector",
+      "window-template",
+      "model-loading"
+    ],
+    "stage_spans": "inclusive-with-parent-links",
+    "authorization_cost": "inclusive-minus-verification-child"
+  }
+}

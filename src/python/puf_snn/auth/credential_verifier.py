@@ -290,25 +290,44 @@ class CredentialAdmissionService:
     def authorize(self, candidate_credential4, *, device_id, enrollment_id,
                   reconstruction_id, attempt_id, timeout_ms):
         """Verify first; mint one local identity on pass. Never allocate a request."""
+        authorization, _, _ = self.authorize_with_outcome(
+            candidate_credential4, device_id=device_id, enrollment_id=enrollment_id,
+            reconstruction_id=reconstruction_id, attempt_id=attempt_id, timeout_ms=timeout_ms)
+        return authorization
+
+    def authorize_with_outcome(self, candidate_credential4, *, device_id, enrollment_id,
+                               reconstruction_id, attempt_id, timeout_ms
+                               ) -> tuple[LocalAdmissionAuthorization | None, str | None, str]:
+        """Same issuance path, with enum-only diagnostics for the stored control.
+
+        Existing authorize() callers retain their handle-or-None contract.
+        Returns (handle, observed verification outcome or None, issuance outcome).
+        A failed issuance retains a completed verification observation, never
+        substitutes a mismatch. Exception payloads are never returned.
+        """
+        verification_outcome = None
         try:
             _identifier(attempt_id)
             if type(timeout_ms) is not int or not 1 <= timeout_ms <= 0xffffffff:
-                return None
+                return None, None, "infrastructure_error"
             with self._lock:
                 # Lazy cleanup: expired handles cannot authorize any operation.
                 for handle in tuple(self._admissions):
                     self._live(handle)
                 result = self.verify(candidate_credential4, device_id=device_id,
                                      enrollment_id=enrollment_id, reconstruction_id=reconstruction_id)
-                if not result.verified or (device_id, enrollment_id) in self._revoked:
-                    return None
+                verification_outcome = result.outcome
+                if not result.verified:
+                    return None, verification_outcome, "refused"
+                if (device_id, enrollment_id) in self._revoked:
+                    return None, verification_outcome, "refused"
                 record = self._store.get(device_id, enrollment_id)
                 handle = object.__new__(LocalAdmissionAuthorization)
                 self._admissions[handle] = _Admission(candidate_credential4, record, attempt_id,
                                                       time.monotonic_ns() + timeout_ms * 1_000_000)
-                return handle
+                return handle, verification_outcome, "authorized"
         except Exception:
-            return None
+            return None, verification_outcome, "infrastructure_error"
 
     def bind_request(self, authorization, request, *, attempt_id):
         """One immutable request per issued authorization, after verification."""

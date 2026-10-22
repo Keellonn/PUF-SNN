@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://puf-snn.local/schemas/majority3-auth-config-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "noise_model_id",
+    "mode",
+    "master_seed",
+    "schedule_seed",
+    "bootstrap_seed",
+    "allocation",
+    "conditions",
+    "policies",
+    "manufacturing_std",
+    "enrollment_noise_std",
+    "bootstrap_resamples",
+    "confidence_level",
+    "interval_scope",
+    "primary_rho",
+    "secondary_rho",
+    "authentication",
+    "window_id",
+    "consumer_id"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week7-majority3-auth-correlated-v1:config"
+    },
+    "experiment_id": {
+      "const": "week7-majority3-auth-correlated-v1"
+    },
+    "noise_model_id": {
+      "const": "puf-snn-correlated-noise-v1"
+    },
+    "mode": {
+      "enum": [
+        "planned-formal",
+        "nonformal",
+        "unit-test"
+      ]
+    },
+    "master_seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "schedule_seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "bootstrap_seed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "allocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "populations",
+        "devices_per_population",
+        "attempts_per_device_condition"
+      ],
+      "properties": {
+        "populations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "devices_per_population": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "attempts_per_device_condition": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 50,
+          "multipleOf": 2
+        }
+      }
+    },
+    "conditions": {
+      "const": [
+        {
+          "name": "independent_nominal",
+          "sigma": 0.1,
+          "rho": 0.0,
+          "common_offsets": [
+            0
+          ]
+        },
+        {
+          "name": "independent_stress",
+          "sigma": 0.25,
+          "rho": 0.0,
+          "common_offsets": [
+            0
+          ]
+        },
+        {
+          "name": "common_control",
+          "sigma": 0.1,
+          "rho": 0.0,
+          "common_offsets": [
+            -1,
+            1
+          ]
+        },
+        {
+          "name": "differential_rho50",
+          "sigma": 0.1,
+          "rho": 0.5,
+          "common_offsets": [
+            0
+          ]
+        },
+        {
+          "name": "differential_rho90",
+          "sigma": 0.1,
+          "rho": 0.9,
+          "common_offsets": [
+            0
+          ]
+        }
+      ]
+    },
+    "policies": {
+      "const": [
+        "single-read-v1",
+        "majority-3-v1"
+      ]
+    },
+    "manufacturing_std": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "enrollment_noise_std": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "bootstrap_resamples": {
+      "const": 10000
+    },
+    "confidence_level": {
+      "const": 0.95
+    },
+    "interval_scope": {
+      "const": "pointwise"
+    },
+    "primary_rho": {
+      "const": 0.9
+    },
+    "secondary_rho": {
+      "const": 0.5
+    },
+    "authentication": {
+      "const": {
+        "config_version": "puf-snn-auth-config-v2",
+        "protocol_profile": "puf-snn-l3-credential-admission-v1-wire2",
+        "handshake_timeout_ms": 10000,
+        "session_ttl_ms": 300000,
+        "max_windows": 10000,
+        "max_pending_sessions": 128,
+        "max_sessions_per_process": 10000,
+        "warmup_iterations": 20
+      }
+    },
+    "window_id": {
+      "const": "week7-fixed-window-v1"
+    },
+    "consumer_id": {
+      "const": "recording-consumer-v1"
+    }
+  }
+}

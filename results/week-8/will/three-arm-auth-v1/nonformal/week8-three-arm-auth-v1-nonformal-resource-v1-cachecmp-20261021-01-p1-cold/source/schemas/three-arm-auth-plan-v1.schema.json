@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://puf-snn.local/schemas/three-arm-auth-plan-v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "config_sha256",
+    "plan_sha256",
+    "blocks",
+    "counts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week8-three-arm-auth-v1:plan"
+    },
+    "experiment_id": {
+      "const": "week8-three-arm-auth-v1"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "experiment_id",
+          "config_sha256",
+          "population_id",
+          "device_id",
+          "enrollment_id",
+          "condition",
+          "attempt_index",
+          "sigma",
+          "rho",
+          "common_offset",
+          "noise_identity",
+          "reading_seed_sha256",
+          "trial_id",
+          "policy_order",
+          "noise_shared_seed_sha256"
+        ],
+        "properties": {
+          "experiment_id": {
+            "const": "week8-three-arm-auth-v1"
+          },
+          "config_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "population_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "device_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enrollment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condition": {
+            "enum": [
+              "independent_nominal",
+              "independent_stress",
+              "common_control",
+              "differential_rho50",
+              "differential_rho90"
+            ]
+          },
+          "attempt_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sigma": {
+            "type": "number"
+          },
+          "rho": {
+            "type": "number"
+          },
+          "common_offset": {
+            "type": "number"
+          },
+          "noise_identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "master_seed",
+              "population_id",
+              "device_id",
+              "noise_domain_id",
+              "attempt_id",
+              "model_version"
+            ],
+            "properties": {
+              "master_seed": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "population_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "device_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "noise_domain_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "attempt_id": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "model_version": {
+                "const": "puf-snn-correlated-noise-v1"
+              }
+            }
+          },
+          "reading_seed_sha256": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "trial_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "policy_order": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "single-read-v1",
+                "majority-3-v1",
+                "stored-provisioned-v1"
+              ]
+            }
+          },
+          "noise_shared_seed_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 30000
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "matched_trials",
+        "arm_attempts",
+        "expected_reads",
+        "expected_runtime_decodes",
+        "stored_invocations",
+        "independent_populations",
+        "simulated_devices"
+      ],
+      "properties": {
+        "matched_trials": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "arm_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_reads": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_runtime_decodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stored_invocations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "independent_populations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "simulated_devices": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

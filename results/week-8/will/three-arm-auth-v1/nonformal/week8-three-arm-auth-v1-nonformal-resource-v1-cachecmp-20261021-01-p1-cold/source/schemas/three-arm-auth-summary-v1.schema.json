@@ -1,0 +1,3933 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "run_id",
+    "source_id",
+    "config_sha256",
+    "plan_sha256",
+    "groups",
+    "independent_populations",
+    "matched_trials",
+    "arm_attempts",
+    "interval_status",
+    "formal_execution_enabled",
+    "timing_profile"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week8-three-arm-auth-v1:evidence-v1:summary"
+    },
+    "experiment_id": {
+      "const": "week8-three-arm-auth-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "groups": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "completed_attempts",
+          "verified_credentials",
+          "authorized_admissions",
+          "successful_sessions",
+          "accepted_windows",
+          "authorized_releases",
+          "release_attempts",
+          "release_completions",
+          "actual_reads",
+          "runtime_decodes",
+          "candidate_mismatches",
+          "policy_refusals",
+          "reconstruction_outcomes",
+          "retrieval_outcomes",
+          "reconstruction_frr",
+          "retrieval_failure_rate",
+          "admission_failure_rate",
+          "session_failure_rate",
+          "callbacks",
+          "all_attempt_establishment",
+          "successful_session_establishment",
+          "timing"
+        ],
+        "properties": {
+          "completed_attempts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verified_credentials": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authorized_admissions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "successful_sessions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "accepted_windows": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "authorized_releases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "release_attempts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "release_completions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actual_reads": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "runtime_decodes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "candidate_mismatches": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "policy_refusals": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reconstruction_outcomes": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "C",
+                  "D",
+                  "I",
+                  "W"
+                ],
+                "properties": {
+                  "C": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "D": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "I": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "W": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "retrieval_outcomes": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "success",
+                  "unavailable",
+                  "malformed"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "unavailable": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "malformed": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reconstruction_frr": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "retrieval_failure_rate": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "admission_failure_rate": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "session_failure_rate": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "callbacks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "preprocessing",
+              "motion",
+              "anomaly"
+            ],
+            "properties": {
+              "preprocessing": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "invocations",
+                  "completions"
+                ],
+                "properties": {
+                  "invocations": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "completions": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "motion": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "invocations",
+                  "completions"
+                ],
+                "properties": {
+                  "invocations": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "completions": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "anomaly": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "invocations",
+                  "completions"
+                ],
+                "properties": {
+                  "invocations": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "completions": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          },
+          "all_attempt_establishment": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "count",
+              "mean_ns",
+              "median_ns",
+              "p95_ns",
+              "p99_ns",
+              "maximum_ns"
+            ],
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mean_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "median_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "p95_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "p99_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "maximum_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "successful_session_establishment": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "count",
+              "mean_ns",
+              "median_ns",
+              "p95_ns",
+              "p99_ns",
+              "maximum_ns"
+            ],
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mean_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "median_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "p95_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "p99_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "maximum_ns": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "timing": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "establishment",
+              "acquisition",
+              "reading",
+              "voting",
+              "reconstruction",
+              "bch_decode",
+              "verification",
+              "authorization",
+              "admission_request",
+              "mutual_handshake",
+              "receiver_challenge",
+              "sender_confirmation",
+              "receiver_confirmation",
+              "sender_activation",
+              "sender_hkdf",
+              "receiver_hkdf",
+              "first_window",
+              "window_seal",
+              "window_verify",
+              "release",
+              "retrieval",
+              "measurement"
+            ],
+            "properties": {
+              "establishment": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "acquisition": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "reading": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "voting": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "reconstruction": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "bch_decode": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "authorization": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "admission_request": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "mutual_handshake": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "receiver_challenge": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "sender_confirmation": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "receiver_confirmation": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "sender_activation": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "sender_hkdf": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "receiver_hkdf": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "first_window": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "window_seal": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "window_verify": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "release": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "retrieval": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "measurement": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "inclusive",
+                  "exclusive"
+                ],
+                "properties": {
+                  "inclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "exclusive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "count",
+                      "mean_ns",
+                      "median_ns",
+                      "p95_ns",
+                      "p99_ns",
+                      "maximum_ns"
+                    ],
+                    "properties": {
+                      "count": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "mean_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "median_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p95_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "p99_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "maximum_ns": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "independent_populations": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "matched_trials": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "arm_attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "interval_status": {
+      "const": "not-computed-nonformal"
+    },
+    "formal_execution_enabled": {
+      "const": false
+    },
+    "timing_profile": {
+      "const": "cold-process-no-harness-warmup-v1"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://puf-snn.local/schemas/three-arm-auth-summary-v1.schema.json"
+}

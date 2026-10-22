@@ -4,6 +4,7 @@ Planning never runs authentication. Formal execution is intentionally absent.
 Credential truth stays in memory, outside the acquisition callback and traces.
 """
 from dataclasses import asdict, dataclass, field
+from functools import lru_cache
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -63,12 +64,26 @@ def read_json_bytes(data):
                       parse_constant=lambda _: (_ for _ in ()).throw(ValueError("nonfinite JSON")))
 
 
+@lru_cache(maxsize=16)
+def _checked_schema_validator(schema_bytes, validator_class):
+    """Cache successful definition checks/validators for this Python process.
+
+    Identity is the exact file bytes and validator class, never a path or stat.
+    Callers MUST read the file on every validation, before looking in this LRU.
+    Failed parsing/checks are not cached. At most 16 definitions are retained,
+    until eviction, explicit cache_clear(), or process exit. Keep the parsed
+    schema/validator private; instance results and evidence are never cached.
+    """
+    schema = read_json_bytes(schema_bytes)
+    validator_class.check_schema(schema)
+    return validator_class(schema)
+
+
 def validate_schema(kind, obj):
     revision = 2 if kind in ("attempt", "summary") else 1
     path = ROOT / f"schemas/majority3-auth-{kind}-v{revision}.schema.json"
-    schema = read_json_bytes(path.read_bytes())
-    Draft202012Validator.check_schema(schema)
-    errors = list(Draft202012Validator(schema).iter_errors(obj))
+    validator = _checked_schema_validator(path.read_bytes(), Draft202012Validator)
+    errors = list(validator.iter_errors(obj))
     # No input/exception repr: malformed evidence may contain sensitive material.
     require(not errors, f"invalid {kind} schema")
 

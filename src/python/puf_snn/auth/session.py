@@ -3,7 +3,7 @@
 Research credential4 has at most 32 bits of entropy; HKDF does not add entropy.
 No window acceptance, replay engine, audit pipeline, or networking lives here.
 """
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 import hashlib
 import hmac
 import secrets
@@ -11,6 +11,7 @@ import time
 from threading import RLock
 from .binary_window import LP, U16, U32, U64, V, ProtocolError, Reader, identifier, raw
 from .credential_verifier import CredentialAdmissionService
+from .stored_credential import StoredCredentialProvider, StoredCredentialRecord, StoredCredentialStatus
 
 PROTOCOL_PROFILE = "puf-snn-l3-credential-admission-v1-wire2"
 
@@ -189,7 +190,7 @@ class Tombstone:
     terminal_time_ns: int
 
 class Sender:
-    """One outstanding attempt. API accepts only the frozen Layer 2 result.
+    """One outstanding attempt; explicit reconstructed or stored credential entry.
 
     Clock/random injection uses unittest.mock in explicit tests; runtime always
     calls the OS random provider. No retry or reconstruction occurs here.
@@ -211,6 +212,8 @@ class Sender:
         self._candidate = self._key = self._client = self._context = self._transcript = None
         self._nonce = None
         self._used_attempt_ids = set()
+        self._stored_credential_status = StoredCredentialStatus()
+        self._prepared_stored_credential_status = self._stored_credential_status
 
     def _fail(self, reason, detail=None):
         self._admission_service.revoke(self._admission)
@@ -220,8 +223,8 @@ class Sender:
         self.state, self.reason = "FAILED", reason
         return Failure(reason, detail)
 
-    def begin_attempt(self, result, attempt_id):
-        from puf_snn.reconstruction import ReconstructionResult
+    def _prepare_attempt(self, attempt_id):
+        """Shared state reset only; this neither accepts nor verifies a candidate."""
         if self.state == "PENDING":
             return Failure("session_busy")
         identifier(attempt_id)
@@ -232,6 +235,12 @@ class Sender:
         self._admission = self._request = None
         self._candidate = self._key = self._client = self._context = self._transcript = None
         self.attempt_id = attempt_id
+
+    def begin_attempt(self, result, attempt_id):
+        from puf_snn.reconstruction import ReconstructionResult
+        failure = self._prepare_attempt(attempt_id)
+        if failure is not None:
+            return failure
         if type(result) is not ReconstructionResult or type(result.reported_correction_count) is not int:
             return self._fail("internal_error")
         message = result.candidate_message
@@ -265,11 +274,92 @@ class Sender:
         )
         if self._admission is None:
             return self._fail("credential_verification_failed")
+        return self._begin_candidate_request(result.candidate_credential, attempt_id)
+
+    @property
+    def stored_credential_status(self) -> StoredCredentialStatus:
+        """Latest stored invocation, including rejection before preparation."""
+        return self._stored_credential_status
+
+    @property
+    def prepared_stored_credential_status(self) -> StoredCredentialStatus:
+        """Last prepared stored attempt; a busy invocation cannot overwrite it.
+
+        This immutable observation may outlive that attempt. It is not authority
+        or a claim that a session is currently pending/active.
+        """
+        return self._prepared_stored_credential_status
+
+    def begin_stored_attempt(self, provider: StoredCredentialProvider, attempt_id: str):
+        """Retrieve a bound candidate, independently verify, and issue one request.
+
+        No Layer 2 result, response, decoder, or enrollment truth is synthesized.
+        A provider is trusted to retrieve bytes, never to authorize a session.
+        """
+        failure = self._prepare_attempt(attempt_id)
+        if failure is not None:
+            self._stored_credential_status = StoredCredentialStatus(
+                attempt_id=attempt_id, preparation_failure=failure.reason)
+            return failure
+        try:
+            return self._begin_stored_candidate(provider, attempt_id)
+        finally:
+            self._stored_credential_status = replace(self._stored_credential_status, attempt_id=attempt_id)
+            self._prepared_stored_credential_status = self._stored_credential_status
+
+    def _begin_stored_candidate(self, provider, attempt_id):
+        """Observe retrieval/admission only after attempt preparation succeeds."""
+        self._stored_credential_status = StoredCredentialStatus()
+        binding = dict(device_id=self.enrollment.device_id,
+                       enrollment_id=self.enrollment.enrollment_id,
+                       reconstruction_id=self.enrollment.helper_data.config.version)
+        try:
+            record = provider.get_credential(**binding)
+        except Exception:
+            self._stored_credential_status = StoredCredentialStatus("infrastructure_error")
+            return self._fail("internal_error")
+        if record is None:
+            self._stored_credential_status = StoredCredentialStatus("unavailable")
+            return self._fail("stored_credential_unavailable")
+        try:
+            if type(record) is not StoredCredentialRecord:
+                raise ValueError
+            record.validate()
+            if any(getattr(record, key) != value for key, value in binding.items()):
+                raise ValueError
+        except Exception:
+            self._stored_credential_status = StoredCredentialStatus("malformed")
+            return self._fail("stored_credential_malformed")
+        self._stored_credential_status = StoredCredentialStatus("success")
+        try:
+            self._admission, outcome, admission = self._admission_service.authorize_with_outcome(
+                record.credential4, **binding, attempt_id=attempt_id,
+                timeout_ms=self.limits.handshake_timeout_ms)
+        except Exception:
+            outcome, admission = None, "infrastructure_error"
+        if self._admission is None or outcome != "verified" or admission != "authorized":
+            # Missing enrollment/key/binding is a configuration/infrastructure
+            # fault in this control, not evidence of wrong-credential reliability.
+            # A verified result followed by explicit refusal can be revocation
+            # between verification and issuance, not an issuance exception.
+            ordinary = admission == "refused" and outcome in ("verified", "credential_mismatch", "record_disabled")
+            known = outcome in (None, "verified", "credential_mismatch", "record_disabled", "record_missing",
+                                "unsupported_record", "key_unavailable", "binding_mismatch",
+                                "invalid_input", "internal_error")
+            self._stored_credential_status = StoredCredentialStatus(
+                "success", outcome if known else "internal_error",
+                "refused" if ordinary else "infrastructure_error")
+            return self._fail("credential_verification_failed" if ordinary else "internal_error")
+        self._stored_credential_status = StoredCredentialStatus("success", "verified", "authorized")
+        return self._begin_candidate_request(record.credential4, attempt_id)
+
+    def _begin_candidate_request(self, candidate_credential4, attempt_id):
+        """Common post-authorization request construction; OS randomness unchanged."""
         self._start = time.monotonic_ns()
         self._deadline = self._start + self.limits.handshake_timeout_ms * 1_000_000
         try:
             self._nonce = raw(secrets.token_bytes(32), 32)
-            self._candidate = result.candidate_credential
+            self._candidate = candidate_credential4
             self._request = frame(b"P3RQ" + V(2, 0) + LP(identifier(self.enrollment.device_id)) + self._nonce)
             if not self._admission_service.bind_request(self._admission, self._request, attempt_id=attempt_id):
                 return self._fail("credential_verification_failed")

@@ -1439,11 +1439,8 @@ Cons,
 ### BCH(63, 30, t=6)
 
 This method will keep the 63 PUF response but uses a stronger BCH code which can correct 6 errors instead of 5.
-
 This method strengthens the decoder error tolerance rather than reducing the noise from repeated measurements
-
 Cons,
-
 - This configuration only supports 30 information bits instead of the existing 32 bit credential
 - Reducing the entropy of the overall reconstruction design
 
@@ -1810,6 +1807,69 @@ Planned work includes,
 - Document formal results and compare them with the Week 6 standalone reconstruction findings
 
 The central research question moving forward is whether the reliability improvement observed for Majority-3 under independent noise remains significant when consecutive PUF measurements contain correlated errors, and whether its additional measurement cost is justified.
+
+# Week 8, Three-Arm Authentication Pilot and Resource Optimization
+
+## Expanded Experiment Design
+
+During Week 8, I expanded the Week 7 two-arm correlated-noise authentication study into a three-arm experiment. The three credential sources are,
+- **Single-Read PUF:** One noisy simulated RO-PUF response followed by BCH(63,36,t=5) reconstruction
+- **Majority-3 PUF:** Three noisy responses, bitwise majority voting, and one BCH reconstruction
+- **Stored-Provisioned Credential:** Retrieval of the enrolled 32-bit credential from a trusted software record, without a runtime PUF measurement or BCH decode
+
+All three arms pass through the same independent credential verifier, local admission authorization, HKDF-based mutual session confirmation, HMAC-protected motion-window verification, and verifier-controlled release boundary. The stored arm is a control for credential-source reliability and software cost; it is not an authentication bypass or a physical-PUF equivalent.
+
+- Retained the five configured noise conditions: independent nominal (sigma=0.10), independent stress (sigma=0.25), common-mode cancellation control, and differential correlation at rho=0.50 and rho=0.90.
+- Matched each trial by simulated device, enrollment material, credential, and indexed first noisy PUF reading. Majority-3 obtains two additional readings; each arm receives fresh authentication/session state.
+- Defined the formal **planned** allocation as 20 simulated populations x 6 devices x 50 trials x 5 conditions x 3 arms = **90,000 attempts** across 30,000 matched trial-condition identities. This replaces the earlier two-arm, 60,000-attempt plan; formal execution was not enabled.
+- Kept the bounded nonformal allocation at one population, one device, 10 trials per condition, and 150 total arm attempts.
+
+## Functional and Evidence Validation
+I completed a bounded, nonformal three-arm authentication pilot. It executed 50 matched trial-condition identities and 150 total arm attempts, including 200 experimental simulated PUF measurements, 100 runtime BCH decodes, and 50 stored-credential invocations.
+
+| Pilot outcome | Single-Read | Majority-3 | Stored |
+|---|---:|---:|---:|
+| Completed attempts | 50 | 50 | 50 |
+| Successful authenticated sessions | 41 | 45 | 50 |
+| Session success rate | 82% | 90% | 100% |
+
+- Single-Read reconstruction outcomes were C/D/I/W = **41/6/2/1**; Majority-3 outcomes were **45/5/0/0**, where C is correct, D is decoder failure, I is invalid format/padding, and W is a wrong valid-format credential.
+- All observed PUF reconstruction failures occurred under the independent-stress condition.
+- Across the three arms, **136 sessions** were established, **136 protected windows** were accepted, and **136 authorized recording-consumer releases** completed. There were **zero unauthorized releases**.
+- Recorded source/configuration/plan identities, attempt evidence, summaries, manifests, and validation receipts. The recording consumers confirmed the release boundary but did **not** execute the actual SNN or anomaly models.
+- Reviewed the independent evidence audit, which found no authentication bypass but identified ambiguous validation-work accounting. Corrected the receipt scope with `validation-work-v2` while preserving the historical October 20 evidence unchanged.
+- Clarified that each of the two finalization reconciliation passes replays 200 PUF measurements and 100 BCH decodes; combined finalization validation involves 400 replay measurements and 200 replay decodes. These are **not additional research samples**.
+- Recorded successive local regression checkpoints of **475 passing test executions before the pilot** and **483 after the validation-accounting correction**. These checkpoints overlap and should not be added together.
+
+## Performance Engineering
+I developed and independently reviewed a Windows resource profiler to measure the actual cost of the nonformal authentication workload while protecting historical evidence. Its controller/worker design uses monitored resource thresholds, Windows Job Object containment, process/pipe identity checks, a supervision watchdog, and an atomic final acceptance receipt. The corrected profiler passed **55 safety tests** in the native project environment.
+
+I completed two separately accepted, supervised 150-attempt resource benchmarks,
+| Metric | Original benchmark | After schema-cache optimization |
+|---|---:|---:|
+| Total wall time | 142.875 s | 48.734 s |
+| Schema-definition self-checks | 459 | 5 |
+| Schema self-check inclusive time | 97.799 s | 1.073 s |
+| Week 8 schema-validation inclusive time | 103.219 s | 6.876 s |
+| Evidence-finalization inclusive time | 71.528 s | 8.050 s |
+| Reconciliation inclusive time | 68.396 s | 5.263 s |
+
+- The initial profiler run revealed that unchanged JSON Schema definitions were repeatedly parsed and meta-validated during evidence append and both reconciliation passes. The 459 self-checks were a major measured source of runtime overhead.
+- Implemented a process-local, 16-entry LRU cache keyed by exact schema bytes and validator class. The cache reuses checked schema definitions and validator objects but **continues to validate every experiment instance** and preserves source-integrity guards and both reconciliations.
+- Completed reported regression coverage of **548 passing test executions**, plus a separate local run of the eight focused cache tests. An independent read-only review returned **PASS** for the supported schemas and serial worker lifecycle.
+- The optimized benchmark reduced observed wall time by **94.141 seconds (65.9%)**, or **2.93x speedup**. Schema-definition checks fell by **98.9%**, exactly matching the predicted five distinct definitions.
+- Both profiler sessions were accepted with 150 attempts, two finalization validation passes, zero unauthorized releases, and verified worker supervision. The before/after timings are **one descriptive comparison**, not a repeated statistical performance study. Sampled peak memory remained approximately 1.4 GB in the displayed results, without a precise demonstrated memory improvement.
+
+## Limitations and Next Steps
+
+- This remains a **software-simulated RO-PUF** and a 32-bit pilot credential, not validated Quest 3 PUF hardware or production-strength key security.
+- The 150-attempt pilot has one simulated population and one device; its apparent reliability differences are descriptive and do not establish statistical superiority or physical-device generalization.
+- The benchmark measures software processing and evidence infrastructure, not real Quest transport, physical sensor latency, or actual SNN/anomaly inference.
+- The **90,000-attempt formal study is not complete or authorized**. Remaining work includes researcher/faculty approval of formal contrasts and uncertainty methods, population-cluster analysis, warmed Numba/JIT and cold-start timing decisions, full-scale memory/runtime qualification, formal execution controls, and a frozen source/configuration/plan/environment record.
+- Preserved the historical October 20 pilot and both October 21 profiling bundles under their original source identities. Validation replay is not counted as additional experimental data.
+**Week 8 primary documentation:** `week8-three-arm-auth-methodology.md`, `week8-evidence-validation.md`, and `week8-schema-validation-optimization-benchmark.md`.
+**Week 8 conclusion:** The three-arm nonformal pilot, evidence-validation correction, resource profiler, and schema-cache optimization are complete at pilot scale. The full correlated-noise reliability study remains future work.
+
 
 # Hours and Work:
 
@@ -2539,3 +2599,64 @@ Verified protected reconstruction source hashes
 - Listened to Zeeshawn's presentation
 - Stayed after in the lab for roughly 30 mins debriefing with Keegan and planning our next steps
 - Next presentation I need to make sure that my direction for each slide and topic is direct and chosen and to NOT deviate from it
+
+# Friday October, 16
+
+## 1:15pm - 1:50pm (0.58 Hours)
+- Graduate capstone team consultation
+- Presented our current up-to-date work
+- Provided feedback and answered questions
+- Established a plan for going forward and how we will help each other
+  - Keegan and I agreed to lookover their initial plan for their expected project
+
+# Sunday October, 18
+
+## 8:12pm - 10:40pm (2.47 Hours)
+- Reviewed the Week 7 correlated-noise authentication results and developed the next-stage three-arm scope
+- Implemented the trusted stored-provisioned credential control so it could use the same credential-verification, admission, and session-authentication path as the two PUF policies, without runtime PUF acquisition or BCH decoding
+- Worked through source matching and control-policy requirements for the new comparison, while keeping the full formal run disabled
+- Reported 480 passing regression tests for the stored-credential integration checkpoint. This was an implementation/testing checkpoint, not a formal research execution
+
+# Tuesday October, 20
+
+## 11:01am - 1:30pm (2.48 Hours)
+- Worked on the Week 8 three-arm experimental design and its scientific comparison objectives
+- Refined the matched single-read, Majority-3, and stored-provisioned credential-source design, with the same downstream Authentication-v2 policy for all arms
+- Reviewed the five modeled noise conditions, reconstruction outcomes, trial matching, timing exclusions, and the distinction between the 150-attempt nonformal pilot and the planned 90,000-attempt formal allocation
+
+## 2:24pm - 3:36pm (1.20 Hours)
+- Continued preparing the three-arm experiment for nonformal local validation, including planned source/configuration identities, study evidence, and test coverage
+- Reviewed the test and preservation requirements for all three credential sources, including wrong-credential refusal before session authorization and protection against modification of old evidence bundles
+
+## 7:34pm - 11:26pm (3.87 Hours)
+- Reviewed the formal resource-feasibility risks of the larger three-arm study, including projected JSONL output, repeated source hashing, per-attempt validation, and memory retention
+- Developed the bounded Windows resource-profiler controller/worker utility to observe a real 150-attempt workload without altering the scientific runner
+- Implemented and corrected safety mechanisms including Windows Job Object containment, OS process/pipe identity checks, monitoring heartbeats, approved workload limits, and atomic accepted/pending profiler receipts
+- Exercised profiler unit tests and reviewed native-Windows process-launch behavior; the later 55-test corrected checkpoint is included in the Week 8 technical summary, not presented as a formal experiment
+- Completed local validation of the three-arm harness (35 dedicated tests plus the broader 203- and 237-test suites, 475 passing executions)
+- Executed and audited the original 150-attempt nonformal three-arm pilot: 41/50 Single-Read sessions, 45/50 Majority-3 sessions, 50/50 stored sessions, 136 authorized releases, and zero unauthorized releases
+- Addressed the independent pilot audit's validation-work accounting finding, introducing scoped two-pass receipts without changing the historical evidence; later recorded 483 passing test executions
+- Prepared the formal three-arm methodology review. Final analysis choices, timing protocol, source freeze, and formal authority remained outstanding
+
+# Wednesday October, 21
+
+## 12:15am - 1:37am (1.37 Hours)
+- Completed the initial accepted 150-attempt supervised baseline resource benchmark: 142.875 seconds and 459 schema self-checks
+- Implemented the 16-entry content-keyed JSON Schema validator cache, preserved all instance validations, and reported 548 passing selected regression tests
+- Preserved the historical evidence and source identities; no formal research run was performed
+
+## 4:21pm - 5:19pm (0.97 Hours)
+- Reviewed the independently audited schema-cache correction and verified the eight focused cache regression tests in the native project virtual environment
+- Completed the preflight, reviewed-plan, dry-run, and resource checks for the new comparison session
+- Executed the accepted optimized 150-attempt supervised benchmark, preserving two evidence-reconciliation passes and zero unauthorized releases
+- Compared the optimized 48.734-second run with the 142.875-second baseline,
+    - 65.9% observed runtime reduction 
+    - 2.93x speedup
+    - 459 to 5 schema-definition checks
+
+## 6:45pm - 7:53pm (1.13 Hours)
+- Polished and reviewed the primary Week 8 technical documents covering,
+  - The three-arm methodology
+  - Evidence validation 
+  - Schema-cache optimization/benchmark
+- Finalized Week 8 research-log and hours

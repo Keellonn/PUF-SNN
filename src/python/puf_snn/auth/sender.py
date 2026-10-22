@@ -115,6 +115,49 @@ class Sender(SessionSender):
         """
         return self._begin_attempt(None, attempt_id, local_provenance, reconstruction_ns, "backend_exception")
 
+    def begin_stored_attempt(self, provider, attempt_id, *, local_provenance=None):
+        """Observe stored retrieval/admission as control, never reconstruction.
+
+        v1 audit rows remain schema-compatible and coarse. The separate immutable
+        stored_credential_status describes this invocation, including preparation
+        rejection. prepared_stored_credential_status retains the last prepared
+        attempt's outcomes; no decoder timings/correction values are fabricated.
+        """
+        with self._seal_lock:
+            self._ensure_running()
+            identifier(attempt_id)
+            local = provenance(local_provenance)
+            before = self.state if self.state != "IDLE" else None
+            busy = self.state == "PENDING"
+            try:
+                if not busy:
+                    self._local_provenance = local
+                    self._attempt_kdf_start = len(self._kdf_timings)
+                start = time.perf_counter_ns()
+                response = super().begin_stored_attempt(provider, attempt_id)
+                failed = isinstance(response, Failure)
+                if failed and response.reason == "internal_error":
+                    self._fail("internal_error")
+                reason = response.reason if failed else "accepted"
+                if reason in ("stored_credential_unavailable", "stored_credential_malformed"):
+                    reason = "session_refused"
+                # This invocation has no session; a busy sender's context belongs
+                # to the legitimate pending attempt, not this control row.
+                row = self._record("session_message" if busy else "session_control",
+                                   attempt_id=attempt_id, provenance=asdict(local),
+                                   session_id=None,
+                                   state_before=before, decision="reject" if failed else "accept",
+                                   reason=reason,
+                                   detail="backend_exception" if reason == "internal_error" else None)
+                self._append([row])
+                if not failed:
+                    self._establishment_start = start
+                elif response.reason == "internal_error":
+                    self._audit.incomplete = True
+                return response
+            except Exception:
+                return self._audit_failure("session_control")
+
     def _response(self, operation, data):
         with self._seal_lock:
             self._ensure_running()
