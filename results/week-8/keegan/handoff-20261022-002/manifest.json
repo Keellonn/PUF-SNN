@@ -1,0 +1,118 @@
+{
+  "archives": {
+    "code-overlay.zip": "7cc9a7dd3144fe54805a3090af90168b31239884f79991762a7427d87c232bb0",
+    "validation-receipts.zip": "ef3d9d7a9a2558ec3a57909b8beb75089c49f90d9370b5000d23c107cf018c14"
+  },
+  "base_commit": "c8a4053f8526b91dd856428fa0924d214f367106",
+  "committed": false,
+  "cross_person_reproduction": false,
+  "dataset_and_model_payloads_included": false,
+  "default_changed": false,
+  "final_session_commit_not_yet_created": true,
+  "fresh_environment_reproduction": false,
+  "kind": "current-source overlay and sanitized receipt handoff",
+  "matched_quality_pairs": 180,
+  "note": "Use a fresh checkout at the base commit plus the exact overlay; separately obtain trusted pinned model/data payloads.",
+  "pushed": false,
+  "receipt_files": {
+    "results/week-8/keegan/quality-validation-20261022-001/.gitattributes": {
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/COMPLETE": {
+      "bytes": 92,
+      "sha256": "8fdb6c7a80d1b35489d599b85981982a72eddd51269e9570f2cb5ea5724d8fb7"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/cells.jsonl": {
+      "bytes": 1280704,
+      "sha256": "a5a3a5d0303f56e5bb20a6a41bc08ada8a58cab80401d9da550a39702d7c26aa"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/config.json": {
+      "bytes": 1182,
+      "sha256": "7a049580dac50652ed514a7d51467f11d0ebd8e47b2d8d1fe06bd21416dfe17b"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/frozen-input-hashes.json": {
+      "bytes": 2058,
+      "sha256": "0900f5725b7a50cb3518e87f46faeefc0326a4303f92407b3f9d1f9fef7af95f"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/manifest.json": {
+      "bytes": 2019,
+      "sha256": "57b8a7eb2ec501e3f3c41d06b3b2628ed23015765ad1f96ff3d62576163ee80b"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/preflight.json": {
+      "bytes": 386,
+      "sha256": "1adfb0be7f6577573f3d96d93dc6f28fe33bf1d987c2ee77f22c8bf6e7417b77"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/source-hashes.json": {
+      "bytes": 23960,
+      "sha256": "c9f8129a429d894596c3455b13084bf51fc73b66c5109d136da1773629dadfb0"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/source-selection.json": {
+      "bytes": 8301,
+      "sha256": "27276f7a181cbde5276b747aadc19846f7957806367584903e87f7f5adcc2dfa"
+    },
+    "results/week-8/keegan/quality-validation-20261022-001/summary.json": {
+      "bytes": 303,
+      "sha256": "5111cb70fd6d6dd99df8026c86ad6bfde1e40112e041290fa4df5fed2991e994"
+    },
+    "results/week-8/keegan/regression-20261022-001/.gitattributes": {
+      "bytes": 14,
+      "sha256": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9"
+    },
+    "results/week-8/keegan/regression-20261022-001/.gitignore": {
+      "bytes": 14,
+      "sha256": "e24bb3bc8f409f0da1deedffed88ddb00cdd5c74eb6072f8207db9cf2974e2c2"
+    },
+    "results/week-8/keegan/regression-20261022-001/COMPLETE": {
+      "bytes": 91,
+      "sha256": "f4c0bf66064cfe46b117df398e5eada994c345e43d3ac0827625cef9cebec082"
+    },
+    "results/week-8/keegan/regression-20261022-001/source-hashes.json": {
+      "bytes": 23960,
+      "sha256": "c9f8129a429d894596c3455b13084bf51fc73b66c5109d136da1773629dadfb0"
+    },
+    "results/week-8/keegan/regression-20261022-001/summary.json": {
+      "bytes": 108304,
+      "sha256": "d69156ee96cf8d84878845a3c4ba4ad4c54df6bfd1dccd64adfe4e57a5cb826b"
+    }
+  },
+  "regression_tests_passed": 1085,
+  "source_files": {
+    "configs/week8_quality_validation.json": {
+      "bytes": 998,
+      "sha256": "67ef8507636c4fd2f96566bbdb653ac79852492e709dd7c805be2e1ea8552069"
+    },
+    "docs/week8-keegan-reproduction.md": {
+      "bytes": 7725,
+      "sha256": "695f15dd175ba7b341fd2ba2cb34f343f8f50e13272f3d50496e9e125c9cbb0c"
+    },
+    "docs/week8-keegan-validation.md": {
+      "bytes": 10724,
+      "sha256": "dd3477c84a94e2ece34e8d1feba730bfaacd2603378d5816955f3e7b9b6e16e6"
+    },
+    "docs/week8-quality-equivalence.md": {
+      "bytes": 4707,
+      "sha256": "238039d34c50e5b47126c2cbd9d05ef9ff1da2689ccc23d163ca0a1f13255fb0"
+    },
+    "src/python/puf_snn/quality_validation.py": {
+      "bytes": 7809,
+      "sha256": "1f0fca1880ba1d5d8463cf3ef749032d5f6857f2d20a1ddd4df9de9a0cb928a8"
+    },
+    "src/python/scripts/validate_week8_quality.py": {
+      "bytes": 13409,
+      "sha256": "3039a2d1aa2c8a26208bff6885988026726bda219f05515f74ba3bb3d0b30efc"
+    },
+    "tests/test_quality_differential.py": {
+      "bytes": 13097,
+      "sha256": "f994f6b9f318bff6e64d34f258e0f04faf5ab9a72864465fabfb5ca67762d035"
+    },
+    "tests/test_week8_quality_validation.py": {
+      "bytes": 9262,
+      "sha256": "e52c3cf2ab18e31840b324459d1ef695fc697466e8d131314eefa1c95d54db7a"
+    },
+    "tools/run_keegan_week8_checks.py": {
+      "bytes": 4697,
+      "sha256": "031b36c31252a4898ab0ac723cb5a138c8e967da6a30464bec008fdb4f1db529"
+    }
+  }
+}

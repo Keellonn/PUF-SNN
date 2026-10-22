@@ -1,0 +1,11 @@
+{
+  "accepted_windows": 1080,
+  "admitted_sessions": 360,
+  "all_inputs_predictions_decisions_and_states_match": true,
+  "matched_quality_pairs": 180,
+  "matched_recovery_pairs": 180,
+  "planned_sessions": 360,
+  "rejected_control_model_calls": 0,
+  "rejected_controls": 1080,
+  "response_reads": 720
+}

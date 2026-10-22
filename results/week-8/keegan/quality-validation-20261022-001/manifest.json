@@ -1,0 +1,49 @@
+{
+  "artifacts": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "cells.jsonl": "a5a3a5d0303f56e5bb20a6a41bc08ada8a58cab80401d9da550a39702d7c26aa",
+    "config.json": "7a049580dac50652ed514a7d51467f11d0ebd8e47b2d8d1fe06bd21416dfe17b",
+    "frozen-input-hashes.json": "0900f5725b7a50cb3518e87f46faeefc0326a4303f92407b3f9d1f9fef7af95f",
+    "preflight.json": "1adfb0be7f6577573f3d96d93dc6f28fe33bf1d987c2ee77f22c8bf6e7417b77",
+    "source-hashes.json": "c9f8129a429d894596c3455b13084bf51fc73b66c5109d136da1773629dadfb0",
+    "source-selection.json": "27276f7a181cbde5276b747aadc19846f7957806367584903e87f7f5adcc2dfa",
+    "summary.json": "5111cb70fd6d6dd99df8026c86ad6bfde1e40112e041290fa4df5fed2991e994"
+  },
+  "automatic_gc_enabled": true,
+  "base_commit": "c8a4053f8526b91dd856428fa0924d214f367106",
+  "current_source_hashes_sha256": "c9f8129a429d894596c3455b13084bf51fc73b66c5109d136da1773629dadfb0",
+  "default_changed": false,
+  "environment": {
+    "architecture": "AMD64",
+    "packages": {
+      "galois": "0.4.11",
+      "jsonschema": "4.26.0",
+      "numba": "0.67.0",
+      "numpy": "2.5.3",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "torch": "2.14.0+cpu"
+    },
+    "python": "3.13.14",
+    "system": "Windows"
+  },
+  "latency_measured": false,
+  "limitation": "Fixed validation sources and controlled correctable reads; no new accuracy, reliability, security or latency claim.",
+  "noise_reliability_measured": false,
+  "protocol": "week8-quality-validation-v1",
+  "source_commit_is_complete_identity": false,
+  "status": "PASS",
+  "summary": {
+    "accepted_windows": 1080,
+    "admitted_sessions": 360,
+    "all_inputs_predictions_decisions_and_states_match": true,
+    "matched_quality_pairs": 180,
+    "matched_recovery_pairs": 180,
+    "planned_sessions": 360,
+    "rejected_control_model_calls": 0,
+    "rejected_controls": 1080,
+    "response_reads": 720
+  },
+  "threshold_selection_executed": false,
+  "training_executed": false
+}

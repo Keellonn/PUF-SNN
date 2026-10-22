@@ -1,0 +1,12 @@
+{
+  "acquisition_policies": 2,
+  "admissions_executed_by_preflight": 0,
+  "checked_artifact_hashes": 18,
+  "configurations": 3,
+  "note": "controlled functional admissions, not noise/reliability samples or new accuracy estimates",
+  "planned_quality_pairs": 180,
+  "planned_sessions": 360,
+  "protocol": "week8-quality-validation-v1",
+  "quality_modes": 2,
+  "validation_sources": 30
+}

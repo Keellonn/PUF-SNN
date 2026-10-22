@@ -1,0 +1,20 @@
+{
+  "config_version": "week8-quality-validation-v1",
+  "frozen_config": "configs/week6_smoke.json",
+  "modes": ["reference_fraction", "candidate_dyadic"],
+  "conditions": [
+    {"name": "logistic_motion_logistic_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_logistic_regression_seed6007"},
+    {"name": "logistic_motion_forest_anomaly", "motion": "logistic_regression_seed_7_storage_refit", "anomaly": "anomaly_random_forest_seed6007"},
+    {"name": "snn32_seed7_forest_anomaly", "motion": "snn_32_seed_7", "anomaly": "anomaly_random_forest_seed6007"}
+  ],
+  "acquisition_policies": ["single-read-v1", "majority-3-v1"],
+  "source_split": "validation",
+  "source_count": 30,
+  "source_selection": "first_sorted_window_per_device_and_label",
+  "semantic_control": "position_jump:medium",
+  "controlled_read_flips": [[2, 8, 19], [2, 7, 22], [8, 7, 35]],
+  "native_threads": 1,
+  "training": false,
+  "threshold_selection": false,
+  "latency_measurement": false
+}

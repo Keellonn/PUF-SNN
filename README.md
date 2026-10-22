@@ -9,6 +9,21 @@ The project combines 2 parts:
 
 The Quest 3 doesn't give us access to a physical PUF. All PUF work in the first version is simulated.
 
+## Current validation checkpoint
+
+Keegan's October 22 Week 8 work adds behavioral-equivalence checks for the
+optional faster quality arithmetic using frozen models and both existing
+credential-recovery policies. The bounded comparison completed 360 controlled
+sessions, and the selected root-discovery regression passed 1,085 tests.
+No default was changed, and this is not a new timing, reconstruction-reliability,
+or real-headset result.
+
+- [Week 8 results and receipts](results/week-8/keegan/README.md)
+- [Optimization decision and remaining limits](docs/week8-keegan-validation.md)
+- [Reproduction instructions and frozen-input requirements](docs/week8-keegan-reproduction.md)
+
+Earlier week-specific reports remain records of their own dated checkpoints.
+
 ## Research question
 
 Can a software prototype using a simulated noisy PUF-derived session credential reject replayed, modified, or misattributed Quest 3 head-motion windows before SNN inference while meeting our attack-rejection, macro-F1-loss, and latency targets?
