@@ -1328,9 +1328,9 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Reviewed explanations of authentication versus anomaly detection, normal synthetic variation versus added sensor corruption, and the limitations of the laptop measurements.
 - Checked that the spoken explanations separated implementation progress, small functional checks, and larger reliability studies.
 
-## Thursday, October 15, 2026 - 2.52 hours
+## Thursday, October 15, 2026 - 1.25 hours
 
-### 12:50 PM - 3:21 PM - 2.52 hours
+### 12:50 PM - 2:05 PM - 1.25 hours
 
 - Presented our second project update with William during the lab meeting.
 - Explained my motion-classification and anomaly-detection results, including the conventional-model comparison, detection and false-alert rates, and remaining orientation-drift weakness.
@@ -1338,4 +1338,61 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Explained the clean-environment validation and selected-test results while retaining the limits of the shared evidence and pending headset evaluation.
 - Presented the project’s remaining priorities and distinguished current software results from future physical-headset and human-motion validation.
 - Attended the Zeeshawns presentation during the meeting.
-- Participated as a test participant in Sadman’s separate astronaut anomaly research activity.
+
+## Friday, October 16, 2026 - 1.67 hours
+
+### 1:15 PM - 1:50 PM - 0.58 hours
+
+- Joined a call with Dr. Garcia’s graduate team to discuss our project’s progress.
+- Explained our current work and results and answered questions about the project.
+- Discussed areas where the team could help and how their proposed scope would connect with our existing work.
+
+### 2:02 PM - 3:07 PM - 1.08 hours
+
+- Assisted Grace and Colin with testing their two-factor-authentication project using PPG and voice authentication
+- Encountered repeated crashes during PPG testing; the PPG component eventually worked during my testing.
+- Completed voice training and attempted voice authentication, but it did not successfully authenticate me.
+- Wasn't an official user study
+
+## Wednesday, October 21, 2026 - 1.37 hours
+
+### 8:03 PM - 9:25 PM - 1.37 hours
+
+- Reviewed Dr. Garcia's feedback and planned the week's work around validating the faster quality checks and making the results easier to reproduce.
+- Discussed the missing original timing archive with Will and reviewed what I could complete without it. Left the historical files and recorded hashes unchanged.
+- Reviewed the original fraction calculations and the faster integer calculations, including tests for normal data, malformed data, and values near the acceptance limits.
+- Reviewed the university's protocol and consent templates and Dr. Garcia's instructions for one shared protocol covering logger validation and later human-motion collection.
+
+## Thursday, October 22, 2026 - 4.77 hours
+
+### 12:55 PM - 1:45 PM - 0.83 hours
+
+- Attended the weekly lab meeting, Sadman's & Zane's presentation
+
+### 1:45 PM - 2:45 PM - 1.00 hour
+
+- Continued the Week 8 technical work in the lab.
+- Expanded the comparison between the original and faster quality checks to cover accepted data, rejected data, and receiver state changes.
+- Set up the saved-model comparison without retraining the models or changing the anomaly alert cutoffs.
+- Talked with Will about missing evidence and how we are going to reproduce eachother's progress after finishing.
+
+### 3:42 PM - 6:38 PM - 2.93 hours
+
+- Finished the quality-check tests and the controlled comparison using logistic/logistic, logistic/forest, and SNN-32/forest configurations.
+- Checked both single-read and three-read session setup. Across 360 controlled sessions, all 180 original-versus-faster pairs and all 180 downstream comparisons across recovery methods matched.
+- Checked model inputs, predictions, anomaly decisions, rejection reasons, and state changes. None of the 1,080 rejected control windows reached the models.
+- Passed the 73 focused tests and the larger set of 1,085 selected tests. The focused tests are included in that total.
+- Recorded the frozen input hashes and saved the results. Updated the Week 8 results summary, optimization decision, and reproduction instructions.
+- Kept the faster checks optional and clearly separated the new behavior checks from the earlier timing results. Independent reproduction still needs to be completed.
+- Prepared a working Word copy of the shared IRB protocol while preserving the original template. Added the planned logger checks and gentle head-movement procedures in plain language.
+- Added the proposed data fields, privacy steps, breaks, and stopping procedures. Marked details needing confirmation, including storage, retention, training, and final study arrangements.
+- Updated the IRB preparation checklist and consent starting text. The protocol and consent materials still need review and completion before submission.
+
+## Friday, October 23, 2026 - 0.63 hours
+
+### 5:00 PM - 5:38 PM - 0.63 hours
+
+- Worked on the third presentation using the current project results.
+- Prepared slide content for the quality-check comparison, optimization decision, test coverage, and IRB preparation.
+- Turned the results into clearer tables and prepared visuals for reproducibility and the two planned Quest study phases.
+- Shortened the wording and kept unfinished work clearly marked, including independent reproduction and institutional review.
