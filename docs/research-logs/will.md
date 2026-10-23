@@ -2660,3 +2660,10 @@ Verified protected reconstruction source hashes
   - Evidence validation 
   - Schema-cache optimization/benchmark
 - Finalized Week 8 research-log and hours
+
+# Thursday October, 22
+
+## 1:00pm - 1:45pm ()
+- Weekly Meeting
+- Listened to Zane's presentation
+- Listened to Sadman's presentation
