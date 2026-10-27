@@ -17,6 +17,7 @@ namespace PufSnn.QuestLogger {
         private int lastCapturedFrame = -1;
 
         public bool CaptureActive => captureActive;
+        public long ElapsedNanoseconds => (long)(clock.ElapsedTicks * (1_000_000_000.0 / Stopwatch.Frequency));
 
         private void Awake() {
             clock.Start();
@@ -80,7 +81,7 @@ namespace PufSnn.QuestLogger {
             else
                 rotation = Normalize(rotation);
 
-            long captureTimeNs = (long)(clock.ElapsedTicks * (1_000_000_000.0 / Stopwatch.Frequency));
+            long captureTimeNs = ElapsedNanoseconds;
 
             sampleBuffer.Enqueue(new RawHeadPoseSample {
                 capture_time_ns = captureTimeNs,

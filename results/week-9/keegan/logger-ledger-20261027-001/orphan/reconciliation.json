@@ -1,0 +1,98 @@
+{
+  "artifact_check_performed": true,
+  "closed": false,
+  "counts": {
+    "accepted": 0,
+    "attempted": 1,
+    "completed": 1,
+    "execution_notes": 0,
+    "not_attempted": 0,
+    "not_started": 4,
+    "pending_processing": 1,
+    "processing_failed": 0,
+    "quality_rejected": 0,
+    "recording_began_confirmed": 1,
+    "recording_began_uncertain": 0,
+    "scheduled": 5,
+    "skipped": 0,
+    "stopped": 0,
+    "unfinished_attempts": 0,
+    "unresolved_scheduled": 4
+  },
+  "issues": [
+    "unreferenced_window_records"
+  ],
+  "ledger_sha256": "7e09f58013344d8c0b5a0ea6d18627b4a22eb2faf03c35680f56d58de9c66993",
+  "participant_code": "synthetic-person",
+  "processing_version": "synthetic-unit-test-build",
+  "raw_retention": "not_saved",
+  "repeat_policy": "none",
+  "status": "INVALID",
+  "trials": [
+    {
+      "attempted": true,
+      "began": true,
+      "block_index": 1,
+      "completed": true,
+      "notes": [],
+      "prompted_task": "still",
+      "raw_sample_count": 120,
+      "repeat_of_trial_id": "",
+      "stage": "completed",
+      "trial_id": "synthetic-visit-trial-000",
+      "trial_index": 0
+    },
+    {
+      "attempted": false,
+      "began": false,
+      "block_index": 1,
+      "completed": false,
+      "notes": [],
+      "prompted_task": "look_right_return",
+      "repeat_of_trial_id": "",
+      "stage": "scheduled",
+      "trial_id": "synthetic-visit-trial-001",
+      "trial_index": 1
+    },
+    {
+      "attempted": false,
+      "began": false,
+      "block_index": 1,
+      "completed": false,
+      "notes": [],
+      "prompted_task": "look_left_return",
+      "repeat_of_trial_id": "",
+      "stage": "scheduled",
+      "trial_id": "synthetic-visit-trial-002",
+      "trial_index": 2
+    },
+    {
+      "attempted": false,
+      "began": false,
+      "block_index": 1,
+      "completed": false,
+      "notes": [],
+      "prompted_task": "shake",
+      "repeat_of_trial_id": "",
+      "stage": "scheduled",
+      "trial_id": "synthetic-visit-trial-003",
+      "trial_index": 3
+    },
+    {
+      "attempted": false,
+      "began": false,
+      "block_index": 1,
+      "completed": false,
+      "notes": [],
+      "prompted_task": "nod",
+      "repeat_of_trial_id": "",
+      "stage": "scheduled",
+      "trial_id": "synthetic-visit-trial-004",
+      "trial_index": 4
+    }
+  ],
+  "unreferenced_window_records": 1,
+  "valid_prefix_events": 4,
+  "visit_code": "synthetic-visit",
+  "window_file_sha256": "be103f47717a04f0b370d78e839edb9ad10626b26bc30f3ca0e6970be18c21b7"
+}

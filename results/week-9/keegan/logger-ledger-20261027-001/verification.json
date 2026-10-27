@@ -1,0 +1,446 @@
+{
+  "changes_during_regression": false,
+  "environment": {
+    "architecture": "AMD64",
+    "native_mode": "batchmode, nographics, EditMode; no headset or Play Mode",
+    "python": "3.13.14",
+    "system": "Windows",
+    "unity": "6000.6.1f1 (7efac9f6c10e)"
+  },
+  "existing_window_validator": {
+    "command": "python -B src/python/scripts/validate_quest_log.py FIXTURE/windows.jsonl",
+    "label": "still",
+    "passed": true,
+    "split": "validation",
+    "windows": 1
+  },
+  "focused_retry": "Initial sandbox temporary-file permission errors occurred before assertions. Unchanged tests passed with required access.",
+  "generated_utc": "2026-10-27T04:10:52.993679+00:00",
+  "limits": [
+    "Not Android/power-loss durability validation",
+    "No controller coroutine or rendered prompt timing proof",
+    "No new performance, accuracy, recovery or security-strength result",
+    "Institutional and PI readiness gates remain open"
+  ],
+  "native_baseline": {
+    "duration_seconds": 0.4202077,
+    "ended": "2026-10-27 03:47:22Z",
+    "failed": 0,
+    "local_private_xml_sha256": "6c34c215f6d28b86cdceca69c0fcc17f9a04c06e8a6e8acef4e606cf6730e936",
+    "passed": 15,
+    "result": "Passed",
+    "skipped": 0,
+    "started": "2026-10-27 03:47:22Z",
+    "tests": [
+      {
+        "name": "BinaryWindowMessageWriterTests.CompleteWindowRawBytesMatchSharedPythonFixtures",
+        "result": "Passed"
+      },
+      {
+        "name": "BinaryWindowMessageWriterTests.ScalarBytesAndLiteralTags",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterAccepts114TrackingSamplesAndRejects113",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterMatchesPythonGoldenSha256",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterRejectsNonfiniteMotionValues",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.ChangingProtectedMotionChangesCanonicalHash",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.ArtificialStreamPassesQueueInterpolationJsonlAndReload",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowAcceptsExactly95PercentTracking",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowMakesEquivalentQuaternionSignsContinuous",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowNormalizesNonUnitQuaternionInput",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowProduces120OrderedNormalizedSamples",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsMissingOrZeroOrientation",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTimestampGapAbove50Milliseconds",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTrackingBelow95Percent",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.WriterRejectsMalformedJsonlLine",
+        "result": "Passed"
+      }
+    ],
+    "total": 15
+  },
+  "native_final": {
+    "duration_seconds": 0.3912462,
+    "ended": "2026-10-27 04:03:07Z",
+    "failed": 0,
+    "local_private_xml_sha256": "12afd1eb8c1012a2f8519c616d9161fccdd9c1cca95b1834e9c643dfa11ed087",
+    "passed": 35,
+    "result": "Passed",
+    "skipped": 0,
+    "started": "2026-10-27 04:03:07Z",
+    "tests": [
+      {
+        "name": "BinaryWindowMessageWriterTests.CompleteWindowRawBytesMatchSharedPythonFixtures",
+        "result": "Passed"
+      },
+      {
+        "name": "BinaryWindowMessageWriterTests.ScalarBytesAndLiteralTags",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterAccepts114TrackingSamplesAndRejects113",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterMatchesPythonGoldenSha256",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterRejectsNonfiniteMotionValues",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.ChangingProtectedMotionChangesCanonicalHash",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.AnotherTrialCannotStartWhileTheFirstIsUnresolved",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.AppendFailurePoisonsLedgerBeforeStateOrCaptureCanAdvance",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.CompletedQualityRejectionHasNoWindowReferenceAndIsNotAStop",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.DisposingAnInterruptedLedgerDoesNotInventCompletionOrResume",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.EntirePlanIsReadableBeforeFirstTrialAndCallerMutationDoesNotChangeIt",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"participant_reported_mistake\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"observed_nonexecution\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"late_movement\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"movement_after_interval\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.InvalidPlansAndUnreviewedRepeatsAreRefused",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.InvalidTransitionsAndBackwardClockDoNotAppend",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.PlanFailureDisposesTheWriterAndCreatesNoUsableLedger",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.RecordingAuthorizationStaysOffByDefault",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.SavedWindowFollowedByLedgerFailureRemainsAnUnclosedOrphanCase",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.StopAccountsForStartedAndUnstartedTrials",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.SyntheticMixedVisitExportsForTheIndependentValidator",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ThreeBlocksAreBalancedBoundedAndSeeded",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.TornWindowFileIsPreservedAndRefused",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.UnsafeReceiptCannotTurnACompletedTrialIntoAnAcceptance",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.WindowReceiptMatchesExactBytesAndOffset",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.ArtificialStreamPassesQueueInterpolationJsonlAndReload",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowAcceptsExactly95PercentTracking",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowMakesEquivalentQuaternionSignsContinuous",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowNormalizesNonUnitQuaternionInput",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowProduces120OrderedNormalizedSamples",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsMissingOrZeroOrientation",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTimestampGapAbove50Milliseconds",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTrackingBelow95Percent",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.WriterRejectsMalformedJsonlLine",
+        "result": "Passed"
+      }
+    ],
+    "total": 35
+  },
+  "native_intermediate": {
+    "duration_seconds": 0.6059883,
+    "ended": "2026-10-27 03:54:45Z",
+    "failed": 0,
+    "local_private_xml_sha256": "ab7506f0bf245b7bc7e72e2f68b34b49dfce000ad3cbf1d612476c3a46f7a106",
+    "passed": 32,
+    "result": "Passed",
+    "skipped": 0,
+    "started": "2026-10-27 03:54:45Z",
+    "tests": [
+      {
+        "name": "BinaryWindowMessageWriterTests.CompleteWindowRawBytesMatchSharedPythonFixtures",
+        "result": "Passed"
+      },
+      {
+        "name": "BinaryWindowMessageWriterTests.ScalarBytesAndLiteralTags",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterAccepts114TrackingSamplesAndRejects113",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterMatchesPythonGoldenSha256",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.CanonicalWriterRejectsNonfiniteMotionValues",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.CanonicalWindowMessageWriterTests.ChangingProtectedMotionChangesCanonicalHash",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.AppendFailurePoisonsLedgerBeforeStateOrCaptureCanAdvance",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.CompletedQualityRejectionHasNoWindowReferenceAndIsNotAStop",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.DisposingAnInterruptedLedgerDoesNotInventCompletionOrResume",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.EntirePlanIsReadableBeforeFirstTrialAndCallerMutationDoesNotChangeIt",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"participant_reported_mistake\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"observed_nonexecution\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"late_movement\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ExecutionNotesDoNotChangeThePromptOrOutcome(\"movement_after_interval\")",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.InvalidPlansAndUnreviewedRepeatsAreRefused",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.InvalidTransitionsAndBackwardClockDoNotAppend",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.PlanFailureDisposesTheWriterAndCreatesNoUsableLedger",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.RecordingAuthorizationStaysOffByDefault",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.StopAccountsForStartedAndUnstartedTrials",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.SyntheticMixedVisitExportsForTheIndependentValidator",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.ThreeBlocksAreBalancedBoundedAndSeeded",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.TornWindowFileIsPreservedAndRefused",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestTrialLedgerTests.WindowReceiptMatchesExactBytesAndOffset",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.ArtificialStreamPassesQueueInterpolationJsonlAndReload",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowAcceptsExactly95PercentTracking",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowMakesEquivalentQuaternionSignsContinuous",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowNormalizesNonUnitQuaternionInput",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowProduces120OrderedNormalizedSamples",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsMissingOrZeroOrientation",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTimestampGapAbove50Milliseconds",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.CreateWindowRejectsTrackingBelow95Percent",
+        "result": "Passed"
+      },
+      {
+        "name": "PufSnn.QuestLogger.Tests.QuestWindowProcessorTests.WriterRejectsMalformedJsonlLine",
+        "result": "Passed"
+      }
+    ],
+    "total": 32
+  },
+  "native_mixed_python_reconciliation": {
+    "counts": {
+      "accepted": 1,
+      "attempted": 3,
+      "completed": 2,
+      "execution_notes": 0,
+      "not_attempted": 1,
+      "not_started": 2,
+      "pending_processing": 0,
+      "processing_failed": 0,
+      "quality_rejected": 1,
+      "recording_began_confirmed": 3,
+      "recording_began_uncertain": 0,
+      "scheduled": 5,
+      "skipped": 1,
+      "stopped": 1,
+      "unfinished_attempts": 0,
+      "unresolved_scheduled": 0
+    },
+    "issues": [],
+    "status": "COMPLETE"
+  },
+  "native_orphan_python_reconciliation": {
+    "counts": {
+      "accepted": 0,
+      "attempted": 1,
+      "completed": 1,
+      "execution_notes": 0,
+      "not_attempted": 0,
+      "not_started": 4,
+      "pending_processing": 1,
+      "processing_failed": 0,
+      "quality_rejected": 0,
+      "recording_began_confirmed": 1,
+      "recording_began_uncertain": 0,
+      "scheduled": 5,
+      "skipped": 0,
+      "stopped": 0,
+      "unfinished_attempts": 0,
+      "unresolved_scheduled": 4
+    },
+    "expected_exit": 1,
+    "issues": [
+      "unreferenced_window_records"
+    ],
+    "status": "INVALID"
+  },
+  "python_focused": {
+    "errors": 0,
+    "failures": 0,
+    "included_in_root_1102": true,
+    "passed": 17
+  },
+  "scope": "Local Windows software tests with artificial poses; no human collection or independent-person reproduction."
+}

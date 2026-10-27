@@ -1,0 +1,30 @@
+# Preserve bytes used by the Week 9 logger-ledger evidence.
+# Source rules retain the line endings observed during the recorded tests.
+configs/pilot.json text eol=crlf
+schemas/quest-window.schema.json text eol=crlf
+src/python/puf_snn/trial_ledger.py text eol=lf
+src/python/scripts/validate_trial_ledger.py text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/BinaryWindowMessageWriter.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/CanonicalWindowMessageWriter.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/HeadPoseCapture.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialController.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialLedger.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialLedger.cs.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowModels.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowProcessor.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowWriter.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/RawPoseBuffer.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/BinaryWindowMessageWriterTests.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/CanonicalWindowMessageWriterTests.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/QuestTrialLedgerTests.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/QuestTrialLedgerTests.cs.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/QuestWindowProcessorTests.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/TutorialInfo/Editor/ReadmeEditor.cs text eol=crlf
+src/quest-logger/QuestLogger/Assets/TutorialInfo/Readme.cs text eol=crlf
+src/quest-logger/QuestLogger/Packages/manifest.json text eol=lf
+src/quest-logger/QuestLogger/Packages/packages-lock.json text eol=lf
+src/quest-logger/QuestLogger/ProjectSettings/ProjectVersion.txt text eol=lf
+tests/test_trial_ledger.py text eol=lf
+
+# Exact UTF-8 fixture line bytes, offsets and receipt hashes are significant.
+results/week-9/keegan/logger-ledger-20261027-001/** -text

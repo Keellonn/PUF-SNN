@@ -67,7 +67,14 @@ A window is rejected when:
 - fewer than 114 of 120 resampled poses are valid; or
 - processing cannot construct the required output.
 
-Rejected windows are currently dropped from the classifier JSONL file and reported with a Unity warning containing the trial ID and reason. They are not repaired or silently retained. A later authenticated audit-record layer should store structured acceptance/rejection records. Tier-2 synthetic anomaly copies should be created from already accepted clean source windows, remain in the source split, and be reported separately so capture-quality rejection is not confused with anomaly detection.
+Rejected windows do not enter the classifier JSONL file. The controller now saves
+a separate coded trial ledger with the full schedule, quality refusal reasons,
+skips, stops and processing failures. It does not save unresampled source poses.
+This retention choice is a proposal for PI review before research collection.
+See [trial-ledger format, counts and checks](../../docs/quest-trial-ledger.md).
+Tier-2 synthetic anomaly copies should be created from already accepted clean
+source windows, remain in the source split, and be reported separately so
+capture-quality rejection is not confused with anomaly detection.
 
 ## Trial process
 
@@ -76,7 +83,14 @@ Each trial follows this order:
 1. show the motion label for 1 second
 2. record the motion for 2 seconds
 3. show a rest prompt for 1 second
-4. continue with the next seeded random label
+4. continue with the next task in the saved, seeded schedule
+
+The schedule is balanced within each configured block and saved before capture.
+There is a staff-controlled break between blocks, a logger-session time cap, and
+public skip/stop controls. There are no automatic repeats. These controls still
+need scene wiring and actual-build checks. The existing one-block software
+default is not a study procedure. Phase 2 needs the readiness review described in
+[the Week 9 checklist](../../docs/week9-logger-readiness.md).
 
 The five labels are:
 
@@ -90,9 +104,18 @@ The five labels are:
 
 ## Output
 
-Every accepted window follows `schemas/quest-window.schema.json` and is appended as one JSON object per line. The default path is:
+Every accepted window follows `schemas/quest-window.schema.json` and is appended
+as one JSON object per line. The trial controller uses visit-specific paths:
 
-`Application.persistentDataPath/puf-snn/quest-windows.jsonl`
+`Application.persistentDataPath/puf-snn/<visit_code>-windows.jsonl`
+
+`Application.persistentDataPath/puf-snn/<visit_code>-trials.jsonl`
+
+Existing visit files are refused. A ledger write failure stops the controller;
+partial records are preserved for review. Saved-window receipts include exact
+line hashes and file offsets. The standalone writer still defaults to
+`quest-windows.jsonl` when used without the trial controller. Neither these
+hashes nor the trial ledger implements authentication.
 
 The logger creates sensor and experiment data. It does not implement PUF credential reconstruction, authentication, replay prevention, or the shared authenticated-message envelope.
 
@@ -116,7 +139,18 @@ These tests use artificial raw poses and do not require a headset. They verify s
 
 After an authorized JSONL file is copied from the headset, validate it from the repository root with:
 
-`python src/python/scripts/validate_quest_log.py path/to/quest-windows.jsonl`
+`python src/python/scripts/validate_quest_log.py path/to/<visit_code>-windows.jsonl`
+
+Also reconcile the matching trial ledger:
+
+`python src/python/scripts/validate_trial_ledger.py path/to/<visit_code>-trials.jsonl`
+
+This second command is read-only and reports incomplete/corrupt accounting,
+missing references and orphan windows. It does not replace window validation.
+The Week 9 native ledger tests cover plans, transitions, refusals, write failures,
+notes, exact receipts and interrupted files. The separate Python tests cover
+reconciliation and denominator handling. [Current evidence](../../results/week-9/keegan/README.md)
+uses synthetic inputs only.
 
 ## Before an authorized headset recording
 

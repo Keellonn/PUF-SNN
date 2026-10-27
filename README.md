@@ -11,6 +11,16 @@ The Quest 3 doesn't give us access to a physical PUF. All PUF work in the first 
 
 ## Current validation checkpoint
 
+October 27 Week 9 work adds a durable trial ledger to the Quest controller and
+a read-only Python reconciler, tested with artificial poses. The ledger keeps
+rejected, skipped, stopped and interrupted trials in the accounting. Recording
+remains disabled by default; headset readiness and institutional review are
+still pending. No new model, recovery-reliability or timing result is claimed.
+
+- [Week 9 logger evidence](results/week-9/keegan/README.md)
+- [Readiness checklist and remaining weekly work](docs/week9-logger-readiness.md)
+- [Ledger behavior, denominators and commands](docs/quest-trial-ledger.md)
+
 Keegan's October 22 Week 8 work adds behavioral-equivalence checks for the
 optional faster quality arithmetic using frozen models and both existing
 credential-recovery policies. The bounded comparison completed 360 controlled

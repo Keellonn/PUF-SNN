@@ -5,6 +5,7 @@ recording stays disabled until the authorized-recording box is explicitly enable
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace PufSnn.QuestLogger {
@@ -17,21 +18,30 @@ namespace PufSnn.QuestLogger {
         [SerializeField] private string deviceId = "quest-02";
         [SerializeField] private string sessionId = "quest-02-session-01";
         [SerializeField] private string split = "train";
+        [SerializeField] private string participantCode = "";
+        [SerializeField] private string visitCode = "";
+        [SerializeField] private string processingVersion = "";
+        [SerializeField] private int blockCount = 1;
+        [SerializeField] private int maximumScheduledTrials = 75;
+        [SerializeField] private float maximumSessionSeconds = 1800.0f;
         [SerializeField] private int trialsPerClass = 1;
         [SerializeField] private int randomSeed = 2026;
         [SerializeField] private float promptSeconds = 1.0f;
         [SerializeField] private float actionSeconds = 2.0f;
         [SerializeField] private float restSeconds = 1.0f;
 
-        private static readonly string[] Labels = {
-            "nod",
-            "shake",
-            "look_left_return",
-            "look_right_return",
-            "still",
-        };
-
         private Coroutine sessionRoutine;
+        private QuestTrialLedger ledger;
+        private LedgerPlan plan;
+        private string activeTrialId = "";
+        private string endReason = "schedule_finished";
+        private bool skipRequested;
+        private bool continueRequested;
+        private long sessionStart;
+
+        private void OnDisable() { StopWithReason("component_disabled"); }
+        private void OnApplicationQuit() { StopWithReason("application_quit"); }
+        private void OnApplicationPause(bool paused) { if (paused) StopWithReason("application_paused"); }
 
         private void Start() {
             if (startOnPlay) {
@@ -40,7 +50,7 @@ namespace PufSnn.QuestLogger {
         }
 
         public void StartTrialSession() {
-            if (sessionRoutine != null) {
+            if (sessionRoutine != null || ledger != null) {
                 Debug.LogWarning("a Quest logger session is already running");
                 return;
             }
@@ -55,10 +65,34 @@ namespace PufSnn.QuestLogger {
                 return;
             }
 
-            sessionRoutine = StartCoroutine(RunSession());
+            try {
+                if (actionSeconds != 2.0f || promptSeconds <= 0 || restSeconds < 0 ||
+                    !IsFinite(promptSeconds) || !IsFinite(restSeconds) ||
+                    !IsFinite(maximumSessionSeconds) || maximumSessionSeconds <= 0)
+                    throw new System.ArgumentException("Use a two-second action and finite, valid timing limits.");
+                plan = QuestTrialLedger.BuildPlan(participantCode, visitCode, deviceId, sessionId,
+                    processingVersion, blockCount, trialsPerClass, randomSeed, maximumScheduledTrials);
+                windowWriter.PrepareVisit(visitCode);
+                plan.window_file_name = Path.GetFileName(windowWriter.OutputPath);
+                string path = Path.Combine(Path.GetDirectoryName(windowWriter.OutputPath), visitCode + "-trials.jsonl");
+                ledger = QuestTrialLedger.Create(path, plan, () => headPoseCapture.ElapsedNanoseconds);
+                sessionStart = headPoseCapture.ElapsedNanoseconds;
+                endReason = "schedule_finished";
+                sessionRoutine = StartCoroutine(RunSession());
+            } catch (System.Exception error) {
+                endReason = "setup_failed";
+                FinishVisit();
+                Debug.LogError("Logger setup refused: " + error.Message);
+            }
         }
 
         public void StopTrialSession() {
+            StopWithReason("operator_stop");
+        }
+
+        private void StopWithReason(string reason) {
+            if (sessionRoutine == null && ledger == null) return;
+            endReason = reason;
             if (sessionRoutine != null) {
                 StopCoroutine(sessionRoutine);
                 sessionRoutine = null;
@@ -68,66 +102,127 @@ namespace PufSnn.QuestLogger {
                 headPoseCapture.StopCapture();
             }
 
+            FinishVisit();
             Debug.Log("Quest logger session stopped");
         }
 
         private IEnumerator RunSession() {
-            // this runs every label through prompt, capture, and rest
-            List<string> schedule = BuildSchedule();
-
-            for (int sequenceNumber = 0; sequenceNumber < schedule.Count; sequenceNumber++) {
-                string label = schedule[sequenceNumber];
-                ShowPrompt("prepare: " + label);
-                yield return new WaitForSecondsRealtime(promptSeconds);
-
-                ShowPrompt("record: " + label);
-                headPoseCapture.BeginCapture();
-                yield return new WaitForSecondsRealtime(actionSeconds);
-                List<RawHeadPoseSample> rawSamples = headPoseCapture.StopCapture();
-
-                string trialId = string.Format("{0}-{1}-{2:D3}", sessionId, label, sequenceNumber);
-
-                QuestTrialMetadata metadata = new QuestTrialMetadata {
-                    device_id = deviceId,
-                    session_id = sessionId,
-                    trial_id = trialId,
-                    split = split,
-                    label = label,
-                    sequence_number = sequenceNumber,
-                };
-
-                if (QuestWindowProcessor.TryCreateWindow(rawSamples, metadata, out QuestWindowRecord record, out string rejectionReason)) {
-                    windowWriter.WriteWindow(record);
-                } else {
-                    Debug.LogWarning("rejected " + trialId + ": " + rejectionReason);
+            try {
+                int currentBlock = plan.trials[0].block_index;
+                foreach (LedgerTrial trial in plan.trials) {
+                    if (trial.block_index != currentBlock) {
+                        activeTrialId = "";
+                        continueRequested = false;
+                        ShowPrompt("break: continue when comfortable");
+                        while (!Expired && !continueRequested) yield return null;
+                        currentBlock = trial.block_index;
+                    }
+                    if (Expired) { endReason = "session_time_limit"; break; }
+                    activeTrialId = trial.trial_id;
+                    skipRequested = false;
+                    if (!TryRecord("prompted")) yield break;
+                    ShowPrompt("prepare: " + trial.prompted_task);
+                    long start = headPoseCapture.ElapsedNanoseconds;
+                    while (!Expired && !skipRequested && headPoseCapture.ElapsedNanoseconds - start < promptSeconds * 1_000_000_000.0)
+                        yield return null;
+                    if (Expired) { endReason = "session_time_limit"; break; }
+                    if (skipRequested) {
+                        if (!TryRecord("skipped", "participant_skip")) yield break;
+                        continue;
+                    }
+                    ShowPrompt("record: " + trial.prompted_task);
+                    // Persist intent before capture; an unconfirmed intent remains uncertain.
+                    if (!TryRecord("start_requested")) yield break;
+                    bool began = false;
+                    try { headPoseCapture.BeginCapture(); began = true; }
+                    catch (System.Exception error) { Debug.LogError("Capture start failed: " + error.Message); }
+                    if (!began) { endReason = "capture_start_failed"; yield break; }
+                    if (!TryRecord("recording_started")) yield break;
+                    start = headPoseCapture.ElapsedNanoseconds;
+                    while (!Expired && !skipRequested && headPoseCapture.ElapsedNanoseconds - start < actionSeconds * 1_000_000_000.0)
+                        yield return null;
+                    List<RawHeadPoseSample> raw = headPoseCapture.StopCapture();
+                    if (Expired || skipRequested) {
+                        if (!TryRecord("stopped", Expired ? "session_time_limit" : "participant_skip_during_recording")) yield break;
+                        if (Expired) { endReason = "session_time_limit"; break; }
+                    } else {
+                        if (!TryRecord("completed", rawSampleCount: raw.Count)) yield break;
+                        if (!ProcessAndSave(trial, raw)) yield break;
+                    }
+                    ShowPrompt("rest");
+                    start = headPoseCapture.ElapsedNanoseconds;
+                    while (!Expired && headPoseCapture.ElapsedNanoseconds - start < restSeconds * 1_000_000_000.0)
+                        yield return null;
                 }
-
-                ShowPrompt("rest");
-                yield return new WaitForSecondsRealtime(restSeconds);
-            }
-
-            sessionRoutine = null;
-            ShowPrompt("session complete");
+                if (Expired) endReason = "session_time_limit";
+                ShowPrompt("session ended");
+            } finally { FinishVisit(); }
         }
 
-        private List<string> BuildSchedule() {
-            // this creates a repeatable shuffled label order
-            List<string> schedule = new List<string>();
+        public void SkipCurrentTrial() { if (!string.IsNullOrEmpty(activeTrialId)) skipRequested = true; }
+        public void ContinueAfterBreak() { continueRequested = true; }
 
-            for (int repetition = 0; repetition < trialsPerClass; repetition++) {
-                schedule.AddRange(Labels);
+        public void LogExecutionNote(string reasonCode) {
+            if (ledger == null || string.IsNullOrEmpty(activeTrialId)) return;
+            try { ledger.Record(activeTrialId, "execution_note", reasonCode); }
+            catch (System.Exception error) {
+                Debug.LogWarning("Execution note refused: " + error.Message);
+                if (ledger != null && ledger.Faulted) StopWithReason("ledger_unavailable");
             }
+        }
 
-            System.Random random = new System.Random(randomSeed);
+        private bool Expired => headPoseCapture.ElapsedNanoseconds - sessionStart >= maximumSessionSeconds * 1_000_000_000.0;
+        private static bool IsFinite(float value) { return !float.IsNaN(value) && !float.IsInfinity(value); }
 
-            for (int index = schedule.Count - 1; index > 0; index--) {
-                int replacementIndex = random.Next(index + 1);
-                string current = schedule[index];
-                schedule[index] = schedule[replacementIndex];
-                schedule[replacementIndex] = current;
+        private bool ProcessAndSave(LedgerTrial trial, List<RawHeadPoseSample> raw) {
+            QuestTrialMetadata metadata = new QuestTrialMetadata {
+                device_id = deviceId, session_id = sessionId, trial_id = trial.trial_id,
+                split = split, label = trial.prompted_task, sequence_number = trial.trial_index
+            };
+            try {
+                if (QuestWindowProcessor.TryCreateWindow(raw, metadata, out QuestWindowRecord record, out string reason))
+                    return TryRecord("accepted", receipt: windowWriter.WriteWindowWithReceipt(record));
+                return TryRecord("rejected", RejectionCode(reason));
+            } catch (System.Exception error) {
+                endReason = "processing_or_window_write_failed";
+                if (ledger != null && !ledger.Faulted) TryRecord("processing_failed", endReason);
+                Debug.LogError("Processing stopped: " + error.Message);
+                return false;
             }
+        }
 
-            return schedule;
+        private bool TryRecord(string type, string reason = "", int rawSampleCount = -1, WindowWriteReceipt receipt = null) {
+            try { ledger.Record(activeTrialId, type, reason, rawSampleCount, receipt); return true; }
+            catch (System.Exception error) {
+                endReason = "ledger_unavailable";
+                Debug.LogError("Ledger unavailable; recording stops: " + error.Message);
+                return false;
+            }
+        }
+
+        private void FinishVisit() {
+            if (headPoseCapture != null && headPoseCapture.CaptureActive) headPoseCapture.StopCapture();
+            QuestTrialLedger finishing = ledger;
+            ledger = null;
+            sessionRoutine = null;
+            activeTrialId = "";
+            if (finishing == null) return;
+            try { if (!finishing.Faulted && !finishing.Closed) finishing.EndVisit(endReason); }
+            catch (System.Exception error) { Debug.LogError("Visit remains incomplete: " + error.Message); }
+            finally { finishing.Dispose(); }
+        }
+
+        private static string RejectionCode(string reason) {
+            switch (reason) {
+                case "the trial contains fewer than two raw samples": return "too_few_source_samples";
+                case "raw timestamps are not strictly increasing": return "source_timestamp_order";
+                case "a raw timestamp gap exceeds 50 ms": return "source_gap_over_limit";
+                case "raw samples do not cover the final 60 Hz target time": return "source_time_coverage";
+                case "a raw pose contains a non-finite position or orientation": return "nonfinite_source_pose";
+                case "a raw pose has a missing or zero orientation": return "invalid_source_orientation";
+                case "fewer than 95 percent of resampled poses have valid tracking": return "tracking_coverage";
+                default: return "window_processor_refusal";
+            }
         }
 
         private void ShowPrompt(string message) {

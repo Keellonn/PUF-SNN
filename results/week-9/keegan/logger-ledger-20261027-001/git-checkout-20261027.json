@@ -1,0 +1,23 @@
+{
+  "scope": "Post-test local Git checkout packaging check; no new scientific result or independent-person reproduction.",
+  "method": "Temporary repository index and checkout-index; no commit, push or changes to the project index.",
+  "git_version": "git version 2.53.0.windows.3",
+  "attributes_sha256": "3e260b50f0fafbbe7b1962f983651897b3567947089b1c9e35ba2d568274e9ae",
+  "original_source_and_fixture_bytes_unchanged": true,
+  "outcomes": [
+    {
+      "core_autocrlf": "true",
+      "verified_file_count": 29,
+      "hash_mismatches": [],
+      "mixed_status": "COMPLETE",
+      "orphan_status": "INVALID"
+    },
+    {
+      "core_autocrlf": "false",
+      "verified_file_count": 29,
+      "hash_mismatches": [],
+      "mixed_status": "COMPLETE",
+      "orphan_status": "INVALID"
+    }
+  ]
+}
