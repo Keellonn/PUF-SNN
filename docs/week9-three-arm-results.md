@@ -4,16 +4,14 @@
 
 This is a retrospective analysis of the existing exploratory pilot, not a new Week 9 experiment. No experimental execution or implementation change was performed for this report.
 
-## 1. Executive Summary
-
+## Executive Summary
 The October 20, 2026 software pilot compared three ways to obtain the same enrolled credential: one noisy PUF reading, three readings with majority voting, and trusted retrieval of a provisioned credential. Each source fed the same independent credential verifier, admission service, mutual handshake, authenticated-window verifier, and recording-consumer release boundary. The allocation comprised 50 matched trial-condition cells and 150 arm attempts on one simulated device.
 
 Single-Read established 41/50 sessions (82%), Majority-3 established 45/50 (90%), and Stored-Provisioned established 50/50 (100%). All PUF reconstruction failures occurred under independent stress. Majority-3 supplied four additional successful sessions there; the other four conditions produced no observed session failures in either PUF arm. One Single-Read candidate had valid format but the wrong credential. Independent verification rejected it before session-key derivation or consumer release.
 
 Majority-3 increased median acquisition cost from 0.244 to 0.693 ms while retaining one BCH decode per attempt. Across the pilot, 136 authenticated windows led to completed authorized recording releases. These descriptive observations do not establish statistical superiority, adversarial rejection rates, physical PUF security, or SNN performance. Replicated populations, controlled timing, and explicit adversarial tests remain necessary.
 
-## 2. Experimental Design and Trust Assumptions
-
+## Experimental Design and Trust Assumptions
 The [executed configuration][config], [trial plan][plan], [enrollment record][enrollments], and [frozen methodology][frozen-methodology] define three credential sources:
 
 - **Single-Read** (`single-read-v1`): one noisy 64-bit response, BCH(63,36,t=5) reconstruction, independent verification, then downstream authentication.
@@ -41,8 +39,7 @@ A uniform common-mode offset cancels in a pairwise frequency comparison: `(f_i+C
 
 Six arm permutations cycle with condition/device offsets, then trial blocks are deterministically shuffled. Master/schedule seeds are 2026101901/2026101902; measurement randomness is indexed independently of policy. Handshake entropy remains OS-random and unmatched. No retries occurred.
 
-## 3. Reconstruction Reliability
-
+## Reconstruction Reliability
 The [attempt records][attempts] preserve **C**: correct credential; **D**: decoder-declared failure; **I**: invalid format/padding; and **W**: wrong valid-format credential. These partition completed PUF reconstructions. Success is C/n; reconstruction false-rejection rate (FRR) is (D+I+W)/n. W is a reconstruction failure despite passing format validation. Condition labels below abbreviate the exact names in Section 2.
 
 | Condition | Arm | Attempts | C | D | I | W | Success | Reconstruction FRR |
@@ -62,8 +59,7 @@ The [attempt records][attempts] preserve **C**: correct credential; **D**: decod
 
 Every condition-arm row sums to exactly 10. All observed PUF reconstruction failures occurred in independent stress. Single-Read performed 50 readings and 50 runtime decodes; Majority-3 performed 150 readings and 50 decodes. Stored retrieval succeeded 10/10 per condition, 50/50 overall, with no unavailable or malformed result. Stored reconstruction and decode durations are inapplicable/null, not BCH successes or measured zero-cost reconstructions.
 
-## 4. Independent Verification and Admission Accounting
-
+## Independent Verification and Admission Accounting
 Reconstruction, credential verification, local admission, session activation, window acceptance, and recording release are successive stages, not interchangeable success definitions.
 
 | Stage or outcome | Single-Read | Majority-3 | Stored |
@@ -109,8 +105,7 @@ The sole W candidate is [attempts.jsonl line 110][wrong-attempt], execution inde
 
 These outcomes are directly recorded. The [frozen sender control flow][session-source] and [pipeline establishment path][pipeline-source] explain the ordering: D/I stop before credential verification; refused admission stops before request emission and handshake. Runtime truth classification distinguishes C from W without granting authority. Consequently, decoder completion alone is not evidence of a correct or admitted credential.
 
-## 5. Matched Reliability Comparison
-
+## Matched Reliability Comparison
 The comparison joins original records by `trial_id`, retaining the same condition/device/trial identity. Difference means Majority-3 session success minus Single-Read session success, in percentage points (pp).
 
 | Condition | Pairs | Both succeeded | Both failed | Only Single-Read | Only Majority-3 | Single-Read success | Majority-3 success | Difference |
@@ -124,8 +119,7 @@ The comparison joins original records by `trial_id`, retaining the same conditio
 
 Every additional Majority-3 success occurred under independent stress, at indices 0, 3, 4, and 8. Both succeeded at index 9; both failed at 1, 2, 5, 6, and 7. The aggregate difference is four additional sessions in 50 matched cells. These are observed differences, not established population effects. One population/device does not supply independent device-population replication; the three readings and repeated controls cannot serve as replacement independent units. No formal significance test or confidence interval is claimed.
 
-## 6. Authentication and Release Boundary
-
+## Authentication and Release Boundary
 | Recorded boundary | Single-Read | Majority-3 | Stored | Total |
 |---|---:|---:|---:|---:|
 | Established sessions | 41 | 45 | 50 | 136 |
@@ -142,8 +136,7 @@ All 136 release entries followed accepted authenticated windows; all completed. 
 
 Zero unauthorized-release violations were observed in the pilot's recorded paths. This experiment does not establish an adversarial unauthorized-release rejection rate.
 
-## 7. Stage-Level Processing Overhead
-
+## Stage-Level Processing Overhead
 The [frozen instrumentation][runtime-source] records `perf_counter_ns` spans, converted here to milliseconds (ns/1,000,000). The [frozen quantile function][analysis-source] linearly interpolates sorted samples at `(n−1)*p` (type 7). The table reports per-attempt spans; authorization-exclusive subtracts its immediate verification child. Other listed spans are inclusive.
 
 | Arm | Stage | n | Median ms | p95 ms | Maximum ms | Measurement boundary |
@@ -182,8 +175,7 @@ The first measured BCH decode, Majority-3/Common trial 1 at execution index 1, t
 
 The profile is a cold-process run with zero harness warmup, not a new process for every session. First-window timings concern each fresh session, not recurring-window throughput. Enrollment, provisioning, endpoint setup, shared-noise preparation, template construction, and model loading are excluded. Instrumentation adds overhead; prior process/package caches and OS variation remain possible influences. These workstation measurements separate setup from window processing and provide no complete real-inference latency estimate. The historical resource/schema-cache benchmark is a separate experiment and supplies no per-authentication measurement here.
 
-## 8. Evidence Reconciliation and Provenance
-
+## Evidence Reconciliation and Provenance
 The authoritative bundle is `results/week-8/will/three-arm-auth-v1/nonformal/week8-three-arm-auth-v1-nonformal-20261020-001/`, abbreviated **B**. Historical semantics come from `B/source/`, rather than current HEAD.
 
 | Provenance field | Value |
@@ -204,8 +196,7 @@ The [original validation receipt][validation] reports 200 experimental PUF readi
 
 The current [methodology](week8-three-arm-auth-methodology.md) and [research log](research-logs/will.md#week-8-three-arm-authentication-pilot-and-resource-optimization) provide context, not replacements for frozen evidence. The bundle lacks archived test-execution receipts. `Week 8 Research Feedback.txt` was not found in the accessible locations searched and was not used as evidence.
 
-## 9. Scientific Interpretation and Limitations
-
+## Scientific Interpretation and Limitations
 **Reliability and cost.** The observed Majority-3 advantage is confined to independent stress in this pilot. Additional readings increased acquisition cost while preserving a single decode. Stored demonstrates the contribution of source acquisition/reconstruction under trusted-storage assumptions; it does not establish a hardware security ordering.
 
 **Correlation.** At rho=0.50 and 0.90, sigma=0.10, both PUF arms succeeded 10/10. Single-Read also succeeded 10/10 at nominal noise, leaving no observed nominal reliability benefit whose attenuation could be measured. Shared differential disturbance may reduce voting's benefit, but quantifying that mechanism requires operation near a failure boundary and replication.
@@ -214,8 +205,7 @@ The current [methodology](week8-three-arm-auth-methodology.md) and [research log
 
 **Generality and timing.** One simulated population/device, idealized enrollment, a 32-bit pilot credential, synthetic stationary motion, and recording callbacks bound the conclusions. Timing is descriptive of this instrumented workload/environment, including first-use effects and conditional survivors. Neither percentages nor latency should be generalized to physical Quest, FPGA, or ASIC PUF implementations, production key security, or trained-model performance.
 
-## 10. Remaining Work and Formal-Study Connection
-
+## Remaining Work and Formal-Study Connection
 The pilot motivates a controlled differential correlated-noise study with repeated simulated populations/devices and conditions near a reconstruction failure boundary. Prerequisites include population-aware uncertainty and paired estimands, controlled timing replication with explicit cold/warmed and recurring-window protocols, actual inference-call measurements, and explicit adversarial unauthorized-release testing with identified denominators. Full-study runtime, storage, and peak-memory feasibility, frozen source/configuration/environment records, test receipts, and researcher/faculty approval remain necessary. The historical provenance question also remains open. The proposed 90,000-attempt study is neither executed nor authorized by this retrospective report.
 
 ## Appendix A. Condition-Level Timing

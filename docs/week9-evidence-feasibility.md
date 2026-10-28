@@ -1,17 +1,15 @@
-# Week 9 — Evidence, Resource Feasibility, and Reproducibility
+# Week 9 Evidence, Resource Feasibility, and Reproducibility
 
-Prepared October 28, 2026, from Tasks 3A–3C and preserved research evidence. This is a retrospective report: no experiment, test, benchmark, replay audit, or model inference was executed for its preparation. Observed results, source-derived projections, and unresolved questions are distinguished below.
+Prepared October 28, 2026, from Tasks 3A–3C and preserved research evidence. This is a retrospective report: no experiment, test, benchmark, replay audit, or model inference was executed for its preparation. THe observed results, source-derived projections, and unresolved questions are distinguished below.
 
-## 1 — Executive Summary
-
+## Executive Summary
 The October 20 three-arm authentication pilot preserves 150 completed attempts and numerically reconciled results. Single-Read, Majority-3, and Stored-Provisioned established 41/50, 45/50, and 50/50 sessions respectively. Its 136 authorized releases invoked recording callbacks, not trained models. Independent inspection verified the declared evidence and frozen-source hashes; reconciliation of those saved records is not another experimental execution. [Pilot results][pilot-results]
 
 Two October 21 resource-profiling executions show that caching schema preparation reduced the 150-attempt workflow from 142.875 to 48.734 seconds: a 65.9% observed reduction and approximately 2.93× speedup. All required instance validations remained active. This improved experiment-harness overhead, not PUF acquisition or inference algorithms. Full-scale memory and completion time remain unqualified. [Profiling receipts][resource-baseline] [and comparison][resource-optimized]
 
 Preserved Week 6 research already executed and directly timed simulated Single-Read authentication through saved conventional/SNN/anomaly inference. Keegan’s October 22 controlled comparison additionally supports selected functional-output agreement across quality implementations and recovery policies, without measuring latency or noisy-PUF reliability. These complementary workloads cannot be pooled. Independent experimental reproduction, unresolved provenance records, formal-scale resource qualification, and faculty approval remain outstanding. [Timing evidence][fresh-manifest]; [functional evidence][quality-summary]
 
-## 2 — Experiment and Evidence Scope
-
+## Experiment and Evidence Scope
 An attempt is a credential-source/authentication invocation; only a successful establishment creates an active session. Accepted windows can produce composite releases, each invoking preprocessing, motion, and anomaly callbacks. These counts are different denominators. Reconciliation repeats deterministic checks on saved evidence and adds no experimental observations.
 
 | Preserved workload | Allocation and outcomes | PUF source | Downstream consumer and scope |
@@ -27,9 +25,8 @@ The original pilot’s [source manifest][pilot-source] identifies execution as `
 
 Research logs provide chronology and researcher attribution. Execution receipts, records, and source identities determine the narrower claims in this report.
 
-## 3 — Resource Optimization
-
-**Observed:** both October 21 sessions were accepted by the profiler. The authoritative sidecars are `tmp/week8-three-arm-resource-profile-v1/first-20261021-01/` and `tmp/week8-three-arm-resource-profile-v1/cachecmp-20261021-01/`. Their [baseline][baseline-worker] and [optimized][optimized-worker] worker summaries preserve the following counters.
+## Resource Optimization
+Observed: both October 21 sessions were accepted by the profiler. The authoritative sidecars are `tmp/week8-three-arm-resource-profile-v1/first-20261021-01/` and `tmp/week8-three-arm-resource-profile-v1/cachecmp-20261021-01/`. Their [baseline][baseline-worker] and [optimized][optimized-worker] worker summaries preserve the following counters.
 
 | Metric, 150 attempts per execution | Baseline | Optimized |
 |---|---:|---:|
@@ -50,7 +47,7 @@ This cache preserves evidence checks and improves harness efficiency. It does no
 
 ## 4 — Scaling and Validation Requirements
 
-**Proposed, not executed or approved:** the unchanged [formal configuration][formal-config] allocates 20 populations × 6 devices × 50 trials × 5 conditions × 3 arms: 30,000 matched cells and **90,000 attempts**. Formal execution remains disabled. The following counts are source-derived under successful uninterrupted completion, not formal measurements.
+Proposed, not executed or approved: the unchanged [formal configuration][formal-config] allocates 20 populations × 6 devices × 50 trials × 5 conditions × 3 arms: 30,000 matched cells and **90,000 attempts**. Formal execution remains disabled. The following counts are source-derived under successful uninterrupted completion, not formal measurements.
 
 | Work | Original experiment | Additional two-pass finalization |
 |---|---:|---:|
@@ -62,15 +59,14 @@ This cache preserves evidence checks and improves harness efficiency. It does no
 
 Each standalone audit would add another 120,000 replay measurements, 60,000 decodes, and 120 reference readings, plus record validation and integrity checks. Replay verifies existing attempts; it does not enlarge reliability denominators. The [resource plan][resource-plan] supplies the derivation and separates these operations from execution.
 
-**Projection:** extrapolating the original 924,808-byte ledger by attempt count gives approximately 555 MB of JSONL. The October 21 ledger sizes imply approximately 561 MB instead. Allowing for the plan and relatively fixed supporting artifacts gives a central evidence-bundle estimate of **approximately 0.6 GB**, not a storage guarantee. It excludes adequate reserve for analysis outputs, caches, profiler logs, backups, filesystem allocation, and retained incomplete runs. Outcome-dependent row lengths can change the estimate; serialized bytes do not determine Python heap size.
+Projection: extrapolating the original 924,808-byte ledger by attempt count gives approximately 555 MB of JSONL. The October 21 ledger sizes imply approximately 561 MB instead. Allowing for the plan and relatively fixed supporting artifacts gives a central evidence-bundle estimate of **approximately 0.6 GB**, not a storage guarantee. It excludes adequate reserve for analysis outputs, caches, profiler logs, backups, filesystem allocation, and retained incomplete runs. Outcome-dependent row lengths can change the estimate; serialized bytes do not determine Python heap size.
 
-**Source-established risks:** the [writer/auditor][writer] retains complete nested attempt records. Internal finalization audit parses another complete record graph while the first remains live; plans, schedules, identity sets, summaries, and temporary byte buffers also require memory. Repeated source hashing and per-row write/flush/fsync persist after schema caching. Hash-input bytes describe logical work, not necessarily physical disk traffic. There is no automatic interrupted-run resume; a late failure can retain nearly complete output and require repeated work in a new run.
+Source-established risks: the [writer/auditor][writer] retains complete nested attempt records. Internal finalization audit parses another complete record graph while the first remains live; plans, schedules, identity sets, summaries, and temporary byte buffers also require memory. Repeated source hashing and per-row write/flush/fsync persist after schema caching. Hash-input bytes describe logical work, not necessarily physical disk traffic. There is no automatic interrupted-run resume; a late failure can retain nearly complete output and require repeated work in a new run.
 
-**Unmeasured:** full-scale peak private memory and completion/finalization time. Multiplying pilot wall time or memory by the allocation ratio is not a qualified estimate. Successful 150-attempt profiling establishes neither RAM fit nor sustained execution feasibility. The leading resource question is whether finalization, especially the second record graph, fits a selected workstation’s private-memory budget with adequate operating-system headroom.
+Unmeasured: full-scale peak private memory and completion/finalization time. Multiplying pilot wall time or memory by the allocation ratio is not a qualified estimate. Successful 150-attempt profiling establishes neither RAM fit nor sustained execution feasibility. The leading resource question is whether finalization, especially the second record graph, fits a selected workstation’s private-memory budget with adequate operating-system headroom.
 
-## 5 — Evidence Provenance and Reproducibility
-
-The October 20 bundle contains **150 preserved completed attempts**, **95 matching evidence-manifest members**, **87 matching frozen source members**, and a completion marker matching its manifest hash. Task 3B independently checked these static identities. Task 1’s [numerical report][pilot-results] records agreement across 4,540 group-summary leaf values; Task 3B additionally checked 135 group count fields without discrepancy. These are independent checks of existing bytes and arithmetic, not reruns or independent experimental samples. Primary anchors are the [attempts][pilot-attempts], [summary][pilot-summary], [manifest][pilot-manifest], [source manifest][pilot-source], and [completion marker][pilot-marker].
+## Evidence Provenance and Reproducibility
+The October 20 bundle contains 150 preserved completed attempts**, 95 matching evidence-manifest members, 87 matching frozen source members, and a completion marker matching its manifest hash. Task 3B independently checked these static identities. Task 1’s [numerical report][pilot-results] records agreement across 4,540 group-summary leaf values; Task 3B additionally checked 135 group count fields without discrepancy. These are independent checks of existing bytes and arithmetic, not reruns or independent experimental samples. Primary anchors are the [attempts][pilot-attempts], [summary][pilot-summary], [manifest][pilot-manifest], [source manifest][pilot-source], and [completion marker][pilot-marker].
 
 The [original validation receipt][pilot-validation] describes one reconciliation: 200 replay measurements, 100 replay BCH decodes, and one reference reading. The completion marker records two passes; frozen control flow therefore entails 400/200/2 validation operations at successful finalization. Original experimental work remains 200 PUF readings, 100 runtime decodes, and 50 stored retrievals. A later standalone audit is researcher-reported in the [accounting addendum][validation-report]; no separate output receipt was located. Its additional 200/100/1 is source-derived conditional accounting, not independently recorded execution.
 
@@ -80,8 +76,7 @@ Three limitations remain unresolved. First, the historical `pipeline_timing.py` 
 
 Task 3B found the frozen synthetic dataset and all 11 saved-model binaries hash-correct in the audited workspace against the [input configuration][frozen-config] and [artifact pins][model-hashes]. This does not establish availability elsewhere. PUF metadata records Python 3.12.4; Keegan’s handoff specifies Windows x64/Python 3.13.14 and an [observed dependency lock][dependency-lock]. Exact source representation matters: line endings can change raw hashes despite matching text. Seeds reproduce simulation inputs and schedules; OS-random keys, nonces, session IDs, and timing remain unmatched. Historical evidence must not be rewritten to disguise these differences.
 
-## 6 — PUF/SNN Integration
-
+## PUF/SNN Integration
 The implemented chain is: **simulated PUF → BCH reconstruction → independent credential verification → authorization → session establishment → authenticated-window verification → controlled release → preprocessing → motion classification → anomaly detection**. The [connector][pipeline], [Wire-2 delivery interface][integration], and [frozen-model adapter][frozen-models] separate credential authority, payload authority, and consumer behavior.
 
 | Contribution | Implementation / test basis | Preserved execution boundary |
@@ -96,15 +91,14 @@ Thus October 20’s 136 recording releases are not 136 SNN inferences. Conversel
 
 The handoff must preserve exact accepted-payload binding and consumed-event handling. Rejected traffic invokes no models; callback failure leaves evidence incomplete without automatic redelivery or rollback. Labels/splits are excluded from model inputs, and anomaly flags do not retroactively alter authentication. These finite software checks do not establish physical PUF security, deployed key custody, or general model accuracy.
 
-## 7 — Keegan’s Functional and Timing Evidence
-
+## Keegan’s Functional and Timing Evidence
 The [October 22 protocol][quality-config] uses 30 validation windows, three model combinations, two acquisition policies, and two arithmetic modes: **360 sessions**. The [saved records][quality-cells] and [summary][quality-summary] support 180 arithmetic comparison pairs and 180 downstream recovery-policy pairs, 1,080 accepted windows, and 1,080 rejected controls. Both pair counts refer to comparisons among existing sessions, not additional sessions. Task 3B found no recorded pair mismatches in decisions/reasons, model-input fingerprints, motion predictions, anomaly scores/flags, call counts, release counts, or session state.
 
 The configurations are logistic motion/logistic anomaly, logistic motion/forest anomaly, and SNN-32 seed 7/forest anomaly. Controlled response fixtures exercise real voting, decoding, verification, and release, but do not measure noisy-PUF reliability. All admissions succeed; broader admission-failure coverage comes from separate tests. The [differential tests][quality-equivalence] include deterministic consumer probes, which must not be relabeled as trained-model predictions. Functional agreement is bounded to the recorded cases and does not itself establish speedup or universal equivalence.
 
 The [regression receipt][regression] records **1,085 selected passing tests, including 73 focused tests**, not 1,158. The [reproduction guide][reproduction-guide] identifies the focused 26 + 28 + 6 + 13 methods and repeated-run overlap. Root discovery excludes non-package `experiments`, `tier1`, and `tools`; this is not complete historical-suite validation. The [validation decision][keegan-validation] retains unchanged defaults, with exact-integer quality arithmetic as an optional serial research implementation.
 
-**Observed performance comes from the separate Week 6 matched quality benchmark.** The following direct accepted-path p95 values use logistic motion and logistic anomaly detection; both saved estimators use the predeclared seed-7/6007 identities. Task 3C independently recomputed the selected raw-trace quantiles. [Primary timing CSV][quality-timing-csv]; [benchmark interpretation][quality-timing-report]
+Observed performance comes from the separate Week 6 matched quality benchmark. The following direct accepted-path p95 values use logistic motion and logistic anomaly detection; both saved estimators use the predeclared seed-7/6007 identities. Task 3C independently recomputed the selected raw-trace quantiles. [Primary timing CSV][quality-timing-csv]; [benchmark interpretation][quality-timing-report]
 
 | Block | Accepted n per mode/path | Reference recurring | Integer recurring | Reference fresh-to-first | Integer fresh-to-first |
 |---|---:|---:|---:|---:|---:|
@@ -117,8 +111,7 @@ Only optimized logistic/logistic recurring processing meets the provisional 20 m
 
 The software measurements exclude two-second sensor collection, physical PUF acquisition, external transport, enrollment, endpoint construction, model loading, and durable evidence storage. In-memory audit and instrumentation remain included. The [worker environment][timing-environment] records Windows 11, an HP Pavilion Plus/Core Ultra 7 155H, 31.5 GiB RAM, Python 3.13.14, CPU Torch 2.14.0+cpu, and enabled GC. Core/frequency/thermal/background effects and complete outlier causation remain uncontrolled. These values must not be added to October 20 stage timings or October 21 workflow seconds.
 
-## 8 — Outstanding Scientific and Reproducibility Questions
-
+## Outstanding Scientific and Reproducibility Questions
 Every next action below is proposed work, not existing authorization.
 
 | Issue | Current Evidence | Missing Evidence | Why It Matters | Proposed Next Action |
@@ -132,8 +125,7 @@ Every next action below is proposed work, not existing authorization.
 | Correlated-noise statistics | Exploratory pilot and proposed allocation/methodology | Approved estimands, population-aware uncertainty, completed analysis | Repeated reads/controls are dependent | Obtain faculty methodology review and freeze the analysis plan |
 | Faculty approval and execution controls | Formal mode disabled | Methodology approval, resource qualification, frozen identities, separate execution approval | A proposed allocation is not permission to run | Keep formal gates disabled until prerequisites and explicit authorization are documented |
 
-## 9 — Faculty-Facing Conclusions
-
+## Faculty-Facing Conclusions
 The project has demonstrated a working software connection between simulated PUF authentication and protected motion processing. The original three-arm pilot distinguishes credential acquisition, reconstruction, verification, and release outcomes; its numerical results agree with preserved records. Separate Week 6 executions show that single-read simulated authentication can proceed through actual saved conventional, SNN, and anomaly inference, with the complete software path measured directly. The pilot’s recording callbacks and these trained-model executions answer different questions.
 
 Two optimizations also have distinct evidence. Schema caching reduced pilot-scale experiment-processing overhead while retaining record validation and two-pass reconciliation. Optional exact-integer quality arithmetic reduced selected complete-window latency in a separate matched benchmark. Only the logistic/logistic recurring configuration met the provisional 20 ms p95 target in both blocks; fresh-session and SNN/forest results remained above it. These findings do not establish deployment deadlines or faster SNN algorithms.
