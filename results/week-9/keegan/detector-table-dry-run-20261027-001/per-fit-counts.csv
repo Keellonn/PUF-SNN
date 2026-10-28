@@ -1,0 +1,7 @@
+detector,family,seed,clean_count,clean_false_positives,medium_high_count,medium_high_detected,medium_high_missed
+anomaly_logistic_regression_seed6007,logistic_regression,6007,600,32,9095,7535,1560
+anomaly_logistic_regression_seed6017,logistic_regression,6017,600,32,9095,7535,1560
+anomaly_logistic_regression_seed6027,logistic_regression,6027,600,32,9095,7535,1560
+anomaly_random_forest_seed6007,random_forest,6007,600,19,9095,8012,1083
+anomaly_random_forest_seed6017,random_forest,6017,600,17,9095,7987,1108
+anomaly_random_forest_seed6027,random_forest,6027,600,17,9095,7999,1096

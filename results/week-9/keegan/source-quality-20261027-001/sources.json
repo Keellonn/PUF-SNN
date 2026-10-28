@@ -1,0 +1,32 @@
+{
+  "base_commit": "55dea11b1e3dbae22f7607f85ba2e4741ae37036",
+  "scope": "File identity over the stated base; not an independent-person reproduction",
+  "source_sha256": {
+    "src/python/puf_snn/source_quality.py": "afa802626fca0e41b81a1169a06d64a72bdb8aa75062a185a9ab23782b2bbd7d",
+    "src/python/puf_snn/trial_ledger.py": "57945c1b2ff9507c8bbbc5658894475d30db0f1886dab926f0aab11a0c323a67",
+    "src/python/scripts/validate_source_quality.py": "ffe82f918e572613db260941aefdbcc10adcd4cbd41b29658189a6a57110c8fe",
+    "src/python/scripts/validate_trial_ledger.py": "0a4550ade29750bd88fbdba63513068c95ada4e7686db994d7d8458f23548bc4",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/BinaryWindowMessageWriter.cs": "734e428bf01bdb7f9147ae136a39eb075d6fe7298f6f5fd20196ebf2093f05d1",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/CanonicalWindowMessageWriter.cs": "9ea513692c36d6637e2a7d2dabb4ea9777325961050335b63b93ef85d1ce7ffb",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/HeadPoseCapture.cs": "13a7e2d7fe2bf28019413e1b11580652cc425c3df9db82d61782cc1fbceeef34",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialController.cs": "e928e9f3185502f3bae3f556c4fcffbb21b0c55caf2932c968b6501be4af1a6e",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialLedger.cs": "fa8a3ebeec11810b88ad1ce71849604cb8df4034f36e4f46354ebd4b8bfdd786",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowModels.cs": "f12a64ef6c425f823f18b524c8a79cfabc202693e9fbf4ae121fc59f4e5f4f2e",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowProcessor.cs": "1d0b07a54dac43766a35b4c12102c6cab60173ee5edfd3a0046c4796cd5a380d",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowWriter.cs": "f568da8e397d9eddc52bed45d288ace161b046478c74bbfacdce01fe650825ac",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/RawPoseBuffer.cs": "d027dfbae685d9efe244bfb7963b153285635d044a3f5e3b97253cdcb62fc523",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs": "19503b118a98e9dc960a0ba07de3be7cca03d6e598a7dde57deaa61cdc25e5b7",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs.meta": "38259be5a4c26d7fb50d9184373431c817bc0097d2d0138823e8784eb44fb9cc",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/BinaryWindowMessageWriterTests.cs": "0d7813bbba8a0a52bf8dcadc7c5ef3196519a2b82e3b6761ba5ef67e2a0971b6",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/CanonicalWindowMessageWriterTests.cs": "3c543772ef6b7c39e0dc1b0b1f3574e372a73bf49de4e37c995247f1a23c94ee",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/QuestTrialLedgerTests.cs": "fd650b0163f48594faa4aa5210d59277531cb53e423afce2506a745bac04f703",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/QuestWindowProcessorTests.cs": "dcb29b6fcffa1e795a3d8aee1ec610e1f6de9af2e3c1a30eef34821ba0e9fd67",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/SourceQualityTests.cs": "d8955341301d5bea646fcd441ed14875c022faac264c715f7568d189f8d477b7",
+    "src/quest-logger/QuestLogger/Assets/Tests/EditMode/SourceQualityTests.cs.meta": "c3a980026d8e58722c449303232a56c570b1cade003306315768a58b9329ecea",
+    "src/quest-logger/QuestLogger/Assets/TutorialInfo/Editor/ReadmeEditor.cs": "9cd2e203d3fe77c514424aaa42d6b972d8a921f7dbb621134ded71758617aefb",
+    "src/quest-logger/QuestLogger/Assets/TutorialInfo/Readme.cs": "d3afe9c7548461ac517ce4bc3bbed240309af830ad57baf66a3a01954c740f75",
+    "tests/test_source_quality.py": "d08733fc2c821355b2dd262bf03a39478168958e604b0ab55b6f0499e7877162",
+    "tests/test_trial_ledger.py": "a33590f1cdd92e077888c386935835b3345fe8dbb51fe660c42f21f43b1761fb"
+  },
+  "tested_uncommitted_overlay": true
+}

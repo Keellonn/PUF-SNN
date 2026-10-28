@@ -1,0 +1,29 @@
+{
+  "base_commit": "55dea11b1e3dbae22f7607f85ba2e4741ae37036",
+  "input_sha256": {
+    "configs/week6_quality_benchmark.json": "3e7de27dc6cefd39768165be544990605cda0f697bea0c46d6341279806c6856",
+    "docs/week8-evidence-validation.md": "33ff496d70fc56a24e121ae74e433a182a0a2c3cbacdbb9c6135c47bae539979",
+    "docs/week8-keegan-validation.md": "dd3477c84a94e2ece34e8d1feba730bfaacd2603378d5816955f3e7b9b6e16e6",
+    "docs/week8-quality-equivalence.md": "238039d34c50e5b47126c2cbd9d05ef9ff1da2689ccc23d163ca0a1f13255fb0",
+    "docs/week8-schema-validation-optimization-benchmark.md": "cfcca3316467700611549e4cea2f0c320b12b14cb1596ac93406c12e4ee06256",
+    "results/week-4/keegan/conventional-baselines/baseline-diagnostics.json": "20f2975843721a7283e7af7b0208760524c1bfc4b72f1ba6d68a819587df3389",
+    "results/week-4/keegan/snn-architecture-comparison/architecture-comparison.json": "4f083f934055b12547af61ff4394b437aae79c4407acdca7968896b099399ba2",
+    "results/week-6/keegan/quality-benchmark/direct-path-latency.csv": "6e8b57db8fb10b8ab8a395c9e0acbaa653e37b5c221731d8442d0055448bfe0c",
+    "results/week-6/keegan/quality-benchmark/manifest.json": "a978cec8d4df41617b7db4616109b8e7b6a522c276efe73243de3c01ef6d9045",
+    "results/week-6/keegan/quality-benchmark/workers/block-0-reference_fraction/environment.json": "11ba45e274b4d7600f363e99bd30288a01fe1b11ab64f18b3db1d6cc1ed33921",
+    "results/week-6/keegan/tier2-source-uncertainty/family-summary.csv": "88abccc25933177d8db9962b28628b7bcd5707f7aabd91cff52be5515bdaad64",
+    "results/week-8/keegan/quality-validation-20261022-001/manifest.json": "57b8a7eb2ec501e3f3c41d06b3b2628ed23015765ad1f96ff3d62576163ee80b",
+    "results/week-8/keegan/quality-validation-20261022-001/summary.json": "5111cb70fd6d6dd99df8026c86ad6bfde1e40112e041290fa4df5fed2991e994",
+    "src/python/puf_snn/experiments/majority3_auth_v1.py": "ffe5f316f2f8597fc030537571e19b0d27ca24370b274eea04b7596570c6bd05",
+    "src/python/puf_snn/experiments/three_arm_auth_v1.py": "adcb2d80037abcf431be9b8c31fa30ddc7ea91b3b7f41f78039e6df0bfe85b64",
+    "tests/experiments/test_auth_schema_cache.py": "e8447aa22eec8aadf7a36cbbf26df1129e50f0625a5ed779e47f255898324395"
+  },
+  "output_sha256": {
+    "discrepancies.csv": "d4899f404a29ae6cefdd725d572bc17f467f2972cca88b05f3e5b692b4d2726d",
+    "historical-timing.csv": "e08d0fb6e45f486762c11cfa91533c2ccbb00e1513f461d2c13361ff3b522ca7",
+    "motion-models.csv": "a8433a7ccef54f7e3e7a12a004fd0bdb7622784dc32e29ac7d488dacaed0189e",
+    "research-status.csv": "6802e52f7f4c1539e7fa8faf4ab1767f06224db37a6c8a5cc13714549100310b",
+    "retained-detector-summary.csv": "88abccc25933177d8db9962b28628b7bcd5707f7aabd91cff52be5515bdaad64"
+  },
+  "scope": "Interpretation of retained evidence; no new latency/model/reliability measurements"
+}

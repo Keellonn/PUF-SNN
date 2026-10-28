@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "attempted": 1,
+    "empty": 0,
+    "measured": 0,
+    "missing": 1,
+    "summaries": 0,
+    "unavailable": 0
+  },
+  "issues": [
+    "missing_attempted_trial_summaries"
+  ],
+  "ledger_status": "COMPLETE",
+  "missing_trial_summaries": [
+    "synthetic-visit-trial-000"
+  ],
+  "scope": "Source diagnostics; complete accounting does not establish headset readiness.",
+  "source_quality_sha256": "62ff3181431b6395f89e22d28e394a68813350bb025d9ed36d40dfa31374417f",
+  "status": "INVALID",
+  "summaries": []
+}

@@ -24,7 +24,7 @@ No commit or push was made as part of this check.
 See [ledger documentation](../../../docs/quest-trial-ledger.md) and
 [readiness / remaining weekly work](../../../docs/week9-logger-readiness.md).
 The retention/repeat choices still need PI review and matching study documents.
-Android capture, source-quality summaries, prompt alignment, actual transfer and
+Android capture, prompt alignment, actual transfer and
 PI readiness approval remain unfinished. These checks do not establish model
 accuracy, headset performance, credential reliability or independent reproduction
 by another researcher.
@@ -33,3 +33,15 @@ The historical 73 focused tests are inside the old 1,085 receipt. The 55 profile
 tests are separate; ordinary root Python discovery excludes `tests/tools`,
 `tests/experiments` and `tests/tier1`. Do not add the focused tests to the root
 total or mix these software counts with experimental observations.
+
+
+## Current follow-up
+
+- [Source diagnostics](source-quality-20261027-001/README.md): 50 Unity and 1,117 selected Python tests passed; summaries survive synthetic rejection/stop paths; missing diagnostics are refused.
+- [Optimization and historical timing](../../../docs/week9-optimization-and-timing.md): tested matching, exact labels, scope and outliers; defaults unchanged.
+- [Research status and corrections](../../../docs/week9-research-status.md): model targets, evidence accounting and workflow timing distinguished.
+- [Small reproduction handoff](../../../docs/week9-bounded-reproduction.md): about 16 MB of already tracked inputs; no model binaries needed for the score-table scope. Local dry run matches; independent person still pending.
+
+These follow-up files are an uncommitted tested overlay over 55dea11. The earlier
+checkpoint bundle remains unchanged. No new human recordings or scientific
+accuracy/latency/reliability measurements were made in this follow-up.

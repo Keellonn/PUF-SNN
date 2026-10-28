@@ -16,6 +16,8 @@ namespace PufSnn.QuestLogger {
         public Quaternion orientation_xyzw;
         public bool tracking_valid;
         public InputTrackingState tracking_state;
+        public bool tracking_flag_available;
+        public bool tracking_state_available;
     }
 
     [Serializable]

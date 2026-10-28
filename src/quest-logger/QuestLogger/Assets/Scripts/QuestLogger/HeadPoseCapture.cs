@@ -89,6 +89,8 @@ namespace PufSnn.QuestLogger {
                 orientation_xyzw = rotation,
                 tracking_valid = trackingValid,
                 tracking_state = stateRead ? trackingState : InputTrackingState.None,
+                tracking_flag_available = trackedRead,
+                tracking_state_available = stateRead,
             });
         }
 

@@ -28,3 +28,27 @@ tests/test_trial_ledger.py text eol=lf
 
 # Exact UTF-8 fixture line bytes, offsets and receipt hashes are significant.
 results/week-9/keegan/logger-ledger-20261027-001/** -text
+
+# Source diagnostic follow-up and exact replay/evidence bytes.
+src/python/puf_snn/source_quality.py text eol=lf
+src/python/scripts/validate_source_quality.py text eol=lf
+tests/test_source_quality.py text eol=lf
+tools/reproduce_saved_detector_table.py text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/SourceQualityTests.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/SourceQualityTests.cs.meta text eol=lf
+results/week-9/keegan/source-quality-20261027-001/** -text
+results/week-9/keegan/detector-table-handoff-20261027-001/** -text
+results/week-9/keegan/decision-report-20261027-001/** -text
+results/week-9/keegan/detector-table-dry-run-20261027-001/** -text
+
+# Keep the eight retained replay inputs identical on Windows and Unix.
+results/week-5/keegan/stream-evaluation/COMPLETE text eol=lf
+results/week-5/keegan/stream-evaluation/authenticated-test-predictions.jsonl text eol=lf
+results/week-5/keegan/stream-evaluation/config.json text eol=lf
+results/week-5/keegan/stream-evaluation/construction-summary.json text eol=lf
+results/week-5/keegan/stream-evaluation/frozen-validation-thresholds.json text eol=lf
+results/week-5/keegan/stream-evaluation/manifest.json text eol=lf
+results/week-6/keegan/tier2-source-uncertainty/family-summary.csv text eol=lf
+results/week-6/keegan/tier2-source-uncertainty/manifest.json text eol=lf

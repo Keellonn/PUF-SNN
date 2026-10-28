@@ -1,0 +1,21 @@
+{
+  "scope": "Local packaging check; not independent-person reproduction",
+  "method": "Temporary repository index and checkout-index; real project index untouched",
+  "attributes_sha256": "d8f7447f1b9497d16a64242a5356218c5ab1152d00407b6c2d054813c4716f17",
+  "outcomes": [
+    {
+      "core_autocrlf": "true",
+      "verified_files": 39,
+      "hash_mismatches": [],
+      "mixed_status": "COMPLETE",
+      "injected_failure_status": "INVALID"
+    },
+    {
+      "core_autocrlf": "false",
+      "verified_files": 39,
+      "hash_mismatches": [],
+      "mixed_status": "COMPLETE",
+      "injected_failure_status": "INVALID"
+    }
+  ]
+}

@@ -5,11 +5,12 @@ remains disabled by default. It is not authorization to collect participant data
 
 ## What is saved
 
-The controller now creates two files per coded visit, under
+The controller now creates three files per coded visit, under
 `Application.persistentDataPath/puf-snn/`:
 
 - `<visit_code>-trials.jsonl`: the full planned schedule, followed by trial events.
 - `<visit_code>-windows.jsonl`: accepted, resampled windows only, when any exist.
+- `<visit_code>-source-quality.jsonl`: source diagnostics for each attempted trial.
 
 The plan is written before prompting or recording. It records participant,
 visit, device and session codes; trial IDs and prompted tasks; block and trial
@@ -140,3 +141,48 @@ $unityEditor = 'C:\Program Files\Unity\Hub\Editor\6000.6.1f1\Editor\Unity.exe'
 Unity may return control before tests finish. Read the completed XML rather than
 the launcher exit code. Keep raw logs/XML local because they can include machine
 paths. The current sanitized results are linked in the Week 9 results index.
+
+
+## Source diagnostics before resampling
+
+The sidecar header identifies the coded visit, ledger filename, processing
+version, clock and fixed 50 ms reporting limit. A single summary is appended and
+flushed for each attempted capture, including rejected and stopped trials. Raw
+poses are not retained. A start request without confirmed capture gets an
+explicit `unavailable` summary with unknown counters set to -1. A confirmed
+capture with zero samples is `empty` with count 0. These are different outcomes.
+
+Summaries record count/duration, observed rate, source tracking-valid/invalid
+counts, availability of tracking API values, positive/nonpositive/overflow
+intervals, negative timestamps, gaps strictly above 50 ms, maximum/median/p95
+positive intervals, nonfinite poses and exactly zero quaternions. Interval
+quantiles use nearest rank, not the interpolation used in historical latency
+tables. Observed rate is (count - 1) / duration only for nonnegative, strictly
+increasing source timestamps. Otherwise it is unknown. A 50 ms gap is counted
+separately from the existing processor's acceptance decision; no rules changed.
+
+Stopping after the capture component disables still summarizes its buffered
+poses. Failure to append diagnostics stops further capture and leaves the evidence
+for review. Separate files are not one atomic transaction: a power failure can
+leave a ledger outcome without its diagnostic row, or an extra row. Both are
+reported, never silently repaired. Windows Flush(true) tests do not establish
+Android power-loss durability.
+
+The Python checker reconciles codes, trial identity, counts, stages, metrics and
+missing rows against the v1 ledger. A COMPLETE ledger alone does not establish
+complete diagnostics. It cannot verify summary truth against discarded raw poses.
+Both accounting and source summaries must reconcile for the readiness report.
+
+```powershell
+.\.venv\Scripts\python.exe -B -m unittest discover -s tests -p test_source_quality.py
+.\.venv\Scripts\python.exe -B src/python/scripts/validate_source_quality.py results/week-9/keegan/source-quality-20261027-001/mixed/ledger.jsonl results/week-9/keegan/source-quality-20261027-001/mixed/source-quality.jsonl
+```
+
+The new command is read-only; `--output NEW.json` refuses overwrite. The
+write-failed fixture should return INVALID with one missing source summary.
+Do not use that intentional refusal as an accepted visit.
+
+Native tests can export these artificial fixtures to a new folder by adding
+`-pufSourceFixtureRoot ABSOLUTE_NEW_FOLDER` to the headless Unity command above.
+The final suite contains 50 cases, separate from 1,117 selected Python tests.
+See [current source evidence](../results/week-9/keegan/source-quality-20261027-001/README.md).

@@ -1,0 +1,7 @@
+area,supported,limit
+Motion models,"Clean synthetic test mean macro-F1: logistic 90.3158%, forest 89.3619%, SNN-32 86.1911%, matched SNN-64 84.9965%","No SNN superiority, human generalization or neuromorphic energy benefit established"
+Clean false alerts <=5%,Logistic 5.3333% misses; forest 2.9444% meets point target,600 sources; three fixed fits; synthetic conditional source-bootstrap intervals
+Medium/high recall >=90%,Logistic 82.8477%; forest 87.9531%; both miss,"9,095 eligible copies per fit; quality blocks reported separately"
+Complete software timing <=20 ms p95,Only optional faster logistic/logistic recurring path met target in two old single-read blocks,Setup + first 22.2278/23.4115 ms; forest paths miss; no current-arm or Quest timing
+Real motion validation,Logger accounting/source-summary software tests pass,No approved research collection or actual Phase 1 readiness report completed
+Independent reproduction,Standard-library detector-table replay dry run matches retained points,Another person has not yet run it; no inference rerun

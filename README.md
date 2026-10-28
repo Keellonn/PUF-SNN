@@ -116,3 +116,7 @@ python src/python/scripts/analyze_synthetic_data.py --run-tests --machine-model 
 ## Repository 
 
 Repository: https://github.com/Keellonn/PUF-SNN
+
+## Current validation checkpoint
+
+See [Week 9 results](results/week-9/keegan/README.md) for synthetic logger accounting/source diagnostics, the quality-check decision and historical timing interpretation, current research status and the bounded detector-table reproduction handoff. Actual Quest readiness and independent-person reproduction remain pending.

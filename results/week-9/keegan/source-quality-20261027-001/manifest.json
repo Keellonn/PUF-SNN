@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "README.md": "8c7941dc32923ec78b56001a1a68d5d6956981ba5c2546748a275fa8e56ce35c",
+    "mixed/ledger.jsonl": "f43a636d0c09f108132ea85ba2944ab959d6da897c0fc59980c1c1168c3e9169",
+    "mixed/reconciliation.json": "835f3934c9914110e374bea6a05f127734388b90bc1e3c5c192bcabda2779a3b",
+    "mixed/source-quality.jsonl": "d40ea044180bbe6bddea9a676d18326c1ef6485ac6f821200df4f73e266c145b",
+    "mixed/windows.jsonl": "be103f47717a04f0b370d78e839edb9ad10626b26bc30f3ca0e6970be18c21b7",
+    "native-tests.json": "80f68e61e531fa59ee42b336e1524d065c58fd7eaf631d4953e882a9795ccc7c",
+    "packaging-check.json": "e0a9bc61333ff30740157c202c2f841b8ba121cb2573d1c898e90d0207d8dd50",
+    "python-regression.json": "86a3dbf3d58b4339398faea9cdacd76fe9fa7958b2c5580aa48eec4b0c2fedc0",
+    "sources.json": "5c08979695fa2bb8144e7f3c3bab6e4c61c946a4fa03f8a8864142b471a76102",
+    "write-failed/ledger.jsonl": "cdd589f22d666cec938d099e6403d5e72f077a5ee05b2e414d94a07a028c4ee6",
+    "write-failed/reconciliation.json": "37378652e670d49aa994ef992ec4738ada4e3c3518e4cb1c6092a9544e7607ce",
+    "write-failed/source-quality.jsonl": "62ff3181431b6395f89e22d28e394a68813350bb025d9ed36d40dfa31374417f"
+  },
+  "base_commit": "55dea11b1e3dbae22f7607f85ba2e4741ae37036",
+  "scope": "Synthetic software verification"
+}

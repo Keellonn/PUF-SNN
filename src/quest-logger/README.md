@@ -111,6 +111,8 @@ as one JSON object per line. The trial controller uses visit-specific paths:
 
 `Application.persistentDataPath/puf-snn/<visit_code>-trials.jsonl`
 
+`Application.persistentDataPath/puf-snn/<visit_code>-source-quality.jsonl`
+
 Existing visit files are refused. A ledger write failure stops the controller;
 partial records are preserved for review. Saved-window receipts include exact
 line hashes and file offsets. The standalone writer still defaults to
@@ -145,7 +147,11 @@ Also reconcile the matching trial ledger:
 
 `python src/python/scripts/validate_trial_ledger.py path/to/<visit_code>-trials.jsonl`
 
-This second command is read-only and reports incomplete/corrupt accounting,
+Also check the source sidecar with:
+
+`python src/python/scripts/validate_source_quality.py path/to/<visit_code>-trials.jsonl path/to/<visit_code>-source-quality.jsonl`
+
+Both accounting checks are read-only and reports incomplete/corrupt accounting,
 missing references and orphan windows. It does not replace window validation.
 The Week 9 native ledger tests cover plans, transitions, refusals, write failures,
 notes, exact receipts and interrupted files. The separate Python tests cover
@@ -161,3 +167,5 @@ uses synthetic inputs only.
 - run Unity Project Validation without unresolved errors
 - verify that the Android build installs and launches
 - keep the controller's `recordingAuthorized` field disabled until recording is permitted
+
+The October 27 follow-up passed 50 native Unity cases and 1,117 selected Python tests. Source diagnostics cover completed, rejected, stopped and unconfirmed captures before interpolation. Unknown measurements are explicit; raw rejected/stopped poses are not saved. Actual Quest/Android and prompt/control checks remain open. See [source diagnostic details](../../docs/quest-trial-ledger.md#source-diagnostics-before-resampling).

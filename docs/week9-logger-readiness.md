@@ -34,6 +34,20 @@ They are proposals to synchronize with the PI-reviewed protocol, not approved
 collection rules. The schedule supports three balanced blocks of 25 but the
 software defaults have not been made a study commitment.
 
+## Source summary follow-up
+
+Source-quality summaries now persist for accepted, rejected and stopped attempts.
+Unknown capture evidence is explicitly unavailable. The final native suite passed
+50/50 and the expanded selected Python suite passed 1,117/1,117. The 32 focused
+ledger/source tests are included in 1,117; native Unity tests are separate. Native
+mixed output reconciled in Python. An injected diagnostic write failure was
+correctly refused even though its trial ledger alone reconciled.
+
+The earlier 35/1,102 checkpoint above remains historical; these are later totals,
+not additional counts to add. [New evidence](../results/week-9/keegan/source-quality-20261027-001/README.md)
+and [source summary details](quest-trial-ledger.md#source-diagnostics-before-resampling).
+The new source summaries do not change the existing acceptance criteria.
+
 ## Phase 1 report required before Phase 2
 
 Passing a row means its behavior is measured and failures handled correctly;
@@ -43,8 +57,8 @@ reviewer must link the measurement and exception handling for each row.
 | Readiness item | Current evidence | Still required |
 |---|---|---|
 | Timestamp meaning and ordering | App stopwatch documented; artificial ordering/gap tests | Verify observed headset behavior, clock origin and prompt/capture timing in the actual build |
-| Observed sampling rate | Target output is 120 samples / 2 seconds | Source-rate distribution and missed-frame accounting, before resampling |
-| Tracking and source gaps | Processor tests include source gap and 114/120 output tracking boundary | Save source gap/tracking summaries for every attempted trial, including refusals; verify API flags on the assigned headset |
+| Observed sampling rate | Source counts, duration and observed rate saved before resampling; synthetic 90 Hz fixture checked | Actual headset source-rate distribution and missed-frame accounting |
+| Tracking and source gaps | Source gap/tracking/API-availability summaries saved and synthetic refusal/stop/unknown paths tested; 114/120 is output tracking | Verify actual API flags and source gaps on the assigned headset |
 | Prompt-to-window alignment | Ledger stores prompt, capture request and capture-start confirmation | Measure rendered prompt/action boundaries and late/overlong motion handling; software event times alone are insufficient |
 | File write/reload | Synthetic Unity write and Python reload/hash checks pass | Verify Android storage, pause/interruption behavior and transfer on the assigned headset |
 | Complete trial accounting | Full schedule, reasons, stop/skip paths and orphan detection tested | Wire staff controls, rehearse the procedure with permitted inputs, review counts and unresolved events |
@@ -68,11 +82,11 @@ review before use. Do not silently combine development and evaluation datasets.
 
 | Owner | Next deliverable | Completion evidence |
 |---|---|---|
-| Keegan | Optimization interpretation | Define tested-case matching across decisions, reasons, processed values, model outputs, calls, release and state; separate downstream matching conditional on successful admission from admission reliability |
-| Keegan | Timing table and boundaries | Label both historical blocks, single-read recovery, machine/environment, warm-up/repetitions, existing-session versus setup-plus-first and excluded two-second acquisition; no claim of current three-read timing |
-| Keegan | Logger readiness | Finish source summaries, actual build/controls/transfer checks and Phase 1 report above |
+| Keegan | Optimization interpretation | [Completed interpretation](week9-optimization-and-timing.md); independent review/default decision remains open |
+| Keegan | Timing table and boundaries | [Completed historical labels and boundaries](week9-optimization-and-timing.md); no new current-arm timing claim |
+| Keegan | Logger readiness | Source summaries implemented/tested; actual build/controls/transfer and Phase 1 measurements remain |
 | Will | Shared-noise and three-arm accounting | Frozen short specification; matched nominal/stress denominators, failure states, uncertainty and reconstruction/admission timing; define stored credential precisely |
-| Together | One independent reproduction | Another person reproduces one central table from a frozen release; record prerequisites, deviations and comparisons |
+| Together | One independent reproduction | [Bounded replay ready](week9-bounded-reproduction.md); another person still needs to run and document it |
 | Together / PI | One coordinated submission packet | Matching protocol/consent, prompts, recruitment/screening, comfort/incident form, data workflow, retention/withdrawal, roles/training, change log and short PI decision list |
 
 The missing historical timing archive remains a provenance gap. It does not
@@ -91,7 +105,7 @@ also separate. New ledger tests do not retroactively enlarge those old receipts.
 2. Recommend no automatic repeats in this pilot; any later repeat policy needs
    a reviewed cap, ledger linkage and matching protocol wording.
 
-Actual study location, headset/device inventory, storage service and access,
+Quest 3 and Room 2015, Torgersen Hall are identified in the draft. Actual device inventory, storage service and access,
 retention periods, recruitment conflicts, consent personnel, safety procedure
 and training still need coordinated confirmation. They have not been invented
 or filled in by this software implementation. No participant records were made.

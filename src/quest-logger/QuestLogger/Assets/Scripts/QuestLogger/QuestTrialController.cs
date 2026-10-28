@@ -32,6 +32,8 @@ namespace PufSnn.QuestLogger {
 
         private Coroutine sessionRoutine;
         private QuestTrialLedger ledger;
+        private SourceQualityWriter sourceQuality;
+        private bool capturePending;
         private LedgerPlan plan;
         private string activeTrialId = "";
         private string endReason = "schedule_finished";
@@ -75,7 +77,13 @@ namespace PufSnn.QuestLogger {
                 windowWriter.PrepareVisit(visitCode);
                 plan.window_file_name = Path.GetFileName(windowWriter.OutputPath);
                 string path = Path.Combine(Path.GetDirectoryName(windowWriter.OutputPath), visitCode + "-trials.jsonl");
+                string qualityPath = Path.Combine(Path.GetDirectoryName(windowWriter.OutputPath), visitCode + "-source-quality.jsonl");
+                if (File.Exists(path) || File.Exists(qualityPath))
+                    throw new IOException("This visit already has evidence files; preserve them and use a new visit code.");
                 ledger = QuestTrialLedger.Create(path, plan, () => headPoseCapture.ElapsedNanoseconds);
+                sourceQuality = SourceQualityWriter.Create(qualityPath, Path.GetFileName(path), plan,
+                    () => headPoseCapture.ElapsedNanoseconds);
+                capturePending = false;
                 sessionStart = headPoseCapture.ElapsedNanoseconds;
                 endReason = "schedule_finished";
                 sessionRoutine = StartCoroutine(RunSession());
@@ -96,10 +104,6 @@ namespace PufSnn.QuestLogger {
             if (sessionRoutine != null) {
                 StopCoroutine(sessionRoutine);
                 sessionRoutine = null;
-            }
-
-            if (headPoseCapture != null && headPoseCapture.CaptureActive) {
-                headPoseCapture.StopCapture();
             }
 
             FinishVisit();
@@ -134,7 +138,7 @@ namespace PufSnn.QuestLogger {
                     // Persist intent before capture; an unconfirmed intent remains uncertain.
                     if (!TryRecord("start_requested")) yield break;
                     bool began = false;
-                    try { headPoseCapture.BeginCapture(); began = true; }
+                    try { headPoseCapture.BeginCapture(); capturePending = true; began = true; }
                     catch (System.Exception error) { Debug.LogError("Capture start failed: " + error.Message); }
                     if (!began) { endReason = "capture_start_failed"; yield break; }
                     if (!TryRecord("recording_started")) yield break;
@@ -142,11 +146,19 @@ namespace PufSnn.QuestLogger {
                     while (!Expired && !skipRequested && headPoseCapture.ElapsedNanoseconds - start < actionSeconds * 1_000_000_000.0)
                         yield return null;
                     List<RawHeadPoseSample> raw = headPoseCapture.StopCapture();
+                    capturePending = false;
                     if (Expired || skipRequested) {
-                        if (!TryRecord("stopped", Expired ? "session_time_limit" : "participant_skip_during_recording")) yield break;
+                        string reason = Expired ? "session_time_limit" : "participant_skip_during_recording";
+                        bool savedQuality = TrySaveSource("stopped", reason, raw);
+                        if (!TryRecord("stopped", reason) || !savedQuality) yield break;
                         if (Expired) { endReason = "session_time_limit"; break; }
                     } else {
+                        bool savedQuality = TrySaveSource("completed", "capture_completed", raw);
                         if (!TryRecord("completed", rawSampleCount: raw.Count)) yield break;
+                        if (!savedQuality) {
+                            TryRecord("processing_failed", "source_quality_write_failed");
+                            yield break;
+                        }
                         if (!ProcessAndSave(trial, raw)) yield break;
                     }
                     ShowPrompt("rest");
@@ -201,15 +213,38 @@ namespace PufSnn.QuestLogger {
         }
 
         private void FinishVisit() {
-            if (headPoseCapture != null && headPoseCapture.CaptureActive) headPoseCapture.StopCapture();
+            if (headPoseCapture != null && (capturePending || headPoseCapture.CaptureActive)) {
+                List<RawHeadPoseSample> raw = headPoseCapture.StopCapture();
+                capturePending = false;
+                if (sourceQuality != null && !sourceQuality.Faulted && !string.IsNullOrEmpty(activeTrialId))
+                    TrySaveSource("stopped", endReason, raw);
+            }
+            if (ledger != null && sourceQuality != null && !sourceQuality.Faulted &&
+                !string.IsNullOrEmpty(activeTrialId) && !sourceQuality.HasTrial(activeTrialId) &&
+                ledger.Stage(activeTrialId) == "start_requested")
+                TrySaveSource("unconfirmed", "capture_start_unconfirmed", null);
             QuestTrialLedger finishing = ledger;
+            SourceQualityWriter finishingQuality = sourceQuality;
             ledger = null;
+            sourceQuality = null;
             sessionRoutine = null;
             activeTrialId = "";
-            if (finishing == null) return;
+            if (finishing == null) { if (finishingQuality != null) finishingQuality.Dispose(); return; }
             try { if (!finishing.Faulted && !finishing.Closed) finishing.EndVisit(endReason); }
             catch (System.Exception error) { Debug.LogError("Visit remains incomplete: " + error.Message); }
-            finally { finishing.Dispose(); }
+            finally { finishing.Dispose(); if (finishingQuality != null) finishingQuality.Dispose(); }
+        }
+
+        private bool TrySaveSource(string stage, string reason, List<RawHeadPoseSample> raw) {
+            try {
+                if (sourceQuality == null) throw new IOException("Source-quality writer was not created.");
+                sourceQuality.Write(activeTrialId, stage, reason, raw);
+                return true;
+            } catch (System.Exception error) {
+                endReason = "source_quality_write_failed";
+                Debug.LogError("Source-quality evidence unavailable; recording stops: " + error.Message);
+                return false;
+            }
         }
 
         private static string RejectionCode(string reason) {

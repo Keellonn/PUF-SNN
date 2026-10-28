@@ -1,0 +1,5 @@
+model,mean_test_macro_f1,fixed_fits
+logistic_regression,0.9031584769838237,5
+random_forest,0.8936186653650806,5
+snn_64,0.8499651968454018,3
+snn_32,0.8619113267737694,3
