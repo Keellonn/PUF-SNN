@@ -1870,6 +1870,26 @@ I completed two separately accepted, supervised 150-attempt resource benchmarks,
 **Week 8 primary documentation:** `week8-three-arm-auth-methodology.md`, `week8-evidence-validation.md`, and `week8-schema-validation-optimization-benchmark.md`.
 **Week 8 conclusion:** The three-arm nonformal pilot, evidence-validation correction, resource profiler, and schema-cache optimization are complete at pilot scale. The full correlated-noise reliability study remains future work.
 
+## Week 9: Exploratory Results, Shared-Noise Methodology, and Evidence Review
+
+During Week 9, I completed retrospective analysis, methodology review, and documentation of preserved evidence. The experiments below were historical executions; I did not run new tests or experiments for this work.
+
+- Completed the exploratory three-arm numerical reconciliation of the October 20 pilot: 150 completed arm attempts across 50 matched trial-condition cells. Single-Read established 41/50 sessions (82%), Majority-3 45/50 (90%), and Stored-Provisioned 50/50 (100%). All PUF reconstruction failures occurred under independent stress. The 136 authorized recording releases did not execute trained SNN or anomaly models. Detailed results and limitations are in the [Week 9 three-arm report](../week9-three-arm-results.md).
+- Completed the shared-noise methodology review. The proposed operating-region criteria are to examine conditions near the reconstruction failure boundary, preserve marginal noise variance when varying shared differential disturbance, and retain matched comparisons and separate common-mode controls. The pilot's all-success nominal/correlation cells cannot establish attenuation of a voting benefit. Practical thresholds, population-aware uncertainty, and any condition revision remain proposed, not approved; see the [methodology review](../archive/week8-three-arm-formal-methodology-review-v1.md).
+- Reviewed the historical October 21 resource optimization: workflow time decreased from 142.875 to 48.734 seconds, a 65.9% observed reduction and approximately 2.93x speedup. Schema-definition checks fell from 459 to 5 while all 459 instance validations remained. This improved harness overhead, not inference latency. Full-scale RAM and completion time remain unqualified, especially when finalization retains a second complete record graph.
+- Completed the evidence/provenance and reproduction review. Manifest/source checks and numerical reconciliation support the preserved results, but separate independent experimental reproduction was not established. The historical timing-source discrepancy, missing ARM64-attempt receipt, and stale required test-patch path remain unresolved. Hash-correct datasets/models in this workspace do not establish another host's readiness.
+- Consolidated Keegan's integration and timing evidence: Week 6 directly timed simulated Single-Read authentication through saved-model inference; October 22 confirmed selected functional agreement with controlled Single-Read/Majority-3 fixtures, without noisy-RO reliability or latency measurement. The historical optimized logistic/logistic recurring p95 values were 14.26/15.38 ms; fresh-to-first values were 22.23/23.41 ms. These are not SNN-only timings or a unified three-arm performance result. The [evidence, feasibility, and reproduction report](../week9-evidence-feasibility-reproduction.md) consolidates the scope, sources, and remaining gaps.
+
+### Questions for Dr. Garcia
+
+- Are the proposed operating region, paired reliability contrasts, practical effect/precision criteria, and population-based uncertainty appropriate? Should the existing allocation be retained or a condition revision reviewed separately?
+- Which timing boundary and provisional target should guide the next comparison, and should independent reproduction and memory qualification take priority over three-arm trained-model timing?
+- What scope and approvals are appropriate for later physical/Quest validation? The [faculty decision memo](../faculty-decision-memo.md) records proposed targets and access/data questions, not current authorization.
+
+### Next Steps Following Feedback
+
+Record Dr. Garcia's decisions, revise and freeze the reviewed methodology and timing boundaries, then address source-path/provenance gaps and verify the frozen handoff on a compatible independent host. Seek separate authorization for bounded resource qualification and reproduction before proposing larger execution. The 90,000-attempt study remains proposed, unexecuted, and unauthorized; formal execution stays disabled.
+
 
 # Hours and Work:
 
