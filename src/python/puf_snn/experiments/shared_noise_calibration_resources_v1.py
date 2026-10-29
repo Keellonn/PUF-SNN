@@ -14,6 +14,7 @@ import time
 from . import shared_noise_calibration_v1 as study
 from . import shared_noise_calibration_evidence_v1 as evidence
 from . import shared_noise_calibration_authorization_v2 as auth
+from . import shared_noise_calibration_monitor_v1 as monitor_io
 from .shared_noise_calibration_provenance_v2 import checked_timestamp
 
 SIDECAR_ROOT = study.ROOT / "tmp/week9-shared-noise-calibration-v1"
@@ -33,7 +34,25 @@ def primitives():
         module = importlib.util.module_from_spec(spec)
         sys.modules[name] = module
         spec.loader.exec_module(module)
+        # This privately loaded module is Week 9's instance, never the historical
+        # supervisor module. Its monitoring/containment/lease logic is unchanged.
+        module.read_json = monitor_io.read_json
+        module.save_json = monitor_io.save_json
     return sys.modules[name]
+
+
+def monitoring_status(directory):
+    """Safe diagnostic inspection, including old/incomplete bundles; no audit."""
+    config = study.StudyConfig.load()
+    output = auth.output_identity(config, directory, auth.context_for(config), require_new=False)
+    monitor = auth.unlinked_namespace(SIDECAR_ROOT/output.name)/"worker/monitor.json"
+    try:
+        snapshot = monitor_io.read_json(monitor)
+    except FileNotFoundError:
+        snapshot = None
+    return dict(diagnostic_only=True, run_id=output.name, monitor=snapshot,
+                completion_marker_present=(output/evidence.MARKER).is_file(),
+                certification="status inspection does not validate scientific evidence")
 
 
 def freeze(config):

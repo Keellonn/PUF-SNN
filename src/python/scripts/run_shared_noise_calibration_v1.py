@@ -19,7 +19,7 @@ def main(argv=None):
         worker(request)
         return
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("plan", "preflight", "run-calibration", "audit", "acknowledge-selection", "audit-selection"))
+    parser.add_argument("action", choices=("plan", "preflight", "status", "run-calibration", "audit", "acknowledge-selection", "audit-selection"))
     parser.add_argument("--config", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--approval-file", type=Path)
@@ -33,6 +33,10 @@ def main(argv=None):
         from puf_snn.experiments.shared_noise_calibration_resources_v1 import freeze
         result = dict(study.dry_plan(config), **{k:v for k,v in freeze(config).items()
                       if k not in ("config_sha256", "plan_sha256")}, execution_authorized=False)
+    elif args.action == "status":
+        from puf_snn.experiments.shared_noise_calibration_resources_v1 import monitoring_status
+        study.require(args.output is not None, "status needs the run output path")
+        result = monitoring_status(args.output)
     elif args.action == "audit":
         from puf_snn.experiments.shared_noise_calibration_evidence_v1 import audit_evidence
         study.require(args.output is not None, "audit needs an existing completed bundle")

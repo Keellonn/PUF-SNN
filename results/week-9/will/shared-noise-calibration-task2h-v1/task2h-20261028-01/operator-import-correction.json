@@ -1,0 +1,1 @@
+{"cause":"Receipt helper omitted repository root from sys.path. Resource test module failed import before running its tests.","corrected_receipt":"tests-2-corrected.json","correction":"Added repository root to this operator script only; no scientific source/environment change.","original_receipt":"tests-2.json","scientific_authorization_created":false}

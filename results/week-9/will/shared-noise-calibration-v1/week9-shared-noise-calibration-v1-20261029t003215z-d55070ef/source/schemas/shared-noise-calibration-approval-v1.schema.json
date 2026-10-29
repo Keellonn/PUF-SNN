@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authorization",
+    "approved_by",
+    "approved_at",
+    "rules_version",
+    "allocation_rules_and_resources_reviewed",
+    "resource_budgets",
+    "config_sha256",
+    "plan_sha256",
+    "source_id",
+    "environment_sha256",
+    "specification_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:approval-v1"
+    },
+    "authorization": {
+      "const": "RUN-3840-SHARED-NOISE-CALIBRATION-V1"
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules_version": {
+      "const": "week9-shared-noise-calibration-v1:proposed-rules-v1"
+    },
+    "allocation_rules_and_resources_reviewed": {
+      "const": true
+    },
+    "resource_budgets": {
+      "const": {
+        "bundle_seconds": 1800.0,
+        "session_seconds": 1800.0,
+        "memory_bytes": 4294967296,
+        "min_free_ram_bytes": 8589934592,
+        "min_free_disk_bytes": 1073741824,
+        "bundle_growth_bytes": 536870912,
+        "total_growth_bytes": 1073741824,
+        "sample_seconds": 0.05,
+        "stop_grace_seconds": 2.0
+      }
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "environment_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "specification_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

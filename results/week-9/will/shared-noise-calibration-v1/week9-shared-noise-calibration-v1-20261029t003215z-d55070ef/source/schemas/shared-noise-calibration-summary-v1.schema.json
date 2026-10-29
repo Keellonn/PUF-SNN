@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "source_id",
+    "config_sha256",
+    "plan_sha256",
+    "groups",
+    "analysis",
+    "fixture_only",
+    "timing_profile"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:summary"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "config_sha256": {
+      "type": "string"
+    },
+    "plan_sha256": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "object"
+    },
+    "analysis": {
+      "type": "object"
+    },
+    "fixture_only": {
+      "type": "boolean"
+    },
+    "timing_profile": {
+      "const": "cold-process-no-harness-warmup-v1"
+    }
+  }
+}

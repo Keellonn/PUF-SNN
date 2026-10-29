@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "attestation_id",
+    "attestation_kind",
+    "acknowledged_by",
+    "acknowledged_at",
+    "statement",
+    "run_id",
+    "config_sha256",
+    "plan_sha256",
+    "source_id",
+    "rules_version",
+    "algorithm_version",
+    "selection_sha256",
+    "analysis_sha256",
+    "completed_evidence_sha256",
+    "manifest_sha256",
+    "completion_marker_sha256",
+    "selected_sigma",
+    "result_status",
+    "fixture_only"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:acknowledgment-v1"
+    },
+    "attestation_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "attestation_kind": {
+      "enum": [
+        "recorded-researcher-attestation",
+        "automated-test-attestation"
+      ]
+    },
+    "acknowledged_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acknowledged_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "statement": {
+      "const": "I acknowledge the computed result and certified evidence identified by this record."
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "rules_version": {
+      "const": "week9-shared-noise-calibration-v1:proposed-rules-v1"
+    },
+    "algorithm_version": {
+      "const": "week9-shared-noise-calibration-v1:selection-algorithm-v1"
+    },
+    "selection_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "analysis_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "completed_evidence_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "completion_marker_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "selected_sigma": {
+      "enum": [
+        null,
+        0.1,
+        0.15,
+        0.2,
+        0.25
+      ]
+    },
+    "result_status": {
+      "enum": [
+        "qualifying-operating-point",
+        "no-qualifying-operating-point"
+      ]
+    },
+    "fixture_only": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fixture_only": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "attestation_kind": {
+            "const": "automated-test-attestation"
+          },
+          "acknowledged_by": {
+            "const": "automated deterministic fixture; no researcher acknowledgment"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "attestation_kind": {
+            "const": "recorded-researcher-attestation"
+          }
+        }
+      }
+    }
+  ]
+}

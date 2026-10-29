@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "authorization",
+    "authorization_id",
+    "run_id",
+    "output_directory",
+    "fixture_only",
+    "approved_by",
+    "approved_at",
+    "rules_version",
+    "allocation_rules_and_resources_reviewed",
+    "resource_budgets",
+    "previous_failed_authorization_id",
+    "restart_reason",
+    "config_sha256",
+    "plan_sha256",
+    "source_id",
+    "environment_sha256",
+    "specification_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:approval-v2"
+    },
+    "experiment_id": {
+      "const": "week9-shared-noise-calibration-v1"
+    },
+    "authorization": {
+      "enum": [
+        "RUN-3840-SHARED-NOISE-CALIBRATION-V1",
+        "TEST-ONLY-SUPERVISION-FIXTURE-V2"
+      ]
+    },
+    "authorization_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_directory": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fixture_only": {
+      "type": "boolean"
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules_version": {
+      "const": "week9-shared-noise-calibration-v1:proposed-rules-v1"
+    },
+    "allocation_rules_and_resources_reviewed": {
+      "type": "boolean"
+    },
+    "resource_budgets": {
+      "oneOf": [
+        {
+          "const": {
+            "bundle_seconds": 1800.0,
+            "session_seconds": 1800.0,
+            "memory_bytes": 4294967296,
+            "min_free_ram_bytes": 8589934592,
+            "min_free_disk_bytes": 1073741824,
+            "bundle_growth_bytes": 536870912,
+            "total_growth_bytes": 1073741824,
+            "sample_seconds": 0.05,
+            "stop_grace_seconds": 2.0
+          }
+        },
+        {
+          "const": {
+            "bundle_seconds": 60.0,
+            "session_seconds": 60.0,
+            "memory_bytes": 2147483648,
+            "min_free_ram_bytes": 16777216,
+            "min_free_disk_bytes": 67108864,
+            "bundle_growth_bytes": 16777216,
+            "total_growth_bytes": 67108864,
+            "sample_seconds": 0.05,
+            "stop_grace_seconds": 0.2
+          }
+        }
+      ]
+    },
+    "previous_failed_authorization_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "restart_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "environment_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "specification_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fixture_only": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "authorization": {
+            "const": "TEST-ONLY-SUPERVISION-FIXTURE-V2"
+          },
+          "allocation_rules_and_resources_reviewed": {
+            "const": false
+          },
+          "resource_budgets": {
+            "const": {
+              "bundle_seconds": 60.0,
+              "session_seconds": 60.0,
+              "memory_bytes": 2147483648,
+              "min_free_ram_bytes": 16777216,
+              "min_free_disk_bytes": 67108864,
+              "bundle_growth_bytes": 16777216,
+              "total_growth_bytes": 67108864,
+              "sample_seconds": 0.05,
+              "stop_grace_seconds": 0.2
+            }
+          },
+          "approved_by": {
+            "const": "automated deterministic fixture; no researcher approval"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "authorization": {
+            "const": "RUN-3840-SHARED-NOISE-CALIBRATION-V1"
+          },
+          "allocation_rules_and_resources_reviewed": {
+            "const": true
+          },
+          "resource_budgets": {
+            "const": {
+              "bundle_seconds": 1800.0,
+              "session_seconds": 1800.0,
+              "memory_bytes": 4294967296,
+              "min_free_ram_bytes": 8589934592,
+              "min_free_disk_bytes": 1073741824,
+              "bundle_growth_bytes": 536870912,
+              "total_growth_bytes": 1073741824,
+              "sample_seconds": 0.05,
+              "stop_grace_seconds": 2.0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

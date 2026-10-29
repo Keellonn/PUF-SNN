@@ -30,6 +30,7 @@ def source_paths():
         "src/python/scripts/run_shared_noise_calibration_v1.py",
         "tools/profile_three_arm_resources_v1.py", "tests/tools/test_profile_three_arm_resources_v1.py",
         "tests/experiments/test_shared_noise_calibration_v1.py",
+        "tests/experiments/test_shared_noise_calibration_monitor_v1.py",
         "tests/experiments/test_shared_noise_calibration_authorization_v2.py"})
     paths.update(f"schemas/shared-noise-calibration-{k}-v1.schema.json" for k in ("config", "plan", "attempt", "summary", "approval"))
     paths.update({"schemas/shared-noise-calibration-approval-v2.schema.json",

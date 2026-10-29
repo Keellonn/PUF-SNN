@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "share": 3,
+      "api": "os.replace",
+      "replaced": false,
+      "winerror": 5
+    },
+    {
+      "share": 3,
+      "api": "MoveFileExW",
+      "replaced": false,
+      "winerror": 5
+    },
+    {
+      "share": 3,
+      "api": "ReplaceFileW",
+      "replaced": false,
+      "winerror": 32
+    },
+    {
+      "share": 7,
+      "api": "os.replace",
+      "replaced": false,
+      "winerror": 5
+    },
+    {
+      "share": 7,
+      "api": "MoveFileExW",
+      "replaced": false,
+      "winerror": 5
+    },
+    {
+      "share": 7,
+      "api": "ReplaceFileW",
+      "replaced": true,
+      "winerror": null
+    }
+  ],
+  "note": "The initial reproduction receipt prose incorrectly anticipated that share-delete alone would succeed. Its actual false result is retained; this matrix determines supported behavior."
+}
