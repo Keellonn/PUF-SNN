@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "algorithm_version",
+    "rules_version",
+    "run_id",
+    "source_id",
+    "config_sha256",
+    "plan_sha256",
+    "completed_evidence_sha256",
+    "evidence_files",
+    "analysis_sha256",
+    "summary_sha256",
+    "computation_timestamp",
+    "computed_by",
+    "candidates",
+    "result",
+    "fixture_only",
+    "acknowledgment_status",
+    "certification",
+    "selection_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:selection-v2"
+    },
+    "algorithm_version": {
+      "const": "week9-shared-noise-calibration-v1:selection-algorithm-v1"
+    },
+    "rules_version": {
+      "const": "week9-shared-noise-calibration-v1:proposed-rules-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "completed_evidence_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evidence_files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "config.json",
+        "trial-plan.json",
+        "metadata.json",
+        "source-manifest.json",
+        "enrollments.json",
+        "attempts.jsonl",
+        "validation.json",
+        "authorization-consumption.json"
+      ],
+      "properties": {
+        "config.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "trial-plan.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "metadata.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source-manifest.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "enrollments.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "attempts.jsonl": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "validation.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authorization-consumption.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "analysis_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "summary_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "computation_timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "computed_by": {
+      "const": "week9-shared-noise-calibration-v1:selection-algorithm-v1"
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object"
+      }
+    },
+    "result": {
+      "type": "object"
+    },
+    "fixture_only": {
+      "type": "boolean"
+    },
+    "acknowledgment_status": {
+      "const": "not-recorded-in-computational-receipt"
+    },
+    "certification": {
+      "const": "requires-certified-calibration-marker-and-separate-acknowledgment-for-planning"
+    },
+    "selection_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -2683,14 +2683,14 @@ Verified protected reconstruction source hashes
 
 # Thursday October, 22
 
-## 1:00pm - 1:45pm ()
+## 1:00pm - 1:45pm (0.75 Hours)
 - Weekly Meeting
 - Listened to Zane's presentation
 - Listened to Sadman's presentation
 
 # Tuesday October, 27
 
-## 11:09am - 1:31pm ()
+## 11:09am - 1:31pm (2.37 Hours)
 - Completed the Week 9 retrospective analysis of the October 20 three-arm authentication experiment
 - Reconciled the preserved 150 experimental attempts across 50 matched trial-condition identities
 - Analyzed the reliability differences between,
@@ -2705,7 +2705,7 @@ Verified protected reconstruction source hashes
 - Evaluated the paired stress-condition results and stage-level software latency measurements
 - Documented experimental findings, limitations, and interpretations
 
-## 4:31pm - 6:01pm ()
+## 4:31pm - 6:01pm (1.50 Hours)
 - Finalized the correlated-noise experimental methodology proposal
 - Defined proposed operating-region selection criteria using,
   - Reconstruction FRR
@@ -2716,7 +2716,7 @@ Verified protected reconstruction source hashes
 - Reviewed whole-device versus population-cluster statistical resampling methods
 - Prepared the methodology decision brief and outstanding research questions for Dr. Garcia
 
-## 9:12pm - 10:40pm ()
+## 9:12pm - 10:40pm (1.47 Hours)
 - Began evaluating evidence integrity, resource feasibility, and reproducibility of the existing authentication experiments
 - Analyzed the October 21 resource-optimization results, including schema-validation overhead and evidence-finalization costs
 - Reviewed the observed 65.9% workflow runtime reduction and identified which processing costs were actually improved
@@ -2724,7 +2724,7 @@ Verified protected reconstruction source hashes
 - Identified memory-scaling risks involving retained experimental records and duplicated data during evidence finalization
 - Distinguished measured resource consumption from projected full-scale requirements
 
-## 11:06pm - 11:59pm ()
+## 11:06pm - 11:59pm (0.88 Hours)
 - Completed the evidence-provenance and reproducibility review
 - Verified the scope of preserved source/evidence manifests, numerical reconciliation, and historical validation receipts
 - Examined unresolved source-fingerprint discrepancies and current experiment source-path requirements
@@ -2732,9 +2732,33 @@ Evaluated Keegan's preserved quality-validation results, regression-test evidenc
 Reviewed the availability and integrity of the frozen synthetic dataset and saved model artifacts
 Identified remaining requirements for independent reproduction in a compatible execution environment
 
-## 12:00am - 12:31am ()
+# Wednesday October, 28
+
+## 12:00am - 12:31am (0.52 Hours)
 - Completed the cross-component PUF/SNN integration and timing evidence review
 - Distinguished the three-arm authentication pilot from existing Single-Read authentication-through-trained-model experiments
 - Evaluated Keegan's functional-equivalence findings and the measured processing-latency improvements from quality-arithmetic optimization
 - Reviewed timing boundaries, accepted-path percentiles, and remaining limitations of the integrated software pipeline
 - Organized the resource-feasibility, reproducibility, and integration findings for the consolidated Week 9 evidence report
+
+## 5:12pm - 8:11pm (2.98 Hours)
+- Reviewed Dr. Garcia's shared-noise feedback and refined the experimental methodology to measure how Majority-3 reconstruction reliability changes with correlated PUF measurement noise
+- Developed a comprehensive shared-noise study specification, including,
+  - Oscillator-noise equations
+  - Correlation construction
+  - Experimental conditions
+  - Statistical analysis
+  - Reproducibility requirements
+- Established a four-candidate noise calibration sweep (σ = 0.10, 0.15, 0.20, 0.25) using 24 simulated devices and 3,840 planned authentication attempts
+- Defined prespecified operating-point selection criteria using reconstruction failure rates, paired reliability improvements, statistical uncertainty, and device-level consistency
+- Implemented a bounded Python calibration framework supporting deterministic experiment planning, supervised execution, evidence collection, and independent validation
+- Integrated 10,000-draw paired device-level bootstrap analysis to account for repeated measurements and quantify uncertainty in Single-Read versus Majority-3 reconstruction performance
+- Conducted an independent implementation audit, identifying and correcting two provenance issues involving reusable execution approvals and incomplete selection documentation
+- Implemented single-use, run-bound authorization and separately recorded selection provenance to strengthen experimental reproducibility and prevent unauthorized reruns
+- Completed 182 passing validation tests, including a successful 16-attempt supervised execution fixture and independent cross-sigma statistical verification
+- Verified source integrity, experimental accounting, resource constraints, two-pass evidence reconciliation, and protections against incomplete or modified experimental results
+- Prepared the calibration execution and analysis procedure,
+  - Failure accounting
+  - Timing interpretation
+  - Resource profiling
+  - Reproducibility

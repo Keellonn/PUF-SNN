@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "config_sha256",
+    "blocks",
+    "counts",
+    "plan_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:plan"
+    },
+    "experiment_id": {
+      "const": "week9-shared-noise-calibration-v1"
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1920,
+      "items": {
+        "type": "object"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groups",
+        "simulated_devices",
+        "matched_trials",
+        "arm_attempts",
+        "expected_reads",
+        "expected_runtime_decodes",
+        "expected_votes",
+        "enrollment_reference_readings",
+        "two_pass_replay_measurements",
+        "two_pass_replay_decodes",
+        "two_pass_reference_readings",
+        "statistical_samples_added_by_replay"
+      ],
+      "properties": {
+        "groups": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "simulated_devices": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "matched_trials": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "arm_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_reads": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_runtime_decodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_votes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "enrollment_reference_readings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "two_pass_replay_measurements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "two_pass_replay_decodes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "two_pass_reference_readings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "statistical_samples_added_by_replay": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

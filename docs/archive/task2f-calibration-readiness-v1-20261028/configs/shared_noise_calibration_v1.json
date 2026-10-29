@@ -1,0 +1,95 @@
+{
+  "schema_version": "week9-shared-noise-calibration-v1:config",
+  "experiment_id": "week9-shared-noise-calibration-v1",
+  "mode": "bounded-calibration",
+  "decisions_status": "proposed-pending-review",
+  "specification_path": "docs/week9-shared-noise-study-specification.md",
+  "rules_version": "week9-shared-noise-calibration-v1:proposed-rules-v1",
+  "master_seed": 2026102801,
+  "schedule_seed": 2026102802,
+  "bootstrap_seed": 2026102803,
+  "group_sensitivity_seed": 2026102804,
+  "allocation": {
+    "groups": 4,
+    "devices_per_group": 6,
+    "trials_per_device_sigma": 20
+  },
+  "conditions": [
+    {
+      "name": "s010",
+      "sigma": 0.1,
+      "rho": 0,
+      "common_offset": 0
+    },
+    {
+      "name": "s015",
+      "sigma": 0.15,
+      "rho": 0,
+      "common_offset": 0
+    },
+    {
+      "name": "s020",
+      "sigma": 0.2,
+      "rho": 0,
+      "common_offset": 0
+    },
+    {
+      "name": "s025",
+      "sigma": 0.25,
+      "rho": 0,
+      "common_offset": 0
+    }
+  ],
+  "policies": [
+    "single-read-v1",
+    "majority-3-v1"
+  ],
+  "manufacturing_std": 1.0,
+  "enrollment_noise_std": 0.0,
+  "bootstrap_resamples": 10000,
+  "confidence_level": 0.95,
+  "interval_scope": "pointwise-estimation-only",
+  "authentication": {
+    "config_version": "puf-snn-auth-config-v2",
+    "protocol_profile": "puf-snn-l3-credential-admission-v1-wire2",
+    "handshake_timeout_ms": 10000,
+    "session_ttl_ms": 300000,
+    "max_windows": 10000,
+    "max_pending_sessions": 128,
+    "max_sessions_per_process": 10000,
+    "warmup_iterations": 0
+  },
+  "timing_profile": "cold-process-no-harness-warmup-v1",
+  "window_id": "week7-fixed-window-v1",
+  "consumer_id": "recording-consumer-v1",
+  "selection_rules": {
+    "single_frr_min": 0.05,
+    "single_frr_max": 0.7,
+    "single_failures_min": 24,
+    "single_correct_min": 24,
+    "majority_frr_max": 0.5,
+    "delta_min": 0.02,
+    "discordances_min": 20,
+    "event_devices_min": 6,
+    "event_groups_min": 3,
+    "single_ci_lower_min": 0.01,
+    "single_ci_upper_max": 0.85,
+    "delta_ci_width_max": 0.2,
+    "leave_device_delta_min": 0.01,
+    "positive_groups_min": 3,
+    "group_delta_min": -0.02
+  },
+  "resource_budgets": {
+    "bundle_seconds": 1800.0,
+    "session_seconds": 1800.0,
+    "memory_bytes": 4294967296,
+    "min_free_ram_bytes": 8589934592,
+    "min_free_disk_bytes": 1073741824,
+    "bundle_growth_bytes": 536870912,
+    "total_growth_bytes": 1073741824,
+    "sample_seconds": 0.05,
+    "stop_grace_seconds": 2.0
+  },
+  "final_execution_enabled": false,
+  "retries": 0
+}

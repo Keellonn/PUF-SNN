@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "mode",
+    "decisions_status",
+    "specification_path",
+    "rules_version",
+    "master_seed",
+    "schedule_seed",
+    "bootstrap_seed",
+    "group_sensitivity_seed",
+    "allocation",
+    "conditions",
+    "policies",
+    "manufacturing_std",
+    "enrollment_noise_std",
+    "bootstrap_resamples",
+    "confidence_level",
+    "interval_scope",
+    "authentication",
+    "timing_profile",
+    "window_id",
+    "consumer_id",
+    "selection_rules",
+    "resource_budgets",
+    "final_execution_enabled",
+    "retries"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-calibration-v1:config"
+    },
+    "experiment_id": {
+      "const": "week9-shared-noise-calibration-v1"
+    },
+    "mode": {
+      "enum": [
+        "bounded-calibration",
+        "unit-test"
+      ]
+    },
+    "decisions_status": {
+      "const": "proposed-pending-review"
+    },
+    "specification_path": {
+      "const": "docs/week9-shared-noise-study-specification.md"
+    },
+    "rules_version": {
+      "const": "week9-shared-noise-calibration-v1:proposed-rules-v1"
+    },
+    "master_seed": {
+      "const": 2026102801
+    },
+    "schedule_seed": {
+      "const": 2026102802
+    },
+    "bootstrap_seed": {
+      "const": 2026102803
+    },
+    "group_sensitivity_seed": {
+      "const": 2026102804
+    },
+    "allocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groups",
+        "devices_per_group",
+        "trials_per_device_sigma"
+      ],
+      "properties": {
+        "groups": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "devices_per_group": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "trials_per_device_sigma": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        }
+      }
+    },
+    "conditions": {
+      "const": [
+        {
+          "name": "s010",
+          "sigma": 0.1,
+          "rho": 0,
+          "common_offset": 0
+        },
+        {
+          "name": "s015",
+          "sigma": 0.15,
+          "rho": 0,
+          "common_offset": 0
+        },
+        {
+          "name": "s020",
+          "sigma": 0.2,
+          "rho": 0,
+          "common_offset": 0
+        },
+        {
+          "name": "s025",
+          "sigma": 0.25,
+          "rho": 0,
+          "common_offset": 0
+        }
+      ]
+    },
+    "policies": {
+      "const": [
+        "single-read-v1",
+        "majority-3-v1"
+      ]
+    },
+    "manufacturing_std": {
+      "const": 1.0
+    },
+    "enrollment_noise_std": {
+      "const": 0.0
+    },
+    "bootstrap_resamples": {
+      "const": 10000
+    },
+    "confidence_level": {
+      "const": 0.95
+    },
+    "interval_scope": {
+      "const": "pointwise-estimation-only"
+    },
+    "authentication": {
+      "const": {
+        "config_version": "puf-snn-auth-config-v2",
+        "protocol_profile": "puf-snn-l3-credential-admission-v1-wire2",
+        "handshake_timeout_ms": 10000,
+        "session_ttl_ms": 300000,
+        "max_windows": 10000,
+        "max_pending_sessions": 128,
+        "max_sessions_per_process": 10000,
+        "warmup_iterations": 0
+      }
+    },
+    "timing_profile": {
+      "const": "cold-process-no-harness-warmup-v1"
+    },
+    "window_id": {
+      "const": "week7-fixed-window-v1"
+    },
+    "consumer_id": {
+      "const": "recording-consumer-v1"
+    },
+    "selection_rules": {
+      "const": {
+        "single_frr_min": 0.05,
+        "single_frr_max": 0.7,
+        "single_failures_min": 24,
+        "single_correct_min": 24,
+        "majority_frr_max": 0.5,
+        "delta_min": 0.02,
+        "discordances_min": 20,
+        "event_devices_min": 6,
+        "event_groups_min": 3,
+        "single_ci_lower_min": 0.01,
+        "single_ci_upper_max": 0.85,
+        "delta_ci_width_max": 0.2,
+        "leave_device_delta_min": 0.01,
+        "positive_groups_min": 3,
+        "group_delta_min": -0.02
+      }
+    },
+    "resource_budgets": {
+      "const": {
+        "bundle_seconds": 1800.0,
+        "session_seconds": 1800.0,
+        "memory_bytes": 4294967296,
+        "min_free_ram_bytes": 8589934592,
+        "min_free_disk_bytes": 1073741824,
+        "bundle_growth_bytes": 536870912,
+        "total_growth_bytes": 1073741824,
+        "sample_seconds": 0.05,
+        "stop_grace_seconds": 2.0
+      }
+    },
+    "final_execution_enabled": {
+      "const": false
+    },
+    "retries": {
+      "const": 0
+    }
+  }
+}

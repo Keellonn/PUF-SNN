@@ -1,0 +1,23 @@
+{
+  "kind": "superseded-task2f-readiness-not-scientific-evidence",
+  "files": {
+    "configs/shared_noise_calibration_v1.json": "3610f8f45fc9c75ff31b0273c564534ef864edccd3f0977fbec2c634ebeb75d0",
+    "docs/week9-shared-noise-calibration-dry-plan.json": "613f41acf71028d4e2887405847abfb2cf8fc8446cce41ebd0ef4bdc1cd278fe",
+    "docs/week9-shared-noise-calibration-preflight.json": "95d220ab17cae29bb717a43f532fabd9d2b588bebefbe3f6f638c4d3f42c4584",
+    "docs/week9-shared-noise-calibration-readiness.md": "caa85ffb4d62213ec828b1315d425ccc4be1e278faa2a8339016fa06b0537e0d",
+    "docs/week9-shared-noise-calibration-validation.json": "ebdc2f1465f4d51069512aa11fcbec76d4c972091103dd726fb07ad8844e93f2",
+    "docs/week9-shared-noise-study-specification.md": "02a28f90eaf06b1fd83ec4556638c605be65bed1131a1875c3b8fa86cff160fa",
+    "schemas/shared-noise-calibration-approval-v1.schema.json": "60ae20d0f2fb17ec7b88e2ba948a429f69375679cf377715c18b494b653c9c93",
+    "schemas/shared-noise-calibration-attempt-v1.schema.json": "07c4f04c3851c1f8f8bdba9cdf41d850b791d7b2c9f0c54168195158c766fb96",
+    "schemas/shared-noise-calibration-config-v1.schema.json": "4dae711fb0b1e0ccaa91e5f534009c653eaf3585736dc0293e0e9e7a2e9b8bf6",
+    "schemas/shared-noise-calibration-plan-v1.schema.json": "4e53b68f34fbbb70e1e68669c2856c456606066c22359cc561e78275e1e3bfa0",
+    "schemas/shared-noise-calibration-summary-v1.schema.json": "03b2f78de196e85aa0336af6f6dd01f08d627fac63631db23e1474e9cdd50ea5",
+    "src/python/puf_snn/experiments/shared_noise_calibration_analysis_v1.py": "bd6b9a76dc2ae38f450aba1ddaf9adb1b6579a583ccca6abf4d77a7a95818921",
+    "src/python/puf_snn/experiments/shared_noise_calibration_evidence_v1.py": "0742a82ea8671ca50c217abfe725e274e8b27bfd87280d64bddc73515fe51c26",
+    "src/python/puf_snn/experiments/shared_noise_calibration_resources_v1.py": "00128f269065a8e0ffd0e2059570867a3a544e0c1f305ae3eae93ac325abac10",
+    "src/python/puf_snn/experiments/shared_noise_calibration_runtime_v1.py": "e38fc07d4058b41cbbdae16b2e0d88baeb8a6a15de01d88dd27987d10fe2813f",
+    "src/python/puf_snn/experiments/shared_noise_calibration_v1.py": "56bf613e0ada0f032833f4bca67179130338dd6ec2ee7c6db650071ee6ac3287",
+    "src/python/scripts/run_shared_noise_calibration_v1.py": "c8cb5e9e108b42e2d00b09f53cb22bd391c946af7c4090a3fb33d3b21cac35fb",
+    "tests/experiments/test_shared_noise_calibration_v1.py": "788c5f2bb30da5682dc6a417392e58138c0184619627c4c1065098d7e257df0c"
+  }
+}

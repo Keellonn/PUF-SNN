@@ -75,7 +75,7 @@ The session completed successfully,
 - Zero unauthorized inference releases
 - Zero reported resource violations
 
-### 3.2 Baseline Performance
+### Baseline Performance
 | Measurement | Observed Result |
 |---|---:|
 | Total session wall time | 142.875 s |

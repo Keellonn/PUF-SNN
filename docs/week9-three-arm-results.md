@@ -1,6 +1,8 @@
 # Exploratory Three-Arm Pilot Results
 
-*Week 9 Consolidation — October 20, 2026 Experimental Evidence*
+**Owner:** Will Wallace  
+**Week:** 9
+**Status:** Complete
 
 This is a retrospective analysis of the existing exploratory pilot, not a new Week 9 experiment. No experimental execution or implementation change was performed for this report.
 
