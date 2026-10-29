@@ -1870,26 +1870,181 @@ I completed two separately accepted, supervised 150-attempt resource benchmarks,
 **Week 8 primary documentation:** `week8-three-arm-auth-methodology.md`, `week8-evidence-validation.md`, and `week8-schema-validation-optimization-benchmark.md`.
 **Week 8 conclusion:** The three-arm nonformal pilot, evidence-validation correction, resource profiler, and schema-cache optimization are complete at pilot scale. The full correlated-noise reliability study remains future work.
 
-## Week 9: Exploratory Results, Shared-Noise Methodology, and Evidence Review
+## Week 9, Shared-noise PUF Calibration and Experimental Validation
 
-During Week 9, I completed retrospective analysis, methodology review, and documentation of preserved evidence. The experiments below were historical executions; I did not run new tests or experiments for this work.
+## Weekly Executive Summary
+This week, I focused on developing, validating, and executing a shared-noise PUF calibration experiment. The objective was to identify a suitable measurement-noise magnitude for evaluating how correlated PUF readings affect the reliability advantages of Majority-3 reconstruction compared to Single-Read reconstruction.
 
-- Completed the exploratory three-arm numerical reconciliation of the October 20 pilot: 150 completed arm attempts across 50 matched trial-condition cells. Single-Read established 41/50 sessions (82%), Majority-3 45/50 (90%), and Stored-Provisioned 50/50 (100%). All PUF reconstruction failures occurred under independent stress. The 136 authorized recording releases did not execute trained SNN or anomaly models. Detailed results and limitations are in the [Week 9 three-arm report](../week9-three-arm-results.md).
-- Completed the shared-noise methodology review. The proposed operating-region criteria are to examine conditions near the reconstruction failure boundary, preserve marginal noise variance when varying shared differential disturbance, and retain matched comparisons and separate common-mode controls. The pilot's all-success nominal/correlation cells cannot establish attenuation of a voting benefit. Practical thresholds, population-aware uncertainty, and any condition revision remain proposed, not approved; see the [methodology review](../archive/week8-three-arm-formal-methodology-review-v1.md).
-- Reviewed the historical October 21 resource optimization: workflow time decreased from 142.875 to 48.734 seconds, a 65.9% observed reduction and approximately 2.93x speedup. Schema-definition checks fell from 459 to 5 while all 459 instance validations remained. This improved harness overhead, not inference latency. Full-scale RAM and completion time remain unqualified, especially when finalization retains a second complete record graph.
-- Completed the evidence/provenance and reproduction review. Manifest/source checks and numerical reconciliation support the preserved results, but separate independent experimental reproduction was not established. The historical timing-source discrepancy, missing ARM64-attempt receipt, and stale required test-patch path remain unresolved. Hash-correct datasets/models in this workspace do not establish another host's readiness.
-- Consolidated Keegan's integration and timing evidence: Week 6 directly timed simulated Single-Read authentication through saved-model inference; October 22 confirmed selected functional agreement with controlled Single-Read/Majority-3 fixtures, without noisy-RO reliability or latency measurement. The historical optimized logistic/logistic recurring p95 values were 14.26/15.38 ms; fresh-to-first values were 22.23/23.41 ms. These are not SNN-only timings or a unified three-arm performance result. The [evidence, feasibility, and reproduction report](../week9-evidence-feasibility-reproduction.md) consolidates the scope, sources, and remaining gaps.
+I implemented a deterministic calibration framework with statistical analysis, resource monitoring, execution authorization, and evidence validation. After resolving a Windows monitoring issue that interrupted the first experiment, I successfully completed the full 3,840-attempt calibration.
 
-### Questions for Dr. Garcia
+The experiment identified **σ = 0.15** as the lowest qualifying noise magnitude, producing a Single-Read reconstruction failure rate of 10.208% and a Majority-3 failure rate of 3.125%. This represents a 7.083-percentage-point improvement. The completed experiment passed both evidence-reconciliation passes and a standalone computational audit.
 
-- Are the proposed operating region, paired reliability contrasts, practical effect/precision criteria, and population-based uncertainty appropriate? Should the existing allocation be retained or a condition revision reviewed separately?
-- Which timing boundary and provisional target should guide the next comparison, and should independent reproduction and memory qualification take priority over three-arm trained-model timing?
-- What scope and approvals are appropriate for later physical/Quest validation? The [faculty decision memo](../faculty-decision-memo.md) records proposed targets and access/data questions, not current authorization.
+These findings establish a justified operating point for the next phase: evaluating the effects of correlated measurement noise.
 
-### Next Steps Following Feedback
+## Experimental Design and Methodology
+Developed and finalized a shared-noise study specification that separates independent measurement noise from noise shared across repeated PUF readings.
+The simulated oscillator-frequency model follows,
+`f(d,a,i,r) = 100 + M(d,i) + C(d,a) + σ√ρ Z(d,a,i) + σ√(1−ρ) E(d,a,i,r)`
 
-Record Dr. Garcia's decisions, revise and freeze the reviewed methodology and timing boundaries, then address source-path/provenance gaps and verify the frozen handoff on a compatible independent host. Seek separate authorization for bounded resource qualification and reproduction before proposing larger execution. The 90,000-attempt study remains proposed, unexecuted, and unauthorized; formal execution stays disabled.
+Where:
+- `M` represents persistent device-specific manufacturing variation.
+- `C` represents a common oscillator-frequency offset.
+- `Z` represents oscillator-specific noise shared across repeated measurements.
+- `E` represents independent per-reading measurement noise.
+- `σ` controls the total measurement-noise magnitude.
+- `ρ` controls the proportion of measurement-noise variance shared between repeated readings.
 
+For calibration, correlation was fixed at ρ = 0 and the common offset at C = 0. Manufacturing variation had a standard deviation of 1, and σ was measured in abstract additive oscillator-frequency units.
+
+The calibration used the following configuration,
+- **24 independently simulated PUF devices**, organized into four groups of six
+- Four noise magnitudes: σ = 0.10, 0.15, 0.20, and 0.25
+- 20 matched trials per device at each noise magnitude
+- Two acquisition policies: Single-Read and Majority-3
+- 1,920 matched trial identities and 3,840 total authentication attempts
+- 10,000 paired whole-device bootstrap resamples for confidence-interval estimation
+
+Each simulated device retained the same manufacturing realization across noise conditions. Single-Read and Majority-3 shared the same first-reading noise identity within each matched trial, while Majority-3 performed three independent measurements.
+
+Established prespecified operating-point selection criteria based on reconstruction failure rates, minimum reliability improvement, discordant outcomes, statistical uncertainty, and device-level consistency. The selection algorithm chooses the lowest noise magnitude satisfying all criteria instead of choosing the largest observed improvement.
+
+## Implementation and Software Validation
+Implemented and validated the Python calibration framework using the existing simulated PUF authentication pipeline.
+Major development work included,
+- Deterministic experiment planning, device generation, and trial scheduling
+- Integration of Single-Read and Majority-3 acquisition policies
+- Preservation of BCH(63,36) reconstruction and credential-verification behavior
+- Automated tracking of reconstruction failures, verification outcomes, session admissions, and authorized sensor-window releases
+- Device-level bootstrap confidence intervals and sensitivity calculations
+- Resource-supervised experiment execution with memory, disk, and runtime limits
+- Source/configuration hashing and run-specific execution authorization
+- Two-pass semantic evidence reconciliation and standalone computational auditing
+- Separation of statistical selection computation from researcher acknowledgment
+
+Completed **197 passing software validation tests**, including 182 previously established tests and 15 additional monitoring-remediation tests.
+Also verified that the calibration implementation preserved the original scientific configuration and statistical selection rules throughout troubleshooting.
+
+## Experimental Execution and Troubleshooting
+The initial calibration execution was interrupted after approximately 53.9 seconds when the Windows supervisor encountered an `Access is denied` error while replacing its monitoring file.
+At interruption, 543 of the planned 3,840 authentication attempts had been persisted. The incomplete evidence and consumed execution authorization were preserved without being included in subsequent statistical results.
+
+Investigated the failure and reproduced a Windows file-sharing conflict involving simultaneous monitoring-file readers and an atomic file replacement. Although the original locking process could not be conclusively identified, the reproduced behavior supported a reader/writer interference mechanism.
+Implemented a Week 9 monitoring correction using a Windows named mutex, coordinated status inspection, and bounded replacement retries. The correction was tested under concurrent monitoring access and persistent failure conditions.
+A native Windows fixture completed successfully, including more than 4,000 concurrent status inspections without errors.
+Following the validated correction, executed a separately authorized calibration restart using the original experimental parameters and seeds.
+The restart successfully completed all 3,840 attempts, both evidence-reconciliation passes, and the standalone computational audit. The interrupted run remained preserved as a separate historical record.
+
+## Calibration Results and Statistical Analysis
+The completed calibration produced the following reconstruction failure rates,
+| Noise σ | Single-Read FRR | Majority-3 FRR | Improvement Δ | 95% CI for Δ |
+|---|---|---|---|---|
+| 0.10 | 2.292% | 0.833% | 1.458 pp | [0.208, 2.922] pp |
+| 0.15 | 10.208% | 3.125% | 7.083 pp | [3.333, 11.250] pp |
+| 0.20 | 24.583% | 7.083% | 17.500 pp | [11.667, 23.333] pp |
+| 0.25 | 36.458% | 13.542% | 22.917 pp | [17.500, 28.333] pp |
+
+Reconstruction failure rates include BCH decoder failures, invalid-format credential candidates, and valid-format incorrect credentials.
+**Selected operating point: σ = 0.15.**
+At this magnitude, Single-Read failed 49 of 480 reconstruction attempts, while Majority-3 failed 15 of 480. This represents an approximately **69.4% relative reduction in reconstruction failures**.
+
+The estimated absolute improvement was 7.083 percentage points, with a paired device-bootstrap 95% confidence interval of [3.333, 11.250] percentage points.
+
+Additional statistical observations,
+- σ = 0.10 failed several prespecified criteria because the baseline failure rate and number of informative failures were too low
+- σ = 0.15, 0.20, and 0.25 satisfied every selection criterion
+- At σ = 0.15, the improvement remained between 5.870 and 7.609 percentage points after removing any individual device
+- Removing any one of the four groups left an improvement between 5.278 and 8.333 percentage points
+- All four groups demonstrated positive Majority-3 improvements at the selected operating point
+- The results demonstrated device-to-device variability, reinforcing the importance of device-level statistical analysis
+
+The selection of σ = 0.15 followed the frozen lowest-qualifying rule and was not based on maximizing the observed reliability improvement
+
+## Authentication, Timing, and Resource Evaluation
+
+The completed calibration generated,
+- 3,840 authentication attempts
+- 7,680 PUF readings
+- 3,840 BCH decoding operations
+- 1,920 Majority-3 voting operations
+- 3,369 successful authentications, session establishments, and authorized releases
+- Four valid-format incorrect credentials, all rejected by the independent verifier
+- Zero unauthorized releases across 3,369 tested protected-window opportunities
+
+Authentication failures were tracked separately from explicit verifier refusals. Decoder failures and invalid-format outputs did not reach independent verification, while valid-format incorrect credentials were rejected before session establishment.
+
+The completed experimental workflow required approximately **405 seconds** and recorded,
+- 6,045 resource-monitoring samples
+- 1.568 GiB peak sampled private memory
+- Approximately 28.8 MB of sealed experimental evidence
+- No recorded resource-limit violations
+
+Median acquisition timings were approximately 0.361 ms for Single-Read and 1.038 ms for Majority-3. Median reconstruction timings were approximately 2.175 ms and 2.125 ms, respectively.
+
+These measurements describe specific software execution stages, not physical PUF acquisition or complete XR motion-to-decision latency. The processing stages contain overlapping timing boundaries and cannot be directly summed to construct an end-to-end latency.
+
+The downstream processing used recording callbacks rather than trained SNN inference, so these measurements do not establish actual model-inference performance.
+
+## Evidence Integrity and Reproducibility
+Established and verified experimental reproducibility through deterministic random seeds, frozen configuration files, source manifests, Git commit identification, and run-specific evidence artifacts.
+The successful calibration used committed source revision,
+`6fd13d143fa5c57692851d24d65b62ec3732f98c`
+
+The experiment preserved,
+- Exact configuration, environment, plan, specification, and source identities
+- All 24 device enrollments and 1,920 matched trial identities
+- Complete per-attempt authentication and reconstruction evidence
+- Statistical analysis and operating-point selection receipts
+- Resource-monitoring records and execution diagnostics
+- Two successful semantic reconciliation passes
+- A passing standalone computational evidence audit
+- A validated completion marker, `CALIBRATION_VALIDATED.json`
+
+The original interrupted experiment was preserved independently and was not pooled into the completed dataset.
+
+The successful analysis was also rerun against the completed evidence and matched the sealed statistical results.
+
+These checks support computational reproducibility and internal evidence integrity. They do not constitute independent reproduction by another researcher, which remains an outstanding project objective.
+
+The calibration and final evaluation use separate predefined device populations and random-seed domains to prevent calibration observations from influencing the final correlation comparison.
+
+## Findings, Limitations, and Conclusions
+The primary finding from Week 9 is that Majority-3 reconstruction demonstrates a measurable reliability advantage over Single-Read reconstruction under the simulated independent-noise conditions.
+
+At σ = 0.15, Majority-3 reduced reconstruction failures by 7.083 percentage points, while the device-bootstrap confidence interval and sensitivity analyses supported the stability of the observed improvement within the tested simulated population.
+
+The calibrated noise magnitude provides an informative baseline for the future correlated-noise evaluation, where the same marginal noise magnitude will be maintained while correlation increases.
+
+However, this experiment only evaluated ρ = 0. It does not establish how Majority-3 reliability changes as repeated measurements become correlated.
+
+Additional limitations include,
+- All PUF characteristics were simulated rather than measured from physical hardware.
+- The calibration used 24 simulated devices with 20 matched trials per device per noise magnitude.
+- The selected-point confidence interval is descriptive and was calculated from the same data used for operating-point selection.
+- The authentication implementation uses synthetic credentials and a trusted software verifier.
+- Recording callbacks were used rather than trained SNN inference.
+- Zero observed unauthorized releases does not demonstrate universal resistance to spoofing, replay, or other attacks.
+- The completed calibration does not independently establish the resource feasibility of the larger correlation experiment.
+
+Overall, Week 9 successfully established and validated the experimental foundation needed to quantitatively evaluate shared-noise effects on PUF reconstruction reliability.
+
+## Next Steps
+
+The next research phase will focus on completing the shared-noise correlation evaluation using the calibrated operating point.
+Planned work includes,
+- Record a separate, dated researcher acknowledgment of the selected σ = 0.15 operating point.
+- Finalize the correlation experiment while preserving the selected noise magnitude across ρ = 0, 0.50, 0.90, and 1.00.
+- Evaluate Single-Read, Majority-3, and Stored-Provisioned acquisition policies using matched simulated devices and trial conditions.
+- Include the prespecified nominal-noise and common-mode controls.
+- Implement and validate the final evaluation harness and qualify its larger resource requirements before scientific execution.
+- Quantify the change in Majority-3 reliability benefit as correlation increases, using paired device-level uncertainty estimates.
+- Complete an independent reproduction of a central results table with Keegan.
+- Continue consolidating statistical findings, timing measurements, and research limitations for presentation to Dr. Garcia.
+
+The proposed final study uses 120 independently simulated devices and 108,000 policy attempts, subject to final resource qualification and separate execution authorization.
+
+**Week 9 concludes with a validated calibration experiment and a justified noise operating point. The next scientific objective is to determine how much of Majority-3's reconstruction advantage remains under correlated measurement noise.**
+
+## Next Steps
 
 # Hours and Work:
 
@@ -2763,4 +2918,29 @@ Identified remaining requirements for independent reproduction in a compatible e
   - Resource profiling
   - Reproducibility
 
-## 8:28pm - 
+## 8:28pm - 10:59pm (2.52)
+- Executed the initial shared-noise calibration,
+  - Experiment interrupted after 543 of 3,840 attempts
+  - Identified a Windows monitoring-file access failure
+  - Preserved incomplete evidence and original authorization records
+- Completed the calibration,
+  - 24 simulated devices
+  - 1,920 matched trials
+  - 3,840 authentication attempts
+  - 7,680 simulated PUF readings
+  - Both evidence-reconciliation passes and standalone audit passed
+- Analyzed reconstruction reliability across four noise magnitudes,
+  - Selected sigma = 0.15 using the prespecified criteria
+  - Single-Read FRR: 10.208%
+  - Majority-3 FRR: 3.125%
+  - Absolute reliability improvement: 7.083 percentage points
+  - 95% paired bootstrap CI: [3.333, 11.250] percentage points
+  - Reviewed device-level and population-group sensitivity results
+- Evaluated authentication and resource outcomes,
+  - 3,369 authenticated sessions and authorized releases
+  - Four incorrect credentials independently rejected
+  - Zero observed unauthorized releases
+  - Approximately 405 seconds total experiment workflow
+  - 1.568 GiB peak sampled private memory
+  - No resource-limit violations
+- Finalized the documentation and hours and updated slideshow

@@ -1,0 +1,11 @@
+{
+  "config_sha256": "79a275d06a8a1997981484f15d27cb5e76b39fd2a28b660a4251ddc35e83e756",
+  "directory": "C:\\PUF+SNN_SharedRepo\\PUF-SNN\\results\\week-9\\will\\shared-noise-calibration-v1\\week9-shared-noise-calibration-v1-20261029t011009z-restart-9384a318",
+  "environment_sha256": "6ef3b0cf006b693d9e8622044e7bd833299773c11b7276298a55caec713d2174",
+  "fixture_only": false,
+  "plan_sha256": "e5d4deaf8b944dd514fbdcf2bba31cd91ec5dc22e66478ca8a55701a594135ff",
+  "scientific_execution_disabled": false,
+  "source_id": "a888acae484452b4a85c8442c6d5c3d7fa39b555d27b699bd4f0eaf37fbaf5f6",
+  "specification_sha256": "f5a12c19e9228860b901e9abb0eee4c16aa4dbaa785bbea32fa4b5e31b244b23",
+  "status": "completed-calibration-only"
+}

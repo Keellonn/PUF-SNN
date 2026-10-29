@@ -1,0 +1,55 @@
+{
+  "observed_at": "2026-10-29T01:13:36.124406+00:00",
+  "certification": "status inspection does not validate scientific evidence",
+  "completion_marker_present": false,
+  "diagnostic_only": true,
+  "monitor": {
+    "last_sample": {
+      "aggregate_growth_bytes": 15456883,
+      "elapsed_seconds": 156.06199999999808,
+      "metrics": {
+        "cpu_seconds": 2062.1875,
+        "free_disk_bytes": 63667380224,
+        "free_ram_bytes": 14687928320,
+        "logical_io": {
+          "other_bytes": 535477776,
+          "other_ops": 6789901,
+          "read_bytes": 4924166644,
+          "read_ops": 783602,
+          "write_bytes": 15447828,
+          "write_ops": 1987
+        },
+        "os_peak_rss_bytes": 294400000,
+        "private_bytes": 1525948416,
+        "rss_bytes": 294400000,
+        "total_ram_bytes": 34191159296
+      },
+      "outputs": {
+        "C:\\PUF+SNN_SharedRepo\\PUF-SNN\\results\\week-9\\will\\shared-noise-calibration-v1\\week9-shared-noise-calibration-v1-20261029t011009z-restart-9384a318": {
+          "files": 124,
+          "logical_bytes": 15319291
+        }
+      },
+      "phase": "calibration-through-finalization"
+    },
+    "phase_sampled_peaks": {
+      "calibration-through-finalization": {
+        "private_bytes": 1525948416,
+        "rss_bytes": 294400000
+      },
+      "startup": {
+        "private_bytes": 1407209472,
+        "rss_bytes": 172912640
+      }
+    },
+    "sampled_peaks": {
+      "cpu_seconds": 2062.1875,
+      "os_peak_rss_bytes": 294400000,
+      "private_bytes": 1525948416,
+      "rss_bytes": 294400000
+    },
+    "samples": 2342,
+    "violations": []
+  },
+  "run_id": "week9-shared-noise-calibration-v1-20261029t011009z-restart-9384a318"
+}
