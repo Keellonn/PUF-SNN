@@ -30,6 +30,27 @@ namespace PufSnn.QuestLogger {
         [SerializeField] private float actionSeconds = 2.0f;
         [SerializeField] private float restSeconds = 1.0f;
 
+        public bool RecordingEnabled => recordingAuthorized;
+        public bool SessionRunning => sessionRoutine != null || ledger != null;
+        public string CurrentPrompt { get; private set; } = "Recording off";
+        public event System.Action<string> PromptChanged;
+
+        public void SetRecordingEnabled(bool enabled) {
+            if (!enabled) StopWithReason("recording_disarmed");
+            recordingAuthorized = enabled;
+        }
+
+        public void ConfigureVisit(string participant, string visit, string device,
+            string session, string version, string dataSplit) {
+            if (SessionRunning) throw new System.InvalidOperationException("Stop the current visit before changing identifiers.");
+            if (dataSplit != "train" && dataSplit != "validation" && dataSplit != "test")
+                throw new System.ArgumentException("Use train, validation or test as the split.");
+            QuestTrialLedger.BuildPlan(participant, visit, device, session, version,
+                blockCount, trialsPerClass, randomSeed, maximumScheduledTrials);
+            participantCode = participant; visitCode = visit; deviceId = device;
+            sessionId = session; processingVersion = version; split = dataSplit;
+        }
+
         private Coroutine sessionRoutine;
         private QuestTrialLedger ledger;
         private SourceQualityWriter sourceQuality;
@@ -261,6 +282,8 @@ namespace PufSnn.QuestLogger {
         }
 
         private void ShowPrompt(string message) {
+            CurrentPrompt = message;
+            PromptChanged?.Invoke(message);
             if (promptText != null) {
                 promptText.text = message;
             }

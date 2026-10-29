@@ -1,0 +1,80 @@
+{
+  "counts": {
+    "attempted": 2,
+    "empty": 0,
+    "measured": 2,
+    "missing": 0,
+    "summaries": 2,
+    "unavailable": 0
+  },
+  "issues": [],
+  "ledger_status": "COMPLETE",
+  "missing_trial_summaries": [],
+  "scope": "Source diagnostics; complete accounting does not establish headset readiness.",
+  "source_quality_sha256": "550c6e6c430c5a1d6ac60b35d1a2abce37e1077a219a9756e12a40023aa663d6",
+  "status": "COMPLETE",
+  "summaries": [
+    {
+      "elapsed_ns": 154359988900,
+      "metrics": {
+        "first_capture_ns": 152359555900,
+        "gap_over_50ms_count": 0,
+        "interval_overflow_count": 0,
+        "last_capture_ns": 154358127900,
+        "maximum_positive_gap_ns": 10098000,
+        "median_positive_gap_ns": 1861200,
+        "negative_timestamp_count": 0,
+        "nonfinite_pose_count": 0,
+        "nonpositive_interval_count": 0,
+        "observed_rate_hz": 511.86547194697016,
+        "p95_positive_gap_ns": 2593500,
+        "positive_interval_count": 1023,
+        "source_duration_ns": 1998572000,
+        "source_sample_count": 1024,
+        "status": "available",
+        "tracking_flag_available_count": 0,
+        "tracking_invalid_count": 1024,
+        "tracking_state_available_count": 0,
+        "tracking_valid_count": 0,
+        "unavailable_reason": "",
+        "zero_orientation_count": 0
+      },
+      "reason_code": "capture_completed",
+      "record_type": "source_quality",
+      "source_stage": "completed",
+      "summary_index": 1,
+      "trial_id": "laptop-controls-001-trial-000"
+    },
+    {
+      "elapsed_ns": 161315726900,
+      "metrics": {
+        "first_capture_ns": 160371159400,
+        "gap_over_50ms_count": 0,
+        "interval_overflow_count": 0,
+        "last_capture_ns": 161311705200,
+        "maximum_positive_gap_ns": 15859300,
+        "median_positive_gap_ns": 2645100,
+        "negative_timestamp_count": 0,
+        "nonfinite_pose_count": 0,
+        "nonpositive_interval_count": 0,
+        "observed_rate_hz": 351.92331941730004,
+        "p95_positive_gap_ns": 4194200,
+        "positive_interval_count": 331,
+        "source_duration_ns": 940545800,
+        "source_sample_count": 332,
+        "status": "available",
+        "tracking_flag_available_count": 0,
+        "tracking_invalid_count": 332,
+        "tracking_state_available_count": 0,
+        "tracking_valid_count": 0,
+        "unavailable_reason": "",
+        "zero_orientation_count": 0
+      },
+      "reason_code": "participant_skip_during_recording",
+      "record_type": "source_quality",
+      "source_stage": "stopped",
+      "summary_index": 2,
+      "trial_id": "laptop-controls-001-trial-001"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "PufSnn.QuestLogger.Bench.Tests",
+  "references": [
+    "PufSnn.QuestLogger",
+    "PufSnn.QuestLogger.Bench",
+    "PufSnn.QuestLogger.Bench.Editor",
+    "Unity.InputSystem",
+    "Unity.XR.CoreUtils",
+    "UnityEngine.UI"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "autoReferenced": false
+}

@@ -87,8 +87,8 @@ Each trial follows this order:
 
 The schedule is balanced within each configured block and saved before capture.
 There is a staff-controlled break between blocks, a logger-session time cap, and
-public skip/stop controls. There are no automatic repeats. These controls still
-need scene wiring and actual-build checks. The existing one-block software
+public skip/stop controls. There are no automatic repeats. These controls are now wired and manually checked in the separate laptop scene;
+actual Quest input/display and Android checks remain. The existing one-block software
 default is not a study procedure. Phase 2 needs the readiness review described in
 [the Week 9 checklist](../../docs/week9-logger-readiness.md).
 
@@ -169,3 +169,14 @@ uses synthetic inputs only.
 - keep the controller's `recordingAuthorized` field disabled until recording is permitted
 
 The October 27 follow-up passed 50 native Unity cases and 1,117 selected Python tests. Source diagnostics cover completed, rejected, stopped and unconfirmed captures before interpolation. Unknown measurements are explicit; raw rejected/stopped poses are not saved. Actual Quest/Android and prompt/control checks remain open. See [source diagnostic details](../../docs/quest-trial-ledger.md#source-diagnostics-before-resampling).
+
+See [desktop controls evidence](../../docs/week9-logger-controls.md) for the two October 28 Play Mode checks. The saved laptop scene has recording and automatic start disabled. Its mouse buttons are not yet a verified Quest/staff input interface.
+
+## Separate headset bench scene
+
+`QuestLogger/Assets/Scenes/QuestLoggerBench.unity` now contains a tracked camera,
+visible prompts and Arm/Start/Skip/Stop/Continue controls. Recording defaults off
+and resets after pause or visit completion. The original laptop scene remains.
+See [bench controls and pending device checks](../../docs/week9-quest-bench.md).
+The final follow-up passed 60 Unity tests, including the previous 50; no new
+Python total or actual-headset validation is claimed.

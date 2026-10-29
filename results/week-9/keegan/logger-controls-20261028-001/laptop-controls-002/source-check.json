@@ -1,0 +1,49 @@
+{
+  "counts": {
+    "attempted": 1,
+    "empty": 0,
+    "measured": 1,
+    "missing": 0,
+    "summaries": 1,
+    "unavailable": 0
+  },
+  "issues": [],
+  "ledger_status": "COMPLETE",
+  "missing_trial_summaries": [],
+  "scope": "Source diagnostics; complete accounting does not establish headset readiness.",
+  "source_quality_sha256": "10eb78be93f44e6fcd246e482e098624a9fde09992187dc4f574f96a57909504",
+  "status": "COMPLETE",
+  "summaries": [
+    {
+      "elapsed_ns": 9407321200,
+      "metrics": {
+        "first_capture_ns": 8237896600,
+        "gap_over_50ms_count": 0,
+        "interval_overflow_count": 0,
+        "last_capture_ns": 9405511400,
+        "maximum_positive_gap_ns": 3102900,
+        "median_positive_gap_ns": 1757200,
+        "negative_timestamp_count": 0,
+        "nonfinite_pose_count": 0,
+        "nonpositive_interval_count": 0,
+        "observed_rate_hz": 556.6904427727363,
+        "p95_positive_gap_ns": 2169500,
+        "positive_interval_count": 650,
+        "source_duration_ns": 1167614800,
+        "source_sample_count": 651,
+        "status": "available",
+        "tracking_flag_available_count": 0,
+        "tracking_invalid_count": 651,
+        "tracking_state_available_count": 0,
+        "tracking_valid_count": 0,
+        "unavailable_reason": "",
+        "zero_orientation_count": 0
+      },
+      "reason_code": "operator_stop",
+      "record_type": "source_quality",
+      "source_stage": "stopped",
+      "summary_index": 1,
+      "trial_id": "laptop-controls-002-trial-000"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "additional_remaining": "Scene XR camera/input mapping and runtime recording controls; actual installation, tracking/rate/prompt/file/transfer tests; PI readiness review",
+  "apk_bytes": 42567419,
+  "apk_file_name": "QuestLoggerControls.apk",
+  "apk_location": "Outside Git under the local deliverables/quest-builds folder",
+  "apk_sha256": "cb7fc0c7a9e1fc9670a9e6e99e1773a3f36fe6ae91530885c1d5d04e95cd4004",
+  "badging": [
+    "package: name='com.UnityTechnologies.com.unity.template.urpblank' versionCode='1' versionName='0.1.0' platformBuildVersionName='12' platformBuildVersionCode='32' compileSdkVersion='32' compileSdkVersionCodename='12'",
+    "minSdkVersion:'29'",
+    "targetSdkVersion:'32'",
+    "uses-permission: name='android.permission.INTERNET'",
+    "application: label='QuestLogger' icon='res/Qu.xml'",
+    "launchable-activity: name='com.unity3d.player.UnityPlayerGameActivity'  label='' icon=''",
+    "native-code: 'arm64-v8a'"
+  ],
+  "build_duration_seconds": 670.463,
+  "build_log_summary": "Build completed with a result of 'Succeeded' in 670 seconds (670463 ms) [10/28/2026 3:49:09 PM -> 10/28/2026 4:00:19 PM, 11m 10s]",
+  "build_result": "Succeeded",
+  "date": "2026-10-28",
+  "declared_permissions": [
+    "uses-permission: name='android.permission.INTERNET'"
+  ],
+  "device_installation_performed": false,
+  "finding": "APK has no OpenXR native loader; XR General Settings has no build-target loader assignment. Enable Android OpenXR and Quest support and review validation before the next build.",
+  "headtracking_feature_present": false,
+  "model_or_latency_experiment": false,
+  "native_libraries": [
+    "lib/arm64-v8a/lib_burst_generated.so",
+    "lib/arm64-v8a/libc++_shared.so",
+    "lib/arm64-v8a/libgame.so",
+    "lib/arm64-v8a/libil2cpp.so",
+    "lib/arm64-v8a/libmain.so",
+    "lib/arm64-v8a/libunity.so"
+  ],
+  "openxr_native_libraries": [],
+  "post_build_configuration_sha256": {
+    "src/quest-logger/QuestLogger/Assets/Scenes/LoggerControlsLaptop.unity": "100a3edeca93c734a83cdf465871da602683f57d3b85bc9b0709c86d7702f462",
+    "src/quest-logger/QuestLogger/Assets/Settings/Build Profiles/Meta Quest.asset": "1bdd83a6adb0b74fbb005596aba2247bc12e029af1f874e510b6a769ca464b52",
+    "src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset": "6d9186dbe3b63c22e9e8c6c89758a37ebd8a2ee9dd3cd3ff57b9800d700d1af4",
+    "src/quest-logger/QuestLogger/Packages/manifest.json": "c2c7ce6201cf468e2309f35b61aa3199abf3029d872daeeec3dc0ea4e675d0cd",
+    "src/quest-logger/QuestLogger/Packages/packages-lock.json": "dcc7de665a4d81d07dc931a5e5e9e2338d7313c4abfa2f610fbe87dd4b7b320e",
+    "src/quest-logger/QuestLogger/ProjectSettings/EditorBuildSettings.asset": "480d8bb80fe682574cea57c8270ddbeeac33a8ee319de5e8e3ef2a0ddbb6dc71",
+    "src/quest-logger/QuestLogger/ProjectSettings/ProjectSettings.asset": "01c180dad8297c957624e36b7da1ce49983204af72f8bcce1404182cc996e023"
+  },
+  "quest_vr_category_present": false,
+  "raw_editor_log_published": false,
+  "saved_recording_authorized": false,
+  "saved_start_on_play": false,
+  "scope": "First Android ARM64 compile check; not a verified Quest XR build or hardware test",
+  "unity": "6000.6.1f1"
+}

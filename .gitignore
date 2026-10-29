@@ -148,3 +148,7 @@ results/week-4/will/authentication/
 
 results/week-6/will/authentication
 results/week-6/will/reconstruction-alternatives
+
+# Unity crash-recovery copies stay local; preserve them on disk.
+src/quest-logger/QuestLogger/Assets/_Recovery/
+src/quest-logger/QuestLogger/Assets/_Recovery.meta

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-28",
+  "scope": "Laptop software, Editor lifecycle tests and offline Android artifact inspection",
+  "base_commit": "3835ef55f9d6f5795521379ab5541c608fe5e6ac",
+  "uncommitted_overlay": true,
+  "unity_tests": {
+    "total": 60,
+    "passed": 60,
+    "failed": 0,
+    "skipped": 0,
+    "previous_50_included": true,
+    "play_mode_lifecycle_cases": 2,
+    "raw_private_receipt_sha256": "666a44334b7b1d334f10456f80c6eeb62f55b3b7b8e4b598d686e85d42f38481"
+  },
+  "python_tests": {
+    "retained_previous_total": 1117,
+    "rerun_in_this_ui_change": false
+  },
+  "saved_recording_enabled": false,
+  "saved_auto_start": false,
+  "device_install_tested": false,
+  "headset_capture_tested": false,
+  "device_transfer_tested": false,
+  "independent_person_reproduction": false,
+  "notes": [
+    "Initial namespace and build-counter type errors were fixed before the successful build.",
+    "Initial lifecycle assertions used EditMode incorrectly; the final cases enter Play Mode.",
+    "Digital stop/skip use button availability without requiring position tracking.",
+    "APK 003 supersedes the earlier uninstalled compile candidates; old APKs are unchanged.",
+    "No new model, reconstruction, latency or real-motion result is claimed."
+  ],
+  "checkout_validation": {
+    "receipt": "checkout-receipt.json",
+    "source_files": 37,
+    "checked_files": 43,
+    "core_autocrlf": [
+      "true",
+      "false"
+    ],
+    "mismatches": 0
+  }
+}

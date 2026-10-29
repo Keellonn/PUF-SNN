@@ -1396,3 +1396,60 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Prepared slide content for the quality-check comparison, optimization decision, test coverage, and IRB preparation.
 - Turned the results into clearer tables and prepared visuals for reproducibility and the two planned Quest study phases.
 - Shortened the wording and kept unfinished work clearly marked, including independent reproduction and institutional review.
+
+## Tuesday, October 27, 2026 - 5.02 hours
+
+### 1:36 PM - 4:10 PM - 2.57 hours
+
+- Added a saved trial ledger covering scheduled, attempted, completed, accepted, rejected, skipped and stopped trials.
+- Connected the ledger to the Unity controller and added references to saved windows.
+- Added a Python checker for missing records, incorrect counts, interrupted files and windows without matching ledger entries.
+- Tested ordinary operation and injected write failures. Passed 35 Unity tests and 1,102 selected Python tests, including the 17 ledger tests.
+- Saved the evidence, documented the commands and checked that Git checkout preserved the required file hashes.
+
+### 6:41 PM - 9:08 PM - 2.45 hours
+
+- Reviewed Dr. Garcia’s feedback, the university templates and the Quest 3 safety guide.
+- Revised the shared protocol and matching consent for logger validation and later motion collection/model evaluation.
+- Clarified the visit schedule, movement prompts, trial limits, breaks and readiness checks required before Phase 2.
+- Added recruitment and screening scripts, comfort checks, stopping procedures and incident forms.
+- Updated the data-handling, privacy, retention, withdrawal and analysis plans.
+- Prepared the supporting forms, change log and remaining PI decisions. Left unknown details blank and saved the coordinated packet for review.
+
+## Wednesday, October 28, 2026 - 6.20 hours
+
+### 10:01 AM - 12:36 PM - 2.58 hours
+
+- Added saved source-sample counts, sampling rates, tracking information and gap summaries, including rejected and stopped captures.
+- Added checks that reconcile those summaries with the trial ledger and flag missing or inconsistent records.
+- Documented the updated results of 50 Unity tests and 1,117 selected Python tests. These are updated totals, not additional tests to add to the earlier totals.
+- Prepared and tested the small detector-table reproduction package using saved scores and frozen thresholds. Independent-person reproduction remains pending.
+- Wrote the optimization interpretation, historical timing boundaries, research-status table and evidence-correction table.
+- Saved the new results, verified file hashes and checkout behavior, and committed and pushed the completed work.
+
+### 2:13 PM - 4:03 PM - 1.83 hours
+
+- Opened the Quest logger project and set up the laptop testing scene.
+- Added and connected the head-pose capture, window writer and trial controller components.
+- Configured the coded test identifiers, trial counts and recording settings.
+- Imported the TextMeshPro resources and created the Start, Skip, Stop and Continue buttons.
+- Changed the button labels, connected their actions and checked the EventSystem input setup.
+- Tested the controls in Unity Play Mode, including refusing to start while recording was disabled, skipping trials, stopping and continuing between blocks.
+- Saved records from two desktop test visits, including rejected and interrupted trials.
+- Saved the scene with recording and automatic startup disabled.
+- Selected the Meta Quest build profile and added the testing scene to the build.
+- Installed the required Android SDK component and completed the first Android ARM64 build, which finished around 4 PM.
+
+### 6:01 PM - 7:48 PM - 1.78 hours
+
+- Passed all 60 Unity tests and verified the final Android build.
+- Worked on the remaining Quest setup and prepared a separate headset bench scene.
+- Added a tracked camera, visible prompts and recording controls, with recording disabled at startup.
+- Prepared automated checks for stopping, pausing, disarming and controller input, along with the Android build commands.
+- Updated the shared protocol, consent, supporting forms and PI decision list to version 1.3.
+- Added the latest Quest software results while keeping actual headset testing marked as pending.
+- Kept the bench-testing setup separate from the proposed study procedures.
+- Recorded that I have not completed CITI training and left unverified staff details blank.
+- Rechecked the current university templates and preserved the originals.
+- Reviewed the Word layout and fixed table breaks, headings and the contents page.
+- Packaged the matching documents and updated the checklist of remaining PI decisions.

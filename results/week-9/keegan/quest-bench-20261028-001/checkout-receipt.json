@@ -1,0 +1,20 @@
+{
+  "scope": "Temporary Git index/checkout check; no project index change or commit",
+  "git_version": "git version 2.53.0.windows.3",
+  "attributes_sha256": "7af75d054b780716cdb68b9cf34cdef851b571c93d936846b59e1e196dcb7f39",
+  "source_count": 37,
+  "evidence_files_exclude_self_and_manifest": true,
+  "note": "Scoped LF rules for five Unity metadata files were added after the first checkout check found automatic CRLF conversion.",
+  "outcomes": [
+    {
+      "core_autocrlf": "true",
+      "checked_files": 43,
+      "mismatches": []
+    },
+    {
+      "core_autocrlf": "false",
+      "checked_files": 43,
+      "mismatches": []
+    }
+  ]
+}

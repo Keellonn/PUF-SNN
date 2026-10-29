@@ -1,0 +1,14 @@
+{
+  "name": "PufSnn.QuestLogger.Bench.Editor",
+  "references": [
+    "PufSnn.QuestLogger",
+    "PufSnn.QuestLogger.Bench",
+    "Unity.InputSystem",
+    "Unity.XR.CoreUtils",
+    "UnityEngine.UI",
+    "Unity.XR.OpenXR"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

@@ -45,3 +45,20 @@ total or mix these software counts with experimental observations.
 These follow-up files are an uncommitted tested overlay over 55dea11. The earlier
 checkpoint bundle remains unchanged. No new human recordings or scientific
 accuracy/latency/reliability measurements were made in this follow-up.
+
+## Desktop controls follow-up on October 28
+
+The separate laptop scene now has connected Start, Skip, Stop and Continue buttons. Two manual Play Mode visits passed both accounting checkers, including operator Stop during an active capture. See [observed cases and saved files](logger-controls-20261028-001/README.md). Saved recording/automatic start remain disabled. Android and actual headset checks remain open; these manual checks are separate from the earlier test counts.
+
+## First Android compile checkpoint
+
+The [ARM64 APK compiled successfully](android-compile-20261028-001/README.md), and offline inspection found no OpenXR loader in that binary. The Editor subsequently shows the provider already checked and a saved Android assignment. See the [configuration clarification](../../../docs/week9-openxr-configuration-note.md); the earlier disabled-provider conclusion was too strong. Resolve the actual validation messages and inspect the next APK before claiming headset readiness. The binary stays outside Git.
+
+## Quest bench follow-up on October 28
+
+The [final bench checkpoint](quest-bench-20261028-001/README.md) records 60/60
+Unity tests and a successful ARM64 APK with OpenXR/Quest metadata. This includes
+the earlier 50 Unity cases; it is not 110 tests. The prior 1,117 Python receipt
+was not rerun for this UI change. The APK stays outside Git. Installation and
+actual headset checks are pending developer access. The earlier source-quality
+follow-up was published in commit 3835ef5; this bench work remains uncommitted.

@@ -1,0 +1,104 @@
+{
+  "base_source_commit": "3835ef55f9d6f5795521379ab5541c608fe5e6ac",
+  "continue_check": "Block-two prompt observed after first-block completion; source code waits for Continue and resets the request at break entry",
+  "date": "2026-10-28",
+  "disabled_start": "Operator reported the expected disabled-recording warning; no timestamped refusal event exists in the trial ledger",
+  "operator": "Keegan; interaction reported in the session and reconciled against saved application records",
+  "remaining": "Android build/deployment, actual XR input/display/control mapping, physical sampling/tracking, transfer, approved research phases and PI readiness review",
+  "runs": [
+    {
+      "counts": {
+        "accepted": 0,
+        "attempted": 2,
+        "completed": 1,
+        "execution_notes": 0,
+        "not_attempted": 5,
+        "not_started": 8,
+        "pending_processing": 0,
+        "processing_failed": 0,
+        "quality_rejected": 1,
+        "recording_began_confirmed": 2,
+        "recording_began_uncertain": 0,
+        "scheduled": 10,
+        "skipped": 3,
+        "stopped": 1,
+        "unfinished_attempts": 0,
+        "unresolved_scheduled": 0
+      },
+      "file_sha256": {
+        "laptop-controls-001-source-quality.jsonl": "550c6e6c430c5a1d6ac60b35d1a2abce37e1077a219a9756e12a40023aa663d6",
+        "laptop-controls-001-trials.jsonl": "e1d5e5520a84110717233f0047d08d7338ff738adcb5f68ff4500d600c070f3c"
+      },
+      "ledger_status": "COMPLETE",
+      "source_counts": {
+        "attempted": 2,
+        "empty": 0,
+        "measured": 2,
+        "missing": 0,
+        "summaries": 2,
+        "unavailable": 0
+      },
+      "source_status": "COMPLETE",
+      "visit": "laptop-controls-001"
+    },
+    {
+      "counts": {
+        "accepted": 0,
+        "attempted": 1,
+        "completed": 0,
+        "execution_notes": 0,
+        "not_attempted": 9,
+        "not_started": 9,
+        "pending_processing": 0,
+        "processing_failed": 0,
+        "quality_rejected": 0,
+        "recording_began_confirmed": 1,
+        "recording_began_uncertain": 0,
+        "scheduled": 10,
+        "skipped": 0,
+        "stopped": 1,
+        "unfinished_attempts": 0,
+        "unresolved_scheduled": 0
+      },
+      "file_sha256": {
+        "laptop-controls-002-source-quality.jsonl": "10eb78be93f44e6fcd246e482e098624a9fde09992187dc4f574f96a57909504",
+        "laptop-controls-002-trials.jsonl": "60c288163d3301ba4d33fa7c7ecbd0358b13110fffb9db37d1d5b7a14f0a1953"
+      },
+      "ledger_status": "COMPLETE",
+      "source_counts": {
+        "attempted": 1,
+        "empty": 0,
+        "measured": 1,
+        "missing": 0,
+        "summaries": 1,
+        "unavailable": 0
+      },
+      "source_status": "COMPLETE",
+      "visit": "laptop-controls-002"
+    }
+  ],
+  "runtime_changes": "Operator instructed to enable recording and use 5-second prepares only during Play; saved scene retains 1-second prepares and disabled recording",
+  "saved_scene_recording_authorized": false,
+  "saved_scene_start_on_play": false,
+  "scene_changes_uncommitted": true,
+  "scope": "Manual desktop Unity Play Mode UI checks; no valid XR tracking or headset performance claim",
+  "source_sha256": {
+    "src/python/puf_snn/source_quality.py": "afa802626fca0e41b81a1169a06d64a72bdb8aa75062a185a9ab23782b2bbd7d",
+    "src/python/puf_snn/trial_ledger.py": "57945c1b2ff9507c8bbbc5658894475d30db0f1886dab926f0aab11a0c323a67",
+    "src/quest-logger/QuestLogger/Assets/Scenes/LoggerControlsLaptop.unity": "1069917eb495cc1d08ba4b2887ccf5f3a77c052cd3b049fbd77cf826880ea766",
+    "src/quest-logger/QuestLogger/Assets/Scenes/LoggerControlsLaptop.unity.meta": "52bfd783b4a5bb98c116c20233facc377869c4e27df92d92c77fe124a30dda70",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/BinaryWindowMessageWriter.cs": "734e428bf01bdb7f9147ae136a39eb075d6fe7298f6f5fd20196ebf2093f05d1",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/CanonicalWindowMessageWriter.cs": "9ea513692c36d6637e2a7d2dabb4ea9777325961050335b63b93ef85d1ce7ffb",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/HeadPoseCapture.cs": "13a7e2d7fe2bf28019413e1b11580652cc425c3df9db82d61782cc1fbceeef34",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialController.cs": "e928e9f3185502f3bae3f556c4fcffbb21b0c55caf2932c968b6501be4af1a6e",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialLedger.cs": "fa8a3ebeec11810b88ad1ce71849604cb8df4034f36e4f46354ebd4b8bfdd786",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowModels.cs": "f12a64ef6c425f823f18b524c8a79cfabc202693e9fbf4ae121fc59f4e5f4f2e",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowProcessor.cs": "1d0b07a54dac43766a35b4c12102c6cab60173ee5edfd3a0046c4796cd5a380d",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestWindowWriter.cs": "f568da8e397d9eddc52bed45d288ace161b046478c74bbfacdce01fe650825ac",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/RawPoseBuffer.cs": "d027dfbae685d9efe244bfb7963b153285635d044a3f5e3b97253cdcb62fc523",
+    "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs": "19503b118a98e9dc960a0ba07de3be7cca03d6e598a7dde57deaa61cdc25e5b7",
+    "src/quest-logger/QuestLogger/Packages/manifest.json": "c2c7ce6201cf468e2309f35b61aa3199abf3029d872daeeec3dc0ea4e675d0cd",
+    "src/quest-logger/QuestLogger/Packages/packages-lock.json": "dcc7de665a4d81d07dc931a5e5e9e2338d7313c4abfa2f610fbe87dd4b7b320e",
+    "src/quest-logger/QuestLogger/ProjectSettings/ProjectVersion.txt": "c42304ccf9a727e75d565625e67a9d17e07ca408948b5385b940ad38ba04da98"
+  }
+}

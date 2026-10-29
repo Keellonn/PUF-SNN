@@ -1,0 +1,32 @@
+{
+  "files": {
+    "android-manifest.txt": {
+      "bytes": 12361,
+      "sha256": "a270d69d1b2202c19adec5449658a21f29f0b2b7efd0a9959109b0bf6b29684f"
+    },
+    "build-receipt.json": {
+      "bytes": 899,
+      "sha256": "04e109ba2b0af22bafb0874d6917afb655d777fecd3116c93ab0eec9b2e725ff"
+    },
+    "checkout-receipt.json": {
+      "bytes": 644,
+      "sha256": "002d882066e71a7a1ee2d27b669563e97a389173d7f929a65e5fc7a478ab27d5"
+    },
+    "README.md": {
+      "bytes": 2350,
+      "sha256": "13c9824d0d0e8ef4e67d540568ced2c224f40bfee87713713b0f6f6307440929"
+    },
+    "source-hashes.json": {
+      "bytes": 6764,
+      "sha256": "37d2f33ec9ebffb1b72e4a1b96888510ef8ea268918c352bb5fb5713cd5548d5"
+    },
+    "summary.json": {
+      "bytes": 1456,
+      "sha256": "20f59d909fb762641e8b8e9bbc22f113ac778cbddf80f6889e01c89ee8efee89"
+    },
+    "unity-tests.csv": {
+      "bytes": 6906,
+      "sha256": "06554af4250e32f5d771d6000d2cc6eb5c8116695653d15ecfaf77a053ccd6f6"
+    }
+  }
+}

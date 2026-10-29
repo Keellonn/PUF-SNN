@@ -1,0 +1,150 @@
+{
+  "src/quest-logger/QuestLogger/Assets/Editor.meta": {
+    "bytes": 172,
+    "sha256": "e9b9737f030f8e5fb77fef53a87595fddb95b5f61258f50f36f5188a799a5f05"
+  },
+  "src/quest-logger/QuestLogger/Assets/Editor/Bench.meta": {
+    "bytes": 172,
+    "sha256": "d025ea0ad1a526a86c087e681fbb2bcb0eb64ec2795df87ea82546dc8469355c"
+  },
+  "src/quest-logger/QuestLogger/Assets/Editor/Bench/QuestBenchBuild.cs": {
+    "bytes": 13329,
+    "sha256": "d8610f54bcb5819b3b327c0f5756d89567b42adae8a9abe68900dc723e255f35"
+  },
+  "src/quest-logger/QuestLogger/Assets/Editor/Bench/QuestBenchBuild.cs.meta": {
+    "bytes": 152,
+    "sha256": "74df98c51674ce4c58f7e5d4cebfaa415659948ab8de0f390720feb63496d14c"
+  },
+  "src/quest-logger/QuestLogger/Assets/Editor/Bench/QuestLogger.Bench.Editor.asmdef": {
+    "bytes": 280,
+    "sha256": "c67c7277dafb8fb932c21f3bc023e8ee025304c8f3273868aab465733513a01e"
+  },
+  "src/quest-logger/QuestLogger/Assets/Editor/Bench/QuestLogger.Bench.Editor.asmdef.meta": {
+    "bytes": 166,
+    "sha256": "63a2fa87e85c8ed5694ce2eb12257ddb3a2541c920293b2bab34380377ca96ae"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scenes/QuestLoggerBench.unity": {
+    "bytes": 82851,
+    "sha256": "1dddb4f9b09ed26711e191305644d9e74ae979d28ec9e9c1b2df5bc538a06953"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scenes/QuestLoggerBench.unity.meta": {
+    "bytes": 155,
+    "sha256": "cbd16d29cead768b7e2bacc24b7b06536f9200e1c07f6e29d36c1b0ec344565c"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/Bench.meta": {
+    "bytes": 172,
+    "sha256": "24f5b8ec6e2de3bd25d7d36ca2890d1c6c5a59b1d744dcc2a8d437e416c28721"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/Bench/QuestBenchControls.cs": {
+    "bytes": 10590,
+    "sha256": "a43c1f50c3a46f5a347ed54431e0d2a3245774859a740ce2fcee67b2bbe82d67"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/Bench/QuestBenchControls.cs.meta": {
+    "bytes": 152,
+    "sha256": "0c808f7ed62a47bdab74369d0f78e80dc37973aed626c788e6da8712c1e8e326"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/Bench/QuestLogger.Bench.asmdef": {
+    "bytes": 162,
+    "sha256": "4788ccd0e1b8f29411bff073373ba653340fd73a01b85f63d5e71e4767482924"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/Bench/QuestLogger.Bench.asmdef.meta": {
+    "bytes": 166,
+    "sha256": "9e74df40955322dc3c1d8d954abd6c539020a0b379a404016082c4482b280b62"
+  },
+  "src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialController.cs": {
+    "bytes": 15851,
+    "sha256": "f215781a12d7b89cc5345c21ddc7d6febea1f973a8657b1860c636270ea259f6"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/DefaultVolumeProfile.asset": {
+    "bytes": 24035,
+    "sha256": "463776c51ae49d4fef980e8fd268081b2f505610d79315003faae1acff8f4115"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/Mobile_RPAsset.asset": {
+    "bytes": 4876,
+    "sha256": "ed51034431e438b99284526bf4ca4c835cadb5045b13865018aaef382a105905"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/PC_RPAsset.asset": {
+    "bytes": 4895,
+    "sha256": "f774213ab485d5e3b4685a307c877e549d52d96382fc2bc30f1c753c00cd1ba6"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/PC_Renderer.asset": {
+    "bytes": 2241,
+    "sha256": "78c7571bee0b492d278d6600b24f8d6f5fd1bda0d9a3e4b2206d3119e3e5a1da"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/QuestBenchPointer.mat": {
+    "bytes": 1895,
+    "sha256": "a4db8d7da517f8de7589f36777119f6b462ecb867b14c14e3e4824b229689326"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/QuestBenchPointer.mat.meta": {
+    "bytes": 188,
+    "sha256": "e05905f6091a10a1f6c2946b018f7e89ab568b438fa78fb1d30b50d171958a85"
+  },
+  "src/quest-logger/QuestLogger/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset": {
+    "bytes": 29693,
+    "sha256": "de16216797b7d4212762916335811c880ff5e7f6a2bd066882137b949bd13af1"
+  },
+  "src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode.meta": {
+    "bytes": 172,
+    "sha256": "21e235501c0d2bb260854dae3ec3251ef45a05e6c5acf6250e1eef6c5a8c1518"
+  },
+  "src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode/QuestBenchTests.cs": {
+    "bytes": 6870,
+    "sha256": "adaf1eda55b4fb1dd3377d8640401ba63d224011d84fd4ed6d8dd897fe12e67e"
+  },
+  "src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode/QuestBenchTests.cs.meta": {
+    "bytes": 152,
+    "sha256": "f3f16e37267171f86146bd0cba9aa38a7c8d28dd878856bb6c8d6caf46379c48"
+  },
+  "src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode/QuestLogger.Bench.Tests.asmdef": {
+    "bytes": 365,
+    "sha256": "1a5148bf8e847b7e6efe4af6aff28858af8b832df235b80c70b79e6739cdd69f"
+  },
+  "src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode/QuestLogger.Bench.Tests.asmdef.meta": {
+    "bytes": 166,
+    "sha256": "c6c03563d622e4983c0b0c4df47c403ed8e4319e38fd13b7e60c75e05dc80816"
+  },
+  "src/quest-logger/QuestLogger/Assets/XR/Loaders/OpenXRLoader.asset": {
+    "bytes": 452,
+    "sha256": "3dade780ddfc9ef1e12c3275788df48569ad586f9310d96cd91105e1c5739a7a"
+  },
+  "src/quest-logger/QuestLogger/Assets/XR/Loaders/OpenXRLoader.asset.meta": {
+    "bytes": 189,
+    "sha256": "8581ea291de17fca35cb9847cc86ae244e8100032e17e0ff6c4983b735106895"
+  },
+  "src/quest-logger/QuestLogger/Assets/XR/Settings/OpenXR Package Settings.asset": {
+    "bytes": 64519,
+    "sha256": "18c3d54dcb0489b3ddfe16c6390e45624cc70d934d03edd63e96c860720f6fab"
+  },
+  "src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset": {
+    "bytes": 1733,
+    "sha256": "fde33d048d552eaeac9c43897a85bf2d09813a05aa3f663f7bcc5f44c29bc97b"
+  },
+  "src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset.meta": {
+    "bytes": 189,
+    "sha256": "93e08fc71cc1cb387c6a55b2688eca69f665bb8a0777c2d759aa2538a4958606"
+  },
+  "src/quest-logger/QuestLogger/Packages/manifest.json": {
+    "bytes": 2158,
+    "sha256": "c2c7ce6201cf468e2309f35b61aa3199abf3029d872daeeec3dc0ea4e675d0cd"
+  },
+  "src/quest-logger/QuestLogger/Packages/packages-lock.json": {
+    "bytes": 15569,
+    "sha256": "dcc7de665a4d81d07dc931a5e5e9e2338d7313c4abfa2f610fbe87dd4b7b320e"
+  },
+  "src/quest-logger/QuestLogger/ProjectSettings/EditorBuildSettings.asset": {
+    "bytes": 711,
+    "sha256": "bf69c5b33e57e69fcead9727fb8ee2601e0763e07a0b31013bfa84b929cffe02"
+  },
+  "src/quest-logger/QuestLogger/ProjectSettings/ProjectSettings.asset": {
+    "bytes": 24618,
+    "sha256": "01c180dad8297c957624e36b7da1ce49983204af72f8bcce1404182cc996e023"
+  },
+  "src/quest-logger/QuestLogger/ProjectSettings/ProjectVersion.txt": {
+    "bytes": 83,
+    "sha256": "c42304ccf9a727e75d565625e67a9d17e07ca408948b5385b940ad38ba04da98"
+  },
+  "src/quest-logger/QuestLogger/ProjectSettings/UnityConnectSettings.asset": {
+    "bytes": 1191,
+    "sha256": "c3dbb998537bc5c0357729e0ea4554ae78213e38a6e3bce52fa300e0090e81ff"
+  }
+}

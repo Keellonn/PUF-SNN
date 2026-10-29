@@ -1,0 +1,9 @@
+{
+  "name": "PufSnn.QuestLogger.Bench",
+  "references": [
+    "PufSnn.QuestLogger",
+    "Unity.InputSystem",
+    "Unity.XR.CoreUtils",
+    "UnityEngine.UI"
+  ]
+}

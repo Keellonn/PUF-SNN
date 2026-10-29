@@ -1,0 +1,16 @@
+{
+  "artifacts": {
+    "README.md": "0a883eba150597651219402eb22263d64c737862bbfad06fe8b0c2fd34487853",
+    "laptop-controls-001/laptop-controls-001-source-quality.jsonl": "550c6e6c430c5a1d6ac60b35d1a2abce37e1077a219a9756e12a40023aa663d6",
+    "laptop-controls-001/laptop-controls-001-trials.jsonl": "e1d5e5520a84110717233f0047d08d7338ff738adcb5f68ff4500d600c070f3c",
+    "laptop-controls-001/ledger-check.json": "c307e34766428d633a2a29becca254ceb1b74c1c69b0ecd43953a58821210ad9",
+    "laptop-controls-001/source-check.json": "2fac31142701797d45863ffca4718a0b5e1e7ef20a0594d3690df88566f790d1",
+    "laptop-controls-002/laptop-controls-002-source-quality.jsonl": "10eb78be93f44e6fcd246e482e098624a9fde09992187dc4f574f96a57909504",
+    "laptop-controls-002/laptop-controls-002-trials.jsonl": "60c288163d3301ba4d33fa7c7ecbd0358b13110fffb9db37d1d5b7a14f0a1953",
+    "laptop-controls-002/ledger-check.json": "98c8db295240d039ea71510b60b227b19d6d8a57c584d8828be77bdf6eda5c25",
+    "laptop-controls-002/source-check.json": "6054f873b20069216dcdb3258ac9259fdb7d958ae19df3441f7349d6ff657f71",
+    "scene-at-checkpoint.unity.txt": "1069917eb495cc1d08ba4b2887ccf5f3a77c052cd3b049fbd77cf826880ea766",
+    "verification.json": "bf3b0b624e87cccbbdc69558006b3226660c29565d601f718d4ec368508a0d17"
+  },
+  "scope": "Manual desktop Unity Play Mode UI checks; no valid XR tracking or headset performance claim"
+}

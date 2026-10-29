@@ -61,7 +61,7 @@ reviewer must link the measurement and exception handling for each row.
 | Tracking and source gaps | Source gap/tracking/API-availability summaries saved and synthetic refusal/stop/unknown paths tested; 114/120 is output tracking | Verify actual API flags and source gaps on the assigned headset |
 | Prompt-to-window alignment | Ledger stores prompt, capture request and capture-start confirmation | Measure rendered prompt/action boundaries and late/overlong motion handling; software event times alone are insufficient |
 | File write/reload | Synthetic Unity write and Python reload/hash checks pass | Verify Android storage, pause/interruption behavior and transfer on the assigned headset |
-| Complete trial accounting | Full schedule, reasons, stop/skip paths and orphan detection tested | Wire staff controls, rehearse the procedure with permitted inputs, review counts and unresolved events |
+| Complete trial accounting | Full schedule, reasons, stop/skip paths and orphan detection tested | Desktop controls wired and two Play Mode visits reconcile; actual Quest/staff input mapping, rehearsal and transfer remain |
 | Transfer integrity | Per-window receipts and local hash reconciliation | Document actual transfer path and compare whole-file hashes before/after transfer |
 | Missing/rejected/interrupted trials | Separate counts and valid-prefix reporting; no silent file repair | PI-reviewed retention/repeat rules matching consent; confirm staff handling in the actual build |
 | Freeze and review | Source/test hashes saved for this software check | Freeze logger, API/build, preprocessing, normalization, quality rules, weights and cutoffs for evaluation; PI reviews the readiness report |
@@ -84,7 +84,7 @@ review before use. Do not silently combine development and evaluation datasets.
 |---|---|---|
 | Keegan | Optimization interpretation | [Completed interpretation](week9-optimization-and-timing.md); independent review/default decision remains open |
 | Keegan | Timing table and boundaries | [Completed historical labels and boundaries](week9-optimization-and-timing.md); no new current-arm timing claim |
-| Keegan | Logger readiness | Source summaries implemented/tested; actual build/controls/transfer and Phase 1 measurements remain |
+| Keegan | Logger readiness | Source summaries and desktop controls checked; Android build, actual device controls/transfer and Phase 1 measurements remain |
 | Will | Shared-noise and three-arm accounting | Frozen short specification; matched nominal/stress denominators, failure states, uncertainty and reconstruction/admission timing; define stored credential precisely |
 | Together | One independent reproduction | [Bounded replay ready](week9-bounded-reproduction.md); another person still needs to run and document it |
 | Together / PI | One coordinated submission packet | Matching protocol/consent, prompts, recruitment/screening, comfort/incident form, data workflow, retention/withdrawal, roles/training, change log and short PI decision list |
@@ -109,3 +109,20 @@ Quest 3 and Room 2015, Torgersen Hall are identified in the draft. Actual device
 retention periods, recruitment conflicts, consent personnel, safety procedure
 and training still need coordinated confirmation. They have not been invented
 or filled in by this software implementation. No participant records were made.
+
+## Desktop control checkpoint on October 28
+
+The [manual UI checks](week9-logger-controls.md) now include Start, Skip, Continue and operator Stop during active capture. Both visits have complete ledger and source-summary accounting. No valid XR tracking or accepted motion window was produced; this is a desktop software check. It does not close Android, headset, transfer or PI readiness rows above.
+
+## Android compilation checkpoint on October 28
+
+A first ARM64 APK compiled, with saved recording and automatic start off. [Offline inspection](../results/week-9/keegan/android-compile-20261028-001/README.md) found no OpenXR loader or Quest VR metadata in that binary. The later Editor UI already has OpenXR checked and the settings now contain an Android assignment. The original disabled-provider conclusion was too strong; see the [clarification](week9-openxr-configuration-note.md). Review the actual validation messages, scene camera/input and runtime arming, then inspect the next APK. Installation and headset behavior remain untested.
+
+## Final laptop bench checkpoint on October 28
+
+The separate Quest bench scene and ARM64 build are prepared; [60 Unity tests
+passed](../results/week-9/keegan/quest-bench-20261028-001/README.md), including the
+earlier 50. Offline APK inspection now finds the OpenXR loader and Quest VR
+metadata. The saved scene is disarmed. Developer access to the lab headset is
+not yet enabled, so installation, actual controls/capture, Android file behavior,
+prompt alignment and transfer remain open. See [the next-device checklist](week9-quest-bench.md).

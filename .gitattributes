@@ -52,3 +52,41 @@ results/week-5/keegan/stream-evaluation/frozen-validation-thresholds.json text e
 results/week-5/keegan/stream-evaluation/manifest.json text eol=lf
 results/week-6/keegan/tier2-source-uncertainty/family-summary.csv text eol=lf
 results/week-6/keegan/tier2-source-uncertainty/manifest.json text eol=lf
+
+# Desktop controls checkpoint and exact application evidence.
+results/week-9/keegan/logger-controls-20261028-001/** -text
+src/quest-logger/QuestLogger/Assets/Scenes/LoggerControlsLaptop.unity text eol=lf
+src/quest-logger/QuestLogger/Assets/Scenes/LoggerControlsLaptop.unity.meta text eol=lf
+
+# Immutable first Android compile receipt; APK retained outside Git.
+results/week-9/keegan/android-compile-20261028-001/** -text
+
+# Quest bench source and immutable software/build receipts.
+results/week-9/keegan/quest-bench-20261028-001/** -text
+src/quest-logger/QuestLogger/Assets/Scenes/QuestLoggerBench.unity text eol=lf
+src/quest-logger/QuestLogger/Assets/Scenes/QuestLoggerBench.unity.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/Bench/** text eol=lf
+src/quest-logger/QuestLogger/Assets/Editor/Bench/** text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode/** text eol=lf
+
+# Preserve exact tested bytes for the Unity settings and CRLF assembly file.
+src/quest-logger/QuestLogger/Assets/Editor.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Editor/Bench.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/Bench.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Settings/QuestBenchPointer.mat.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/BenchEditMode.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Editor/Bench/QuestLogger.Bench.Editor.asmdef -text
+src/quest-logger/QuestLogger/Assets/Settings/DefaultVolumeProfile.asset -text
+src/quest-logger/QuestLogger/Assets/Settings/Mobile_RPAsset.asset -text
+src/quest-logger/QuestLogger/Assets/Settings/PC_RPAsset.asset -text
+src/quest-logger/QuestLogger/Assets/Settings/PC_Renderer.asset -text
+src/quest-logger/QuestLogger/Assets/Settings/QuestBenchPointer.mat -text
+src/quest-logger/QuestLogger/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset -text
+src/quest-logger/QuestLogger/Assets/XR/Loaders/OpenXRLoader.asset -text
+src/quest-logger/QuestLogger/Assets/XR/Loaders/OpenXRLoader.asset.meta -text
+"src/quest-logger/QuestLogger/Assets/XR/Settings/OpenXR Package Settings.asset" -text
+src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset -text
+src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset.meta -text
+src/quest-logger/QuestLogger/ProjectSettings/EditorBuildSettings.asset -text
+src/quest-logger/QuestLogger/ProjectSettings/ProjectSettings.asset -text
+src/quest-logger/QuestLogger/ProjectSettings/UnityConnectSettings.asset -text

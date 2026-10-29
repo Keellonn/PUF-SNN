@@ -82,3 +82,12 @@ environment, frozen files, outputs and deviations. Keep optional defaults unchan
 Primary retained sources and hashes are listed in the decision-report manifest.
 The missing original frozen archive remains openly recorded; it does not prevent
 the new scoped software checks.
+
+## October 28 laptop follow-up
+
+The [bench checkpoint](../results/week-9/keegan/quest-bench-20261028-001/README.md)
+adds a tracked-camera scene, explicit controls and a successful ARM64 build.
+All 60 Unity tests passed, including the earlier 50. Offline APK checks found
+the OpenXR loader and Quest VR metadata. Actual device validation, independent
+reproduction and institutional authorization remain pending. These engineering
+checks do not change the model, anomaly or historical timing conclusions above.
