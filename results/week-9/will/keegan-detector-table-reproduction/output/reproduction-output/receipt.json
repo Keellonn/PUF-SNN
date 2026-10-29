@@ -1,0 +1,44 @@
+{
+  "accepted_test_cases": 14956,
+  "architecture": "AMD64",
+  "authentication_reexecuted": false,
+  "bootstrap_intervals_recomputed": false,
+  "construction_accounting": {
+    "accepted_test_cases": 14956,
+    "planned_test_cases": 16800,
+    "pre_tag_blocked_test_cases": 1844,
+    "zero_eligible_conditions": [
+      "timestamp_jitter:high"
+    ]
+  },
+  "independent_person_reproduction_verified": false,
+  "matches_retained_family_points": true,
+  "medium_high_eligible_cases": 9095,
+  "model_inference": false,
+  "model_loading": false,
+  "original_training_split_ownership_reaudited": false,
+  "output_sha256": {
+    "detector-family-table.csv": "5126dacb246139d58bdb87ecb5925495aa73f7e90067037cfbf8bef36b74cdaf",
+    "per-fit-counts.csv": "8b1c7409bc2a4f2fd6e11fea5cdecb469d8472e67a67fa1eb27d42a1a6c9deb2"
+  },
+  "per_fit_clean_controls": 600,
+  "python": "3.12.4",
+  "scope": "Metric recomputation from retained historical predictions; no model inference or bootstrap rerun.",
+  "script_sha256": "27b7311989ab9628cd45c595f298291f62dc067949e62d9059c4d2e26d02f6c8",
+  "source_files_unchanged": true,
+  "system": "Windows",
+  "threshold_selection": false,
+  "training": false,
+  "unique_sources": 600,
+  "verified_input_bytes": 16290840,
+  "verified_input_sha256": {
+    "results/week-5/keegan/stream-evaluation/COMPLETE": "7f6b319dc09b8d85a9ff47c9c8110ddc96ebf5c8fade134640dd02d0bf5bc4cb",
+    "results/week-5/keegan/stream-evaluation/authenticated-test-predictions.jsonl": "96c09d931c5dd1624222ba615a168bee20e5f8eb873c9e57b78b592101789356",
+    "results/week-5/keegan/stream-evaluation/config.json": "ba88202515d05b2a1e2f2fc345be311c87941be5040adf3999c0247455d88b99",
+    "results/week-5/keegan/stream-evaluation/construction-summary.json": "81419cf5266b9f0a652193a4a209ba2baf5fbe5fbe87139526bb76e3d3dd6058",
+    "results/week-5/keegan/stream-evaluation/frozen-validation-thresholds.json": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396",
+    "results/week-5/keegan/stream-evaluation/manifest.json": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e",
+    "results/week-6/keegan/tier2-source-uncertainty/family-summary.csv": "88abccc25933177d8db9962b28628b7bcd5707f7aabd91cff52be5515bdaad64",
+    "results/week-6/keegan/tier2-source-uncertainty/manifest.json": "dc234b0bbccbc56dacd6009b5bd444ff202ad09720fbf46443e1c87b97f41952"
+  }
+}

@@ -1,0 +1,51 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261029184206
+Username: WILLSPC\wwall
+RunAs User: WILLSPC\wwall
+Configuration Name: 
+Machine: WILLSPC (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "d:\Applications\Microsoft VS Code\2c33b50b16\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 1464
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is ..\output\run-log.txt
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) python -I -S verify_package.py
+
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) $LASTEXITCODE
+0
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) python -I -S tools/reproduce_saved_detector_table.py --output ..\output\reproduction-output
+
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) $LASTEXITCODE
+0
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) Import-Csv ..\output\reproduction-output\detector-family-table.csv | Format-Table -AutoSize
+
+family              fixed_fit_count unique_sources medium_high_eligible_per_fit clean_eligible_per_fit mean_medium_high_recall mean_clean_false_alert_rate recall_target_met false_alert_target
+                                                                                                                                                                             _met
+------              --------------- -------------- ---------------------------- ---------------------- ----------------------- --------------------------- ----------------- ------------------
+logistic_regression 3               600            9095                         600                    0.8284771852666301      0.05333333333333334         False             False
+random_forest       3               600            9095                         600                    0.8795308777716695      0.029444444444444443        False             True
+
+
+PS C:\PUF+SNN_SharedRepo\PUF-SNN\results\week-9\will\keegan-detector-table-reproduction\input>
+(.venv) python -I -S verify_package.py
+$LASTEXITCODE
+Stop-Transcript
+
+0
+**********************
+Windows PowerShell transcript end
+End time: 20261029184334
+**********************

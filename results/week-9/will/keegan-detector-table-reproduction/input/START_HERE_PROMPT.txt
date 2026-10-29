@@ -1,0 +1,18 @@
+Please help me run and document this bounded reproduction of Keegan's detector-results table.
+
+I am the receiving researcher reviewing this handoff. Extract the attached ZIP into a fresh folder and read README.md and handoff/manifest.json. All eight saved input files, the replay script and the reference tables are included. You do not need my existing repository, the original dataset, model binaries, PyTorch, scikit-learn or any package installation. Use an available Python interpreter; Python 3.12 or newer is recommended, and the implementer's checked version was CPython 3.13.14 x64. Record any version deviation.
+
+Please do the actual execution if your environment supports it, rather than only explaining the commands. Work within the extracted copy. Do not edit the frozen files or hashes, reset my repository, commit or push anything.
+
+1. Run `python -I -S verify_package.py`. Record whether every packaged file matches its SHA-256. Stop and record a failure if it does not; do not replace hashes or repair inputs to make the check pass.
+2. Record the actual execution environment: UTC date/time, Python version/implementation, OS/version and architecture. State whether you ran on my laptop or a hosted chat environment. Do not describe a hosted run as Windows ARM64 on my laptop. Leave my name/role blank if they have not been provided rather than inventing them.
+3. From the extracted folder run `python -I -S tools/reproduce_saved_detector_table.py --output reproduction-output`. If `python` is not the interpreter name in your environment, use its actual path/name and record the exact command. Use a fresh output directory. Capture stdout, stderr and exit status in a run log, including failed attempts.
+4. The command should create detector-family-table.csv, per-fit-counts.csv and receipt.json. Check both CSV SHA-256 values against expected_csv_sha256 in handoff/manifest.json and compare the family rows and per-fit counts with handoff/expected/. Record the actual comparisons; do not copy reference files into the output and call them reproduced results.
+5. Copy handoff/reviewer-notes.md into the output folder and fill it with the real environment, commands, results, extra steps, failures, deviations and limits. Also save environment.json and run-log.txt there. Recheck the package hashes after execution to confirm the frozen files stayed unchanged.
+6. Return one ZIP containing the generated output folder: both CSVs, the generated receipt, completed reviewer notes, environment record and run log. Do not include the input dataset again. If execution is blocked, return a failure record with the exact reason and anything actually observed; do not manufacture a passing receipt or results.
+
+The published source checkpoint is 3835ef55f9d6f5795521379ab5541c608fe5e6ac. The manifest also retains the older base identity for provenance. File hashes identify this scoped handoff even in a folder without Git.
+
+Scope: recompute the detector table from retained prediction scores and frozen validation cutoffs. This does not rerun model inference, training, authentication, source bootstraps or the original split audit. A matching table does not establish physical/headset performance or security. Clearly describe the scope in the report.
+
+The generated receipt deliberately leaves independent_person_reproduction_verified as false: software cannot verify the operator's identity. Do not change that field. My completed reviewer record supplies the human context; the team will assess independence and the supported conclusion. The implementer's earlier dry runs do not count as my run.

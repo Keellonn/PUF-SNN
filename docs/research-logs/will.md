@@ -1870,7 +1870,7 @@ I completed two separately accepted, supervised 150-attempt resource benchmarks,
 **Week 8 primary documentation:** `week8-three-arm-auth-methodology.md`, `week8-evidence-validation.md`, and `week8-schema-validation-optimization-benchmark.md`.
 **Week 8 conclusion:** The three-arm nonformal pilot, evidence-validation correction, resource profiler, and schema-cache optimization are complete at pilot scale. The full correlated-noise reliability study remains future work.
 
-## Week 9, Shared-noise PUF Calibration and Experimental Validation
+# Week 9, Shared-noise PUF Calibration and Experimental Validation
 
 ## Weekly Executive Summary
 This week, I focused on developing, validating, and executing a shared-noise PUF calibration experiment. The objective was to identify a suitable measurement-noise magnitude for evaluating how correlated PUF readings affect the reliability advantages of Majority-3 reconstruction compared to Single-Read reconstruction.
@@ -2027,6 +2027,28 @@ Additional limitations include,
 
 Overall, Week 9 successfully established and validated the experimental foundation needed to quantitatively evaluate shared-noise effects on PUF reconstruction reliability.
 
+## Independent Detector-Table Reproduction
+As part of the project's reproducibility requirements, I independently executed Keegan's detector-table reproduction package using my local Windows development environment.
+
+- Received the frozen experimental evidence containing saved logistic regression and random forest prediction scores, validation thresholds, and reference results.
+- Verified the integrity of all 17 original package files using SHA-256 checks.
+- Executed the provided Python reproduction script using Python 3.12.4.
+- Recomputed medium/high perturbation recall and clean false-alert rates across three fixed fits per detector family.
+- Verified that both generated CSV files exactly matched their expected reference SHA-256 hashes.
+
+**Reproduced results:**
+
+| Detector | Medium/High Recall | Clean False-Alert Rate |
+|---|---:|---:|
+| Logistic Regression | 82.848% | 5.333% |
+| Random Forest | 87.953% | 2.944% |
+
+Both detector families reproduced their previously reported results. Neither model met the 90% medium/high recall target, while only random forest satisfied the 5% clean false-alert target.
+
+The reproduction completed successfully with exit code 0. I preserved the original input package, reproduced CSV tables, verification receipt, execution log, environment information, and packaged results within `results/week-9/will/keegan-detector-table-reproduction/`.
+
+This task verified the reproducibility of the reported detector metrics using frozen prediction evidence. It did not independently reproduce model training, inference, or dataset construction.
+
 ## Next Steps
 
 The next research phase will focus on completing the shared-noise correlation evaluation using the calibrated operating point.
@@ -2043,8 +2065,6 @@ Planned work includes,
 The proposed final study uses 120 independently simulated devices and 108,000 policy attempts, subject to final resource qualification and separate execution authorization.
 
 **Week 9 concludes with a validated calibration experiment and a justified noise operating point. The next scientific objective is to determine how much of Majority-3's reconstruction advantage remains under correlated measurement noise.**
-
-## Next Steps
 
 # Hours and Work:
 
@@ -2918,7 +2938,7 @@ Identified remaining requirements for independent reproduction in a compatible e
   - Resource profiling
   - Reproducibility
 
-## 8:28pm - 10:59pm (2.52)
+## 8:28pm - 10:59pm (2.52 Hours)
 - Executed the initial shared-noise calibration,
   - Experiment interrupted after 543 of 3,840 attempts
   - Identified a Windows monitoring-file access failure
@@ -2944,3 +2964,26 @@ Identified remaining requirements for independent reproduction in a compatible e
   - 1.568 GiB peak sampled private memory
   - No resource-limit violations
 - Finalized the documentation and hours and updated slideshow
+
+# Thursday October, 29
+
+## 1:00pm - 2:56pm (1.93 Hours)
+- Weekly meeting
+- Listened to Yahia's presentation
+- Stayed in lab after to work on Keegan's detector table reproduction
+- Completed independent reproduction of Keegan's detector evaluation results.
+- Executed the detector-metric reproduction using Python 3.12.4 on my local Windows desktop.
+- Independently reproduced logistic regression and random forest results,
+  - Logistic regression: 82.848% medium/high recall, 5.333% clean false-alert rate
+  - Random forest: 87.953% medium/high recall, 2.944% clean false-alert rate
+- Verified exact SHA-256 matches for both generated CSV tables.
+- Preserved the terminal execution log, environment record, and reproduction receipt.
+- Packaged the completed reproduction evidence into a ZIP for repository preservation.
+
+## 5:54pm - 6:23pm (0.48 Hours)
+- Finalized Keegan's reproduction
+- Documented the detector table reproduction in the README in the week 9 results section including,
+  - Reproduction methodlogy
+  - Results
+  - Limitations
+- Added the work to my research log and updated my hours

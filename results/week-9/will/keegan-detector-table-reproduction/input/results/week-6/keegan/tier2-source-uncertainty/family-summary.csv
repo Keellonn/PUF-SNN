@@ -1,0 +1,11 @@
+family,metric,fixed_model_count,mean_fixed_model_point_estimate,ci_low,ci_high,defined_bootstrap_draws,undefined_bootstrap_draws,degenerate_bootstrap_interval,unique_source_count,seed_fits_are_independent_source_trials
+logistic_regression,medium_high_recall,3,0.8284771852666301,0.8242272842927428,0.8328931747638608,2000,0,False,600,False
+logistic_regression,clean_fpr,3,0.05333333333333334,0.03829166666666667,0.07166666666666667,2000,0,False,600,False
+logistic_regression,all_attack_recall,3,0.729311786012817,0.7228047603727988,0.7360223233239113,2000,0,False,600,False
+logistic_regression,all_quality_valid_precision,3,0.996952961340697,0.9959561854275045,0.997815713579501,2000,0,False,600,False
+logistic_regression,all_quality_valid_f1,3,0.8423847453536085,0.8382980957436644,0.8465647500491541,2000,0,False,600,False
+random_forest,medium_high_recall,3,0.8795308777716695,0.8772952344874899,0.881891281573706,2000,0,False,600,False
+random_forest,clean_fpr,3,0.029444444444444443,0.017777777777777778,0.04222222222222222,2000,0,False,600,False
+random_forest,all_attack_recall,3,0.8197037243428996,0.815668935945004,0.8237652694795554,2000,0,False,600,False
+random_forest,all_quality_valid_precision,3,0.9985010446820505,0.9978613403498792,0.9990922059319554,2000,0,False,600,False
+random_forest,all_quality_valid_f1,3,0.9003109102457469,0.8980488178526781,0.9026185238921084,2000,0,False,600,False

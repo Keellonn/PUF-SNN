@@ -1,0 +1,74 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 1413,
+      "sha256": "93768275f2c52de8797dd9b1329cce23e7e17e48cf30cf722cdbd744b4083d43"
+    },
+    "START_HERE_PROMPT.txt": {
+      "bytes": 3613,
+      "sha256": "02cf5c2f5a6d9b4ca8b7b5f64cca601748d616fdde5c8cf20dede45a519ed1f5"
+    },
+    "handoff/expected/detector-family-table.csv": {
+      "bytes": 349,
+      "sha256": "5126dacb246139d58bdb87ecb5925495aa73f7e90067037cfbf8bef36b74cdaf"
+    },
+    "handoff/expected/per-fit-counts.csv": {
+      "bytes": 581,
+      "sha256": "8b1c7409bc2a4f2fd6e11fea5cdecb469d8472e67a67fa1eb27d42a1a6c9deb2"
+    },
+    "handoff/manifest.json": {
+      "bytes": 1932,
+      "sha256": "e14157dc7699a72ddc05bb0fac3d47059f9d2624811a7fa15f4150b18e6967dd"
+    },
+    "handoff/reproduce_saved_detector_table.py": {
+      "bytes": 8768,
+      "sha256": "27b7311989ab9628cd45c595f298291f62dc067949e62d9059c4d2e26d02f6c8"
+    },
+    "handoff/reviewer-notes.md": {
+      "bytes": 1488,
+      "sha256": "9dd04b53a0ed16c2591da79bcdae195802441f6dc426868d22bab2f4d4382032"
+    },
+    "results/week-5/keegan/stream-evaluation/COMPLETE": {
+      "bytes": 124,
+      "sha256": "7f6b319dc09b8d85a9ff47c9c8110ddc96ebf5c8fade134640dd02d0bf5bc4cb"
+    },
+    "results/week-5/keegan/stream-evaluation/authenticated-test-predictions.jsonl": {
+      "bytes": 16257719,
+      "sha256": "96c09d931c5dd1624222ba615a168bee20e5f8eb873c9e57b78b592101789356"
+    },
+    "results/week-5/keegan/stream-evaluation/config.json": {
+      "bytes": 969,
+      "sha256": "ba88202515d05b2a1e2f2fc345be311c87941be5040adf3999c0247455d88b99"
+    },
+    "results/week-5/keegan/stream-evaluation/construction-summary.json": {
+      "bytes": 11956,
+      "sha256": "81419cf5266b9f0a652193a4a209ba2baf5fbe5fbe87139526bb76e3d3dd6058"
+    },
+    "results/week-5/keegan/stream-evaluation/frozen-validation-thresholds.json": {
+      "bytes": 2281,
+      "sha256": "b4015fb098b4fd26e4e6cbef4c25db9d8ea5d3f0f219082507375d4a1477d396"
+    },
+    "results/week-5/keegan/stream-evaluation/manifest.json": {
+      "bytes": 12438,
+      "sha256": "8c053eadacf67c97f4d886a8116df17f185afb818d2e25439090fb7d7275f13e"
+    },
+    "results/week-6/keegan/tier2-source-uncertainty/family-summary.csv": {
+      "bytes": 1404,
+      "sha256": "88abccc25933177d8db9962b28628b7bcd5707f7aabd91cff52be5515bdaad64"
+    },
+    "results/week-6/keegan/tier2-source-uncertainty/manifest.json": {
+      "bytes": 3949,
+      "sha256": "dc234b0bbccbc56dacd6009b5bd444ff202ad09720fbf46443e1c87b97f41952"
+    },
+    "tools/reproduce_saved_detector_table.py": {
+      "bytes": 8768,
+      "sha256": "27b7311989ab9628cd45c595f298291f62dc067949e62d9059c4d2e26d02f6c8"
+    },
+    "verify_package.py": {
+      "bytes": 788,
+      "sha256": "48283cf58d9db31e2001ecef623f2efe75827070eee990cbbf97f6fcfd4c630a"
+    }
+  },
+  "published_commit": "3835ef55f9d6f5795521379ab5541c608fe5e6ac",
+  "scope": "Bounded retained-score table reproduction"
+}
