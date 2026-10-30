@@ -119,4 +119,4 @@ Repository: https://github.com/Keellonn/PUF-SNN
 
 ## Current validation checkpoint
 
-See [Week 9 results](results/week-9/keegan/README.md) for synthetic logger accounting/source diagnostics, the quality-check decision and historical timing interpretation, current research status and the bounded detector-table reproduction handoff. Actual Quest readiness and independent-person reproduction remain pending.
+See [Week 9 results](results/week-9/keegan/README.md) for synthetic logger accounting/source diagnostics, the quality-check decision and historical timing interpretation, current research status and the bounded detector-table reproduction handoff. Actual Quest readiness remains pending. Will has returned a matching local metric-table replay; detailed reviewer documentation remains open. See the [October 30 follow-up](docs/week9-follow-up-20261030.md).

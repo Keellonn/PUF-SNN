@@ -1,6 +1,6 @@
 # IRB preparation status
 
-October 28, 2026. The coordinated Word review packet is version 1.3 and remains
+Updated October 30, 2026. The coordinated Word review packet is version 1.3 and remains
 outside this public repository. It supersedes version 1.2 for PI review. The
 original HRP-503/HRP-502 templates and earlier drafts are preserved. It is a
 review draft; administrative details and approvals remain open.
@@ -18,10 +18,12 @@ including the earlier 50; two lifecycle cases enter Play Mode. The earlier
 1,117 Python receipt was not rerun for this interface change.
 
 The Android bench APK built and its OpenXR/Quest metadata were checked. The
-headset is not configured for developer access, so installation, real display
-and controls, capture distributions, prompt alignment, Android file behavior
-and transfer remain open. The ten-trial bench scene is separate from the
-proposed 25/75 recorded-trial study procedures.
+next development check is PC-hosted Unity through Quest Link; connection, real
+display and controls, capture distributions, prompt alignment and saved files
+remain unverified. Standalone Android installation/file behavior is a separate
+route. The ten-trial bench scene is separate from the proposed 25/75 recorded-trial
+study procedures. Confirm the final study headset model and acquisition path
+before revising the Word packet's acquisition and data-flow sections.
 
 ## Completed document checks
 
@@ -47,7 +49,7 @@ Staff must still read current device/accessory guidance and check the equipment.
 | Funding, dates, resources and consent-authorized staff | Named team/PI facts |
 | Required training | Keegan completes CITI himself; PI verifies all listed personnel records before final submission |
 | Device safety, cleaning supplies, fitting and emergency workflow | Staff checks and rehearsal on the actual setup |
-| Headset readiness | Developer access, installation and device checks described in the bench checklist |
+| Headset readiness | Quest Link connection and live device checks; confirm final study model and PC-hosted/standalone path |
 | Institutional authorization and phase gate | Applicable written HRPP determination/IRB approval, then PI readiness confirmation before Phase 2 |
 
 No research participant movements were collected or analyzed in this work.

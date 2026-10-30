@@ -1453,3 +1453,17 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Rechecked the current university templates and preserved the originals.
 - Reviewed the Word layout and fixed table breaks, headings and the contents page.
 - Packaged the matching documents and updated the checklist of remaining PI decisions.
+
+## Thursday, October 29, 2026 - 2.10 hours
+
+### 12:50 PM - 2:23 PM - 1.55 hours
+
+- Attended the weekly meeting and Yahia's presentation.
+- Got help from Sadman and Zeeshawn afterward with setting up Quest Link. Clarified that this approach runs Unity through the connected headset without installing the Android app or needing developer access.
+
+### 8:50 PM - 9:23 PM - 0.55 hours
+
+- Updated the third presentation with this week’s results.
+- Created matching figures and simplified the slide wording.
+- Wrote speaker notes and reviewed the technical explanations.
+- Updated the next steps for Quest testing, CITI training and IRB preparation.

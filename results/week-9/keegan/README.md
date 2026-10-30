@@ -40,7 +40,7 @@ total or mix these software counts with experimental observations.
 - [Source diagnostics](source-quality-20261027-001/README.md): 50 Unity and 1,117 selected Python tests passed; summaries survive synthetic rejection/stop paths; missing diagnostics are refused.
 - [Optimization and historical timing](../../../docs/week9-optimization-and-timing.md): tested matching, exact labels, scope and outliers; defaults unchanged.
 - [Research status and corrections](../../../docs/week9-research-status.md): model targets, evidence accounting and workflow timing distinguished.
-- [Small reproduction handoff](../../../docs/week9-bounded-reproduction.md): about 16 MB of already tracked inputs; no model binaries needed for the score-table scope. Local dry run matches; independent person still pending.
+- [Small reproduction handoff](../../../docs/week9-bounded-reproduction.md): about 16 MB of already tracked inputs; no model binaries needed for the score-table scope. Will returned a matching local Windows/Python 3.12.4 replay; detailed reviewer documentation remains open.
 
 These follow-up files are an uncommitted tested overlay over 55dea11. The earlier
 checkpoint bundle remains unchanged. No new human recordings or scientific
@@ -60,5 +60,6 @@ The [final bench checkpoint](quest-bench-20261028-001/README.md) records 60/60
 Unity tests and a successful ARM64 APK with OpenXR/Quest metadata. This includes
 the earlier 50 Unity cases; it is not 110 tests. The prior 1,117 Python receipt
 was not rerun for this UI change. The APK stays outside Git. Installation and
-actual headset checks are pending developer access. The earlier source-quality
-follow-up was published in commit 3835ef5; this bench work remains uncommitted.
+actual headset checks remain pending; the next route is PC-hosted Quest Link.
+The earlier source-quality follow-up was published in commit 3835ef5 and the
+bench checkpoint in 9c6bb1b. See the [October 30 status](../../../docs/week9-follow-up-20261030.md).

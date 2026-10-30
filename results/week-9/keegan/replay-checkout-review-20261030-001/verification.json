@@ -1,0 +1,42 @@
+{
+  "review_date": "2026-10-30",
+  "scope": "Read-only integrity and output comparison of returned local replay; no replay or model execution.",
+  "reviewed_commit": "596f0922123e1564a8ff18c10037a183c580e00e",
+  "reported_executor": "Will Wallace",
+  "reported_environment": "Local Windows, CPython 3.12.4, AMD64",
+  "package_files_checked": 17,
+  "package_files_matched": 17,
+  "original_retained_inputs_matched": 8,
+  "outputs": {
+    "detector-family-table.csv": {
+      "sha256": "5126dacb246139d58bdb87ecb5925495aa73f7e90067037cfbf8bef36b74cdaf",
+      "matches_reference_and_archive": true
+    },
+    "per-fit-counts.csv": {
+      "sha256": "8b1c7409bc2a4f2fd6e11fea5cdecb469d8472e67a67fa1eb27d42a1a6c9deb2",
+      "matches_reference_and_archive": true
+    }
+  },
+  "reviewer_form_completed": false,
+  "independent_person_identity_verified_by_this_check": false,
+  "line_ending_issue": "Fresh Windows checkout converted the nested package to CRLF. Restored unchanged Git blob bytes and added a scoped -text rule; recorded expected hashes were not edited.",
+  "checkout_tests": [
+    {
+      "core_autocrlf": "false",
+      "package_files_matched": 17,
+      "output_csv_hashes_matched": 2
+    },
+    {
+      "core_autocrlf": "true",
+      "package_files_matched": 17,
+      "output_csv_hashes_matched": 2
+    }
+  ],
+  "reviewed_artifacts": {
+    "input/package-manifest.json": "bb7e83e52183c498c30bdda560fd35c8edab4055194087b82715cb384aa909f7",
+    "output/reproduction-output/environment.json": "5e1abf059d6dbf371db8eb58e5f3a7e18b179707efb83e7705d0f5340e7676c5",
+    "output/reproduction-output/receipt.json": "8d21a1d7053b69499db76d40b309512da32d58961fc370fbad1a7018adcdaa60",
+    "output/reproduction-output/reviewer-notes.md": "9dd04b53a0ed16c2591da79bcdae195802441f6dc426868d22bab2f4d4382032",
+    "output/Will_Detector_Reproduction_Completed.zip": "ff950649edaa252cfcfa893e49ae45ae4c5dc79fca9b7241626b13a5a9ea32d3"
+  }
+}

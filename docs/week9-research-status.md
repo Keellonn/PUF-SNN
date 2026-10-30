@@ -1,6 +1,6 @@
 # Research status and evidence corrections
 
-October 27, 2026. Current conclusions remain limited to software and synthetic
+Updated October 30, 2026. Current conclusions remain limited to software and synthetic
 data. Engineering targets are provisional, not established medical or device
 requirements. No new models, attacks or platforms were added.
 
@@ -11,7 +11,7 @@ requirements. No new models, attacks or platforms were added.
 | Medium/high recall target â‰¥90% | Logistic 82.85%, forest 87.95%; both miss | Conditional intervals 82.42â€“83.29% and 87.73â€“88.19%; gradual orientation drift remains difficult |
 | Complete software path â‰¤20 ms p95 | Optional faster logistic/logistic recurring path met target in two old blocks | Setup + first was 22.2/23.4 ms; forest paths miss; single-read laptop scope only |
 | Real-motion validation | Trial accounting and source-diagnostic software checks pass | Actual Quest/Android checks, institutional clearance and PI readiness review remain |
-| Independent reproduction | Small score-table replay prepared; local dry run matches retained table | Another person must execute it and record failures/deviations; full inference rerun remains separate |
+| Independent reproduction | Will returned local Windows/Python 3.12.4 metric recomputation; both CSVs match | Detailed reviewer form remains blank; full inference and bootstrap reruns remain separate |
 
 Conventional motion results summarize five fixed fits on the same 600 test
 windows; SNN width comparison summarizes three fixed fits and selected width
@@ -76,8 +76,9 @@ are prepared. Actual device controls, acquisition/transfer checks and the PI
 readiness report remain. Will owns the shared-noise specification and three-arm
 failure/admission/release denominators and overhead. The pilot's zero unauthorized
 releases is not an adversarial-attempt denominator or a cryptographic proof.
-Complete the bounded independent replay together, then record the actual person,
-environment, frozen files, outputs and deviations. Keep optional defaults unchanged.
+Will has returned the bounded local metric replay. Complete its detailed reviewer
+record with setup/deviations and human review context. See the
+[October 30 follow-up](week9-follow-up-20261030.md). Keep optional defaults unchanged.
 
 Primary retained sources and hashes are listed in the decision-report manifest.
 The missing original frozen archive remains openly recorded; it does not prevent
@@ -91,3 +92,11 @@ All 60 Unity tests passed, including the earlier 50. Offline APK checks found
 the OpenXR loader and Quest VR metadata. Actual device validation, independent
 reproduction and institutional authorization remain pending. These engineering
 checks do not change the model, anomaly or historical timing conclusions above.
+
+## October 30 status
+
+Will's returned local metric-table run now supplies Windows/Python 3.12.4 evidence
+and matching outputs. Its detailed reviewer template remains blank. The next
+Quest check uses PC-hosted Link; device execution and CITI remain planned for
+next week. See [the current follow-up](week9-follow-up-20261030.md). The earlier
+dated checkpoints and scientific results remain unchanged.

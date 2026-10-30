@@ -1,9 +1,23 @@
 # Quest bench setup and remaining checks
 
-Updated October 28, 2026. The laptop scene is preserved. The separate
+Updated October 30, 2026. The laptop scene is preserved. The separate
 `QuestLoggerBench` scene has a tracked camera, a stationary world-space panel,
 visible prepare/record/rest prompts and five controls. The software evidence is
 in [the bench checkpoint](../results/week-9/keegan/quest-bench-20261028-001/README.md).
+
+## Next connection check: Quest Link
+
+The next development check will use PC-hosted Unity Play Mode through Quest Link.
+Confirm the Link connection, PC OpenXR runtime and desktop XR settings before
+checking tracking, prompts and controller behavior. No connected-headset run is
+claimed yet. Installation of the Android APK is a separate testing route.
+
+Link runs the application on the laptop, with headset tracking/display and
+controller input. Its processing measurements would describe the PC-hosted path.
+The existing Android compile receipt remains a separate historical checkpoint.
+The protocol currently names Quest 3; the latest development discussion mentions
+Quest Pro. Confirm the actual study device and acquisition path before finalizing
+the protocol appendix and data workflow.
 
 ## Current behavior
 
@@ -42,7 +56,7 @@ related features are off. API minimum/target are 32 for this development APK.
 The declared Internet permission means network behavior still needs review.
 No camera/microphone permission is declared; platform tracking is separate.
 
-## After developer access is available
+## Standalone Android installation, if that route is used
 
 1. Use the lab-managed account and a data-capable USB cable. Accept the debug
    prompt on the headset. Confirm that ADB reports one authorized device.

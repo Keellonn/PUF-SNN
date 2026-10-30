@@ -1,9 +1,16 @@
 # One bounded detector table reproduction
 
-This prepares a small independent check of the central detector results, using
-retained scores and frozen validation thresholds. The implementer's dry run
-matched the old table; another person still needs to execute it. It does not
-rerun inference, data generation, authentication or the bootstrap intervals.
+This bounded check recomputes the central detector table from retained scores
+and frozen validation thresholds. Will returned a local Windows/Python 3.12.4
+run on October 29. Both CSVs match the reference hashes. The detailed reviewer
+form remains blank; the environment record and companion report identify Will
+as the operator. This scope does not rerun inference, data generation,
+authentication or the bootstrap intervals.
+
+The [returned evidence](../results/week-9/will/keegan-detector-table-reproduction/README.md)
+and [October 30 integrity follow-up](week9-follow-up-20261030.md) document the
+local run and checkout line-ending correction. The frozen inputs, manifests and
+recorded hashes are unchanged.
 
 The frozen scoped handoff is commit `55dea11b1e3dbae22f7607f85ba2e4741ae37036`
 for the eight historical inputs, plus the script overlay and exact hashes in

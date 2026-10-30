@@ -90,3 +90,7 @@ src/quest-logger/QuestLogger/Assets/XR/XRGeneralSettingsPerBuildTarget.asset.met
 src/quest-logger/QuestLogger/ProjectSettings/EditorBuildSettings.asset -text
 src/quest-logger/QuestLogger/ProjectSettings/ProjectSettings.asset -text
 src/quest-logger/QuestLogger/ProjectSettings/UnityConnectSettings.asset -text
+
+# Preserve the returned detector replay package and receipt hashes.
+results/week-9/will/keegan-detector-table-reproduction/** -text
+results/week-9/keegan/replay-checkout-review-20261030-001/** -text
