@@ -1,0 +1,32 @@
+{
+  "base_commit": "f125e891237b1220d338646ea319c7358e1bcac0",
+  "committed": false,
+  "date": "2026-11-03",
+  "existing_filenames_preserved": true,
+  "existing_missing_local_link_targets": 168,
+  "experiment_rerun": false,
+  "first_half_source_and_fixture_hashes_preserved": true,
+  "first_half_verification_sha256": "8d409f0b5da1aebe2fcadb75147793709d8a4f79765ffc3d82536e6665475559",
+  "introduced_missing_local_link_targets": 0,
+  "models_data_experiment_directories_moved": false,
+  "moved_documents": {
+    "docs/week10-source-recording-plan.md": "docs/week10/week10-source-recording-plan.md",
+    "docs/week10-study-status.md": "docs/week10/week10-study-status.md",
+    "docs/week9-irb-status.md": "docs/week9/week9-irb-status.md",
+    "docs/week9-session-checklist.md": "docs/week9/week9-session-checklist.md"
+  },
+  "new_navigation_missing_local_link_targets": 0,
+  "new_or_changed_navigation_files": 23,
+  "note": "Existing missing targets include historical/private references; they were not rewritten.",
+  "protected_file_bytes_unchanged": true,
+  "protected_files_checked": 2301,
+  "protected_inventory_sha256": "f38b601b0c872b5aaccf0f1e29fdfcb27b5c00dff93346c87dc70419f067abbc",
+  "pushed": false,
+  "remaining_existing_missing_local_link_targets": 168,
+  "research_logs_and_archives_unchanged": true,
+  "result_index_change": "Only two document hrefs in the new uncommitted first-half README",
+  "scope": "documentation_navigation_cleanup",
+  "source_config_schema_edits": false,
+  "status": "COMPLETE",
+  "verified_utc": "2026-11-03T21:38:42.792426+00:00"
+}

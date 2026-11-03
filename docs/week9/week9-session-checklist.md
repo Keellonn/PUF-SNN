@@ -1,5 +1,9 @@
 # Week 9 completion checklist
 
+Current follow-up: [November 3 study decisions](../week10/week10-study-status.md) and
+[first-half source-recording prototype](../week10/week10-source-recording-plan.md).
+The October checkpoint below is retained as historical evidence.
+
 Updated October 30, 2026. Completed means there is a saved result at the linked
 scope; a prepared packet or APK is not an approval or device-test result.
 

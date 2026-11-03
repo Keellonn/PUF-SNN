@@ -1,5 +1,9 @@
 # IRB preparation status
 
+Current follow-up: [November 3 study decisions](../week10/week10-study-status.md) and
+[first-half source-recording prototype](../week10/week10-source-recording-plan.md).
+The October checkpoint below is retained as historical evidence.
+
 Updated October 30, 2026. The coordinated Word review packet is version 1.3 and remains
 outside this public repository. It supersedes version 1.2 for PI review. The
 original HRP-503/HRP-502 templates and earlier drafts are preserved. It is a

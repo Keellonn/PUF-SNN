@@ -1467,3 +1467,31 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Created matching figures and simplified the slide wording.
 - Wrote speaker notes and reviewed the technical explanations.
 - Updated the next steps for Quest testing, CITI training and IRB preparation.
+
+## Monday, November 2, 2026 - 0.65 hours
+
+### 1:02 PM - 1:41 PM - 0.65 hours
+
+- Connected the lab Quest 3 to the laptop and checked the Quest Link and Unity OpenXR setup.
+- Opened the logger bench scene. The laptop displayed the controls, but the headset showed a black screen and Unity reported unavailable head tracking.
+- Ran the USB test, which reported USB 2 at 369 Mbps and recommended a USB 3 connection.
+- Investigated the headset’s Wi-Fi error and unresponsive controls. Pointing highlighted buttons, but trigger presses and the Meta button did not respond, including in the power menu.
+- Restarted the headset and removed/reinserted the controller batteries. Neither resolved the selection problem.
+- Paused testing with recording disabled. Successful headset logger test is unfinished as I couldn't get the triggers to work.
+
+## Tuesday, November 3, 2026 - 2.55 hours
+
+### 2:31 PM - 5:04 PM - 2.55 hours
+
+- Reviewed the logger’s saved files and identified the missing original source data.
+- Documented the planned laptop-based Quest Link acquisition setup.
+- Added an offline source-recording candidate that preserves sample values, timestamps and tracking information.
+- Checked that reloading the source reproduces processed windows and quality summaries across 20 synthetic seeds.
+- Tested rejected/stopped exports, malformed inputs, timestamp problems, file mismatches and overwrite protection.
+- Passed 61 Unity tests and 42 focused Python tests, including existing tests.
+- Saved artificial example files, file hashes and verification results in the Week 10 results folder.
+- Updated the study-status documents and recorded what remains for the second group.
+- Organized current documents into week folders and added weekly/topic indexes.
+- Cleaned up the main README and added navigation for results, tools and presentations.
+- Checked links and confirmed that experiment records, code and research logs were preserved.
+- Overall fixed folder structure.
