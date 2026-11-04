@@ -33,13 +33,13 @@ acquisition choice. This is a planning/status record, not institutional approval
 
 | Item | Next step |
 |---|---|
-| Source-data reproducibility | Review the [accepted-source proposal and first-half prototype](week10-source-recording-plan.md); no live retention is enabled |
-| Live integration | Second work group: declared policy, ledger/source links, interruptions and matching study materials |
+| Source-data reproducibility | Review the accepted-source proposal and [optional development integration](week10-source-integration.md); saved scenes keep it off |
+| Live integration | Versioned development policy, controller wiring and read-only ledger/source reconciliation implemented and tested synthetically; actual Link/storage checks and PI source-retention review remain |
 | SharePoint details | Verify actual site/folders, staff permissions, authentication/encryption, backups, temporary copies and deletion/withdrawal handling with PI/IT |
 | CITI and staff preparation | Keegan has not completed the required HSR course; obtain Will's current record, then PI verification, instruction, rehearsal and authorization |
 | Headset input/Link | Controller pointing/highlighting observed, but selection failed in system menus; restarts did not resolve it. USB test reported USB 2, 369 Mbps. No successful headset logger run claimed |
 | Administrative decisions | Finalize funding, injury wording, retention requirements, recruitment channel, room availability and actual equipment/storage arrangements |
-| Coordinated packet | Update protocol, consent, data flow, supporting forms and final-review checklist together; Word materials remain outside public Git |
+| Coordinated packet | Version 1.4 working copies now align protocol, consent, data flow, forms and PI checklist; review accepted-source retention and remaining blanks before submission. Word copies stay outside public Git |
 | Institutional review | Obtain applicable written determination/approval before covered research activities; this planning decision authorizes no recruitment or research collection |
 
 The proposed headset is Quest 3 and the proposed room is Torgersen 2015. Room

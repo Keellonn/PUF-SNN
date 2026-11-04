@@ -69,8 +69,10 @@ A window is rejected when:
 
 Rejected windows do not enter the classifier JSONL file. The controller now saves
 a separate coded trial ledger with the full schedule, quality refusal reasons,
-skips, stops and processing failures. It does not save unresampled source poses.
-This retention choice is a proposal for PI review before research collection.
+skips, stops and processing failures. With the default policy it does not save unresampled source poses. An optional
+development policy now links accepted source files to durable ledger acceptance;
+see [source integration and accounting](../../docs/week10/week10-source-integration.md).
+Both saved scenes leave this feature off. Study retention needs explicit PI review.
 See [trial-ledger format, counts and checks](../../docs/quest-trial-ledger.md).
 Tier-2 synthetic anomaly copies should be created from already accepted clean
 source windows, remain in the source split, and be reported separately so

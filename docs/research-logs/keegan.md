@@ -1470,7 +1470,7 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 
 ## Monday, November 2, 2026 - 0.65 hours
 
-### 1:02 PM - 1:41 PM - 0.65 hours
+### 1:02 AM - 1:41 AM - 0.65 hours
 
 - Connected the lab Quest 3 to the laptop and checked the Quest Link and Unity OpenXR setup.
 - Opened the logger bench scene. The laptop displayed the controls, but the headset showed a black screen and Unity reported unavailable head tracking.
@@ -1479,7 +1479,7 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Restarted the headset and removed/reinserted the controller batteries. Neither resolved the selection problem.
 - Paused testing with recording disabled. Successful headset logger test is unfinished as I couldn't get the triggers to work.
 
-## Tuesday, November 3, 2026 - 2.55 hours
+## Tuesday, November 3, 2026 - 6.07 hours
 
 ### 2:31 PM - 5:04 PM - 2.55 hours
 
@@ -1495,3 +1495,19 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Cleaned up the main README and added navigation for results, tools and presentations.
 - Checked links and confirmed that experiment records, code and research logs were preserved.
 - Overall fixed folder structure.
+
+### 5:54 PM - 9:25 PM - 3.52 hours
+
+- Updated the protocol, consent, supporting forms and PI checklist using Dr. Garcia's latest decisions.
+- Aligned everything with Quest Link, laptop file storage and VT SharePoint.
+- Explained proposed accepted-source retention, rejected/stopped trials and withdrawal handling.
+- Updated the data-flow diagram, preserved earlier copies and checked the Word layout.
+- Connected optional source recording to the Unity trial controller, leaving it disabled by default.
+- Added versioned file headers that clearly state whether original source samples are being saved.
+- Linked accepted source files to their processed windows and trial-ledger entries using trial codes, file hashes and receipts.
+- Checked that reloading saved source samples reproduces the processed window and quality summary.
+- Kept rejected and stopped trials limited to coded outcomes, reasons and quality summaries, without saving their motion samples.
+- Added read-only checks for missing files, partial writes, duplicate receipts and files without matching ledger entries.
+- Tested failures during window, ledger and source-file writing to check that incomplete records are flagged rather than treated as successful.
+- Passed 85 Unity tests and 1,141 selected Python tests, including existing tests.
+- Saved synthetic examples, verification results and file hashes in the Week 10 results folder, and updated the technical documentation.

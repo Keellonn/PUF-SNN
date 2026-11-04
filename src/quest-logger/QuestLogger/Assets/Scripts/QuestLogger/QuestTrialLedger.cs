@@ -88,6 +88,14 @@ namespace PufSnn.QuestLogger {
         private readonly Dictionary<string, TrialState> states = new Dictionary<string, TrialState>();
         private readonly List<string> order = new List<string>();
         private readonly ITrialLedgerStore store;
+        private LedgerPlan declaredPlan;
+        public bool MatchesPlan(LedgerPlan plan) {
+            if (plan == null || declaredPlan == null) return false;
+            var a = JsonUtility.FromJson<LedgerPlan>(JsonUtility.ToJson(plan));
+            var b = JsonUtility.FromJson<LedgerPlan>(JsonUtility.ToJson(declaredPlan));
+            a.created_elapsed_ns = b.created_elapsed_ns = 0;
+            return JsonUtility.ToJson(a) == JsonUtility.ToJson(b);
+        }
         private readonly Func<long> clock;
         private long previousTime;
         private int nextIndex = 1;
@@ -111,6 +119,7 @@ namespace PufSnn.QuestLogger {
                 previousTime = this.clock();
                 if (previousTime < 0) throw new InvalidDataException("Negative elapsed time.");
                 frozen.created_elapsed_ns = previousTime;
+                declaredPlan = JsonUtility.FromJson<LedgerPlan>(JsonUtility.ToJson(frozen));
                 foreach (LedgerTrial trial in frozen.trials) {
                     states.Add(trial.trial_id, new TrialState());
                     order.Add(trial.trial_id);
@@ -155,8 +164,8 @@ namespace PufSnn.QuestLogger {
 
         public static void ValidatePlan(LedgerPlan plan) {
             if (plan == null) throw new ArgumentNullException(nameof(plan));
-            if (plan.record_type != "plan" || plan.schema_version != "quest-trial-ledger-v1" ||
-                plan.time_basis != "head-capture-stopwatch-ns" || plan.raw_retention != "not_saved" ||
+            if (plan.record_type != "plan" || !AcceptedSourceVisit.ValidPolicy(plan.schema_version, plan.raw_retention) ||
+                plan.time_basis != "head-capture-stopwatch-ns" ||
                 plan.repeat_policy != "none") throw new ArgumentException("Unsupported ledger policy.");
             foreach (string code in new[] { plan.participant_code, plan.visit_code, plan.device_id, plan.session_id })
                 if (code == null || !Code.IsMatch(code)) throw new ArgumentException("Use nonempty coded identifiers without paths or spaces.");

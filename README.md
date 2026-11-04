@@ -22,11 +22,12 @@ The Quest 3 does not expose a physical PUF for this project. The PUF work is sim
 
 ## Current checkpoint
 
-The [Week 10 first-half checkpoint](results/week-10/keegan/source-replay-20261103-001/README.md)
-adds an offline accepted-source export/replay candidate, tested with artificial
-poses. It does not enable new live recording. The planned study acquisition route
-is laptop-hosted Unity through Quest Link. Device readiness, staff training,
-storage arrangements and institutional review remain open as described in the
+The [Week 10 source integration](results/week-10/keegan/source-integration-20261103-001/README.md)
+connects optional accepted-source retention to the logger with versioned policies,
+durable receipts and interrupted-file checks, tested using artificial poses.
+The default policy and saved scenes keep source retention off. The planned study
+route is laptop-hosted Unity through Quest Link. Device readiness, staff training,
+storage arrangements and institutional review remain open; see the
 [study-status page](docs/week10/week10-study-status.md).
 
 Earlier [Week 9](docs/week9/README.md) and [Week 8](docs/week8/README.md) reports

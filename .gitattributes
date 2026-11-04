@@ -107,3 +107,18 @@ results/week-10/keegan/source-replay-20261103-001/** -text
 
 # Navigation-only organization receipt.
 results/week-10/keegan/repo-organization-20261103-001/** -text
+
+# Week 10 optional development integration and exact synthetic fixtures.
+src/python/puf_snn/accepted_source_visit.py text eol=lf
+src/python/scripts/validate_accepted_source_visit.py text eol=lf
+tests/test_accepted_source_visit.py text eol=lf
+src/python/puf_snn/trial_ledger.py text eol=lf
+src/python/puf_snn/source_quality.py text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/AcceptedSourceVisit.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/AcceptedSourceVisit.cs.meta text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialController.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/QuestTrialLedger.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/AcceptedSourceVisitTests.cs text eol=lf
+src/quest-logger/QuestLogger/Assets/Tests/EditMode/AcceptedSourceVisitTests.cs.meta text eol=lf
+results/week-10/keegan/source-integration-20261103-001/** -text

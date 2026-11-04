@@ -91,9 +91,9 @@ def metrics(value):
                 "source_rate_mismatch")
 
 
-def inspect_source_quality(ledger_path: Path | str, source_path: Path | str) -> dict:
+def inspect_source_quality(ledger_path: Path | str, source_path: Path | str, *, verify_sources: bool = True) -> dict:
     ledger_path, source_path = Path(ledger_path), Path(source_path)
-    base = inspect_ledger(ledger_path)
+    base = inspect_ledger(ledger_path, verify_sources=verify_sources)
     result = dict(status="INVALID", ledger_status=base["status"], issues=[], summaries=[], counts=None,
                   scope="Source diagnostics; complete accounting does not establish headset readiness.")
     if base["counts"] is None:
@@ -111,10 +111,10 @@ def inspect_source_quality(ledger_path: Path | str, source_path: Path | str) -> 
         header = decode(lines[0])
         plan = json.loads(ledger_path.read_bytes().splitlines()[0]) # Already checked by inspect_ledger.
         require(type(header) is dict and set(header) == HEADER, "invalid_source_header_fields")
-        require(header["record_type"] == "source_quality_plan" and header["schema_version"] == "quest-source-quality-v1", "unsupported_source_schema")
+        require(header["record_type"] == "source_quality_plan" and header["schema_version"] == ("quest-source-quality-v2" if plan["schema_version"] == "quest-trial-ledger-v2" else "quest-source-quality-v1"), "unsupported_source_schema")
         require(all(header[k] == plan[k] for k in ("participant_code","visit_code","device_id","session_id","processing_version")), "source_identity_mismatch")
         require(header["ledger_file_name"] == ledger_path.name and header["time_basis"] == plan["time_basis"]
-                and header["raw_retention"] == "not_saved" and header["interval_quantile_method"] == "nearest_rank"
+                and header["raw_retention"] == plan["raw_retention"] and header["interval_quantile_method"] == "nearest_rank"
                 and type(header["gap_limit_ns"]) is int and header["gap_limit_ns"] == 50_000_000, "source_policy_mismatch")
     except (OSError, SourceError) as error:
         result["issues"].append(str(error) if isinstance(error, SourceError) else "source_file_read_failed")

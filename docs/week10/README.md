@@ -13,3 +13,5 @@ Live source retention, ledger integration and matching IRB updates are the secon
 
 - [Week 10 result folders](../../results/week-10)
 - [All documentation](../README.md)
+
+- [Source integration and interrupted-file accounting](week10-source-integration.md)

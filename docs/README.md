@@ -9,7 +9,7 @@ paths because experiment receipts, scripts and research logs refer to them.
 - [Week 10 overview](week10/README.md)
 - [Study decisions and remaining work](week10/week10-study-status.md)
 - [Source recording, replay and the two work groups](week10/week10-source-recording-plan.md)
-- [Latest technical checkpoint](../results/week-10/keegan/source-replay-20261103-001/README.md)
+- [Latest technical checkpoint](../results/week-10/keegan/source-integration-20261103-001/README.md)
 
 ## Project and study design
 

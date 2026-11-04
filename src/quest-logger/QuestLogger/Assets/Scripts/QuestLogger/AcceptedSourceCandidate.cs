@@ -36,14 +36,15 @@ namespace PufSnn.QuestLogger {
         public List<RetainedSourceSample> samples = new List<RetainedSourceSample>();
     }
 
-    // Offline development candidate. No scene or live controller calls this exporter.
-    // A future collection integration needs a declared retention policy and ledger links.
+    // Exact source encoding and replay. Legacy v1 fixtures remain readable.
+    // The optional v2 development integration declares retention in its visit plan.
     public static class AcceptedSourceCandidate {
         public static int Bits(float value) => BitConverter.ToInt32(BitConverter.GetBytes(value), 0);
         public static float FromBits(int value) => BitConverter.ToSingle(BitConverter.GetBytes(value), 0);
 
         public static string Serialize(string outcome, IReadOnlyList<RawHeadPoseSample> raw,
-            QuestTrialMetadata metadata, string processingVersion, QuestWindowRecord expected) {
+            QuestTrialMetadata metadata, string processingVersion, QuestWindowRecord expected,
+            bool integratedDevelopment = false) {
             if (outcome != "accepted") throw new InvalidDataException("Only accepted source is eligible for export.");
             if (string.IsNullOrWhiteSpace(processingVersion)) throw new ArgumentException("A processing version is required.");
             if (metadata == null) throw new ArgumentException("Trial metadata is required.");
@@ -60,6 +61,8 @@ namespace PufSnn.QuestLogger {
             if (expected == null || QuestWindowWriter.SerializeWindow(replay) != QuestWindowWriter.SerializeWindow(expected))
                 throw new InvalidDataException("Source does not reproduce the supplied window.");
             var record = new AcceptedSourceRecord {
+                schema_version = integratedDevelopment ? "quest-accepted-source-v2" : "quest-accepted-source-candidate-v1",
+                purpose = integratedDevelopment ? "development_only" : "synthetic_development_only",
                 processing_version = processingVersion, device_id = metadata.device_id,
                 session_id = metadata.session_id, trial_id = metadata.trial_id,
                 split = metadata.split, label = metadata.label, sequence_number = metadata.sequence_number
@@ -81,8 +84,8 @@ namespace PufSnn.QuestLogger {
             AcceptedSourceRecord record;
             try { record = JsonUtility.FromJson<AcceptedSourceRecord>(json); }
             catch (Exception error) { throw new InvalidDataException("Malformed source JSON.", error); }
-            if (record == null || record.schema_version != "quest-accepted-source-candidate-v1" ||
-                record.purpose != "synthetic_development_only" || record.planned_acquisition_mode != "pc_hosted_quest_link" ||
+            if (record == null || !((record.schema_version == "quest-accepted-source-candidate-v1" && record.purpose == "synthetic_development_only") ||
+                (record.schema_version == "quest-accepted-source-v2" && record.purpose == "development_only")) || record.planned_acquisition_mode != "pc_hosted_quest_link" ||
                 record.time_basis != "head-capture-stopwatch-ns" || record.coordinate_frame != "unity_device_origin" ||
                 record.numeric_encoding != "signed_int32_ieee754_float32_bits" || record.outcome != "accepted" ||
                 string.IsNullOrWhiteSpace(record.processing_version) || record.samples == null ||

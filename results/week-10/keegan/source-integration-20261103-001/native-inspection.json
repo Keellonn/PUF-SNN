@@ -1,0 +1,42 @@
+{
+  "ledger_counts": {
+    "accepted": 1,
+    "attempted": 3,
+    "completed": 2,
+    "execution_notes": 0,
+    "not_attempted": 1,
+    "not_started": 2,
+    "pending_processing": 0,
+    "processing_failed": 0,
+    "quality_rejected": 1,
+    "recording_began_confirmed": 3,
+    "recording_began_uncertain": 0,
+    "scheduled": 5,
+    "skipped": 1,
+    "stopped": 1,
+    "unfinished_attempts": 0,
+    "unresolved_scheduled": 0
+  },
+  "source_quality_counts": {
+    "attempted": 3,
+    "empty": 1,
+    "measured": 2,
+    "missing": 0,
+    "summaries": 3,
+    "unavailable": 0
+  },
+  "source_visit": {
+    "accepted_trials": 1,
+    "closed": true,
+    "files_preserved": true,
+    "issues": [],
+    "ledger_integration_checked": true,
+    "live_collection_ready": false,
+    "manifest_sha256": "93a2454f93f2dd8173b7aa0562103a9f9cbe042743ea4fbb8ee8f92eb6701698",
+    "missing_source_trials": [],
+    "source_receipts": 1,
+    "status": "COMPLETE",
+    "unity_quaternion_replay_checked": false,
+    "unreferenced_source_files": []
+  }
+}

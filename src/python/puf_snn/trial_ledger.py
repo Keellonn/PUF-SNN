@@ -61,13 +61,15 @@ def _decode(data):
 
 def _plan(plan):
     _require(type(plan) is dict and set(plan) == PLAN_KEYS, "invalid_plan_fields")
-    _require(plan["record_type"] == "plan" and plan["schema_version"] == "quest-trial-ledger-v1", "unsupported_plan")
+    _require(plan["record_type"] == "plan" and type(plan["schema_version"]) is str and type(plan["raw_retention"]) is str and (plan["schema_version"], plan["raw_retention"]) in {
+        ("quest-trial-ledger-v1", "not_saved"),
+        ("quest-trial-ledger-v2", "accepted_source_development_only")}, "unsupported_plan")
     for field in ("participant_code", "visit_code", "device_id", "session_id"):
         _require(isinstance(plan[field], str) and CODE.fullmatch(plan[field]), "invalid_code")
     _require(isinstance(plan["processing_version"], str) and bool(plan["processing_version"].strip())
              and len(plan["processing_version"]) <= 256, "missing_processing_version")
     _require(_filename(plan["window_file_name"]), "invalid_window_filename")
-    _require(plan["time_basis"] == "head-capture-stopwatch-ns" and plan["raw_retention"] == "not_saved"
+    _require(plan["time_basis"] == "head-capture-stopwatch-ns"
              and plan["repeat_policy"] == "none", "unsupported_policy")
     _require(_integer(plan["schedule_seed"], -(2**31), 2**31 - 1), "invalid_seed")
     _require(_integer(plan["maximum_trials"], 1, 75) and _integer(plan["created_elapsed_ns"]), "invalid_plan_numbers")
@@ -133,7 +135,7 @@ def _artifacts(plan, trials, accepted, directory):
     return issues, orphan_count, digest.hexdigest()
 
 
-def inspect_ledger(path: Path | str, *, verify_files: bool = True) -> dict:
+def inspect_ledger(path: Path | str, *, verify_files: bool = True, verify_sources: bool = True) -> dict:
     """Preserve all files; return counts even when the valid event prefix is incomplete."""
     path = Path(path)
     report = dict(status="INVALID", closed=False, issues=[], counts=None, trials=[], valid_prefix_events=0)
@@ -242,4 +244,13 @@ def inspect_ledger(path: Path | str, *, verify_files: bool = True) -> dict:
         report["window_file_sha256"] = digest
     report["artifact_check_performed"] = verify_files
     report["status"] = "INVALID" if report["issues"] else "COMPLETE" if report["closed"] else "INCOMPLETE"
+    if verify_files and verify_sources and plan["schema_version"] == "quest-trial-ledger-v2":
+        from .accepted_source_visit import inspect_source_visit
+        source = inspect_source_visit(path, base_report=report)
+        report["accepted_source"] = source
+        if source["status"] == "INVALID":
+            report["issues"].append("accepted_source_accounting_invalid")
+            report["status"] = "INVALID"
+        elif source["status"] != "COMPLETE" and report["status"] == "COMPLETE":
+            report["status"] = "INCOMPLETE"
     return report

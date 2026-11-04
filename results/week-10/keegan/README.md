@@ -7,3 +7,5 @@
 
 The source candidate was tested offline with artificial inputs. Live integration,
 headset checks and the matching IRB revisions remain separate work.
+
+- [Second-group source integration and synthetic checks](source-integration-20261103-001/README.md)

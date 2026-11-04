@@ -18,6 +18,12 @@ windows. This additional retention must appear in the protocol, consent, data
 inventory and retention/withdrawal plan before study use. The PI still needs to
 review it. It is not enabled by this checkpoint.
 
+## Follow-up
+
+The second group is now implemented as an optional development feature; see
+[controller integration and file accounting](week10-source-integration.md). The
+first-half description below retains its original checkpoint scope.
+
 ## The two work groups
 
 1. **This checkpoint:** define a source-file candidate; test offline export and

@@ -145,7 +145,9 @@ namespace PufSnn.QuestLogger {
                 store.Append(JsonUtility.ToJson(new SourceQualityHeader {
                     participant_code = plan.participant_code, visit_code = plan.visit_code,
                     device_id = plan.device_id, session_id = plan.session_id,
-                    processing_version = plan.processing_version, ledger_file_name = ledgerFileName
+                    processing_version = plan.processing_version, ledger_file_name = ledgerFileName,
+                    schema_version = plan.schema_version == "quest-trial-ledger-v2" ? "quest-source-quality-v2" : "quest-source-quality-v1",
+                    raw_retention = plan.raw_retention
                 }));
             } catch { Faulted = true; store.Dispose(); throw; }
         }

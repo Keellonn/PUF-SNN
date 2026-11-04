@@ -69,7 +69,9 @@ def float32(value):
 
 def decode_source(record):
     require(type(record) is dict and set(record) == HEADER, "invalid_source_fields")
-    for key, value in {"schema_version": SCHEMA, "purpose": "synthetic_development_only",
+    require(type(record["schema_version"]) is str and type(record["purpose"]) is str and (record["schema_version"], record["purpose"]) in {
+        (SCHEMA, "synthetic_development_only"), ("quest-accepted-source-v2", "development_only")}, "unsupported_source_policy_or_encoding")
+    for key, value in {
                        "planned_acquisition_mode": "pc_hosted_quest_link", "time_basis": "head-capture-stopwatch-ns",
                        "coordinate_frame": "unity_device_origin", "numeric_encoding": "signed_int32_ieee754_float32_bits",
                        "outcome": "accepted"}.items():

@@ -15,6 +15,7 @@ namespace PufSnn.QuestLogger {
         [SerializeField] private TextMesh promptText;
         [SerializeField] private bool recordingAuthorized;
         [SerializeField] private bool startOnPlay;
+        [SerializeField] private bool retainAcceptedSourceForDevelopment;
         [SerializeField] private string deviceId = "quest-02";
         [SerializeField] private string sessionId = "quest-02-session-01";
         [SerializeField] private string split = "train";
@@ -31,6 +32,12 @@ namespace PufSnn.QuestLogger {
         [SerializeField] private float restSeconds = 1.0f;
 
         public bool RecordingEnabled => recordingAuthorized;
+        public bool RetainsAcceptedSource => retainAcceptedSourceForDevelopment;
+
+        public void SetDevelopmentSourceRetention(bool enabled) {
+            if (SessionRunning) throw new System.InvalidOperationException("Stop the visit before changing retention policy.");
+            retainAcceptedSourceForDevelopment = enabled;
+        }
         public bool SessionRunning => sessionRoutine != null || ledger != null;
         public string CurrentPrompt { get; private set; } = "Recording off";
         public event System.Action<string> PromptChanged;
@@ -54,6 +61,7 @@ namespace PufSnn.QuestLogger {
         private Coroutine sessionRoutine;
         private QuestTrialLedger ledger;
         private SourceQualityWriter sourceQuality;
+        private AcceptedSourceVisit acceptedSource;
         private bool capturePending;
         private LedgerPlan plan;
         private string activeTrialId = "";
@@ -97,13 +105,17 @@ namespace PufSnn.QuestLogger {
                     processingVersion, blockCount, trialsPerClass, randomSeed, maximumScheduledTrials);
                 windowWriter.PrepareVisit(visitCode);
                 plan.window_file_name = Path.GetFileName(windowWriter.OutputPath);
+                if (retainAcceptedSourceForDevelopment) AcceptedSourceVisit.DeclareDevelopmentPolicy(plan);
                 string path = Path.Combine(Path.GetDirectoryName(windowWriter.OutputPath), visitCode + "-trials.jsonl");
                 string qualityPath = Path.Combine(Path.GetDirectoryName(windowWriter.OutputPath), visitCode + "-source-quality.jsonl");
+                AcceptedSourceVisit.Preflight(Path.GetDirectoryName(path), plan);
                 if (File.Exists(path) || File.Exists(qualityPath))
                     throw new IOException("This visit already has evidence files; preserve them and use a new visit code.");
                 ledger = QuestTrialLedger.Create(path, plan, () => headPoseCapture.ElapsedNanoseconds);
                 sourceQuality = SourceQualityWriter.Create(qualityPath, Path.GetFileName(path), plan,
                     () => headPoseCapture.ElapsedNanoseconds);
+                if (retainAcceptedSourceForDevelopment)
+                    acceptedSource = AcceptedSourceVisit.Create(Path.GetDirectoryName(path), Path.GetFileName(path), plan, ledger);
                 capturePending = false;
                 sessionStart = headPoseCapture.ElapsedNanoseconds;
                 endReason = "schedule_finished";
@@ -213,12 +225,18 @@ namespace PufSnn.QuestLogger {
                 split = split, label = trial.prompted_task, sequence_number = trial.trial_index
             };
             try {
-                if (QuestWindowProcessor.TryCreateWindow(raw, metadata, out QuestWindowRecord record, out string reason))
+                if (QuestWindowProcessor.TryCreateWindow(raw, metadata, out QuestWindowRecord record, out string reason)) {
+                    if (acceptedSource != null) {
+                        acceptedSource.Accept(raw, metadata, record, windowWriter.WriteWindowWithReceipt);
+                        return true;
+                    }
                     return TryRecord("accepted", receipt: windowWriter.WriteWindowWithReceipt(record));
+                }
                 return TryRecord("rejected", RejectionCode(reason));
             } catch (System.Exception error) {
                 endReason = "processing_or_window_write_failed";
-                if (ledger != null && !ledger.Faulted) TryRecord("processing_failed", endReason);
+                if (ledger != null && !ledger.Faulted && ledger.Stage(trial.trial_id) == "completed")
+                    TryRecord("processing_failed", endReason);
                 Debug.LogError("Processing stopped: " + error.Message);
                 return false;
             }
@@ -246,14 +264,19 @@ namespace PufSnn.QuestLogger {
                 TrySaveSource("unconfirmed", "capture_start_unconfirmed", null);
             QuestTrialLedger finishing = ledger;
             SourceQualityWriter finishingQuality = sourceQuality;
+            AcceptedSourceVisit finishingSource = acceptedSource;
+            acceptedSource = null;
             ledger = null;
             sourceQuality = null;
             sessionRoutine = null;
             activeTrialId = "";
-            if (finishing == null) { if (finishingQuality != null) finishingQuality.Dispose(); return; }
-            try { if (!finishing.Faulted && !finishing.Closed) finishing.EndVisit(endReason); }
+            if (finishing == null) { if (finishingQuality != null) finishingQuality.Dispose(); if (finishingSource != null) finishingSource.Dispose(); return; }
+            try {
+                if (!finishing.Faulted && !finishing.Closed) finishing.EndVisit(endReason);
+                if (finishingSource != null && !finishingSource.Faulted) finishingSource.Close();
+            }
             catch (System.Exception error) { Debug.LogError("Visit remains incomplete: " + error.Message); }
-            finally { finishing.Dispose(); if (finishingQuality != null) finishingQuality.Dispose(); }
+            finally { finishing.Dispose(); if (finishingQuality != null) finishingQuality.Dispose(); if (finishingSource != null) finishingSource.Dispose(); }
         }
 
         private bool TrySaveSource(string stage, string reason, List<RawHeadPoseSample> raw) {
