@@ -1,3 +1,13 @@
+# File: test_correlated_noise_v1.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Test indexed correlated-noise algebra, reproducibility, reader failure handling,
+# and acquisition integration.
+#
+# Status: Active
+# Version: 1.0
+
 """Deterministic model/algebra and real acquisition controls, not FRR trials.
 
 Any credentials/keys below are public unit fixtures used through real admission.

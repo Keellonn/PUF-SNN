@@ -1,3 +1,12 @@
+# File: integration.py
+# Author: William Wallace
+# Date Created: 09/23/26
+# Description:
+# Shared immutable Wire2 motion-record adapter and verifier-bound at most once classifier release.
+# 
+# Status: Active
+# Version: 1.0
+
 """Shared Wire-2 boundary for processed motion and classifier delivery.
 
 This module deliberately owns neither authentication decisions nor classifier

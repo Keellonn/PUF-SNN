@@ -1,3 +1,13 @@
+# File: test_majority3_pipeline.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Test Majority-3 reconstruction, credential admission, authenticated sessions,
+# and verifier-controlled classifier release.
+#
+# Status: Active
+# Version: 1.0
+
 """Majority-3 functional controls; no FRR, model, or latency experiment.
 
 All credentials, entropy, and response patterns here are NONSECRET fixtures.

@@ -1,3 +1,12 @@
+# File: test_auth_schema_cache.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Verify content-keyed schema caching, invalidation, and validation equivalence.
+#
+# Status: Active
+# Version: 1.0
+
 """Content-cache regressions using tiny temporary schemas; no study execution."""
 from copy import deepcopy
 import os

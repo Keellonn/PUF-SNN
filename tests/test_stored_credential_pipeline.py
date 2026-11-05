@@ -1,3 +1,13 @@
+# File: test_stored_credential_pipeline.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Test stored-credential source isolation, admission, invocation status,
+# and authenticated classifier release.
+#
+# Status: Active
+# Version: 1.0
+
 """Bounded functional controls, not reliability/latency experiments.
 
 All credential/key/response fixtures are public synthetic material. Handshake

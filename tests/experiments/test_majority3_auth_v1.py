@@ -1,3 +1,13 @@
+# File: test_majority3_auth_v1.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Test Week 7 correlated-noise study planning, protocol controls,
+# and tamper-resistant evidence using deterministic fixtures.
+#
+# Status: Active
+# Version: 1.0
+
 """Small deterministic developer fixtures, never statistical research evidence."""
 from collections import Counter
 from copy import deepcopy

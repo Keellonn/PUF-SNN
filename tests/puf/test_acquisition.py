@@ -1,3 +1,13 @@
+# File: test_acquisition.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Test Single-Read and Majority-3 acquisition, voting, configuration,
+# and simulator device and random-stream binding.
+#
+# Status: Active
+# Version: 1.0
+
 """Deterministic acquisition controls, not reliability measurements."""
 
 from dataclasses import FrozenInstanceError, replace

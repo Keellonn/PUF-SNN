@@ -1,3 +1,13 @@
+# File: test_majority3_auth_corrections.py
+# Author: William Wallace
+# Date Created:
+# Description:
+# Check Week 7 authentication fault classification, evidence reconciliation,
+# and statistical accounting.
+#
+# Status: Active
+# Version: 1.0
+
 """Audit corrections: bounded deterministic fixtures only, no research execution."""
 from collections import Counter
 from copy import deepcopy
