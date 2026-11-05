@@ -1511,3 +1511,19 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Tested failures during window, ledger and source-file writing to check that incomplete records are flagged rather than treated as successful.
 - Passed 85 Unity tests and 1,141 selected Python tests, including existing tests.
 - Saved synthetic examples, verification results and file hashes in the Week 10 results folder, and updated the technical documentation.
+
+## Wednesday, November 4, 2026 - 3.37 hours
+
+### 4:01 PM - 6:37 PM - 2.60 hours
+
+- Enrolled in Virginia Tech’s Social & Behavioral Research Basic Course.
+- Reviewed eight modules covering research ethics, consent, privacy, risk and human-subject protections.
+- Completed the required quizzes and passed the course.
+- Downloaded the completion certificate and report for Dr. Garcia’s review.
+
+### 10:39 PM - 11:25 PM - 0.77 hours
+
+- Updated the third presentation with the latest logger work and test totals.
+- Added a slide explaining source recording, replay checks and handling of rejected or interrupted trials.
+- Updated the Quest setup, IRB progress and next steps.
+- Prepared matching updated maroon/orange figures and revised speaker notes.
