@@ -1527,3 +1527,10 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 - Added a slide explaining source recording, replay checks and handling of rejected or interrupted trials.
 - Updated the Quest setup, IRB progress and next steps.
 - Prepared matching updated maroon/orange figures and revised speaker notes.
+
+## Thursday, November 5, 2026 - 0.97 hours
+
+### 12:50 PM - 1:48 PM - 0.97 hours
+
+- Participated in the Weekly meeting
+- Listened to Amruth's and Warren's presentations
