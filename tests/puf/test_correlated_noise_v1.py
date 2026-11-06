@@ -1,6 +1,6 @@
 # File: test_correlated_noise_v1.py
 # Author: William Wallace
-# Date Created:
+# Date Created: 10/14/26
 # Description:
 # Test indexed correlated-noise algebra, reproducibility, reader failure handling,
 # and acquisition integration.

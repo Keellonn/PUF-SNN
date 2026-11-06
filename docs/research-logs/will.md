@@ -2987,3 +2987,57 @@ Identified remaining requirements for independent reproduction in a compatible e
   - Results
   - Limitations
 - Added the work to my research log and updated my hours
+
+# Wednesday November, 4
+
+## 10:12pm - 11:59pm (1.78 Hours)
+- Started shared noise calibration analysis
+- More in depth analysis of the shared noise experiment
+- Reviewed the calibration results comparing Single-Read and Majority-3 PUF acquisition policies.
+- Investigated the measured 7.083-percentage-point improvement at the selected noise setting, σ = 0.15.
+- Analyzed the whole-device bootstrap confidence interval and its interpretation.
+- Reviewed the prespecified selection criteria to justify why σ = 0.15 was selected as the calibration operating point.
+- Began organizing experimental evidence and numerical results into formal research documentation.
+
+# Thursday November, 5
+
+## 12:00am - 12:37am (0.62 Hours)
+- Finalized the shared noise calibration analysis
+- Verified that the operating-point justification included the statistical methodology, selected configuration, and numerical evidence.
+- Documented the distinction between completed calibration results and the planned correlated-noise experiment.
+- Reviewed the analysis for scientific accuracy and reproducibility limitations.
+
+## 1:00pm - 2:40pm (1.67 Hours)
+- Weekly meeting
+- Listened to Warren's presentation
+- Listened to Amruth's presentation
+- Stayed in lab after to reconcile the calibration outcome
+- Classifying the non-successful reconstruction outcomes into one of the four groups,
+  - Correct Credential (Success)
+  - BCH Decoder Failure
+  - Invalid Format
+  - Incorrect credential
+- Investigated why unsuccessful reconstruction attempts occurred and how the authentication pipeline handled them.
+- Began reconciling the 471 unsuccessful attempts with the 3,369 successfully authenticated and released sensor windows.
+
+## 5:34pm - 8:02pm (2.47 Hours)
+- Finished calibration polished documentation and classification
+- Verified the classification totals: 3,369 correct credentials, 458 decoder failures, nine invalid-format outcomes, and four incorrect credentials.
+- Traced the four incorrect credentials through independent verification and confirmed that each was rejected before session establishment.
+- Examined downstream authentication behavior, including credential verification, session admission, HKDF invocation, and authorized sensor-window release.
+- Confirmed that all 3,840 attempts were accounted for without double-counting unsuccessful outcomes.
+- Completed and reviewed the formal Calibration Outcome Reconciliation and Authentication Security Analysis documentation
+- Documented limitations involving historical source hashes, saved experimental evidence, and the distinction between authentication success and actual SNN inference.
+
+# Friday November, 6
+
+## 10:37am - 12:12pm (1.58 Hours)
+- Started Virginia Tech CITI Human Subjects Research training.
+
+## 1:34pm - 3:32pm (1.97 Hours)
+- In lab work
+- Reviewed and finalized documentation for the independent reproduction of Keegan's detector-performance tables.
+- Completed the reviewer record documenting execution environment, verification commands, input integrity, and reproduced results.
+- Documented matching SHA-256 values for the reproduced detector-family and per-fit CSV outputs.
+- Clarified that the reproduction used preserved prediction scores and frozen thresholds rather than independently retraining the detector models.
+- Completed Virginia Tech CITI Human Subjects Research training.

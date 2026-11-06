@@ -1,6 +1,6 @@
 # File: test_stored_credential_pipeline.py
 # Author: William Wallace
-# Date Created:
+# Date Created: 10/21/26
 # Description:
 # Test stored-credential source isolation, admission, invocation status,
 # and authenticated classifier release.

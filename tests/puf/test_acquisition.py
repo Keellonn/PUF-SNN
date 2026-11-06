@@ -1,6 +1,6 @@
 # File: test_acquisition.py
 # Author: William Wallace
-# Date Created:
+# Date Created: 10/14/26
 # Description:
 # Test Single-Read and Majority-3 acquisition, voting, configuration,
 # and simulator device and random-stream binding.
