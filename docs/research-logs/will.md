@@ -2066,6 +2066,162 @@ The proposed final study uses 120 independently simulated devices and 108,000 po
 
 **Week 9 concludes with a validated calibration experiment and a justified noise operating point. The next scientific objective is to determine how much of Majority-3's reconstruction advantage remains under correlated measurement noise.**
 
+# Week 10, Calibration Analysis, Authentication Reconciliation, and Research Validation
+
+## Shared-Noise Calibration Analysis and Operating-Point Justification
+
+Following Dr. Garcia's Week 9 feedback, I conducted a more detailed analysis of the completed shared-noise PUF calibration experiment. The primary objective was to statistically justify the selected noise setting and explain the observed reliability improvement between Single-Read and Majority-3 acquisition policies.
+
+- Reviewed the completed calibration dataset consisting of 24 simulated PUF devices, four noise settings (σ = 0.10, 0.15, 0.20, 0.25), and 1,920 matched trials.
+- Compared reconstruction failure rates between Single-Read and Majority-3 acquisition across all four noise conditions.
+- Investigated the 7.083-percentage-point improvement at σ = 0.15, where Single-Read experienced 49 reconstruction failures compared with 15 for Majority-3.
+- Analyzed the statistical uncertainty using 10,000 paired bootstrap resamples with 24 whole-device clusters as the resampling units.
+- Verified the descriptive 95% bootstrap confidence interval of [3.333, 11.250] percentage points for the observed improvement.
+- Reviewed the pre-specified calibration selection criteria, including minimum reconstruction failure counts, reliability improvement, discordant pairs, device coverage, and statistical uncertainty.
+- Confirmed that σ = 0.15 satisfied the selection criteria and was the lowest qualifying noise setting.
+- Distinguished the completed independent-noise calibration from the future correlated-noise experiment, which requires fresh populations and separate authorization.
+- Completed the formal calibration analysis document explaining the experimental methodology, statistical findings, operating-point selection, and limitations.
+
+**Primary findings:**
+- Selected operating point: **σ = 0.15**
+- Single-Read reconstruction failure rate: **10.208%**
+- Majority-3 reconstruction failure rate: **3.125%**
+- Observed reliability improvement: **7.083 percentage points**
+- Descriptive 95% bootstrap interval: **[3.333, 11.250] percentage points**
+
+**Documentation:** `docs/week10/shared-noise-calibration-analysis.md`
+
+## Reconstruction Classification and Authentication Outcome Reconciliation
+
+Following the calibration analysis, I investigated all 3,840 authentication attempts to determine the mechanisms responsible for unsuccessful PUF credential reconstruction and verify how the authentication pipeline responded to these outcomes.
+
+- Classified all recorded reconstruction attempts into four mutually exclusive categories:
+  - Correct Credential (C): Successful recovery of the enrolled credential.
+  - BCH Decoder Failure (D): Decoder unable to recover an acceptable candidate.
+  - Invalid Format (I): Decoded credential failed formatting or padding requirements.
+  - Incorrect Credential (W): Structurally valid credential that differed from enrollment.
+- Reconciled the 471 unsuccessful reconstruction attempts without double-counting failures across authentication stages.
+- Examined the BCH(63,36,t=5) reconstruction process and the distinction between successful decoding, padding validity, and credential correctness.
+- Traced authentication outcomes through independent credential verification, admission authorization, HKDF session-key derivation, mutual confirmation, and authenticated sensor-window release.
+- Determined that 467 unsuccessful reconstructions terminated before reaching the independent credential verifier.
+- Investigated the four valid-format incorrect-credential events and confirmed that all four were explicitly rejected with `credential_mismatch`.
+- Verified that none of the incorrect credentials resulted in admission authorization, session-key derivation, active session establishment, or authorized window release.
+- Confirmed that all 3,369 correct reconstructions completed the recorded authentication pipeline and recording-callback delivery.
+- Examined security invariants related to reconstruction failure isolation, independent credential verification, session authorization, and authenticated release.
+- Distinguished observed authentication behavior from broader cryptographic security claims and clarified that the calibration did not exercise trained SNN inference.
+- Completed a formal research document presenting the classification methodology, numerical reconciliation, authentication-stage behavior, and scientific conclusions.
+
+**Reconciled reconstruction results:**
+
+- Correct credential reconstructions: **3,369**
+- BCH decoder failures: **458**
+- Invalid credential format/padding: **9**
+- Valid-format incorrect credentials: **4**
+- Total authentication attempts: **3,840**
+- Total unsuccessful reconstructions: **471**
+
+**Primary findings:**
+
+- **467** unsuccessful attempts terminated before independent verification.
+- **4/4** incorrect credentials were explicitly rejected by the independent verifier.
+- **3,369** successful authenticated recording deliveries were completed.
+- **0** unauthorized releases were observed in the completed calibration.
+
+**Documentation:** `docs/week10/calibration-outcome-reconciliation.md`
+
+## Independent Detector-Table Reproduction Documentation and CITI Training
+
+As part of the project's reproducibility requirements, I finalized the independent reviewer documentation for Keegan's detector-table reproduction. I also completed CITI Human Subjects Research training in preparation for the proposed Quest 3 human-participant study.
+
+- Reviewed the previously completed detector-table reproduction and its preserved Windows PowerShell execution transcript.
+- Verified the reported integrity of all 17 original reproduction-package files using SHA-256 comparisons.
+- Reviewed the execution environment, including Windows PowerShell and Python 3.12.4.
+- Confirmed the reproduction of logistic-regression and random-forest detector metrics across three fixed fits per detector family.
+- Verified that both generated detector-result CSV files matched their original reference SHA-256 values.
+- Completed the independent reviewer record documenting execution commands, working directory, verification results, file hashes, and reviewer attestation.
+- Investigated Windows CRLF/LF line-ending differences affecting raw-byte file-integrity comparisons.
+- Clarified that this reproduction recomputed metrics using saved prediction scores and frozen validation thresholds rather than retraining the detector models.
+- Reviewed the reproduced detector performance relative to the project's recall and false-alert targets.
+- Completed CITI Human Subjects Research training covering informed consent, participant confidentiality, privacy, research risks, vulnerable populations, and IRB regulations.
+- Prepared the human-subjects training documentation for the team's research submission materials.
+
+**Reproduced detector results:**
+
+- Logistic Regression:
+  - Medium/high anomaly recall: **82.848%**
+  - Clean false-alert rate: **5.333%**
+- Random Forest:
+  - Medium/high anomaly recall: **87.953%**
+  - Clean false-alert rate: **2.944%**
+
+**Primary findings:**
+
+- Both detector families successfully reproduced their saved reference metrics.
+- Neither detector met the 90% medium/high recall target.
+- Random Forest satisfied the 5% clean false-alert target, while Logistic Regression exceeded it.
+- The independent reproduction verified saved-score metric calculations but did not independently reproduce model training, prediction generation, or the complete anomaly-detection pipeline.
+
+**Documentation:** `week9-detector-table-review-notes.md`
+
+## Calibration Freeze Readiness and Historical Evidence Provenance Investigation
+
+To complete the remaining Week 10 calibration requirements, I investigated whether the selected noise setting and historical experimental evidence were ready for formal acknowledgment and future correlated-noise study planning. The investigation focused on the calibration's frozen configuration, historical source identities, validation receipts, and an unresolved SHA-256 discrepancy.
+
+- Conducted a read-only audit of the completed calibration's selection records, execution authorization, source manifests, configuration identities, and validation receipts.
+- Confirmed that σ = 0.15 was computationally selected under the prespecified calibration rules, but a separate formal acknowledgment remained incomplete.
+- Reviewed the proposed future correlated-noise study requirements, including fresh population identities, fixed experimental conditions, statistical comparisons, and resource qualification.
+- Investigated an unresolved historical SHA-256 mismatch involving the `pipeline_timing.py` source file.
+- Compared the preserved source files against the original historical manifests and examined the effect of in-memory CRLF-to-LF line-ending normalization.
+- Reviewed historical Git versions and frozen experimental source snapshots to determine whether the original recorded file identity could be recovered.
+- Conducted an additional bounded search of historical workstation directories, project locations, backup locations, and archived research packages.
+- Inspected five archived ZIP packages containing 54 file members without modifying or extracting their contents.
+- Determined that none of the accessible historical copies reproduced the original recorded SHA-256 digest.
+- Established that the original exact-byte source identity remains unrecovered, although the saved numerical calibration results remain internally consistent.
+- Distinguished historical validation receipts from present exact-byte source-integrity verification.
+- Confirmed that the current evidence discrepancies prevent the existing formal selection-acknowledgment workflow from completing successfully.
+- Created a formal provenance-exception record documenting the discrepancy, attempted recovery methods, limitations, and decisions requiring Dr. Garcia's review.
+- Preserved all historical calibration evidence, source files, manifests, and execution records without modification.
+
+**Evidence integrity findings:**
+
+- Historical bundle-manifest entries: **126**
+- Exact raw-byte matches: **76**
+- Additional matches after in-memory line-ending normalization: **49**
+- Unresolved historical source mismatches: **1**
+- Original recorded source identity: **Not recovered**
+
+**Primary findings:**
+
+- The numerical calibration results and selection of σ = 0.15 remain supported by the saved experimental evidence.
+- The historical `pipeline_timing.py` byte identity could not be recovered from the accessible evidence.
+- An unqualified exact-byte certification of the current historical bundle cannot be claimed.
+- The formal calibration selection acknowledgment remains pending.
+- The future correlated-noise experiment remains unauthorized and disabled.
+- Dr. Garcia must review the provenance exception before determining the appropriate next steps.
+
+**Documentation:** `docs/week10/calibration-provenance-exception.md`
+
+## Findings, Limitations, and Conclusions
+
+Week 10 focused on completing the statistical justification, authentication outcome reconciliation, independent reproduction documentation, and historical evidence validation associated with the completed shared-noise calibration.
+
+- Established σ = 0.15 as the selected operating point using prespecified calibration criteria and whole-device bootstrap uncertainty analysis.
+- Reconciled all 3,840 authentication attempts and identified the reconstruction mechanisms responsible for 471 unsuccessful attempts.
+- Confirmed that all four observed incorrect credentials were independently rejected before session establishment and that no unauthorized releases were recorded.
+- Finalized the independent detector-table reviewer documentation, including evidence-integrity checks, numerical comparisons, and reproducibility limitations.
+- Completed CITI Human Subjects Research training for the proposed Quest 3 participant-data study.
+- Investigated the unresolved historical source-integrity discrepancy and documented the unsuccessful recovery effort.
+- Prepared a formal provenance-exception record for Dr. Garcia's review.
+
+**Outstanding limitations:**
+
+- The original exact-byte identity of `pipeline_timing.py` remains unrecovered.
+- Formal calibration selection acknowledgment remains incomplete pending evidence disposition.
+- The future correlated-noise evaluation requires a frozen study specification, resource qualification, and separate execution authorization.
+- The completed calibration does not establish physical-PUF performance, trained SNN inference accuracy, or universal resistance to spoofing and replay attacks.
+
+Overall, Week 10 completed the scientific analysis and documentation necessary to explain the calibration's statistical results, reconstruction outcomes, and authentication security boundaries. The remaining closeout requirement is Dr. Garcia's review of the unresolved historical provenance exception before the calibration acknowledgment and future experimental planning can proceed.
+
 # Hours and Work:
 
 # Tuesday September, 9
@@ -3041,3 +3197,16 @@ Identified remaining requirements for independent reproduction in a compatible e
 - Documented matching SHA-256 values for the reproduced detector-family and per-fit CSV outputs.
 - Clarified that the reproduction used preserved prediction scores and frozen thresholds rather than independently retraining the detector models.
 - Completed Virginia Tech CITI Human Subjects Research training.
+
+## 6:49pm - 7:57pm (1.13 Hours)
+- Investigated historical calibration source-integrity discrepancies
+- Reviewed the completed calibration's source manifests, historical validation receipts, and recorded source identities.
+- Compared historical Git versions and preserved experiment snapshots against the original recorded SHA-256 digest.
+- Searched available workstation directories, historical project locations, and backup locations for an untouched copy of the original source file.
+- Inspected five archived ZIP packages containing 54 file members to identify any matching historical source evidence.
+- Confirmed that the original exact-byte source identity could not be recovered from the accessible evidence.
+- Confirmed that the numerical calibration results remain internally consistent despite the unresolved historical byte-provenance discrepancy.
+- Verified that formal calibration acknowledgment remains blocked by the existing evidence-audit requirements.
+- Established that Dr. Garcia must review the provenance exception before formal calibration closure and subsequent experimental authorization can proceed.
+- Finalized week 10 work
+- Updated research log and finalized week 10 hours
