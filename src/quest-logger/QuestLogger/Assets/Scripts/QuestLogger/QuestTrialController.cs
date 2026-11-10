@@ -73,6 +73,15 @@ namespace PufSnn.QuestLogger {
         private void OnDisable() { StopWithReason("component_disabled"); }
         private void OnApplicationQuit() { StopWithReason("application_quit"); }
         private void OnApplicationPause(bool paused) { if (paused) StopWithReason("application_paused"); }
+        private void OnApplicationFocus(bool focused) { if (!focused) StopForFocusLoss(); }
+
+        // Losing the staff application's focus stops capture and requires a fresh arm.
+        // Receiving focus again never resumes a visit automatically.
+        public void StopForFocusLoss() {
+            // Disarm before file finalization, including when finalization fails.
+            recordingAuthorized = false;
+            StopWithReason("application_focus_lost");
+        }
 
         private void Start() {
             if (startOnPlay) {

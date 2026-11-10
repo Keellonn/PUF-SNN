@@ -95,6 +95,93 @@ namespace PufSnn.QuestLogger.Tests {
         }
 
         [Test]
+        public void LosingFocusDisarmsAndReturningFocusDoesNotRearm() {
+            EditorSceneManager.OpenScene(QuestBenchBuild.ScenePath, OpenSceneMode.Single);
+            QuestBenchControls c = UnityEngine.Object.FindFirstObjectByType<QuestBenchControls>();
+            c.Initialize(); c.ToggleRecording();
+            MethodInfo focus = typeof(QuestBenchControls).GetMethod("OnApplicationFocus", BindingFlags.NonPublic | BindingFlags.Instance);
+            focus.Invoke(c, new object[] {false});
+            focus.Invoke(c, new object[] {true});
+            Assert.IsFalse(c.controller.RecordingEnabled);
+            Assert.IsFalse(c.controller.SessionRunning);
+            Assert.IsFalse(c.startButton.interactable);
+            StringAssert.Contains("Recording off", c.prompt.text);
+        }
+
+        private static string PrepareStaffFixture(QuestBenchControls c) {
+            string root = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "puf-snn-week11-" + Guid.NewGuid().ToString("N"));
+            System.IO.Directory.CreateDirectory(root);
+            QuestWindowWriter writer = c.controller.GetComponent<QuestWindowWriter>();
+            typeof(QuestWindowWriter).GetField("outputFolderName", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(writer, root);
+            // Never sample a real headset in these synthetic control tests.
+            c.controller.GetComponent<HeadPoseCapture>().enabled = false;
+            return root;
+        }
+
+        private static void ExportStaffFixture(string root, string name) {
+            string[] args = Environment.GetCommandLineArgs();
+            int i = Array.IndexOf(args, "-pufStaffControlsFixtureRoot");
+            if (i < 0 || i + 1 >= args.Length) return;
+            string target = System.IO.Path.Combine(args[i + 1], name);
+            System.IO.Directory.CreateDirectory(target);
+            foreach (string file in System.IO.Directory.GetFiles(root))
+                System.IO.File.Copy(file, System.IO.Path.Combine(target, System.IO.Path.GetFileName(file)), false);
+        }
+
+        private static void DeleteStaffFixture(string root) {
+            string prefix = System.IO.Path.Combine(System.IO.Path.GetFullPath(System.IO.Path.GetTempPath()), "puf-snn-week11-");
+            Assert.IsTrue(System.IO.Path.GetFullPath(root).StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
+            System.IO.Directory.Delete(root, true);
+        }
+
+        [UnityTest]
+        public IEnumerator DesktopButtonsStartSkipAndStopAnActiveVisitWithoutPoseCapture() {
+            EditorSceneManager.OpenScene(QuestBenchBuild.ScenePath, OpenSceneMode.Single);
+            yield return new EnterPlayMode(); yield return null;
+            QuestBenchControls c = UnityEngine.Object.FindFirstObjectByType<QuestBenchControls>();
+            string root = PrepareStaffFixture(c);
+            try {
+                c.Initialize(); c.armButton.onClick.Invoke(); c.startButton.onClick.Invoke();
+                Assert.IsTrue(c.controller.SessionRunning);
+                c.skipButton.onClick.Invoke(); yield return null;
+                c.stopButton.onClick.Invoke();
+                Assert.IsFalse(c.controller.SessionRunning); Assert.IsFalse(c.controller.RecordingEnabled);
+                Assert.IsFalse(c.controller.GetComponent<HeadPoseCapture>().CaptureActive);
+                string ledger = System.IO.File.ReadAllText(System.IO.Directory.GetFiles(root, "*-trials.jsonl")[0]);
+                StringAssert.Contains("\"event_type\":\"skipped\"", ledger);
+                StringAssert.Contains("\"event_type\":\"visit_closed\"", ledger);
+                Assert.AreEqual(0, System.IO.Directory.GetFiles(root, "*-windows.jsonl").Length);
+                Assert.IsFalse(c.controller.RetainsAcceptedSource);
+                ExportStaffFixture(root, "desktop-stop");
+            } finally { c.StopAndDisarm(); DeleteStaffFixture(root); }
+            yield return new ExitPlayMode();
+        }
+
+        [UnityTest]
+        public IEnumerator FocusLossStopsActiveCaptureRecordsReasonAndDoesNotResume() {
+            EditorSceneManager.OpenScene(QuestBenchBuild.ScenePath, OpenSceneMode.Single);
+            yield return new EnterPlayMode(); yield return null;
+            QuestBenchControls c = UnityEngine.Object.FindFirstObjectByType<QuestBenchControls>();
+            string root = PrepareStaffFixture(c);
+            try {
+                c.Initialize(); c.ToggleRecording(); c.StartVisit();
+                float deadline = Time.realtimeSinceStartup + 4;
+                while (!c.controller.CurrentPrompt.StartsWith("record:", StringComparison.Ordinal) && Time.realtimeSinceStartup < deadline)
+                    yield return null;
+                Assert.IsTrue(c.controller.GetComponent<HeadPoseCapture>().CaptureActive);
+                c.SendMessage("OnApplicationFocus", false); c.SendMessage("OnApplicationFocus", true);
+                Assert.IsFalse(c.controller.SessionRunning); Assert.IsFalse(c.controller.RecordingEnabled);
+                Assert.IsFalse(c.controller.GetComponent<HeadPoseCapture>().CaptureActive);
+                string ledger = System.IO.File.ReadAllText(System.IO.Directory.GetFiles(root, "*-trials.jsonl")[0]);
+                StringAssert.Contains("application_focus_lost", ledger);
+                StringAssert.Contains("\"event_type\":\"stopped\"", ledger);
+                Assert.AreEqual(0, System.IO.Directory.GetFiles(root, "*-windows.jsonl").Length);
+                ExportStaffFixture(root, "focus-stop");
+            } finally { c.StopAndDisarm(); DeleteStaffFixture(root); }
+            yield return new ExitPlayMode();
+        }
+
+        [Test]
         public void HeldTriggerOnConnectionDoesNotClickUntilReleased() {
             QuestBenchControls.EdgeLatch latch = new QuestBenchControls.EdgeLatch();
             Assert.IsFalse(latch.Pressed(true,true)); Assert.IsFalse(latch.Pressed(true,true));

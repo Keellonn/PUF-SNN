@@ -33,6 +33,8 @@ paths because experiment receipts, scripts and research logs refer to them.
 
 ## Reports by week
 
+Current follow-up: [Week 11 technical review and open acquisition checks](week11/README.md).
+
 | Week | Documents |
 |---|---|
 | 2 | [Implementation and simulator design](week2/README.md) |

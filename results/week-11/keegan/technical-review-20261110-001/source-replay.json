@@ -1,0 +1,49 @@
+{
+  "all_retained_source_fields_exact": true,
+  "date": "2026-11-10",
+  "exported_candidate_check": {
+    "hashes": {
+      "metrics": "c2f4d15ebfad4a164c7fbb77c202ae5bf986be60fe40d7c977932cd3458715e2",
+      "source": "4f44d8c67dacaa2971c6ae6f58ea5de2d99b22d275849e9642775b177c8edc0e",
+      "windows": "2bdbeb89bb46361fd670988f38d155594b8415309e71ee35561a17ea0d7091ce"
+    },
+    "issues": [],
+    "ledger_integration_checked": false,
+    "live_collection_ready": false,
+    "processed_samples": 120,
+    "resampling_grid_and_tracking_match": true,
+    "scope": "synthetic_source_candidate",
+    "source_metrics_match": true,
+    "source_samples": 181,
+    "status": "COMPLETE",
+    "unity_quaternion_replay_checked": false
+  },
+  "exported_visit_check": {
+    "accepted_trials": 1,
+    "closed": true,
+    "files_preserved": true,
+    "issues": [],
+    "ledger_integration_checked": true,
+    "live_collection_ready": false,
+    "manifest_sha256": "93a2454f93f2dd8173b7aa0562103a9f9cbe042743ea4fbb8ee8f92eb6701698",
+    "missing_source_trials": [],
+    "source_receipts": 1,
+    "status": "COMPLETE",
+    "unity_quaternion_replay_checked": false,
+    "unreferenced_source_files": []
+  },
+  "independent_Python_quaternion_replay": false,
+  "native_distinct_seeds": 20,
+  "native_roundtrip": "JSON encode/decode of queued pre-resampling source",
+  "native_seed_range": [
+    0,
+    19
+  ],
+  "native_tolerance": 0,
+  "processed_pose_float32_bits_exact": true,
+  "python_rate_absolute_tolerance": 0,
+  "python_rate_relative_tolerance": 1e-12,
+  "qualification": "The twenty-seed tests reuse the same source seeds. Separate exported native fixtures exercise disk writes. These are synthetic same-runtime checks, not cross-platform or hardware validation.",
+  "quality_fields_and_rate_double_bits_exact": true,
+  "status": "PASS"
+}

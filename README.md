@@ -22,6 +22,10 @@ The Quest 3 does not expose a physical PUF for this project. The PUF work is sim
 
 ## Current checkpoint
 
+The [Week 11 technical review](docs/week11/README.md) adds a focus-loss stop
+safeguard and clarifies source replay, test counts, finalized metric replay and
+historical timing. Actual Quest Link and storage checks remain open.
+
 The [Week 10 source integration](results/week-10/keegan/source-integration-20261103-001/README.md)
 connects optional accepted-source retention to the logger with versioned policies,
 durable receipts and interrupted-file checks, tested using artificial poses.

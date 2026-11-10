@@ -1,0 +1,24 @@
+{
+  "automated_receipt_operator_verified_field_unchanged": true,
+  "csv_git_hashes_match_receipt": true,
+  "csv_sha256": {
+    "detector-family-table.csv": "5126dacb246139d58bdb87ecb5925495aa73f7e90067037cfbf8bef36b74cdaf",
+    "per-fit-counts.csv": "8b1c7409bc2a4f2fd6e11fea5cdecb469d8472e67a67fa1eb27d42a1a6c9deb2"
+  },
+  "date": "2026-11-10",
+  "execution_platform": "Windows AMD64",
+  "limitations": [
+    "Saved-score metric replay only; no new model predictions, training, dataset regeneration, authentication or bootstrap rerun.",
+    "Reviewer identity and independence are human-attested, not established cryptographically by the runner.",
+    "The package-manifest hash in the review was reconstructed later from Git bytes, not independently recorded at execution.",
+    "Current Windows checkout line endings can differ; use recorded Git/package bytes for exact hash comparison."
+  ],
+  "python": "3.12.4",
+  "reported_source_checkpoint": "3835ef55f9d6f5795521379ab5541c608fe5e6ac",
+  "review_published_commit": "6fbf4f5b2e553c7fec0796005b7c192cd94ea3bb",
+  "review_record": "results/week-9/will/keegan-detector-table-reproduction/output/reproduction-output/reviewer-notes.md",
+  "review_record_git_sha256": "65444d606acbe668ed55cd07aa3d0cee0cef6b6e7a6a0f0b8fbc6a642be2bcff",
+  "reviewer_as_attested": "William Wallace",
+  "scope": "Metric recomputation from retained historical predictions; no model inference or bootstrap rerun.",
+  "status": "REVIEW_RECORD_COMPLETED"
+}

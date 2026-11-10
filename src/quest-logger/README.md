@@ -141,7 +141,7 @@ The EditMode suite contains these explicit checks:
 
 These tests use artificial raw poses and do not require a headset. They verify software behavior only; they do not prove physical Quest capture, Android deployment, real motion quality, or permission to retain human-derived recordings.
 
-After an authorized JSONL file is copied from the headset, validate it from the repository root with:
+For the current Link route, validate the authorized laptop-created file from the repository root with:
 
 `python src/python/scripts/validate_quest_log.py path/to/<visit_code>-windows.jsonl`
 
@@ -160,7 +160,27 @@ notes, exact receipts and interrupted files. The separate Python tests cover
 reconciliation and denominator handling. [Current evidence](../../results/week-9/keegan/README.md)
 uses synthetic inputs only.
 
-## Before an authorized headset recording
+## Current acquisition route: PC-hosted Quest Link
+
+The proposed study uses Unity on the laptop through wired Quest Link, with app
+files under the laptop's `Application.persistentDataPath`. A standalone APK,
+Android developer mode, ADB and extracting files from the headset are not steps
+in this route. The earlier Android material below records a different build path.
+
+Use the [current troubleshooting and staff-control record](../../docs/week11/week11-quest-link-troubleshooting.md)
+and [accepted-source replay/disposition note](../../docs/week11/week11-source-replay-and-disposition.md).
+Staff desktop operation is proposed, not verified on the actual Link path.
+Recording starts off. Application focus loss now stops/disarms without automatic
+resume; this does not prove how every device interruption propagates.
+
+Optional source retention keeps accepted queue samples before resampling. The
+source is downstream of capture-time quaternion handling, not a raw API dump.
+Rejected/stopped captures intentionally save only coded outcomes and pose-free
+quality summaries. Partial files may still contain motion and require restricted
+handling under the reviewed procedure. Native test totals and current evidence
+are in [Week 11](../../docs/week11/week11-evidence-and-timing.md).
+
+## Historical standalone Android preparation
 
 - confirm the assigned headset and computer
 - confirm developer mode and ADB access

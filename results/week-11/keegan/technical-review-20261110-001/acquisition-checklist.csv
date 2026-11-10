@@ -1,0 +1,11 @@
+check,status,owner,required_evidence,observed_result
+environment_identity,NOT_RUN,Keegan with lab support,"Quest model/device count, firmware, cable/port, Link version/runtime, Unity/packages, source/build version",
+system_selection_and_Link,NOT_RUN,Keegan with lab support,"Observed system selection and rendered PC Link session, or documented authorized launch route",
+headset_prompts,NOT_RUN,Keegan with lab support,Visible participant prompts and their agreement/alignment with recorded phases,
+staff_mouse_and_escape,NOT_RUN,Keegan with lab support,Mouse actions and focused Escape observed on actual Link path; participant controller not required,
+tracking_and_timing,NOT_RUN,Keegan with lab support,"Source timestamp meaning/order, rates, tracking/availability/gaps measured before resampling",
+stop_focus_pause,NOT_RUN,Keegan with lab support,Live stop ends recording; focus/pause does not auto-resume; coded interrupted-trial outcome,
+device_interruptions,NOT_RUN,Keegan with lab support,Actual disconnect/tracking-loss behavior and correct complete/partial file accounting,
+laptop_file_reload,NOT_RUN,Keegan with lab support,"Closed ledger, accepted windows, quality/source receipts and read-only reload checks",
+SharePoint_transfer,NOT_RUN,Keegan with lab support,"Artificial upload/download hashes, authorized/denied access, versions/deletion and backup limits",
+PI_readiness,NOT_RUN,Keegan with lab support,Written readiness report reviewed before moving from logger validation to evaluation,

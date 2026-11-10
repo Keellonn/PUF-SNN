@@ -47,6 +47,41 @@ namespace PufSnn.QuestLogger.Tests {
                 Assert.AreEqual(AcceptedSourceCandidate.Bits(raw[20].position_m.x), restored.samples[20].position_m_float32_bits[0]);
             }
         }
+        [Test] public void AllRetainedFieldsAndProcessedFloatBitsMatchAcrossTwentySeeds() {
+            for (int seed = 0; seed < 20; seed++) {
+                var raw = Source(seed); var expected = Window(raw);
+                string json = AcceptedSourceCandidate.Serialize("accepted", raw, Metadata(), "synthetic-v1", expected);
+                var saved = JsonUtility.FromJson<AcceptedSourceRecord>(json);
+                var replay = AcceptedSourceCandidate.Replay(json, out var metrics);
+                Assert.AreEqual(raw.Count, saved.samples.Count);
+                for (int i = 0; i < raw.Count; i++) {
+                    var before = raw[i]; var after = saved.samples[i];
+                    Assert.AreEqual(before.capture_time_ns, after.capture_time_ns);
+                    CollectionAssert.AreEqual(new[] { AcceptedSourceCandidate.Bits(before.position_m.x), AcceptedSourceCandidate.Bits(before.position_m.y), AcceptedSourceCandidate.Bits(before.position_m.z) }, after.position_m_float32_bits);
+                    CollectionAssert.AreEqual(new[] { AcceptedSourceCandidate.Bits(before.orientation_xyzw.x), AcceptedSourceCandidate.Bits(before.orientation_xyzw.y), AcceptedSourceCandidate.Bits(before.orientation_xyzw.z), AcceptedSourceCandidate.Bits(before.orientation_xyzw.w) }, after.orientation_xyzw_float32_bits);
+                    Assert.AreEqual(before.tracking_valid, after.tracking_valid);
+                    Assert.AreEqual((int)before.tracking_state, after.tracking_state);
+                    Assert.AreEqual(before.tracking_flag_available, after.tracking_flag_available);
+                    Assert.AreEqual(before.tracking_state_available, after.tracking_state_available);
+                }
+                Assert.AreEqual(expected.samples.Count, replay.samples.Count);
+                for (int i = 0; i < expected.samples.Count; i++) {
+                    var a = expected.samples[i]; var b = replay.samples[i];
+                    Assert.AreEqual(a.sample_index, b.sample_index); Assert.AreEqual(a.capture_time_ns, b.capture_time_ns);
+                    Assert.AreEqual(a.tracking_valid, b.tracking_valid);
+                    CollectionAssert.AreEqual(a.position_m.Select(AcceptedSourceCandidate.Bits).ToArray(), b.position_m.Select(AcceptedSourceCandidate.Bits).ToArray());
+                    CollectionAssert.AreEqual(a.orientation_xyzw.Select(AcceptedSourceCandidate.Bits).ToArray(), b.orientation_xyzw.Select(AcceptedSourceCandidate.Bits).ToArray());
+                }
+                var originalMetrics = SourceQualityMetrics.Measure(raw);
+                foreach (var field in typeof(SourceQualityMetrics).GetFields()) {
+                    if (field.FieldType == typeof(double))
+                        Assert.AreEqual(BitConverter.DoubleToInt64Bits((double)field.GetValue(originalMetrics)), BitConverter.DoubleToInt64Bits((double)field.GetValue(metrics)), field.Name);
+                    else Assert.AreEqual(field.GetValue(originalMetrics), field.GetValue(metrics), field.Name);
+                }
+                Assert.AreEqual(QuestWindowWriter.SerializeWindow(expected), QuestWindowWriter.SerializeWindow(replay));
+            }
+        }
+
         [TestCase("rejected")] [TestCase("stopped")] [TestCase("processing_failed")]
         public void RefusedOutcomesCreateNoMotionFile(string outcome) {
             string path = Path.Combine(root, "source.json"); var raw = Source();

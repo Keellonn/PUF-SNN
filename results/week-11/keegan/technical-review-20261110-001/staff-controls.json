@@ -1,0 +1,56 @@
+{
+  "actual_Quest_Link_verified": false,
+  "actual_mouse_event_dispatch_verified": false,
+  "cases": [
+    {
+      "case": "desktop-stop",
+      "counts": {
+        "accepted": 0,
+        "attempted": 0,
+        "completed": 0,
+        "execution_notes": 0,
+        "not_attempted": 9,
+        "not_started": 10,
+        "pending_processing": 0,
+        "processing_failed": 0,
+        "quality_rejected": 0,
+        "recording_began_confirmed": 0,
+        "recording_began_uncertain": 0,
+        "scheduled": 10,
+        "skipped": 1,
+        "stopped": 0,
+        "unfinished_attempts": 0,
+        "unresolved_scheduled": 0
+      },
+      "ledger_status": "COMPLETE"
+    },
+    {
+      "case": "focus-stop",
+      "counts": {
+        "accepted": 0,
+        "attempted": 1,
+        "completed": 0,
+        "execution_notes": 0,
+        "not_attempted": 9,
+        "not_started": 9,
+        "pending_processing": 0,
+        "processing_failed": 0,
+        "quality_rejected": 0,
+        "recording_began_confirmed": 1,
+        "recording_began_uncertain": 0,
+        "scheduled": 10,
+        "skipped": 0,
+        "stopped": 1,
+        "unfinished_attempts": 0,
+        "unresolved_scheduled": 0
+      },
+      "ledger_status": "COMPLETE"
+    }
+  ],
+  "date": "2026-11-10",
+  "hardware_controllers_required": false,
+  "head_pose_capture_disabled_during_tests": true,
+  "qualification": "Tests invoke the existing button callbacks and focus handler. Actual mouse/keyboard routing, headset display and physical interruption behavior still need bench checks.",
+  "read_only_python_reconciliation": true,
+  "status": "PASS"
+}

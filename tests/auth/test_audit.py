@@ -164,7 +164,7 @@ class AuditTests(unittest.TestCase):
 
     def test_config_exact_keys_and_bounds(self):
         config=AuthConfig.load(ROOT/'configs/authentication_v2.json')
-        with self.assertRaises(ValueError): AuthConfig.load(ROOT/'configs/authentication_v1.json')
+        with self.assertRaises(ValueError): AuthConfig.load(ROOT/'configs/archive/authentication_v1.json')
         self.assertEqual(config,AuthConfig())
         for name in ('handshake_timeout_ms','session_ttl_ms','max_windows','max_pending_sessions',
                      'max_sessions_per_process','warmup_iterations'):

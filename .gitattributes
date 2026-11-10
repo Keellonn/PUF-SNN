@@ -122,3 +122,7 @@ src/quest-logger/QuestLogger/Assets/Scripts/QuestLogger/SourceQuality.cs text eo
 src/quest-logger/QuestLogger/Assets/Tests/EditMode/AcceptedSourceVisitTests.cs text eol=lf
 src/quest-logger/QuestLogger/Assets/Tests/EditMode/AcceptedSourceVisitTests.cs.meta text eol=lf
 results/week-10/keegan/source-integration-20261103-001/** -text
+
+# Week 11 sanitized receipts and tested source line endings.
+results/week-11/keegan/technical-review-20261110-001/** -text
+tests/auth/test_audit.py text eol=crlf

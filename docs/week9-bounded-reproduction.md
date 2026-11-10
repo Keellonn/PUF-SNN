@@ -3,9 +3,12 @@
 This bounded check recomputes the central detector table from retained scores
 and frozen validation thresholds. Will returned a local Windows/Python 3.12.4
 run on October 29. Both CSVs match the reference hashes. The detailed reviewer
-form remains blank; the environment record and companion report identify Will
-as the operator. This scope does not rerun inference, data generation,
-authentication or the bootstrap intervals.
+record is now completed and published in commit `6fbf4f5`; see the
+[canonical record](../results/week-9/will/keegan-detector-table-reproduction/output/reproduction-output/reviewer-notes.md).
+Its later package-hash reconstruction and checkout line-ending qualification
+remain part of that record. The [current clarification](week11/week11-evidence-and-timing.md)
+resolves the earlier pending status. This scope does not rerun inference, data
+generation, authentication or bootstrap intervals.
 
 The [returned evidence](../results/week-9/will/keegan-detector-table-reproduction/README.md)
 and [October 30 integrity follow-up](week9-follow-up-20261030.md) document the

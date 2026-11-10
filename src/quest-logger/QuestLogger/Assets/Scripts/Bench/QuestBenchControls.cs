@@ -178,6 +178,12 @@ namespace PufSnn.QuestLogger.Bench {
             return d.isValid && d.TryGetFeatureValue(usage, out value);
         }
         private void OnApplicationPause(bool paused) { if (paused) StopAndDisarm(); }
+        private void OnApplicationFocus(bool focused) {
+            if (focused || controller == null) return;
+            controller.StopForFocusLoss();
+            ReceivePrompt("Application focus lost. Recording off.");
+            RefreshButtons();
+        }
         private void OnDisable() { StopAndDisarm(); if (controller != null) controller.PromptChanged -= ReceivePrompt; }
 
         // Require a released sample after (re)connection before treating a hold as a click.

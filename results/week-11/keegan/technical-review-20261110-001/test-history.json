@@ -1,0 +1,37 @@
+{
+  "attempts": [
+    {
+      "cause": "The new idle EditMode test used SendMessage for a native lifecycle callback; corrected to direct reflection invocation. Active Play Mode checks passed.",
+      "failed": 1,
+      "passed": 88,
+      "scope": "initial synthetic Unity suite"
+    },
+    {
+      "cause": "An existing negative config test still referenced configs/authentication_v1.json after that file moved to configs/archive. The strict rejection assertion remains.",
+      "errors": [
+        "auth.test_audit.AuditTests.test_config_exact_keys_and_bounds"
+      ],
+      "passed": 1140,
+      "scope": "initial selected Python suite"
+    },
+    {
+      "failed": 0,
+      "passed": 89,
+      "scope": "corrected Unity suite"
+    },
+    {
+      "errors": [],
+      "passed": 1141,
+      "scope": "corrected selected Python suite"
+    },
+    {
+      "failed": 0,
+      "passed": 89,
+      "reason": "Disarm before focus-loss file finalization, including if finalization fails. Same 89 cases; do not add repeated runs to suite totals.",
+      "scope": "final Unity safeguard confirmation"
+    }
+  ],
+  "date": "2026-11-10",
+  "original_private_logs_preserved": true,
+  "public_records_date_only": true
+}

@@ -1,6 +1,6 @@
 # Study decisions and remaining work
 
-Updated November 3, 2026 from the PI's latest written feedback and Keegan's
+Updated November 10, 2026 from the PI's latest written feedback and Keegan's
 acquisition choice. This is a planning/status record, not institutional approval.
 
 ## Confirmed planning decisions
@@ -33,10 +33,10 @@ acquisition choice. This is a planning/status record, not institutional approval
 
 | Item | Next step |
 |---|---|
-| Source-data reproducibility | Review the accepted-source proposal and [optional development integration](week10-source-integration.md); saved scenes keep it off |
+| Source-data reproducibility | PI supports accepted pre-resampling source retention subject to the final data plan. Review the [exact replay boundary and partial-file disposition](../week11/week11-source-replay-and-disposition.md); the development option remains off in saved scenes |
 | Live integration | Versioned development policy, controller wiring and read-only ledger/source reconciliation implemented and tested synthetically; actual Link/storage checks and PI source-retention review remain |
 | SharePoint details | Verify actual site/folders, staff permissions, authentication/encryption, backups, temporary copies and deletion/withdrawal handling with PI/IT |
-| CITI and staff preparation | Keegan has not completed the required HSR course; obtain Will's current record, then PI verification, instruction, rehearsal and authorization |
+| CITI and staff preparation | Keegan completed the HSR basic course on November 4; certificate/report retained privately. Obtain/verify Will's record, then protocol instruction, consent/safety rehearsal and PI authorization |
 | Headset input/Link | Controller pointing/highlighting observed, but selection failed in system menus; restarts did not resolve it. USB test reported USB 2, 369 Mbps. No successful headset logger run claimed |
 | Administrative decisions | Finalize funding, injury wording, retention requirements, recruitment channel, room availability and actual equipment/storage arrangements |
 | Coordinated packet | Version 1.4 working copies now align protocol, consent, data flow, forms and PI checklist; review accepted-source retention and remaining blanks before submission. Word copies stay outside public Git |
@@ -47,7 +47,9 @@ availability and the actual study configuration still need confirmation. The
 ten-trial development scene is not the proposed 25/75-trial study configuration.
 
 Will owns calibration/shared-noise specification, three-arm accounting and his
-detector replay reviewer record. Keegan does not repeat those experiments here.
+calibration evidence. His detector replay reviewer record is now completed;
+see the [current status and scope](../week11/week11-evidence-and-timing.md).
+Keegan does not repeat his scientific experiments here.
 The returned local saved-score replay and its matching CSVs remain scoped evidence;
 they do not regenerate model predictions or reproduce the complete pipeline.
 

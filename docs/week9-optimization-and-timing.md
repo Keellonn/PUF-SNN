@@ -48,6 +48,11 @@ reliability experiment and do not show equal admission rates under shared noise.
 
 ## Historical laptop timing
 
+Reporting clarification, November 10: use the [fully labeled configurations](week11/week11-evidence-and-timing.md#actual-timing-configurations)
+and [24-row timing export](../results/week-11/keegan/technical-review-20261110-001/historical-timing.csv).
+The measurements below are unchanged. The two comparison numbers are repeated
+execution-order blocks of the same configurations, not new configurations.
+
 Source: the retained Week 6 quality-benchmark manifest and direct-path CSV at
 source commit `bddce50198d68b851f648d45638aa06d9eea152c`. All rows below use
 single-read recovery and frozen models/cutoffs. Comparison 1 is block 0

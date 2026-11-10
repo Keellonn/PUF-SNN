@@ -6,6 +6,8 @@ A software test count is separate from a model, timing or recovery experiment.
 
 ## Current work
 
+- [Week 11: technical review and synthetic verification](week-11/keegan/technical-review-20261110-001/README.md)
+
 - [Week 10: Keegan](week-10/keegan/README.md)
 - [Current study decisions](../docs/week10/week10-study-status.md)
 
