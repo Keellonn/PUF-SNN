@@ -2060,7 +2060,7 @@ Planned work includes,
 - Implement and validate the final evaluation harness and qualify its larger resource requirements before scientific execution.
 - Quantify the change in Majority-3 reliability benefit as correlation increases, using paired device-level uncertainty estimates.
 - Complete an independent reproduction of a central results table with Keegan.
-- Continue consolidating statistical findings, timing measurements, and research limitations for presentation to Dr. Garcia.
+- Continue consolidating statistical findings, timing measurements, and research limitations for presentation for faculty review.
 
 The proposed final study uses 120 independently simulated devices and 108,000 policy attempts, subject to final resource qualification and separate execution authorization.
 
@@ -2221,6 +2221,192 @@ Week 10 focused on completing the statistical justification, authentication outc
 - The completed calibration does not establish physical-PUF performance, trained SNN inference accuracy, or universal resistance to spoofing and replay attacks.
 
 Overall, Week 10 completed the scientific analysis and documentation necessary to explain the calibration's statistical results, reconstruction outcomes, and authentication security boundaries. The remaining closeout requirement is Dr. Garcia's review of the unresolved historical provenance exception before the calibration acknowledgment and future experimental planning can proceed.
+
+# Week 11, PUF Calibration Verification, Experimental Provenance, and Correlated-Noise Study Design
+
+## Calibration Selection Criteria Verification
+
+I revisited the completed Week 9 calibration to establish whether the operating-point selection criteria were preserved before experimental execution.
+
+The investigation examined historical Git commits, frozen experiment specifications, configuration records, selection logic, and preserved calibration evidence.
+
+The review confirmed that all seven qualification gates were defined before the recorded calibration execution. These requirements covered,
+- Experimental coverage and correctness
+- Baseline Single-Read failure-rate region
+- Majority-3 failure-rate region
+- Minimum reliability improvement
+- Informative failure and discordance counts
+- Statistical uncertainty requirements
+- Device-level and group-level consistency
+
+The selection procedure required choosing the **lowest measurement-noise magnitude satisfying all seven gates**, rather than choosing the condition with the largest observed improvement.
+
+The calibration evaluated sigma = 0.10, 0.15, 0.20, and 0.25.
+
+Sigma 0.10 failed several qualification requirements, while sigma = 0.15, 0.20, and 0.25 satisfied all seven. Therefore, the selected operating point of **sigma = 0.15** was consistent with the preserved selection methodology.
+
+This investigation strengthened the justification for using sigma = 0.15 in the proposed final correlated-noise study.
+
+## Reconstruction Reliability and Statistical Verification
+
+The second investigation focused on the reconstruction failure-rate definition, matched acquisition methodology, and bootstrap confidence intervals.
+
+I examined how the calibration classified unsuccessful reconstruction attempts and distinguished reconstruction reliability from downstream authentication outcomes.
+
+The reconstruction failure rate includes three failure categories,
+- **D:** BCH decoder failure
+- **I:** Invalid decoded format or padding
+- **W:** Valid-format but incorrect reconstructed credential
+
+A correct enrolled credential reconstruction is classified as **C**.
+
+The primary reconstruction metric is,
+FRR = (D + I + W) / N
+
+Across the completed calibration's 3,840 attempts, the recorded outcomes were,
+| Reconstruction Outcome | Count |
+|---|---:|
+| Correct credential (C) | 3,369 |
+| Decoder failure (D) | 458 |
+| Invalid format (I) | 9 |
+| Incorrect credential (W) | 4 |
+| **Total** | **3,840** |
+
+The investigation also verified that Single-Read and Majority-3 used an identical first PUF reading within each matched trial. Majority-3 performed two additional independent readings before voting.
+
+The statistical analysis used 10,000 paired whole-device bootstrap resamples, preserving the observations associated with each sampled device.
+
+### Selected Operating-Point Results
+
+At sigma = 0.15,
+| Metric | Single-Read | Majority-3 |
+|---|---:|---:|
+| Attempts | 480 | 480 |
+| Reconstruction failures | 49 | 15 |
+| FRR | 10.208% | 3.125% |
+
+The absolute improvement was **7.083 percentage points**, with a descriptive 95% paired bootstrap confidence interval of **[3.333, 11.250] percentage points**.
+These results support the observed reliability advantage of Majority-3 under independent simulated measurement noise.
+The investigation also confirmed that reconstruction success is distinct from successful credential verification, session establishment, and authorized motion-window release.
+
+## Historical Calibration Provenance Investigation
+
+I continued investigating the historical `pipeline_timing.py` source-hash discrepancy identified during Week 10.
+The earlier provenance investigation reported a mismatch between a recorded SHA-256 source identity and the source bytes available during that review.
+During Week 11, the expected frozen source bytes were located within the successful calibration's preserved evidence. The inspected repository contained,
+- **126/126 matching manifest entries**
+- **116/116 matching frozen source entries**
+- The expected recorded SHA-256 identity for `pipeline_timing.py`
+
+This establishes current static agreement between the inspected preserved files and their recorded identities.
+However, the matching source bytes do not explain why the earlier audit reported a mismatch or independently reconstruct its historical verification procedure.
+The distinction is important,
+- The successful calibration's current preserved source identities match their recorded hashes.
+- The historical discrepancy and its audit history remain incompletely explained.
+- No demonstrated effect on the recorded numerical selection of sigma = 0.15 was identified.
+- Formal provenance disposition and calibration acknowledgment still require the appropriate review and validation.
+
+The investigation therefore narrowed the provenance limitation without modifying or replacing the historical evidence.
+
+## Final Correlated-Noise Study Design
+
+Following the calibration investigations, I reviewed the prospective correlated-noise methodology and evaluated the requirements for the final study.
+The primary research question is,
+**How does the reliability advantage of Majority-3 reconstruction change when consecutive PUF measurements contain increasingly correlated noise?**
+
+The proposed study retains the calibrated measurement-noise magnitude of sigma = 0.15 while varying the correlation parameter rho.
+
+### Proposed Experimental Configuration
+
+The final study is designed around,
+- 120 persistent simulated devices organized into 20 groups of six
+- 50 matched trials per device and condition
+- Six experimental conditions
+- Three credential-source policies
+- 108,000 total planned authentication attempts
+
+The three credential-source policies remain,
+1. Single-Read PUF reconstruction
+2. Majority-3 PUF reconstruction
+3. Stored-Provisioned Credential control
+
+The six conditions include four correlation levels at sigma = 0.15 (rho = 0, 0.50, 0.90, 1.00), a separate nominal sigma = 0.10 reference, and a common-mode cancellation control.
+The study will evaluate whether Majority-3's ability to reduce reconstruction failures decreases as repeated measurements share more of their noise.
+
+### Statistical Analysis
+
+The proposed reliability benefit is defined as,
+Delta(rho) = FRR_S(rho) - FRR_M(rho)
+
+The attenuation in that benefit is,
+A(rho) = Delta(0) - Delta(rho)
+
+The principal proposed research measure is **A(0.90)**, representing the change in Majority-3's benefit between independent measurement noise and highly correlated noise.
+The statistical plan includes 10,000 paired whole-device bootstrap resamples and a separate 10,000-resample group-level sensitivity analysis.
+The final study will use fresh simulated-device populations and random-seed domains, ensuring the new correlation evaluation remains separate from the calibration used to select sigma = 0.15.
+
+## Experimental Specification and Independent Review
+I prepared the proposed final correlated-noise study specification to consolidate the mathematical model, experimental conditions, outcome definitions, statistical procedures, seed identities, reproducibility controls, and stopping rules.
+
+The original five-condition methodology involved 90,000 planned authentication attempts. The revised proposal expands this to six conditions and 108,000 attempts to incorporate the selected operating point and the complete correlation sweep.
+
+The specification also identifies the remaining technical requirements before execution, including,
+- Final configuration and experimental planner
+- Statistical analysis implementation
+- Evidence validation and reproducibility controls
+- Protected execution and authorization mechanisms
+- Full-scale resource qualification
+- Independent implementation review
+
+### Independent Review Findings
+
+The initial independent technical review found **one major documentation issue and four minor issues**, with no critical scientific error.
+
+The findings involved,
+- Explicit faculty disposition of the historical provenance exception
+- Conditional interpretation of the noise variance and covariance equations
+- Relative documentation links and repository references
+- BER definitions and secondary statistical reporting
+- Distinguishing scientific specifications from unimplemented execution requirements
+
+The proposed document was revised to address these findings while preserving the original scientific design.
+A follow-up independent review confirmed that **all five documentation findings were closed**, with no new material contradictions identified.
+**Final review verdict: Ready for Faculty Review.**
+This verdict establishes readiness for scientific discussion, not approval or authorization to execute the experiment.
+
+**Primary documentation:** `docs/week11/week11-final-correlated-noise-study-specification-v1-proposed.md`
+
+## Findings, Limitations, and Conclusions
+
+The main accomplishment of Week 11 was establishing a more rigorous and reviewable foundation for the final correlated-noise experiment.
+
+The calibration investigations supported the historical operating-point selection, clarified the reconstruction failure-rate methodology, verified the statistical analysis, and narrowed the outstanding source-provenance uncertainty.
+
+The proposed experimental specification now defines the correlation conditions, matched acquisition policies, statistical comparisons, reproducibility requirements, and stopping rules for the future 108,000-attempt evaluation.
+
+### Remaining Limitations
+- The historical provenance exception still requires Dr. Garcia's documented disposition.
+- The selected calibration operating point requires the applicable full-audit and researcher-acknowledgment procedures.
+- The proposed study design has not yet been formally adopted or frozen.
+- The final experimental implementation and full-scale resource qualification remain incomplete.
+- No correlated-noise reliability outcomes have been generated from the proposed final study.
+- The evaluation remains based on a simulated PUF rather than measured physical hardware characteristics.
+
+Overall, Week 11 completed the methodological preparation and independent documentation review needed to present the final correlation-study proposal for faculty review.
+
+## Next Steps
+
+The immediate priority is to present the proposed study and outstanding decisions for faculty review.
+
+Following faculty review, the next phase will involve,
+- Finalizing the calibration-provenance disposition and required acknowledgment.
+- Obtaining acceptance of the final study design and statistical reporting scope.
+- Completing the final experimental configuration, trial planner, and analysis implementation.
+- Validating the implementation and qualifying the execution environment.
+- Freezing the approved source, configuration, analysis, and experimental identities.
+- Obtaining separate authorization before conducting the full correlated-noise evaluation.
+
+The final scientific objective remains determining how much of Majority-3's reliability advantage survives correlated PUF measurement noise.
 
 # Hours and Work:
 
@@ -3210,3 +3396,44 @@ Identified remaining requirements for independent reproduction in a compatible e
 - Established that Dr. Garcia must review the provenance exception before formal calibration closure and subsequent experimental authorization can proceed.
 - Finalized week 10 work
 - Updated research log and finalized week 10 hours
+
+# Sunday November, 8
+
+## 4:05pm - 5:43pm
+- Investigated the historical Week 9 PUF calibration methodology and selection criteria.
+- Examined Git history and preserved evidence to verify that the seven qualification gates were established before calibration execution.
+- Analyzed the selection of σ = 0.15 and identified why σ = 0.10 failed the qualification requirements.
+- Reviewed calibration provenance, reproducibility requirements, and supporting experimental records.
+
+## 9:01pm - 11:56pm
+- Verified reconstruction failure-rate definitions and calculations, including BCH decoder failures, invalid padding, and incorrect credential recovery.
+- Examined Single-Read and Majority-3 acquisition pairing, including shared initial measurements and independent additional readings.
+- Evaluated the 10,000-resample whole-device bootstrap methodology and reported confidence intervals.
+- Investigated the historical pipeline_timing.py source-hash discrepancy and compared preserved source identities.
+- Assessed the proposed correlated-noise experiment, including mathematical noise construction, experimental controls, statistical endpoints, and reproducibility requirements.
+- Identified outstanding implementation, resource-qualification, and authorization requirements.
+
+# Wednesday November, 11
+
+## 9:01pm - 10:52pm
+- Developed the proposed final correlated-noise experimental specification.
+- Defined six experimental conditions covering ρ = 0, 0.50, 0.90, and 1.00, alongside nominal-noise and common-mode controls.
+- Established the proposed allocation of 120 simulated devices, 50 matched trials per condition, and three credential-source policies, totaling 108,000 planned attempts.
+- Specified reconstruction FRR, Majority-3 reliability improvement, and the principal attenuation measure A(0.90).
+- Documented device-level bootstrap uncertainty, group-sensitivity analysis, seed separation, and experimental stopping rules.
+- Examined technical-review findings concerning provenance, statistical reporting, and reproducibility.
+
+## 11:10pm - 11:59pm
+- Refined the proposed experimental specification to address five technical-review findings.
+- Clarified conditional measurement-noise variance and covariance, BER definitions, and statistical reporting denominators.
+- Documented unresolved calibration-provenance limitations and required faculty decisions.
+- Distinguished proposed scientific methodology from incomplete implementation and execution requirements.
+- Verified closure of the specification's documentation issues and prepared the proposal for faculty review.
+
+# Thursday November, 12
+
+## 12:00am - 12:30am
+- Finalized Week 11 work,
+  - Documentation
+  - Research Log
+  - Hours
