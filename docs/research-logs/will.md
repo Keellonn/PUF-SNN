@@ -3399,13 +3399,13 @@ Identified remaining requirements for independent reproduction in a compatible e
 
 # Sunday November, 8
 
-## 4:05pm - 5:43pm
+## 4:05pm - 5:43pm (1.63 Hours)
 - Investigated the historical Week 9 PUF calibration methodology and selection criteria.
 - Examined Git history and preserved evidence to verify that the seven qualification gates were established before calibration execution.
 - Analyzed the selection of σ = 0.15 and identified why σ = 0.10 failed the qualification requirements.
 - Reviewed calibration provenance, reproducibility requirements, and supporting experimental records.
 
-## 9:01pm - 11:56pm
+## 9:01pm - 11:56pm (2.92 Hours)
 - Verified reconstruction failure-rate definitions and calculations, including BCH decoder failures, invalid padding, and incorrect credential recovery.
 - Examined Single-Read and Majority-3 acquisition pairing, including shared initial measurements and independent additional readings.
 - Evaluated the 10,000-resample whole-device bootstrap methodology and reported confidence intervals.
@@ -3415,7 +3415,7 @@ Identified remaining requirements for independent reproduction in a compatible e
 
 # Wednesday November, 11
 
-## 9:01pm - 10:52pm
+## 9:01pm - 10:52pm (1.85 Hours)
 - Developed the proposed final correlated-noise experimental specification.
 - Defined six experimental conditions covering ρ = 0, 0.50, 0.90, and 1.00, alongside nominal-noise and common-mode controls.
 - Established the proposed allocation of 120 simulated devices, 50 matched trials per condition, and three credential-source policies, totaling 108,000 planned attempts.
@@ -3423,7 +3423,7 @@ Identified remaining requirements for independent reproduction in a compatible e
 - Documented device-level bootstrap uncertainty, group-sensitivity analysis, seed separation, and experimental stopping rules.
 - Examined technical-review findings concerning provenance, statistical reporting, and reproducibility.
 
-## 11:10pm - 11:59pm
+## 11:10pm - 11:59pm (0.82 Hours)
 - Refined the proposed experimental specification to address five technical-review findings.
 - Clarified conditional measurement-noise variance and covariance, BER definitions, and statistical reporting denominators.
 - Documented unresolved calibration-provenance limitations and required faculty decisions.
@@ -3432,7 +3432,7 @@ Identified remaining requirements for independent reproduction in a compatible e
 
 # Thursday November, 12
 
-## 12:00am - 12:30am
+## 12:00am - 12:30am (0.50 Hours)
 - Finalized Week 11 work,
   - Documentation
   - Research Log
