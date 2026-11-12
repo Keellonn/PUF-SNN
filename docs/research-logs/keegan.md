@@ -1534,3 +1534,39 @@ Read and used Dr. Garcia's advice on the presentation format, what it must inclu
 
 - Participated in the Weekly meeting
 - Listened to Amruth's and Warren's presentations
+
+## Tuesday, November 10, 2026 - 4.12 hours
+
+### 2:15 PM - 4:43 PM - 2.47 hours
+
+- Added stopping and disarming when Unity loses focus, without automatically restarting when focus returns.
+- Added tests for starting, skipping and stopping visits without live head-pose capture.
+- Strengthened source-replay checks to compare retained samples, processed values and quality summaries exactly across 20 synthetic seeds.
+- Fixed a test-harness issue and an outdated configuration-file reference. Passed 89 Unity tests, 1,141 selected Python tests and the dependency check.
+- Reconciled Will’s completed saved-score reproduction record, preserving its evidence limitations.
+- Clarified the laptop timing configurations, execution order and timing boundaries without changing the recorded results.
+- Documented the Quest troubleshooting, proposed staff controls and handling of incomplete motion files.
+- Saved the results and file hashes and checked preservation of existing evidence.
+
+### 5:26 PM - 7:05 PM - 1.65 hours
+
+- Revised the protocol, consent, supporting materials and changes/PI-decisions document together.
+- Distinguished accepted source samples, processed windows, quality/trial records and linked derivatives, with consistent handling rules.
+- Explained the source-recording boundary and what the synthetic replay checks reproduce.
+- Added restricted handling and proposed PI-directed disposal of partial files containing motion.
+- Described proposed staff desktop operation while leaving actual Quest Link validation pending.
+- Added SharePoint access, integrity, versioning, deletion and backup checks, leaving unverified arrangements blank.
+- Included my existing CITI records and identified the remaining training verification, rehearsals and PI decisions.
+- Checked the institutional templates, preserved earlier copies, reviewed all 56 rendered pages, fixed layout/contents details and packaged revision v1.5 for PI review.
+- Committed and pushed the completed technical work.
+
+## Wednesday, November 11, 2026 - 0.97 hours
+
+### 9:01 PM - 9:59 PM - 0.97 hours
+
+- Reviewed the presentation against Dr. Garcia’s feedback and the saved project results.
+- Prepared revised slide wording and speaker notes to explain the findings, limitations and remaining work more clearly.
+- Created matching maroon/orange figures and checked their layout and readability.
+- Removed weekly progress framing and identified background material to move to the appendix.
+- Prepared the replacement images, editable figures and notes for updating the slideshow.
+- Prepared an email to Bruce Buskill requesting a private project SharePoint site, following Warren’s referral. Explained its planned use and requested Dr. Garcia as an owner, with Will and me as members.
