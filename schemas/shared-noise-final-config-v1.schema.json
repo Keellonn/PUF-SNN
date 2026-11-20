@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Closed v1 planning candidate. All fields and row order are fixed. See module docstring for canonical numeric normalization. No execution mode or self-digest field is accepted.",
+  "type": "object",
+  "const": {
+    "schema_version": "week9-shared-noise-final-v1:config",
+    "contract_version": "shared-noise-final-planning-v1",
+    "contract_status": "implementation-candidate-pending-independent-review",
+    "experiment_id": "week9-shared-noise-final-v1",
+    "model_version": "puf-snn-correlated-noise-v1",
+    "mode": "planning-only",
+    "scientific_execution_authorized": false,
+    "final_execution_enabled": false,
+    "specification_path": "docs/week11/week11-final-correlated-noise-study-specification-v1-proposed.md",
+    "master_seed": 2026102811,
+    "schedule_seed": 2026102812,
+    "bootstrap_seed": 2026102813,
+    "group_sensitivity_seed": 2026102814,
+    "allocation": {
+      "groups": 20,
+      "devices_per_group": 6,
+      "trials_per_device_condition": 50
+    },
+    "conditions": [
+      {
+        "name": "op_rho000",
+        "sigma": 0.15,
+        "rho": 0.0,
+        "common_offsets": [
+          0
+        ],
+        "noise_domain": "op:r000",
+        "noise_alias_of": null
+      },
+      {
+        "name": "op_rho050",
+        "sigma": 0.15,
+        "rho": 0.5,
+        "common_offsets": [
+          0
+        ],
+        "noise_domain": "op:r050",
+        "noise_alias_of": null
+      },
+      {
+        "name": "op_rho090",
+        "sigma": 0.15,
+        "rho": 0.9,
+        "common_offsets": [
+          0
+        ],
+        "noise_domain": "op:r090",
+        "noise_alias_of": null
+      },
+      {
+        "name": "op_rho100",
+        "sigma": 0.15,
+        "rho": 1.0,
+        "common_offsets": [
+          0
+        ],
+        "noise_domain": "op:r100",
+        "noise_alias_of": null
+      },
+      {
+        "name": "nominal_s010",
+        "sigma": 0.1,
+        "rho": 0.0,
+        "common_offsets": [
+          0
+        ],
+        "noise_domain": "nominal:s010:r000",
+        "noise_alias_of": null
+      },
+      {
+        "name": "common_mode_op_rho000",
+        "sigma": 0.15,
+        "rho": 0.0,
+        "common_offsets": [
+          -1,
+          1
+        ],
+        "noise_domain": "op:r000",
+        "noise_alias_of": "op_rho000"
+      }
+    ],
+    "policies": [
+      "single-read-v1",
+      "majority-3-v1",
+      "stored-provisioned-v1"
+    ],
+    "oscillator_count": 128,
+    "pairing": "adjacent",
+    "response_bits": 64,
+    "nominal_frequency": 100.0,
+    "manufacturing_std": 1.0,
+    "enrollment_noise_std": 0.0,
+    "reconstruction": {
+      "version": "puf-snn-reconstruction-v1",
+      "code_id": "binary-primitive-narrow-sense-bch-63-36-5-v1",
+      "n": 63,
+      "k": 36,
+      "t": 5,
+      "credential_bits": 32,
+      "padding_bits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "response_indices": "0..62"
+    },
+    "authentication": {
+      "config_version": "puf-snn-auth-config-v2",
+      "protocol_profile": "puf-snn-l3-credential-admission-v1-wire2",
+      "handshake_timeout_ms": 10000,
+      "session_ttl_ms": 300000,
+      "max_windows": 10000,
+      "max_pending_sessions": 128,
+      "max_sessions_per_process": 10000,
+      "warmup_iterations": 0
+    },
+    "timing_profile": "cold-process-no-harness-warmup-v1",
+    "window_id": "week7-fixed-window-v1",
+    "consumer_id": "recording-consumer-v1",
+    "bootstrap_resamples": 10000,
+    "confidence_level": 0.95,
+    "interval_scope": "pointwise-estimation-only",
+    "retries": 0
+  }
+}

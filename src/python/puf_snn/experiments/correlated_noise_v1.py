@@ -251,12 +251,17 @@ def measure_indexed(device: Device, config: NoiseConfig, identity: AttemptIdenti
     shared_noise = tuple(config.shared_std * z for z in shared.standard_normals)
     centered = (tuple(f + z for f, z in zip(base, shared_noise))
                 if config.shared_std else base)
-    centered_response = compare_oscillators(centered, PAIRS)  # Also rejects nonfinite sums.
+    compare_oscillators(centered, PAIRS)  # Reject nonfinite sums before shifting.
     frequencies = (tuple(f + config.common_offset for f in centered)
                    if config.common_offset else centered)
-    if compare_oscillators(frequencies, PAIRS) != centered_response:
+    compare_oscillators(frequencies, PAIRS)  # Reject nonfinite shifted sums.
+    # Check both ordering and equality: a<b collapsing to a==b leaves the
+    # response bit zero, but is still a numerical fault at this boundary.
+    if any((centered[a] > centered[b], centered[a] == centered[b]) !=
+           (frequencies[a] > frequencies[b], frequencies[a] == frequencies[b])
+           for a, b in PAIRS):
         raise CommonModeNumericalError(
-            "common_offset changed response bits through floating-point rounding; "
+            "common_offset changed comparison ordering/equality through floating-point rounding; "
             "this measurement is invalid, not a physical common-mode effect")
     return Measurement(reading_index, shared_noise, independent_noise, frequencies)
 

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Planned metadata only. policy_attempt_id hashes exactly {trial_id,policy}; full binding and reading digests are validated against the canonical block/schedule by validate_plan.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "condition",
+    "trial_id",
+    "policy",
+    "policy_attempt_id",
+    "execution_index",
+    "reading_indices",
+    "noise_shared_seed_sha256",
+    "reading_seed_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "week9-shared-noise-final-v1:planned-attempt"
+    },
+    "experiment_id": {
+      "const": "week9-shared-noise-final-v1"
+    },
+    "condition": {
+      "enum": [
+        "op_rho000",
+        "op_rho050",
+        "op_rho090",
+        "op_rho100",
+        "nominal_s010",
+        "common_mode_op_rho000"
+      ]
+    },
+    "trial_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "policy": {
+      "enum": [
+        "single-read-v1",
+        "majority-3-v1",
+        "stored-provisioned-v1"
+      ]
+    },
+    "policy_attempt_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "execution_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 107999
+    },
+    "reading_indices": {
+      "enum": [
+        [
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        []
+      ]
+    },
+    "noise_shared_seed_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reading_seed_sha256": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "policy": {
+            "const": "single-read-v1"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reading_indices": {
+            "const": [
+              0
+            ]
+          },
+          "reading_seed_sha256": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "noise_shared_seed_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "policy": {
+            "const": "majority-3-v1"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reading_indices": {
+            "const": [
+              0,
+              1,
+              2
+            ]
+          },
+          "reading_seed_sha256": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "noise_shared_seed_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "policy": {
+            "const": "stored-provisioned-v1"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reading_indices": {
+            "const": []
+          },
+          "reading_seed_sha256": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 0,
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "noise_shared_seed_sha256": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

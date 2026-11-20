@@ -2408,6 +2408,234 @@ Following faculty review, the next phase will involve,
 
 The final scientific objective remains determining how much of Majority-3's reliability advantage survives correlated PUF measurement noise.
 
+# Week 12, Final Correlated-Noise Study Implementation and Execution Preparation
+
+## Weekly Objective
+
+The main objective of Week 12 was to transition the proposed final correlated-noise experiment from a reviewed scientific specification into a working, reproducible implementation.
+
+Following the Week 11 methodology development, I focused on implementing the deterministic experimental planner, correlated-noise measurement model, statistical analysis, evidence reconciliation, durable recording, and guarded execution infrastructure.
+
+The proposed final study contains,
+- 120 simulated PUF devices organized into 20 groups of six
+- 50 matched trials per device and condition
+- Six experimental conditions
+- Three credential-source policies
+- 36,000 matched trial blocks
+- **108,000 total planned authentication attempts**
+
+All development and testing remained separate from the reserved final scientific experiment.
+
+## Final Experimental Configuration and Deterministic Planning
+
+Implemented the proposed final experimental configuration and deterministic trial planner.
+
+The implementation includes,
+- Six fixed experimental conditions covering rho = 0, 0.50, 0.90, and 1.00 at sigma = 0.15, plus nominal-noise and common-mode controls
+- Versioned configuration and planning schemas
+- Deterministic group, device, enrollment, trial, and attempt identities
+- Separate random-seed domains for experimental measurements and statistical analysis
+- Matched Single-Read, Majority-3, and Stored-Provisioned policies
+- Preservation of the identical first PUF reading between Single-Read and Majority-3
+- Complete measurement-noise identity sharing between the independent operating reference and common-mode control
+- Deterministic policy ordering and trial-block scheduling
+
+The planner successfully validated all 120 device identities, 36,000 matched trial blocks, and 108,000 unique planned attempts.
+
+**Validation:** 14 focused planner tests passed.
+
+## Correlated-Noise Measurement and Boundary Validation
+
+Implemented a final-study measurement adapter using the existing simulated RO-PUF acquisition machinery.
+
+The mathematical model preserves persistent manufacturing variation, shared oscillator-specific disturbances, and independent per-reading measurement noise.
+
+Validated several important boundary conditions,
+- At rho = 1, all three Majority-3 readings produce identical responses under the model
+- Single-Read and Majority-3 therefore have identical effective reconstruction inputs at rho = 1
+- The reliability improvement at rho = 1 is exactly zero, although both policies can still experience reconstruction failures
+- Uniform common-mode frequency offsets of -1 and +1 cancel from the oscillator comparisons
+- Floating-point rounding changes that affect oscillator ordering or equality are explicitly rejected
+- Majority-3 performs three actual readings and one vote before a single BCH reconstruction
+
+The implementation continues using 128 simulated oscillators, 64 adjacent comparisons, and BCH(63,36,t=5) reconstruction.
+
+**Validation:** 119 focused measurement and reconstruction tests passed.
+
+## Statistical Analysis and Reconstruction Reliability
+
+Implemented the paired statistical analysis for the proposed final study.
+
+The analysis separates reconstruction outcomes into four categories,
+- **C:** Correct reconstructed credential
+- **D:** BCH decoder failure
+- **I:** Invalid format or padding
+- **W:** Valid-format incorrect credential
+
+Reconstruction false-rejection rate is calculated as,
+
+`FRR = (D + I + W) / N`
+
+The primary reliability comparison is,
+
+`Delta(rho) = FRR_S(rho) - FRR_M(rho)`
+
+The attenuation in Majority-3's reliability advantage is,
+
+`A(rho) = Delta(0) - Delta(rho)`
+
+The principal proposed comparison remains **A(0.90)**.
+
+Implemented,
+- Matched trial-level failure indicators
+- Signed device-level reliability comparisons
+- Both beneficial and harmful discordance counts
+- 10,000-resample paired whole-device bootstrap confidence intervals
+- Separate 10,000-resample whole-group sensitivity intervals
+- Exact denominator and experiment-completeness validation
+- Rejection of incomplete, duplicated, or mismatched experimental outcomes
+
+Stored-Provisioned reconstruction metrics remain inapplicable rather than being reported as zero.
+
+**Validation:** 33 focused statistical-analysis tests passed.
+
+## Evidence Reconciliation and Protected Recording
+
+Developed the experimental evidence-reconciliation layer to prevent invalid or incomplete records from entering the statistical analysis.
+
+The implementation separates,
+1. Planned experimental identities
+2. Recorded execution evidence
+3. Independently replayed reconstruction information
+4. Verified outcomes passed to statistical analysis
+
+Implemented checks for,
+- Correct device, enrollment, trial, condition, and policy identities
+- Measurement and reconstruction operation counts
+- Shared first-reading and common-control relationships
+- Actual BCH reconstruction replay
+- C/D/I/W classification using trusted enrollment information
+- Missing, duplicated, incomplete, and inconsistent attempts
+- Evidence-content integrity and deterministic two-pass comparison
+
+I also implemented a fixture-only durable evidence journal with append-only event records.
+
+The journal enforces,
+
+`Planned → Started → Completed or Fault`
+
+It prevents automatic retries, rejects invalid state transitions, and preserves interrupted or uncertain execution evidence.
+
+Additional development included,
+- SHA-256-linked event records
+- Atomic no-overwrite evidence publication
+- Failure-injection and interruption recovery tests
+- Separate checkpoint and source-custody interfaces
+- Explicit restrictions against storing credential and session-key material in public journal records
+
+The Windows implementation remains limited to fixture-level process durability. Power-loss durability and independently authenticated evidence custody have not yet been established.
+
+## Guarded Execution Controller
+
+Implemented a guarded controller that prevents experimental work from starting until the corresponding start event has been successfully published.
+
+The controller was initially validated using artificial callbacks rather than actual PUF operations.
+
+Testing demonstrated,
+- Exactly one callback invocation after successful start publication
+- No execution when the start-publication barrier fails
+- Correct completion and terminal-fault recording
+- No automatic retry following an interruption
+- Preservation of incomplete evidence after publication failures
+- Rejection of duplicated or out-of-order attempts
+- Separation of successful callback execution from full experimental completion
+
+**Validation:** 59 controller/evidence test executions, with 57 passing and two platform-dependent skips.
+
+## Nonfinal End-to-End PUF Integration
+
+The most important Week 12 implementation milestone thus far was connecting the experimental components into one functioning nonfinal simulation pathway.
+
+I completed an isolated experiment involving,
+- One simulated PUF device
+- One matched trial per condition
+- Six experimental conditions
+- Three credential-source policies
+- **18 total nonfinal authentication-source attempts**
+
+The implementation performed actual simulated oscillator measurements, majority voting, BCH credential reconstruction, evidence recording, and deterministic source replay.
+
+For each policy,
+- **Single-Read:** One PUF reading and one BCH reconstruction
+- **Majority-3:** Three PUF readings, one majority vote, and one BCH reconstruction
+- **Stored-Provisioned:** One credential retrieval without PUF readings or BCH decoding
+
+All 18 evidence records passed local reconciliation and independently regenerated source replay.
+
+The tests also confirmed,
+- Identical Single-Read and Majority-3 first readings
+- Correct majority voting
+- Identical readings at rho = 1
+- Common-mode cancellation
+- Correct C/D/I/W classification under controlled inputs
+- Rejection of modified enrollment, measurement, or evidence records
+- Correct interruption and stopping behavior
+- No automatic replacement of failed attempts
+
+The nonfinal pipeline does not execute downstream session authentication or trained SNN inference. Those outcomes remain separate from the verified reconstruction measurements.
+
+**Validation:** 176 test executions, with 174 passing and two platform-dependent skips. This included all 29 new integration tests passing.
+
+These tests demonstrate functional integration at a small simulated scale, not production-scale experimental readiness.
+
+## Execution Readiness and Remaining Limitations
+
+By the end of Week 12, the major scientific and statistical components were implemented and tested, and a complete nonfinal PUF measurement-to-replay pathway had executed successfully.
+
+However, the proposed final 108,000-attempt experiment has **not been executed**.
+
+Remaining requirements include,
+- Full-scale resource qualification on the intended execution machine
+- Resolving Windows filesystem-durability limitations or qualifying an alternative host
+- Implementing production-capable protected enrollment and source custody
+- Establishing independently retained and authenticated evidence provenance
+- Integrating downstream credential verification, session admission, and protected-window processing into the final experimental controller
+- Removing or bounding execution-scaling bottlenecks involving repeated journal inspection and evidence-file creation
+- Verifying all required source files, dependencies, and runtime configuration
+- Resolving the historical calibration-provenance exception and obtaining the applicable faculty decisions
+- Freezing the scientific configuration, source revision, execution environment, and experimental plan
+- Obtaining separate authorization before the final scientific execution
+
+All reserved final-study devices, enrollment streams, measurement seeds, and bootstrap streams remained untouched.
+
+The implementation continues to represent a simulated RO-PUF and a 32-bit pilot credential rather than a physical or production-strength authentication system.
+
+## Findings, Limitations, and Conclusions
+
+The primary accomplishment of Week 12 was progressing from scientific experiment design to a functioning, testable experimental implementation.
+
+The deterministic planner, correlated-noise model, statistical estimators, reconciliation framework, durable evidence journal, and guarded controller now provide the technical foundation for the proposed study.
+
+The successful 18-attempt nonfinal integration demonstrated that actual simulated PUF measurements can be reconstructed, recorded, and independently replayed while preserving the required correlation and acquisition-policy relationships.
+
+The reported test counts represent overlapping validation checkpoints and should not be added together as independent tests.
+
+No reliability attenuation results have been produced from the reserved 108,000-attempt final population.
+
+## Next Steps
+
+The immediate priority is to determine whether my local laptop can execute the complete correlated-noise study within acceptable processing, memory, disk, and durability limits.
+
+Planned work includes,
+- Perform bounded resource benchmarks using the existing nonfinal experimental pathway
+- Identify scaling bottlenecks and determine the minimum necessary corrections
+- Audit Git-tracked, untracked, and ignored execution dependencies
+- Select and qualify the final execution environment
+- Complete remaining protected-custody and downstream authentication integration
+- Conduct independent technical review of the exact experimental implementation
+- Freeze the final experimental source, configuration, and environment
+- Execute the 108,000-attempt experiment following final authorization
+
 # Hours and Work:
 
 # Tuesday September, 9
@@ -3437,3 +3665,83 @@ Identified remaining requirements for independent reproduction in a compatible e
   - Documentation
   - Research Log
   - Hours
+
+## 1:00pm - 2:09pm (1.15 Hours)
+- Weekly meeting
+- Listened to Sriram's presentation
+- Listened to Devon's presentation
+- Listened to Colin and Grace's presentation
+
+# Wednesday November, 18
+
+## 6:24pm - 7:57pm (1.55 Hours)
+- Reviewed the proposed Week 11 final correlated-noise study specification and transitioned into implementation.
+- Developed the deterministic experimental configuration and planning framework,
+  - Six experimental conditions
+  - 120 simulated PUF devices
+  - 36,000 matched trial blocks
+  - 108,000 planned authentication attempts
+- Implemented configuration validation and versioned planning schemas.
+- Preserved matched first-reading identities between Single-Read and Majority-3.
+- Validated the common-mode control's shared noise identities.
+- Completed focused planner testing with 14 passing tests.
+
+## 10:09pm - 11:59pm (1.83 Hours)
+- Continued implementation of the final correlated-noise experimental components.
+- Developed the measurement adapter using the existing RO-PUF simulator.
+- Validated,
+  - rho = 1 identical-reading behavior
+  - Common-mode frequency-offset cancellation
+  - Floating-point numerical fault rejection
+  - Single-Read and Majority-3 measurement counts
+- Implemented paired reconstruction-reliability statistical analysis,
+  - Reconstruction FRR and C/D/I/W outcomes
+  - Delta(rho) reliability comparison
+  - A(rho) attenuation calculation
+  - Whole-device and whole-group bootstrap methods
+- Reviewed deterministic tests and incomplete-experiment refusal requirements.
+
+# Thursday November, 19
+
+## 12:00am - 12:15am (0.25 Hours)
+- Continued reviewing the statistical-analysis implementation.
+- Checked the separation between reconstruction outcomes and downstream authentication behavior.
+- Organized the remaining evidence-integrity and execution requirements.
+
+## 1:00pm - 1:37pm (0.62 Hours)
+- Weekly meeting
+- Listened to Sadman's presentation
+
+## 6:17pm - 10:05pm (3.80 Hours)
+- Continued implementation of the final experimental evidence and execution infrastructure.
+- Developed the trusted evidence-reconciliation layer,
+  - Planned-attempt identity validation
+  - BCH reconstruction replay
+  - Missing and duplicated evidence detection
+  - Reconstruction outcome classification
+  - Two-pass consistency checks
+- Implemented the fixture-only durable evidence journal,
+  - Started, completed, and fault transitions
+  - SHA-256 content and continuity hashes
+  - Atomic no-overwrite publication
+  - Interrupted-write and recovery diagnostics
+- Added failure-injection tests covering filesystem errors, partial writes, and invalid state transitions.
+- Defined the protected enrollment and source-custody interfaces.
+- Developed the guarded fixture execution controller.
+- Verified that no callback begins before successful start publication.
+- Tested interruption handling, duplicate-execution rejection, and incomplete-run detection.
+- Reviewed Windows filesystem durability limitations and remaining production requirements.
+
+# Friday November, 20
+
+## 1:28am - 2:46am (1.30 Hours)
+- Continued nonfinal integration of the experimental components.
+- Connected actual simulated PUF acquisition, BCH reconstruction, evidence recording, and deterministic replay.
+- Reviewed the isolated six-condition, three-policy experiment,
+  - One simulated device
+  - 18 nonfinal attempts
+  - Matched Single-Read and Majority-3 measurements
+  - Stored-Provisioned credential retrieval
+- Verified all 18 evidence records passed local reconstruction replay and reconciliation.
+- Reviewed the reported 176-test validation checkpoint, including 174 passes and two platform-dependent skips.
+- Identified the remaining requirements for full-scale resource qualification, protected custody, source freezing, and scientific execution authorization.
